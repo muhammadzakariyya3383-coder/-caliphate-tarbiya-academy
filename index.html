@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta name="theme-color" content="#14532d">
 <title>Caliphate Tarbiya Academy | Academic Management System</title>
 
@@ -10,2167 +10,3127 @@
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-:root{
---green:#14532d;--green2:#166534;--light:#f0fdf4;--bg:#f5f7f6;
---white:#fff;--text:#17202a;--muted:#64748b;--border:#d1d5db;
---red:#b91c1c;--orange:#b45309;--blue:#1d4ed8;
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f3f6f4;
+  color:#17251c;
 }
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;background:var(--bg);color:var(--text)}
 button,input,select,textarea{font:inherit}
 button{cursor:pointer}
 .hidden{display:none!important}
-#loginScreen{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;background:linear-gradient(135deg,#052e16,#14532d)}
-.login-card{width:min(430px,100%);background:#fff;border-radius:20px;padding:28px;box-shadow:0 20px 60px #0005}
-.logo{width:70px;height:70px;border-radius:18px;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-size:25px;font-weight:800;margin:auto}
-.login-card h1{text-align:center;margin-top:14px;font-size:22px}
-.muted{color:var(--muted);font-size:13px}
-.center{text-align:center}
-label{display:block;font-weight:700;font-size:13px;margin:13px 0 6px}
-input,select,textarea{width:100%;padding:11px 12px;border:1px solid var(--border);border-radius:9px;background:#fff;color:var(--text)}
-textarea{min-height:120px;resize:vertical}
-input:focus,select:focus,textarea:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 3px #14532d18}
-.btn{border:0;border-radius:9px;padding:10px 14px;font-weight:700}
-.primary{background:var(--green);color:#fff}
-.primary:hover{background:var(--green2)}
-.secondary{background:#e2e8f0;color:#17202a}
-.danger{background:#fee2e2;color:#991b1b}
-.warning{background:#fef3c7;color:#92400e}
-.blue{background:#dbeafe;color:#1e40af}
-.success{background:#dcfce7;color:#166534}
-.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
-.message{padding:10px;border-radius:8px;margin-top:10px;font-size:13px}
-.message.error{background:#fee2e2;color:#991b1b}
-.message.ok{background:#dcfce7;color:#166534}
-#app{display:none;min-height:100vh}
-.sidebar{position:fixed;left:0;top:0;bottom:0;width:255px;background:#052e16;color:#fff;padding:17px;overflow:auto;z-index:20}
-.brand{padding:8px 5px 20px;border-bottom:1px solid #ffffff20;margin-bottom:10px}
-.brand strong{display:block;font-size:17px}
-.brand small{opacity:.7}
-.nav-btn{width:100%;border:0;background:transparent;color:#fff;text-align:left;padding:11px;border-radius:8px;margin:2px 0}
-.nav-btn:hover,.nav-btn.active{background:#ffffff18}
-.main{margin-left:255px;padding:20px;min-height:100vh}
-.topbar{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:18px}
-.mobile-menu{display:none}
-.page{display:none}
-.page.active{display:block}
-.panel{background:#fff;border:1px solid var(--border);border-radius:13px;padding:18px;margin-bottom:16px}
-.panel h2{margin-bottom:12px}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
-.full{grid-column:1/-1}
-.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
-.card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:15px}
-.card b{font-size:25px;display:block;margin-top:5px}
-.table-wrap{overflow:auto}
-table{width:100%;border-collapse:collapse;min-width:700px}
-th,td{border:1px solid var(--border);padding:8px;text-align:left;vertical-align:top}
-th{background:var(--light)}
-.badge{display:inline-block;padding:4px 8px;border-radius:20px;font-size:11px;font-weight:700}
-.badge.green{background:#dcfce7;color:#166534}
-.badge.orange{background:#fef3c7;color:#92400e}
-.badge.red{background:#fee2e2;color:#991b1b}
-.badge.blue{background:#dbeafe;color:#1e40af}
-.notice{background:#eff6ff;border:1px solid #bfdbfe;padding:10px;border-radius:8px;font-size:13px}
-.assistant{background:#fff;border:1px solid var(--border);padding:15px;border-radius:10px;line-height:1.6;white-space:pre-wrap}
-.score-input{width:75px}
-.modal{position:fixed;inset:0;background:#0008;display:none;align-items:center;justify-content:center;padding:15px;z-index:50}
-.modal.open{display:flex}
-.modal-box{background:#fff;width:min(900px,100%);max-height:90vh;overflow:auto;border-radius:14px;padding:20px}
-@media(max-width:850px){
-.sidebar{transform:translateX(-100%);transition:.2s}
-.sidebar.open{transform:translateX(0)}
-.main{margin-left:0;padding:12px}
-.mobile-menu{display:block}
-.cards{grid-template-columns:repeat(2,1fr)}
-.grid,.grid3{grid-template-columns:1fr}
-.topbar{align-items:flex-start}
+
+.login{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:linear-gradient(135deg,#064e3b,#14532d,#166534);
 }
-@media(max-width:500px){.cards{grid-template-columns:1fr}.actions .btn{width:100%}}
+.login-card{
+  width:100%;
+  max-width:430px;
+  background:white;
+  border-radius:20px;
+  padding:28px;
+  box-shadow:0 20px 60px #0005;
+}
+.logo{
+  width:75px;height:75px;border-radius:50%;
+  background:#14532d;color:white;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:bold;font-size:25px;
+  margin:0 auto 15px;
+}
+.login h1{text-align:center;font-size:23px;color:#14532d}
+.login p{text-align:center;color:#667;margin:8px 0 22px}
+
+label{
+  display:block;
+  font-weight:700;
+  margin:12px 0 6px;
+}
+input,select,textarea{
+  width:100%;
+  padding:11px 12px;
+  border:1px solid #ccd5cf;
+  border-radius:9px;
+  background:white;
+  outline:none;
+}
+input:focus,select:focus,textarea:focus{
+  border-color:#15803d;
+  box-shadow:0 0 0 2px #15803d22;
+}
+textarea{min-height:130px;resize:vertical}
+
+.btn{
+  border:0;
+  border-radius:9px;
+  padding:11px 15px;
+  font-weight:700;
+}
+.btn-primary{background:#15803d;color:white}
+.btn-primary:hover{background:#166534}
+.btn-secondary{background:#e7eee9;color:#14532d}
+.btn-danger{background:#dc2626;color:white}
+.btn-warning{background:#d97706;color:white}
+.btn-info{background:#2563eb;color:white}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+
+.app{min-height:100vh;display:flex}
+.sidebar{
+  width:260px;
+  background:#064e3b;
+  color:white;
+  position:fixed;
+  left:0;top:0;bottom:0;
+  overflow:auto;
+  z-index:20;
+}
+.brand{
+  padding:20px 16px;
+  border-bottom:1px solid #ffffff20;
+}
+.brand strong{display:block;font-size:18px}
+.brand small{opacity:.75}
+.nav{padding:12px}
+.nav button{
+  width:100%;
+  text-align:left;
+  background:none;
+  border:0;
+  color:#dcefe3;
+  padding:11px 12px;
+  border-radius:8px;
+  margin-bottom:3px;
+}
+.nav button:hover,.nav button.active{
+  background:#ffffff18;
+  color:white;
+}
+.nav-section{
+  font-size:11px;
+  color:#9bc4a9;
+  padding:15px 12px 5px;
+  text-transform:uppercase;
+  font-weight:bold;
+}
+
+.main{
+  margin-left:260px;
+  width:calc(100% - 260px);
+  min-height:100vh;
+}
+.topbar{
+  height:65px;
+  background:white;
+  border-bottom:1px solid #ddd;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 20px;
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+.menu-btn{display:none}
+.page{padding:22px;max-width:1400px;margin:auto}
+.page-title{
+  font-size:25px;
+  font-weight:800;
+  color:#14532d;
+  margin-bottom:18px;
+}
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+}
+.card{
+  background:white;
+  border-radius:12px;
+  padding:18px;
+  box-shadow:0 2px 10px #0000000b;
+  border:1px solid #e2e8e4;
+}
+.stat-number{
+  font-size:30px;
+  font-weight:800;
+  color:#14532d;
+}
+.stat-label{color:#68756d;margin-top:4px}
+
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+
+.toolbar{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-bottom:15px;
+}
+.toolbar>*{flex:0 0 auto}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  background:white;
+}
+th,td{
+  padding:10px;
+  border-bottom:1px solid #e5e9e6;
+  text-align:left;
+  vertical-align:top;
+}
+th{background:#ecf5ef;color:#14532d}
+.table-wrap{overflow:auto;border-radius:10px}
+
+.badge{
+  display:inline-block;
+  padding:4px 8px;
+  border-radius:20px;
+  font-size:12px;
+  font-weight:bold;
+}
+.badge-draft{background:#e5e7eb;color:#374151}
+.badge-submitted{background:#fef3c7;color:#92400e}
+.badge-approved{background:#dcfce7;color:#166534}
+.badge-exam{background:#dbeafe;color:#1d4ed8}
+.badge-final{background:#ede9fe;color:#6d28d9}
+.badge-published{background:#bbf7d0;color:#166534}
+.badge-returned{background:#fee2e2;color:#991b1b}
+
+.form-card{
+  background:white;
+  border:1px solid #e0e7e2;
+  border-radius:12px;
+  padding:18px;
+  margin-bottom:16px;
+}
+.form-card h3{color:#14532d;margin-bottom:12px}
+
+.actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+  margin-top:12px;
+}
+
+.alert{
+  padding:12px;
+  border-radius:8px;
+  margin-bottom:12px;
+}
+.alert-error{background:#fee2e2;color:#991b1b}
+.alert-success{background:#dcfce7;color:#166534}
+.alert-info{background:#dbeafe;color:#1e40af}
+
+.empty{
+  padding:35px;
+  text-align:center;
+  color:#777;
+}
+
+.mobile-only{display:none}
+
+@media(max-width:900px){
+  .sidebar{
+    transform:translateX(-100%);
+    transition:.25s;
+  }
+  .sidebar.open{transform:translateX(0)}
+  .main{
+    margin-left:0;
+    width:100%;
+  }
+  .menu-btn{
+    display:block;
+    border:0;
+    background:#14532d;
+    color:white;
+    border-radius:7px;
+    padding:8px 11px;
+  }
+  .cards{grid-template-columns:repeat(2,1fr)}
+  .grid2,.grid3{grid-template-columns:1fr}
+  .mobile-only{display:block}
+}
+@media(max-width:600px){
+  .cards{grid-template-columns:1fr}
+  .page{padding:13px}
+  .topbar{padding:0 12px}
+  .page-title{font-size:21px}
+}
 </style>
 </head>
 
 <body>
 
-<div id="loginScreen">
-<div class="login-card">
-<div class="logo">CTA</div>
-<h1>Caliphate Tarbiya Academy</h1>
-<p class="center muted" style="margin:6px 0 20px">School Academic Management System</p>
+<!-- LOGIN -->
+<div id="loginScreen" class="login">
+  <div class="login-card">
+    <div class="logo">CTA</div>
+    <h1>Caliphate Tarbiya Academy</h1>
+    <p>School Academic Management System</p>
 
-<label>Login Type</label>
-<select id="loginType">
-<option value="admin">Administrator</option>
-<option value="teacher">Teacher</option>
-</select>
+    <div id="loginMessage"></div>
 
-<label>Email</label>
-<input id="loginEmail" type="email" autocomplete="username">
+    <label>Login Type</label>
+    <select id="loginType">
+      <option value="administrator">Administrator</option>
+      <option value="teacher">Teacher</option>
+    </select>
 
-<label>Password</label>
-<input id="loginPassword" type="password" autocomplete="current-password">
+    <label>Email</label>
+    <input id="loginEmail" type="email" placeholder="Enter email">
 
-<button class="btn primary" style="width:100%;margin-top:17px" onclick="login()">Login</button>
-<div id="loginMessage"></div>
-<p class="muted center" style="margin-top:12px">
-Administrator and teacher accounts are authenticated through Supabase.
-</p>
-</div>
-</div>
+    <label>Password</label>
+    <input id="loginPassword" type="password" placeholder="Enter password">
 
-<div id="app">
-
-<aside class="sidebar" id="sidebar">
-<div class="brand">
-<strong>Caliphate Tarbiya Academy</strong>
-<small>Academic Management System</small>
+    <button class="btn btn-primary" style="width:100%;margin-top:18px"
+            onclick="login()">
+      Login
+    </button>
+  </div>
 </div>
 
-<button class="nav-btn active" onclick="showPage('dashboard',this)">🏠 Dashboard</button>
-<button class="nav-btn" onclick="showPage('lessonPlan',this)">📘 Lesson Plan</button>
-<button class="nav-btn" onclick="showPage('lessonNote',this)">📝 Lesson Note</button>
-<button class="nav-btn" onclick="showPage('scheme',this)">📚 Scheme of Work</button>
-<button class="nav-btn" onclick="showPage('assistant',this)">🤖 Teacher Assistant</button>
-<button class="nav-btn" onclick="showPage('documents',this)">📄 My Documents</button>
-<button class="nav-btn" onclick="showPage('results',this)">📊 Result Entry</button>
-<button class="nav-btn" onclick="showPage('submissions',this)">📤 My Result Submissions</button>
+<!-- APPLICATION -->
+<div id="app" class="app hidden">
 
-<button id="hodNav" class="nav-btn hidden" onclick="showPage('hod',this)">✅ HOD Result Vetting</button>
-<button id="examNav" class="nav-btn hidden" onclick="showPage('exam',this)">🧾 Examination Officer</button>
+  <aside id="sidebar" class="sidebar">
+    <div class="brand">
+      <strong>Caliphate Tarbiya</strong>
+      <small>Academic Management System</small>
+    </div>
 
-<div id="adminNav" class="hidden">
-<button class="nav-btn" onclick="showPage('teachers',this)">👨‍🏫 Teacher Management</button>
-<button class="nav-btn" onclick="showPage('classes',this)">🏫 Classes & Students</button>
-<button class="nav-btn" onclick="showPage('hodAssign',this)">🎯 HOD Assignment</button>
-<button class="nav-btn" onclick="showPage('publish',this)">📢 Publish Results</button>
-<button class="nav-btn" onclick="showPage('broadsheet',this)">📋 Broadsheet</button>
-<button class="nav-btn" onclick="showPage('settings',this)">⚙️ School Settings</button>
-</div>
+    <div class="nav">
 
-<button class="nav-btn" onclick="showPage('password',this)">🔐 Change Password</button>
-<button class="nav-btn" onclick="logout()">🚪 Logout</button>
-</aside>
+      <div class="nav-section">Main</div>
+      <button onclick="showPage('dashboard')">🏠 Dashboard</button>
 
-<main class="main">
+      <div class="nav-section">Academic Documents</div>
+      <button onclick="showPage('lessonPlan')">📘 Lesson Plan</button>
+      <button onclick="showPage('lessonNote')">📝 Lesson Note</button>
+      <button onclick="showPage('scheme')">📚 Scheme of Work</button>
+      <button onclick="showPage('assistant')">🤖 Teacher Assistant</button>
+      <button onclick="showPage('documents')">📂 My Documents</button>
 
-<div class="topbar">
-<div>
-<button class="btn secondary mobile-menu" onclick="toggleMenu()">☰</button>
-<strong id="pageTitle">Dashboard</strong>
-</div>
-<div id="userInfo" class="muted"></div>
-</div>
+      <div class="nav-section">Results</div>
+      <button onclick="showPage('resultEntry')">📊 Result Entry</button>
+      <button onclick="showPage('submissions')">📤 My Result Submissions</button>
 
-<!-- DASHBOARD -->
-<section id="dashboard" class="page active">
-<div class="panel">
-<h2>Welcome</h2>
-<p id="welcome"></p>
-</div>
+      <div id="hodNav" class="hidden">
+        <button onclick="showPage('hod')">✅ HOD Result Vetting</button>
+      </div>
 
-<div class="cards">
-<div class="card"><span class="muted">Teachers</span><b id="statTeachers">0</b></div>
-<div class="card"><span class="muted">Students</span><b id="statStudents">0</b></div>
-<div class="card"><span class="muted">Pending HOD</span><b id="statHOD">0</b></div>
-<div class="card"><span class="muted">Published</span><b id="statPublished">0</b></div>
-</div>
-</section>
+      <div id="examNav" class="hidden">
+        <button onclick="showPage('examOfficer')">🔒 Examination Officer</button>
+      </div>
 
-<!-- LESSON PLAN -->
-<section id="lessonPlan" class="page">
-<div class="panel">
-<h2>Nigerian Standard Lesson Plan</h2>
-<div class="grid">
-<div><label>Subject</label><input id="lpSubject"></div>
-<div><label>Class</label><input id="lpClass"></div>
-<div><label>Topic</label><input id="lpTopic"></div>
-<div><label>Sub-topic</label><input id="lpSubtopic"></div>
-<div><label>Term</label><select id="lpTerm"><option>First Term</option><option>Second Term</option><option>Third Term</option></select></div>
-<div><label>Week</label><input id="lpWeek" placeholder="Week 1"></div>
-<div><label>Duration</label><input id="lpDuration" placeholder="40 minutes"></div>
-<div><label>Date</label><input id="lpDate" type="date"></div>
-<div class="full"><label>Entry Behaviour / Previous Knowledge</label><textarea id="lpEntry"></textarea></div>
-<div class="full"><label>Learning Objectives</label><textarea id="lpObjectives"></textarea></div>
-<div class="full"><label>Instructional Materials</label><textarea id="lpMaterials"></textarea></div>
-<div class="full"><label>References</label><textarea id="lpReferences"></textarea></div>
-<div class="full"><label>Set Induction</label><textarea id="lpInduction"></textarea></div>
-<div class="full"><label>Presentation – Step 1</label><textarea id="lpStep1"></textarea></div>
-<div class="full"><label>Presentation – Step 2</label><textarea id="lpStep2"></textarea></div>
-<div class="full"><label>Presentation – Step 3</label><textarea id="lpStep3"></textarea></div>
-<div class="full"><label>Teacher's Activities</label><textarea id="lpTeacher"></textarea></div>
-<div class="full"><label>Learners' Activities</label><textarea id="lpLearner"></textarea></div>
-<div class="full"><label>Evaluation</label><textarea id="lpEvaluation"></textarea></div>
-<div class="full"><label>Conclusion</label><textarea id="lpConclusion"></textarea></div>
-<div class="full"><label>Assignment</label><textarea id="lpAssignment"></textarea></div>
-</div>
-<div class="actions">
-<button class="btn primary" onclick="saveDocument('Lesson Plan')">Save Lesson Plan</button>
-<button class="btn secondary" onclick="printForm('lp')">Print / PDF</button>
-</div>
-</div>
-</section>
+      <div id="adminNav" class="hidden">
+        <div class="nav-section">Administration</div>
+        <button onclick="showPage('teachers')">👨‍🏫 Teacher Management</button>
+        <button onclick="showPage('classes')">🏫 Classes & Students</button>
+        <button onclick="showPage('hodAssignment')">🎯 HOD Assignment</button>
+        <button onclick="showPage('publish')">📢 Publish Results</button>
+        <button onclick="showPage('broadsheet')">📋 Broadsheet</button>
+        <button onclick="showPage('settings')">⚙️ School Settings</button>
+      </div>
 
-<!-- LESSON NOTE -->
-<section id="lessonNote" class="page">
-<div class="panel">
-<h2>Lesson Note</h2>
-<div class="grid">
-<div><label>Subject</label><input id="lnSubject"></div>
-<div><label>Class</label><input id="lnClass"></div>
-<div><label>Topic</label><input id="lnTopic"></div>
-<div><label>Sub-topic</label><input id="lnSubtopic"></div>
-<div><label>Term</label><select id="lnTerm"><option>First Term</option><option>Second Term</option><option>Third Term</option></select></div>
-<div><label>Week</label><input id="lnWeek"></div>
-<div class="full"><label>Lesson Content</label><textarea id="lnContent" style="min-height:350px"></textarea></div>
-</div>
-<div class="actions">
-<button class="btn primary" onclick="saveDocument('Lesson Note')">Save Lesson Note</button>
-<button class="btn secondary" onclick="printForm('ln')">Print / PDF</button>
-</div>
-</div>
-</section>
+      <div class="nav-section">Account</div>
+      <button onclick="showPage('password')">🔑 Change Password</button>
+      <button onclick="logout()">🚪 Logout</button>
+    </div>
+  </aside>
 
-<!-- SCHEME -->
-<section id="scheme" class="page">
-<div class="panel">
-<h2>Scheme of Work</h2>
-<div class="grid">
-<div><label>Subject</label><input id="scSubject"></div>
-<div><label>Class</label><input id="scClass"></div>
-<div><label>Term</label><select id="scTerm"><option>First Term</option><option>Second Term</option><option>Third Term</option></select></div>
-<div><label>Session</label><input id="scSession" value="2026/2027"></div>
-<div class="full"><label>Scheme Content</label><textarea id="scContent" style="min-height:450px"></textarea></div>
-</div>
-<div class="actions">
-<button class="btn primary" onclick="saveDocument('Scheme of Work')">Save Scheme</button>
-<button class="btn secondary" onclick="printForm('sc')">Print / PDF</button>
-</div>
-</div>
-</section>
+  <main class="main">
+    <div class="topbar">
+      <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+      <strong id="topTitle">Dashboard</strong>
+      <span id="userName">User</span>
+    </div>
 
-<!-- ASSISTANT -->
-<section id="assistant" class="page">
-<div class="panel">
-<h2>Teacher Assistant</h2>
-<div class="grid">
-<div><label>Type</label>
-<select id="aiType">
-<option>Lesson Plan</option>
-<option>Lesson Note</option>
-<option>Scheme of Work</option>
-<option>CA Questions</option>
-<option>Examination Questions</option>
-</select></div>
-<div><label>Subject</label><input id="aiSubject"></div>
-<div><label>Class</label><input id="aiClass"></div>
-<div><label>Topic</label><input id="aiTopic"></div>
-<div><label>Number of Questions</label><input id="aiCount" type="number" min="1" max="100" value="10"></div>
-<div><label>Language</label>
-<select id="aiLanguage"><option>English</option><option>Hausa</option><option>Arabic</option><option>French</option></select></div>
-</div>
-<div class="actions">
-<button class="btn primary" onclick="generateAssistant()">✨ Generate</button>
-<button class="btn secondary" onclick="copyAssistant()">Copy</button>
-<button class="btn secondary" onclick="printAssistant()">Print</button>
-<button class="btn success" onclick="useAssistant()">Use in Document</button>
-</div>
-<div id="assistantResult" class="assistant" style="margin-top:15px">
-Generated material will appear here.
-</div>
-</div>
-</section>
-
-<!-- DOCUMENTS -->
-<section id="documents" class="page">
-<div class="panel">
-<h2>My Documents</h2>
-<div id="documentsList"></div>
-</div>
-</section>
-
-<!-- RESULT ENTRY -->
-<section id="results" class="page">
-<div class="panel">
-<h2>Result Entry</h2>
-
-<div class="grid">
-<div><label>Class</label><input id="resultClass" placeholder="JSS 1"></div>
-<div><label>Subject</label><input id="resultSubject" placeholder="Mathematics"></div>
-<div><label>Term</label><select id="resultTerm"><option>First Term</option><option>Second Term</option><option>Third Term</option></select></div>
-<div><label>Session</label><input id="resultSession" value="2026/2027"></div>
-</div>
-
-<div class="actions">
-<button class="btn secondary" onclick="loadStudentsForResult()">Load Students</button>
-</div>
-
-<div id="resultTable" style="margin-top:15px"></div>
-
-<div class="actions">
-<button class="btn primary" onclick="saveResultDraft()">Save Draft</button>
-<button class="btn success" onclick="submitResultsToHOD()">Submit to HOD</button>
-</div>
-</div>
-</section>
-
-<!-- SUBMISSIONS -->
-<section id="submissions" class="page">
-<div class="panel">
-<h2>My Result Submissions</h2>
-<div id="submissionsList"></div>
-</div>
-</section>
-
-<!-- HOD -->
-<section id="hod" class="page">
-<div class="panel">
-<h2>HOD Result Vetting</h2>
-<p class="muted">Review results for your assigned subject.</p>
-<div id="hodResults"></div>
-</div>
-</section>
-
-<!-- EXAM -->
-<section id="exam" class="page">
-<div class="panel">
-<h2>Examination Officer</h2>
-<div id="examResults"></div>
-</div>
-</section>
-
-<!-- TEACHERS -->
-<section id="teachers" class="page">
-<div class="panel">
-<h2>Teacher Management</h2>
-
-<div class="notice">
-Only the Administrator can create teacher accounts.
-Teacher authentication accounts must be created through Supabase Auth.
-</div>
-
-<div class="grid">
-<div><label>Teacher Full Name</label><input id="teacherName"></div>
-<div><label>Teacher Email</label><input id="teacherEmail" type="email"></div>
-<div><label>Temporary Password</label><input id="teacherPassword" type="password"></div>
-<div><label>Academic Role</label>
-<select id="teacherRole">
-<option>Teacher</option>
-<option>HOD Mathematics</option>
-<option>HOD English</option>
-<option>HOD Physics</option>
-<option>HOD Chemistry</option>
-<option>HOD Biology</option>
-<option>HOD Economics</option>
-<option>HOD Hausa</option>
-<option>HOD Arabic</option>
-<option>HOD French</option>
-<option>HOD Computer Studies</option>
-<option>Examination Officer</option>
-</select>
-</div>
-</div>
-
-<div class="actions">
-<button class="btn primary" onclick="createTeacherProfile()">Save Teacher Profile</button>
-</div>
-</div>
-
-<div class="panel">
-<h2>Teachers</h2>
-<div id="teacherList"></div>
-</div>
-</section>
-
-<!-- CLASSES -->
-<section id="classes" class="page">
-<div class="panel">
-<h2>Classes & Students</h2>
-
-<div class="grid">
-<div><label>Class Name</label><input id="className" placeholder="JSS 1"></div>
-<div><label>Student Name</label><input id="studentName"></div>
-</div>
-
-<div class="actions">
-<button class="btn primary" onclick="createClass()">Create Class</button>
-<button class="btn secondary" onclick="addStudent()">Add Student</button>
-</div>
-</div>
-
-<div class="panel">
-<h2>Students</h2>
-<div id="studentList"></div>
-</div>
-</section>
-
-<!-- HOD ASSIGN -->
-<section id="hodAssign" class="page">
-<div class="panel">
-<h2>HOD Assignment</h2>
-<div id="hodAssignmentList"></div>
-</div>
-</section>
-
-<!-- PUBLISH -->
-<section id="publish" class="page">
-<div class="panel">
-<h2>Administrator — Publish Results</h2>
-<div id="publishList"></div>
-</div>
-</section>
-
-<!-- BROADSHEET -->
-<section id="broadsheet" class="page">
-<div class="panel">
-<h2>Broadsheet</h2>
-<div class="grid">
-<div><label>Class</label><input id="sheetClass"></div>
-<div><label>Session</label><input id="sheetSession" value="2026/2027"></div>
-<div><label>Term</label><select id="sheetTerm"><option>First Term</option><option>Second Term</option><option>Third Term</option></select></div>
-</div>
-<div class="actions">
-<button class="btn primary" onclick="loadBroadsheet()">Load Broadsheet</button>
-<button class="btn secondary" onclick="printBroadsheet()">Print</button>
-</div>
-<div id="broadsheetTable" style="margin-top:15px"></div>
-</div>
-</section>
-
-<!-- SETTINGS -->
-<section id="settings" class="page">
-<div class="panel">
-<h2>School Settings</h2>
-<div class="grid">
-<div><label>School Name</label><input id="schoolName" value="Caliphate Tarbiya Academy"></div>
-<div><label>Motto</label><input id="schoolMotto"></div>
-<div class="full"><label>Address</label><input id="schoolAddress"></div>
-<div><label>Contact</label><input id="schoolContact"></div>
-</div>
-<div class="actions">
-<button class="btn primary" onclick="saveSchoolSettings()">Save Settings</button>
-</div>
-</div>
-</section>
-
-<!-- PASSWORD -->
-<section id="password" class="page">
-<div class="panel">
-<h2>Change Password</h2>
-<div class="grid">
-<div><label>New Password</label><input id="newPassword" type="password"></div>
-<div><label>Confirm Password</label><input id="confirmPassword" type="password"></div>
-</div>
-<div class="actions">
-<button class="btn primary" onclick="changePassword()">Change Password</button>
-</div>
-</div>
-</section>
-
-</main>
-</div>
-
-<div id="modal" class="modal">
-<div class="modal-box">
-<div id="modalContent"></div>
-<div class="actions">
-<button class="btn secondary" onclick="closeModal()">Close</button>
-</div>
-</div>
+    <div id="content" class="page"></div>
+  </main>
 </div>
 
 <script>
-"use strict";
-
-/* =========================================================
+/* ============================================================
    SUPABASE
-========================================================= */
+============================================================ */
 
 const SUPABASE_URL =
-"https://udbocxqfsufpyexxpfkr.supabase.co";
+  "https://udbocxqfsufpyexxpfkr.supabase.co";
 
 const SUPABASE_KEY =
-"sb_publishable_eljKKJNBUtRx55847F2RTA_2hfMgs7U";
+  "sb_publishable_eljKKJNBUtRx55847F2RTA_2hfMgs7U";
 
-const supabaseClient =
-window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+const sb = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
 
-let currentUser=null;
-let currentProfile=null;
-let resultStudents=[];
-let assistantText="";
+let currentUser = null;
+let currentProfile = null;
+let assistantText = "";
+let currentResultRows = [];
 
-const SUBJECTS=[
-"English","Mathematics","Basic Science","Basic Technology",
-"Social Studies","Civic Education","Computer Studies",
-"Physics","Chemistry","Biology","Economics","Hausa","Arabic",
-"French","Islamic Religious Studies","Christian Religious Studies",
-"Agricultural Science","Geography","Government","Literature in English"
-];
+/* ============================================================
+   HELPERS
+============================================================ */
 
-const CLASSES=[
-"Nursery 1","Nursery 2","Nursery 3",
-"Basic 1","Basic 2","Basic 3","Basic 4","Basic 5","Basic 6",
-"JSS 1","JSS 2","JSS 3","SS 1","SS 2","SS 3"
-];
+const $ = id => document.getElementById(id);
 
-function $(id){return document.getElementById(id)}
-
-function esc(v){
-return String(v??"").replace(/[&<>"']/g,m=>({
-"&":"&amp;","<":"&lt;",">":"&gt;",
-'"':"&quot;","'":"&#39;"
-}[m]));
+function esc(value){
+  return String(value ?? "")
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
 }
 
-function msg(id,text,type="error"){
-const e=$(id);
-if(!e)return;
-e.className="message "+type;
-e.textContent=text;
+function uid(){
+  return crypto.randomUUID();
 }
 
-function closeMenu(){
-$("sidebar").classList.remove("open");
+function notify(message,type="info"){
+  const cls =
+    type==="error" ? "alert-error" :
+    type==="success" ? "alert-success" :
+    "alert-info";
+
+  const el = document.createElement("div");
+  el.className = "alert " + cls;
+  el.textContent = message;
+
+  const page = $("content");
+  if(page){
+    page.prepend(el);
+    setTimeout(()=>el.remove(),5000);
+  }else{
+    alert(message);
+  }
 }
 
-function toggleMenu(){
-$("sidebar").classList.toggle("open");
+function statusBadge(status){
+  const map={
+    draft:"badge-draft",
+    submitted_hod:"badge-submitted",
+    hod_approved:"badge-approved",
+    submitted_exam_officer:"badge-exam",
+    finalized:"badge-final",
+    published:"badge-published",
+    returned:"badge-returned"
+  };
+
+  return `<span class="badge ${map[status]||"badge-draft"}">
+    ${esc(String(status||"").replaceAll("_"," ").toUpperCase())}
+  </span>`;
 }
 
-function showPage(page,btn){
-document.querySelectorAll(".page").forEach(x=>x.classList.remove("active"));
-const target=$(page);
-if(target)target.classList.add("active");
-
-document.querySelectorAll(".nav-btn").forEach(x=>x.classList.remove("active"));
-if(btn)btn.classList.add("active");
-
-const titles={
-dashboard:"Dashboard",
-lessonPlan:"Lesson Plan",
-lessonNote:"Lesson Note",
-scheme:"Scheme of Work",
-assistant:"Teacher Assistant",
-documents:"My Documents",
-results:"Result Entry",
-submissions:"My Result Submissions",
-hod:"HOD Result Vetting",
-exam:"Examination Officer",
-teachers:"Teacher Management",
-classes:"Classes & Students",
-hodAssign:"HOD Assignment",
-publish:"Publish Results",
-broadsheet:"Broadsheet",
-settings:"School Settings",
-password:"Change Password"
-};
-
-$("pageTitle").textContent=titles[page]||page;
-closeMenu();
-
-if(page==="documents")loadDocuments();
-if(page==="submissions")loadSubmissions();
-if(page==="hod")loadHODResults();
-if(page==="exam")loadExamResults();
-if(page==="teachers")loadTeachers();
-if(page==="classes")loadStudents();
-if(page==="hodAssign")loadHODAssignments();
-if(page==="publish")loadPublishResults();
+function grade(total){
+  total=Number(total)||0;
+  if(total>=75)return "A";
+  if(total>=70)return "B";
+  if(total>=60)return "C";
+  if(total>=50)return "D";
+  if(total>=40)return "E";
+  return "F";
 }
 
-/* =========================================================
-   AUTHENTICATION
-========================================================= */
+function gradeText(g){
+  return {
+    A:"Excellent",
+    B:"Very Good",
+    C:"Good",
+    D:"Fair",
+    E:"Pass",
+    F:"Fail"
+  }[g] || "";
+}
+
+function isAdmin(){
+  return currentProfile?.role==="administrator";
+}
+
+function isTeacher(){
+  return currentProfile?.role==="teacher";
+}
+
+function isHOD(){
+  const r=(currentProfile?.academic_role||"").toLowerCase();
+  return r.includes("hod");
+}
+
+function isExamOfficer(){
+  return currentProfile?.is_exam_officer===true ||
+         (currentProfile?.academic_role||"").toLowerCase()
+           .includes("examination officer");
+}
+
+function canUseHOD(){
+  return isAdmin() || isHOD();
+}
+
+function canUseExam(){
+  return isAdmin() || isExamOfficer();
+}
+
+/* ============================================================
+   AUTH
+============================================================ */
 
 async function login(){
 
-const email=$("loginEmail").value.trim();
-const password=$("loginPassword").value;
+  const email=$("loginEmail").value.trim();
+  const password=$("loginPassword").value;
+  const type=$("loginType").value;
 
-if(!email||!password){
-msg("loginMessage","Enter your email and password.");
-return;
+  if(!email || !password){
+    $("loginMessage").innerHTML =
+      `<div class="alert alert-error">Enter email and password.</div>`;
+    return;
+  }
+
+  $("loginMessage").innerHTML =
+    `<div class="alert alert-info">Signing in...</div>`;
+
+  const {data,error}=await sb.auth.signInWithPassword({
+    email,
+    password
+  });
+
+  if(error){
+    $("loginMessage").innerHTML =
+      `<div class="alert alert-error">${esc(error.message)}</div>`;
+    return;
+  }
+
+  currentUser=data.user;
+
+  await loadProfile();
+
+  if(!currentProfile){
+    await sb.auth.signOut();
+    $("loginMessage").innerHTML =
+      `<div class="alert alert-error">
+        Your account profile has not been configured.
+      </div>`;
+    return;
+  }
+
+  if(type==="administrator" &&
+     currentProfile.role!=="administrator"){
+    await sb.auth.signOut();
+    $("loginMessage").innerHTML =
+      `<div class="alert alert-error">
+        This account is not an Administrator account.
+      </div>`;
+    return;
+  }
+
+  if(type==="teacher" &&
+     currentProfile.role!=="teacher"){
+    await sb.auth.signOut();
+    $("loginMessage").innerHTML =
+      `<div class="alert alert-error">
+        This account is not a Teacher account.
+      </div>`;
+    return;
+  }
+
+  openApplication();
 }
 
-const {data,error}=await supabaseClient.auth.signInWithPassword({
-email,password
-});
+async function loadProfile(){
 
-if(error){
-msg("loginMessage",error.message);
-return;
+  if(!currentUser)return;
+
+  const {data,error}=await sb
+    .from("user_profiles")
+    .select("*")
+    .eq("id",currentUser.id)
+    .maybeSingle();
+
+  if(error){
+    console.error(error);
+    currentProfile=null;
+    return;
+  }
+
+  currentProfile=data;
 }
 
-await loadCurrentProfile();
+function openApplication(){
 
-if(!currentProfile){
-await supabaseClient.auth.signOut();
-msg("loginMessage","Your account profile has not been configured by the Administrator.");
-return;
-}
+  $("loginScreen").classList.add("hidden");
+  $("app").classList.remove("hidden");
 
-const selectedRole=$("loginType").value;
+  $("userName").textContent =
+    currentProfile?.full_name ||
+    currentUser?.email ||
+    "User";
 
-if(selectedRole==="admin"&&currentProfile.role!=="administrator"){
-await supabaseClient.auth.signOut();
-msg("loginMessage","This account is not an Administrator account.");
-return;
-}
+  $("adminNav").classList.toggle(
+    "hidden",
+    !isAdmin()
+  );
 
-if(selectedRole==="teacher"&&currentProfile.role!=="teacher"){
-await supabaseClient.auth.signOut();
-msg("loginMessage","This account is not a Teacher account.");
-return;
-}
+  $("hodNav").classList.toggle(
+    "hidden",
+    !canUseHOD()
+  );
 
-currentUser=data.user;
-openApp();
-}
+  $("examNav").classList.toggle(
+    "hidden",
+    !canUseExam()
+  );
 
-async function loadCurrentProfile(){
-
-const {data:{user}}=await supabaseClient.auth.getUser();
-
-if(!user){
-currentUser=null;
-currentProfile=null;
-return;
-}
-
-currentUser=user;
-
-const {data,error}=await supabaseClient
-.from("user_profiles")
-.select("*")
-.eq("id",user.id)
-.maybeSingle();
-
-if(error){
-console.error(error);
-currentProfile=null;
-return;
-}
-
-currentProfile=data;
+  showPage("dashboard");
 }
 
 async function restoreSession(){
 
-const {data:{session}}=await supabaseClient.auth.getSession();
+  const {data}=await sb.auth.getSession();
 
-if(!session){
-return;
-}
+  if(data?.session?.user){
+    currentUser=data.session.user;
+    await loadProfile();
 
-await loadCurrentProfile();
-
-if(currentProfile)openApp();
+    if(currentProfile){
+      openApplication();
+    }
+  }
 }
 
 async function logout(){
-await supabaseClient.auth.signOut();
-currentUser=null;
-currentProfile=null;
-location.reload();
+  await sb.auth.signOut();
+
+  currentUser=null;
+  currentProfile=null;
+
+  $("app").classList.add("hidden");
+  $("loginScreen").classList.remove("hidden");
+  $("loginPassword").value="";
 }
 
-function openApp(){
+/* ============================================================
+   NAVIGATION
+============================================================ */
 
-$("loginScreen").style.display="none";
-$("app").style.display="block";
-
-const role=currentProfile.role;
-
-$("userInfo").textContent=
-(currentProfile.full_name||"User")+" • "+
-(role==="administrator"?"Administrator":"Teacher");
-
-$("welcome").textContent=
-"Welcome, "+(currentProfile.full_name||"User")+
-". Manage your academic activities from the menu.";
-
-const admin=role==="administrator";
-
-$("adminNav").classList.toggle("hidden",!admin);
-
-if(!admin){
-loadTeacherRoles();
-}else{
-loadTeachers();
+function toggleSidebar(){
+  $("sidebar").classList.toggle("open");
 }
 
-loadDashboard();
+function showPage(page){
+
+  $("sidebar").classList.remove("open");
+
+  const titles={
+    dashboard:"Dashboard",
+    lessonPlan:"Lesson Plan",
+    lessonNote:"Lesson Note",
+    scheme:"Scheme of Work",
+    assistant:"Teacher Assistant",
+    documents:"My Documents",
+    resultEntry:"Result Entry",
+    submissions:"My Result Submissions",
+    hod:"HOD Result Vetting",
+    examOfficer:"Examination Officer",
+    teachers:"Teacher Management",
+    classes:"Classes & Students",
+    hodAssignment:"HOD Assignment",
+    publish:"Publish Results",
+    broadsheet:"Broadsheet",
+    settings:"School Settings",
+    password:"Change Password"
+  };
+
+  $("topTitle").textContent=titles[page]||"Dashboard";
+
+  const pages={
+    dashboard:dashboardPage,
+    lessonPlan:lessonPlanPage,
+    lessonNote:lessonNotePage,
+    scheme:schemePage,
+    assistant:assistantPage,
+    documents:documentsPage,
+    resultEntry:resultEntryPage,
+    submissions:submissionsPage,
+    hod:hodPage,
+    examOfficer:examOfficerPage,
+    teachers:teachersPage,
+    classes:classesPage,
+    hodAssignment:hodAssignmentPage,
+    publish:publishPage,
+    broadsheet:broadsheetPage,
+    settings:settingsPage,
+    password:passwordPage
+  };
+
+  if(!pages[page]){
+    $("content").innerHTML="<div class='empty'>Page not found.</div>";
+    return;
+  }
+
+  pages[page]();
 }
 
-/* =========================================================
+/* ============================================================
    DASHBOARD
-========================================================= */
-
-async function loadDashboard(){
-
-try{
-
-const [
-teachers,
-students,
-hod,
-published
-]=await Promise.all([
-supabaseClient.from("user_profiles").select("id",{count:"exact",head:true}).eq("role","teacher"),
-supabaseClient.from("students").select("id",{count:"exact",head:true}),
-supabaseClient.from("results").select("id",{count:"exact",head:true}).eq("status","submitted_hod"),
-supabaseClient.from("results").select("id",{count:"exact",head:true}).eq("status","published")
-]);
-
-$("statTeachers").textContent=teachers.count||0;
-$("statStudents").textContent=students.count||0;
-$("statHOD").textContent=hod.count||0;
-$("statPublished").textContent=published.count||0;
-
-}catch(e){
-console.error(e);
-}
-}
-
-/* =========================================================
-   TEACHER ROLES
-========================================================= */
-
-async function loadTeacherRoles(){
-
-if(!currentProfile)return;
-
-const {data}=await supabaseClient
-.from("teacher_subjects")
-.select("subject_id,subjects(name)")
-.eq("teacher_id",currentUser.id);
-
-const subjects=(data||[]).map(x=>x.subjects?.name).filter(Boolean);
-
-const {data:profile}=await supabaseClient
-.from("user_profiles")
-.select("*")
-.eq("id",currentUser.id)
-.single();
-
-const isExam=
-profile?.academic_role==="Examination Officer"||
-profile?.is_exam_officer===true;
-
-const isHOD=
-String(profile?.academic_role||"").startsWith("HOD");
-
-$("hodNav").classList.toggle("hidden",!isHOD);
-$("examNav").classList.toggle("hidden",!isExam);
-
-}
-
-/* =========================================================
-   TEACHER PROFILE
-========================================================= */
-
-async function createTeacherProfile(){
-
-if(currentProfile?.role!=="administrator"){
-alert("Administrator access required.");
-return;
-}
-
-const name=$("teacherName").value.trim();
-const email=$("teacherEmail").value.trim();
-const password=$("teacherPassword").value;
-const academicRole=$("teacherRole").value;
-
-if(!name||!email||!password){
-alert("Complete all teacher fields.");
-return;
-}
-
-/*
- IMPORTANT:
- Browser-side Supabase publishable keys cannot securely create
- Auth users without changing the current Administrator session.
- A production implementation should call a Supabase Edge Function
- using the service role key on the server.
-
- This profile record can be prepared after the Auth account is
- created in Supabase Authentication.
-*/
-
-alert(
-"Create the teacher's Auth account first in Supabase Authentication → Users, then create/link the teacher profile using the returned UUID.\n\nTeacher: "+
-name+
-"\nEmail: "+email+
-"\nRole: "+academicRole
-);
-}
-
-/* =========================================================
-   TEACHERS
-========================================================= */
-
-async function loadTeachers(){
-
-const {data,error}=await supabaseClient
-.from("user_profiles")
-.select("*")
-.eq("role","teacher")
-.order("full_name");
-
-if(error){
-console.error(error);
-return;
-}
-
-$("teacherList").innerHTML=(data||[]).length?
-`<div class="table-wrap"><table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Username</th>
-<th>Role</th>
-<th>Status</th>
-</tr>
-</thead>
-<tbody>
-${data.map(t=>`
-<tr>
-<td>${esc(t.full_name)}</td>
-<td>${esc(t.username||"—")}</td>
-<td>${esc(t.academic_role||"Teacher")}</td>
-<td>${esc(t.active===false?"Inactive":"Active")}</td>
-</tr>`).join("")}
-</tbody></table></div>`
-:"<p class='muted'>No teacher profiles found.</p>";
-}
-
-/* =========================================================
-   CLASSES
-========================================================= */
-
-async function createClass(){
-
-if(currentProfile?.role!=="administrator"){
-alert("Administrator access required.");
-return;
-}
-
-const name=$("className").value.trim();
-
-if(!name){
-alert("Enter class name.");
-return;
-}
-
-const {error}=await supabaseClient
-.from("classes")
-.insert({name});
-
-if(error){
-alert(error.message);
-return;
-}
-
-$("className").value="";
-loadStudents();
-alert("Class created.");
-}
-
-async function addStudent(){
-
-const className=$("className").value.trim();
-const studentName=$("studentName").value.trim();
-
-if(!className||!studentName){
-alert("Enter class and student name.");
-return;
-}
-
-const {data:cls,error:ce}=await supabaseClient
-.from("classes")
-.select("id")
-.eq("name",className)
-.maybeSingle();
-
-if(ce||!cls){
-alert("Create the class first.");
-return;
-}
-
-const {error}=await supabaseClient
-.from("students")
-.insert({
-class_id:cls.id,
-full_name:studentName
-});
-
-if(error){
-alert(error.message);
-return;
-}
-
-$("studentName").value="";
-loadStudents();
-}
-
-async function loadStudents(){
-
-const {data,error}=await supabaseClient
-.from("students")
-.select("id,full_name,class_id,classes(name)")
-.order("full_name");
-
-if(error){
-console.error(error);
-return;
-}
-
-$("studentList").innerHTML=(data||[]).length?
-`<div class="table-wrap"><table>
-<thead><tr><th>Student</th><th>Class</th></tr></thead>
-<tbody>
-${data.map(s=>`
-<tr>
-<td>${esc(s.full_name)}</td>
-<td>${esc(s.classes?.name||"")}</td>
-</tr>`).join("")}
-</tbody></table></div>`
-:"<p class='muted'>No students found.</p>";
-}
-
-/* =========================================================
-   RESULT ENTRY
-========================================================= */
-
-async function loadStudentsForResult(){
-
-const cls=$("resultClass").value.trim();
-
-if(!cls){
-alert("Enter a class.");
-return;
-}
-
-const {data,error}=await supabaseClient
-.from("students")
-.select("id,full_name,classes!inner(name)")
-.eq("classes.name",cls)
-.order("full_name");
-
-if(error){
-alert(error.message);
-return;
-}
-
-resultStudents=data||[];
-
-if(!resultStudents.length){
-$("resultTable").innerHTML="<p class='muted'>No students found for this class.</p>";
-return;
-}
-
-$("resultTable").innerHTML=`
-<div class="table-wrap">
-<table id="scoresTable">
-<thead>
-<tr>
-<th>Student</th>
-<th>CA1 /15</th>
-<th>CA2 /15</th>
-<th>Exam /70</th>
-<th>Total /100</th>
-<th>Grade</th>
-</tr>
-</thead>
-<tbody>
-${resultStudents.map((s,i)=>`
-<tr data-student="${s.id}">
-<td>${esc(s.full_name)}</td>
-<td><input class="score-input ca1" type="number" min="0" max="15" value="0" oninput="calculateRow(this)"></td>
-<td><input class="score-input ca2" type="number" min="0" max="15" value="0" oninput="calculateRow(this)"></td>
-<td><input class="score-input examScore" type="number" min="0" max="70" value="0" oninput="calculateRow(this)"></td>
-<td class="total">0</td>
-<td class="grade">F</td>
-</tr>`).join("")}
-</tbody>
-</table>
-</div>`;
-}
-
-function calculateRow(input){
-
-const row=input.closest("tr");
-
-const ca1=Math.min(15,Math.max(0,Number(row.querySelector(".ca1").value)||0));
-const ca2=Math.min(15,Math.max(0,Number(row.querySelector(".ca2").value)||0));
-const exam=Math.min(70,Math.max(0,Number(row.querySelector(".examScore").value)||0));
-
-const total=ca1+ca2+exam;
-
-let grade="F";
-
-if(total>=75)grade="A";
-else if(total>=70)grade="B";
-else if(total>=60)grade="C";
-else if(total>=50)grade="D";
-else if(total>=40)grade="E";
-
-row.querySelector(".total").textContent=total;
-row.querySelector(".grade").textContent=grade;
-}
-
-function collectScores(){
-
-return Array.from(document.querySelectorAll("#scoresTable tbody tr"))
-.map(row=>{
-
-const ca1=Math.min(15,Math.max(0,Number(row.querySelector(".ca1").value)||0));
-const ca2=Math.min(15,Math.max(0,Number(row.querySelector(".ca2").value)||0));
-const exam=Math.min(70,Math.max(0,Number(row.querySelector(".examScore").value)||0));
-
-return{
-student_id:row.dataset.student,
-ca1,
-ca2,
-exam,
-ca_total:ca1+ca2,
-total:ca1+ca2+exam
-};
-
-});
-}
-
-async function saveResultDraft(){
-
-await saveResults("draft");
-}
-
-async function submitResultsToHOD(){
-
-await saveResults("submitted_hod");
-}
-
-async function saveResults(status){
-
-if(currentProfile?.role!=="teacher"){
-alert("Only teachers can enter results.");
-return;
-}
-
-const subject=$("resultSubject").value.trim();
-const cls=$("resultClass").value.trim();
-const term=$("resultTerm").value;
-const session=$("resultSession").value.trim();
-
-if(!subject||!cls){
-alert("Enter subject and class.");
-return;
-}
-
-const scores=collectScores();
-
-if(!scores.length){
-alert("Load students first.");
-return;
-}
-
-const {data:subjectRow}=await supabaseClient
-.from("subjects")
-.select("id")
-.ilike("name",subject)
-.maybeSingle();
-
-if(!subjectRow){
-alert("Subject not found in Supabase.");
-return;
-}
-
-const {data:classRow}=await supabaseClient
-.from("classes")
-.select("id")
-.eq("name",cls)
-.maybeSingle();
-
-if(!classRow){
-alert("Class not found.");
-return;
-}
-
-/* Find existing draft for this teacher/subject/class/term/session */
-const {data:existing}=await supabaseClient
-.from("results")
-.select("id")
-.eq("teacher_id",currentUser.id)
-.eq("subject_id",subjectRow.id)
-.eq("class_id",classRow.id)
-.eq("term",term)
-.eq("session",session)
-.in("status",["draft","returned"])
-.limit(1);
-
-let batchId=existing?.[0]?.id||crypto.randomUUID();
-
-/*
- The database schema supplied earlier stores one result row per student.
- Therefore each student's record gets the same submission batch id.
-*/
-
-const rows=scores.map(x=>({
-id:crypto.randomUUID(),
-submission_id:batchId,
-teacher_id:currentUser.id,
-student_id:x.student_id,
-subject_id:subjectRow.id,
-class_id:classRow.id,
-term,
-session,
-ca1:x.ca1,
-ca2:x.ca2,
-exam:x.exam,
-status
-}));
-
-const {error}=await supabaseClient
-.from("results")
-.upsert(rows,{onConflict:"id"});
-
-if(error){
-alert(error.message);
-return;
-}
-
-alert(status==="draft"?"Result draft saved.":"Result submitted to HOD.");
-loadDashboard();
-}
-
-/* =========================================================
-   RESULT SUBMISSIONS
-========================================================= */
-
-async function loadSubmissions(){
-
-if(!currentUser)return;
-
-const {data,error}=await supabaseClient
-.from("results")
-.select("submission_id,subject_id,class_id,term,session,status,subjects(name),classes(name)")
-.eq("teacher_id",currentUser.id)
-.order("created_at",{ascending:false});
-
-if(error){
-$("submissionsList").innerHTML=esc(error.message);
-return;
-}
-
-const grouped={};
-
-(data||[]).forEach(r=>{
-const key=r.submission_id;
-if(!grouped[key]){
-grouped[key]={
-id:key,
-subject:r.subjects?.name,
-className:r.classes?.name,
-term:r.term,
-session:r.session,
-status:r.status
-};
+============================================================ */
+
+async function dashboardPage(){
+
+  $("content").innerHTML=`
+    <div class="page-title">Dashboard</div>
+
+    <div class="cards">
+      <div class="card">
+        <div class="stat-number" id="dTeachers">0</div>
+        <div class="stat-label">Teachers</div>
+      </div>
+
+      <div class="card">
+        <div class="stat-number" id="dStudents">0</div>
+        <div class="stat-label">Students</div>
+      </div>
+
+      <div class="card">
+        <div class="stat-number" id="dPending">0</div>
+        <div class="stat-label">Pending HOD Reviews</div>
+      </div>
+
+      <div class="card">
+        <div class="stat-number" id="dPublished">0</div>
+        <div class="stat-label">Published Results</div>
+      </div>
+    </div>
+
+    <div class="form-card" style="margin-top:18px">
+      <h3>Welcome</h3>
+      <p>
+        Welcome, <strong>${esc(currentProfile?.full_name||"User")}</strong>.
+      </p>
+      <p style="margin-top:8px;color:#667">
+        Role:
+        <strong>${esc(currentProfile?.academic_role||currentProfile?.role||"")}</strong>
+      </p>
+    </div>
+  `;
+
+  const [
+    teachers,
+    students,
+    pending,
+    published
+  ]=await Promise.all([
+    sb.from("user_profiles")
+      .select("id",{count:"exact",head:true})
+      .eq("role","teacher"),
+
+    sb.from("students")
+      .select("id",{count:"exact",head:true}),
+
+    sb.from("results")
+      .select("id",{count:"exact",head:true})
+      .eq("status","submitted_hod"),
+
+    sb.from("results")
+      .select("id",{count:"exact",head:true})
+      .eq("status","published")
+  ]);
+
+  $("dTeachers").textContent=teachers.count||0;
+  $("dStudents").textContent=students.count||0;
+  $("dPending").textContent=pending.count||0;
+  $("dPublished").textContent=published.count||0;
+}
+
+/* ============================================================
+   DOCUMENT GENERATOR
+============================================================ */
+
+function documentForm(type){
+
+  return `
+    <div class="form-card">
+
+      <h3>${esc(type)}</h3>
+
+      <div class="grid2">
+
+        <div>
+          <label>Title</label>
+          <input id="docTitle"
+                 placeholder="${esc(type)} title">
+        </div>
+
+        <div>
+          <label>Subject</label>
+          <input id="docSubject"
+                 placeholder="Subject">
+        </div>
+
+        <div>
+          <label>Class</label>
+          <select id="docClass">
+            <option>Nursery 1</option>
+            <option>Nursery 2</option>
+            <option>Nursery 3</option>
+            <option>Basic 1</option>
+            <option>Basic 2</option>
+            <option>Basic 3</option>
+            <option>Basic 4</option>
+            <option>Basic 5</option>
+            <option>Basic 6</option>
+            <option>JSS 1</option>
+            <option>JSS 2</option>
+            <option>JSS 3</option>
+            <option>SS 1</option>
+            <option>SS 2</option>
+            <option>SS 3</option>
+          </select>
+        </div>
+
+        <div>
+          <label>Term</label>
+          <select id="docTerm">
+            <option>First Term</option>
+            <option>Second Term</option>
+            <option>Third Term</option>
+          </select>
+        </div>
+
+        <div>
+          <label>Session</label>
+          <input id="docSession"
+                 value="2026/2027">
+        </div>
+
+      </div>
+
+      <label>Content</label>
+      <textarea id="docContent"
+                style="min-height:430px"
+                placeholder="Enter document content..."></textarea>
+
+      <div class="actions">
+        <button class="btn btn-primary"
+                onclick="saveDocument('${esc(type)}')">
+          Save Draft
+        </button>
+
+        <button class="btn btn-secondary"
+                onclick="printCurrentDocument()">
+          Print
+        </button>
+      </div>
+
+    </div>
+  `;
+}
+
+function lessonPlanPage(){
+  $("content").innerHTML=
+    `<div class="page-title">Lesson Plan</div>`+
+    documentForm("Lesson Plan");
+}
+
+function lessonNotePage(){
+  $("content").innerHTML=
+    `<div class="page-title">Lesson Note</div>`+
+    documentForm("Lesson Note");
+}
+
+function schemePage(){
+  $("content").innerHTML=
+    `<div class="page-title">Scheme of Work</div>`+
+    documentForm("Scheme of Work");
 }
-});
-
-const arr=Object.values(grouped);
-
-$("submissionsList").innerHTML=arr.length?
-`<div class="table-wrap"><table>
-<thead><tr>
-<th>Subject</th><th>Class</th><th>Term</th><th>Session</th><th>Status</th>
-</tr></thead>
-<tbody>
-${arr.map(r=>`
-<tr>
-<td>${esc(r.subject)}</td>
-<td>${esc(r.className)}</td>
-<td>${esc(r.term)}</td>
-<td>${esc(r.session)}</td>
-<td>${statusBadge(r.status)}</td>
-</tr>`).join("")}
-</tbody></table></div>`
-:"<p class='muted'>No submissions yet.</p>";
-}
-
-/* =========================================================
-   HOD
-========================================================= */
-
-async function loadHODResults(){
-
-if(!currentProfile)return;
-
-const role=currentProfile.academic_role||"";
-const match=role.match(/^HOD\s+(.+)$/i);
-
-if(!match){
-$("hodResults").innerHTML="<p class='muted'>You are not assigned as an HOD.</p>";
-return;
-}
-
-const subjectName=match[1];
-
-const {data:subject}=await supabaseClient
-.from("subjects")
-.select("id,name")
-.ilike("name",subjectName)
-.maybeSingle();
-
-if(!subject){
-$("hodResults").innerHTML="<p class='muted'>HOD subject not found.</p>";
-return;
-}
-
-const {data,error}=await supabaseClient
-.from("results")
-.select("submission_id,subject_id,class_id,term,session,status,subjects(name),classes(name),user_profiles!results_teacher_id_fkey(full_name)")
-.eq("subject_id",subject.id)
-.eq("status","submitted_hod");
-
-if(error){
-$("hodResults").innerHTML=esc(error.message);
-return;
-}
-
-const grouped=groupSubmissions(data||[]);
-
-$("hodResults").innerHTML=grouped.length?
-grouped.map(r=>`
-<div class="panel">
-<h3>${esc(r.subject)} — ${esc(r.className)}</h3>
-<p class="muted">${esc(r.term)} • ${esc(r.session)} • Teacher: ${esc(r.teacher||"")}</p>
-<div class="actions">
-<button class="btn warning" onclick="returnResult('${r.id}')">Return to Teacher</button>
-<button class="btn success" onclick="approveHOD('${r.id}')">Approve</button>
-</div>
-</div>
-`).join("")
-:"<p class='muted'>No results awaiting HOD review.</p>";
-}
-
-function groupSubmissions(data){
-
-const g={};
-
-data.forEach(r=>{
-if(!g[r.submission_id]){
-g[r.submission_id]={
-id:r.submission_id,
-subject:r.subjects?.name,
-className:r.classes?.name,
-term:r.term,
-session:r.session,
-teacher:r.user_profiles?.full_name
-};
-}
-});
-
-return Object.values(g);
-}
-
-async function approveHOD(id){
-
-if(!confirm("Approve this result and make it ready for Examination Officer submission?"))return;
-
-const {error}=await supabaseClient
-.from("results")
-.update({status:"hod_approved",hod_approved_by:currentUser.id,hod_approved_at:new Date().toISOString()})
-.eq("submission_id",id)
-.eq("status","submitted_hod");
-
-if(error){
-alert(error.message);
-return;
-}
-
-loadHODResults();
-alert("HOD approval completed. It has NOT been sent to the Examination Officer yet.");
-}
-
-async function returnResult(id){
-
-const reason=prompt("Enter reason for returning the result:");
-
-if(reason===null)return;
-
-const {error}=await supabaseClient
-.from("results")
-.update({
-status:"returned",
-hod_comment:reason
-})
-.eq("submission_id",id)
-.eq("status","submitted_hod");
-
-if(error){
-alert(error.message);
-return;
-}
-
-loadHODResults();
-}
-
-/* =========================================================
-   EXAMINATION OFFICER
-========================================================= */
-
-async function loadExamResults(){
-
-if(!currentProfile)return;
-
-if(currentProfile.academic_role!=="Examination Officer"&&
-!currentProfile.is_exam_officer){
-$("examResults").innerHTML="<p class='muted'>You are not assigned as Examination Officer.</p>";
-return;
-}
-
-const {data,error}=await supabaseClient
-.from("results")
-.select("submission_id,subject_id,class_id,term,session,status,subjects(name),classes(name)")
-.eq("status","submitted_exam_officer");
-
-if(error){
-$("examResults").innerHTML=esc(error.message);
-return;
-}
-
-const grouped=groupSubmissions(data||[]);
-
-$("examResults").innerHTML=grouped.length?
-grouped.map(r=>`
-<div class="panel">
-<h3>${esc(r.subject)} — ${esc(r.className)}</h3>
-<p class="muted">${esc(r.term)} • ${esc(r.session)}</p>
-<div class="actions">
-<button class="btn primary" onclick="viewSubmission('${r.id}')">Review</button>
-<button class="btn success" onclick="finalizeResult('${r.id}')">Finalize & Lock</button>
-</div>
-</div>
-`).join("")
-:"<p class='muted'>No results have been sent to the Examination Officer.</p>";
-}
-
-async function sendToExamOfficer(id){
-
-if(currentProfile?.role!=="teacher"){
-alert("HOD access required.");
-return;
-}
-
-if(!confirm("Send this approved result to the Examination Officer?"))return;
-
-const {error}=await supabaseClient
-.from("results")
-.update({
-status:"submitted_exam_officer",
-sent_to_exam_officer_by:currentUser.id,
-sent_to_exam_officer_at:new Date().toISOString()
-})
-.eq("submission_id",id)
-.eq("status","hod_approved");
-
-if(error){
-alert(error.message);
-return;
-}
-
-alert("Result sent to Examination Officer.");
-loadHODResults();
-}
-
-async function finalizeResult(id){
-
-if(!confirm("Finalize and LOCK this result? It cannot be edited by the teacher afterwards."))return;
-
-const {error}=await supabaseClient
-.from("results")
-.update({
-status:"finalized",
-finalized_by:currentUser.id,
-finalized_at:new Date().toISOString()
-})
-.eq("submission_id",id)
-.eq("status","submitted_exam_officer");
-
-if(error){
-alert(error.message);
-return;
-}
-
-alert("Result finalized and locked.");
-loadExamResults();
-}
-
-/* =========================================================
-   IMPORTANT HOD SEND BUTTON
-========================================================= */
-
-async function loadHODApprovedResults(){
-
-if(!currentProfile)return;
-
-const {data,error}=await supabaseClient
-.from("results")
-.select("submission_id,subject_id,class_id,term,session,status,subjects(name),classes(name)")
-.eq("status","hod_approved");
-
-if(error)return;
-
-const grouped=groupSubmissions(data||[]);
-
-return grouped;
-}
-
-/*
- Re-render HOD page with BOTH:
- Return
- Approve
- Send to Examination Officer
-*/
-const originalLoadHODResults=loadHODResults;
-
-loadHODResults=async function(){
-
-if(!currentProfile)return;
-
-const role=currentProfile.academic_role||"";
-const match=role.match(/^HOD\s+(.+)$/i);
-
-if(!match){
-$("hodResults").innerHTML="<p class='muted'>You are not assigned as an HOD.</p>";
-return;
-}
-
-const subjectName=match[1];
-
-const {data:subject}=await supabaseClient
-.from("subjects")
-.select("id,name")
-.ilike("name",subjectName)
-.maybeSingle();
-
-if(!subject){
-$("hodResults").innerHTML="<p class='muted'>HOD subject not found.</p>";
-return;
-}
-
-const {data,error}=await supabaseClient
-.from("results")
-.select("submission_id,subject_id,class_id,term,session,status,subjects(name),classes(name),user_profiles!results_teacher_id_fkey(full_name)")
-.eq("subject_id",subject.id)
-.in("status",["submitted_hod","hod_approved"]);
-
-if(error){
-$("hodResults").innerHTML=esc(error.message);
-return;
-}
-
-const grouped=groupSubmissions(data||[]);
-
-$("hodResults").innerHTML=grouped.length?
-grouped.map(r=>`
-<div class="panel">
-<h3>${esc(r.subject)} — ${esc(r.className)}</h3>
-<p class="muted">${esc(r.term)} • ${esc(r.session)} • Teacher: ${esc(r.teacher||"")}</p>
-<p style="margin-top:8px">${statusBadge(
-(data||[]).find(x=>x.submission_id===r.id)?.status
-)}</p>
-
-<div class="actions">
-${
-(data||[]).find(x=>x.submission_id===r.id)?.status==="submitted_hod"
-?`
-<button class="btn warning" onclick="returnResult('${r.id}')">Return to Teacher</button>
-<button class="btn success" onclick="approveHOD('${r.id}')">Approve</button>
-`
-:`
-<button class="btn blue" onclick="sendToExamOfficer('${r.id}')">
-Send to Examination Officer
-</button>
-`
-}
-</div>
-</div>
-`).join("")
-:"<p class='muted'>No results awaiting action.</p>";
-};
-
-/* =========================================================
-   ADMIN PUBLISH
-========================================================= */
-
-async function loadPublishResults(){
-
-if(currentProfile?.role!=="administrator"){
-$("publishList").innerHTML="<p class='muted'>Administrator access required.</p>";
-return;
-}
-
-const {data,error}=await supabaseClient
-.from("results")
-.select("submission_id,subject_id,class_id,term,session,status,subjects(name),classes(name)")
-.eq("status","finalized");
-
-if(error){
-$("publishList").innerHTML=esc(error.message);
-return;
-}
-
-const grouped=groupSubmissions(data||[]);
-
-$("publishList").innerHTML=grouped.length?
-grouped.map(r=>`
-<div class="panel">
-<h3>${esc(r.subject)} — ${esc(r.className)}</h3>
-<p class="muted">${esc(r.term)} • ${esc(r.session)}</p>
-<button class="btn primary" onclick="publishResult('${r.id}')">Publish Result</button>
-</div>
-`).join("")
-:"<p class='muted'>No finalized results waiting for publication.</p>";
-}
-
-async function publishResult(id){
-
-if(!confirm("Publish this finalized result to Parent/Student portals?"))return;
-
-const {error}=await supabaseClient
-.from("results")
-.update({
-status:"published",
-published_by:currentUser.id,
-published_at:new Date().toISOString()
-})
-.eq("submission_id",id)
-.eq("status","finalized");
-
-if(error){
-alert(error.message);
-return;
-}
-
-alert("Result published successfully.");
-loadPublishResults();
-loadDashboard();
-}
-
-/* =========================================================
-   HOD ASSIGNMENT
-========================================================= */
-
-async function loadHODAssignments(){
-
-if(currentProfile?.role!=="administrator")return;
-
-const {data:teachers}=await supabaseClient
-.from("user_profiles")
-.select("id,full_name,academic_role")
-.eq("role","teacher")
-.order("full_name");
-
-$("hodAssignmentList").innerHTML=`
-<div class="notice">
-HODs are determined by their academic role. Example:
-HOD Mathematics, HOD English, HOD Physics.
-</div>
-
-<div class="table-wrap" style="margin-top:12px">
-<table>
-<thead><tr><th>Teacher</th><th>Academic Role</th></tr></thead>
-<tbody>
-${(teachers||[]).map(t=>`
-<tr>
-<td>${esc(t.full_name)}</td>
-<td>${esc(t.academic_role||"Teacher")}</td>
-</tr>`).join("")}
-</tbody>
-</table>
-</div>`;
-}
-
-/* =========================================================
-   BROADSHEET
-========================================================= */
-
-async function loadBroadsheet(){
-
-const cls=$("sheetClass").value.trim();
-const term=$("sheetTerm").value;
-const session=$("sheetSession").value.trim();
-
-if(!cls){
-alert("Enter class.");
-return;
-}
-
-const {data,error}=await supabaseClient
-.from("results")
-.select("student_id,subject_id,ca1,ca2,exam,total,students(full_name),subjects(name)")
-.eq("term",term)
-.eq("session",session)
-.eq("status","published")
-.eq("classes.name",cls);
-
-if(error){
-$("broadsheetTable").innerHTML=esc(error.message);
-return;
-}
-
-const students={};
-
-(data||[]).forEach(r=>{
-const id=r.student_id;
-
-if(!students[id]){
-students[id]={
-name:r.students?.full_name||"",
-subjects:[]
-};
-}
-
-students[id].subjects.push({
-name:r.subjects?.name||"",
-total:r.total||0
-});
-});
-
-$("broadsheetTable").innerHTML=Object.values(students).length?
-`<div class="table-wrap">
-<table>
-<thead>
-<tr><th>Student</th><th>Subjects / Scores</th><th>Average</th></tr>
-</thead>
-<tbody>
-${Object.values(students).map(s=>{
-const total=s.subjects.reduce((a,b)=>a+Number(b.total||0),0);
-const avg=s.subjects.length?(total/s.subjects.length).toFixed(2):"0";
-return `<tr>
-<td>${esc(s.name)}</td>
-<td>${s.subjects.map(x=>esc(x.name)+": "+x.total).join(" | ")}</td>
-<td>${avg}</td>
-</tr>`;
-}).join("")}
-</tbody>
-</table></div>`
-:"<p class='muted'>No published results found.</p>";
-}
-
-/* =========================================================
-   DOCUMENTS
-========================================================= */
 
 async function saveDocument(type){
 
-if(!currentUser)return;
+  const title=$("docTitle").value.trim();
+  const subject=$("docSubject").value.trim();
+  const className=$("docClass").value;
+  const term=$("docTerm").value;
+  const session=$("docSession").value.trim();
+  const content=$("docContent").value;
 
-let content="";
+  if(!title || !content){
+    notify("Enter a title and document content.","error");
+    return;
+  }
 
-if(type==="Lesson Plan"){
-content=[
-"LESSON PLAN",
-"Subject: "+$("lpSubject").value,
-"Class: "+$("lpClass").value,
-"Topic: "+$("lpTopic").value,
-"Sub-topic: "+$("lpSubtopic").value,
-"Term: "+$("lpTerm").value,
-"Week: "+$("lpWeek").value,
-"Duration: "+$("lpDuration").value,
-"Date: "+$("lpDate").value,
-"",
-"ENTRY BEHAVIOUR",
-$("lpEntry").value,
-"",
-"LEARNING OBJECTIVES",
-$("lpObjectives").value,
-"",
-"INSTRUCTIONAL MATERIALS",
-$("lpMaterials").value,
-"",
-"REFERENCES",
-$("lpReferences").value,
-"",
-"SET INDUCTION",
-$("lpInduction").value,
-"",
-"PRESENTATION – STEP 1",
-$("lpStep1").value,
-"",
-"PRESENTATION – STEP 2",
-$("lpStep2").value,
-"",
-"PRESENTATION – STEP 3",
-$("lpStep3").value,
-"",
-"TEACHER'S ACTIVITIES",
-$("lpTeacher").value,
-"",
-"LEARNERS' ACTIVITIES",
-$("lpLearner").value,
-"",
-"EVALUATION",
-$("lpEvaluation").value,
-"",
-"CONCLUSION",
-$("lpConclusion").value,
-"",
-"ASSIGNMENT",
-$("lpAssignment").value
-].join("\n");
+  const {error}=await sb.from("documents").insert({
+    owner_id:currentUser.id,
+    document_type:type,
+    title,
+    subject,
+    class_name:className,
+    term,
+    session,
+    content,
+    status:"draft"
+  });
+
+  if(error){
+    console.error(error);
+    notify(error.message,"error");
+    return;
+  }
+
+  notify("Document saved successfully.","success");
 }
 
-if(type==="Lesson Note"){
-content=[
-"LESSON NOTE",
-"Subject: "+$("lnSubject").value,
-"Class: "+$("lnClass").value,
-"Topic: "+$("lnTopic").value,
-"Sub-topic: "+$("lnSubtopic").value,
-"Term: "+$("lnTerm").value,
-"Week: "+$("lnWeek").value,
-"",
-$("lnContent").value
-].join("\n");
-}
-
-if(type==="Scheme of Work"){
-content=[
-"SCHEME OF WORK",
-"Subject: "+$("scSubject").value,
-"Class: "+$("scClass").value,
-"Term: "+$("scTerm").value,
-"Session: "+$("scSession").value,
-"",
-$("scContent").value
-].join("\n");
-}
-
-const {error}=await supabaseClient
-.from("announcements")
-.insert({
-title:type,
-content,
-created_by:currentUser.id
-});
-
-if(error){
-alert(error.message);
-return;
-}
-
-alert(type+" saved.");
-}
-
-/* =========================================================
+/* ============================================================
    TEACHER ASSISTANT
-========================================================= */
+============================================================ */
+
+function assistantPage(){
+
+  $("content").innerHTML=`
+    <div class="page-title">Teacher Assistant</div>
+
+    <div class="form-card">
+
+      <div class="grid2">
+
+        <div>
+          <label>Document Type</label>
+          <select id="aType">
+            <option>Lesson Plan</option>
+            <option>Lesson Note</option>
+            <option>Scheme of Work</option>
+            <option>CA Questions</option>
+            <option>Examination Questions</option>
+          </select>
+        </div>
+
+        <div>
+          <label>Language</label>
+          <select id="aLanguage">
+            <option>English</option>
+            <option>Hausa</option>
+            <option>Arabic</option>
+            <option>French</option>
+          </select>
+        </div>
+
+        <div>
+          <label>Subject</label>
+          <input id="aSubject" placeholder="e.g. Mathematics">
+        </div>
+
+        <div>
+          <label>Class</label>
+          <input id="aClass" placeholder="e.g. JSS 1">
+        </div>
+
+        <div>
+          <label>Topic</label>
+          <input id="aTopic" placeholder="Enter topic">
+        </div>
+
+        <div>
+          <label>Number of Questions</label>
+          <input id="aCount" type="number" value="10" min="1">
+        </div>
+
+      </div>
+
+      <label>Additional Instructions</label>
+      <textarea id="aInstructions"
+        placeholder="Enter any special instruction..."></textarea>
+
+      <div class="actions">
+        <button class="btn btn-primary"
+                onclick="generateAssistant()">
+          Generate
+        </button>
+
+        <button class="btn btn-secondary"
+                onclick="useAssistant()">
+          Use This in Document
+        </button>
+      </div>
+
+    </div>
+
+    <div class="form-card">
+      <h3>Generated Work</h3>
+      <textarea id="assistantOutput"
+        style="min-height:500px"
+        placeholder="Generated content will appear here..."></textarea>
+    </div>
+  `;
+}
 
 function generateAssistant(){
 
-const type=$("aiType").value;
-const subject=$("aiSubject").value||"Subject";
-const cls=$("aiClass").value||"Class";
-const topic=$("aiTopic").value||"Topic";
-const count=Math.max(1,Math.min(100,Number($("aiCount").value)||10));
+  const type=$("aType").value;
+  const subject=$("aSubject").value.trim()||"Subject";
+  const cls=$("aClass").value.trim()||"Class";
+  const topic=$("aTopic").value.trim()||"Topic";
+  const count=Number($("aCount").value)||10;
+  const language=$("aLanguage").value;
 
-if(type==="Lesson Plan"){
-assistantText=
-"CALIPHATE TARBIYA ACADEMY\n\n"+
-"DETAILED LESSON PLAN\n\n"+
-"Subject: "+subject+
-"\nClass: "+cls+
-"\nTopic: "+topic+
-"\nTerm: First Term"+
-"\nWeek: Week 1"+
-"\nDuration: 40 Minutes"+
-"\n\nENTRY BEHAVIOUR\nLearners should demonstrate prior knowledge related to "+topic+"."+
-"\n\nLEARNING OBJECTIVES\nAt the end of the lesson, learners should be able to:\n1. Explain "+topic+".\n2. Identify the major concepts involved.\n3. Apply the knowledge appropriately."+
-"\n\nINSTRUCTIONAL MATERIALS\nTextbooks, board, marker and relevant instructional materials."+
-"\n\nREFERENCES\nApproved Nigerian curriculum and relevant textbook."+
-"\n\nSET INDUCTION\nThe teacher introduces "+topic+" through questions and examples familiar to learners."+
-"\n\nPRESENTATION – STEP 1\nTeacher introduces the topic and explains the basic concepts."+
-"\n\nPRESENTATION – STEP 2\nTeacher provides examples and guides learners through activities."+
-"\n\nPRESENTATION – STEP 3\nLearners practise the concept while the teacher provides corrections and reinforcement."+
-"\n\nTEACHER'S ACTIVITIES\nExplains, demonstrates, asks questions, supervises activities and evaluates learners."+
-"\n\nLEARNERS' ACTIVITIES\nListen, respond to questions, participate in activities and complete exercises."+
-"\n\nEVALUATION\nAsk learners questions based on "+topic+"."+
-"\n\nCONCLUSION\nTeacher summarizes the lesson and corrects misconceptions."+
-"\n\nASSIGNMENT\nGive learners suitable exercises on "+topic+".";
-}
+  let text="";
 
-else if(type==="Lesson Note"){
-assistantText=
-"LESSON NOTE\n\n"+
-"Subject: "+subject+
-"\nClass: "+cls+
-"\nTopic: "+topic+
-"\n\nINTRODUCTION\n"+topic+" is an important concept in "+subject+"."+
-"\n\nCONTENT\n\n"+
-"Definition and explanation of "+topic+".\n\n"+
-"Main concepts:\n1. Basic meaning\n2. Characteristics\n3. Examples\n4. Practical applications\n\n"+
-"SUMMARY\nLearners should understand the major ideas associated with "+topic+".\n\n"+
-"EVALUATION\n1. Define the concept.\n2. State two examples.\n3. Explain its importance.\n\nASSIGNMENT\nWrite short notes on "+topic+".";
-}
+  if(type==="Lesson Plan"){
 
-else if(type==="Scheme of Work"){
-assistantText=
-"SCHEME OF WORK\n\n"+
-"Subject: "+subject+
-"\nClass: "+cls+
-"\nTerm: First Term\n\n"+
-Array.from({length:13},(_,i)=>
-"Week "+(i+1)+": "+topic+" — lesson content, activities, evaluation and assignment."
-).join("\n");
-}
+    text=
+`LESSON PLAN
 
-else{
-assistantText=
-(type==="CA Questions"?"CONTINUOUS ASSESSMENT QUESTIONS":"EXAMINATION QUESTIONS")+
-"\n\nSubject: "+subject+
-"\nClass: "+cls+
-"\nTopic: "+topic+
-"\n\n"+
-Array.from({length:count},(_,i)=>
-(i+1)+". Which of the following best describes "+topic+"?\n"+
-"A. Option A\nB. Option B\nC. Option C\nD. Option D\n\n"
-).join("")+
-"MARKING GUIDE\nAward marks according to the approved school assessment scheme.";
-}
+School: Caliphate Tarbiya Academy
+Subject: ${subject}
+Class: ${cls}
+Topic: ${topic}
+Language: ${language}
 
-$("assistantResult").textContent=assistantText;
-}
+Date: __________________
+Week: __________________
+Duration: ______________
 
-async function copyAssistant(){
-if(!assistantText)return;
-await navigator.clipboard.writeText(assistantText);
-alert("Copied.");
+Entry Behaviour:
+Learners should have basic knowledge related to ${topic}.
+
+Learning Objectives:
+At the end of the lesson, learners should be able to:
+1. Explain ${topic}.
+2. Identify the main concepts related to ${topic}.
+3. Apply the knowledge gained.
+4. Answer questions correctly on ${topic}.
+
+Instructional Materials:
+Textbooks, board, marker, charts and relevant teaching materials.
+
+References:
+Approved Nigerian curriculum and relevant textbook.
+
+Set Induction:
+The teacher introduces the lesson by asking learners questions related to their previous knowledge.
+
+PRESENTATION
+
+Step 1
+Teacher's Activities:
+The teacher introduces ${topic}, explains the meaning and presents relevant examples.
+
+Learners' Activities:
+Learners listen, respond to questions and participate in the discussion.
+
+Step 2
+Teacher's Activities:
+The teacher explains the main concepts and demonstrates appropriate examples.
+
+Learners' Activities:
+Learners observe, ask questions and practise the examples.
+
+Step 3
+Teacher's Activities:
+The teacher gives learners guided activities and corrects their responses.
+
+Learners' Activities:
+Learners complete the activities and present their answers.
+
+Evaluation:
+1. Define ${topic}.
+2. Mention two important points about ${topic}.
+3. Explain one example related to ${topic}.
+4. Answer the practical question given by the teacher.
+
+Conclusion:
+The teacher summarizes the main points and allows learners to ask questions.
+
+Assignment:
+Learners should answer additional questions on ${topic}.`;
+
+  }else if(type==="Lesson Note"){
+
+    text=
+`LESSON NOTE
+
+Subject: ${subject}
+Class: ${cls}
+Topic: ${topic}
+
+Introduction:
+${topic} is an important concept in ${subject}.
+
+Objectives:
+By the end of the lesson, learners should be able to explain, identify and apply the major ideas connected with ${topic}.
+
+Content:
+${topic}
+
+Teacher's Explanation:
+The teacher explains the topic using simple examples appropriate to ${cls} learners.
+
+Examples:
+1. Example one related to ${topic}.
+2. Example two related to ${topic}.
+3. Example three related to ${topic}.
+
+Class Activity:
+Learners work individually and in groups to answer questions on the topic.
+
+Evaluation:
+1. What is ${topic}?
+2. Mention two features of ${topic}.
+3. Give an example of ${topic}.
+4. Explain what you have learnt.
+
+Conclusion:
+The teacher summarizes the lesson.
+
+Assignment:
+Write short notes and answer additional questions on ${topic}.`;
+
+  }else if(type==="Scheme of Work"){
+
+    text=
+`SCHEME OF WORK
+
+Subject: ${subject}
+Class: ${cls}
+
+WEEK 1
+Topic: ${topic}
+Content: Introduction to ${topic}
+Activities: Explanation, discussion and examples.
+Evaluation: Oral and written questions.
+
+WEEK 2
+Topic: ${topic} – Basic Concepts
+Content: Important concepts and terminology.
+Activities: Explanation and learner participation.
+Evaluation: Class exercise.
+
+WEEK 3
+Topic: ${topic} – Applications
+Content: Practical applications.
+Activities: Guided practice.
+Evaluation: Written exercise.
+
+WEEK 4
+Topic: Revision
+Content: Review of previous topics.
+Activities: Revision exercises.
+Evaluation: Test.
+
+WEEK 5
+Topic: Further Development
+Content: Extension of the topic.
+Activities: Demonstration and practice.
+Evaluation: Classwork.
+
+WEEK 6
+Topic: Practical Activities
+Content: Practical application.
+Activities: Group activities.
+Evaluation: Practical assessment.
+
+WEEK 7
+Topic: Mid-Term Review
+Content: Revision.
+Activities: Questions and answers.
+Evaluation: Short test.
+
+WEEK 8
+Topic: Advanced Concepts
+Content: Further explanation.
+Activities: Teacher demonstration.
+Evaluation: Exercise.
+
+WEEK 9
+Topic: Application
+Content: Application of knowledge.
+Activities: Practice.
+Evaluation: Written work.
+
+WEEK 10
+Topic: Revision
+Content: Revision of topics covered.
+Activities: Revision.
+Evaluation: Test.
+
+WEEK 11
+Topic: Examination Preparation
+Content: Important areas.
+Activities: Questions and answers.
+Evaluation: Practice.
+
+WEEK 12
+Topic: General Revision
+Content: Complete revision.
+Activities: Revision exercises.
+Evaluation: Mock assessment.
+
+WEEK 13
+Topic: Examination
+Content: Final assessment.`;
+
+  }else{
+
+    text=
+`${type.toUpperCase()}
+
+Subject: ${subject}
+Class: ${cls}
+Topic: ${topic}
+
+SECTION A – OBJECTIVE QUESTIONS
+
+Answer all questions.
+
+`;
+
+    for(let i=1;i<=count;i++){
+      text+=`${i}. Choose the correct answer about ${topic}.
+A. Option A
+B. Option B
+C. Option C
+D. Option D
+
+`;
+    }
+
+    text+=`
+SECTION B – THEORY
+
+1. Explain ${topic}.
+2. Mention and explain important points about ${topic}.
+3. Give relevant examples.
+
+MARKING GUIDE
+
+Answers should be awarded according to correctness, completeness and appropriate working where applicable.`;
+  }
+
+  assistantText=text;
+  $("assistantOutput").value=text;
 }
 
 function useAssistant(){
 
-if(!assistantText){
-alert("Generate material first.");
-return;
+  const text=$("assistantOutput")?.value || assistantText;
+
+  if(!text){
+    notify("Generate something first.","error");
+    return;
+  }
+
+  assistantText=text;
+
+  const type=$("aType")?.value || "Lesson Plan";
+
+  if(type==="Lesson Plan"){
+    showPage("lessonPlan");
+    setTimeout(()=>{
+      $("docTitle").value=
+        $("aTopic")?.value || "Lesson Plan";
+      $("docSubject").value=
+        $("aSubject")?.value || "";
+      $("docContent").value=text;
+    },100);
+  }else if(type==="Lesson Note"){
+    showPage("lessonNote");
+    setTimeout(()=>{
+      $("docTitle").value=
+        $("aTopic")?.value || "Lesson Note";
+      $("docSubject").value=
+        $("aSubject")?.value || "";
+      $("docContent").value=text;
+    },100);
+  }else if(type==="Scheme of Work"){
+    showPage("scheme");
+    setTimeout(()=>{
+      $("docTitle").value=
+        $("aTopic")?.value || "Scheme of Work";
+      $("docSubject").value=
+        $("aSubject")?.value || "";
+      $("docContent").value=text;
+    },100);
+  }else{
+    notify("Generated work is ready for copying.","success");
+  }
 }
 
-const type=$("aiType").value;
+/* ============================================================
+   DOCUMENTS
+============================================================ */
 
-if(type==="Lesson Plan"){
-$("lpSubject").value=$("aiSubject").value;
-$("lpClass").value=$("aiClass").value;
-$("lpTopic").value=$("aiTopic").value;
-$("lpContent")?.value=assistantText;
-showPage("lessonPlan");
+async function documentsPage(){
+
+  $("content").innerHTML=`
+    <div class="page-title">My Documents</div>
+    <div id="documentsBox">
+      <div class="empty">Loading...</div>
+    </div>
+  `;
+
+  let query=sb
+    .from("documents")
+    .select("*")
+    .order("created_at",{ascending:false});
+
+  if(!isAdmin()){
+    query=query.eq("owner_id",currentUser.id);
+  }
+
+  const {data,error}=await query;
+
+  if(error){
+    $("documentsBox").innerHTML=
+      `<div class="alert alert-error">${esc(error.message)}</div>`;
+    return;
+  }
+
+  if(!data?.length){
+    $("documentsBox").innerHTML=
+      `<div class="card empty">No documents found.</div>`;
+    return;
+  }
+
+  $("documentsBox").innerHTML=`
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Type</th>
+            <th>Subject</th>
+            <th>Class</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${data.map(d=>`
+            <tr>
+              <td>${esc(d.title)}</td>
+              <td>${esc(d.document_type)}</td>
+              <td>${esc(d.subject)}</td>
+              <td>${esc(d.class_name)}</td>
+              <td>${statusBadge(d.status)}</td>
+              <td>
+                <button class="btn btn-secondary"
+                  onclick='viewDocument(${JSON.stringify(d)})'>
+                  View
+                </button>
+              </td>
+            </tr>
+          `).join("")}
+        </tbody>
+      </table>
+    </div>
+  `;
 }
 
-else if(type==="Lesson Note"){
-$("lnSubject").value=$("aiSubject").value;
-$("lnClass").value=$("aiClass").value;
-$("lnTopic").value=$("aiTopic").value;
-$("lnContent").value=assistantText;
-showPage("lessonNote");
+function viewDocument(d){
+
+  $("content").innerHTML=`
+    <div class="page-title">${esc(d.title)}</div>
+
+    <div class="form-card">
+      <p><strong>Type:</strong> ${esc(d.document_type)}</p>
+      <p><strong>Subject:</strong> ${esc(d.subject)}</p>
+      <p><strong>Class:</strong> ${esc(d.class_name)}</p>
+
+      <textarea id="viewDocContent"
+        style="min-height:600px;margin-top:15px">${esc(d.content)}</textarea>
+
+      <div class="actions">
+        <button class="btn btn-secondary"
+          onclick="printCurrentDocument()">
+          Print
+        </button>
+        <button class="btn btn-secondary"
+          onclick="showPage('documents')">
+          Back
+        </button>
+      </div>
+    </div>
+  `;
 }
 
-else{
-$("scSubject").value=$("aiSubject").value;
-$("scClass").value=$("aiClass").value;
-$("scContent").value=assistantText;
-showPage("scheme");
-}
-}
+/* ============================================================
+   RESULT ENTRY
+============================================================ */
 
-function printAssistant(){
-if(!assistantText){
-alert("Generate material first.");
-return;
-}
-printText(assistantText);
-}
+async function resultEntryPage(){
 
-/* =========================================================
-   PRINT
-========================================================= */
+  const subjects=await loadSubjects();
+  const classes=await loadClasses();
 
-function printText(text){
+  $("content").innerHTML=`
+    <div class="page-title">Result Entry</div>
 
-const w=window.open("","_blank");
+    <div class="form-card">
 
-if(!w){
-alert("Allow pop-ups for printing.");
-return;
-}
+      <div class="grid3">
 
-w.document.write(`
-<html>
-<head>
-<title>Caliphate Tarbiya Academy</title>
-<style>
-body{font-family:Arial;padding:30px;line-height:1.6}
-pre{white-space:pre-wrap;font-family:Arial}
-</style>
-</head>
-<body>
-<pre>${esc(text)}</pre>
-</body>
-</html>`);
+        <div>
+          <label>Class</label>
+          <select id="resultClass">
+            <option value="">Select class</option>
+            ${classes.map(c=>`
+              <option value="${esc(c.id)}">
+                ${esc(c.name)}
+              </option>
+            `).join("")}
+          </select>
+        </div>
 
-w.document.close();
-setTimeout(()=>w.print(),300);
-}
+        <div>
+          <label>Subject</label>
+          <select id="resultSubject">
+            <option value="">Select subject</option>
+            ${subjects.map(s=>`
+              <option value="${esc(s.id)}">
+                ${esc(s.name)}
+              </option>
+            `).join("")}
+          </select>
+        </div>
 
-function printForm(prefix){
+        <div>
+          <label>Term</label>
+          <select id="resultTerm">
+            <option>First Term</option>
+            <option>Second Term</option>
+            <option>Third Term</option>
+          </select>
+        </div>
 
-let text="";
+        <div>
+          <label>Session</label>
+          <input id="resultSession" value="2026/2027">
+        </div>
 
-if(prefix==="lp"){
-text=[
-"CALIPHATE TARBIYA ACADEMY",
-"DETAILED LESSON PLAN",
-"Subject: "+$("lpSubject").value,
-"Class: "+$("lpClass").value,
-"Topic: "+$("lpTopic").value,
-"Sub-topic: "+$("lpSubtopic").value,
-"Term: "+$("lpTerm").value,
-"Week: "+$("lpWeek").value,
-"",
-"Entry Behaviour:\n"+$("lpEntry").value,
-"",
-"Learning Objectives:\n"+$("lpObjectives").value,
-"",
-"Instructional Materials:\n"+$("lpMaterials").value,
-"",
-"References:\n"+$("lpReferences").value,
-"",
-"Set Induction:\n"+$("lpInduction").value,
-"",
-"Presentation Step 1:\n"+$("lpStep1").value,
-"",
-"Presentation Step 2:\n"+$("lpStep2").value,
-"",
-"Presentation Step 3:\n"+$("lpStep3").value,
-"",
-"Teacher's Activities:\n"+$("lpTeacher").value,
-"",
-"Learners' Activities:\n"+$("lpLearner").value,
-"",
-"Evaluation:\n"+$("lpEvaluation").value,
-"",
-"Conclusion:\n"+$("lpConclusion").value,
-"",
-"Assignment:\n"+$("lpAssignment").value
-].join("\n");
+      </div>
+
+      <div class="actions">
+        <button class="btn btn-primary"
+          onclick="loadResultStudents()">
+          Load Students
+        </button>
+      </div>
+
+    </div>
+
+    <div id="resultTable"></div>
+  `;
 }
 
-if(prefix==="ln"){
-text=$("lnContent").value;
+async function loadSubjects(){
+
+  const {data,error}=await sb
+    .from("subjects")
+    .select("*")
+    .order("name");
+
+  if(error){
+    console.error(error);
+    return [];
+  }
+
+  return data||[];
 }
 
-if(prefix==="sc"){
-text=$("scContent").value;
+async function loadClasses(){
+
+  const {data,error}=await sb
+    .from("classes")
+    .select("*")
+    .order("name");
+
+  if(error){
+    console.error(error);
+    return [];
+  }
+
+  return data||[];
 }
 
-printText(text);
+async function loadResultStudents(){
+
+  const classId=$("resultClass").value;
+
+  if(!classId){
+    notify("Select a class.","error");
+    return;
+  }
+
+  const {data,error}=await sb
+    .from("students")
+    .select("*")
+    .eq("class_id",classId)
+    .order("full_name");
+
+  if(error){
+    notify(error.message,"error");
+    return;
+  }
+
+  currentResultRows=data||[];
+
+  if(!currentResultRows.length){
+    $("resultTable").innerHTML=
+      `<div class="card empty">No students found in this class.</div>`;
+    return;
+  }
+
+  $("resultTable").innerHTML=`
+    <div class="form-card">
+      <h3>Enter Scores</h3>
+
+      <p style="margin-bottom:12px;color:#667">
+        CA1 = 15 &nbsp; | &nbsp;
+        CA2 = 15 &nbsp; | &nbsp;
+        Examination = 70 &nbsp; | &nbsp;
+        Total = 100
+      </p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Student</th>
+              <th>CA1 /15</th>
+              <th>CA2 /15</th>
+              <th>Exam /70</th>
+              <th>Total</th>
+              <th>Grade</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            ${currentResultRows.map((s,i)=>`
+              <tr>
+                <td>${i+1}</td>
+                <td>${esc(s.full_name)}</td>
+
+                <td>
+                  <input type="number"
+                    min="0" max="15"
+                    id="ca1_${s.id}"
+                    oninput="calculateRow('${s.id}')">
+                </td>
+
+                <td>
+                  <input type="number"
+                    min="0" max="15"
+                    id="ca2_${s.id}"
+                    oninput="calculateRow('${s.id}')">
+                </td>
+
+                <td>
+                  <input type="number"
+                    min="0" max="70"
+                    id="exam_${s.id}"
+                    oninput="calculateRow('${s.id}')">
+                </td>
+
+                <td id="total_${s.id}">0</td>
+                <td id="grade_${s.id}">F</td>
+              </tr>
+            `).join("")}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="actions">
+        <button class="btn btn-secondary"
+          onclick="saveResults('draft')">
+          Save Draft
+        </button>
+
+        <button class="btn btn-primary"
+          onclick="saveResults('submitted_hod')">
+          Submit to HOD
+        </button>
+      </div>
+    </div>
+  `;
 }
 
-function printBroadsheet(){
-const table=$("broadsheetTable").innerHTML;
-if(!table){
-alert("Load the broadsheet first.");
-return;
-}
-const w=window.open("","_blank");
-if(!w)return;
-w.document.write(`
-<html><head><title>Broadsheet</title>
-<style>
-body{font-family:Arial;padding:20px}
-table{width:100%;border-collapse:collapse}
-th,td{border:1px solid #777;padding:7px}
-th{background:#eee}
-</style></head>
-<body>${table}</body></html>`);
-w.document.close();
-setTimeout(()=>w.print(),300);
+function calculateRow(id){
+
+  const ca1=Math.min(15,Math.max(0,
+    Number($("ca1_"+id).value)||0));
+
+  const ca2=Math.min(15,Math.max(0,
+    Number($("ca2_"+id).value)||0));
+
+  const exam=Math.min(70,Math.max(0,
+    Number($("exam_"+id).value)||0));
+
+  const total=ca1+ca2+exam;
+  const g=grade(total);
+
+  $("total_"+id).textContent=total;
+  $("grade_"+id).textContent=
+    `${g} - ${gradeText(g)}`;
 }
 
-/* =========================================================
-   PASSWORD
-========================================================= */
+async function saveResults(status){
 
-async function changePassword(){
+  const classId=$("resultClass").value;
+  const subjectId=$("resultSubject").value;
+  const term=$("resultTerm").value;
+  const session=$("resultSession").value.trim();
 
-const p=$("newPassword").value;
-const p2=$("confirmPassword").value;
+  if(!classId || !subjectId){
+    notify("Select class and subject.","error");
+    return;
+  }
 
-if(!p||p.length<8){
-alert("Password must contain at least 8 characters.");
-return;
+  const submissionId="SUB-"+uid();
+
+  const rows=currentResultRows.map(s=>{
+
+    const ca1=Math.min(15,Math.max(0,
+      Number($("ca1_"+s.id).value)||0));
+
+    const ca2=Math.min(15,Math.max(0,
+      Number($("ca2_"+s.id).value)||0));
+
+    const exam=Math.min(70,Math.max(0,
+      Number($("exam_"+s.id).value)||0));
+
+    return {
+      id:uid(),
+      submission_id:submissionId,
+      teacher_id:currentUser.id,
+      student_id:s.id,
+      class_id:classId,
+      subject_id:subjectId,
+      term,
+      session,
+      ca1,
+      ca2,
+      exam,
+      status,
+      created_at:new Date().toISOString()
+    };
+  });
+
+  const {error}=await sb
+    .from("results")
+    .insert(rows);
+
+  if(error){
+    console.error(error);
+    notify(error.message,"error");
+    return;
+  }
+
+  notify(
+    status==="submitted_hod"
+      ? "Result submitted to HOD successfully."
+      : "Result draft saved successfully.",
+    "success"
+  );
+
+  showPage("submissions");
 }
 
-if(p!==p2){
-alert("Passwords do not match.");
-return;
+/* ============================================================
+   SUBMISSIONS
+============================================================ */
+
+async function submissionsPage(){
+
+  $("content").innerHTML=`
+    <div class="page-title">My Result Submissions</div>
+    <div id="submissionBox">
+      <div class="empty">Loading...</div>
+    </div>
+  `;
+
+  let query=sb
+    .from("results")
+    .select(`
+      submission_id,
+      status,
+      subject_id,
+      class_id,
+      term,
+      session,
+      created_at
+    `)
+    .order("created_at",{ascending:false});
+
+  if(!isAdmin()){
+    query=query.eq("teacher_id",currentUser.id);
+  }
+
+  const {data,error}=await query;
+
+  if(error){
+    $("submissionBox").innerHTML=
+      `<div class="alert alert-error">${esc(error.message)}</div>`;
+    return;
+  }
+
+  const groups={};
+
+  (data||[]).forEach(r=>{
+    if(!groups[r.submission_id]){
+      groups[r.submission_id]=r;
+    }
+  });
+
+  const list=Object.values(groups);
+
+  if(!list.length){
+    $("submissionBox").innerHTML=
+      `<div class="card empty">No submissions found.</div>`;
+    return;
+  }
+
+  $("submissionBox").innerHTML=`
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Submission</th>
+            <th>Term</th>
+            <th>Session</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${list.map(r=>`
+            <tr>
+              <td>${esc(r.submission_id)}</td>
+              <td>${esc(r.term)}</td>
+              <td>${esc(r.session)}</td>
+              <td>${statusBadge(r.status)}</td>
+              <td>
+                <button class="btn btn-secondary"
+                  onclick="viewSubmission('${esc(r.submission_id)}')">
+                  View
+                </button>
+              </td>
+            </tr>
+          `).join("")}
+        </tbody>
+      </table>
+    </div>
+  `;
 }
-
-const {error}=await supabaseClient.auth.updateUser({
-password:p
-});
-
-if(error){
-alert(error.message);
-return;
-}
-
-$("newPassword").value="";
-$("confirmPassword").value="";
-
-alert("Password changed successfully.");
-}
-
-/* =========================================================
-   SCHOOL SETTINGS
-========================================================= */
-
-async function saveSchoolSettings(){
-
-if(currentProfile?.role!=="administrator"){
-alert("Administrator access required.");
-return;
-}
-
-const values={
-name:$("schoolName").value.trim(),
-motto:$("schoolMotto").value.trim(),
-address:$("schoolAddress").value.trim(),
-contact:$("schoolContact").value.trim()
-};
-
-const {error}=await supabaseClient
-.from("school_profiles")
-.update({
-school_name:values.name,
-motto:values.motto,
-address:values.address,
-contact:values.contact
-})
-.eq("id",(await getSchoolId()));
-
-if(error){
-alert(error.message);
-return;
-}
-
-alert("School settings saved.");
-}
-
-async function getSchoolId(){
-
-const {data}=await supabaseClient
-.from("school_profiles")
-.select("id")
-.limit(1)
-.maybeSingle();
-
-return data?.id;
-}
-
-/* =========================================================
-   STATUS
-========================================================= */
-
-function statusBadge(s){
-
-const map={
-draft:["Draft","orange"],
-submitted_hod:["Submitted to HOD","orange"],
-returned:["Returned to Teacher","red"],
-hod_approved:["HOD Approved","blue"],
-submitted_exam_officer:["With Examination Officer","blue"],
-finalized:["Finalized & Locked","green"],
-published:["Published","green"]
-};
-
-const x=map[s]||[s,"orange"];
-
-return `<span class="badge ${x[1]}">${esc(x[0])}</span>`;
-}
-
-/* =========================================================
-   REVIEW
-========================================================= */
 
 async function viewSubmission(id){
 
-const {data,error}=await supabaseClient
-.from("results")
-.select("student_id,ca1,ca2,exam,total,students(full_name)")
-.eq("submission_id",id)
-.order("student_id");
+  const {data,error}=await sb
+    .from("results")
+    .select(`
+      *,
+      students(full_name),
+      subjects(name),
+      classes(name)
+    `)
+    .eq("submission_id",id)
+    .order("created_at");
 
-if(error){
-alert(error.message);
-return;
+  if(error){
+    notify(error.message,"error");
+    return;
+  }
+
+  $("content").innerHTML=`
+    <div class="page-title">Result Submission</div>
+
+    <div class="form-card">
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Student</th>
+              <th>CA1</th>
+              <th>CA2</th>
+              <th>Exam</th>
+              <th>Total</th>
+              <th>Grade</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            ${(data||[]).map(r=>`
+              <tr>
+                <td>${esc(r.students?.full_name)}</td>
+                <td>${r.ca1}</td>
+                <td>${r.ca2}</td>
+                <td>${r.exam}</td>
+                <td>${Number(r.ca1||0)+Number(r.ca2||0)+Number(r.exam||0)}</td>
+                <td>
+                  ${grade(Number(r.ca1||0)+Number(r.ca2||0)+Number(r.exam||0))}
+                </td>
+              </tr>
+            `).join("")}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="actions">
+        <button class="btn btn-secondary"
+          onclick="printCurrentDocument()">
+          Print
+        </button>
+        <button class="btn btn-secondary"
+          onclick="showPage('submissions')">
+          Back
+        </button>
+      </div>
+    </div>
+  `;
 }
 
-$("modalContent").innerHTML=`
-<h2>Result Review</h2>
-<div class="table-wrap" style="margin-top:12px">
-<table>
-<thead>
-<tr>
-<th>Student</th>
-<th>CA1</th>
-<th>CA2</th>
-<th>Exam</th>
-<th>Total</th>
-</tr>
-</thead>
-<tbody>
-${(data||[]).map(r=>`
-<tr>
-<td>${esc(r.students?.full_name)}</td>
-<td>${r.ca1}</td>
-<td>${r.ca2}</td>
-<td>${r.exam}</td>
-<td>${r.total}</td>
-</tr>`).join("")}
-</tbody>
-</table>
-</div>`;
+/* ============================================================
+   HOD
+============================================================ */
 
-$("modal").classList.add("open");
+async function hodPage(){
+
+  if(!canUseHOD()){
+    $("content").innerHTML=
+      `<div class="alert alert-error">HOD access denied.</div>`;
+    return;
+  }
+
+  $("content").innerHTML=`
+    <div class="page-title">HOD Result Vetting</div>
+    <div id="hodBox">
+      <div class="empty">Loading...</div>
+    </div>
+  `;
+
+  let query=sb
+    .from("results")
+    .select(`
+      submission_id,
+      status,
+      subject_id,
+      class_id,
+      term,
+      session,
+      teacher_id,
+      hod_comment,
+      created_at
+    `)
+    .eq("status","submitted_hod")
+    .order("created_at",{ascending:false});
+
+  const {data,error}=await query;
+
+  if(error){
+    $("hodBox").innerHTML=
+      `<div class="alert alert-error">${esc(error.message)}</div>`;
+    return;
+  }
+
+  const groups={};
+
+  (data||[]).forEach(r=>{
+    if(!groups[r.submission_id])groups[r.submission_id]=r;
+  });
+
+  const list=Object.values(groups);
+
+  if(!list.length){
+    $("hodBox").innerHTML=
+      `<div class="card empty">No results awaiting HOD review.</div>`;
+    return;
+  }
+
+  $("hodBox").innerHTML=`
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Submission</th>
+            <th>Term</th>
+            <th>Session</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          ${list.map(r=>`
+            <tr>
+              <td>${esc(r.submission_id)}</td>
+              <td>${esc(r.term)}</td>
+              <td>${esc(r.session)}</td>
+              <td>${statusBadge(r.status)}</td>
+              <td>
+                <button class="btn btn-secondary"
+                  onclick="hodReview('${esc(r.submission_id)}')">
+                  Review
+                </button>
+              </td>
+            </tr>
+          `).join("")}
+        </tbody>
+      </table>
+    </div>
+  `;
 }
 
-function closeModal(){
-$("modal").classList.remove("open");
+async function hodReview(submissionId){
+
+  const {data,error}=await sb
+    .from("results")
+    .select(`
+      *,
+      students(full_name),
+      subjects(name),
+      classes(name)
+    `)
+    .eq("submission_id",submissionId)
+    .order("created_at");
+
+  if(error){
+    notify(error.message,"error");
+    return;
+  }
+
+  $("content").innerHTML=`
+    <div class="page-title">HOD Review</div>
+
+    <div class="form-card">
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Student</th>
+              <th>CA1</th>
+              <th>CA2</th>
+              <th>Exam</th>
+              <th>Total</th>
+              <th>Grade</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            ${(data||[]).map(r=>{
+              const total=
+                Number(r.ca1||0)+
+                Number(r.ca2||0)+
+                Number(r.exam||0);
+
+              return `
+                <tr>
+                  <td>${esc(r.students?.full_name)}</td>
+                  <td>${r.ca1}</td>
+                  <td>${r.ca2}</td>
+                  <td>${r.exam}</td>
+                  <td>${total}</td>
+                  <td>${grade(total)}</td>
+                </tr>
+              `;
+            }).join("")}
+          </tbody>
+        </table>
+      </div>
+
+      <label>HOD Comment</label>
+      <textarea id="hodComment"
+        placeholder="Enter comment..."></textarea>
+
+      <div class="actions">
+        <button class="btn btn-danger"
+          onclick="returnToTeacher('${esc(submissionId)}')">
+          Return to Teacher
+        </button>
+
+        <button class="btn btn-primary"
+          onclick="approveHOD('${esc(submissionId)}')">
+          Approve
+        </button>
+      </div>
+    </div>
+  `;
 }
 
-/* =========================================================
-   INITIALIZATION
-========================================================= */
+async function approveHOD(submissionId){
 
-supabaseClient.auth.onAuthStateChange(async(event,session)=>{
+  const comment=$("hodComment")?.value.trim()||"";
 
-if(event==="SIGNED_OUT"){
-$("loginScreen").style.display="flex";
-$("app").style.display="none";
-return;
+  const {error}=await sb
+    .from("results")
+    .update({
+      status:"hod_approved",
+      hod_comment:comment,
+      hod_approved_by:currentUser.id,
+      hod_approved_at:new Date().toISOString()
+    })
+    .eq("submission_id",submissionId)
+    .eq("status","submitted_hod");
+
+  if(error){
+    notify(error.message,"error");
+    return;
+  }
+
+  notify(
+    "HOD approval completed. It has NOT been sent automatically to the Examination Officer.",
+    "success"
+  );
+
+  showPage("hod");
 }
 
-if(session&&event==="SIGNED_IN"){
-await loadCurrentProfile();
-if(currentProfile)openApp();
+async function returnToTeacher(submissionId){
+
+  const comment=$("hodComment")?.value.trim()||"";
+
+  const {error}=await sb
+    .from("results")
+    .update({
+      status:"returned",
+      hod_comment:comment
+    })
+    .eq("submission_id",submissionId)
+    .eq("status","submitted_hod");
+
+  if(error){
+    notify(error.message,"error");
+    return;
+  }
+
+  notify("Result returned to teacher.","success");
+  showPage("hod");
 }
+
+/* ============================================================
+   SEND TO EXAMINATION OFFICER
+============================================================ */
+
+async function sendToExamOfficer(submissionId){
+
+  if(!canUseHOD()){
+    notify("HOD access denied.","error");
+    return;
+  }
+
+  const {error}=await sb
+    .from("results")
+    .update({
+      status:"submitted_exam_officer",
+      sent_to_exam_officer_by:currentUser.id,
+      sent_to_exam_officer_at:new Date().toISOString()
+    })
+    .eq("submission_id",submissionId)
+    .eq("status","hod_approved");
+
+  if(error){
+    notify(error.message,"error");
+    return;
+  }
+
+  notify(
+    "Result sent to Examination Officer successfully.",
+    "success"
+  );
+
+  showPage("hod");
+}
+
+/* ============================================================
+   EXAMINATION OFFICER
+============================================================ */
+
+async function examOfficerPage(){
+
+  if(!canUseExam()){
+    $("content").innerHTML=
+      `<div class="alert alert-error">
+        Examination Officer access denied.
+      </div>`;
+    return;
+  }
+
+  $("content").innerHTML=`
+    <div class="page-title">Examination Officer</div>
+    <div id="examBox">
+      <div class="empty">Loading...</div>
+    </div>
+  `;
+
+  const {data,error}=await sb
+    .from("results")
+    .select("*")
+    .eq("status","submitted_exam_officer")
+    .order("created_at",{ascending:false});
+
+  if(error){
+    $("examBox").innerHTML=
+      `<div class="alert alert-error">${esc(error.message)}</div>`;
+    return;
+  }
+
+  const groups={};
+
+  (data||[]).forEach(r=>{
+    if(!groups[r.submission_id])groups[r.submission_id]=r;
+  });
+
+  const list=Object.values(groups);
+
+  if(!list.length){
+    $("examBox").innerHTML=
+      `<div class="card empty">
+        No results awaiting Examination Officer review.
+      </div>`;
+    return;
+  }
+
+  $("examBox").innerHTML=`
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Submission</th>
+            <th>Term</th>
+            <th>Session</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          ${list.map(r=>`
+            <tr>
+              <td>${esc(r.submission_id)}</td>
+              <td>${esc(r.term)}</td>
+              <td>${esc(r.session)}</td>
+              <td>${statusBadge(r.status)}</td>
+              <td>
+                <button class="btn btn-primary"
+                  onclick="examReview('${esc(r.submission_id)}')">
+                  Review & Finalize
+                </button>
+              </td>
+            </tr>
+          `).join("")}
+        </tbody>
+      </table>
+    </div>
+  `;
+}
+
+async function examReview(submissionId){
+
+  const {data,error}=await sb
+    .from("results")
+    .select(`
+      *,
+      students(full_name)
+    `)
+    .eq("submission_id",submissionId)
+    .order("created_at");
+
+  if(error){
+    notify(error.message,"error");
+    return;
+  }
+
+  $("content").innerHTML=`
+    <div class="page-title">Examination Officer Review</div>
+
+    <div class="form-card">
+
+      <div class="alert alert-info">
+        Finalization locks this result from normal teacher/HOD editing.
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Student</th>
+              <th>CA1</th>
+              <th>CA2</th>
+              <th>Exam</th>
+              <th>Total</th>
+              <th>Grade</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            ${(data||[]).map(r=>{
+              const total=
+                Number(r.ca1||0)+
+                Number(r.ca2||0)+
+                Number(r.exam||0);
+
+              return `
+                <tr>
+                  <td>${esc(r.students?.full_name)}</td>
+                  <td>${r.ca1}</td>
+                  <td>${r.ca2}</td>
+                  <td>${r.exam}</td>
+                  <td>${total}</td>
+                  <td>${grade(total)}</td>
+                </tr>
+              `;
+            }).join("")}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="actions">
+        <button class="btn btn-primary"
+          onclick="finalizeResult('${esc(submissionId)}')">
+          Finalize & Lock
+        </button>
+
+        <button class="btn btn-secondary"
+          onclick="showPage('examOfficer')">
+          Back
+        </button>
+      </div>
+    </div>
+  `;
+}
+
+async function finalizeResult(submissionId){
+
+  if(!canUseExam()){
+    notify("Access denied.","error");
+    return;
+  }
+
+  if(!confirm(
+    "Finalize and lock this result? This should only be done after review."
+  ))return;
+
+  const {error}=await sb
+    .from("results")
+    .update({
+      status:"finalized",
+      finalized_by:currentUser.id,
+      finalized_at:new Date().toISOString()
+    })
+    .eq("submission_id",submissionId)
+    .eq("status","submitted_exam_officer");
+
+  if(error){
+    notify(error.message,"error");
+    return;
+  }
+
+  notify(
+    "Result finalized and locked successfully.",
+    "success"
+  );
+
+  showPage("examOfficer");
+}
+
+/* ============================================================
+   ADMIN PUBLISH
+============================================================ */
+
+async function publishPage(){
+
+  if(!isAdmin()){
+    $("content").innerHTML=
+      `<div class="alert alert-error">Administrator access denied.</div>`;
+    return;
+  }
+
+  $("content").innerHTML=`
+    <div class="page-title">Publish Results</div>
+    <div id="publishBox">
+      <div class="empty">Loading...</div>
+    </div>
+  `;
+
+  const {data,error}=await sb
+    .from("results")
+    .select("*")
+    .eq("status","finalized")
+    .order("created_at",{ascending:false});
+
+  if(error){
+    $("publishBox").innerHTML=
+      `<div class="alert alert-error">${esc(error.message)}</div>`;
+    return;
+  }
+
+  const groups={};
+
+  (data||[]).forEach(r=>{
+    if(!groups[r.submission_id])groups[r.submission_id]=r;
+  });
+
+  const list=Object.values(groups);
+
+  if(!list.length){
+    $("publishBox").innerHTML=
+      `<div class="card empty">
+        No finalized results awaiting publication.
+      </div>`;
+    return;
+  }
+
+  $("publishBox").innerHTML=`
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Submission</th>
+            <th>Term</th>
+            <th>Session</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          ${list.map(r=>`
+            <tr>
+              <td>${esc(r.submission_id)}</td>
+              <td>${esc(r.term)}</td>
+              <td>${esc(r.session)}</td>
+              <td>${statusBadge(r.status)}</td>
+              <td>
+                <button class="btn btn-primary"
+                  onclick="publishResult('${esc(r.submission_id)}')">
+                  Publish
+                </button>
+              </td>
+            </tr>
+          `).join("")}
+        </tbody>
+      </table>
+    </div>
+  `;
+}
+
+async function publishResult(submissionId){
+
+  if(!isAdmin()){
+    notify("Administrator access required.","error");
+    return;
+  }
+
+  if(!confirm(
+    "Publish this result? Parents and students will be able to see it when their portals are connected."
+  ))return;
+
+  const {error}=await sb
+    .from("results")
+    .update({
+      status:"published",
+      published_by:currentUser.id,
+      published_at:new Date().toISOString()
+    })
+    .eq("submission_id",submissionId)
+    .eq("status","finalized");
+
+  if(error){
+    notify(error.message,"error");
+    return;
+  }
+
+  notify("Result published successfully.","success");
+  showPage("publish");
+}
+
+/* ============================================================
+   TEACHER MANAGEMENT
+============================================================ */
+
+async function teachersPage(){
+
+  if(!isAdmin()){
+    $("content").innerHTML=
+      `<div class="alert alert-error">Administrator access denied.</div>`;
+    return;
+  }
+
+  $("content").innerHTML=`
+    <div class="page-title">Teacher Management</div>
+
+    <div class="form-card">
+      <h3>Create Teacher Profile</h3>
+
+      <div class="alert alert-info">
+        Teacher authentication accounts should be created from
+        Supabase Authentication. This page manages the academic profile.
+      </div>
+
+      <div class="grid2">
+
+        <div>
+          <label>Auth User ID</label>
+          <input id="teacherAuthId"
+            placeholder="Paste Supabase Auth User ID">
+        </div>
+
+        <div>
+          <label>Full Name</label>
+          <input id="teacherName">
+        </div>
+
+        <div>
+          <label>Username</label>
+          <input id="teacherUsername">
+        </div>
+
+        <div>
+          <label>Academic Role</label>
+          <select id="teacherRole">
+            <option>Teacher</option>
+            <option>HOD Mathematics</option>
+            <option>HOD English</option>
+            <option>HOD Physics</option>
+            <option>HOD Chemistry</option>
+            <option>HOD Biology</option>
+            <option>HOD Economics</option>
+            <option>HOD Hausa</option>
+            <option>HOD Arabic</option>
+            <option>HOD French</option>
+            <option>HOD Computer Studies</option>
+            <option>Examination Officer</option>
+          </select>
+        </div>
+
+      </div>
+
+      <button class="btn btn-primary"
+        style="margin-top:14px"
+        onclick="createTeacherProfile()">
+        Save Teacher Profile
+      </button>
+    </div>
+
+    <div id="teacherList"></div>
+  `;
+
+  loadTeachers();
+}
+
+async function createTeacherProfile(){
+
+  const id=$("teacherAuthId").value.trim();
+  const name=$("teacherName").value.trim();
+  const username=$("teacherUsername").value.trim();
+  const academicRole=$("teacherRole").value;
+
+  if(!id || !name){
+    notify("Auth User ID and full name are required.","error");
+    return;
+  }
+
+  const isExam=
+    academicRole==="Examination Officer";
+
+  const {error}=await sb
+    .from("user_profiles")
+    .upsert({
+      id,
+      full_name:name,
+      username:username||null,
+      role:"teacher",
+      academic_role:academicRole,
+      is_exam_officer:isExam,
+      updated_at:new Date().toISOString()
+    });
+
+  if(error){
+    notify(error.message,"error");
+    return;
+  }
+
+  notify("Teacher profile saved.","success");
+
+  $("teacherAuthId").value="";
+  $("teacherName").value="";
+  $("teacherUsername").value="";
+
+  loadTeachers();
+}
+
+async function loadTeachers(){
+
+  const {data,error}=await sb
+    .from("user_profiles")
+    .select("*")
+    .eq("role","teacher")
+    .order("full_name");
+
+  if(error){
+    $("teacherList").innerHTML=
+      `<div class="alert alert-error">${esc(error.message)}</div>`;
+    return;
+  }
+
+  $("teacherList").innerHTML=`
+    <div class="form-card">
+      <h3>Teachers</h3>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Username</th>
+              <th>Academic Role</th>
+              <th>Exam Officer</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            ${(data||[]).map(t=>`
+              <tr>
+                <td>${esc(t.full_name)}</td>
+                <td>${esc(t.username)}</td>
+                <td>${esc(t.academic_role)}</td>
+                <td>${t.is_exam_officer?"Yes":"No"}</td>
+                <td>${t.active===false?"Inactive":"Active"}</td>
+              </tr>
+            `).join("")}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  `;
+}
+
+/* ============================================================
+   CLASSES / STUDENTS
+============================================================ */
+
+async function classesPage(){
+
+  if(!isAdmin()){
+    $("content").innerHTML=
+      `<div class="alert alert-error">Administrator access denied.</div>`;
+    return;
+  }
+
+  const classes=await loadClasses();
+
+  $("content").innerHTML=`
+    <div class="page-title">Classes & Students</div>
+
+    <div class="form-card">
+      <h3>Add Student</h3>
+
+      <div class="grid3">
+
+        <div>
+          <label>Student Full Name</label>
+          <input id="studentName">
+        </div>
+
+        <div>
+          <label>Class</label>
+          <select id="studentClass">
+            ${classes.map(c=>`
+              <option value="${esc(c.id)}">
+                ${esc(c.name)}
+              </option>
+            `).join("")}
+          </select>
+        </div>
+
+        <div>
+          <label>Admission Number</label>
+          <input id="admissionNo">
+        </div>
+
+      </div>
+
+      <button class="btn btn-primary"
+        style="margin-top:12px"
+        onclick="addStudent()">
+        Add Student
+      </button>
+    </div>
+
+    <div id="studentList"></div>
+  `;
+
+  loadAllStudents();
+}
+
+async function addStudent(){
+
+  const name=$("studentName").value.trim();
+  const classId=$("studentClass").value;
+  const admission=$("admissionNo").value.trim();
+
+  if(!name || !classId){
+    notify("Student name and class are required.","error");
+    return;
+  }
+
+  const {error}=await sb
+    .from("students")
+    .insert({
+      full_name:name,
+      class_id:classId,
+      admission_no:admission||null
+    });
+
+  if(error){
+    notify(error.message,"error");
+    return;
+  }
+
+  notify("Student added.","success");
+
+  $("studentName").value="";
+  $("admissionNo").value="";
+
+  loadAllStudents();
+}
+
+async function loadAllStudents(){
+
+  const {data,error}=await sb
+    .from("students")
+    .select(`
+      id,
+      full_name,
+      admission_no,
+      classes(name)
+    `)
+    .order("full_name");
+
+  if(error){
+    $("studentList").innerHTML=
+      `<div class="alert alert-error">${esc(error.message)}</div>`;
+    return;
+  }
+
+  $("studentList").innerHTML=`
+    <div class="form-card">
+      <h3>Students</h3>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Admission No.</th>
+              <th>Class</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            ${(data||[]).map(s=>`
+              <tr>
+                <td>${esc(s.full_name)}</td>
+                <td>${esc(s.admission_no)}</td>
+                <td>${esc(s.classes?.name)}</td>
+              </tr>
+            `).join("")}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  `;
+}
+
+/* ============================================================
+   HOD ASSIGNMENT
+============================================================ */
+
+async function hodAssignmentPage(){
+
+  if(!isAdmin()){
+    $("content").innerHTML=
+      `<div class="alert alert-error">Administrator access denied.</div>`;
+    return;
+  }
+
+  const teachers=await sb
+    .from("user_profiles")
+    .select("*")
+    .eq("role","teacher")
+    .order("full_name");
+
+  const subjects=await loadSubjects();
+
+  $("content").innerHTML=`
+    <div class="page-title">HOD Assignment</div>
+
+    <div class="form-card">
+
+      <div class="alert alert-info">
+        HODs remain Teachers. Their academic role determines the
+        subject they supervise.
+      </div>
+
+      <div class="grid2">
+
+        <div>
+          <label>Teacher</label>
+          <select id="hodTeacher">
+            ${(teachers.data||[]).map(t=>`
+              <option value="${esc(t.id)}">
+                ${esc(t.full_name)}
+              </option>
+            `).join("")}
+          </select>
+        </div>
+
+        <div>
+          <label>Subject</label>
+          <select id="hodSubject">
+            ${subjects.map(s=>`
+              <option>${esc(s.name)}</option>
+            `).join("")}
+          </select>
+        </div>
+
+      </div>
+
+      <button class="btn btn-primary"
+        style="margin-top:12px"
+        onclick="assignHOD()">
+        Assign HOD
+      </button>
+    </div>
+  `;
+}
+
+async function assignHOD(){
+
+  const teacherId=$("hodTeacher").value;
+  const subject=$("hodSubject").value;
+
+  const academicRole="HOD "+subject;
+
+  const {error}=await sb
+    .from("user_profiles")
+    .update({
+      academic_role:academicRole,
+      updated_at:new Date().toISOString()
+    })
+    .eq("id",teacherId);
+
+  if(error){
+    notify(error.message,"error");
+    return;
+  }
+
+  notify(
+    `${subject} HOD assigned successfully.`,
+    "success"
+  );
+}
+
+/* ============================================================
+   BROADSHEET
+============================================================ */
+
+async function broadsheetPage(){
+
+  if(!isAdmin()){
+    $("content").innerHTML=
+      `<div class="alert alert-error">Administrator access denied.</div>`;
+    return;
+  }
+
+  const classes=await loadClasses();
+
+  $("content").innerHTML=`
+    <div class="page-title">Broadsheet</div>
+
+    <div class="form-card">
+      <div class="grid3">
+
+        <div>
+          <label>Class</label>
+          <select id="bClass">
+            ${classes.map(c=>`
+              <option value="${esc(c.id)}">
+                ${esc(c.name)}
+              </option>
+            `).join("")}
+          </select>
+        </div>
+
+        <div>
+          <label>Term</label>
+          <select id="bTerm">
+            <option>First Term</option>
+            <option>Second Term</option>
+            <option>Third Term</option>
+          </select>
+        </div>
+
+        <div>
+          <label>Session</label>
+          <input id="bSession" value="2026/2027">
+        </div>
+
+      </div>
+
+      <button class="btn btn-primary"
+        style="margin-top:12px"
+        onclick="loadBroadsheet()">
+        Load Broadsheet
+      </button>
+    </div>
+
+    <div id="broadsheetBox"></div>
+  `;
+}
+
+async function loadBroadsheet(){
+
+  const classId=$("bClass").value;
+  const term=$("bTerm").value;
+  const session=$("bSession").value.trim();
+
+  const {data,error}=await sb
+    .from("results")
+    .select(`
+      *,
+      students(full_name),
+      subjects(name)
+    `)
+    .eq("class_id",classId)
+    .eq("term",term)
+    .eq("session",session)
+    .eq("status","published")
+    .order("created_at");
+
+  if(error){
+    notify(error.message,"error");
+    return;
+  }
+
+  if(!data?.length){
+    $("broadsheetBox").innerHTML=
+      `<div class="card empty">No published results found.</div>`;
+    return;
+  }
+
+  const students={};
+  const subjects={};
+
+  data.forEach(r=>{
+    const sid=r.student_id;
+
+    if(!students[sid]){
+      students[sid]={
+        name:r.students?.full_name,
+        scores:{}
+      };
+    }
+
+    const sub=r.subjects?.name||"Subject";
+
+    students[sid].scores[sub]=
+      Number(r.ca1||0)+
+      Number(r.ca2||0)+
+      Number(r.exam||0);
+
+    subjects[sub]=true;
+  });
+
+  const subjectNames=Object.keys(subjects);
+
+  $("broadsheetBox").innerHTML=`
+    <div class="form-card">
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Student</th>
+              ${subjectNames.map(s=>`
+                <th>${esc(s)}</th>
+              `).join("")}
+              <th>Grand Total</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            ${Object.values(students).map(s=>{
+              const total=subjectNames.reduce(
+                (a,x)=>a+(s.scores[x]||0),0
+              );
+
+              return `
+                <tr>
+                  <td>${esc(s.name)}</td>
+
+                  ${subjectNames.map(x=>`
+                    <td>${s.scores[x]??"-"}</td>
+                  `).join("")}
+
+                  <td><strong>${total}</strong></td>
+                </tr>
+              `;
+            }).join("")}
+          </tbody>
+        </table>
+      </div>
+
+      <button class="btn btn-secondary"
+        style="margin-top:12px"
+        onclick="printCurrentDocument()">
+        Print Broadsheet
+      </button>
+    </div>
+  `;
+}
+
+/* ============================================================
+   SCHOOL SETTINGS
+============================================================ */
+
+async function settingsPage(){
+
+  if(!isAdmin()){
+    $("content").innerHTML=
+      `<div class="alert alert-error">Administrator access denied.</div>`;
+    return;
+  }
+
+  const {data,error}=await sb
+    .from("school_profiles")
+    .select("*")
+    .limit(1)
+    .maybeSingle();
+
+  if(error){
+    notify(error.message,"error");
+    return;
+  }
+
+  $("content").innerHTML=`
+    <div class="page-title">School Settings</div>
+
+    <div class="form-card">
+
+      <label>School Name</label>
+      <input id="schoolName"
+        value="${esc(data?.school_name||"Caliphate Tarbiya Academy")}">
+
+      <label>Motto</label>
+      <input id="schoolMotto"
+        value="${esc(data?.motto||"")}">
+
+      <label>Address</label>
+      <textarea id="schoolAddress">${esc(data?.address||"")}</textarea>
+
+      <label>Contact</label>
+      <input id="schoolContact"
+        value="${esc(data?.contact||"")}">
+
+      <button class="btn btn-primary"
+        style="margin-top:12px"
+        onclick="saveSchoolSettings()">
+        Save Settings
+      </button>
+
+    </div>
+  `;
+}
+
+async function saveSchoolSettings(){
+
+  const school_name=$("schoolName").value.trim();
+  const motto=$("schoolMotto").value.trim();
+  const address=$("schoolAddress").value.trim();
+  const contact=$("schoolContact").value.trim();
+
+  const {data:existing}=await sb
+    .from("school_profiles")
+    .select("id")
+    .limit(1)
+    .maybeSingle();
+
+  let result;
+
+  if(existing?.id){
+
+    result=await sb
+      .from("school_profiles")
+      .update({
+        school_name,
+        motto,
+        address,
+        contact
+      })
+      .eq("id",existing.id);
+
+  }else{
+
+    result=await sb
+      .from("school_profiles")
+      .insert({
+        school_name,
+        motto,
+        address,
+        contact
+      });
+  }
+
+  if(result.error){
+    notify(result.error.message,"error");
+    return;
+  }
+
+  notify("School settings saved.","success");
+}
+
+/* ============================================================
+   PASSWORD
+============================================================ */
+
+function passwordPage(){
+
+  $("content").innerHTML=`
+    <div class="page-title">Change Password</div>
+
+    <div class="form-card" style="max-width:500px">
+
+      <label>New Password</label>
+      <input id="newPassword" type="password">
+
+      <label>Confirm Password</label>
+      <input id="confirmPassword" type="password">
+
+      <button class="btn btn-primary"
+        style="margin-top:12px"
+        onclick="changePassword()">
+        Change Password
+      </button>
+
+    </div>
+  `;
+}
+
+async function changePassword(){
+
+  const p1=$("newPassword").value;
+  const p2=$("confirmPassword").value;
+
+  if(p1.length<6){
+    notify("Password must contain at least 6 characters.","error");
+    return;
+  }
+
+  if(p1!==p2){
+    notify("Passwords do not match.","error");
+    return;
+  }
+
+  const {error}=await sb.auth.updateUser({
+    password:p1
+  });
+
+  if(error){
+    notify(error.message,"error");
+    return;
+  }
+
+  notify("Password changed successfully.","success");
+
+  $("newPassword").value="";
+  $("confirmPassword").value="";
+}
+
+/* ============================================================
+   PRINT
+============================================================ */
+
+function printCurrentDocument(){
+
+  const content=
+    $("viewDocContent")?.value ||
+    $("docContent")?.value ||
+    $("assistantOutput")?.value ||
+    $("content")?.innerText ||
+    "";
+
+  const w=window.open("","_blank");
+
+  if(!w){
+    notify("Please allow pop-ups for printing.","error");
+    return;
+  }
+
+  w.document.write(`
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <title>Caliphate Tarbiya Academy</title>
+      <style>
+        body{
+          font-family:Arial,sans-serif;
+          padding:40px;
+          line-height:1.6;
+        }
+        h1,h2,h3{color:#14532d}
+        pre{
+          white-space:pre-wrap;
+          font-family:Arial,sans-serif;
+        }
+      </style>
+    </head>
+    <body>
+      <h2>Caliphate Tarbiya Academy</h2>
+      <pre>${esc(content)}</pre>
+    </body>
+    </html>
+  `);
+
+  w.document.close();
+  w.focus();
+  setTimeout(()=>w.print(),300);
+}
+
+/* ============================================================
+   AUTH LISTENER
+============================================================ */
+
+sb.auth.onAuthStateChange(async(event,session)=>{
+
+  if(event==="SIGNED_OUT"){
+    currentUser=null;
+    currentProfile=null;
+    return;
+  }
+
+  if(session?.user && !currentProfile){
+
+    currentUser=session.user;
+    await loadProfile();
+
+    if(currentProfile){
+      openApplication();
+    }
+  }
 });
 
-(async function init(){
+/* ============================================================
+   START
+============================================================ */
 
-await restoreSession();
+restoreSession();
 
-})();
 </script>
 </body>
 </html>
