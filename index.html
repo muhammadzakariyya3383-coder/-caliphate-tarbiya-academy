@@ -8,216 +8,512 @@
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
+
 body{
-  font-family:Arial,Helvetica,sans-serif;
-  background:#f3f7f4;
-  color:#17251c;
+font-family:Arial,Helvetica,sans-serif;
+background:#f3f7f4;
+color:#17251c;
 }
+
 button,input,select,textarea{font:inherit}
 button{cursor:pointer}
+
 .hidden{display:none!important}
 
 header{
-  background:#14532d;
-  color:white;
-  padding:15px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:10px;
-  position:sticky;
-  top:0;
-  z-index:20;
+background:#14532d;
+color:white;
+padding:15px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:10px;
+position:sticky;
+top:0;
+z-index:20;
 }
-.brand{font-weight:800;font-size:17px}
-.brand small{display:block;font-size:11px;font-weight:400;opacity:.85;margin-top:3px}
 
-.container{max-width:1400px;margin:auto;padding:16px}
+.brand{
+font-weight:800;
+font-size:17px;
+}
+
+.brand small{
+display:block;
+font-size:11px;
+font-weight:400;
+opacity:.85;
+margin-top:3px;
+}
+
+.container{
+max-width:1400px;
+margin:auto;
+padding:16px;
+}
 
 .login{
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
-  background:linear-gradient(135deg,#14532d,#166534,#052e16);
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:20px;
+background:linear-gradient(135deg,#14532d,#166534,#052e16);
 }
-.login-card{
-  width:100%;
-  max-width:430px;
-  background:white;
-  border-radius:18px;
-  padding:28px;
-  box-shadow:0 20px 50px #0005;
-}
-.login-logo{
-  width:70px;height:70px;border-radius:50%;
-  background:#14532d;color:white;
-  display:flex;align-items:center;justify-content:center;
-  font-weight:900;font-size:25px;margin:0 auto 15px;
-}
-.login-card h1{text-align:center;color:#14532d;font-size:22px}
-.login-card p{text-align:center;color:#667;margin:7px 0 22px}
 
-label{display:block;font-size:13px;font-weight:700;margin:12px 0 6px}
-input,select,textarea{
-  width:100%;
-  padding:11px 12px;
-  border:1px solid #ccd8cf;
-  border-radius:9px;
-  background:white;
-  outline:none;
+.login-card{
+width:100%;
+max-width:430px;
+background:white;
+border-radius:18px;
+padding:28px;
+box-shadow:0 20px 50px #0005;
 }
-input:focus,select:focus,textarea:focus{border-color:#16a34a}
-textarea{min-height:100px;resize:vertical}
+
+.login-logo{
+width:70px;
+height:70px;
+border-radius:50%;
+background:#14532d;
+color:white;
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:900;
+font-size:25px;
+margin:0 auto 15px;
+}
+
+.login-card h1{
+text-align:center;
+color:#14532d;
+font-size:22px;
+}
+
+.login-card p{
+text-align:center;
+color:#667;
+margin:7px 0 22px;
+}
+
+label{
+display:block;
+font-size:13px;
+font-weight:700;
+margin:12px 0 6px;
+}
+
+input,select,textarea{
+width:100%;
+padding:11px 12px;
+border:1px solid #ccd8cf;
+border-radius:9px;
+background:white;
+outline:none;
+}
+
+input:focus,select:focus,textarea:focus{
+border-color:#16a34a;
+}
+
+textarea{
+min-height:100px;
+resize:vertical;
+}
 
 .btn{
-  border:0;border-radius:9px;padding:10px 14px;
-  background:#14532d;color:white;font-weight:700;
+border:0;
+border-radius:9px;
+padding:10px 14px;
+background:#14532d;
+color:white;
+font-weight:700;
 }
+
 .btn:hover{opacity:.9}
+
 .btn.green{background:#15803d}
 .btn.blue{background:#1d4ed8}
 .btn.orange{background:#c2410c}
 .btn.red{background:#b91c1c}
 .btn.gray{background:#475569}
-.btn.light{background:#e2e8f0;color:#17251c}
-.btn.small{padding:7px 10px;font-size:12px}
+.btn.light{
+background:#e2e8f0;
+color:#17251c;
+}
 
-.login-btn{width:100%;margin-top:18px;padding:13px}
-.error{color:#b91c1c;font-size:13px;margin-top:10px}
-.success{color:#15803d;font-size:13px;margin-top:10px}
+.btn.small{
+padding:7px 10px;
+font-size:12px;
+}
 
-.layout{display:flex;min-height:calc(100vh - 65px)}
+.login-btn{
+width:100%;
+margin-top:18px;
+padding:13px;
+}
+
+.error{
+color:#b91c1c;
+font-size:13px;
+margin-top:10px;
+}
+
+.success{
+color:#15803d;
+font-size:13px;
+margin-top:10px;
+}
+
+.layout{
+display:flex;
+min-height:calc(100vh - 65px);
+}
+
 .sidebar{
-  width:245px;background:#052e16;color:white;
-  padding:15px 10px;flex-shrink:0;
+width:245px;
+background:#052e16;
+color:white;
+padding:15px 10px;
+flex-shrink:0;
 }
+
 .sidebar button{
-  display:block;width:100%;text-align:left;
-  border:0;background:transparent;color:#dbeafe;
-  padding:11px;border-radius:8px;margin:3px 0;
+display:block;
+width:100%;
+text-align:left;
+border:0;
+background:transparent;
+color:#dbeafe;
+padding:11px;
+border-radius:8px;
+margin:3px 0;
 }
-.sidebar button:hover,.sidebar button.active{background:#166534;color:white}
+
+.sidebar button:hover,
+.sidebar button.active{
+background:#166534;
+color:white;
+}
+
 .sidebar-title{
-  color:#86efac;font-size:11px;font-weight:800;
-  text-transform:uppercase;padding:13px 10px 5px;
+color:#86efac;
+font-size:11px;
+font-weight:800;
+text-transform:uppercase;
+padding:13px 10px 5px;
 }
-.content{flex:1;min-width:0}
+
+.content{
+flex:1;
+min-width:0;
+}
 
 .page{display:none}
 .page.active{display:block}
 
 .page-title{
-  display:flex;justify-content:space-between;align-items:center;
-  gap:10px;margin-bottom:15px;flex-wrap:wrap;
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:10px;
+margin-bottom:15px;
+flex-wrap:wrap;
 }
-.page-title h2{font-size:22px;color:#14532d}
+
+.page-title h2{
+font-size:22px;
+color:#14532d;
+}
 
 .grid{
-  display:grid;
-  grid-template-columns:repeat(4,minmax(0,1fr));
-  gap:14px;
+display:grid;
+grid-template-columns:repeat(4,minmax(0,1fr));
+gap:14px;
 }
-.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+
+.grid2{
+display:grid;
+grid-template-columns:repeat(2,minmax(0,1fr));
+gap:14px;
+}
 
 .card{
-  background:white;border:1px solid #dce7df;
-  border-radius:13px;padding:16px;
-  box-shadow:0 2px 8px #00000008;
+background:white;
+border:1px solid #dce7df;
+border-radius:13px;
+padding:16px;
+box-shadow:0 2px 8px #00000008;
 }
-.card h3{font-size:16px;color:#14532d;margin-bottom:10px}
+
+.card h3{
+font-size:16px;
+color:#14532d;
+margin-bottom:10px;
+}
+
 .stat{
-  font-size:27px;font-weight:900;color:#14532d;
-  margin-top:7px;
+font-size:27px;
+font-weight:900;
+color:#14532d;
+margin-top:7px;
 }
-.muted{color:#64748b;font-size:13px}
+
+.muted{
+color:#64748b;
+font-size:13px;
+}
 
 .table-wrap{
-  overflow:auto;background:white;border-radius:12px;
-  border:1px solid #dce7df;
+overflow:auto;
+background:white;
+border-radius:12px;
+border:1px solid #dce7df;
 }
-table{width:100%;border-collapse:collapse;min-width:750px}
+
+table{
+width:100%;
+border-collapse:collapse;
+min-width:750px;
+}
+
 th,td{
-  padding:9px 10px;border-bottom:1px solid #e5e7eb;
-  text-align:left;font-size:13px;
+padding:9px 10px;
+border-bottom:1px solid #e5e7eb;
+text-align:left;
+font-size:13px;
 }
-th{background:#ecfdf5;color:#14532d;white-space:nowrap}
-tr:hover td{background:#f8fafc}
+
+th{
+background:#ecfdf5;
+color:#14532d;
+white-space:nowrap;
+}
+
+tr:hover td{
+background:#f8fafc;
+}
 
 .badge{
-  display:inline-block;padding:5px 8px;border-radius:20px;
-  font-size:11px;font-weight:800;
+display:inline-block;
+padding:5px 8px;
+border-radius:20px;
+font-size:11px;
+font-weight:800;
 }
-.badge.draft{background:#e2e8f0;color:#334155}
-.badge.pending{background:#fef3c7;color:#92400e}
-.badge.approved{background:#dcfce7;color:#166534}
-.badge.returned{background:#fee2e2;color:#991b1b}
-.badge.final{background:#dbeafe;color:#1e40af}
+
+.badge.draft{
+background:#e2e8f0;
+color:#334155;
+}
+
+.badge.pending{
+background:#fef3c7;
+color:#92400e;
+}
+
+.badge.approved{
+background:#dcfce7;
+color:#166534;
+}
+
+.badge.returned{
+background:#fee2e2;
+color:#991b1b;
+}
+
+.badge.final{
+background:#dbeafe;
+color:#1e40af;
+}
 
 .form-grid{
-  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;
+display:grid;
+grid-template-columns:repeat(4,minmax(0,1fr));
+gap:12px;
 }
-.full{grid-column:1/-1}
+
+.full{
+grid-column:1/-1;
+}
 
 .notice{
-  padding:12px;border-radius:10px;
-  background:#ecfdf5;border-left:4px solid #15803d;
-  margin-bottom:14px;font-size:13px;
+padding:12px;
+border-radius:10px;
+background:#ecfdf5;
+border-left:4px solid #15803d;
+margin-bottom:14px;
+font-size:13px;
 }
+
 .warning{
-  padding:12px;border-radius:10px;
-  background:#fff7ed;border-left:4px solid #ea580c;
-  margin-bottom:14px;font-size:13px;
+padding:12px;
+border-radius:10px;
+background:#fff7ed;
+border-left:4px solid #ea580c;
+margin-bottom:14px;
+font-size:13px;
 }
 
-.actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:12px}
+.actions{
+display:flex;
+gap:7px;
+flex-wrap:wrap;
+margin-top:12px;
+}
 
-.score-input{width:75px;min-width:75px;padding:7px}
-.total-cell{font-weight:900;color:#14532d}
+.score-input{
+width:75px;
+min-width:75px;
+padding:7px;
+}
 
-.mobile-menu{display:none}
+.total-cell{
+font-weight:900;
+color:#14532d;
+}
+
+.mobile-menu{
+display:none;
+}
 
 .modal{
-  position:fixed;inset:0;background:#0008;
-  display:flex;align-items:center;justify-content:center;
-  padding:15px;z-index:100;
+position:fixed;
+inset:0;
+background:#0008;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:15px;
+z-index:100;
 }
+
 .modal-box{
-  background:white;width:100%;max-width:700px;
-  max-height:90vh;overflow:auto;border-radius:15px;padding:20px;
+background:white;
+width:100%;
+max-width:900px;
+max-height:90vh;
+overflow:auto;
+border-radius:15px;
+padding:20px;
 }
+
 .modal-head{
-  display:flex;justify-content:space-between;
-  align-items:center;margin-bottom:15px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:15px;
+}
+
+.workflow{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:7px;
+flex-wrap:wrap;
+margin:15px 0;
+}
+
+.workflow-step{
+background:#ecfdf5;
+color:#14532d;
+border:1px solid #bbf7d0;
+padding:8px 12px;
+border-radius:20px;
+font-size:12px;
+font-weight:700;
+}
+
+.workflow-arrow{
+color:#64748b;
+font-weight:bold;
 }
 
 @media(max-width:1000px){
-  .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .form-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-}
-@media(max-width:700px){
-  .sidebar{
-    position:fixed;left:-260px;top:65px;bottom:0;
-    z-index:50;transition:.25s;
-  }
-  .sidebar.open{left:0}
-  .mobile-menu{display:block}
-  .grid,.grid2,.form-grid{grid-template-columns:1fr}
-  .container{padding:11px}
-  .page-title h2{font-size:18px}
+
+.grid{
+grid-template-columns:repeat(2,minmax(0,1fr));
 }
 
-/* PRINT */
+.form-grid{
+grid-template-columns:repeat(2,minmax(0,1fr));
+}
+
+}
+
+@media(max-width:700px){
+
+.sidebar{
+position:fixed;
+left:-260px;
+top:65px;
+bottom:0;
+z-index:50;
+transition:.25s;
+}
+
+.sidebar.open{
+left:0;
+}
+
+.mobile-menu{
+display:block;
+}
+
+.grid,
+.grid2,
+.form-grid{
+grid-template-columns:1fr;
+}
+
+.container{
+padding:11px;
+}
+
+.page-title h2{
+font-size:18px;
+}
+
+}
+
 @media print{
-  body{background:white}
-  header,.sidebar,.no-print,.page-title .actions{display:none!important}
-  .layout{display:block}
-  .content{width:100%}
-  .container{padding:0}
-  .card{border:0;box-shadow:none}
-  .table-wrap{border:0}
-  table{min-width:0}
+
+body{
+background:white;
+}
+
+header,
+.sidebar,
+.no-print,
+.page-title .actions{
+display:none!important;
+}
+
+.layout{
+display:block;
+}
+
+.content{
+width:100%;
+}
+
+.container{
+padding:0;
+}
+
+.card{
+border:0;
+box-shadow:none;
+}
+
+.table-wrap{
+border:0;
+}
+
+table{
+min-width:0;
+}
+
 }
 </style>
 </head>
@@ -225,4704 +521,7489 @@ tr:hover td{background:#f8fafc}
 <body>
 
 <!-- LOGIN -->
+
 <div id="loginScreen" class="login">
-  <div class="login-card">
-    <div class="login-logo">CTA</div>
-    <h1>Caliphate Tarbiya Academy</h1>
-    <p>School Academic Management System</p>
 
-    <label>Login Type</label>
-    <select id="loginType">
-      <option value="admin">Administrator</option>
-      <option value="teacher">Teacher</option>
-    </select>
+<div class="login-card">
 
-    <label>Username</label>
-    <input id="loginUsername" autocomplete="username">
-
-    <label>Password</label>
-    <input id="loginPassword" type="password" autocomplete="current-password">
-
-    <button class="btn login-btn" onclick="login()">LOGIN</button>
-    <div id="loginError" class="error"></div>
-
-    <div style="margin-top:18px;font-size:11px;text-align:center;color:#64748b">
-      Default administrator: <b>admin</b> / <b>Admin@12345</b>
-    </div>
-  </div>
+<div class="login-logo">
+CTA
 </div>
 
+<h1>
+Caliphate Tarbiya Academy
+</h1>
+
+<p>
+School Academic Management System
+</p>
+
+<label>
+Login Type
+</label>
+
+<select id="loginType">
+
+<option value="admin">
+Administrator
+</option>
+
+<option value="teacher">
+Teacher
+</option>
+
+</select>
+
+<label>
+Username
+</label>
+
+<input
+id="loginUsername"
+autocomplete="username">
+
+<label>
+Password
+</label>
+
+<input
+id="loginPassword"
+type="password"
+autocomplete="current-password">
+
+<button
+class="btn login-btn"
+onclick="login()">
+
+LOGIN
+
+</button>
+
+<div id="loginError" class="error"></div>
+
+<div
+style="
+margin-top:18px;
+font-size:11px;
+text-align:center;
+color:#64748b">
+
+Default administrator:
+<b>admin</b> /
+<b>Admin@12345</b>
+
+</div>
+
+</div>
+
+</div>
+
+
 <!-- APPLICATION -->
+
 <div id="app" class="hidden">
 
 <header>
-  <div style="display:flex;align-items:center;gap:10px">
-    <button class="btn light mobile-menu" onclick="toggleSidebar()">☰</button>
-    <div class="brand">
-      Caliphate Tarbiya Academy
-      <small>Academic Management System</small>
-    </div>
-  </div>
 
-  <div style="display:flex;align-items:center;gap:8px">
-    <span id="headerUser" style="font-size:12px"></span>
-    <button class="btn red small" onclick="logout()">Logout</button>
-  </div>
+<div
+style="
+display:flex;
+align-items:center;
+gap:10px">
+
+<button
+class="btn light mobile-menu"
+onclick="toggleSidebar()">
+
+☰
+
+</button>
+
+<div class="brand">
+
+Caliphate Tarbiya Academy
+
+<small>
+Academic Management System
+</small>
+
+</div>
+
+</div>
+
+<div
+style="
+display:flex;
+align-items:center;
+gap:8px">
+
+<span
+id="headerUser"
+style="font-size:12px">
+</span>
+
+<button
+class="btn red small"
+onclick="logout()">
+
+Logout
+
+</button>
+
+</div>
+
 </header>
+
 
 <div class="layout">
 
+
 <aside id="sidebar" class="sidebar">
 
-  <div class="sidebar-title">Main</div>
-  <button onclick="showPage('dashboard',this)">🏠 Dashboard</button>
+<div class="sidebar-title">
+Main
+</div>
 
-  <div class="sidebar-title">Academic</div>
-  <button onclick="showPage('results',this)">📝 Result Entry</button>
-  <button onclick="showPage('submissions',this)">📤 My Result Submissions</button>
-  <button onclick="showPage('broadsheet',this)">📊 Broadsheet</button>
-  <button id="studentResultNav" onclick="showPage('studentResult',this)">🎓 Student Result</button>
+<button onclick="showPage('dashboard',this)">
+🏠 Dashboard
+</button>
 
-  <div id="hodMenu">
-    <div class="sidebar-title">HOD</div>
-    <button onclick="showPage('hodVetting',this)">✅ Result Vetting</button>
-  </div>
 
-  <div id="examMenu">
-    <div class="sidebar-title">Examination</div>
-    <button onclick="showPage('examReview',this)">📋 Examination Review</button>
-  </div>
+<div class="sidebar-title">
+Academic
+</div>
 
-  <div class="sidebar-title">Administration</div>
+<button onclick="showPage('results',this)">
+📝 Result Entry
+</button>
 
-  <div id="adminMenu">
-    <button onclick="showPage('teachers',this)">👨‍🏫 Teacher Management</button>
-    <button onclick="showPage('publishResults',this)">📢 Publish Results</button>
-    <button onclick="showPage('classes',this)">🏫 Class & Students</button>
-    <button onclick="showPage('subjects',this)">📚 Subjects & HODs</button>
-    <button onclick="showPage('resultSettings',this)">⚙️ Result Settings</button>
-    <button onclick="showPage('backup',this)">💾 Backup & Restore</button>
-  </div>
+<button onclick="showPage('submissions',this)">
+📤 My Result Submissions
+</button>
 
-  <div class="sidebar-title">Account</div>
-  <button onclick="showPage('security',this)">🔐 Change Password</button>
+<button onclick="showPage('broadsheet',this)">
+📊 Broadsheet
+</button>
+
+<button onclick="showPage('studentResult',this)">
+🎓 Student Result
+</button>
+
+
+<div id="hodMenu">
+
+<div class="sidebar-title">
+HOD
+</div>
+
+<button onclick="showPage('hodVetting',this)">
+✅ Result Vetting
+</button>
+
+</div>
+
+
+<div id="examMenu">
+
+<div class="sidebar-title">
+Examination
+</div>
+
+<button onclick="showPage('examReview',this)">
+📋 Examination Review
+</button>
+
+</div>
+
+
+<div class="sidebar-title">
+Administration
+</div>
+
+<div id="adminMenu">
+
+<button onclick="showPage('teachers',this)">
+👨‍🏫 Teacher Management
+</button>
+
+<button onclick="showPage('publishResults',this)">
+📢 Publish Results
+</button>
+
+<button onclick="showPage('classes',this)">
+🏫 Class & Students
+</button>
+
+<button onclick="showPage('subjects',this)">
+📚 Subjects & HODs
+</button>
+
+<button onclick="showPage('resultSettings',this)">
+⚙️ Result Settings
+</button>
+
+<button onclick="showPage('backup',this)">
+💾 Backup & Restore
+</button>
+
+</div>
+
+
+<div class="sidebar-title">
+Account
+</div>
+
+<button onclick="showPage('security',this)">
+🔐 Change Password
+</button>
 
 </aside>
 
+
 <main class="content">
+
 <div class="container">
 
+
 <!-- DASHBOARD -->
+
 <section id="page-dashboard" class="page active">
 
-  <div class="page-title">
-    <div>
-      <h2>Dashboard</h2>
-      <div class="muted">Academic management overview</div>
-    </div>
-  </div>
+<div class="page-title">
 
-  <div class="grid">
+<div>
 
-    <div class="card">
-      <div class="muted">Students</div>
-      <div class="stat" id="statStudents">0</div>
-    </div>
+<h2>
+Dashboard
+</h2>
 
-    <div class="card">
-      <div class="muted">Teachers</div>
-      <div class="stat" id="statTeachers">0</div>
-    </div>
+<div class="muted">
+Academic management overview
+</div>
 
-    <div class="card">
-      <div class="muted">Result Submissions</div>
-      <div class="stat" id="statResults">0</div>
-    </div>
+</div>
 
-    <div class="card">
-      <div class="muted">Finalized Results</div>
-      <div class="stat" id="statFinal">0</div>
-    </div>
+</div>
 
-  </div>
 
-  <div class="card" style="margin-top:15px">
+<div class="grid">
 
-    <h3>Result Workflow</h3>
+<div class="card">
 
-    <div class="notice">
+<div class="muted">
+Students
+</div>
 
-      <b>CA1 (15) + CA2 (15) + Examination (70) = 100 marks.</b>
+<div
+class="stat"
+id="statStudents">
+0
+</div>
 
-      <br><br>
+</div>
 
-      Teachers enter scores.
-      The system calculates totals and grades.
-      Results are automatically routed to the appropriate subject HOD.
-      HOD approval is required before the result reaches the Examination Officer.
 
-      <br><br>
+<div class="card">
 
-      After Examination Officer finalization,
-      the Administrator must publish the result before it is officially released.
+<div class="muted">
+Teachers
+</div>
 
-    </div>
+<div
+class="stat"
+id="statTeachers">
+0
+</div>
 
-  </div>
+</div>
+
+
+<div class="card">
+
+<div class="muted">
+Result Submissions
+</div>
+
+<div
+class="stat"
+id="statResults">
+0
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="muted">
+Finalized Results
+</div>
+
+<div
+class="stat"
+id="statFinal">
+0
+</div>
+
+</div>
+
+</div>
+
+
+<div
+class="card"
+style="margin-top:15px">
+
+<h3>
+Result Workflow
+</h3>
+
+<div class="workflow">
+
+<span class="workflow-step">
+Teacher
+</span>
+
+<span class="workflow-arrow">→</span>
+
+<span class="workflow-step">
+HOD Review
+</span>
+
+<span class="workflow-arrow">→</span>
+
+<span class="workflow-step">
+HOD Approves
+</span>
+
+<span class="workflow-arrow">→</span>
+
+<span class="workflow-step">
+HOD Sends
+</span>
+
+<span class="workflow-arrow">→</span>
+
+<span class="workflow-step">
+Examination Officer
+</span>
+
+<span class="workflow-arrow">→</span>
+
+<span class="workflow-step">
+Finalize
+</span>
+
+<span class="workflow-arrow">→</span>
+
+<span class="workflow-step">
+Administrator
+</span>
+
+<span class="workflow-arrow">→</span>
+
+<span class="workflow-step">
+Publish
+</span>
+
+</div>
+
+
+<div class="notice">
+
+<b>
+CA1 (15) + CA2 (15) + Examination (70) = 100 marks.
+</b>
+
+<br><br>
+
+Teachers enter results and submit them to the appropriate HOD.
+
+<br><br>
+
+The HOD reviews and approves the result.
+
+<b>
+Approval does NOT automatically send the result to the Examination Officer.
+</b>
+
+<br><br>
+
+After approving, the HOD must manually click
+<b>
+Send to Examination Officer
+</b>.
+
+</div>
+
+</div>
 
 </section>
+
 
 <!-- RESULT ENTRY -->
+
 <section id="page-results" class="page">
 
-  <div class="page-title">
+<div class="page-title">
 
-    <div>
-      <h2>Result Entry</h2>
-      <div class="muted">Enter CA1, CA2 and Examination scores</div>
-    </div>
+<div>
 
-  </div>
+<h2>
+Result Entry
+</h2>
 
-  <div class="card">
+<div class="muted">
+Enter CA1, CA2 and Examination scores
+</div>
 
-    <div class="form-grid">
+</div>
 
-      <div>
-        <label>Session</label>
-        <select id="resultSession">
-          <option>2026/2027</option>
-          <option>2027/2028</option>
-          <option>2028/2029</option>
-        </select>
-      </div>
+</div>
 
-      <div>
-        <label>Term</label>
-        <select id="resultTerm">
-          <option>First Term</option>
-          <option>Second Term</option>
-          <option>Third Term</option>
-        </select>
-      </div>
 
-      <div>
-        <label>Class</label>
-        <select id="resultClass" onchange="loadResultStudents()"></select>
-      </div>
+<div class="card">
 
-      <div>
-        <label>Subject</label>
-        <select id="resultSubject" onchange="loadResultStudents()"></select>
-      </div>
+<div class="form-grid">
 
-    </div>
+<div>
 
-    <div id="resultHodInfo" style="margin-top:14px"></div>
+<label>
+Session
+</label>
 
-    <div id="scoreEntryArea" style="margin-top:15px"></div>
+<select id="resultSession">
 
-    <div class="actions no-print">
-      <button class="btn gray" onclick="saveResultDraft()">Save Draft</button>
-      <button class="btn green" onclick="submitResultToHOD()">Validate & Submit to HOD</button>
-    </div>
+<option>
+2026/2027
+</option>
 
-  </div>
+<option>
+2027/2028
+</option>
+
+<option>
+2028/2029
+</option>
+
+</select>
+
+</div>
+
+
+<div>
+
+<label>
+Term
+</label>
+
+<select id="resultTerm">
+
+<option>
+First Term
+</option>
+
+<option>
+Second Term
+</option>
+
+<option>
+Third Term
+</option>
+
+</select>
+
+</div>
+
+
+<div>
+
+<label>
+Class
+</label>
+
+<select
+id="resultClass"
+onchange="loadResultStudents()">
+
+</select>
+
+</div>
+
+
+<div>
+
+<label>
+Subject
+</label>
+
+<select
+id="resultSubject"
+onchange="loadResultStudents()">
+
+</select>
+
+</div>
+
+</div>
+
+
+<div
+id="resultHodInfo"
+style="margin-top:14px">
+</div>
+
+
+<div
+id="scoreEntryArea"
+style="margin-top:15px">
+</div>
+
+
+<div class="actions no-print">
+
+<button
+class="btn gray"
+onclick="saveResultDraft()">
+
+Save Draft
+
+</button>
+
+<button
+class="btn green"
+onclick="submitResultToHOD()">
+
+Validate & Submit to HOD
+
+</button>
+
+</div>
+
+</div>
 
 </section>
+
 
 <!-- SUBMISSIONS -->
+
 <section id="page-submissions" class="page">
 
-  <div class="page-title">
-    <div>
-      <h2>My Result Submissions</h2>
-      <div class="muted">Track your submitted results</div>
-    </div>
-  </div>
+<div class="page-title">
 
-  <div id="mySubmissions"></div>
+<div>
+
+<h2>
+My Result Submissions
+</h2>
+
+<div class="muted">
+Track your submitted results
+</div>
+
+</div>
+
+</div>
+
+<div id="mySubmissions"></div>
 
 </section>
+
 
 <!-- BROADSHEET -->
+
 <section id="page-broadsheet" class="page">
 
-  <div class="page-title">
+<div class="page-title">
 
-    <div>
-      <h2>Class Broadsheet</h2>
-      <div class="muted">
-        Automatically assembled from approved subject results
-      </div>
-    </div>
+<div>
 
-    <div class="actions no-print">
-      <button class="btn blue" onclick="printCurrent()">Print / PDF</button>
-      <button class="btn green" onclick="exportBroadsheetWord()">Export Word</button>
-    </div>
+<h2>
+Class Broadsheet
+</h2>
 
-  </div>
+<div class="muted">
+Automatically assembled from finalized or published results
+</div>
 
-  <div class="card no-print">
+</div>
 
-    <div class="form-grid">
+<div class="actions no-print">
 
-      <div>
-        <label>Session</label>
-        <select id="bSession"></select>
-      </div>
+<button
+class="btn blue"
+onclick="printCurrent()">
 
-      <div>
-        <label>Term</label>
-        <select id="bTerm">
-          <option>First Term</option>
-          <option>Second Term</option>
-          <option>Third Term</option>
-        </select>
-      </div>
+Print / PDF
 
-      <div>
-        <label>Class</label>
-        <select id="bClass"></select>
-      </div>
+</button>
 
-      <div style="display:flex;align-items:end">
-        <button class="btn green" style="width:100%" onclick="generateBroadsheet()">
-          Generate
-        </button>
-      </div>
+<button
+class="btn green"
+onclick="exportBroadsheetWord()">
 
-    </div>
+Export Word
 
-  </div>
+</button>
 
-  <div id="broadsheetArea" style="margin-top:15px"></div>
+</div>
+
+</div>
+
+
+<div class="card no-print">
+
+<div class="form-grid">
+
+<div>
+
+<label>
+Session
+</label>
+
+<select id="bSession"></select>
+
+</div>
+
+
+<div>
+
+<label>
+Term
+</label>
+
+<select id="bTerm">
+
+<option>
+First Term
+</option>
+
+<option>
+Second Term
+</option>
+
+<option>
+Third Term
+</option>
+
+</select>
+
+</div>
+
+
+<div>
+
+<label>
+Class
+</label>
+
+<select id="bClass"></select>
+
+</div>
+
+
+<div
+style="
+display:flex;
+align-items:end">
+
+<button
+class="btn green"
+style="width:100%"
+onclick="generateBroadsheet()">
+
+Generate
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div
+id="broadsheetArea"
+style="margin-top:15px">
+</div>
 
 </section>
+
 
 <!-- STUDENT RESULT -->
+
 <section id="page-studentResult" class="page">
 
-  <div class="page-title">
+<div class="page-title">
 
-    <div>
-      <h2>Student Result</h2>
-      <div class="muted">Individual student academic report</div>
-    </div>
+<div>
 
-    <div class="actions no-print">
-      <button class="btn blue" onclick="printCurrent()">Print / PDF</button>
-      <button class="btn green" onclick="exportStudentWord()">Export Word</button>
-    </div>
+<h2>
+Student Result
+</h2>
 
-  </div>
+<div class="muted">
+Individual student academic report
+</div>
 
-  <div class="card no-print">
+</div>
 
-    <div class="form-grid">
+<div class="actions no-print">
 
-      <div>
-        <label>Session</label>
-        <select id="sSession"></select>
-      </div>
+<button
+class="btn blue"
+onclick="printCurrent()">
 
-      <div>
-        <label>Term</label>
-        <select id="sTerm">
-          <option>First Term</option>
-          <option>Second Term</option>
-          <option>Third Term</option>
-        </select>
-      </div>
+Print / PDF
 
-      <div>
-        <label>Class</label>
-        <select id="sClass" onchange="loadStudentSelector()"></select>
-      </div>
+</button>
 
-      <div>
-        <label>Student</label>
-        <select id="sStudent"></select>
-      </div>
+<button
+class="btn green"
+onclick="exportStudentWord()">
 
-    </div>
+Export Word
 
-    <div class="actions">
-      <button class="btn green" onclick="generateStudentResult()">
-        Generate Result
-      </button>
-    </div>
+</button>
 
-  </div>
+</div>
 
-  <div id="studentResultArea" style="margin-top:15px"></div>
+</div>
+
+
+<div class="card no-print">
+
+<div class="form-grid">
+
+<div>
+
+<label>
+Session
+</label>
+
+<select id="sSession"></select>
+
+</div>
+
+
+<div>
+
+<label>
+Term
+</label>
+
+<select id="sTerm">
+
+<option>
+First Term
+</option>
+
+<option>
+Second Term
+</option>
+
+<option>
+Third Term
+</option>
+
+</select>
+
+</div>
+
+
+<div>
+
+<label>
+Class
+</label>
+
+<select
+id="sClass"
+onchange="loadStudentSelector()">
+
+</select>
+
+</div>
+
+
+<div>
+
+<label>
+Student
+</label>
+
+<select id="sStudent"></select>
+
+</div>
+
+</div>
+
+
+<div class="actions">
+
+<button
+class="btn green"
+onclick="generateStudentResult()">
+
+Generate Result
+
+</button>
+
+</div>
+
+</div>
+
+
+<div
+id="studentResultArea"
+style="margin-top:15px">
+</div>
 
 </section>
+
 
 <!-- HOD VETTING -->
+
 <section id="page-hodVetting" class="page">
 
-  <div class="page-title">
+<div class="page-title">
 
-    <div>
-      <h2>HOD Result Vetting</h2>
-      <div class="muted">
-        Review results belonging to your assigned subject
-      </div>
-    </div>
+<div>
 
-  </div>
+<h2>
+HOD Result Vetting
+</h2>
 
-  <div id="hodVettingArea"></div>
+<div class="muted">
+Review and control submission to Examination Officer
+</div>
+
+</div>
+
+</div>
+
+
+<div class="notice">
+
+<b>
+Important:
+</b>
+
+Approving a result does NOT automatically send it to the Examination Officer.
+
+After approval, the HOD must manually use
+<b>
+Send to Examination Officer
+</b>.
+
+</div>
+
+
+<div id="hodVettingArea"></div>
 
 </section>
+
 
 <!-- EXAMINATION REVIEW -->
+
 <section id="page-examReview" class="page">
 
-  <div class="page-title">
+<div class="page-title">
 
-    <div>
-      <h2>Examination Officer Review</h2>
-      <div class="muted">
-        Final verification before official result release
-      </div>
-    </div>
+<div>
 
-  </div>
+<h2>
+Examination Officer Review
+</h2>
 
-  <div id="examReviewArea"></div>
+<div class="muted">
+Final verification before Administrator publication
+</div>
+
+</div>
+
+</div>
+
+
+<div id="examReviewArea"></div>
 
 </section>
 
-<!-- PUBLISH RESULTS -->
+
+<!-- PUBLISH -->
+
 <section id="page-publishResults" class="page">
 
-  <div class="page-title">
+<div class="page-title">
 
-    <div>
-      <h2>Publish Results</h2>
+<div>
 
-      <div class="muted">
-        Administrator controls the official release of finalized results
-      </div>
+<h2>
+Publish Results
+</h2>
 
-    </div>
+<div class="muted">
+Administrator controls official release
+</div>
 
-  </div>
+</div>
 
-  <div class="notice">
+</div>
 
-    <b>Final Result Release</b>
 
-    <br><br>
+<div class="notice">
 
-    Only results that have been finalized and locked by the Examination Officer
-    can be published.
+<b>
+Final Release Stage
+</b>
 
-    <br><br>
+<br><br>
 
-    Once published, the result is officially released and becomes eligible
-    for display in the future Parent/Student Portal.
+Only results finalized by the Examination Officer
+can appear here.
 
-  </div>
+<br><br>
 
-  <div id="publishResultsArea"></div>
+The Administrator must manually publish the result.
+
+<br><br>
+
+Published results will be ready for the future Parent/Student Portal.
+
+</div>
+
+
+<div id="publishResultsArea"></div>
 
 </section>
+
 
 <!-- TEACHERS -->
+
 <section id="page-teachers" class="page">
 
-  <div class="page-title">
+<div class="page-title">
 
-    <div>
-      <h2>Teacher Management</h2>
-      <div class="muted">
-        Only Administrator can create teacher accounts
-      </div>
-    </div>
+<div>
 
-    <button class="btn green" onclick="openTeacherModal()">
-      + Add Teacher
-    </button>
+<h2>
+Teacher Management
+</h2>
 
-  </div>
+<div class="muted">
+Only Administrator can create teacher accounts
+</div>
 
-  <div class="card">
+</div>
 
-    <div class="table-wrap">
 
-      <table>
+<button
+class="btn green"
+onclick="openTeacherModal()">
 
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Username</th>
-            <th>Academic Role</th>
-            <th>Status</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
++ Add Teacher
 
-        <tbody id="teachersTable"></tbody>
+</button>
 
-      </table>
+</div>
 
-    </div>
 
-  </div>
+<div class="card">
+
+<div class="table-wrap">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Name</th>
+<th>Username</th>
+<th>Academic Role</th>
+<th>Status</th>
+<th>Actions</th>
+
+</tr>
+
+</thead>
+
+<tbody id="teachersTable"></tbody>
+
+</table>
+
+</div>
+
+</div>
 
 </section>
+
 
 <!-- CLASSES -->
+
 <section id="page-classes" class="page">
 
-  <div class="page-title">
+<div class="page-title">
 
-    <div>
-      <h2>Class & Students</h2>
-      <div class="muted">Create classes and student lists</div>
-    </div>
+<div>
 
-  </div>
+<h2>
+Class & Students
+</h2>
 
-  <div class="card">
+<div class="muted">
+Create classes and student lists
+</div>
 
-    <div class="form-grid">
+</div>
 
-      <div>
+</div>
 
-        <label>Class</label>
 
-        <select id="className">
+<div class="card">
 
-          <option>Nursery 1</option>
-          <option>Nursery 2</option>
-          <option>Nursery 3</option>
-          <option>Basic 1</option>
-          <option>Basic 2</option>
-          <option>Basic 3</option>
-          <option>Basic 4</option>
-          <option>Basic 5</option>
-          <option>Basic 6</option>
-          <option>JSS 1</option>
-          <option>JSS 2</option>
-          <option>JSS 3</option>
-          <option>SS 1</option>
-          <option>SS 2</option>
-          <option>SS 3</option>
+<div class="form-grid">
 
-        </select>
+<div>
 
-      </div>
+<label>
+Class
+</label>
 
-      <div class="full">
+<select id="className">
 
-        <label>Students — one student per line</label>
+<option>Nursery 1</option>
+<option>Nursery 2</option>
+<option>Nursery 3</option>
+<option>Basic 1</option>
+<option>Basic 2</option>
+<option>Basic 3</option>
+<option>Basic 4</option>
+<option>Basic 5</option>
+<option>Basic 6</option>
+<option>JSS 1</option>
+<option>JSS 2</option>
+<option>JSS 3</option>
+<option>SS 1</option>
+<option>SS 2</option>
+<option>SS 3</option>
 
-        <textarea
-          id="classStudents"
-          placeholder="Aisha Musa&#10;Muhammad Bello&#10;Fatima Ibrahim"></textarea>
+</select>
 
-      </div>
+</div>
 
-    </div>
 
-    <div class="actions">
+<div class="full">
 
-      <button class="btn green" onclick="saveClass()">
-        Save / Update Class
-      </button>
+<label>
+Students — one student per line
+</label>
 
-    </div>
+<textarea
+id="classStudents"
+placeholder="Aisha Musa&#10;Muhammad Bello&#10;Fatima Ibrahim">
+</textarea>
 
-  </div>
+</div>
 
-  <div id="classesList" style="margin-top:15px"></div>
+</div>
+
+
+<div class="actions">
+
+<button
+class="btn green"
+onclick="saveClass()">
+
+Save / Update Class
+
+</button>
+
+</div>
+
+</div>
+
+
+<div
+id="classesList"
+style="margin-top:15px">
+</div>
 
 </section>
+
 
 <!-- SUBJECTS -->
+
 <section id="page-subjects" class="page">
 
-  <div class="page-title">
+<div class="page-title">
 
-    <div>
-      <h2>Subjects & HODs</h2>
-      <div class="muted">
-        HOD assignment controls automatic result routing
-      </div>
-    </div>
+<div>
 
-  </div>
+<h2>
+Subjects & HODs
+</h2>
 
-  <div class="card">
+<div class="muted">
+HOD assignment controls result routing
+</div>
 
-    <div class="notice">
+</div>
 
-      Teachers do not select an HOD when submitting a result.
+</div>
 
-      The system automatically routes the result according to the subject's HOD.
 
-    </div>
+<div class="card">
 
-    <div class="table-wrap">
+<div class="notice">
 
-      <table>
+Teachers do not select an HOD.
 
-        <thead>
-          <tr>
-            <th>Subject</th>
-            <th>Assigned HOD</th>
-          </tr>
-        </thead>
+The system uses the Administrator's subject-HOD assignment.
 
-        <tbody id="subjectsTable"></tbody>
+</div>
 
-      </table>
 
-    </div>
+<div class="table-wrap">
 
-  </div>
+<table>
+
+<thead>
+
+<tr>
+
+<th>
+Subject
+</th>
+
+<th>
+Assigned HOD
+</th>
+
+</tr>
+
+</thead>
+
+<tbody id="subjectsTable"></tbody>
+
+</table>
+
+</div>
+
+</div>
 
 </section>
 
-<!-- RESULT SETTINGS -->
+
+<!-- SETTINGS -->
+
 <section id="page-resultSettings" class="page">
 
-  <div class="page-title">
+<div class="page-title">
 
-    <div>
-      <h2>Result Settings</h2>
-      <div class="muted">
-        Configure the school's grading system
-      </div>
-    </div>
+<div>
 
-  </div>
+<h2>
+Result Settings
+</h2>
 
-  <div class="card">
+<div class="muted">
+Configure grading
+</div>
 
-    <div class="notice">
+</div>
 
-      Current recommended structure:
-      <b>CA1 /15 + CA2 /15 + Examination /70 = 100.</b>
+</div>
 
-    </div>
 
-    <div class="form-grid">
+<div class="card">
 
-      <div>
-        <label>CA1 Maximum</label>
-        <input id="setCA1" type="number">
-      </div>
+<div class="notice">
 
-      <div>
-        <label>CA2 Maximum</label>
-        <input id="setCA2" type="number">
-      </div>
+Current structure:
 
-      <div>
-        <label>Examination Maximum</label>
-        <input id="setExam" type="number">
-      </div>
+<b>
+CA1 /15 + CA2 /15 + Examination /70 = 100
+</b>
 
-    </div>
+</div>
 
-    <h3 style="margin-top:20px">Grading Scale</h3>
 
-    <div class="table-wrap" style="margin-top:10px">
+<div class="form-grid">
 
-      <table>
+<div>
 
-        <thead>
-          <tr>
-            <th>Grade</th>
-            <th>Minimum Score</th>
-            <th>Remark</th>
-          </tr>
-        </thead>
+<label>
+CA1 Maximum
+</label>
 
-        <tbody id="gradingTable"></tbody>
+<input
+id="setCA1"
+type="number">
 
-      </table>
+</div>
 
-    </div>
 
-    <div class="actions">
+<div>
 
-      <button class="btn green" onclick="saveResultSettings()">
-        Save Result Settings
-      </button>
+<label>
+CA2 Maximum
+</label>
 
-    </div>
+<input
+id="setCA2"
+type="number">
 
-  </div>
+</div>
+
+
+<div>
+
+<label>
+Examination Maximum
+</label>
+
+<input
+id="setExam"
+type="number">
+
+</div>
+
+</div>
+
+
+<h3 style="margin-top:20px">
+Grading Scale
+</h3>
+
+
+<div
+class="table-wrap"
+style="margin-top:10px">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>
+Grade
+</th>
+
+<th>
+Minimum Score
+</th>
+
+<th>
+Remark
+</th>
+
+</tr>
+
+</thead>
+
+<tbody id="gradingTable"></tbody>
+
+</table>
+
+</div>
+
+
+<div class="actions">
+
+<button
+class="btn green"
+onclick="saveResultSettings()">
+
+Save Result Settings
+
+</button>
+
+</div>
+
+</div>
 
 </section>
+
 
 <!-- BACKUP -->
+
 <section id="page-backup" class="page">
 
-  <div class="page-title">
+<div class="page-title">
 
-    <div>
-      <h2>Backup & Restore</h2>
-      <div class="muted">
-        Protect your school's local data
-      </div>
-    </div>
+<div>
 
-  </div>
+<h2>
+Backup & Restore
+</h2>
 
-  <div class="card">
+<div class="muted">
+Protect school data
+</div>
 
-    <div class="notice">
+</div>
 
-      Because this version uses browser local storage,
-      regularly download a backup.
+</div>
 
-    </div>
 
-    <div class="actions">
+<div class="card">
 
-      <button class="btn green" onclick="downloadBackup()">
-        Download Backup
-      </button>
+<div class="notice">
 
-      <label class="btn blue" style="display:inline-block">
+Regularly download a backup of your school data.
 
-        Restore Backup
+</div>
 
-        <input
-          type="file"
-          accept=".json"
-          onchange="restoreBackup(event)"
-          style="display:none">
 
-      </label>
+<div class="actions">
 
-    </div>
+<button
+class="btn green"
+onclick="downloadBackup()">
 
-  </div>
+Download Backup
+
+</button>
+
+
+<label
+class="btn blue"
+style="display:inline-block">
+
+Restore Backup
+
+<input
+type="file"
+accept=".json"
+onchange="restoreBackup(event)"
+style="display:none">
+
+</label>
+
+</div>
+
+</div>
 
 </section>
+
 
 <!-- SECURITY -->
+
 <section id="page-security" class="page">
 
-  <div class="page-title">
+<div class="page-title">
 
-    <div>
-      <h2>Account Security</h2>
-      <div class="muted">Change your password</div>
-    </div>
+<div>
 
-  </div>
+<h2>
+Account Security
+</h2>
 
-  <div class="card" style="max-width:500px">
+<div class="muted">
+Change your password
+</div>
 
-    <label>Current Password</label>
-    <input id="oldPassword" type="password">
+</div>
 
-    <label>New Password</label>
-    <input id="newPassword" type="password">
+</div>
 
-    <label>Confirm New Password</label>
-    <input id="confirmPassword" type="password">
 
-    <div class="actions">
+<div
+class="card"
+style="max-width:500px">
 
-      <button class="btn green" onclick="changePassword()">
-        Change Password
-      </button>
+<label>
+Current Password
+</label>
 
-    </div>
+<input
+id="oldPassword"
+type="password">
 
-    <div id="passwordMessage"></div>
 
-  </div>
+<label>
+New Password
+</label>
+
+<input
+id="newPassword"
+type="password">
+
+
+<label>
+Confirm New Password
+</label>
+
+<input
+id="confirmPassword"
+type="password">
+
+
+<div class="actions">
+
+<button
+class="btn green"
+onclick="changePassword()">
+
+Change Password
+
+</button>
+
+</div>
+
+
+<div id="passwordMessage"></div>
+
+</div>
 
 </section>
+
 
 </div>
 </main>
+
 </div>
 </div>
+
 
 <!-- TEACHER MODAL -->
-<div id="teacherModal" class="modal hidden">
 
-  <div class="modal-box">
+<div
+id="teacherModal"
+class="modal hidden">
 
-    <div class="modal-head">
+<div class="modal-box">
 
-      <h3>Create Teacher Account</h3>
+<div class="modal-head">
 
-      <button class="btn red small" onclick="closeTeacherModal()">
-        Close
-      </button>
+<h3>
+Create Teacher Account
+</h3>
 
-    </div>
+<button
+class="btn red small"
+onclick="closeTeacherModal()">
 
-    <input type="hidden" id="editTeacherId">
+Close
 
-    <label>Full Name</label>
-    <input id="teacherName">
-
-    <label>Username</label>
-    <input id="teacherUsername">
-
-    <label>Password</label>
-    <input id="teacherPassword" type="password">
-
-    <label>Academic Role</label>
-
-    <select id="teacherAcademicRole">
-
-      <option value="Teacher">Teacher</option>
-      <option value="HOD Mathematics">HOD Mathematics</option>
-      <option value="HOD English">HOD English</option>
-      <option value="HOD Physics">HOD Physics</option>
-      <option value="HOD Chemistry">HOD Chemistry</option>
-      <option value="HOD Biology">HOD Biology</option>
-      <option value="HOD Economics">HOD Economics</option>
-      <option value="HOD Hausa">HOD Hausa</option>
-      <option value="HOD Arabic">HOD Arabic</option>
-      <option value="HOD French">HOD French</option>
-      <option value="HOD Computer Studies">HOD Computer Studies</option>
-      <option value="Examination Officer">Examination Officer</option>
-
-    </select>
-
-    <div class="actions">
-
-      <button class="btn green" onclick="saveTeacher()">
-        Save Teacher
-      </button>
-
-    </div>
-
-  </div>
+</button>
 
 </div>
+
+
+<input
+type="hidden"
+id="editTeacherId">
+
+
+<label>
+Full Name
+</label>
+
+<input id="teacherName">
+
+
+<label>
+Username
+</label>
+
+<input id="teacherUsername">
+
+
+<label>
+Password
+</label>
+
+<input
+id="teacherPassword"
+type="password">
+
+
+<label>
+Academic Role
+</label>
+
+<select id="teacherAcademicRole">
+
+<option value="Teacher">
+Teacher
+</option>
+
+<option value="HOD Mathematics">
+HOD Mathematics
+</option>
+
+<option value="HOD English">
+HOD English
+</option>
+
+<option value="HOD Physics">
+HOD Physics
+</option>
+
+<option value="HOD Chemistry">
+HOD Chemistry
+</option>
+
+<option value="HOD Biology">
+HOD Biology
+</option>
+
+<option value="HOD Economics">
+HOD Economics
+</option>
+
+<option value="HOD Hausa">
+HOD Hausa
+</option>
+
+<option value="HOD Arabic">
+HOD Arabic
+</option>
+
+<option value="HOD French">
+HOD French
+</option>
+
+<option value="HOD Computer Studies">
+HOD Computer Studies
+</option>
+
+<option value="Examination Officer">
+Examination Officer
+</option>
+
+</select>
+
+
+<div class="actions">
+
+<button
+class="btn green"
+onclick="saveTeacher()">
+
+Save Teacher
+
+</button>
+
+</div>
+
+</div>
+</div>
+
 
 <!-- REVIEW MODAL -->
-<div id="reviewModal" class="modal hidden">
 
-  <div class="modal-box">
+<div
+id="reviewModal"
+class="modal hidden">
 
-    <div class="modal-head">
+<div class="modal-box">
 
-      <h3 id="reviewTitle">Result Review</h3>
+<div class="modal-head">
 
-      <button class="btn red small" onclick="closeReview()">
-        Close
-      </button>
+<h3 id="reviewTitle">
+Result Review
+</h3>
 
-    </div>
+<button
+class="btn red small"
+onclick="closeReview()">
 
-    <div id="reviewContent"></div>
+Close
 
-  </div>
+</button>
 
 </div>
+
+
+<div id="reviewContent"></div>
+
+</div>
+
+</div>
+
 
 <script>
 
-/* =========================================================
-   CALIPHATE TARBIYA ACADEMY
-   SCHOOL ACADEMIC MANAGEMENT SYSTEM
-   RESULTS MODULE
-   ========================================================= */
+const DB_KEY="CTA_ACADEMY_V10";
 
-const DB_KEY = "CTA_ACADEMY_V10";
 
-const SUBJECTS = [
-  "English",
-  "Mathematics",
-  "Basic Science",
-  "Basic Technology",
-  "Social Studies",
-  "Civic Education",
-  "Computer Studies",
-  "Physics",
-  "Chemistry",
-  "Biology",
-  "Economics",
-  "Hausa",
-  "Arabic",
-  "French",
-  "Islamic Religious Studies",
-  "Christian Religious Studies",
-  "Agricultural Science",
-  "Geography",
-  "Government",
-  "Literature in English"
+const SUBJECTS=[
+"English",
+"Mathematics",
+"Basic Science",
+"Basic Technology",
+"Social Studies",
+"Civic Education",
+"Computer Studies",
+"Physics",
+"Chemistry",
+"Biology",
+"Economics",
+"Hausa",
+"Arabic",
+"French",
+"Islamic Religious Studies",
+"Christian Religious Studies",
+"Agricultural Science",
+"Geography",
+"Government",
+"Literature in English"
 ];
 
-const CLASSES = [
-  "Nursery 1","Nursery 2","Nursery 3",
-  "Basic 1","Basic 2","Basic 3","Basic 4","Basic 5","Basic 6",
-  "JSS 1","JSS 2","JSS 3",
-  "SS 1","SS 2","SS 3"
+
+const CLASSES=[
+"Nursery 1",
+"Nursery 2",
+"Nursery 3",
+"Basic 1",
+"Basic 2",
+"Basic 3",
+"Basic 4",
+"Basic 5",
+"Basic 6",
+"JSS 1",
+"JSS 2",
+"JSS 3",
+"SS 1",
+"SS 2",
+"SS 3"
 ];
 
-let db = loadDB();
-let currentUser = null;
-let currentBroadsheetData = null;
-let currentStudentData = null;
+
+let db=loadDB();
+
+let currentUser=null;
+
+let currentBroadsheetData=null;
+
+let currentStudentData=null;
 
 
-/* ================= DATABASE ================= */
+/* =====================================================
+DATABASE
+===================================================== */
 
 function defaultDB(){
 
-  return {
+return{
 
-    settings:{
-      ca1Max:15,
-      ca2Max:15,
-      examMax:70,
+settings:{
+ca1Max:15,
+ca2Max:15,
+examMax:70,
 
-      grades:[
-        {grade:"A",min:75,remark:"Excellent"},
-        {grade:"B",min:70,remark:"Very Good"},
-        {grade:"C",min:60,remark:"Good"},
-        {grade:"D",min:50,remark:"Fair"},
-        {grade:"E",min:40,remark:"Pass"},
-        {grade:"F",min:0,remark:"Fail"}
-      ]
-    },
+grades:[
+{
+grade:"A",
+min:75,
+remark:"Excellent"
+},
+{
+grade:"B",
+min:70,
+remark:"Very Good"
+},
+{
+grade:"C",
+min:60,
+remark:"Good"
+},
+{
+grade:"D",
+min:50,
+remark:"Fair"
+},
+{
+grade:"E",
+min:40,
+remark:"Pass"
+},
+{
+grade:"F",
+min:0,
+remark:"Fail"
+}
+]
+},
 
-    users:[
-      {
-        id:"admin-1",
-        name:"Administrator",
-        username:"admin",
-        password:"Admin@12345",
-        role:"admin",
-        academicRole:"Administrator",
-        active:true
-      }
-    ],
+users:[
+{
+id:"admin-1",
+name:"Administrator",
+username:"admin",
+password:"Admin@12345",
+role:"admin",
+academicRole:"Administrator",
+active:true
+}
+],
 
-    classes:[],
+classes:[],
 
-    subjects: SUBJECTS.map((name,i)=>({
-      id:"sub-"+i,
-      name,
-      hodId:""
-    })),
+subjects:SUBJECTS.map(
+(name,i)=>({
+id:"sub-"+i,
+name:name,
+hodId:""
+})
+),
 
-    results:[],
-    audit:[]
+results:[],
 
-  };
+audit:[]
+
+};
 
 }
+
 
 function loadDB(){
 
-  try{
+try{
 
-    const raw=localStorage.getItem(DB_KEY);
+const raw=
+localStorage.getItem(DB_KEY);
 
-    if(!raw){
+if(!raw){
 
-      const fresh=defaultDB();
+const fresh=
+defaultDB();
 
-      localStorage.setItem(DB_KEY,JSON.stringify(fresh));
+localStorage.setItem(
+DB_KEY,
+JSON.stringify(fresh)
+);
 
-      return fresh;
-
-    }
-
-    const parsed=JSON.parse(raw);
-    const fresh=defaultDB();
-
-    return Object.assign(fresh,parsed,{
-      settings:Object.assign(fresh.settings,parsed.settings||{}),
-      users:parsed.users||fresh.users,
-      classes:parsed.classes||[],
-      subjects:parsed.subjects||fresh.subjects,
-      results:parsed.results||[],
-      audit:parsed.audit||[]
-    });
-
-  }catch(e){
-
-    return defaultDB();
-
-  }
+return fresh;
 
 }
+
+const parsed=
+JSON.parse(raw);
+
+const fresh=
+defaultDB();
+
+return Object.assign(
+fresh,
+parsed,
+{
+settings:Object.assign(
+fresh.settings,
+parsed.settings||{}
+),
+
+users:
+parsed.users||
+fresh.users,
+
+classes:
+parsed.classes||
+[],
+
+subjects:
+parsed.subjects||
+fresh.subjects,
+
+results:
+parsed.results||
+[],
+
+audit:
+parsed.audit||
+[]
+
+}
+);
+
+}catch(e){
+
+return defaultDB();
+
+}
+
+}
+
 
 function saveDB(){
 
-  localStorage.setItem(DB_KEY,JSON.stringify(db));
+localStorage.setItem(
+DB_KEY,
+JSON.stringify(db)
+);
 
 }
+
 
 function uid(prefix){
 
-  return prefix+"-"+Date.now()+"-"+Math.random().toString(36).slice(2,8);
+return prefix+
+"-"+
+Date.now()+
+"-"+
+Math.random()
+.toString(36)
+.slice(2,8);
 
 }
+
 
 function now(){
 
-  return new Date().toLocaleString();
+return new Date()
+.toLocaleString();
 
 }
 
 
-/* ================= LOGIN ================= */
+/* =====================================================
+LOGIN
+===================================================== */
 
 function login(){
 
-  const type=document.getElementById("loginType").value;
-  const username=document.getElementById("loginUsername").value.trim();
-  const password=document.getElementById("loginPassword").value;
+const type=
+document.getElementById(
+"loginType"
+).value;
 
-  const user=db.users.find(u =>
-    u.username===username &&
-    u.password===password &&
-    u.active!==false &&
-    (
-      (type==="admin" && u.role==="admin") ||
-      (type==="teacher" && u.role==="teacher")
-    )
-  );
+const username=
+document.getElementById(
+"loginUsername"
+).value.trim();
 
-  if(!user){
+const password=
+document.getElementById(
+"loginPassword"
+).value;
 
-    document.getElementById("loginError").textContent=
-      "Invalid username, password or account type.";
 
-    return;
+const user=
+db.users.find(u=>
 
-  }
+u.username===username &&
 
-  currentUser=user;
+u.password===password &&
 
-  sessionStorage.setItem("CTA_CURRENT_USER",user.id);
+u.active!==false &&
 
-  document.getElementById("loginScreen").classList.add("hidden");
-  document.getElementById("app").classList.remove("hidden");
+(
+(type==="admin" &&
+u.role==="admin") ||
 
-  document.getElementById("headerUser").textContent=
-    user.name+" • "+(user.academicRole||"Administrator");
+(type==="teacher" &&
+u.role==="teacher")
+)
 
-  configureNavigation();
-  refreshAll();
+);
+
+
+if(!user){
+
+document.getElementById(
+"loginError"
+).textContent=
+"Invalid username, password or account type.";
+
+return;
 
 }
+
+
+currentUser=user;
+
+
+sessionStorage.setItem(
+"CTA_CURRENT_USER",
+user.id
+);
+
+
+document.getElementById(
+"loginScreen"
+).classList.add("hidden");
+
+
+document.getElementById(
+"app"
+).classList.remove("hidden");
+
+
+document.getElementById(
+"headerUser"
+).textContent=
+user.name+
+" • "+
+(user.academicRole||
+"Administrator");
+
+
+configureNavigation();
+
+refreshAll();
+
+}
+
 
 function restoreSession(){
 
-  const id=sessionStorage.getItem("CTA_CURRENT_USER");
+const id=
+sessionStorage.getItem(
+"CTA_CURRENT_USER"
+);
 
-  if(!id)return;
+if(!id)return;
 
-  const user=db.users.find(u=>u.id===id);
 
-  if(!user || user.active===false)return;
+const user=
+db.users.find(
+u=>u.id===id
+);
 
-  currentUser=user;
+if(!user||
+user.active===false)
+return;
 
-  document.getElementById("loginScreen").classList.add("hidden");
-  document.getElementById("app").classList.remove("hidden");
 
-  document.getElementById("headerUser").textContent=
-    user.name+" • "+(user.academicRole||"Administrator");
+currentUser=user;
 
-  configureNavigation();
-  refreshAll();
+
+document.getElementById(
+"loginScreen"
+).classList.add("hidden");
+
+
+document.getElementById(
+"app"
+).classList.remove("hidden");
+
+
+document.getElementById(
+"headerUser"
+).textContent=
+user.name+
+" • "+
+(user.academicRole||
+"Administrator");
+
+
+configureNavigation();
+
+refreshAll();
 
 }
+
 
 function logout(){
 
-  sessionStorage.removeItem("CTA_CURRENT_USER");
+sessionStorage.removeItem(
+"CTA_CURRENT_USER"
+);
 
-  currentUser=null;
+currentUser=null;
 
-  location.reload();
+location.reload();
 
 }
 
 
-/* ================= NAVIGATION ================= */
+/* =====================================================
+NAVIGATION
+===================================================== */
 
 function configureNavigation(){
 
-  const admin=currentUser.role==="admin";
-  const academic=currentUser.academicRole||"";
+const admin=
+currentUser.role==="admin";
 
-  document.getElementById("adminMenu").style.display=
-    admin?"block":"none";
+const academic=
+currentUser.academicRole||
+"";
 
-  document.getElementById("hodMenu").style.display=
-    academic.startsWith("HOD ")?"block":"none";
 
-  document.getElementById("examMenu").style.display=
-    academic==="Examination Officer"?"block":"none";
+document.getElementById(
+"adminMenu"
+).style.display=
+admin?"block":"none";
+
+
+document.getElementById(
+"hodMenu"
+).style.display=
+academic.startsWith("HOD ")
+?"block":"none";
+
+
+document.getElementById(
+"examMenu"
+).style.display=
+academic==="Examination Officer"
+?"block":"none";
 
 }
+
 
 function showPage(name,btn){
 
-  document.querySelectorAll(".page")
-    .forEach(p=>p.classList.remove("active"));
+document
+.querySelectorAll(".page")
+.forEach(p=>
+p.classList.remove("active")
+);
 
-  const page=document.getElementById("page-"+name);
 
-  if(page)page.classList.add("active");
+const page=
+document.getElementById(
+"page-"+name
+);
 
-  document.querySelectorAll(".sidebar button")
-    .forEach(b=>b.classList.remove("active"));
+if(page)
+page.classList.add("active");
 
-  if(btn)btn.classList.add("active");
 
-  document.getElementById("sidebar")
-    .classList.remove("open");
+document
+.querySelectorAll(".sidebar button")
+.forEach(b=>
+b.classList.remove("active")
+);
 
-  if(name==="submissions")renderMySubmissions();
-  if(name==="hodVetting")renderHodVetting();
-  if(name==="examReview")renderExamReview();
-  if(name==="publishResults")renderPublishResults();
-  if(name==="teachers")renderTeachers();
-  if(name==="classes")renderClasses();
-  if(name==="subjects")renderSubjects();
-  if(name==="resultSettings")renderSettings();
+
+if(btn)
+btn.classList.add("active");
+
+
+document
+.getElementById("sidebar")
+.classList.remove("open");
+
+
+if(name==="submissions")
+renderMySubmissions();
+
+if(name==="hodVetting")
+renderHodVetting();
+
+if(name==="examReview")
+renderExamReview();
+
+if(name==="publishResults")
+renderPublishResults();
+
+if(name==="teachers")
+renderTeachers();
+
+if(name==="classes")
+renderClasses();
+
+if(name==="subjects")
+renderSubjects();
+
+if(name==="resultSettings")
+renderSettings();
 
 }
+
 
 function toggleSidebar(){
 
-  document.getElementById("sidebar")
-    .classList.toggle("open");
+document
+.getElementById("sidebar")
+.classList.toggle("open");
 
 }
 
 
-/* ================= DASHBOARD ================= */
+/* =====================================================
+DASHBOARD
+===================================================== */
 
 function refreshDashboard(){
 
-  let students=0;
+let students=0;
 
-  db.classes.forEach(c=>{
-    students+=(c.students||[]).length;
-  });
+db.classes.forEach(c=>{
 
-  document.getElementById("statStudents").textContent=
-    students;
+students+=
+(c.students||[]).length;
 
-  document.getElementById("statTeachers").textContent=
-    db.users.filter(u=>u.role==="teacher").length;
+});
 
-  document.getElementById("statResults").textContent=
-    db.results.length;
 
-  document.getElementById("statFinal").textContent=
-    db.results.filter(r=>r.status==="finalized").length;
+document.getElementById(
+"statStudents"
+).textContent=
+students;
+
+
+document.getElementById(
+"statTeachers"
+).textContent=
+db.users.filter(
+u=>u.role==="teacher"
+).length;
+
+
+document.getElementById(
+"statResults"
+).textContent=
+db.results.length;
+
+
+document.getElementById(
+"statFinal"
+).textContent=
+db.results.filter(
+r=>r.status==="finalized"
+).length;
 
 }
 
 
-/* ================= GENERAL REFRESH ================= */
+/* =====================================================
+REFRESH
+===================================================== */
 
 function refreshAll(){
 
-  refreshDashboard();
+refreshDashboard();
 
-  populateSelectors();
+populateSelectors();
 
-  renderTeachers();
+renderTeachers();
 
-  renderClasses();
+renderClasses();
 
-  renderSubjects();
+renderSubjects();
 
-  renderSettings();
+renderSettings();
 
 }
 
 
-/* ================= SELECTORS ================= */
+/* =====================================================
+SELECTORS
+===================================================== */
 
 function populateSelectors(){
 
-  const classSelectors=[
-    document.getElementById("resultClass"),
-    document.getElementById("bClass"),
-    document.getElementById("sClass")
-  ];
+[
+document.getElementById("resultClass"),
+document.getElementById("bClass"),
+document.getElementById("sClass")
+]
+.forEach(sel=>{
 
-  classSelectors.forEach(sel=>{
+if(!sel)return;
 
-    if(!sel)return;
+const old=sel.value;
 
-    const old=sel.value;
-
-    sel.innerHTML=
-      '<option value="">Select class</option>';
-
-    db.classes.forEach(c=>{
-
-      const o=document.createElement("option");
-
-      o.value=c.name;
-      o.textContent=c.name;
-
-      sel.appendChild(o);
-
-    });
-
-    if(old)sel.value=old;
-
-  });
+sel.innerHTML=
+'<option value="">Select class</option>';
 
 
-  const subject=
-    document.getElementById("resultSubject");
+db.classes.forEach(c=>{
 
-  if(subject){
+const o=
+document.createElement("option");
 
-    const old=subject.value;
+o.value=c.name;
 
-    subject.innerHTML=
-      '<option value="">Select subject</option>';
+o.textContent=c.name;
 
-    SUBJECTS.forEach(s=>{
+sel.appendChild(o);
 
-      const o=document.createElement("option");
-
-      o.value=s;
-      o.textContent=s;
-
-      subject.appendChild(o);
-
-    });
-
-    if(old)subject.value=old;
-
-  }
+});
 
 
-  ["bSession","sSession"].forEach(id=>{
+if(old)
+sel.value=old;
 
-    const sel=document.getElementById(id);
+});
 
-    if(!sel)return;
 
-    sel.innerHTML="";
+const subject=
+document.getElementById(
+"resultSubject"
+);
 
-    ["2026/2027","2027/2028","2028/2029"]
-      .forEach(s=>{
 
-        const o=document.createElement("option");
+if(subject){
 
-        o.value=s;
-        o.textContent=s;
+const old=
+subject.value;
 
-        sel.appendChild(o);
+subject.innerHTML=
+'<option value="">Select subject</option>';
 
-      });
 
-  });
+SUBJECTS.forEach(s=>{
+
+const o=
+document.createElement("option");
+
+o.value=s;
+
+o.textContent=s;
+
+subject.appendChild(o);
+
+});
+
+
+if(old)
+subject.value=old;
 
 }
 
 
-/* ================= CLASS MANAGEMENT ================= */
+["bSession","sSession"]
+.forEach(id=>{
+
+const sel=
+document.getElementById(id);
+
+if(!sel)return;
+
+sel.innerHTML="";
+
+
+[
+"2026/2027",
+"2027/2028",
+"2028/2029"
+]
+.forEach(s=>{
+
+const o=
+document.createElement("option");
+
+o.value=s;
+
+o.textContent=s;
+
+sel.appendChild(o);
+
+});
+
+});
+
+}
+
+
+/* =====================================================
+STUDENT NAME FIX
+===================================================== */
+
+function getStudentName(student){
+
+if(typeof student==="string"){
+
+return student;
+
+}
+
+
+if(student &&
+typeof student==="object"){
+
+return(
+student.name ||
+
+student.studentName ||
+
+student.fullName ||
+
+student.displayName ||
+
+""
+);
+
+}
+
+
+return "";
+
+}
+
+
+/* =====================================================
+CLASS MANAGEMENT
+===================================================== */
 
 function saveClass(){
 
-  if(currentUser.role!=="admin"){
+if(currentUser.role!=="admin"){
 
-    alert("Only the Administrator can manage classes.");
+alert(
+"Only Administrator can manage classes."
+);
 
-    return;
-
-  }
-
-  const name=
-    document.getElementById("className").value;
-
-  const names=
-    document.getElementById("classStudents").value
-    .split("\n")
-    .map(x=>x.trim())
-    .filter(Boolean);
-
-  if(!names.length){
-
-    alert("Enter at least one student.");
-
-    return;
-
-  }
-
-  let c=db.classes.find(x=>x.name===name);
-
-  if(c){
-
-    c.students=names;
-
-  }else{
-
-    c={
-      id:uid("class"),
-      name,
-      students:names
-    };
-
-    db.classes.push(c);
-
-  }
-
-  saveDB();
-
-  renderClasses();
-
-  populateSelectors();
-
-  alert("Class and students saved successfully.");
+return;
 
 }
+
+
+const name=
+document.getElementById(
+"className"
+).value;
+
+
+const names=
+document.getElementById(
+"classStudents"
+).value
+.split("\n")
+.map(x=>x.trim())
+.filter(Boolean);
+
+
+if(!names.length){
+
+alert(
+"Enter at least one student."
+);
+
+return;
+
+}
+
+
+let c=
+db.classes.find(
+x=>x.name===name
+);
+
+
+if(c){
+
+/*
+ Convert every student into a clean
+ plain student name.
+*/
+
+c.students=
+names.map(
+student=>getStudentName(student)
+);
+
+}else{
+
+c={
+
+id:uid("class"),
+
+name:name,
+
+students:
+names.map(
+student=>getStudentName(student)
+)
+
+};
+
+db.classes.push(c);
+
+}
+
+
+saveDB();
+
+renderClasses();
+
+populateSelectors();
+
+alert(
+"Class and students saved successfully."
+);
+
+}
+
 
 function renderClasses(){
 
-  const box=
-    document.getElementById("classesList");
+const box=
+document.getElementById(
+"classesList"
+);
 
-  if(!box)return;
+if(!box)return;
 
-  if(!db.classes.length){
 
-    box.innerHTML=
-      '<div class="card muted">No classes created yet.</div>';
+if(!db.classes.length){
 
-    return;
+box.innerHTML=
+`
+<div class="card muted">
+No classes created yet.
+</div>
+`;
 
-  }
-
-  box.innerHTML=db.classes.map(c=>`
-
-    <div class="card" style="margin-bottom:10px">
-
-      <h3>${esc(c.name)}</h3>
-
-      <div class="muted">
-        ${c.students.length} student(s)
-      </div>
-
-      <div style="margin-top:8px;font-size:13px">
-
-        ${c.students.map((s,i)=>`
-
-          <span
-            style="
-              display:inline-block;
-              background:#ecfdf5;
-              padding:5px 8px;
-              border-radius:15px;
-              margin:3px">
-
-            ${i+1}. ${esc(s)}
-
-          </span>
-
-        `).join("")}
-
-      </div>
-
-    </div>
-
-  `).join("");
+return;
 
 }
 
 
-/* ================= TEACHERS ================= */
+box.innerHTML=
+db.classes.map(c=>`
+
+<div
+class="card"
+style="margin-bottom:10px">
+
+<h3>
+${esc(c.name)}
+</h3>
+
+<div class="muted">
+
+${(c.students||[]).length}
+student(s)
+
+</div>
+
+<div
+style="
+margin-top:8px;
+font-size:13px">
+
+${(c.students||[]).map(
+(student,i)=>`
+
+<span
+style="
+display:inline-block;
+background:#ecfdf5;
+padding:5px 8px;
+border-radius:15px;
+margin:3px">
+
+${i+1}.
+${esc(getStudentName(student))}
+
+</span>
+
+`
+).join("")}
+
+</div>
+
+</div>
+
+`).join("");
+
+}
+
+
+/* =====================================================
+TEACHER MANAGEMENT
+===================================================== */
 
 function openTeacherModal(id=""){
 
-  if(currentUser.role!=="admin"){
+if(currentUser.role!=="admin"){
 
-    alert(
-      "Only the Administrator can create teacher accounts."
-    );
+alert(
+"Only Administrator can create teacher accounts."
+);
 
-    return;
-
-  }
-
-  document.getElementById("teacherModal")
-    .classList.remove("hidden");
-
-  document.getElementById("editTeacherId").value=id;
-
-  if(id){
-
-    const t=db.users.find(u=>u.id===id);
-
-    if(!t)return;
-
-    document.getElementById("teacherName").value=
-      t.name;
-
-    document.getElementById("teacherUsername").value=
-      t.username;
-
-    document.getElementById("teacherPassword").value=
-      t.password;
-
-    document.getElementById("teacherAcademicRole").value=
-      t.academicRole||"Teacher";
-
-  }else{
-
-    document.getElementById("teacherName").value="";
-    document.getElementById("teacherUsername").value="";
-    document.getElementById("teacherPassword").value="";
-    document.getElementById("teacherAcademicRole").value="Teacher";
-
-  }
+return;
 
 }
+
+
+document
+.getElementById("teacherModal")
+.classList.remove("hidden");
+
+
+document.getElementById(
+"editTeacherId"
+).value=id;
+
+
+if(id){
+
+const t=
+db.users.find(
+u=>u.id===id
+);
+
+if(!t)return;
+
+
+document.getElementById(
+"teacherName"
+).value=t.name;
+
+
+document.getElementById(
+"teacherUsername"
+).value=t.username;
+
+
+document.getElementById(
+"teacherPassword"
+).value=t.password;
+
+
+document.getElementById(
+"teacherAcademicRole"
+).value=
+t.academicRole||
+"Teacher";
+
+}else{
+
+document.getElementById(
+"teacherName"
+).value="";
+
+document.getElementById(
+"teacherUsername"
+).value="";
+
+document.getElementById(
+"teacherPassword"
+).value="";
+
+document.getElementById(
+"teacherAcademicRole"
+).value="Teacher";
+
+}
+
+}
+
 
 function closeTeacherModal(){
 
-  document.getElementById("teacherModal")
-    .classList.add("hidden");
+document
+.getElementById("teacherModal")
+.classList.add("hidden");
 
 }
+
 
 function saveTeacher(){
 
-  const id=
-    document.getElementById("editTeacherId").value;
+const id=
+document.getElementById(
+"editTeacherId"
+).value;
 
-  const name=
-    document.getElementById("teacherName")
-    .value.trim();
 
-  const username=
-    document.getElementById("teacherUsername")
-    .value.trim();
+const name=
+document.getElementById(
+"teacherName"
+).value.trim();
 
-  const password=
-    document.getElementById("teacherPassword")
-    .value;
 
-  const academicRole=
-    document.getElementById("teacherAcademicRole")
-    .value;
+const username=
+document.getElementById(
+"teacherUsername"
+).value.trim();
 
-  if(!name||!username||!password){
 
-    alert("Complete all required fields.");
+const password=
+document.getElementById(
+"teacherPassword"
+).value;
 
-    return;
 
-  }
+const academicRole=
+document.getElementById(
+"teacherAcademicRole"
+).value;
 
-  const duplicate=db.users.find(u=>
-    u.username===username &&
-    u.id!==id
-  );
 
-  if(duplicate){
+if(!name||!username||!password){
 
-    alert("That username already exists.");
+alert(
+"Complete all required fields."
+);
 
-    return;
-
-  }
-
-  if(id){
-
-    const t=db.users.find(u=>u.id===id);
-
-    t.name=name;
-    t.username=username;
-    t.password=password;
-    t.academicRole=academicRole;
-
-  }else{
-
-    db.users.push({
-
-      id:uid("teacher"),
-      name,
-      username,
-      password,
-      role:"teacher",
-      academicRole,
-      active:true
-
-    });
-
-  }
-
-  saveDB();
-
-  renderTeachers();
-
-  renderSubjects();
-
-  closeTeacherModal();
-
-  alert("Teacher account saved.");
+return;
 
 }
+
+
+const duplicate=
+db.users.find(u=>
+u.username===username &&
+u.id!==id
+);
+
+
+if(duplicate){
+
+alert(
+"That username already exists."
+);
+
+return;
+
+}
+
+
+if(id){
+
+const t=
+db.users.find(
+u=>u.id===id
+);
+
+t.name=name;
+
+t.username=username;
+
+t.password=password;
+
+t.academicRole=
+academicRole;
+
+}else{
+
+db.users.push({
+
+id:uid("teacher"),
+
+name:name,
+
+username:username,
+
+password:password,
+
+role:"teacher",
+
+academicRole:academicRole,
+
+active:true
+
+});
+
+}
+
+
+saveDB();
+
+renderTeachers();
+
+renderSubjects();
+
+closeTeacherModal();
+
+alert(
+"Teacher account saved."
+);
+
+}
+
 
 function renderTeachers(){
 
-  const body=
-    document.getElementById("teachersTable");
+const body=
+document.getElementById(
+"teachersTable"
+);
 
-  if(!body)return;
+if(!body)return;
 
-  const teachers=
-    db.users.filter(u=>u.role==="teacher");
 
-  body.innerHTML=teachers.map(t=>`
+const teachers=
+db.users.filter(
+u=>u.role==="teacher"
+);
 
-    <tr>
 
-      <td>${esc(t.name)}</td>
+body.innerHTML=
+teachers.map(t=>`
 
-      <td>${esc(t.username)}</td>
+<tr>
 
-      <td>${esc(t.academicRole||"Teacher")}</td>
+<td>
+${esc(t.name)}
+</td>
 
-      <td>
+<td>
+${esc(t.username)}
+</td>
 
-        <span class="badge ${
-          t.active!==false
-          ?"approved"
-          :"returned"
-        }">
+<td>
+${esc(t.academicRole||"Teacher")}
+</td>
 
-          ${t.active!==false
-            ?"Active"
-            :"Inactive"}
+<td>
 
-        </span>
+<span
+class="badge ${
+t.active!==false
+?"approved"
+:"returned"
+}">
 
-      </td>
+${
+t.active!==false
+?"Active"
+:"Inactive"
+}
 
-      <td>
+</span>
 
-        <button
-          class="btn blue small"
-          onclick="openTeacherModal('${t.id}')">
+</td>
 
-          Edit
+<td>
 
-        </button>
+<button
+class="btn blue small"
+onclick="openTeacherModal('${t.id}')">
 
-        <button
-          class="btn ${
-            t.active!==false
-            ?"red"
-            :"green"
-          } small"
-          onclick="toggleTeacher('${t.id}')">
+Edit
 
-          ${
-            t.active!==false
-            ?"Deactivate"
-            :"Activate"
-          }
+</button>
 
-        </button>
 
-      </td>
+<button
+class="btn ${
+t.active!==false
+?"red"
+:"green"
+} small"
+onclick="toggleTeacher('${t.id}')">
 
-    </tr>
+${
+t.active!==false
+?"Deactivate"
+:"Activate"
+}
 
-  `).join("");
+</button>
+
+</td>
+
+</tr>
+
+`).join("");
 
 }
+
 
 function toggleTeacher(id){
 
-  const t=db.users.find(u=>u.id===id);
+const t=
+db.users.find(
+u=>u.id===id
+);
 
-  if(!t)return;
+if(!t)return;
 
-  t.active=t.active===false;
+t.active=
+t.active===false;
 
-  saveDB();
+saveDB();
 
-  renderTeachers();
+renderTeachers();
 
 }
 
 
-/* ================= SUBJECT / HOD ================= */
+/* =====================================================
+SUBJECT / HOD
+===================================================== */
 
 function renderSubjects(){
 
-  const body=
-    document.getElementById("subjectsTable");
+const body=
+document.getElementById(
+"subjectsTable"
+);
 
-  if(!body)return;
+if(!body)return;
 
-  body.innerHTML=db.subjects.map(s=>{
 
-    const hod=
-      db.users.find(u=>u.id===s.hodId);
+body.innerHTML=
+db.subjects.map(s=>{
 
-    return `
+const hod=
+db.users.find(
+u=>u.id===s.hodId
+);
 
-      <tr>
 
-        <td>
-          <b>${esc(s.name)}</b>
-        </td>
+return`
 
-        <td>
+<tr>
 
-          <select
-            onchange="assignHOD('${s.id}',this.value)">
+<td>
+<b>${esc(s.name)}</b>
+</td>
 
-            <option value="">
-              -- No HOD Assigned --
-            </option>
+<td>
 
-            ${
-              db.users
-              .filter(u=>
-                u.role==="teacher" &&
-                u.academicRole==="HOD "+s.name
-              )
-              .map(t=>`
+<select
+onchange="assignHOD('${s.id}',this.value)">
 
-                <option
-                  value="${t.id}"
-                  ${s.hodId===t.id?"selected":""}>
+<option value="">
+-- No HOD Assigned --
+</option>
 
-                  ${esc(t.name)}
+${
+db.users
+.filter(u=>
+u.role==="teacher" &&
+u.academicRole===
+"HOD "+s.name
+)
+.map(t=>`
 
-                </option>
+<option
+value="${t.id}"
+${
+s.hodId===t.id
+?"selected"
+:""
+}>
 
-              `).join("")
-            }
+${esc(t.name)}
 
-          </select>
+</option>
 
-        </td>
+`).join("")
+}
 
-      </tr>
+</select>
 
-    `;
+</td>
 
-  }).join("");
+</tr>
+
+`;
+
+}).join("");
 
 }
 
-function assignHOD(subjectId,teacherId){
 
-  if(currentUser.role!=="admin"){
+function assignHOD(
+subjectId,
+teacherId
+){
 
-    alert("Only Administrator can assign HODs.");
+if(currentUser.role!=="admin"){
 
-    renderSubjects();
+alert(
+"Only Administrator can assign HODs."
+);
 
-    return;
+renderSubjects();
 
-  }
-
-  const s=
-    db.subjects.find(x=>x.id===subjectId);
-
-  if(s){
-
-    s.hodId=teacherId;
-
-    saveDB();
-
-    alert("HOD assignment updated.");
-
-  }
+return;
 
 }
+
+
+const s=
+db.subjects.find(
+x=>x.id===subjectId
+);
+
+
+if(s){
+
+s.hodId=teacherId;
+
+saveDB();
+
+alert(
+"HOD assignment updated."
+);
+
+}
+
+}
+
 
 function getHOD(subject){
 
-  const s=
-    db.subjects.find(x=>x.name===subject);
+const s=
+db.subjects.find(
+x=>x.name===subject
+);
 
-  if(!s||!s.hodId)return null;
 
-  return db.users.find(u=>u.id===s.hodId)||null;
+if(!s||!s.hodId)
+return null;
+
+
+return db.users.find(
+u=>u.id===s.hodId
+)||null;
 
 }
 
 
-/* ================= RESULT ENTRY ================= */
+/* =====================================================
+RESULT ENTRY
+===================================================== */
 
 function loadResultStudents(){
 
-  const cls=
-    document.getElementById("resultClass").value;
+const cls=
+document.getElementById(
+"resultClass"
+).value;
 
-  const subject=
-    document.getElementById("resultSubject").value;
 
-  const area=
-    document.getElementById("scoreEntryArea");
+const subject=
+document.getElementById(
+"resultSubject"
+).value;
 
-  document.getElementById("resultHodInfo")
-    .innerHTML="";
 
-  if(!cls||!subject){
+const area=
+document.getElementById(
+"scoreEntryArea"
+);
 
-    area.innerHTML="";
 
-    return;
+document.getElementById(
+"resultHodInfo"
+).innerHTML="";
 
-  }
 
-  const hod=getHOD(subject);
+if(!cls||!subject){
 
-  if(hod){
+area.innerHTML="";
 
-    document.getElementById("resultHodInfo")
-      .innerHTML=`
-
-        <div class="notice">
-
-          <b>Automatic HOD Routing:</b>
-
-          ${esc(subject)} results will be sent to
-
-          <b>${esc(hod.name)}</b>
-
-          (${esc(hod.academicRole)}).
-
-        </div>
-
-      `;
-
-  }else{
-
-    document.getElementById("resultHodInfo")
-      .innerHTML=`
-
-        <div class="warning">
-
-          ⚠️ No HOD has been assigned to
-          <b>${esc(subject)}</b>.
-
-          The result cannot be submitted until
-          the Administrator assigns the appropriate
-          subject HOD.
-
-        </div>
-
-      `;
-
-  }
-
-  const c=
-    db.classes.find(x=>x.name===cls);
-
-  if(!c)return;
-
-  const session=
-    document.getElementById("resultSession").value;
-
-  const term=
-    document.getElementById("resultTerm").value;
-
-  const existing=db.results.find(r=>
-    r.className===cls &&
-    r.subject===subject &&
-    r.session===session &&
-    r.term===term &&
-    r.teacherId===currentUser.id &&
-    r.status!=="finalized" &&
-    r.status!=="published"
-  );
-
-  const students=existing
-    ?existing.students
-    :c.students.map(name=>({
-
-      studentId:uid("student"),
-      name,
-      ca1:"",
-      ca2:"",
-      exam:""
-
-    }));
-
-  area.innerHTML=`
-
-    <div class="table-wrap">
-
-      <table>
-
-        <thead>
-
-          <tr>
-            <th>#</th>
-            <th>Student</th>
-            <th>CA1 / 15</th>
-            <th>CA2 / 15</th>
-            <th>CA Total / 30</th>
-            <th>Exam / 70</th>
-            <th>Total / 100</th>
-            <th>Grade</th>
-            <th>Remark</th>
-          </tr>
-
-        </thead>
-
-        <tbody>
-
-          ${students.map((st,i)=>`
-
-            <tr>
-
-              <td>${i+1}</td>
-
-              <td>
-                <b>${esc(st.name)}</b>
-              </td>
-
-              <td>
-
-                <input
-                  class="score-input result-ca1"
-                  data-i="${i}"
-                  type="number"
-                  min="0"
-                  max="${db.settings.ca1Max}"
-                  value="${st.ca1!==undefined?st.ca1:""}"
-                  oninput="calculateRow(${i})">
-
-              </td>
-
-              <td>
-
-                <input
-                  class="score-input result-ca2"
-                  data-i="${i}"
-                  type="number"
-                  min="0"
-                  max="${db.settings.ca2Max}"
-                  value="${st.ca2!==undefined?st.ca2:""}"
-                  oninput="calculateRow(${i})">
-
-              </td>
-
-              <td
-                id="caTotal-${i}"
-                class="total-cell">
-                0
-              </td>
-
-              <td>
-
-                <input
-                  class="score-input result-exam"
-                  data-i="${i}"
-                  type="number"
-                  min="0"
-                  max="${db.settings.examMax}"
-                  value="${st.exam!==undefined?st.exam:""}"
-                  oninput="calculateRow(${i})">
-
-              </td>
-
-              <td
-                id="grandTotal-${i}"
-                class="total-cell">
-                0
-              </td>
-
-              <td id="grade-${i}">
-                -
-              </td>
-
-              <td id="remark-${i}">
-                -
-              </td>
-
-            </tr>
-
-          `).join("")}
-
-        </tbody>
-
-      </table>
-
-    </div>
-
-  `;
-
-  students.forEach((_,i)=>
-    calculateRow(i)
-  );
+return;
 
 }
+
+
+const hod=
+getHOD(subject);
+
+
+if(hod){
+
+document.getElementById(
+"resultHodInfo"
+).innerHTML=`
+
+<div class="notice">
+
+<b>
+Automatic HOD Routing:
+</b>
+
+${esc(subject)}
+results will be submitted to
+
+<b>
+${esc(hod.name)}
+</b>
+
+(${esc(hod.academicRole)}).
+
+</div>
+
+`;
+
+}else{
+
+document.getElementById(
+"resultHodInfo"
+).innerHTML=`
+
+<div class="warning">
+
+No HOD has been assigned to
+<b>${esc(subject)}</b>.
+
+The Administrator must assign the subject HOD
+before submission.
+
+</div>
+
+`;
+
+}
+
+
+const c=
+db.classes.find(
+x=>x.name===cls
+);
+
+
+if(!c){
+
+area.innerHTML="";
+
+return;
+
+}
+
+
+const session=
+document.getElementById(
+"resultSession"
+).value;
+
+
+const term=
+document.getElementById(
+"resultTerm"
+).value;
+
+
+const existing=
+db.results.find(r=>
+
+r.className===cls &&
+
+r.subject===subject &&
+
+r.session===session &&
+
+r.term===term &&
+
+r.teacherId===currentUser.id &&
+
+(
+r.status==="draft" ||
+r.status==="returned_teacher"
+)
+
+);
+
+
+/*
+IMPORTANT STUDENT NAME NORMALIZATION.
+
+This prevents [object Object].
+*/
+
+let students;
+
+
+if(
+existing &&
+Array.isArray(existing.students)
+){
+
+students=
+existing.students.map(
+(st,index)=>({
+
+studentId:
+st.studentId||
+"student-"+index,
+
+name:
+getStudentName(st),
+
+ca1:
+st.ca1??"",
+
+ca2:
+st.ca2??"",
+
+exam:
+st.exam??""
+
+})
+);
+
+}else{
+
+students=
+(c.students||[]).map(
+(student,index)=>({
+
+studentId:
+typeof student==="object" &&
+student.studentId
+?student.studentId
+:"student-"+index,
+
+name:
+getStudentName(student),
+
+ca1:"",
+
+ca2:"",
+
+exam:""
+
+})
+);
+
+}
+
+
+/*
+Remove invalid blank names.
+*/
+
+students=
+students.filter(st=>
+st.name &&
+st.name.trim()!==""
+);
+
+
+if(!students.length){
+
+area.innerHTML=`
+
+<div class="warning">
+
+No student names were found for
+<b>${esc(cls)}</b>.
+
+Please check the students under
+<b>Class & Students</b>.
+
+</div>
+
+`;
+
+return;
+
+}
+
+
+area.innerHTML=`
+
+<div class="table-wrap">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>#</th>
+
+<th>
+Student Name
+</th>
+
+<th>
+CA1 / 15
+</th>
+
+<th>
+CA2 / 15
+</th>
+
+<th>
+CA Total / 30
+</th>
+
+<th>
+Exam / 70
+</th>
+
+<th>
+Total / 100
+</th>
+
+<th>
+Grade
+</th>
+
+<th>
+Remark
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+${students.map((st,i)=>`
+
+<tr>
+
+<td>
+${i+1}
+</td>
+
+<td>
+
+<b>
+${esc(st.name)}
+</b>
+
+</td>
+
+<td>
+
+<input
+class="score-input result-ca1"
+data-i="${i}"
+type="number"
+min="0"
+max="${db.settings.ca1Max}"
+value="${st.ca1}"
+oninput="calculateRow(${i})">
+
+</td>
+
+<td>
+
+<input
+class="score-input result-ca2"
+data-i="${i}"
+type="number"
+min="0"
+max="${db.settings.ca2Max}"
+value="${st.ca2}"
+oninput="calculateRow(${i})">
+
+</td>
+
+<td
+id="caTotal-${i}"
+class="total-cell">
+
+0
+
+</td>
+
+<td>
+
+<input
+class="score-input result-exam"
+data-i="${i}"
+type="number"
+min="0"
+max="${db.settings.examMax}"
+value="${st.exam}"
+oninput="calculateRow(${i})">
+
+</td>
+
+<td
+id="grandTotal-${i}"
+class="total-cell">
+
+0
+
+</td>
+
+<td id="grade-${i}">
+-
+</td>
+
+<td id="remark-${i}">
+-
+</td>
+
+</tr>
+
+`).join("")}
+
+</tbody>
+
+</table>
+
+</div>
+
+`;
+
+
+students.forEach(
+(_,i)=>
+calculateRow(i)
+);
+
+}
+
+
+/* =====================================================
+CALCULATE
+===================================================== */
 
 function calculateRow(i){
 
-  const ca1=
-    parseFloat(
-      document.querySelector(
-        `.result-ca1[data-i="${i}"]`
-      )?.value
-    )||0;
+const ca1=
+parseFloat(
+document.querySelector(
+`.result-ca1[data-i="${i}"]`
+)?.value
+)||0;
 
-  const ca2=
-    parseFloat(
-      document.querySelector(
-        `.result-ca2[data-i="${i}"]`
-      )?.value
-    )||0;
 
-  const exam=
-    parseFloat(
-      document.querySelector(
-        `.result-exam[data-i="${i}"]`
-      )?.value
-    )||0;
+const ca2=
+parseFloat(
+document.querySelector(
+`.result-ca2[data-i="${i}"]`
+)?.value
+)||0;
 
-  const caTotal=ca1+ca2;
 
-  const total=caTotal+exam;
+const exam=
+parseFloat(
+document.querySelector(
+`.result-exam[data-i="${i}"]`
+)?.value
+)||0;
 
-  const gr=getGrade(total);
 
-  document.getElementById("caTotal-"+i)
-    .textContent=caTotal;
+const caTotal=
+ca1+ca2;
 
-  document.getElementById("grandTotal-"+i)
-    .textContent=total;
 
-  document.getElementById("grade-"+i)
-    .textContent=gr.grade;
+const total=
+caTotal+exam;
 
-  document.getElementById("remark-"+i)
-    .textContent=gr.remark;
+
+const gr=
+getGrade(total);
+
+
+document.getElementById(
+"caTotal-"+i
+).textContent=
+caTotal;
+
+
+document.getElementById(
+"grandTotal-"+i
+).textContent=
+total;
+
+
+document.getElementById(
+"grade-"+i
+).textContent=
+gr.grade;
+
+
+document.getElementById(
+"remark-"+i
+).textContent=
+gr.remark;
 
 }
+
+
+/* =====================================================
+COLLECT STUDENTS AND SCORES
+===================================================== */
 
 function collectScoreStudents(){
 
-  const cls=
-    document.getElementById("resultClass").value;
+const cls=
+document.getElementById(
+"resultClass"
+).value;
 
-  const c=
-    db.classes.find(x=>x.name===cls);
 
-  if(!c)return [];
+const c=
+db.classes.find(
+x=>x.name===cls
+);
 
-  return c.students.map((name,i)=>{
 
-    const ca1=
-      document.querySelector(
-        `.result-ca1[data-i="${i}"]`
-      )?.value;
+if(!c)return[];
 
-    const ca2=
-      document.querySelector(
-        `.result-ca2[data-i="${i}"]`
-      )?.value;
 
-    const exam=
-      document.querySelector(
-        `.result-exam[data-i="${i}"]`
-      )?.value;
+return(c.students||[]).map(
+(student,i)=>{
 
-    const n1=
-      ca1===""?null:Number(ca1);
+const name=
+getStudentName(student);
 
-    const n2=
-      ca2===""?null:Number(ca2);
 
-    const ne=
-      exam===""?null:Number(exam);
+const ca1Element=
+document.querySelector(
+`.result-ca1[data-i="${i}"]`
+);
 
-    const caTotal=
-      (n1||0)+(n2||0);
 
-    const total=
-      caTotal+(ne||0);
+const ca2Element=
+document.querySelector(
+`.result-ca2[data-i="${i}"]`
+);
 
-    const gr=getGrade(total);
 
-    return {
+const examElement=
+document.querySelector(
+`.result-exam[data-i="${i}"]`
+);
 
-      studentId:"student-"+i,
 
-      name,
+const ca1Value=
+ca1Element
+?ca1Element.value
+:"";
 
-      ca1:n1,
 
-      ca2:n2,
+const ca2Value=
+ca2Element
+?ca2Element.value
+:"";
 
-      caTotal,
 
-      exam:ne,
+const examValue=
+examElement
+?examElement.value
+:"";
 
-      total,
 
-      grade:gr.grade,
+const ca1=
+ca1Value===""
+?null
+:Number(ca1Value);
 
-      remark:gr.remark
 
-    };
+const ca2=
+ca2Value===""
+?null
+:Number(ca2Value);
 
-  });
+
+const exam=
+examValue===""
+?null
+:Number(examValue);
+
+
+const caTotal=
+(ca1||0)+
+(ca2||0);
+
+
+const total=
+caTotal+
+(exam||0);
+
+
+const gr=
+getGrade(total);
+
+
+return{
+
+studentId:
+typeof student==="object" &&
+student.studentId
+?student.studentId
+:"student-"+i,
+
+name:name,
+
+ca1:ca1,
+
+ca2:ca2,
+
+caTotal:caTotal,
+
+exam:exam,
+
+total:total,
+
+grade:gr.grade,
+
+remark:gr.remark
+
+};
+
+});
 
 }
+
+
+/* =====================================================
+VALIDATE
+===================================================== */
 
 function validateScores(students){
 
-  const s=db.settings;
+const s=db.settings;
 
-  for(const st of students){
 
-    if(
-      st.ca1===null ||
-      st.ca2===null ||
-      st.exam===null
-    ){
+for(const st of students){
 
-      return `Missing score for ${st.name}. Every student must have CA1, CA2 and Examination score.`;
+if(
+!st.name||
+!st.name.trim()
+){
 
-    }
-
-    if(st.ca1<0 || st.ca1>s.ca1Max){
-
-      return `CA1 score for ${st.name} must be between 0 and ${s.ca1Max}.`;
-
-    }
-
-    if(st.ca2<0 || st.ca2>s.ca2Max){
-
-      return `CA2 score for ${st.name} must be between 0 and ${s.ca2Max}.`;
-
-    }
-
-    if(st.exam<0 || st.exam>s.examMax){
-
-      return `Examination score for ${st.name} must be between 0 and ${s.examMax}.`;
-
-    }
-
-  }
-
-  return "";
+return
+"One or more student names are missing.";
 
 }
 
 
-/* ================= SAVE RESULT ================= */
+if(
+st.ca1===null||
+st.ca2===null||
+st.exam===null
+){
+
+return
+`Missing score for ${st.name}. Every student must have CA1, CA2 and Examination score.`;
+
+}
+
+
+if(
+st.ca1<0||
+st.ca1>s.ca1Max
+){
+
+return
+`CA1 score for ${st.name} must be between 0 and ${s.ca1Max}.`;
+
+}
+
+
+if(
+st.ca2<0||
+st.ca2>s.ca2Max
+){
+
+return
+`CA2 score for ${st.name} must be between 0 and ${s.ca2Max}.`;
+
+}
+
+
+if(
+st.exam<0||
+st.exam>s.examMax
+){
+
+return
+`Examination score for ${st.name} must be between 0 and ${s.examMax}.`;
+
+}
+
+}
+
+
+return"";
+
+}
+
+
+/* =====================================================
+SAVE DRAFT
+===================================================== */
 
 function saveResultDraft(){
 
-  const cls=
-    document.getElementById("resultClass").value;
+const cls=
+document.getElementById(
+"resultClass"
+).value;
 
-  const subject=
-    document.getElementById("resultSubject").value;
 
-  if(!cls||!subject){
+const subject=
+document.getElementById(
+"resultSubject"
+).value;
 
-    alert("Select class and subject.");
 
-    return;
+if(!cls||!subject){
 
-  }
+alert(
+"Select class and subject."
+);
 
-  const students=collectScoreStudents();
-
-  const session=
-    document.getElementById("resultSession").value;
-
-  const term=
-    document.getElementById("resultTerm").value;
-
-  let r=db.results.find(x=>
-    x.className===cls &&
-    x.subject===subject &&
-    x.session===session &&
-    x.term===term &&
-    x.teacherId===currentUser.id &&
-    x.status!=="finalized" &&
-    x.status!=="published"
-  );
-
-  if(!r){
-
-    r={
-
-      id:uid("result"),
-
-      className:cls,
-
-      subject,
-
-      session,
-
-      term,
-
-      teacherId:currentUser.id,
-
-      teacherName:currentUser.name,
-
-      status:"draft",
-
-      students:[],
-
-      createdAt:now()
-
-    };
-
-    db.results.push(r);
-
-  }
-
-  r.students=students;
-
-  r.updatedAt=now();
-
-  saveDB();
-
-  refreshDashboard();
-
-  alert("Result saved as draft.");
+return;
 
 }
 
 
-/* ================= SUBMIT HOD ================= */
+const students=
+collectScoreStudents();
+
+
+const session=
+document.getElementById(
+"resultSession"
+).value;
+
+
+const term=
+document.getElementById(
+"resultTerm"
+).value;
+
+
+let r=
+db.results.find(x=>
+
+x.className===cls &&
+
+x.subject===subject &&
+
+x.session===session &&
+
+x.term===term &&
+
+x.teacherId===currentUser.id &&
+
+(
+x.status==="draft"||
+x.status==="returned_teacher"
+)
+
+);
+
+
+if(!r){
+
+r={
+
+id:uid("result"),
+
+className:cls,
+
+subject:subject,
+
+session:session,
+
+term:term,
+
+teacherId:
+currentUser.id,
+
+teacherName:
+currentUser.name,
+
+status:"draft",
+
+students:[],
+
+createdAt:now()
+
+};
+
+
+db.results.push(r);
+
+}
+
+
+r.students=students;
+
+r.updatedAt=now();
+
+
+saveDB();
+
+refreshDashboard();
+
+
+alert(
+"Result saved as draft."
+);
+
+}
+
+
+/* =====================================================
+SUBMIT TO HOD
+===================================================== */
 
 function submitResultToHOD(){
 
-  const cls=
-    document.getElementById("resultClass").value;
+const cls=
+document.getElementById(
+"resultClass"
+).value;
 
-  const subject=
-    document.getElementById("resultSubject").value;
 
-  const session=
-    document.getElementById("resultSession").value;
+const subject=
+document.getElementById(
+"resultSubject"
+).value;
 
-  const term=
-    document.getElementById("resultTerm").value;
 
-  if(!cls||!subject){
+const session=
+document.getElementById(
+"resultSession"
+).value;
 
-    alert("Select class and subject.");
 
-    return;
+const term=
+document.getElementById(
+"resultTerm"
+).value;
 
-  }
 
-  const hod=getHOD(subject);
+if(!cls||!subject){
 
-  if(!hod){
+alert(
+"Select class and subject."
+);
 
-    alert(
-      "No HOD has been assigned to this subject. Ask the Administrator to assign the HOD first."
-    );
-
-    return;
-
-  }
-
-  const students=collectScoreStudents();
-
-  const validation=
-    validateScores(students);
-
-  if(validation){
-
-    alert(validation);
-
-    return;
-
-  }
-
-  let r=db.results.find(x=>
-    x.className===cls &&
-    x.subject===subject &&
-    x.session===session &&
-    x.term===term &&
-    x.teacherId===currentUser.id &&
-    x.status!=="finalized" &&
-    x.status!=="published"
-  );
-
-  if(!r){
-
-    r={
-
-      id:uid("result"),
-
-      className:cls,
-
-      subject,
-
-      session,
-
-      term,
-
-      teacherId:currentUser.id,
-
-      teacherName:currentUser.name,
-
-      createdAt:now(),
-
-      students:[]
-
-    };
-
-    db.results.push(r);
-
-  }
-
-  r.students=students;
-
-  r.status="submitted_hod";
-
-  r.hodId=hod.id;
-
-  r.hodName=hod.name;
-
-  r.submittedAt=now();
-
-  r.hodComment="";
-
-  r.updatedAt=now();
-
-  addAudit(
-    "Result Submitted",
-    `${subject} result for ${cls} submitted by ${currentUser.name} to ${hod.name}.`,
-    r.id
-  );
-
-  saveDB();
-
-  refreshDashboard();
-
-  alert(
-    "Result validated successfully and automatically submitted to "+
-    hod.name+"."
-  );
-
-  loadResultStudents();
+return;
 
 }
 
 
-/* ================= GRADE ================= */
+const hod=
+getHOD(subject);
+
+
+if(!hod){
+
+alert(
+"No HOD has been assigned to this subject."
+);
+
+return;
+
+}
+
+
+const students=
+collectScoreStudents();
+
+
+const validation=
+validateScores(students);
+
+
+if(validation){
+
+alert(validation);
+
+return;
+
+}
+
+
+let r=
+db.results.find(x=>
+
+x.className===cls &&
+
+x.subject===subject &&
+
+x.session===session &&
+
+x.term===term &&
+
+x.teacherId===currentUser.id &&
+
+(
+x.status==="draft"||
+x.status==="returned_teacher"
+)
+
+);
+
+
+if(!r){
+
+r={
+
+id:uid("result"),
+
+className:cls,
+
+subject:subject,
+
+session:session,
+
+term:term,
+
+teacherId:
+currentUser.id,
+
+teacherName:
+currentUser.name,
+
+createdAt:now(),
+
+students:[]
+
+};
+
+db.results.push(r);
+
+}
+
+
+r.students=students;
+
+r.status="submitted_hod";
+
+r.hodId=hod.id;
+
+r.hodName=hod.name;
+
+r.submittedAt=now();
+
+r.hodComment="";
+
+r.examComment="";
+
+r.updatedAt=now();
+
+
+addAudit(
+"Result Submitted to HOD",
+
+`${subject} result for ${cls} submitted by ${currentUser.name} to ${hod.name}.`,
+
+r.id
+);
+
+
+saveDB();
+
+refreshDashboard();
+
+alert(
+"Result submitted successfully to "+
+hod.name+
+"."
+);
+
+
+loadResultStudents();
+
+}
+
+
+/* =====================================================
+GRADE
+===================================================== */
 
 function getGrade(total){
 
-  const grades=
-    [...db.settings.grades]
-    .sort((a,b)=>b.min-a.min);
+const grades=
+[...db.settings.grades]
+.sort(
+(a,b)=>b.min-a.min
+);
 
-  for(const g of grades){
 
-    if(total>=g.min){
+for(const g of grades){
 
-      return {
+if(total>=g.min){
 
-        grade:g.grade,
+return{
 
-        remark:g.remark
+grade:g.grade,
 
-      };
+remark:g.remark
 
-    }
+};
 
-  }
-
-  return {
-    grade:"F",
-    remark:"Fail"
-  };
+}
 
 }
 
 
-/* ================= MY SUBMISSIONS ================= */
+return{
+
+grade:"F",
+
+remark:"Fail"
+
+};
+
+}
+
+
+/* =====================================================
+MY SUBMISSIONS
+===================================================== */
 
 function renderMySubmissions(){
 
-  const box=
-    document.getElementById("mySubmissions");
+const box=
+document.getElementById(
+"mySubmissions"
+);
 
-  if(!box)return;
+if(!box)return;
 
-  const rows=
-    db.results.filter(
-      r=>r.teacherId===currentUser.id
-    );
 
-  if(!rows.length){
+const rows=
+db.results.filter(
+r=>r.teacherId===currentUser.id
+);
 
-    box.innerHTML=
-      '<div class="card muted">You have no result submissions.</div>';
 
-    return;
+if(!rows.length){
 
-  }
+box.innerHTML=`
 
-  box.innerHTML=`
+<div class="card muted">
 
-    <div class="card">
+You have no result submissions.
 
-      <div class="table-wrap">
+</div>
 
-        <table>
+`;
 
-          <thead>
-
-            <tr>
-              <th>Class</th>
-              <th>Subject</th>
-              <th>Session</th>
-              <th>Term</th>
-              <th>Students</th>
-              <th>Status</th>
-              <th>Comment</th>
-            </tr>
-
-          </thead>
-
-          <tbody>
-
-            ${rows.map(r=>`
-
-              <tr>
-
-                <td>${esc(r.className)}</td>
-
-                <td>${esc(r.subject)}</td>
-
-                <td>${esc(r.session)}</td>
-
-                <td>${esc(r.term)}</td>
-
-                <td>${r.students.length}</td>
-
-                <td>${statusBadge(r.status)}</td>
-
-                <td>
-                  ${esc(
-                    r.hodComment||
-                    r.examComment||
-                    ""
-                  )}
-                </td>
-
-              </tr>
-
-            `).join("")}
-
-          </tbody>
-
-        </table>
-
-      </div>
-
-    </div>
-
-  `;
+return;
 
 }
 
 
-/* ================= HOD ================= */
+box.innerHTML=`
+
+<div class="card">
+
+<div class="table-wrap">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Class</th>
+<th>Subject</th>
+<th>Session</th>
+<th>Term</th>
+<th>Students</th>
+<th>Status</th>
+<th>HOD Comment</th>
+<th>Exam Comment</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+${rows.map(r=>`
+
+<tr>
+
+<td>
+${esc(r.className)}
+</td>
+
+<td>
+${esc(r.subject)}
+</td>
+
+<td>
+${esc(r.session)}
+</td>
+
+<td>
+${esc(r.term)}
+</td>
+
+<td>
+${r.students.length}
+</td>
+
+<td>
+${statusBadge(r.status)}
+</td>
+
+<td>
+${esc(r.hodComment||"")}
+</td>
+
+<td>
+${esc(r.examComment||"")}
+</td>
+
+</tr>
+
+`).join("")}
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+`;
+
+}
+
+
+/* =====================================================
+HOD VETTING
+===================================================== */
 
 function renderHodVetting(){
 
-  const box=
-    document.getElementById("hodVettingArea");
+const box=
+document.getElementById(
+"hodVettingArea"
+);
 
-  if(!box)return;
+if(!box)return;
 
-  if(!currentUser.academicRole?.startsWith("HOD ")){
 
-    box.innerHTML=
-      '<div class="card">You are not assigned as an HOD.</div>';
+if(
+!currentUser.academicRole||
+!currentUser.academicRole.startsWith("HOD ")
+){
 
-    return;
+box.innerHTML=`
 
-  }
+<div class="card">
 
-  const rows=db.results.filter(r=>
-    r.hodId===currentUser.id &&
-    r.status==="submitted_hod"
-  );
+You are not assigned as an HOD.
 
-  if(!rows.length){
+</div>
 
-    box.innerHTML=`
+`;
 
-      <div class="card">
-
-        <div class="muted">
-          No results are currently awaiting your vetting.
-        </div>
-
-      </div>
-
-    `;
-
-    return;
-
-  }
-
-  box.innerHTML=`
-
-    <div class="card">
-
-      <div class="table-wrap">
-
-        <table>
-
-          <thead>
-
-            <tr>
-              <th>Class</th>
-              <th>Subject</th>
-              <th>Teacher</th>
-              <th>Session</th>
-              <th>Term</th>
-              <th>Students</th>
-              <th>Action</th>
-            </tr>
-
-          </thead>
-
-          <tbody>
-
-            ${rows.map(r=>`
-
-              <tr>
-
-                <td>${esc(r.className)}</td>
-
-                <td>
-                  <b>${esc(r.subject)}</b>
-                </td>
-
-                <td>${esc(r.teacherName)}</td>
-
-                <td>${esc(r.session)}</td>
-
-                <td>${esc(r.term)}</td>
-
-                <td>${r.students.length}</td>
-
-                <td>
-
-                  <button
-                    class="btn blue small"
-                    onclick="reviewHodResult('${r.id}')">
-
-                    Review
-
-                  </button>
-
-                </td>
-
-              </tr>
-
-            `).join("")}
-
-          </tbody>
-
-        </table>
-
-      </div>
-
-    </div>
-
-  `;
+return;
 
 }
+
+
+const waiting=
+db.results.filter(r=>
+
+r.hodId===currentUser.id &&
+
+r.status==="submitted_hod"
+
+);
+
+
+const approved=
+db.results.filter(r=>
+
+r.hodId===currentUser.id &&
+
+r.status==="hod_approved"
+
+);
+
+
+let html="";
+
+
+if(waiting.length){
+
+html+=`
+
+<div class="card">
+
+<h3>
+Results Awaiting Your Review
+</h3>
+
+<div class="table-wrap">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Class</th>
+<th>Subject</th>
+<th>Teacher</th>
+<th>Session</th>
+<th>Term</th>
+<th>Students</th>
+<th>Action</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+${waiting.map(r=>`
+
+<tr>
+
+<td>
+${esc(r.className)}
+</td>
+
+<td>
+<b>${esc(r.subject)}</b>
+</td>
+
+<td>
+${esc(r.teacherName)}
+</td>
+
+<td>
+${esc(r.session)}
+</td>
+
+<td>
+${esc(r.term)}
+</td>
+
+<td>
+${r.students.length}
+</td>
+
+<td>
+
+<button
+class="btn blue small"
+onclick="reviewHodResult('${r.id}')">
+
+Review
+
+</button>
+
+</td>
+
+</tr>
+
+`).join("")}
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+`;
+
+}else{
+
+html+=`
+
+<div class="card">
+
+<div class="muted">
+
+No results are currently awaiting your review.
+
+</div>
+
+</div>
+
+`;
+
+}
+
+
+if(approved.length){
+
+html+=`
+
+<div
+class="card"
+style="margin-top:15px">
+
+<h3>
+Approved Results Awaiting Your Instruction
+</h3>
+
+<div class="notice">
+
+These results have been approved by you.
+
+They will <b>NOT</b> appear in the Examination Officer's queue until you manually click
+<b>Send to Examination Officer</b>.
+
+</div>
+
+<div class="table-wrap">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Class</th>
+<th>Subject</th>
+<th>Teacher</th>
+<th>Session</th>
+<th>Term</th>
+<th>Status</th>
+<th>Action</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+${approved.map(r=>`
+
+<tr>
+
+<td>
+${esc(r.className)}
+</td>
+
+<td>
+<b>${esc(r.subject)}</b>
+</td>
+
+<td>
+${esc(r.teacherName)}
+</td>
+
+<td>
+${esc(r.session)}
+</td>
+
+<td>
+${esc(r.term)}
+</td>
+
+<td>
+${statusBadge(r.status)}
+</td>
+
+<td>
+
+<button
+class="btn green small"
+onclick="sendToExamOfficer('${r.id}')">
+
+📤 Send to Examination Officer
+
+</button>
+
+</td>
+
+</tr>
+
+`).join("")}
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+`;
+
+}
+
+
+box.innerHTML=html;
+
+}
+
+
+/* =====================================================
+HOD REVIEW
+===================================================== */
 
 function reviewHodResult(id){
 
-  const r=db.results.find(x=>x.id===id);
+const r=
+db.results.find(
+x=>x.id===id
+);
 
-  if(!r)return;
+if(!r)return;
 
-  document.getElementById("reviewTitle").textContent=
-    "HOD Vetting — "+r.subject+" — "+r.className;
 
-  document.getElementById("reviewContent").innerHTML=`
+document.getElementById(
+"reviewTitle"
+).textContent=
+"HOD Vetting — "+
+r.subject+
+" — "+
+r.className;
 
-    <div class="notice">
 
-      <b>Teacher:</b>
-      ${esc(r.teacherName)}
+document.getElementById(
+"reviewContent"
+).innerHTML=`
 
-      <br>
+<div class="notice">
 
-      <b>Session:</b>
-      ${esc(r.session)}
+<b>Teacher:</b>
+${esc(r.teacherName)}
 
-      <br>
+<br>
 
-      <b>Term:</b>
-      ${esc(r.term)}
+<b>HOD:</b>
+${esc(r.hodName)}
 
-    </div>
+<br>
 
-    <div class="table-wrap">
+<b>Session:</b>
+${esc(r.session)}
 
-      <table>
+<br>
 
-        <thead>
+<b>Term:</b>
+${esc(r.term)}
 
-          <tr>
-            <th>Student</th>
-            <th>CA1</th>
-            <th>CA2</th>
-            <th>CA Total</th>
-            <th>Exam</th>
-            <th>Total</th>
-            <th>Grade</th>
-          </tr>
+<br><br>
 
-        </thead>
+<b>Current Stage:</b>
+${statusBadge(r.status)}
 
-        <tbody>
+</div>
 
-          ${r.students.map(s=>`
 
-            <tr>
+<div class="table-wrap">
 
-              <td>${esc(s.name)}</td>
+<table>
 
-              <td>${s.ca1}</td>
+<thead>
 
-              <td>${s.ca2}</td>
+<tr>
 
-              <td>${s.caTotal}</td>
+<th>Student</th>
+<th>CA1</th>
+<th>CA2</th>
+<th>CA Total</th>
+<th>Exam</th>
+<th>Total</th>
+<th>Grade</th>
 
-              <td>${s.exam}</td>
+</tr>
 
-              <td><b>${s.total}</b></td>
+</thead>
 
-              <td>${s.grade}</td>
+<tbody>
 
-            </tr>
+${r.students.map(s=>`
 
-          `).join("")}
+<tr>
 
-        </tbody>
+<td>
+<b>${esc(getStudentName(s))}</b>
+</td>
 
-      </table>
+<td>
+${s.ca1}
+</td>
 
-    </div>
+<td>
+${s.ca2}
+</td>
 
-    <label>HOD Comment</label>
+<td>
+${s.caTotal}
+</td>
 
-    <textarea
-      id="reviewComment"
-      placeholder="Enter comment if returning or approving..."></textarea>
+<td>
+${s.exam}
+</td>
 
-    <div class="actions">
+<td>
+<b>${s.total}</b>
+</td>
 
-      <button
-        class="btn red"
-        onclick="hodReturn('${r.id}')">
+<td>
+${s.grade}
+</td>
 
-        Return to Teacher
+</tr>
 
-      </button>
+`).join("")}
 
-      <button
-        class="btn green"
-        onclick="hodApprove('${r.id}')">
+</tbody>
 
-        Approve Result
+</table>
 
-      </button>
+</div>
 
-    </div>
 
-  `;
+<label>
+HOD Comment
+</label>
 
-  document.getElementById("reviewModal")
-    .classList.remove("hidden");
+<textarea
+id="reviewComment"
+placeholder="Enter comment if returning or approving...">
+</textarea>
+
+
+<div class="actions">
+
+<button
+class="btn red"
+onclick="hodReturn('${r.id}')">
+
+↩ Return to Teacher
+
+</button>
+
+
+<button
+class="btn green"
+onclick="hodApprove('${r.id}')">
+
+✅ Approve Result
+
+</button>
+
+</div>
+
+`;
+
+
+document
+.getElementById("reviewModal")
+.classList.remove("hidden");
 
 }
+
+
+/* =====================================================
+HOD RETURN
+===================================================== */
 
 function hodReturn(id){
 
-  const r=db.results.find(x=>x.id===id);
+const r=
+db.results.find(
+x=>x.id===id
+);
 
-  if(!r)return;
+if(!r)return;
 
-  const comment=
-    document.getElementById("reviewComment")
-    .value.trim();
 
-  if(!comment){
+const comment=
+document.getElementById(
+"reviewComment"
+).value.trim();
 
-    alert(
-      "Please enter a reason for returning the result."
-    );
 
-    return;
+if(!comment){
 
-  }
+alert(
+"Please enter a reason for returning the result."
+);
 
-  r.status="returned_teacher";
-
-  r.hodComment=comment;
-
-  r.hodReviewedAt=now();
-
-  addAudit(
-    "HOD Returned Result",
-    `${r.subject} result for ${r.className} returned to ${r.teacherName}. Reason: ${comment}`,
-    r.id
-  );
-
-  saveDB();
-
-  closeReview();
-
-  renderHodVetting();
-
-  refreshDashboard();
-
-  alert(
-    "Result returned to the teacher for correction."
-  );
+return;
 
 }
+
+
+r.status=
+"returned_teacher";
+
+r.hodComment=
+comment;
+
+r.hodReviewedAt=
+now();
+
+
+addAudit(
+"HOD Returned Result",
+
+`${r.subject} result for ${r.className} returned to ${r.teacherName}. Reason: ${comment}`,
+
+r.id
+);
+
+
+saveDB();
+
+closeReview();
+
+renderHodVetting();
+
+refreshDashboard();
+
+
+alert(
+"Result returned to the teacher for correction."
+);
+
+}
+
+
+/* =====================================================
+HOD APPROVE
+===================================================== */
 
 function hodApprove(id){
 
-  const r=db.results.find(x=>x.id===id);
+const r=
+db.results.find(
+x=>x.id===id
+);
 
-  if(!r)return;
+if(!r)return;
 
-  const comment=
-    document.getElementById("reviewComment")
-    .value.trim();
 
-  r.status="hod_approved";
+const comment=
+document.getElementById(
+"reviewComment"
+).value.trim();
 
-  r.hodComment=
-    comment||"Approved.";
 
-  r.hodReviewedAt=now();
+if(!confirm(
 
-  addAudit(
-    "HOD Approved Result",
-    `${r.subject} result for ${r.className} approved by ${currentUser.name}.`,
-    r.id
-  );
+"Approve this result?\n\n"+
+"Approval will NOT send it to the Examination Officer.\n\n"+
+"After approval, you must manually click 'Send to Examination Officer'."
 
-  /* Automatically move it into Examination Officer queue */
+)){
 
-  r.status="submitted_exam_officer";
-
-  r.examSubmittedAt=now();
-
-  addAudit(
-    "Sent to Examination Officer",
-    `${r.subject} result for ${r.className} automatically sent to Examination Officer.`,
-    r.id
-  );
-
-  saveDB();
-
-  closeReview();
-
-  renderHodVetting();
-
-  refreshDashboard();
-
-  alert(
-    "Result approved. It has automatically been sent to the Examination Officer."
-  );
+return;
 
 }
 
 
-/* ================= EXAMINATION OFFICER ================= */
+r.status=
+"hod_approved";
+
+
+r.hodComment=
+comment||
+"Approved by HOD.";
+
+
+r.hodReviewedAt=
+now();
+
+
+r.updatedAt=
+now();
+
+
+addAudit(
+"HOD Approved Result",
+
+`${r.subject} result for ${r.className} approved by HOD ${currentUser.name}. It is waiting for the HOD to manually send it to the Examination Officer.`,
+
+r.id
+);
+
+
+saveDB();
+
+closeReview();
+
+renderHodVetting();
+
+refreshDashboard();
+
+
+alert(
+
+"Result approved successfully.\n\n"+
+"It has NOT been sent to the Examination Officer.\n\n"+
+"Click 'Send to Examination Officer' when you are ready."
+
+);
+
+}
+
+
+/* =====================================================
+MANUAL HOD → EXAM OFFICER
+===================================================== */
+
+function sendToExamOfficer(id){
+
+const r=
+db.results.find(
+x=>x.id===id
+);
+
+
+if(!r){
+
+alert(
+"Result not found."
+);
+
+return;
+
+}
+
+
+if(
+r.hodId!==currentUser.id
+){
+
+alert(
+"Only the assigned HOD can send this result."
+);
+
+return;
+
+}
+
+
+if(
+r.status!=="hod_approved"
+){
+
+alert(
+"Only an HOD-approved result can be sent to the Examination Officer."
+);
+
+return;
+
+}
+
+
+const confirmed=
+confirm(
+
+"SEND TO EXAMINATION OFFICER?\n\n"+
+
+"Class: "+
+r.className+
+
+"\nSubject: "+
+r.subject+
+
+"\nSession: "+
+r.session+
+
+"\nTerm: "+
+r.term+
+
+"\n\n"+
+
+"The result will now appear in the Examination Officer review queue."
+
+);
+
+
+if(!confirmed)return;
+
+
+r.status=
+"submitted_exam_officer";
+
+
+r.examSubmittedAt=
+now();
+
+
+r.sentByHodId=
+currentUser.id;
+
+
+r.sentByHodName=
+currentUser.name;
+
+
+r.updatedAt=
+now();
+
+
+addAudit(
+"Result Sent to Examination Officer",
+
+`${r.subject} result for ${r.className} was manually sent to the Examination Officer by HOD ${currentUser.name}.`,
+
+r.id
+);
+
+
+saveDB();
+
+renderHodVetting();
+
+refreshDashboard();
+
+
+alert(
+"Result successfully sent to the Examination Officer."
+);
+
+}
+
+
+/* =====================================================
+EXAMINATION OFFICER
+===================================================== */
 
 function renderExamReview(){
 
-  const box=
-    document.getElementById("examReviewArea");
+const box=
+document.getElementById(
+"examReviewArea"
+);
 
-  if(!box)return;
+if(!box)return;
 
-  if(
-    currentUser.academicRole!=="Examination Officer"
-  ){
 
-    box.innerHTML=
-      '<div class="card">You are not assigned as an Examination Officer.</div>';
+if(
+currentUser.academicRole!==
+"Examination Officer"
+){
 
-    return;
+box.innerHTML=`
 
-  }
+<div class="card">
 
-  const rows=
-    db.results.filter(
-      r=>r.status==="submitted_exam_officer"
-    );
+You are not assigned as an Examination Officer.
 
-  if(!rows.length){
+</div>
 
-    box.innerHTML=`
+`;
 
-      <div class="card">
-
-        <div class="muted">
-          No HOD-approved results are awaiting examination review.
-        </div>
-
-      </div>
-
-    `;
-
-    return;
-
-  }
-
-  box.innerHTML=`
-
-    <div class="card">
-
-      <div class="table-wrap">
-
-        <table>
-
-          <thead>
-
-            <tr>
-              <th>Class</th>
-              <th>Subject</th>
-              <th>Teacher</th>
-              <th>HOD</th>
-              <th>Students</th>
-              <th>Action</th>
-            </tr>
-
-          </thead>
-
-          <tbody>
-
-            ${rows.map(r=>`
-
-              <tr>
-
-                <td>${esc(r.className)}</td>
-
-                <td>
-                  <b>${esc(r.subject)}</b>
-                </td>
-
-                <td>${esc(r.teacherName)}</td>
-
-                <td>${esc(r.hodName)}</td>
-
-                <td>${r.students.length}</td>
-
-                <td>
-
-                  <button
-                    class="btn blue small"
-                    onclick="reviewExamResult('${r.id}')">
-
-                    Review
-
-                  </button>
-
-                </td>
-
-              </tr>
-
-            `).join("")}
-
-          </tbody>
-
-        </table>
-
-      </div>
-
-    </div>
-
-  `;
+return;
 
 }
+
+
+const rows=
+db.results.filter(
+r=>r.status==="submitted_exam_officer"
+);
+
+
+if(!rows.length){
+
+box.innerHTML=`
+
+<div class="card">
+
+<div class="muted">
+
+No results are currently awaiting Examination Officer review.
+
+</div>
+
+</div>
+
+`;
+
+return;
+
+}
+
+
+box.innerHTML=`
+
+<div class="card">
+
+<div class="notice">
+
+These results were manually sent by the appropriate HOD after HOD approval.
+
+</div>
+
+<div class="table-wrap">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Class</th>
+<th>Subject</th>
+<th>Teacher</th>
+<th>HOD</th>
+<th>Students</th>
+<th>Action</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+${rows.map(r=>`
+
+<tr>
+
+<td>
+${esc(r.className)}
+</td>
+
+<td>
+<b>${esc(r.subject)}</b>
+</td>
+
+<td>
+${esc(r.teacherName)}
+</td>
+
+<td>
+${esc(r.hodName)}
+</td>
+
+<td>
+${r.students.length}
+</td>
+
+<td>
+
+<button
+class="btn blue small"
+onclick="reviewExamResult('${r.id}')">
+
+Review
+
+</button>
+
+</td>
+
+</tr>
+
+`).join("")}
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+`;
+
+}
+
 
 function reviewExamResult(id){
 
-  const r=db.results.find(x=>x.id===id);
+const r=
+db.results.find(
+x=>x.id===id
+);
 
-  if(!r)return;
+if(!r)return;
 
-  document.getElementById("reviewTitle").textContent=
-    "Examination Review — "+r.subject+" — "+r.className;
 
-  document.getElementById("reviewContent").innerHTML=`
+document.getElementById(
+"reviewTitle"
+).textContent=
+"Examination Review — "+
+r.subject+
+" — "+
+r.className;
 
-    <div class="notice">
 
-      <b>Teacher:</b>
-      ${esc(r.teacherName)}
+document.getElementById(
+"reviewContent"
+).innerHTML=`
 
-      <br>
+<div class="notice">
 
-      <b>HOD:</b>
-      ${esc(r.hodName)}
+<b>Teacher:</b>
+${esc(r.teacherName)}
 
-      <br>
+<br>
 
-      <b>Session:</b>
-      ${esc(r.session)}
+<b>HOD:</b>
+${esc(r.hodName)}
 
-      <br>
+<br>
 
-      <b>Term:</b>
-      ${esc(r.term)}
+<b>Sent by HOD:</b>
+${esc(r.sentByHodName||r.hodName)}
 
-    </div>
+<br>
 
-    <div class="table-wrap">
+<b>Session:</b>
+${esc(r.session)}
 
-      <table>
+<br>
 
-        <thead>
+<b>Term:</b>
+${esc(r.term)}
 
-          <tr>
-            <th>Student</th>
-            <th>CA1</th>
-            <th>CA2</th>
-            <th>CA Total</th>
-            <th>Exam</th>
-            <th>Total</th>
-            <th>Grade</th>
-            <th>Remark</th>
-          </tr>
+</div>
 
-        </thead>
 
-        <tbody>
+<div class="table-wrap">
 
-          ${r.students.map(s=>`
+<table>
 
-            <tr>
+<thead>
 
-              <td>${esc(s.name)}</td>
+<tr>
 
-              <td>${s.ca1}</td>
+<th>Student</th>
+<th>CA1</th>
+<th>CA2</th>
+<th>CA Total</th>
+<th>Exam</th>
+<th>Total</th>
+<th>Grade</th>
+<th>Remark</th>
 
-              <td>${s.ca2}</td>
+</tr>
 
-              <td>${s.caTotal}</td>
+</thead>
 
-              <td>${s.exam}</td>
+<tbody>
 
-              <td><b>${s.total}</b></td>
+${r.students.map(s=>`
 
-              <td>${s.grade}</td>
+<tr>
 
-              <td>${esc(s.remark)}</td>
+<td>
+<b>${esc(getStudentName(s))}</b>
+</td>
 
-            </tr>
+<td>
+${s.ca1}
+</td>
 
-          `).join("")}
+<td>
+${s.ca2}
+</td>
 
-        </tbody>
+<td>
+${s.caTotal}
+</td>
 
-      </table>
+<td>
+${s.exam}
+</td>
 
-    </div>
+<td>
+<b>${s.total}</b>
+</td>
 
-    <label>Examination Officer Comment</label>
+<td>
+${s.grade}
+</td>
 
-    <textarea
-      id="reviewComment"
-      placeholder="Enter comment..."></textarea>
+<td>
+${esc(s.remark)}
+</td>
 
-    <div class="actions">
+</tr>
 
-      <button
-        class="btn red"
-        onclick="examReturn('${r.id}')">
+`).join("")}
 
-        Return
+</tbody>
 
-      </button>
+</table>
 
-      <button
-        class="btn green"
-        onclick="finalizeResult('${r.id}')">
+</div>
 
-        FINALIZE & LOCK RESULT
 
-      </button>
+<label>
+Examination Officer Comment
+</label>
 
-    </div>
+<textarea
+id="reviewComment"
+placeholder="Enter comment...">
+</textarea>
 
-  `;
 
-  document.getElementById("reviewModal")
-    .classList.remove("hidden");
+<div class="actions">
+
+<button
+class="btn red"
+onclick="examReturn('${r.id}')">
+
+↩ Return
+
+</button>
+
+
+<button
+class="btn green"
+onclick="finalizeResult('${r.id}')">
+
+🔒 Finalize & Lock Result
+
+</button>
+
+</div>
+
+`;
+
+
+document
+.getElementById("reviewModal")
+.classList.remove("hidden");
 
 }
+
 
 function examReturn(id){
 
-  const r=db.results.find(x=>x.id===id);
+const r=
+db.results.find(
+x=>x.id===id
+);
 
-  if(!r)return;
+if(!r)return;
 
-  const comment=
-    document.getElementById("reviewComment")
-    .value.trim();
 
-  if(!comment){
+const comment=
+document.getElementById(
+"reviewComment"
+).value.trim();
 
-    alert(
-      "Please enter the reason for returning the result."
-    );
 
-    return;
+if(!comment){
 
-  }
+alert(
+"Please enter the reason for returning the result."
+);
 
-  r.status="returned_teacher";
-
-  r.examComment=comment;
-
-  r.examReviewedAt=now();
-
-  addAudit(
-    "Examination Officer Returned Result",
-    `${r.subject} result for ${r.className} returned. Reason: ${comment}`,
-    r.id
-  );
-
-  saveDB();
-
-  closeReview();
-
-  renderExamReview();
-
-  refreshDashboard();
-
-  alert(
-    "Result returned for correction."
-  );
+return;
 
 }
+
+
+r.status=
+"returned_teacher";
+
+r.examComment=
+comment;
+
+r.examReviewedAt=
+now();
+
+
+addAudit(
+"Examination Officer Returned Result",
+
+`${r.subject} result for ${r.className} returned. Reason: ${comment}`,
+
+r.id
+);
+
+
+saveDB();
+
+closeReview();
+
+renderExamReview();
+
+refreshDashboard();
+
+
+alert(
+"Result returned for correction."
+);
+
+}
+
 
 function finalizeResult(id){
 
-  const r=db.results.find(x=>x.id===id);
+const r=
+db.results.find(
+x=>x.id===id
+);
 
-  if(!r)return;
+if(!r)return;
 
-  if(!confirm(
-    "Are you sure you want to FINALIZE this result?\n\n"+
-    "After finalization, the result will be locked and sent to the Administrator for publication."
-  ))return;
 
-  r.status="finalized";
+if(!confirm(
 
-  r.examOfficerId=currentUser.id;
+"FINALIZE AND LOCK THIS RESULT?\n\n"+
+"After finalization, it cannot be edited through normal result entry.\n\n"+
+"It will wait for Administrator publication."
 
-  r.examOfficerName=currentUser.name;
+)){
 
-  r.examComment=
-    document.getElementById("reviewComment")
-    .value.trim() ||
-    "Finalized.";
-
-  r.examApprovedAt=now();
-
-  r.finalizedAt=now();
-
-  addAudit(
-    "Result Finalized",
-    `${r.subject} result for ${r.className} finalized by ${currentUser.name}.`,
-    r.id
-  );
-
-  saveDB();
-
-  closeReview();
-
-  renderExamReview();
-
-  refreshDashboard();
-
-  alert(
-    "Result finalized and locked successfully.\n\n"+
-    "The result is now awaiting Administrator publication."
-  );
+return;
 
 }
 
 
-/* ================= PUBLISH RESULTS ================= */
+r.status=
+"finalized";
+
+
+r.examOfficerId=
+currentUser.id;
+
+
+r.examOfficerName=
+currentUser.name;
+
+
+r.examComment=
+document.getElementById(
+"reviewComment"
+).value.trim()||
+"Finalized.";
+
+
+r.examApprovedAt=
+now();
+
+
+r.finalizedAt=
+now();
+
+
+addAudit(
+"Result Finalized",
+
+`${r.subject} result for ${r.className} finalized and locked by ${currentUser.name}.`,
+
+r.id
+);
+
+
+saveDB();
+
+closeReview();
+
+renderExamReview();
+
+refreshDashboard();
+
+
+alert(
+"Result finalized and locked successfully.\n\n"+
+"The Administrator can now publish it."
+);
+
+}
+
+
+/* =====================================================
+PUBLISH
+===================================================== */
 
 function renderPublishResults(){
 
-  const box=
-    document.getElementById("publishResultsArea");
+const box=
+document.getElementById(
+"publishResultsArea"
+);
 
-  if(!box)return;
+if(!box)return;
 
-  if(currentUser.role!=="admin"){
 
-    box.innerHTML=`
+if(
+currentUser.role!=="admin"
+){
 
-      <div class="card warning">
+box.innerHTML=`
 
-        Only the Administrator can publish official results.
+<div class="card warning">
 
-      </div>
+Only the Administrator can publish official results.
 
-    `;
+</div>
 
-    return;
+`;
 
-  }
-
-  const rows=
-    db.results.filter(
-      r=>r.status==="finalized"
-    );
-
-  if(!rows.length){
-
-    const published=
-      db.results.filter(
-        r=>r.status==="published"
-      );
-
-    if(published.length){
-
-      box.innerHTML=`
-
-        <div class="card">
-
-          <div class="notice">
-
-            <b>All finalized results have been published.</b>
-
-            <br><br>
-
-            ${published.length}
-            result submission(s) are already officially published.
-
-          </div>
-
-        </div>
-
-      `;
-
-    }else{
-
-      box.innerHTML=`
-
-        <div class="card">
-
-          <div class="muted">
-
-            No finalized results are currently waiting for publication.
-
-          </div>
-
-        </div>
-
-      `;
-
-    }
-
-    return;
-
-  }
-
-  box.innerHTML=`
-
-    <div class="card">
-
-      <div class="table-wrap">
-
-        <table>
-
-          <thead>
-
-            <tr>
-              <th>Class</th>
-              <th>Subject</th>
-              <th>Teacher</th>
-              <th>HOD</th>
-              <th>Session</th>
-              <th>Term</th>
-              <th>Students</th>
-              <th>Status</th>
-              <th>Action</th>
-            </tr>
-
-          </thead>
-
-          <tbody>
-
-            ${rows.map(r=>`
-
-              <tr>
-
-                <td>${esc(r.className)}</td>
-
-                <td>
-                  <b>${esc(r.subject)}</b>
-                </td>
-
-                <td>${esc(r.teacherName)}</td>
-
-                <td>${esc(r.hodName||"-")}</td>
-
-                <td>${esc(r.session)}</td>
-
-                <td>${esc(r.term)}</td>
-
-                <td>${r.students.length}</td>
-
-                <td>
-                  ${statusBadge(r.status)}
-                </td>
-
-                <td>
-
-                  <button
-                    class="btn green small"
-                    onclick="publishResult('${r.id}')">
-
-                    📢 Publish
-
-                  </button>
-
-                </td>
-
-              </tr>
-
-            `).join("")}
-
-          </tbody>
-
-        </table>
-
-      </div>
-
-    </div>
-
-  `;
+return;
 
 }
+
+
+const rows=
+db.results.filter(
+r=>r.status==="finalized"
+);
+
+
+if(!rows.length){
+
+const published=
+db.results.filter(
+r=>r.status==="published"
+);
+
+
+if(published.length){
+
+box.innerHTML=`
+
+<div class="card">
+
+<div class="notice">
+
+<b>
+All finalized results have been published.
+</b>
+
+<br><br>
+
+${published.length}
+result(s) are already officially published.
+
+</div>
+
+</div>
+
+`;
+
+}else{
+
+box.innerHTML=`
+
+<div class="card">
+
+<div class="muted">
+
+No finalized results are currently waiting for publication.
+
+</div>
+
+</div>
+
+`;
+
+}
+
+return;
+
+}
+
+
+box.innerHTML=`
+
+<div class="card">
+
+<div class="table-wrap">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Class</th>
+<th>Subject</th>
+<th>Teacher</th>
+<th>HOD</th>
+<th>Session</th>
+<th>Term</th>
+<th>Students</th>
+<th>Status</th>
+<th>Action</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+${rows.map(r=>`
+
+<tr>
+
+<td>
+${esc(r.className)}
+</td>
+
+<td>
+<b>${esc(r.subject)}</b>
+</td>
+
+<td>
+${esc(r.teacherName)}
+</td>
+
+<td>
+${esc(r.hodName||"-")}
+</td>
+
+<td>
+${esc(r.session)}
+</td>
+
+<td>
+${esc(r.term)}
+</td>
+
+<td>
+${r.students.length}
+</td>
+
+<td>
+${statusBadge(r.status)}
+</td>
+
+<td>
+
+<button
+class="btn green small"
+onclick="publishResult('${r.id}')">
+
+📢 Publish
+
+</button>
+
+</td>
+
+</tr>
+
+`).join("")}
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+`;
+
+}
+
 
 function publishResult(id){
 
-  if(currentUser.role!=="admin"){
+if(currentUser.role!=="admin"){
 
-    alert(
-      "Only the Administrator can publish results."
-    );
+alert(
+"Only Administrator can publish results."
+);
 
-    return;
-
-  }
-
-  const r=db.results.find(x=>x.id===id);
-
-  if(!r){
-
-    alert("Result not found.");
-
-    return;
-
-  }
-
-  if(r.status!=="finalized"){
-
-    alert(
-      "This result cannot be published.\n\n"+
-      "Only Examination Officer finalized results can be published."
-    );
-
-    return;
-
-  }
-
-  const confirmed=confirm(
-
-    "PUBLISH THIS RESULT?\n\n"+
-
-    "Class: "+r.className+"\n"+
-
-    "Subject: "+r.subject+"\n"+
-
-    "Term: "+r.term+"\n"+
-
-    "Session: "+r.session+"\n\n"+
-
-    "After publishing, this result will be marked as officially released."
-
-  );
-
-  if(!confirmed)return;
-
-  r.status="published";
-
-  r.publishedAt=now();
-
-  r.publishedBy=currentUser.id;
-
-  r.publishedByName=currentUser.name;
-
-  addAudit(
-    "Result Published",
-    `${r.subject} result for ${r.className} was officially published by ${currentUser.name}.`,
-    r.id
-  );
-
-  saveDB();
-
-  refreshDashboard();
-
-  renderPublishResults();
-
-  alert(
-    "Result published successfully.\n\n"+
-    "It is now officially released and ready for the future Parent/Student Portal."
-  );
+return;
 
 }
 
 
-/* ================= BROADSHEET ================= */
+const r=
+db.results.find(
+x=>x.id===id
+);
+
+
+if(!r){
+
+alert(
+"Result not found."
+);
+
+return;
+
+}
+
+
+if(r.status!=="finalized"){
+
+alert(
+"Only Examination Officer finalized results can be published."
+);
+
+return;
+
+}
+
+
+const confirmed=
+confirm(
+
+"PUBLISH THIS RESULT?\n\n"+
+
+"Class: "+
+r.className+
+
+"\nSubject: "+
+r.subject+
+
+"\nTerm: "+
+r.term+
+
+"\nSession: "+
+r.session+
+
+"\n\n"+
+"After publishing, the result becomes officially released."
+
+);
+
+
+if(!confirmed)return;
+
+
+r.status=
+"published";
+
+
+r.publishedAt=
+now();
+
+
+r.publishedBy=
+currentUser.id;
+
+
+r.publishedByName=
+currentUser.name;
+
+
+addAudit(
+"Result Published",
+
+`${r.subject} result for ${r.className} officially published by ${currentUser.name}.`,
+
+r.id
+);
+
+
+saveDB();
+
+refreshDashboard();
+
+renderPublishResults();
+
+
+alert(
+"Result published successfully."
+);
+
+}
+
+
+/* =====================================================
+BROADSHEET
+===================================================== */
 
 function generateBroadsheet(){
 
-  const session=
-    document.getElementById("bSession").value;
+const session=
+document.getElementById(
+"bSession"
+).value;
 
-  const term=
-    document.getElementById("bTerm").value;
 
-  const cls=
-    document.getElementById("bClass").value;
+const term=
+document.getElementById(
+"bTerm"
+).value;
 
-  if(!session||!term||!cls){
 
-    alert("Select session, term and class.");
+const cls=
+document.getElementById(
+"bClass"
+).value;
 
-    return;
 
-  }
+if(!session||!term||!cls){
 
-  const c=
-    db.classes.find(x=>x.name===cls);
+alert(
+"Select session, term and class."
+);
 
-  if(!c){
-
-    alert("Class not found.");
-
-    return;
-
-  }
-
-  const results=
-    db.results.filter(r=>
-      r.className===cls &&
-      r.session===session &&
-      r.term===term &&
-      (
-        r.status==="finalized" ||
-        r.status==="published"
-      )
-    );
-
-  if(!results.length){
-
-    document.getElementById("broadsheetArea")
-      .innerHTML=`
-
-        <div class="card warning">
-
-          No finalized or published subject results
-          are available for this class.
-
-        </div>
-
-      `;
-
-    return;
-
-  }
-
-  const subjects=[
-    ...new Set(results.map(r=>r.subject))
-  ];
-
-  const students=c.students.map(name=>{
-
-    const subjectData={};
-
-    results.forEach(r=>{
-
-      const s=
-        r.students.find(x=>x.name===name);
-
-      if(s)subjectData[r.subject]=s;
-
-    });
-
-    const totals=
-      Object.values(subjectData)
-      .map(x=>x.total);
-
-    const total=
-      totals.reduce((a,b)=>a+b,0);
-
-    const average=
-      totals.length
-      ?total/totals.length
-      :0;
-
-    return {
-
-      name,
-      subjectData,
-      total,
-      average,
-      subjectsCount:totals.length
-
-    };
-
-  });
-
-  students.sort(
-    (a,b)=>b.average-a.average
-  );
-
-  let previous=null;
-  let position=0;
-
-  students.forEach((s,i)=>{
-
-    if(s.average!==previous){
-
-      position=i+1;
-
-      previous=s.average;
-
-    }
-
-    s.position=position;
-
-  });
-
-  currentBroadsheetData={
-    session,
-    term,
-    cls,
-    subjects,
-    students
-  };
-
-  document.getElementById("broadsheetArea")
-    .innerHTML=`
-
-      <div class="card" id="broadsheetPrint">
-
-        <div
-          style="
-            text-align:center;
-            margin-bottom:18px">
-
-          <h2 style="color:#14532d">
-            CALIPHATE TARBIYA ACADEMY SOKOTO
-          </h2>
-
-          <h3>CLASS BROADSHEET</h3>
-
-          <p>
-            ${esc(cls)}
-            •
-            ${esc(term)}
-            •
-            ${esc(session)}
-          </p>
-
-        </div>
-
-        <div class="table-wrap">
-
-          <table>
-
-            <thead>
-
-              <tr>
-
-                <th>#</th>
-
-                <th>Student</th>
-
-                ${subjects.map(s=>
-                  `<th>${esc(s)}</th>`
-                ).join("")}
-
-                <th>Total</th>
-
-                <th>Average</th>
-
-                <th>Position</th>
-
-              </tr>
-
-            </thead>
-
-            <tbody>
-
-              ${students.map((s,i)=>`
-
-                <tr>
-
-                  <td>${i+1}</td>
-
-                  <td>
-                    <b>${esc(s.name)}</b>
-                  </td>
-
-                  ${subjects.map(sub=>{
-
-                    const x=s.subjectData[sub];
-
-                    return `<td>${x?x.total:"-"}</td>`;
-
-                  }).join("")}
-
-                  <td class="total-cell">
-                    ${s.total}
-                  </td>
-
-                  <td>
-                    ${s.average.toFixed(2)}%
-                  </td>
-
-                  <td>
-                    <b>${ordinal(s.position)}</b>
-                  </td>
-
-                </tr>
-
-              `).join("")}
-
-            </tbody>
-
-          </table>
-
-        </div>
-
-        <div style="margin-top:15px;font-size:12px">
-
-          <b>Note:</b>
-          Broadsheet is generated automatically from
-          finalized or published subject results.
-
-        </div>
-
-      </div>
-
-    `;
+return;
 
 }
 
 
-/* ================= STUDENT RESULT ================= */
+const c=
+db.classes.find(
+x=>x.name===cls
+);
+
+
+if(!c){
+
+alert(
+"Class not found."
+);
+
+return;
+
+}
+
+
+const results=
+db.results.filter(r=>
+
+r.className===cls &&
+
+r.session===session &&
+
+r.term===term &&
+
+(
+r.status==="finalized"||
+r.status==="published"
+)
+
+);
+
+
+if(!results.length){
+
+document.getElementById(
+"broadsheetArea"
+).innerHTML=`
+
+<div class="card warning">
+
+No finalized or published subject results are available for this class.
+
+</div>
+
+`;
+
+return;
+
+}
+
+
+const subjects=[
+...new Set(
+results.map(
+r=>r.subject
+)
+)
+];
+
+
+const students=
+(c.students||[]).map(
+studentName=>{
+
+const cleanName=
+getStudentName(studentName);
+
+const subjectData={};
+
+
+results.forEach(r=>{
+
+const s=
+r.students.find(
+x=>
+getStudentName(x)===
+cleanName
+);
+
+
+if(s)
+subjectData[r.subject]=s;
+
+});
+
+
+const totals=
+Object.values(subjectData)
+.map(x=>x.total);
+
+
+const total=
+totals.reduce(
+(a,b)=>a+b,
+0
+);
+
+
+const average=
+totals.length
+?total/totals.length
+:0;
+
+
+return{
+
+name:cleanName,
+
+subjectData:subjectData,
+
+total:total,
+
+average:average,
+
+subjectsCount:
+totals.length
+
+};
+
+});
+
+
+students.sort(
+(a,b)=>
+b.average-a.average
+);
+
+
+let previous=null;
+
+let position=0;
+
+
+students.forEach(
+(s,i)=>{
+
+if(
+s.average!==previous
+){
+
+position=i+1;
+
+previous=s.average;
+
+}
+
+s.position=position;
+
+}
+);
+
+
+currentBroadsheetData={
+
+session,
+
+term,
+
+cls,
+
+subjects,
+
+students
+
+};
+
+
+document.getElementById(
+"broadsheetArea"
+).innerHTML=`
+
+<div
+class="card"
+id="broadsheetPrint">
+
+<div
+style="
+text-align:center;
+margin-bottom:18px">
+
+<h2
+style="color:#14532d">
+
+CALIPHATE TARBIYA ACADEMY SOKOTO
+
+</h2>
+
+<h3>
+CLASS BROADSHEET
+</h3>
+
+<p>
+
+${esc(cls)}
+•
+${esc(term)}
+•
+${esc(session)}
+
+</p>
+
+</div>
+
+
+<div class="table-wrap">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>#</th>
+
+<th>
+Student
+</th>
+
+${subjects.map(
+s=>
+`<th>${esc(s)}</th>`
+).join("")}
+
+<th>
+Total
+</th>
+
+<th>
+Average
+</th>
+
+<th>
+Position
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+${students.map(
+(s,i)=>`
+
+<tr>
+
+<td>
+${i+1}
+</td>
+
+<td>
+<b>
+${esc(s.name)}
+</b>
+</td>
+
+${subjects.map(
+sub=>{
+
+const x=
+s.subjectData[sub];
+
+return`
+
+<td>
+${x?x.total:"-"}
+</td>
+
+`;
+
+}
+).join("")}
+
+<td
+class="total-cell">
+
+${s.total}
+
+</td>
+
+<td>
+
+${s.average.toFixed(2)}%
+
+</td>
+
+<td>
+
+<b>
+${ordinal(s.position)}
+</b>
+
+</td>
+
+</tr>
+
+`
+).join("")}
+
+</tbody>
+
+</table>
+
+</div>
+
+
+<div
+style="
+margin-top:15px;
+font-size:12px">
+
+<b>
+Note:
+</b>
+
+Broadsheet is generated automatically from finalized or published subject results.
+
+</div>
+
+</div>
+
+`;
+
+}
+
+
+/* =====================================================
+STUDENT SELECTOR
+===================================================== */
 
 function loadStudentSelector(){
 
-  const cls=
-    document.getElementById("sClass").value;
+const cls=
+document.getElementById(
+"sClass"
+).value;
 
-  const sel=
-    document.getElementById("sStudent");
 
-  sel.innerHTML=
-    '<option value="">Select student</option>';
+const sel=
+document.getElementById(
+"sStudent"
+);
 
-  const c=
-    db.classes.find(x=>x.name===cls);
 
-  if(!c)return;
+sel.innerHTML=
+'<option value="">Select student</option>';
 
-  c.students.forEach(name=>{
 
-    const o=document.createElement("option");
+const c=
+db.classes.find(
+x=>x.name===cls
+);
 
-    o.value=name;
 
-    o.textContent=name;
+if(!c)return;
 
-    sel.appendChild(o);
 
-  });
+(c.students||[]).forEach(
+student=>{
+
+const name=
+getStudentName(student);
+
+
+const o=
+document.createElement("option");
+
+
+o.value=name;
+
+o.textContent=name;
+
+
+sel.appendChild(o);
+
+});
 
 }
+
+
+/* =====================================================
+INDIVIDUAL STUDENT RESULT
+===================================================== */
 
 function generateStudentResult(){
 
-  const session=
-    document.getElementById("sSession").value;
+const session=
+document.getElementById(
+"sSession"
+).value;
 
-  const term=
-    document.getElementById("sTerm").value;
 
-  const cls=
-    document.getElementById("sClass").value;
+const term=
+document.getElementById(
+"sTerm"
+).value;
 
-  const student=
-    document.getElementById("sStudent").value;
 
-  if(!session||!term||!cls||!student){
+const cls=
+document.getElementById(
+"sClass"
+).value;
 
-    alert("Select all fields.");
 
-    return;
+const student=
+document.getElementById(
+"sStudent"
+).value;
 
-  }
 
-  const results=
-    db.results.filter(r=>
-      r.className===cls &&
-      r.session===session &&
-      r.term===term &&
-      (
-        r.status==="finalized" ||
-        r.status==="published"
-      )
-    );
-
-  const subjects=[];
-
-  results.forEach(r=>{
-
-    const s=
-      r.students.find(x=>x.name===student);
-
-    if(s){
-
-      subjects.push({
-
-        subject:r.subject,
-
-        ...s
-
-      });
-
-    }
-
-  });
-
-  if(!subjects.length){
-
-    document.getElementById("studentResultArea")
-      .innerHTML=`
-
-        <div class="card warning">
-
-          No finalized or published result
-          is available for this student.
-
-        </div>
-
-      `;
-
-    return;
-
-  }
-
-  const total=
-    subjects.reduce(
-      (a,b)=>a+b.total,
-      0
-    );
-
-  const average=
-    total/subjects.length;
-
-  const classData=
-    buildClassRanking(
-      cls,
-      session,
-      term
-    );
-
-  const ranked=
-    classData.find(
-      x=>x.name===student
-    );
-
-  currentStudentData={
-
-    session,
-    term,
-    cls,
-    student,
-    subjects,
-    total,
-    average,
-    position:
-      ranked
-      ?ranked.position
-      :"-"
-
-  };
-
-  document.getElementById("studentResultArea")
-    .innerHTML=`
-
-      <div class="card" id="studentPrint">
-
-        <div
-          style="
-            text-align:center;
-            margin-bottom:20px">
-
-          <h2 style="color:#14532d">
-            CALIPHATE TARBIYA ACADEMY SOKOTO
-          </h2>
-
-          <h3>STUDENT ACADEMIC REPORT</h3>
-
-          <p>
-            ${esc(term)}
-            •
-            ${esc(session)}
-          </p>
-
-        </div>
-
-        <div
-          class="grid2"
-          style="margin-bottom:15px">
-
-          <div>
-
-            <b>Student:</b>
-
-            <br>
-
-            ${esc(student)}
-
-          </div>
-
-          <div>
-
-            <b>Class:</b>
-
-            <br>
-
-            ${esc(cls)}
-
-          </div>
-
-        </div>
-
-        <div class="table-wrap">
-
-          <table>
-
-            <thead>
-
-              <tr>
-
-                <th>Subject</th>
-                <th>CA1 / 15</th>
-                <th>CA2 / 15</th>
-                <th>CA Total / 30</th>
-                <th>Exam / 70</th>
-                <th>Total / 100</th>
-                <th>Grade</th>
-                <th>Remark</th>
-
-              </tr>
-
-            </thead>
-
-            <tbody>
-
-              ${subjects.map(s=>`
-
-                <tr>
-
-                  <td>
-                    <b>${esc(s.subject)}</b>
-                  </td>
-
-                  <td>${s.ca1}</td>
-
-                  <td>${s.ca2}</td>
-
-                  <td>${s.caTotal}</td>
-
-                  <td>${s.exam}</td>
-
-                  <td>
-                    <b>${s.total}</b>
-                  </td>
-
-                  <td>${s.grade}</td>
-
-                  <td>${esc(s.remark)}</td>
-
-                </tr>
-
-              `).join("")}
-
-            </tbody>
-
-          </table>
-
-        </div>
-
-        <div
-          class="grid"
-          style="margin-top:18px">
-
-          <div class="card">
-
-            <div class="muted">
-              Subjects
-            </div>
-
-            <div class="stat">
-              ${subjects.length}
-            </div>
-
-          </div>
-
-          <div class="card">
-
-            <div class="muted">
-              Total
-            </div>
-
-            <div class="stat">
-              ${total}
-            </div>
-
-          </div>
-
-          <div class="card">
-
-            <div class="muted">
-              Average
-            </div>
-
-            <div class="stat">
-              ${average.toFixed(2)}%
-            </div>
-
-          </div>
-
-          <div class="card">
-
-            <div class="muted">
-              Position
-            </div>
-
-            <div class="stat">
-              ${ordinal(
-                ranked
-                ?ranked.position
-                :"-"
-              )}
-            </div>
-
-          </div>
-
-        </div>
-
-        <div
-          style="
-            margin-top:45px;
-            display:flex;
-            justify-content:space-between">
-
-          <div>
-            ____________________<br>
-            Class Teacher
-          </div>
-
-          <div>
-            ____________________<br>
-            Examination Officer
-          </div>
-
-          <div>
-            ____________________<br>
-            Principal/Head Teacher
-          </div>
-
-        </div>
-
-      </div>
-
-    `;
-
-}
-
-function buildClassRanking(
-  cls,
-  session,
-  term
+if(
+!session||
+!term||
+!cls||
+!student
 ){
 
-  const c=
-    db.classes.find(x=>x.name===cls);
+alert(
+"Select all fields."
+);
 
-  if(!c)return [];
-
-  const results=
-    db.results.filter(r=>
-      r.className===cls &&
-      r.session===session &&
-      r.term===term &&
-      (
-        r.status==="finalized" ||
-        r.status==="published"
-      )
-    );
-
-  const arr=
-    c.students.map(name=>{
-
-      let total=0;
-      let count=0;
-
-      results.forEach(r=>{
-
-        const s=
-          r.students.find(
-            x=>x.name===name
-          );
-
-        if(s){
-
-          total+=s.total;
-
-          count++;
-
-        }
-
-      });
-
-      return {
-
-        name,
-
-        total,
-
-        average:
-          count
-          ?total/count
-          :0,
-
-        count
-
-      };
-
-    });
-
-  arr.sort(
-    (a,b)=>b.average-a.average
-  );
-
-  let previous=null;
-  let position=0;
-
-  arr.forEach((x,i)=>{
-
-    if(x.average!==previous){
-
-      position=i+1;
-
-      previous=x.average;
-
-    }
-
-    x.position=position;
-
-  });
-
-  return arr;
+return;
 
 }
 
 
-/* ================= WORD EXPORT ================= */
+const results=
+db.results.filter(r=>
+
+r.className===cls &&
+
+r.session===session &&
+
+r.term===term &&
+
+(
+r.status==="finalized"||
+r.status==="published"
+)
+
+);
+
+
+const subjects=[];
+
+
+results.forEach(r=>{
+
+const s=
+r.students.find(
+x=>
+getStudentName(x)===
+student
+);
+
+
+if(s){
+
+subjects.push({
+
+subject:r.subject,
+
+...s
+
+});
+
+}
+
+});
+
+
+if(!subjects.length){
+
+document.getElementById(
+"studentResultArea"
+).innerHTML=`
+
+<div class="card warning">
+
+No finalized or published result is available for this student.
+
+</div>
+
+`;
+
+return;
+
+}
+
+
+const total=
+subjects.reduce(
+(a,b)=>a+b.total,
+0
+);
+
+
+const average=
+total/subjects.length;
+
+
+const classData=
+buildClassRanking(
+cls,
+session,
+term
+);
+
+
+const ranked=
+classData.find(
+x=>x.name===student
+);
+
+
+currentStudentData={
+
+session,
+
+term,
+
+cls,
+
+student,
+
+subjects,
+
+total,
+
+average,
+
+position:
+ranked
+?ranked.position
+:"-"
+
+};
+
+
+document.getElementById(
+"studentResultArea"
+).innerHTML=`
+
+<div
+class="card"
+id="studentPrint">
+
+<div
+style="
+text-align:center;
+margin-bottom:20px">
+
+<h2
+style="color:#14532d">
+
+CALIPHATE TARBIYA ACADEMY SOKOTO
+
+</h2>
+
+<h3>
+STUDENT ACADEMIC REPORT
+</h3>
+
+<p>
+${esc(term)}
+•
+${esc(session)}
+</p>
+
+</div>
+
+
+<div
+class="grid2"
+style="margin-bottom:15px">
+
+<div>
+
+<b>
+Student:
+</b>
+
+<br>
+
+${esc(student)}
+
+</div>
+
+
+<div>
+
+<b>
+Class:
+</b>
+
+<br>
+
+${esc(cls)}
+
+</div>
+
+</div>
+
+
+<div class="table-wrap">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>
+Subject
+</th>
+
+<th>
+CA1 / 15
+</th>
+
+<th>
+CA2 / 15
+</th>
+
+<th>
+CA Total / 30
+</th>
+
+<th>
+Exam / 70
+</th>
+
+<th>
+Total / 100
+</th>
+
+<th>
+Grade
+</th>
+
+<th>
+Remark
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+${subjects.map(
+s=>`
+
+<tr>
+
+<td>
+<b>
+${esc(s.subject)}
+</b>
+</td>
+
+<td>
+${s.ca1}
+</td>
+
+<td>
+${s.ca2}
+</td>
+
+<td>
+${s.caTotal}
+</td>
+
+<td>
+${s.exam}
+</td>
+
+<td>
+<b>
+${s.total}
+</b>
+</td>
+
+<td>
+${s.grade}
+</td>
+
+<td>
+${esc(s.remark)}
+</td>
+
+</tr>
+
+`
+).join("")}
+
+</tbody>
+
+</table>
+
+</div>
+
+
+<div
+class="grid"
+style="margin-top:18px">
+
+<div class="card">
+
+<div class="muted">
+Subjects
+</div>
+
+<div class="stat">
+${subjects.length}
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="muted">
+Total
+</div>
+
+<div class="stat">
+${total}
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="muted">
+Average
+</div>
+
+<div class="stat">
+${average.toFixed(2)}%
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="muted">
+Position
+</div>
+
+<div class="stat">
+
+${ordinal(
+ranked
+?ranked.position
+:"-"
+)}
+
+</div>
+
+</div>
+
+</div>
+
+
+<div
+style="
+margin-top:45px;
+display:flex;
+justify-content:space-between">
+
+<div>
+____________________
+<br>
+Class Teacher
+</div>
+
+<div>
+____________________
+<br>
+Examination Officer
+</div>
+
+<div>
+____________________
+<br>
+Principal/Head Teacher
+</div>
+
+</div>
+
+</div>
+
+`;
+
+}
+
+
+/* =====================================================
+CLASS RANKING
+===================================================== */
+
+function buildClassRanking(
+cls,
+session,
+term
+){
+
+const c=
+db.classes.find(
+x=>x.name===cls
+);
+
+
+if(!c)return[];
+
+
+const results=
+db.results.filter(r=>
+
+r.className===cls &&
+
+r.session===session &&
+
+r.term===term &&
+
+(
+r.status==="finalized"||
+r.status==="published"
+)
+
+);
+
+
+const arr=
+(c.students||[]).map(
+student=>{
+
+const name=
+getStudentName(student);
+
+let total=0;
+
+let count=0;
+
+
+results.forEach(r=>{
+
+const s=
+r.students.find(
+x=>
+getStudentName(x)===
+name
+);
+
+
+if(s){
+
+total+=s.total;
+
+count++;
+
+}
+
+});
+
+
+return{
+
+name:name,
+
+total:total,
+
+average:
+count
+?total/count
+:0,
+
+count:count
+
+};
+
+});
+
+
+arr.sort(
+(a,b)=>
+b.average-a.average
+);
+
+
+let previous=null;
+
+let position=0;
+
+
+arr.forEach(
+(x,i)=>{
+
+if(
+x.average!==previous
+){
+
+position=i+1;
+
+previous=x.average;
+
+}
+
+x.position=position;
+
+}
+);
+
+
+return arr;
+
+}
+
+
+/* =====================================================
+WORD EXPORT
+===================================================== */
 
 function exportBroadsheetWord(){
 
-  if(!currentBroadsheetData){
+if(!currentBroadsheetData){
 
-    alert(
-      "Generate the broadsheet first."
-    );
+alert(
+"Generate the broadsheet first."
+);
 
-    return;
-
-  }
-
-  const d=
-    currentBroadsheetData;
-
-  const html=`
-
-  <html>
-
-  <head>
-
-    <meta charset="UTF-8">
-
-    <title>Class Broadsheet</title>
-
-    <style>
-
-      body{
-        font-family:Arial
-      }
-
-      h2,h3{
-        text-align:center
-      }
-
-      table{
-        border-collapse:collapse;
-        width:100%
-      }
-
-      th,td{
-        border:1px solid #000;
-        padding:5px;
-        font-size:10px
-      }
-
-      th{
-        background:#eee
-      }
-
-    </style>
-
-  </head>
-
-  <body>
-
-    <h2>
-      CALIPHATE TARBIYA ACADEMY SOKOTO
-    </h2>
-
-    <h3>CLASS BROADSHEET</h3>
-
-    <p style="text-align:center">
-
-      ${esc(d.cls)}
-      —
-      ${esc(d.term)}
-      —
-      ${esc(d.session)}
-
-    </p>
-
-    <table>
-
-      <tr>
-
-        <th>#</th>
-
-        <th>Student</th>
-
-        ${d.subjects.map(s=>
-          `<th>${esc(s)}</th>`
-        ).join("")}
-
-        <th>Total</th>
-
-        <th>Average</th>
-
-        <th>Position</th>
-
-      </tr>
-
-      ${d.students.map((s,i)=>`
-
-        <tr>
-
-          <td>${i+1}</td>
-
-          <td>${esc(s.name)}</td>
-
-          ${d.subjects.map(sub=>{
-
-            const x=
-              s.subjectData[sub];
-
-            return `<td>${x?x.total:"-"}</td>`;
-
-          }).join("")}
-
-          <td>${s.total}</td>
-
-          <td>
-            ${s.average.toFixed(2)}
-          </td>
-
-          <td>
-            ${ordinal(s.position)}
-          </td>
-
-        </tr>
-
-      `).join("")}
-
-    </table>
-
-  </body>
-
-  </html>
-
-  `;
-
-  downloadWord(
-    html,
-    `${d.cls}-${d.term}-${d.session}-Broadsheet.doc`
-  );
+return;
 
 }
+
+
+const d=
+currentBroadsheetData;
+
+
+const html=`
+
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>
+Class Broadsheet
+</title>
+
+<style>
+
+body{
+font-family:Arial
+}
+
+h2,h3{
+text-align:center
+}
+
+table{
+border-collapse:collapse;
+width:100%
+}
+
+th,td{
+border:1px solid #000;
+padding:5px;
+font-size:10px
+}
+
+th{
+background:#eee
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h2>
+CALIPHATE TARBIYA ACADEMY SOKOTO
+</h2>
+
+<h3>
+CLASS BROADSHEET
+</h3>
+
+<p style="text-align:center">
+
+${esc(d.cls)}
+—
+${esc(d.term)}
+—
+${esc(d.session)}
+
+</p>
+
+<table>
+
+<tr>
+
+<th>#</th>
+
+<th>
+Student
+</th>
+
+${d.subjects.map(
+s=>
+`<th>${esc(s)}</th>`
+).join("")}
+
+<th>
+Total
+</th>
+
+<th>
+Average
+</th>
+
+<th>
+Position
+</th>
+
+</tr>
+
+
+${d.students.map(
+(s,i)=>`
+
+<tr>
+
+<td>
+${i+1}
+</td>
+
+<td>
+${esc(s.name)}
+</td>
+
+${d.subjects.map(
+sub=>{
+
+const x=
+s.subjectData[sub];
+
+return`
+
+<td>
+${x?x.total:"-"}
+</td>
+
+`;
+
+}
+).join("")}
+
+<td>
+${s.total}
+</td>
+
+<td>
+${s.average.toFixed(2)}
+</td>
+
+<td>
+${ordinal(s.position)}
+</td>
+
+</tr>
+
+`
+).join("")}
+
+</table>
+
+</body>
+
+</html>
+
+`;
+
+
+downloadWord(
+html,
+`${d.cls}-${d.term}-${d.session}-Broadsheet.doc`
+);
+
+}
+
 
 function exportStudentWord(){
 
-  if(!currentStudentData){
+if(!currentStudentData){
 
-    alert(
-      "Generate the student result first."
-    );
+alert(
+"Generate the student result first."
+);
 
-    return;
-
-  }
-
-  const d=
-    currentStudentData;
-
-  const html=`
-
-  <html>
-
-  <head>
-
-    <meta charset="UTF-8">
-
-    <title>Student Result</title>
-
-    <style>
-
-      body{
-        font-family:Arial
-      }
-
-      h2,h3{
-        text-align:center
-      }
-
-      table{
-        border-collapse:collapse;
-        width:100%
-      }
-
-      th,td{
-        border:1px solid #000;
-        padding:7px;
-        font-size:11px
-      }
-
-      th{
-        background:#eee
-      }
-
-    </style>
-
-  </head>
-
-  <body>
-
-    <h2>
-      CALIPHATE TARBIYA ACADEMY SOKOTO
-    </h2>
-
-    <h3>
-      STUDENT ACADEMIC REPORT
-    </h3>
-
-    <p>
-
-      <b>Student:</b>
-      ${esc(d.student)}
-
-      <br>
-
-      <b>Class:</b>
-      ${esc(d.cls)}
-
-      <br>
-
-      <b>Term:</b>
-      ${esc(d.term)}
-
-      <br>
-
-      <b>Session:</b>
-      ${esc(d.session)}
-
-    </p>
-
-    <table>
-
-      <tr>
-
-        <th>Subject</th>
-        <th>CA1</th>
-        <th>CA2</th>
-        <th>CA Total</th>
-        <th>Exam</th>
-        <th>Total</th>
-        <th>Grade</th>
-        <th>Remark</th>
-
-      </tr>
-
-      ${d.subjects.map(s=>`
-
-        <tr>
-
-          <td>${esc(s.subject)}</td>
-
-          <td>${s.ca1}</td>
-
-          <td>${s.ca2}</td>
-
-          <td>${s.caTotal}</td>
-
-          <td>${s.exam}</td>
-
-          <td>${s.total}</td>
-
-          <td>${s.grade}</td>
-
-          <td>${esc(s.remark)}</td>
-
-        </tr>
-
-      `).join("")}
-
-    </table>
-
-    <br>
-
-    <p>
-      <b>Total:</b>
-      ${d.total}
-    </p>
-
-    <p>
-      <b>Average:</b>
-      ${d.average.toFixed(2)}%
-    </p>
-
-    <p>
-      <b>Position:</b>
-      ${ordinal(d.position)}
-    </p>
-
-    <br><br>
-
-    ____________________ &nbsp;&nbsp;&nbsp;
-
-    ____________________ &nbsp;&nbsp;&nbsp;
-
-    ____________________
-
-    <br>
-
-    Class Teacher &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-    Examination Officer &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-    Principal
-
-  </body>
-
-  </html>
-
-  `;
-
-  downloadWord(
-    html,
-    `${d.student}-${d.term}-${d.session}-Result.doc`
-  );
+return;
 
 }
 
-function downloadWord(html,filename){
 
-  const blob=new Blob(
-    ["\ufeff",html],
-    {
-      type:"application/msword"
-    }
-  );
+const d=
+currentStudentData;
 
-  const url=
-    URL.createObjectURL(blob);
 
-  const a=
-    document.createElement("a");
+const html=`
 
-  a.href=url;
+<html>
 
-  a.download=filename;
+<head>
 
-  document.body.appendChild(a);
+<meta charset="UTF-8">
 
-  a.click();
+<title>
+Student Result
+</title>
 
-  a.remove();
+<style>
 
-  URL.revokeObjectURL(url);
+body{
+font-family:Arial
+}
+
+h2,h3{
+text-align:center
+}
+
+table{
+border-collapse:collapse;
+width:100%
+}
+
+th,td{
+border:1px solid #000;
+padding:7px;
+font-size:11px
+}
+
+th{
+background:#eee
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h2>
+CALIPHATE TARBIYA ACADEMY SOKOTO
+</h2>
+
+<h3>
+STUDENT ACADEMIC REPORT
+</h3>
+
+<p>
+
+<b>
+Student:
+</b>
+
+${esc(d.student)}
+
+<br>
+
+<b>
+Class:
+</b>
+
+${esc(d.cls)}
+
+<br>
+
+<b>
+Term:
+</b>
+
+${esc(d.term)}
+
+<br>
+
+<b>
+Session:
+</b>
+
+${esc(d.session)}
+
+</p>
+
+
+<table>
+
+<tr>
+
+<th>
+Subject
+</th>
+
+<th>
+CA1
+</th>
+
+<th>
+CA2
+</th>
+
+<th>
+CA Total
+</th>
+
+<th>
+Exam
+</th>
+
+<th>
+Total
+</th>
+
+<th>
+Grade
+</th>
+
+<th>
+Remark
+</th>
+
+</tr>
+
+
+${d.subjects.map(
+s=>`
+
+<tr>
+
+<td>
+${esc(s.subject)}
+</td>
+
+<td>
+${s.ca1}
+</td>
+
+<td>
+${s.ca2}
+</td>
+
+<td>
+${s.caTotal}
+</td>
+
+<td>
+${s.exam}
+</td>
+
+<td>
+${s.total}
+</td>
+
+<td>
+${s.grade}
+</td>
+
+<td>
+${esc(s.remark)}
+</td>
+
+</tr>
+
+`
+).join("")}
+
+</table>
+
+
+<br>
+
+<p>
+<b>
+Total:
+</b>
+
+${d.total}
+
+</p>
+
+
+<p>
+
+<b>
+Average:
+</b>
+
+${d.average.toFixed(2)}%
+
+</p>
+
+
+<p>
+
+<b>
+Position:
+</b>
+
+${ordinal(d.position)}
+
+</p>
+
+
+<br><br>
+
+____________________
+&nbsp;&nbsp;&nbsp;
+
+____________________
+&nbsp;&nbsp;&nbsp;
+
+____________________
+
+<br>
+
+Class Teacher
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+Examination Officer
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+Principal
+
+</body>
+
+</html>
+
+`;
+
+
+downloadWord(
+html,
+`${d.student}-${d.term}-${d.session}-Result.doc`
+);
 
 }
 
 
-/* ================= SETTINGS ================= */
+function downloadWord(
+html,
+filename
+){
+
+const blob=
+new Blob(
+[
+"\ufeff",
+html
+],
+{
+type:"application/msword"
+}
+);
+
+
+const url=
+URL.createObjectURL(blob);
+
+
+const a=
+document.createElement("a");
+
+
+a.href=url;
+
+a.download=filename;
+
+
+document.body.appendChild(a);
+
+a.click();
+
+a.remove();
+
+
+URL.revokeObjectURL(url);
+
+}
+
+
+/* =====================================================
+SETTINGS
+===================================================== */
 
 function renderSettings(){
 
-  const s=db.settings;
+const s=
+db.settings;
 
-  const ca1=
-    document.getElementById("setCA1");
 
-  const ca2=
-    document.getElementById("setCA2");
+const ca1=
+document.getElementById(
+"setCA1"
+);
 
-  const exam=
-    document.getElementById("setExam");
+const ca2=
+document.getElementById(
+"setCA2"
+);
 
-  if(ca1)ca1.value=s.ca1Max;
+const exam=
+document.getElementById(
+"setExam"
+);
 
-  if(ca2)ca2.value=s.ca2Max;
 
-  if(exam)exam.value=s.examMax;
+if(ca1)
+ca1.value=s.ca1Max;
 
-  const body=
-    document.getElementById("gradingTable");
 
-  if(!body)return;
+if(ca2)
+ca2.value=s.ca2Max;
 
-  body.innerHTML=s.grades.map((g,i)=>`
 
-    <tr>
+if(exam)
+exam.value=s.examMax;
 
-      <td>
 
-        <input
-          id="gradeName-${i}"
-          value="${esc(g.grade)}">
+const body=
+document.getElementById(
+"gradingTable"
+);
 
-      </td>
 
-      <td>
+if(!body)return;
 
-        <input
-          id="gradeMin-${i}"
-          type="number"
-          value="${g.min}">
 
-      </td>
+body.innerHTML=
+s.grades.map(
+(g,i)=>`
 
-      <td>
+<tr>
 
-        <input
-          id="gradeRemark-${i}"
-          value="${esc(g.remark)}">
+<td>
 
-      </td>
+<input
+id="gradeName-${i}"
+value="${esc(g.grade)}">
 
-    </tr>
+</td>
 
-  `).join("");
+
+<td>
+
+<input
+id="gradeMin-${i}"
+type="number"
+value="${g.min}">
+
+</td>
+
+
+<td>
+
+<input
+id="gradeRemark-${i}"
+value="${esc(g.remark)}">
+
+</td>
+
+</tr>
+
+`
+).join("");
 
 }
+
 
 function saveResultSettings(){
 
-  if(currentUser.role!=="admin"){
+if(currentUser.role!=="admin"){
 
-    alert(
-      "Only Administrator can change result settings."
-    );
+alert(
+"Only Administrator can change result settings."
+);
 
-    return;
-
-  }
-
-  const ca1=
-    Number(
-      document.getElementById("setCA1").value
-    );
-
-  const ca2=
-    Number(
-      document.getElementById("setCA2").value
-    );
-
-  const exam=
-    Number(
-      document.getElementById("setExam").value
-    );
-
-  if(ca1<=0||ca2<=0||exam<=0){
-
-    alert(
-      "Maximum marks must be greater than zero."
-    );
-
-    return;
-
-  }
-
-  db.settings.ca1Max=ca1;
-
-  db.settings.ca2Max=ca2;
-
-  db.settings.examMax=exam;
-
-  db.settings.grades=
-    db.settings.grades.map((g,i)=>({
-
-      grade:
-        document.getElementById(
-          "gradeName-"+i
-        ).value.trim(),
-
-      min:
-        Number(
-          document.getElementById(
-            "gradeMin-"+i
-          ).value
-        ),
-
-      remark:
-        document.getElementById(
-          "gradeRemark-"+i
-        ).value.trim()
-
-    }));
-
-  saveDB();
-
-  alert(
-    "Result settings saved."
-  );
-
-  loadResultStudents();
+return;
 
 }
 
 
-/* ================= SECURITY ================= */
+const ca1=
+Number(
+document.getElementById(
+"setCA1"
+).value
+);
+
+
+const ca2=
+Number(
+document.getElementById(
+"setCA2"
+).value
+);
+
+
+const exam=
+Number(
+document.getElementById(
+"setExam"
+).value
+);
+
+
+if(
+ca1<=0||
+ca2<=0||
+exam<=0
+){
+
+alert(
+"Maximum marks must be greater than zero."
+);
+
+return;
+
+}
+
+
+db.settings.ca1Max=ca1;
+
+db.settings.ca2Max=ca2;
+
+db.settings.examMax=exam;
+
+
+db.settings.grades=
+db.settings.grades.map(
+(g,i)=>({
+
+grade:
+document.getElementById(
+"gradeName-"+i
+).value.trim(),
+
+min:
+Number(
+document.getElementById(
+"gradeMin-"+i
+).value
+),
+
+remark:
+document.getElementById(
+"gradeRemark-"+i
+).value.trim()
+
+})
+);
+
+
+saveDB();
+
+
+alert(
+"Result settings saved."
+);
+
+
+loadResultStudents();
+
+}
+
+
+/* =====================================================
+SECURITY
+===================================================== */
 
 function changePassword(){
 
-  const old=
-    document.getElementById(
-      "oldPassword"
-    ).value;
+const old=
+document.getElementById(
+"oldPassword"
+).value;
 
-  const n=
-    document.getElementById(
-      "newPassword"
-    ).value;
 
-  const c=
-    document.getElementById(
-      "confirmPassword"
-    ).value;
+const n=
+document.getElementById(
+"newPassword"
+).value;
 
-  const msg=
-    document.getElementById(
-      "passwordMessage"
-    );
 
-  if(old!==currentUser.password){
+const c=
+document.getElementById(
+"confirmPassword"
+).value;
 
-    msg.className="error";
 
-    msg.textContent=
-      "Current password is incorrect.";
+const msg=
+document.getElementById(
+"passwordMessage"
+);
 
-    return;
 
-  }
+if(
+old!==currentUser.password
+){
 
-  if(!n||n.length<6){
+msg.className="error";
 
-    msg.className="error";
+msg.textContent=
+"Current password is incorrect.";
 
-    msg.textContent=
-      "New password must be at least 6 characters.";
-
-    return;
-
-  }
-
-  if(n!==c){
-
-    msg.className="error";
-
-    msg.textContent=
-      "Passwords do not match.";
-
-    return;
-
-  }
-
-  currentUser.password=n;
-
-  const u=
-    db.users.find(
-      x=>x.id===currentUser.id
-    );
-
-  if(u)u.password=n;
-
-  saveDB();
-
-  msg.className="success";
-
-  msg.textContent=
-    "Password changed successfully.";
+return;
 
 }
 
 
-/* ================= BACKUP ================= */
+if(!n||n.length<6){
+
+msg.className="error";
+
+msg.textContent=
+"New password must be at least 6 characters.";
+
+return;
+
+}
+
+
+if(n!==c){
+
+msg.className="error";
+
+msg.textContent=
+"Passwords do not match.";
+
+return;
+
+}
+
+
+currentUser.password=n;
+
+
+const u=
+db.users.find(
+x=>x.id===currentUser.id
+);
+
+
+if(u)
+u.password=n;
+
+
+saveDB();
+
+
+msg.className="success";
+
+msg.textContent=
+"Password changed successfully.";
+
+}
+
+
+/* =====================================================
+BACKUP
+===================================================== */
 
 function downloadBackup(){
 
-  const data=
-    JSON.stringify(
-      db,
-      null,
-      2
-    );
+const data=
+JSON.stringify(
+db,
+null,
+2
+);
 
-  const blob=
-    new Blob(
-      [data],
-      {
-        type:"application/json"
-      }
-    );
 
-  const url=
-    URL.createObjectURL(blob);
+const blob=
+new Blob(
+[data],
+{
+type:"application/json"
+}
+);
 
-  const a=
-    document.createElement("a");
 
-  a.href=url;
+const url=
+URL.createObjectURL(blob);
 
-  a.download=
-    "CTA-Academy-Backup-"+Date.now()+".json";
 
-  a.click();
+const a=
+document.createElement("a");
 
-  URL.revokeObjectURL(url);
+
+a.href=url;
+
+
+a.download=
+"CTA-Academy-Backup-"+
+Date.now()+
+".json";
+
+
+a.click();
+
+
+URL.revokeObjectURL(url);
 
 }
+
 
 function restoreBackup(event){
 
-  if(currentUser.role!=="admin"){
+if(currentUser.role!=="admin"){
 
-    alert(
-      "Only Administrator can restore backup."
-    );
+alert(
+"Only Administrator can restore backup."
+);
 
-    return;
-
-  }
-
-  const file=
-    event.target.files[0];
-
-  if(!file)return;
-
-  const reader=
-    new FileReader();
-
-  reader.onload=function(){
-
-    try{
-
-      const imported=
-        JSON.parse(reader.result);
-
-      if(
-        !imported.users||
-        !imported.results||
-        !imported.settings
-      ){
-
-        throw new Error(
-          "Invalid backup"
-        );
-
-      }
-
-      if(!confirm(
-        "Restore this backup?\n\n"+
-        "Current local data will be replaced."
-      ))return;
-
-      db=imported;
-
-      saveDB();
-
-      alert(
-        "Backup restored successfully."
-      );
-
-      location.reload();
-
-    }catch(e){
-
-      alert(
-        "Invalid or damaged backup file."
-      );
-
-    }
-
-  };
-
-  reader.readAsText(file);
+return;
 
 }
 
 
-/* ================= AUDIT ================= */
+const file=
+event.target.files[0];
 
-function addAudit(
-  action,
-  description,
-  resultId=""
+
+if(!file)return;
+
+
+const reader=
+new FileReader();
+
+
+reader.onload=function(){
+
+try{
+
+const imported=
+JSON.parse(
+reader.result
+);
+
+
+if(
+!imported.users||
+!imported.results||
+!imported.settings
 ){
 
-  db.audit.push({
-
-    id:uid("audit"),
-
-    action,
-
-    description,
-
-    resultId,
-
-    userId:
-      currentUser?.id||"",
-
-    userName:
-      currentUser?.name||"",
-
-    time:now()
-
-  });
+throw new Error(
+"Invalid backup"
+);
 
 }
 
 
-/* ================= PRINT ================= */
+if(!confirm(
+
+"Restore this backup?\n\n"+
+"Current local data will be replaced."
+
+))return;
+
+
+db=imported;
+
+
+saveDB();
+
+
+alert(
+"Backup restored successfully."
+);
+
+
+location.reload();
+
+
+}catch(e){
+
+alert(
+"Invalid or damaged backup file."
+);
+
+}
+
+};
+
+
+reader.readAsText(file);
+
+}
+
+
+/* =====================================================
+AUDIT
+===================================================== */
+
+function addAudit(
+action,
+description,
+resultId=""
+){
+
+db.audit.push({
+
+id:uid("audit"),
+
+action:action,
+
+description:description,
+
+resultId:resultId,
+
+userId:
+currentUser?.id||"",
+
+userName:
+currentUser?.name||"",
+
+time:now()
+
+});
+
+}
+
+
+/* =====================================================
+PRINT
+===================================================== */
 
 function printCurrent(){
 
-  window.print();
+window.print();
 
 }
 
 
-/* ================= STATUS ================= */
+/* =====================================================
+STATUS
+===================================================== */
 
 function statusBadge(status){
 
-  const map={
+const map={
 
-    draft:[
-      "draft",
-      "Draft"
-    ],
+draft:[
+"draft",
+"Draft"
+],
 
-    submitted_hod:[
-      "pending",
-      "Awaiting HOD"
-    ],
+submitted_hod:[
+"pending",
+"Awaiting HOD"
+],
 
-    returned_teacher:[
-      "returned",
-      "Returned"
-    ],
+returned_teacher:[
+"returned",
+"Returned"
+],
 
-    hod_approved:[
-      "approved",
-      "HOD Approved"
-    ],
+hod_approved:[
+"approved",
+"HOD Approved"
+],
 
-    submitted_exam_officer:[
-      "pending",
-      "Exam Officer"
-    ],
+submitted_exam_officer:[
+"pending",
+"Sent to Examination Officer"
+],
 
-    finalized:[
-      "final",
-      "Finalized / Locked"
-    ],
+finalized:[
+"final",
+"Finalized / Locked"
+],
 
-    published:[
-      "approved",
-      "Published"
-    ]
+published:[
+"approved",
+"Published"
+]
 
-  };
+};
 
-  const x=
-    map[status]||
-    ["draft",status];
 
-  return `
-    <span class="badge ${x[0]}">
-      ${x[1]}
-    </span>
-  `;
+const x=
+map[status]||
+["draft",status];
+
+
+return`
+
+<span
+class="badge ${x[0]}">
+
+${x[1]}
+
+</span>
+
+`;
 
 }
 
 
-/* ================= UTILITIES ================= */
+/* =====================================================
+ORDINAL
+===================================================== */
 
 function ordinal(n){
 
-  if(
-    n==="-"||
-    n===undefined
-  )return "-";
+if(
+n==="-"||
+n===undefined
+)
+return"-";
 
-  const x=Number(n);
 
-  const mod10=x%10;
+const x=
+Number(n);
 
-  const mod100=x%100;
 
-  if(
-    mod10===1&&
-    mod100!==11
-  )
-    return x+"st";
+const mod10=
+x%10;
 
-  if(
-    mod10===2&&
-    mod100!==12
-  )
-    return x+"nd";
 
-  if(
-    mod10===3&&
-    mod100!==13
-  )
-    return x+"rd";
+const mod100=
+x%100;
 
-  return x+"th";
+
+if(
+mod10===1&&
+mod100!==11
+)
+return x+"st";
+
+
+if(
+mod10===2&&
+mod100!==12
+)
+return x+"nd";
+
+
+if(
+mod10===3&&
+mod100!==13
+)
+return x+"rd";
+
+
+return x+"th";
 
 }
+
+
+/* =====================================================
+ESCAPE
+===================================================== */
 
 function esc(value){
 
-  return String(value??"")
-
-    .replace(
-      /&/g,
-      "&amp;"
-    )
-
-    .replace(
-      /</g,
-      "&lt;"
-    )
-
-    .replace(
-      />/g,
-      "&gt;"
-    )
-
-    .replace(
-      /"/g,
-      "&quot;"
-    )
-
-    .replace(
-      /'/g,
-      "&#039;"
-    );
+return String(value??"")
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
 
 }
+
+
+/* =====================================================
+CLOSE REVIEW
+===================================================== */
 
 function closeReview(){
 
-  document.getElementById("reviewModal")
-    .classList.add("hidden");
+document
+.getElementById("reviewModal")
+.classList.add("hidden");
 
 }
 
 
-/* ================= START ================= */
+/* =====================================================
+START
+===================================================== */
 
 restoreSession();
 
