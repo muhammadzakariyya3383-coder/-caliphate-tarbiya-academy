@@ -2,4482 +2,2748 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta name="theme-color" content="#14532d">
-<title>Caliphate Tarbiya Academy | School Management System</title>
+<title>Caliphate Tarbiya Academy | Academic Management System</title>
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-
-:root{
---p:#14532d;
---p2:#166534;
---light:#f0fdf4;
---border:#d1d5db;
---text:#17202a;
---muted:#64748b;
---danger:#b91c1c;
---warn:#b45309;
---white:#fff;
---bg:#f6f8f7
-}
-
 body{
-font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
-background:var(--bg);
-color:var(--text)
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f3f7f4;
+  color:#17251c;
 }
-
 button,input,select,textarea{font:inherit}
 button{cursor:pointer}
 .hidden{display:none!important}
 
-#loginScreen{
-min-height:100vh;
-display:flex;
-align-items:center;
-justify-content:center;
-padding:20px;
-background:linear-gradient(135deg,#052e16,#14532d)
+header{
+  background:#14532d;
+  color:white;
+  padding:15px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  position:sticky;
+  top:0;
+  z-index:20;
 }
+.brand{font-weight:800;font-size:17px}
+.brand small{display:block;font-size:11px;font-weight:400;opacity:.85;margin-top:3px}
 
+.container{max-width:1400px;margin:auto;padding:16px}
+
+.login{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:linear-gradient(135deg,#14532d,#166534,#052e16);
+}
 .login-card{
-width:min(430px,100%);
-background:#fff;
-border-radius:20px;
-padding:28px;
-box-shadow:0 20px 60px #0005
+  width:100%;
+  max-width:430px;
+  background:white;
+  border-radius:18px;
+  padding:28px;
+  box-shadow:0 20px 50px #0005;
 }
-
-.logo{
-width:68px;
-height:68px;
-border-radius:18px;
-background:var(--p);
-color:#fff;
-display:flex;
-align-items:center;
-justify-content:center;
-font-weight:800;
-font-size:25px;
-margin:0 auto 14px
+.login-logo{
+  width:70px;height:70px;border-radius:50%;
+  background:#14532d;color:white;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:900;font-size:25px;margin:0 auto 15px;
 }
+.login-card h1{text-align:center;color:#14532d;font-size:22px}
+.login-card p{text-align:center;color:#667;margin:7px 0 22px}
 
-.login-card h1{text-align:center;font-size:23px}
-.login-card p{text-align:center;color:var(--muted);margin:6px 0 22px}
-
-label{
-display:block;
-font-weight:700;
-font-size:13px;
-margin:14px 0 6px
-}
-
+label{display:block;font-size:13px;font-weight:700;margin:12px 0 6px}
 input,select,textarea{
-width:100%;
-border:1px solid var(--border);
-border-radius:10px;
-padding:12px;
-background:#fff;
-color:var(--text);
-outline:none
+  width:100%;
+  padding:11px 12px;
+  border:1px solid #ccd8cf;
+  border-radius:9px;
+  background:white;
+  outline:none;
 }
-
-input:focus,select:focus,textarea:focus{
-border-color:var(--p);
-box-shadow:0 0 0 3px #14532d18
-}
-
-textarea{
-min-height:120px;
-resize:vertical
-}
+input:focus,select:focus,textarea:focus{border-color:#16a34a}
+textarea{min-height:100px;resize:vertical}
 
 .btn{
-border:0;
-border-radius:10px;
-padding:11px 15px;
-font-weight:700
+  border:0;border-radius:9px;padding:10px 14px;
+  background:#14532d;color:white;font-weight:700;
 }
+.btn:hover{opacity:.9}
+.btn.green{background:#15803d}
+.btn.blue{background:#1d4ed8}
+.btn.orange{background:#c2410c}
+.btn.red{background:#b91c1c}
+.btn.gray{background:#475569}
+.btn.light{background:#e2e8f0;color:#17251c}
+.btn.small{padding:7px 10px;font-size:12px}
 
-.btn-primary{
-background:var(--p);
-color:#fff
-}
+.login-btn{width:100%;margin-top:18px;padding:13px}
+.error{color:#b91c1c;font-size:13px;margin-top:10px}
+.success{color:#15803d;font-size:13px;margin-top:10px}
 
-.btn-primary:hover{background:var(--p2)}
-
-.btn-secondary{
-background:#e2e8f0;
-color:#17202a
-}
-
-.btn-danger{
-background:#fee2e2;
-color:#991b1b
-}
-
-.btn-warning{
-background:#fef3c7;
-color:#92400e
-}
-
-#loginBtn{
-width:100%;
-margin-top:18px;
-padding:13px
-}
-
-.message{
-margin-top:12px;
-padding:10px;
-border-radius:9px;
-font-size:13px;
-display:none
-}
-
-.message.show{display:block}
-.message.error{background:#fee2e2;color:#991b1b}
-.message.ok{background:#dcfce7;color:#166534}
-
-.status{
-font-size:12px;
-text-align:center;
-margin-top:13px;
-color:#64748b
-}
-
-#app{
-display:none;
-min-height:100vh
-}
-
+.layout{display:flex;min-height:calc(100vh - 65px)}
 .sidebar{
-position:fixed;
-left:0;
-top:0;
-bottom:0;
-width:255px;
-background:#052e16;
-color:#fff;
-padding:18px;
-overflow:auto;
-z-index:10
+  width:245px;background:#052e16;color:white;
+  padding:15px 10px;flex-shrink:0;
 }
-
-.brand{
-font-size:18px;
-font-weight:800;
-margin:5px 0 22px
+.sidebar button{
+  display:block;width:100%;text-align:left;
+  border:0;background:transparent;color:#dbeafe;
+  padding:11px;border-radius:8px;margin:3px 0;
 }
-
-.nav-title{
-font-size:10px;
-text-transform:uppercase;
-color:#9ca3af;
-margin:18px 8px 7px
+.sidebar button:hover,.sidebar button.active{background:#166534;color:white}
+.sidebar-title{
+  color:#86efac;font-size:11px;font-weight:800;
+  text-transform:uppercase;padding:13px 10px 5px;
 }
-
-.nav button{
-display:block;
-width:100%;
-border:0;
-background:transparent;
-color:#d1fae5;
-text-align:left;
-padding:11px 12px;
-border-radius:9px;
-margin:3px 0
-}
-
-.nav button:hover,
-.nav button.active{
-background:#166534;
-color:#fff
-}
-
-.main{
-margin-left:255px;
-min-height:100vh
-}
-
-.top{
-height:64px;
-background:#fff;
-border-bottom:1px solid #e5e7eb;
-display:flex;
-align-items:center;
-justify-content:space-between;
-padding:0 22px;
-position:sticky;
-top:0;
-z-index:5
-}
-
-.userbox{
-display:flex;
-align-items:center;
-gap:9px;
-font-weight:700
-}
-
-.avatar{
-width:36px;
-height:36px;
-border-radius:50%;
-background:var(--p);
-color:#fff;
-display:flex;
-align-items:center;
-justify-content:center
-}
-
-.content{
-padding:22px;
-max-width:1400px;
-margin:auto
-}
+.content{flex:1;min-width:0}
 
 .page{display:none}
 .page.active{display:block}
 
 .page-title{
-font-size:25px;
-font-weight:800;
-margin-bottom:5px
+  display:flex;justify-content:space-between;align-items:center;
+  gap:10px;margin-bottom:15px;flex-wrap:wrap;
 }
-
-.sub{
-color:var(--muted);
-margin-bottom:20px
-}
+.page-title h2{font-size:22px;color:#14532d}
 
 .grid{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:15px
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:14px;
 }
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
 
 .card{
-background:#fff;
-border:1px solid #e5e7eb;
-border-radius:14px;
-padding:18px
+  background:white;border:1px solid #dce7df;
+  border-radius:13px;padding:16px;
+  box-shadow:0 2px 8px #00000008;
 }
-
+.card h3{font-size:16px;color:#14532d;margin-bottom:10px}
 .stat{
-font-size:28px;
-font-weight:800;
-margin-top:6px
+  font-size:27px;font-weight:900;color:#14532d;
+  margin-top:7px;
 }
-
-.muted{
-color:var(--muted);
-font-size:13px
-}
-
-.toolbar{
-display:flex;
-gap:9px;
-flex-wrap:wrap;
-margin-bottom:14px
-}
-
-.toolbar>*{
-flex:1;
-min-width:140px
-}
+.muted{color:#64748b;font-size:13px}
 
 .table-wrap{
-overflow:auto;
-background:#fff;
-border:1px solid #e5e7eb;
-border-radius:14px
+  overflow:auto;background:white;border-radius:12px;
+  border:1px solid #dce7df;
 }
-
-table{
-width:100%;
-border-collapse:collapse;
-min-width:700px
-}
-
+table{width:100%;border-collapse:collapse;min-width:750px}
 th,td{
-text-align:left;
-padding:12px;
-border-bottom:1px solid #e5e7eb;
-font-size:13px
+  padding:9px 10px;border-bottom:1px solid #e5e7eb;
+  text-align:left;font-size:13px;
 }
-
-th{background:#f8fafc}
+th{background:#ecfdf5;color:#14532d;white-space:nowrap}
+tr:hover td{background:#f8fafc}
 
 .badge{
-display:inline-block;
-padding:4px 8px;
-border-radius:999px;
-font-size:11px;
-font-weight:800
+  display:inline-block;padding:5px 8px;border-radius:20px;
+  font-size:11px;font-weight:800;
 }
-
-.pending{
-background:#fef3c7;
-color:#92400e
-}
-
-.approved{
-background:#dcfce7;
-color:#166534
-}
-
-.rejected{
-background:#fee2e2;
-color:#991b1b
-}
-
-.form-card{max-width:900px}
+.badge.draft{background:#e2e8f0;color:#334155}
+.badge.pending{background:#fef3c7;color:#92400e}
+.badge.approved{background:#dcfce7;color:#166534}
+.badge.returned{background:#fee2e2;color:#991b1b}
+.badge.final{background:#dbeafe;color:#1e40af}
 
 .form-grid{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:14px
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;
 }
-
 .full{grid-column:1/-1}
 
-.actions{
-display:flex;
-gap:7px;
-flex-wrap:wrap
+.notice{
+  padding:12px;border-radius:10px;
+  background:#ecfdf5;border-left:4px solid #15803d;
+  margin-bottom:14px;font-size:13px;
+}
+.warning{
+  padding:12px;border-radius:10px;
+  background:#fff7ed;border-left:4px solid #ea580c;
+  margin-bottom:14px;font-size:13px;
 }
 
-.empty{
-text-align:center;
-padding:35px;
-color:var(--muted)
-}
+.actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:12px}
 
-.archive-week{margin-bottom:18px}
+.score-input{width:75px;min-width:75px;padding:7px}
+.total-cell{font-weight:900;color:#14532d}
 
-.week-head{
-display:flex;
-justify-content:space-between;
-align-items:center;
-background:#ecfdf5;
-padding:12px 15px;
-border-radius:10px;
-margin-bottom:8px
-}
-
-.week-items{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:8px
-}
-
-.mini{
-background:#fff;
-border:1px solid #e5e7eb;
-border-radius:10px;
-padding:12px
-}
-
-.mini strong{
-display:block;
-font-size:18px
-}
-
-.attendance-toolbar{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:12px;
-margin-bottom:14px
-}
-
-.attendance-actions{
-display:flex;
-gap:8px;
-flex-wrap:wrap;
-margin:12px 0
-}
-
-.attendance-table table{
-min-width:1100px
-}
-
-.session-head{
-background:#ecfdf5;
-text-align:center
-}
-
-.pct{
-font-weight:800
-}
-
-.pct.good{color:#166534}
-.pct.warn{color:#b45309}
-.pct.bad{color:#b91c1c}
-
-.register-note{
-background:#f0fdf4;
-border:1px solid #bbf7d0;
-border-radius:12px;
-padding:12px;
-margin-bottom:15px;
-font-size:13px
-}
-
-.small-input{
-padding:8px!important;
-font-size:13px
-}
+.mobile-menu{display:none}
 
 .modal{
-position:fixed;
-inset:0;
-background:#0007;
-display:none;
-align-items:center;
-justify-content:center;
-padding:20px;
-z-index:50
+  position:fixed;inset:0;background:#0008;
+  display:flex;align-items:center;justify-content:center;
+  padding:15px;z-index:100;
 }
-
-.modal.show{display:flex}
-
-.modal-card{
-background:#fff;
-border-radius:16px;
-width:min(900px,100%);
-max-height:90vh;
-overflow:auto;
-padding:20px
+.modal-box{
+  background:white;width:100%;max-width:700px;
+  max-height:90vh;overflow:auto;border-radius:15px;padding:20px;
 }
-
 .modal-head{
-display:flex;
-align-items:center;
-justify-content:space-between;
-margin-bottom:15px
+  display:flex;justify-content:space-between;
+  align-items:center;margin-bottom:15px;
 }
 
-.close{
-border:0;
-background:#f1f5f9;
-border-radius:50%;
-width:35px;
-height:35px;
-font-size:20px
+@media(max-width:1000px){
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .form-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:700px){
+  .sidebar{
+    position:fixed;left:-260px;top:65px;bottom:0;
+    z-index:50;transition:.25s;
+  }
+  .sidebar.open{left:0}
+  .mobile-menu{display:block}
+  .grid,.grid2,.form-grid{grid-template-columns:1fr}
+  .container{padding:11px}
+  .page-title h2{font-size:18px}
 }
 
-.lang-rtl{
-direction:rtl;
-text-align:right
-}
-
-@media(max-width:900px){
-.sidebar{width:220px}
-.main{margin-left:220px}
-.grid{grid-template-columns:repeat(2,1fr)}
-.week-items{grid-template-columns:repeat(2,1fr)}
-}
-
-@media(max-width:650px){
-.sidebar{
-position:fixed;
-width:100%;
-height:auto;
-bottom:auto;
-max-height:58px;
-overflow:hidden;
-padding:9px;
-display:flex;
-align-items:center
-}
-
-.brand{
-margin:0 10px 0 0;
-white-space:nowrap
-}
-
-.nav{
-display:flex;
-overflow-x:auto;
-gap:4px
-}
-
-.nav-title{display:none}
-
-.nav button{
-white-space:nowrap
-}
-
-.main{
-margin-left:0;
-padding-top:58px
-}
-
-.top{
-height:58px;
-padding:0 12px
-}
-
-.content{padding:14px}
-
-.grid{
-grid-template-columns:1fr 1fr
-}
-
-.form-grid{
-grid-template-columns:1fr
-}
-
-.full{grid-column:auto}
-
-.week-items{
-grid-template-columns:1fr 1fr
-}
-
-.attendance-toolbar{
-grid-template-columns:1fr 1fr
-}
-}
-
-@media(max-width:420px){
-.grid{grid-template-columns:1fr}
-.week-items{grid-template-columns:1fr}
-.attendance-toolbar{grid-template-columns:1fr}
+/* PRINT */
+@media print{
+  body{background:white}
+  header,.sidebar,.no-print,.page-title .actions{display:none!important}
+  .layout{display:block}
+  .content{width:100%}
+  .container{padding:0}
+  .card{border:0;box-shadow:none}
+  .table-wrap{border:0}
+  table{min-width:0}
 }
 </style>
 </head>
 
 <body>
 
-<section id="loginScreen">
+<!-- LOGIN -->
+<div id="loginScreen" class="login">
+  <div class="login-card">
+    <div class="login-logo">CTA</div>
+    <h1>Caliphate Tarbiya Academy</h1>
+    <p>School Academic Management System</p>
 
-<div class="login-card">
+    <label>Login Type</label>
+    <select id="loginType">
+      <option value="admin">Administrator</option>
+      <option value="teacher">Teacher</option>
+    </select>
 
-<div class="logo">CTA</div>
+    <label>Username</label>
+    <input id="loginUsername" autocomplete="username">
 
-<h1>Caliphate Tarbiya Academy</h1>
+    <label>Password</label>
+    <input id="loginPassword" type="password" autocomplete="current-password">
 
-<p>
-Digital School Management & Teacher Planning System
-</p>
+    <button class="btn login-btn" onclick="login()">LOGIN</button>
+    <div id="loginError" class="error"></div>
 
-<label for="loginRole">Login As</label>
-
-<select id="loginRole">
-<option value="admin">Administrator</option>
-<option value="teacher">Teacher</option>
-</select>
-
-<label for="loginUsername">Username</label>
-
-<input
-id="loginUsername"
-autocomplete="username"
-placeholder="Enter username"
->
-
-<label for="loginPassword">Password</label>
-
-<input
-id="loginPassword"
-type="password"
-autocomplete="current-password"
-placeholder="Enter password"
->
-
-<button id="loginBtn" class="btn btn-primary" type="button">
-Login
-</button>
-
-<div id="loginMessage" class="message"></div>
-
-<div id="systemStatus" class="status">
-Checking system storage…
+    <div style="margin-top:18px;font-size:11px;text-align:center;color:#64748b">
+      Default administrator: <b>admin</b> / <b>Admin@12345</b>
+    </div>
+  </div>
 </div>
 
-</div>
-</section>
+<!-- APPLICATION -->
+<div id="app" class="hidden">
 
-
-<section id="app">
-
-<aside class="sidebar">
-
-<div class="brand">
-CTA ACADEMY
-</div>
-
-<div class="nav">
-
-<div class="nav-title">
-Main
-</div>
-
-<button data-page="dashboard">
-Dashboard
-</button>
-
-<button data-page="documents">
-My Documents
-</button>
-
-<button data-page="assistant">
-Teacher Assistant
-</button>
-
-<button data-page="register">
-📋 Class Register
-</button>
-
-
-<div class="nav-title adminOnly">
-Administration
-</div>
-
-<button class="adminOnly" data-page="approval">
-Approval Centre
-</button>
-
-<button class="adminOnly" data-page="archive">
-Approved Archive
-</button>
-
-<button class="adminOnly" data-page="teachers">
-Teachers
-</button>
-
-<button class="adminOnly" data-page="classSetup">
-🏫 Class Setup
-</button>
-
-<button class="adminOnly" data-page="backup">
-Backup & Restore
-</button>
-
-
-<div class="nav-title">
-Account
-</div>
-
-<button data-page="security">
-Account Security
-</button>
-
-<button id="logoutBtn">
-Logout
-</button>
-
-</div>
-</aside>
-
-
-<main class="main">
-
-<header class="top">
-
-<strong id="pageHeading">
-Dashboard
-</strong>
-
-<div class="userbox">
-
-<span id="userName">
-User
-</span>
-
-<span class="avatar" id="avatar">
-U
-</span>
-
-</div>
-
+<header>
+  <div style="display:flex;align-items:center;gap:10px">
+    <button class="btn light mobile-menu" onclick="toggleSidebar()">☰</button>
+    <div class="brand">
+      Caliphate Tarbiya Academy
+      <small>Academic Management System</small>
+    </div>
+  </div>
+  <div style="display:flex;align-items:center;gap:8px">
+    <span id="headerUser" style="font-size:12px"></span>
+    <button class="btn red small" onclick="logout()">Logout</button>
+  </div>
 </header>
 
+<div class="layout">
 
-<div class="content">
+<aside id="sidebar" class="sidebar">
 
+  <div class="sidebar-title">Main</div>
+  <button onclick="showPage('dashboard',this)">🏠 Dashboard</button>
 
+  <div class="sidebar-title">Academic</div>
+  <button onclick="showPage('results',this)">📝 Result Entry</button>
+  <button onclick="showPage('submissions',this)">📤 My Result Submissions</button>
+  <button onclick="showPage('broadsheet',this)">📊 Broadsheet</button>
+  <button id="studentResultNav" onclick="showPage('studentResult',this)">🎓 Student Result</button>
+
+  <div id="hodMenu">
+    <div class="sidebar-title">HOD</div>
+    <button onclick="showPage('hodVetting',this)">✅ Result Vetting</button>
+  </div>
+
+  <div id="examMenu">
+    <div class="sidebar-title">Examination</div>
+    <button onclick="showPage('examReview',this)">📋 Examination Review</button>
+  </div>
+
+  <div class="sidebar-title">Administration</div>
+  <div id="adminMenu">
+    <button onclick="showPage('teachers',this)">👨‍🏫 Teacher Management</button>
+    <button onclick="showPage('classes',this)">🏫 Class & Students</button>
+    <button onclick="showPage('subjects',this)">📚 Subjects & HODs</button>
+    <button onclick="showPage('resultSettings',this)">⚙️ Result Settings</button>
+    <button onclick="showPage('backup',this)">💾 Backup & Restore</button>
+  </div>
+
+  <div class="sidebar-title">Account</div>
+  <button onclick="showPage('security',this)">🔐 Change Password</button>
+</aside>
+
+<main class="content">
+<div class="container">
+
+<!-- DASHBOARD -->
 <section id="page-dashboard" class="page active">
+  <div class="page-title">
+    <div>
+      <h2>Dashboard</h2>
+      <div class="muted">Academic management overview</div>
+    </div>
+  </div>
 
-<div class="page-title">
-Dashboard
-</div>
+  <div class="grid">
+    <div class="card">
+      <div class="muted">Students</div>
+      <div class="stat" id="statStudents">0</div>
+    </div>
+    <div class="card">
+      <div class="muted">Teachers</div>
+      <div class="stat" id="statTeachers">0</div>
+    </div>
+    <div class="card">
+      <div class="muted">Result Submissions</div>
+      <div class="stat" id="statResults">0</div>
+    </div>
+    <div class="card">
+      <div class="muted">Finalized Results</div>
+      <div class="stat" id="statFinal">0</div>
+    </div>
+  </div>
 
-<div class="sub">
-Welcome to the school planning system.
-</div>
-
-<div class="grid">
-
-<div class="card">
-<div class="muted">
-Total Documents
-</div>
-
-<div class="stat" id="statDocs">
-0
-</div>
-</div>
-
-
-<div class="card">
-<div class="muted">
-Pending
-</div>
-
-<div class="stat" id="statPending">
-0
-</div>
-</div>
-
-
-<div class="card">
-<div class="muted">
-Approved
-</div>
-
-<div class="stat" id="statApproved">
-0
-</div>
-</div>
-
-
-<div class="card">
-<div class="muted">
-Teachers
-</div>
-
-<div class="stat" id="statTeachers">
-0
-</div>
-</div>
-
-
-<div class="card">
-<div class="muted">
-Attendance Today
-</div>
-
-<div class="stat" id="statAttendance">
-0%
-</div>
-</div>
-
-</div>
-
-
-<div class="card" style="margin-top:16px">
-
-<h3>
-System Information
-</h3>
-
-<p class="muted" style="margin-top:8px">
-
-Teacher work remains pending until an administrator approves it.
-Approved work is copied into the permanent archive.
-
-</p>
-
-</div>
-
+  <div class="card" style="margin-top:15px">
+    <h3>Result Workflow</h3>
+    <div class="notice">
+      <b>CA1 (15) + CA2 (15) + Examination (70) = 100 marks.</b>
+      <br><br>
+      Teachers enter scores. The system calculates totals and grades.
+      Results are automatically routed to the appropriate subject HOD.
+      HOD approval is required before the result reaches the Examination Officer.
+    </div>
+  </div>
 </section>
 
+<!-- RESULT ENTRY -->
+<section id="page-results" class="page">
+  <div class="page-title">
+    <div>
+      <h2>Result Entry</h2>
+      <div class="muted">Enter CA1, CA2 and Examination scores</div>
+    </div>
+  </div>
 
-<section id="page-documents" class="page">
+  <div class="card">
+    <div class="form-grid">
+      <div>
+        <label>Session</label>
+        <select id="resultSession">
+          <option>2026/2027</option>
+          <option>2027/2028</option>
+          <option>2028/2029</option>
+        </select>
+      </div>
+      <div>
+        <label>Term</label>
+        <select id="resultTerm">
+          <option>First Term</option>
+          <option>Second Term</option>
+          <option>Third Term</option>
+        </select>
+      </div>
+      <div>
+        <label>Class</label>
+        <select id="resultClass" onchange="loadResultStudents()"></select>
+      </div>
+      <div>
+        <label>Subject</label>
+        <select id="resultSubject" onchange="loadResultStudents()"></select>
+      </div>
+    </div>
 
-<div class="page-title">
-My Documents
-</div>
+    <div id="resultHodInfo" style="margin-top:14px"></div>
 
-<div class="sub">
-Create and manage schemes, lesson plans, lesson notes and general documents.
-</div>
+    <div id="scoreEntryArea" style="margin-top:15px"></div>
 
-<div class="toolbar">
-
-<button class="btn btn-primary" id="newDocBtn">
-+ New Document
-</button>
-
-<select id="docFilter">
-
-<option value="">
-All Types
-</option>
-
-<option value="scheme">
-Scheme of Work
-</option>
-
-<option value="lessonPlan">
-Lesson Plan
-</option>
-
-<option value="lessonNote">
-Lesson Note
-</option>
-
-<option value="general">
-General Document
-</option>
-
-</select>
-
-</div>
-
-<div id="documentList"></div>
-
+    <div class="actions no-print">
+      <button class="btn gray" onclick="saveResultDraft()">Save Draft</button>
+      <button class="btn green" onclick="submitResultToHOD()">Validate & Submit to HOD</button>
+    </div>
+  </div>
 </section>
 
-
-<section id="page-approval" class="page adminOnly">
-
-<div class="page-title">
-Approval Centre
-</div>
-
-<div class="sub">
-Review teacher submissions.
-</div>
-
-<div id="approvalList"></div>
-
+<!-- SUBMISSIONS -->
+<section id="page-submissions" class="page">
+  <div class="page-title">
+    <div>
+      <h2>My Result Submissions</h2>
+      <div class="muted">Track your submitted results</div>
+    </div>
+  </div>
+  <div id="mySubmissions"></div>
 </section>
 
+<!-- BROADSHEET -->
+<section id="page-broadsheet" class="page">
+  <div class="page-title">
+    <div>
+      <h2>Class Broadsheet</h2>
+      <div class="muted">Automatically assembled from approved subject results</div>
+    </div>
+    <div class="actions no-print">
+      <button class="btn blue" onclick="printCurrent()">Print / PDF</button>
+      <button class="btn green" onclick="exportBroadsheetWord()">Export Word</button>
+    </div>
+  </div>
 
-<section id="page-archive" class="page adminOnly">
+  <div class="card no-print">
+    <div class="form-grid">
+      <div>
+        <label>Session</label>
+        <select id="bSession"></select>
+      </div>
+      <div>
+        <label>Term</label>
+        <select id="bTerm">
+          <option>First Term</option>
+          <option>Second Term</option>
+          <option>Third Term</option>
+        </select>
+      </div>
+      <div>
+        <label>Class</label>
+        <select id="bClass"></select>
+      </div>
+      <div style="display:flex;align-items:end">
+        <button class="btn green" style="width:100%" onclick="generateBroadsheet()">Generate</button>
+      </div>
+    </div>
+  </div>
 
-<div class="page-title">
-Approved Archive
-</div>
-
-<div class="sub">
-Permanent archive of approved documents.
-</div>
-
-<div class="toolbar">
-
-<input
-id="archiveSearch"
-placeholder="Search archive..."
->
-
-<select id="archiveTerm">
-<option value="">All Terms</option>
-<option>First Term</option>
-<option>Second Term</option>
-<option>Third Term</option>
-</select>
-
-<select id="archiveWeek">
-<option value="">All Weeks</option>
-</select>
-
-<select id="archiveType">
-<option value="">All Types</option>
-<option value="scheme">Scheme</option>
-<option value="lessonPlan">Lesson Plan</option>
-<option value="lessonNote">Lesson Note</option>
-<option value="general">General</option>
-</select>
-
-</div>
-
-<div id="archiveList"></div>
-
+  <div id="broadsheetArea" style="margin-top:15px"></div>
 </section>
 
+<!-- STUDENT RESULT -->
+<section id="page-studentResult" class="page">
+  <div class="page-title">
+    <div>
+      <h2>Student Result</h2>
+      <div class="muted">Individual student academic report</div>
+    </div>
+    <div class="actions no-print">
+      <button class="btn blue" onclick="printCurrent()">Print / PDF</button>
+      <button class="btn green" onclick="exportStudentWord()">Export Word</button>
+    </div>
+  </div>
 
-<section id="page-teachers" class="page adminOnly">
+  <div class="card no-print">
+    <div class="form-grid">
+      <div>
+        <label>Session</label>
+        <select id="sSession"></select>
+      </div>
+      <div>
+        <label>Term</label>
+        <select id="sTerm">
+          <option>First Term</option>
+          <option>Second Term</option>
+          <option>Third Term</option>
+        </select>
+      </div>
+      <div>
+        <label>Class</label>
+        <select id="sClass" onchange="loadStudentSelector()"></select>
+      </div>
+      <div>
+        <label>Student</label>
+        <select id="sStudent"></select>
+      </div>
+    </div>
+    <div class="actions">
+      <button class="btn green" onclick="generateStudentResult()">Generate Result</button>
+    </div>
+  </div>
 
-<div class="page-title">
-Teacher Management
-</div>
-
-<div class="sub">
-Only the Administrator can create teacher accounts.
-</div>
-
-<div class="card form-card">
-
-<h3>
-Create Teacher Account
-</h3>
-
-<div class="form-grid">
-
-<div>
-
-<label>
-Teacher Name
-</label>
-
-<input
-id="newTeacherName"
-placeholder="Full name"
->
-
-</div>
-
-<div>
-
-<label>
-Username
-</label>
-
-<input
-id="newTeacherUsername"
-placeholder="Username"
->
-
-</div>
-
-<div>
-
-<label>
-Password
-</label>
-
-<input
-id="newTeacherPassword"
-type="password"
-placeholder="Password"
->
-
-</div>
-
-</div>
-
-<div class="actions" style="margin-top:15px">
-
-<button
-class="btn btn-primary"
-id="createTeacherBtn"
->
-Create Teacher
-</button>
-
-</div>
-
-<div id="teacherMessage" class="message"></div>
-
-</div>
-
-<div style="margin-top:15px" id="teacherList"></div>
-
+  <div id="studentResultArea" style="margin-top:15px"></div>
 </section>
 
+<!-- HOD VETTING -->
+<section id="page-hodVetting" class="page">
+  <div class="page-title">
+    <div>
+      <h2>HOD Result Vetting</h2>
+      <div class="muted">Review results belonging to your assigned subject</div>
+    </div>
+  </div>
 
-<section id="page-classSetup" class="page adminOnly">
-
-<div class="page-title">
-Class Setup
-</div>
-
-<div class="sub">
-Administrator manages classes, students and Class Teacher assignments.
-</div>
-
-<div class="card form-card">
-
-<h3>
-Create / Update Class
-</h3>
-
-<div class="form-grid">
-
-<div>
-
-<label>
-Class
-</label>
-
-<select id="setupClass">
-<option value="">Select class</option>
-</select>
-
-</div>
-
-<div>
-
-<label>
-Class Teacher
-</label>
-
-<select id="setupTeacher">
-<option value="">Select teacher</option>
-</select>
-
-</div>
-
-<div class="full">
-
-<label>
-Students
-</label>
-
-<textarea
-id="setupStudents"
-placeholder="Enter one student name per line"
-></textarea>
-
-</div>
-
-</div>
-
-<div class="actions" style="margin-top:15px">
-
-<button
-class="btn btn-primary"
-id="saveClassBtn"
->
-Save Class
-</button>
-
-</div>
-
-<div id="classSetupMessage" class="message"></div>
-
-</div>
-
-<div style="margin-top:15px" id="classSetupList"></div>
-
+  <div id="hodVettingArea"></div>
 </section>
 
+<!-- EXAMINATION REVIEW -->
+<section id="page-examReview" class="page">
+  <div class="page-title">
+    <div>
+      <h2>Examination Officer Review</h2>
+      <div class="muted">Final verification before official result release</div>
+    </div>
+  </div>
 
-<section id="page-register" class="page">
-
-<div class="page-title">
-Class Register & Attendance
-</div>
-
-<div class="sub">
-Record Morning and Afternoon attendance for every school day.
-</div>
-
-<div class="register-note">
-
-<strong>Attendance calculation:</strong>
-
-Every school day contains two sessions:
-<strong>Morning + Afternoon</strong>.
-
-For example, 20 school days = 40 sessions.
-If a student attended 36 sessions, the overall attendance is
-<strong>90%</strong>.
-
-Present and Late count as attended.
-Excused and Absent do not count as attended.
-
-</div>
-
-
-<div class="card">
-
-<div class="attendance-toolbar">
-
-<div>
-
-<label>
-Class
-</label>
-
-<select id="regClass">
-<option value="">
-Select class
-</option>
-</select>
-
-</div>
-
-
-<div>
-
-<label>
-Date
-</label>
-
-<input
-type="date"
-id="regDate"
->
-
-</div>
-
-
-<div>
-
-<label>
-Session
-</label>
-
-<select id="regSession">
-<option>2026/2027</option>
-<option>2025/2026</option>
-<option>2027/2028</option>
-</select>
-
-</div>
-
-
-<div>
-
-<label>
-Term
-</label>
-
-<select id="regTerm">
-<option>First Term</option>
-<option>Second Term</option>
-<option>Third Term</option>
-</select>
-
-</div>
-
-</div>
-
-
-<div class="attendance-actions">
-
-<button
-class="btn btn-primary"
-id="loadRegisterBtn"
->
-Load Register
-</button>
-
-<button
-class="btn btn-primary"
-id="saveRegisterBtn"
->
-Save Attendance
-</button>
-
-<button
-class="btn btn-secondary"
-id="printRegisterBtn"
->
-🖨 Print Register
-</button>
-
-</div>
-
-
-<div
-id="registerTable"
-class="attendance-table"
-></div>
-
-</div>
-
-
-<div
-id="registerSummary"
-style="margin-top:15px"
-></div>
-
+  <div id="examReviewArea"></div>
 </section>
 
+<!-- TEACHERS -->
+<section id="page-teachers" class="page">
+  <div class="page-title">
+    <div>
+      <h2>Teacher Management</h2>
+      <div class="muted">Only Administrator can create teacher accounts</div>
+    </div>
+    <button class="btn green" onclick="openTeacherModal()">+ Add Teacher</button>
+  </div>
 
-<section id="page-assistant" class="page">
-
-<div class="page-title">
-Teacher Assistant
-</div>
-
-<div class="sub">
-Generate professional Nigerian-standard academic materials.
-</div>
-
-<div class="card form-card">
-
-<div class="form-grid">
-
-<div>
-
-<label>
-Document Type
-</label>
-
-<select id="assistantType">
-
-<option value="lessonPlan">
-Lesson Plan
-</option>
-
-<option value="lessonNote">
-Lesson Note
-</option>
-
-<option value="scheme">
-Scheme of Work
-</option>
-
-<option value="objectives">
-Objectives
-</option>
-
-<option value="assessment">
-Assessment / CA
-</option>
-
-</select>
-
-</div>
-
-
-<div>
-
-<label>
-Language
-</label>
-
-<select id="assistantLanguage">
-
-<option value="English">
-English
-</option>
-
-<option value="Hausa">
-Hausa
-</option>
-
-<option value="Arabic">
-Arabic
-</option>
-
-<option value="French">
-French
-</option>
-
-</select>
-
-</div>
-
-
-<div>
-
-<label>
-Class
-</label>
-
-<select id="assistantClass">
-<option>Nursery 1</option>
-<option>Nursery 2</option>
-<option>Nursery 3</option>
-<option>Basic 1</option>
-<option>Basic 2</option>
-<option>Basic 3</option>
-<option>Basic 4</option>
-<option>Basic 5</option>
-<option>Basic 6</option>
-<option>JSS 1</option>
-<option>JSS 2</option>
-<option>JSS 3</option>
-<option>SS 1</option>
-<option>SS 2</option>
-<option>SS 3</option>
-</select>
-
-</div>
-
-
-<div>
-
-<label>
-Subject
-</label>
-
-<select id="assistantSubject">
-
-<option>English Language</option>
-<option>Mathematics</option>
-<option>Basic Science</option>
-<option>Basic Technology</option>
-<option>Social Studies</option>
-<option>Civic Education</option>
-<option>Islamic Religious Studies</option>
-<option>Christian Religious Studies</option>
-<option>Computer Studies</option>
-<option>Digital Technology</option>
-<option>Agricultural Science</option>
-<option>Economics</option>
-<option>Biology</option>
-<option>Chemistry</option>
-<option>Physics</option>
-<option>Government</option>
-<option>Literature-in-English</option>
-<option>Geography</option>
-<option>Hausa</option>
-<option>Arabic</option>
-<option>French</option>
-<option>Home Economics</option>
-<option>Physical & Health Education</option>
-<option>Business Studies</option>
-<option>Financial Accounting</option>
-<option>Commerce</option>
-
-</select>
-
-</div>
-
-
-<div class="full">
-
-<label>
-Topic
-</label>
-
-<input
-id="assistantTopic"
-placeholder="Enter topic"
->
-
-</div>
-
-
-<div class="full">
-
-<label>
-Sub-topic / Additional Instructions
-</label>
-
-<textarea
-id="assistantSubtopic"
-placeholder="Enter sub-topic, objectives, number of weeks/questions or other instructions..."
-></textarea>
-
-</div>
-
-</div>
-
-
-<div class="actions" style="margin-top:15px">
-
-<button
-class="btn btn-primary"
-id="generateAssistantBtn"
->
-Generate
-</button>
-
-</div>
-
-</div>
-
-
-<div
-id="assistantResult"
-style="margin-top:15px"
-></div>
-
+  <div class="card">
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Username</th>
+            <th>Academic Role</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="teachersTable"></tbody>
+      </table>
+    </div>
+  </div>
 </section>
 
+<!-- CLASSES -->
+<section id="page-classes" class="page">
+  <div class="page-title">
+    <div>
+      <h2>Class & Students</h2>
+      <div class="muted">Create classes and student lists</div>
+    </div>
+  </div>
 
+  <div class="card">
+    <div class="form-grid">
+      <div>
+        <label>Class</label>
+        <select id="className">
+          <option>Nursery 1</option>
+          <option>Nursery 2</option>
+          <option>Nursery 3</option>
+          <option>Basic 1</option>
+          <option>Basic 2</option>
+          <option>Basic 3</option>
+          <option>Basic 4</option>
+          <option>Basic 5</option>
+          <option>Basic 6</option>
+          <option>JSS 1</option>
+          <option>JSS 2</option>
+          <option>JSS 3</option>
+          <option>SS 1</option>
+          <option>SS 2</option>
+          <option>SS 3</option>
+        </select>
+      </div>
+
+      <div class="full">
+        <label>Students — one student per line</label>
+        <textarea id="classStudents" placeholder="Aisha Musa&#10;Muhammad Bello&#10;Fatima Ibrahim"></textarea>
+      </div>
+    </div>
+    <div class="actions">
+      <button class="btn green" onclick="saveClass()">Save / Update Class</button>
+    </div>
+  </div>
+
+  <div id="classesList" style="margin-top:15px"></div>
+</section>
+
+<!-- SUBJECTS -->
+<section id="page-subjects" class="page">
+  <div class="page-title">
+    <div>
+      <h2>Subjects & HODs</h2>
+      <div class="muted">HOD assignment controls automatic result routing</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="notice">
+      Teachers do not select an HOD when submitting a result.
+      The system automatically routes the result according to the subject's HOD.
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Subject</th>
+            <th>Assigned HOD</th>
+          </tr>
+        </thead>
+        <tbody id="subjectsTable"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- RESULT SETTINGS -->
+<section id="page-resultSettings" class="page">
+  <div class="page-title">
+    <div>
+      <h2>Result Settings</h2>
+      <div class="muted">Configure the school's grading system</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="notice">
+      Current recommended structure:
+      <b>CA1 /15 + CA2 /15 + Examination /70 = 100.</b>
+    </div>
+
+    <div class="form-grid">
+      <div>
+        <label>CA1 Maximum</label>
+        <input id="setCA1" type="number">
+      </div>
+      <div>
+        <label>CA2 Maximum</label>
+        <input id="setCA2" type="number">
+      </div>
+      <div>
+        <label>Examination Maximum</label>
+        <input id="setExam" type="number">
+      </div>
+    </div>
+
+    <h3 style="margin-top:20px">Grading Scale</h3>
+
+    <div class="table-wrap" style="margin-top:10px">
+      <table>
+        <thead>
+          <tr>
+            <th>Grade</th>
+            <th>Minimum Score</th>
+            <th>Remark</th>
+          </tr>
+        </thead>
+        <tbody id="gradingTable"></tbody>
+      </table>
+    </div>
+
+    <div class="actions">
+      <button class="btn green" onclick="saveResultSettings()">Save Result Settings</button>
+    </div>
+  </div>
+</section>
+
+<!-- BACKUP -->
+<section id="page-backup" class="page">
+  <div class="page-title">
+    <div>
+      <h2>Backup & Restore</h2>
+      <div class="muted">Protect your school's local data</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="notice">
+      Because this version uses browser local storage, regularly download a backup.
+    </div>
+    <div class="actions">
+      <button class="btn green" onclick="downloadBackup()">Download Backup</button>
+      <label class="btn blue" style="display:inline-block">
+        Restore Backup
+        <input type="file" accept=".json" onchange="restoreBackup(event)" style="display:none">
+      </label>
+    </div>
+  </div>
+</section>
+
+<!-- SECURITY -->
 <section id="page-security" class="page">
+  <div class="page-title">
+    <div>
+      <h2>Account Security</h2>
+      <div class="muted">Change your password</div>
+    </div>
+  </div>
 
-<div class="page-title">
-Account Security
-</div>
+  <div class="card" style="max-width:500px">
+    <label>Current Password</label>
+    <input id="oldPassword" type="password">
 
-<div class="sub">
-Change your account password.
-</div>
+    <label>New Password</label>
+    <input id="newPassword" type="password">
 
-<div class="card form-card">
+    <label>Confirm New Password</label>
+    <input id="confirmPassword" type="password">
 
-<label>
-Current Password
-</label>
-
-<input
-id="oldPassword"
-type="password"
->
-
-<label>
-New Password
-</label>
-
-<input
-id="newPassword"
-type="password"
->
-
-<label>
-Confirm New Password
-</label>
-
-<input
-id="confirmPassword"
-type="password"
->
-
-<div class="actions" style="margin-top:15px">
-
-<button
-class="btn btn-primary"
-id="changePasswordBtn"
->
-Change Password
-</button>
-
-</div>
-
-<div id="securityMessage" class="message"></div>
-
-</div>
-
+    <div class="actions">
+      <button class="btn green" onclick="changePassword()">Change Password</button>
+    </div>
+    <div id="passwordMessage"></div>
+  </div>
 </section>
-
-
-<section id="page-backup" class="page adminOnly">
-
-<div class="page-title">
-Backup & Restore
-</div>
-
-<div class="sub">
-Protect your school data by exporting a backup.
-</div>
-
-<div class="card">
-
-<h3>
-Backup
-</h3>
-
-<p class="muted" style="margin:8px 0 15px">
-This backup includes teachers, documents, classes and attendance records.
-</p>
-
-<button
-class="btn btn-primary"
-id="exportBtn"
->
-Download Backup
-</button>
-
-<hr style="margin:20px 0;border:0;border-top:1px solid #e5e7eb">
-
-<h3>
-Restore
-</h3>
-
-<p class="muted" style="margin:8px 0 15px">
-Restore a previously downloaded CTA backup file.
-</p>
-
-<input
-type="file"
-id="restoreFile"
-accept=".json"
->
-
-</div>
-
-</section>
-
 
 </div>
 </main>
-</section>
-
-
-<div id="docModal" class="modal">
-
-<div class="modal-card">
-
-<div class="modal-head">
-
-<h2>
-Create Document
-</h2>
-
-<button
-class="close"
-id="closeDocBtn"
->
-×
-</button>
-
-</div>
-
-<div class="form-grid">
-
-<div>
-
-<label>
-Document Type
-</label>
-
-<select id="docType">
-
-<option value="scheme">
-Scheme of Work
-</option>
-
-<option value="lessonPlan">
-Lesson Plan
-</option>
-
-<option value="lessonNote">
-Lesson Note
-</option>
-
-<option value="general">
-General Document
-</option>
-
-</select>
-
-</div>
-
-
-<div>
-
-<label>
-Language
-</label>
-
-<select id="docLanguage">
-
-<option>English</option>
-<option>Hausa</option>
-<option>Arabic</option>
-<option>French</option>
-
-</select>
-
-</div>
-
-
-<div>
-
-<label>
-Class
-</label>
-
-<select id="docClass">
-
-<option>Nursery 1</option>
-<option>Nursery 2</option>
-<option>Nursery 3</option>
-<option>Basic 1</option>
-<option>Basic 2</option>
-<option>Basic 3</option>
-<option>Basic 4</option>
-<option>Basic 5</option>
-<option>Basic 6</option>
-<option>JSS 1</option>
-<option>JSS 2</option>
-<option>JSS 3</option>
-<option>SS 1</option>
-<option>SS 2</option>
-<option>SS 3</option>
-
-</select>
-
-</div>
-
-
-<div>
-
-<label>
-Subject
-</label>
-
-<select id="docSubject">
-
-<option>English Language</option>
-<option>Mathematics</option>
-<option>Basic Science</option>
-<option>Basic Technology</option>
-<option>Social Studies</option>
-<option>Civic Education</option>
-<option>Islamic Religious Studies</option>
-<option>Christian Religious Studies</option>
-<option>Computer Studies</option>
-<option>Digital Technology</option>
-<option>Agricultural Science</option>
-<option>Economics</option>
-<option>Biology</option>
-<option>Chemistry</option>
-<option>Physics</option>
-<option>Government</option>
-<option>Literature-in-English</option>
-<option>Geography</option>
-<option>Hausa</option>
-<option>Arabic</option>
-<option>French</option>
-<option>Home Economics</option>
-<option>Physical & Health Education</option>
-<option>Business Studies</option>
-<option>Financial Accounting</option>
-<option>Commerce</option>
-
-</select>
-
-</div>
-
-
-<div>
-
-<label>
-Term
-</label>
-
-<select id="docTerm">
-
-<option>First Term</option>
-<option>Second Term</option>
-<option>Third Term</option>
-
-</select>
-
-</div>
-
-
-<div>
-
-<label>
-Week
-</label>
-
-<select id="fWeek">
-</select>
-
-</div>
-
-
-<div class="full">
-
-<label>
-Title / Topic
-</label>
-
-<input
-id="docTitle"
-placeholder="Document title or topic"
->
-
-</div>
-
-
-<div class="full">
-
-<label>
-Content
-</label>
-
-<textarea
-id="docContent"
-style="min-height:300px"
-placeholder="Enter your document content..."
-></textarea>
-
-</div>
-
-</div>
-
-
-<div class="actions" style="margin-top:15px">
-
-<button
-class="btn btn-primary"
-id="saveDocBtn"
->
-Save Draft
-</button>
-
-<button
-class="btn btn-secondary"
-id="closeDocBtn2"
->
-Cancel
-</button>
-
-</div>
-
 </div>
 </div>
 
+<!-- TEACHER MODAL -->
+<div id="teacherModal" class="modal hidden">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h3>Create Teacher Account</h3>
+      <button class="btn red small" onclick="closeTeacherModal()">Close</button>
+    </div>
+
+    <input type="hidden" id="editTeacherId">
+
+    <label>Full Name</label>
+    <input id="teacherName">
+
+    <label>Username</label>
+    <input id="teacherUsername">
+
+    <label>Password</label>
+    <input id="teacherPassword" type="password">
+
+    <label>Academic Role</label>
+    <select id="teacherAcademicRole">
+      <option value="Teacher">Teacher</option>
+      <option value="HOD Mathematics">HOD Mathematics</option>
+      <option value="HOD English">HOD English</option>
+      <option value="HOD Physics">HOD Physics</option>
+      <option value="HOD Chemistry">HOD Chemistry</option>
+      <option value="HOD Biology">HOD Biology</option>
+      <option value="HOD Economics">HOD Economics</option>
+      <option value="HOD Hausa">HOD Hausa</option>
+      <option value="HOD Arabic">HOD Arabic</option>
+      <option value="HOD French">HOD French</option>
+      <option value="HOD Computer Studies">HOD Computer Studies</option>
+      <option value="Examination Officer">Examination Officer</option>
+    </select>
+
+    <div class="actions">
+      <button class="btn green" onclick="saveTeacher()">Save Teacher</button>
+    </div>
+  </div>
+</div>
+
+<!-- REVIEW MODAL -->
+<div id="reviewModal" class="modal hidden">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h3 id="reviewTitle">Result Review</h3>
+      <button class="btn red small" onclick="closeReview()">Close</button>
+    </div>
+    <div id="reviewContent"></div>
+  </div>
+</div>
 
 <script>
+/* =========================================================
+   CALIPHATE TARBIYA ACADEMY
+   SCHOOL ACADEMIC MANAGEMENT SYSTEM
+   RESULTS MODULE
+   ========================================================= */
 
-const DB_KEY="CTA_ACADEMY_V10";
+const DB_KEY = "CTA_ACADEMY_V10";
 
-const ARCHIVE_KEYS={
-lessonPlanArchive:"lessonPlanArchive",
-lessonNoteArchive:"lessonNoteArchive",
-schemeArchive:"schemeArchive",
-generalArchive:"generalArchive"
-};
-
-let currentUser=null;
-let state={};
-
-const CLASS_LEVELS=[
-"Nursery 1",
-"Nursery 2",
-"Nursery 3",
-"Basic 1",
-"Basic 2",
-"Basic 3",
-"Basic 4",
-"Basic 5",
-"Basic 6",
-"JSS 1",
-"JSS 2",
-"JSS 3",
-"SS 1",
-"SS 2",
-"SS 3"
+const SUBJECTS = [
+  "English",
+  "Mathematics",
+  "Basic Science",
+  "Basic Technology",
+  "Social Studies",
+  "Civic Education",
+  "Computer Studies",
+  "Physics",
+  "Chemistry",
+  "Biology",
+  "Economics",
+  "Hausa",
+  "Arabic",
+  "French",
+  "Islamic Religious Studies",
+  "Christian Religious Studies",
+  "Agricultural Science",
+  "Geography",
+  "Government",
+  "Literature in English"
 ];
 
-const SUBJECTS=[
-"English Language",
-"Mathematics",
-"Basic Science",
-"Basic Technology",
-"Social Studies",
-"Civic Education",
-"Islamic Religious Studies",
-"Christian Religious Studies",
-"Computer Studies",
-"Digital Technology",
-"Agricultural Science",
-"Economics",
-"Biology",
-"Chemistry",
-"Physics",
-"Government",
-"Literature-in-English",
-"Geography",
-"Hausa",
-"Arabic",
-"French",
-"Home Economics",
-"Physical & Health Education",
-"Business Studies",
-"Financial Accounting",
-"Commerce"
+const CLASSES = [
+  "Nursery 1","Nursery 2","Nursery 3",
+  "Basic 1","Basic 2","Basic 3","Basic 4","Basic 5","Basic 6",
+  "JSS 1","JSS 2","JSS 3",
+  "SS 1","SS 2","SS 3"
 ];
 
-const ACADEMIC_ROLES=[
-"Teacher",
-"HOD Mathematics",
-"HOD English",
-"HOD Physics",
-"HOD Chemistry",
-"HOD Biology",
-"HOD Economics",
-"HOD Hausa",
-"HOD Arabic",
-"HOD French",
-"HOD Computer Studies",
-"Examination Officer"
-];
+let db = loadDB();
+let currentUser = null;
+let currentBroadsheetData = null;
+let currentStudentData = null;
 
-function $(id){
-return document.getElementById(id);
+/* ================= DATABASE ================= */
+
+function defaultDB(){
+  return {
+    settings:{
+      ca1Max:15,
+      ca2Max:15,
+      examMax:70,
+      grades:[
+        {grade:"A",min:75,remark:"Excellent"},
+        {grade:"B",min:70,remark:"Very Good"},
+        {grade:"C",min:60,remark:"Good"},
+        {grade:"D",min:50,remark:"Fair"},
+        {grade:"E",min:40,remark:"Pass"},
+        {grade:"F",min:0,remark:"Fail"}
+      ]
+    },
+
+    users:[
+      {
+        id:"admin-1",
+        name:"Administrator",
+        username:"admin",
+        password:"Admin@12345",
+        role:"admin",
+        academicRole:"Administrator",
+        active:true
+      }
+    ],
+
+    classes:[],
+    subjects: SUBJECTS.map((name,i)=>({
+      id:"sub-"+i,
+      name,
+      hodId:""
+    })),
+
+    results:[],
+    audit:[]
+  };
 }
 
-function uid(prefix="id"){
-return prefix+"_"+Date.now()+"_"+Math.random().toString(36).slice(2,8);
+function loadDB(){
+  try{
+    const raw=localStorage.getItem(DB_KEY);
+    if(!raw){
+      const fresh=defaultDB();
+      localStorage.setItem(DB_KEY,JSON.stringify(fresh));
+      return fresh;
+    }
+
+    const parsed=JSON.parse(raw);
+    const fresh=defaultDB();
+
+    return Object.assign(fresh,parsed,{
+      settings:Object.assign(fresh.settings,parsed.settings||{}),
+      users:parsed.users||fresh.users,
+      classes:parsed.classes||[],
+      subjects:parsed.subjects||fresh.subjects,
+      results:parsed.results||[],
+      audit:parsed.audit||[]
+    });
+  }catch(e){
+    return defaultDB();
+  }
+}
+
+function saveDB(){
+  localStorage.setItem(DB_KEY,JSON.stringify(db));
+}
+
+function uid(prefix){
+  return prefix+"-"+Date.now()+"-"+Math.random().toString(36).slice(2,8);
+}
+
+function now(){
+  return new Date().toLocaleString();
+}
+
+/* ================= LOGIN ================= */
+
+function login(){
+  const type=document.getElementById("loginType").value;
+  const username=document.getElementById("loginUsername").value.trim();
+  const password=document.getElementById("loginPassword").value;
+
+  const user=db.users.find(u =>
+    u.username===username &&
+    u.password===password &&
+    u.active!==false &&
+    ((type==="admin" && u.role==="admin") ||
+     (type==="teacher" && u.role==="teacher"))
+  );
+
+  if(!user){
+    document.getElementById("loginError").textContent=
+      "Invalid username, password or account type.";
+    return;
+  }
+
+  currentUser=user;
+  sessionStorage.setItem("CTA_CURRENT_USER",user.id);
+
+  document.getElementById("loginScreen").classList.add("hidden");
+  document.getElementById("app").classList.remove("hidden");
+
+  document.getElementById("headerUser").textContent=
+    user.name+" • "+(user.academicRole||"Administrator");
+
+  configureNavigation();
+  refreshAll();
+}
+
+function restoreSession(){
+  const id=sessionStorage.getItem("CTA_CURRENT_USER");
+  if(!id)return;
+
+  const user=db.users.find(u=>u.id===id);
+  if(!user || user.active===false)return;
+
+  currentUser=user;
+  document.getElementById("loginScreen").classList.add("hidden");
+  document.getElementById("app").classList.remove("hidden");
+  document.getElementById("headerUser").textContent=
+    user.name+" • "+(user.academicRole||"Administrator");
+
+  configureNavigation();
+  refreshAll();
+}
+
+function logout(){
+  sessionStorage.removeItem("CTA_CURRENT_USER");
+  currentUser=null;
+  location.reload();
+}
+
+/* ================= NAVIGATION ================= */
+
+function configureNavigation(){
+  const admin=currentUser.role==="admin";
+  const academic=currentUser.academicRole||"";
+
+  document.getElementById("adminMenu").style.display=admin?"block":"none";
+
+  document.getElementById("hodMenu").style.display=
+    academic.startsWith("HOD ")?"block":"none";
+
+  document.getElementById("examMenu").style.display=
+    academic==="Examination Officer"?"block":"none";
+}
+
+function showPage(name,btn){
+  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+
+  const page=document.getElementById("page-"+name);
+  if(page)page.classList.add("active");
+
+  document.querySelectorAll(".sidebar button").forEach(b=>b.classList.remove("active"));
+  if(btn)btn.classList.add("active");
+
+  document.getElementById("sidebar").classList.remove("open");
+
+  if(name==="submissions")renderMySubmissions();
+  if(name==="hodVetting")renderHodVetting();
+  if(name==="examReview")renderExamReview();
+  if(name==="teachers")renderTeachers();
+  if(name==="classes")renderClasses();
+  if(name==="subjects")renderSubjects();
+  if(name==="resultSettings")renderSettings();
+}
+
+function toggleSidebar(){
+  document.getElementById("sidebar").classList.toggle("open");
+}
+
+/* ================= DASHBOARD ================= */
+
+function refreshDashboard(){
+  let students=0;
+  db.classes.forEach(c=>students+=(c.students||[]).length);
+
+  document.getElementById("statStudents").textContent=students;
+  document.getElementById("statTeachers").textContent=
+    db.users.filter(u=>u.role==="teacher").length;
+  document.getElementById("statResults").textContent=db.results.length;
+  document.getElementById("statFinal").textContent=
+    db.results.filter(r=>r.status==="finalized").length;
+}
+
+/* ================= GENERAL REFRESH ================= */
+
+function refreshAll(){
+  refreshDashboard();
+  populateSelectors();
+  renderTeachers();
+  renderClasses();
+  renderSubjects();
+  renderSettings();
+}
+
+/* ================= SELECTORS ================= */
+
+function populateSelectors(){
+
+  const classSelectors=[
+    document.getElementById("resultClass"),
+    document.getElementById("bClass"),
+    document.getElementById("sClass")
+  ];
+
+  classSelectors.forEach(sel=>{
+    if(!sel)return;
+    const old=sel.value;
+    sel.innerHTML='<option value="">Select class</option>';
+
+    db.classes.forEach(c=>{
+      const o=document.createElement("option");
+      o.value=c.name;
+      o.textContent=c.name;
+      sel.appendChild(o);
+    });
+
+    if(old)sel.value=old;
+  });
+
+  const subject=document.getElementById("resultSubject");
+  if(subject){
+    const old=subject.value;
+    subject.innerHTML='<option value="">Select subject</option>';
+
+    SUBJECTS.forEach(s=>{
+      const o=document.createElement("option");
+      o.value=s;
+      o.textContent=s;
+      subject.appendChild(o);
+    });
+
+    if(old)subject.value=old;
+  }
+
+  ["bSession","sSession"].forEach(id=>{
+    const sel=document.getElementById(id);
+    if(!sel)return;
+    sel.innerHTML="";
+    ["2026/2027","2027/2028","2028/2029"].forEach(s=>{
+      const o=document.createElement("option");
+      o.value=s;o.textContent=s;
+      sel.appendChild(o);
+    });
+  });
+}
+
+/* ================= CLASS MANAGEMENT ================= */
+
+function saveClass(){
+  if(currentUser.role!=="admin"){
+    alert("Only the Administrator can manage classes.");
+    return;
+  }
+
+  const name=document.getElementById("className").value;
+  const names=document.getElementById("classStudents").value
+    .split("\n")
+    .map(x=>x.trim())
+    .filter(Boolean);
+
+  if(!names.length){
+    alert("Enter at least one student.");
+    return;
+  }
+
+  let c=db.classes.find(x=>x.name===name);
+
+  if(c){
+    c.students=names;
+  }else{
+    c={
+      id:uid("class"),
+      name,
+      students:names
+    };
+    db.classes.push(c);
+  }
+
+  saveDB();
+  renderClasses();
+  populateSelectors();
+
+  alert("Class and students saved successfully.");
+}
+
+function renderClasses(){
+  const box=document.getElementById("classesList");
+  if(!box)return;
+
+  if(!db.classes.length){
+    box.innerHTML='<div class="card muted">No classes created yet.</div>';
+    return;
+  }
+
+  box.innerHTML=db.classes.map(c=>`
+    <div class="card" style="margin-bottom:10px">
+      <h3>${esc(c.name)}</h3>
+      <div class="muted">${c.students.length} student(s)</div>
+      <div style="margin-top:8px;font-size:13px">
+        ${c.students.map((s,i)=>
+          `<span style="display:inline-block;background:#ecfdf5;padding:5px 8px;border-radius:15px;margin:3px">
+            ${i+1}. ${esc(s)}
+          </span>`
+        ).join("")}
+      </div>
+    </div>
+  `).join("");
+}
+
+/* ================= TEACHERS ================= */
+
+function openTeacherModal(id=""){
+  if(currentUser.role!=="admin"){
+    alert("Only the Administrator can create teacher accounts.");
+    return;
+  }
+
+  document.getElementById("teacherModal").classList.remove("hidden");
+
+  document.getElementById("editTeacherId").value=id;
+
+  if(id){
+    const t=db.users.find(u=>u.id===id);
+    if(!t)return;
+
+    document.getElementById("teacherName").value=t.name;
+    document.getElementById("teacherUsername").value=t.username;
+    document.getElementById("teacherPassword").value=t.password;
+    document.getElementById("teacherAcademicRole").value=
+      t.academicRole||"Teacher";
+  }else{
+    document.getElementById("teacherName").value="";
+    document.getElementById("teacherUsername").value="";
+    document.getElementById("teacherPassword").value="";
+    document.getElementById("teacherAcademicRole").value="Teacher";
+  }
+}
+
+function closeTeacherModal(){
+  document.getElementById("teacherModal").classList.add("hidden");
+}
+
+function saveTeacher(){
+  const id=document.getElementById("editTeacherId").value;
+  const name=document.getElementById("teacherName").value.trim();
+  const username=document.getElementById("teacherUsername").value.trim();
+  const password=document.getElementById("teacherPassword").value;
+  const academicRole=document.getElementById("teacherAcademicRole").value;
+
+  if(!name||!username||!password){
+    alert("Complete all required fields.");
+    return;
+  }
+
+  const duplicate=db.users.find(u=>
+    u.username===username && u.id!==id
+  );
+
+  if(duplicate){
+    alert("That username already exists.");
+    return;
+  }
+
+  if(id){
+    const t=db.users.find(u=>u.id===id);
+    t.name=name;
+    t.username=username;
+    t.password=password;
+    t.academicRole=academicRole;
+  }else{
+    db.users.push({
+      id:uid("teacher"),
+      name,
+      username,
+      password,
+      role:"teacher",
+      academicRole,
+      active:true
+    });
+  }
+
+  saveDB();
+  renderTeachers();
+  renderSubjects();
+  closeTeacherModal();
+  alert("Teacher account saved.");
+}
+
+function renderTeachers(){
+  const body=document.getElementById("teachersTable");
+  if(!body)return;
+
+  const teachers=db.users.filter(u=>u.role==="teacher");
+
+  body.innerHTML=teachers.map(t=>`
+    <tr>
+      <td>${esc(t.name)}</td>
+      <td>${esc(t.username)}</td>
+      <td>${esc(t.academicRole||"Teacher")}</td>
+      <td>
+        <span class="badge ${t.active!==false?"approved":"returned"}">
+          ${t.active!==false?"Active":"Inactive"}
+        </span>
+      </td>
+      <td>
+        <button class="btn blue small" onclick="openTeacherModal('${t.id}')">Edit</button>
+        <button class="btn ${t.active!==false?"red":"green"} small"
+          onclick="toggleTeacher('${t.id}')">
+          ${t.active!==false?"Deactivate":"Activate"}
+        </button>
+      </td>
+    </tr>
+  `).join("");
+}
+
+function toggleTeacher(id){
+  const t=db.users.find(u=>u.id===id);
+  if(!t)return;
+
+  t.active=t.active===false;
+  saveDB();
+  renderTeachers();
+}
+
+/* ================= SUBJECT / HOD ================= */
+
+function renderSubjects(){
+  const body=document.getElementById("subjectsTable");
+  if(!body)return;
+
+  body.innerHTML=db.subjects.map(s=>{
+    const hod=db.users.find(u=>u.id===s.hodId);
+
+    return `
+      <tr>
+        <td><b>${esc(s.name)}</b></td>
+        <td>
+          <select onchange="assignHOD('${s.id}',this.value)">
+            <option value="">-- No HOD Assigned --</option>
+            ${db.users
+              .filter(u=>
+                u.role==="teacher" &&
+                u.academicRole==="HOD "+s.name
+              )
+              .map(t=>`
+                <option value="${t.id}" ${s.hodId===t.id?"selected":""}>
+                  ${esc(t.name)}
+                </option>
+              `).join("")}
+          </select>
+        </td>
+      </tr>
+    `;
+  }).join("");
+}
+
+function assignHOD(subjectId,teacherId){
+  if(currentUser.role!=="admin"){
+    alert("Only Administrator can assign HODs.");
+    renderSubjects();
+    return;
+  }
+
+  const s=db.subjects.find(x=>x.id===subjectId);
+  if(s){
+    s.hodId=teacherId;
+    saveDB();
+    alert("HOD assignment updated.");
+  }
+}
+
+function getHOD(subject){
+  const s=db.subjects.find(x=>x.name===subject);
+  if(!s||!s.hodId)return null;
+  return db.users.find(u=>u.id===s.hodId)||null;
+}
+
+/* ================= RESULT ENTRY ================= */
+
+function loadResultStudents(){
+  const cls=document.getElementById("resultClass").value;
+  const subject=document.getElementById("resultSubject").value;
+  const area=document.getElementById("scoreEntryArea");
+
+  document.getElementById("resultHodInfo").innerHTML="";
+
+  if(!cls||!subject){
+    area.innerHTML="";
+    return;
+  }
+
+  const hod=getHOD(subject);
+
+  if(hod){
+    document.getElementById("resultHodInfo").innerHTML=`
+      <div class="notice">
+        <b>Automatic HOD Routing:</b>
+        ${esc(subject)} results will be sent to
+        <b>${esc(hod.name)}</b>
+        (${esc(hod.academicRole)}).
+      </div>
+    `;
+  }else{
+    document.getElementById("resultHodInfo").innerHTML=`
+      <div class="warning">
+        ⚠️ No HOD has been assigned to <b>${esc(subject)}</b>.
+        The result cannot be submitted until the Administrator assigns
+        the appropriate subject HOD.
+      </div>
+    `;
+  }
+
+  const c=db.classes.find(x=>x.name===cls);
+  if(!c)return;
+
+  const session=document.getElementById("resultSession").value;
+  const term=document.getElementById("resultTerm").value;
+
+  const existing=db.results.find(r=>
+    r.className===cls &&
+    r.subject===subject &&
+    r.session===session &&
+    r.term===term &&
+    r.teacherId===currentUser.id &&
+    r.status!=="finalized"
+  );
+
+  const students=existing?existing.students:c.students.map(name=>({
+    studentId:uid("student"),
+    name,
+    ca1:"",
+    ca2:"",
+    exam:""
+  }));
+
+  area.innerHTML=`
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Student</th>
+            <th>CA1 / 15</th>
+            <th>CA2 / 15</th>
+            <th>CA Total / 30</th>
+            <th>Exam / 70</th>
+            <th>Total / 100</th>
+            <th>Grade</th>
+            <th>Remark</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${students.map((st,i)=>`
+            <tr>
+              <td>${i+1}</td>
+              <td><b>${esc(st.name)}</b></td>
+              <td>
+                <input
+                  class="score-input result-ca1"
+                  data-i="${i}"
+                  type="number"
+                  min="0"
+                  max="${db.settings.ca1Max}"
+                  value="${st.ca1!==undefined?st.ca1:""}"
+                  oninput="calculateRow(${i})">
+              </td>
+              <td>
+                <input
+                  class="score-input result-ca2"
+                  data-i="${i}"
+                  type="number"
+                  min="0"
+                  max="${db.settings.ca2Max}"
+                  value="${st.ca2!==undefined?st.ca2:""}"
+                  oninput="calculateRow(${i})">
+              </td>
+              <td id="caTotal-${i}" class="total-cell">0</td>
+              <td>
+                <input
+                  class="score-input result-exam"
+                  data-i="${i}"
+                  type="number"
+                  min="0"
+                  max="${db.settings.examMax}"
+                  value="${st.exam!==undefined?st.exam:""}"
+                  oninput="calculateRow(${i})">
+              </td>
+              <td id="grandTotal-${i}" class="total-cell">0</td>
+              <td id="grade-${i}">-</td>
+              <td id="remark-${i}">-</td>
+            </tr>
+          `).join("")}
+        </tbody>
+      </table>
+    </div>
+  `;
+
+  students.forEach((_,i)=>calculateRow(i));
+}
+
+function calculateRow(i){
+  const ca1=parseFloat(document.querySelector(`.result-ca1[data-i="${i}"]`)?.value)||0;
+  const ca2=parseFloat(document.querySelector(`.result-ca2[data-i="${i}"]`)?.value)||0;
+  const exam=parseFloat(document.querySelector(`.result-exam[data-i="${i}"]`)?.value)||0;
+
+  const caTotal=ca1+ca2;
+  const total=caTotal+exam;
+  const gr=getGrade(total);
+
+  document.getElementById("caTotal-"+i).textContent=caTotal;
+  document.getElementById("grandTotal-"+i).textContent=total;
+  document.getElementById("grade-"+i).textContent=gr.grade;
+  document.getElementById("remark-"+i).textContent=gr.remark;
+}
+
+function collectScoreStudents(){
+  const cls=document.getElementById("resultClass").value;
+  const c=db.classes.find(x=>x.name===cls);
+  if(!c)return [];
+
+  return c.students.map((name,i)=>{
+    const ca1=document.querySelector(`.result-ca1[data-i="${i}"]`)?.value;
+    const ca2=document.querySelector(`.result-ca2[data-i="${i}"]`)?.value;
+    const exam=document.querySelector(`.result-exam[data-i="${i}"]`)?.value;
+
+    const n1=ca1===""?null:Number(ca1);
+    const n2=ca2===""?null:Number(ca2);
+    const ne=exam===""?null:Number(exam);
+
+    const caTotal=(n1||0)+(n2||0);
+    const total=caTotal+(ne||0);
+    const gr=getGrade(total);
+
+    return {
+      studentId:"student-"+i,
+      name,
+      ca1:n1,
+      ca2:n2,
+      caTotal,
+      exam:ne,
+      total,
+      grade:gr.grade,
+      remark:gr.remark
+    };
+  });
+}
+
+function validateScores(students){
+  const s=db.settings;
+
+  for(const st of students){
+    if(st.ca1===null || st.ca2===null || st.exam===null){
+      return `Missing score for ${st.name}. Every student must have CA1, CA2 and Examination score.`;
+    }
+
+    if(st.ca1<0 || st.ca1>s.ca1Max){
+      return `CA1 score for ${st.name} must be between 0 and ${s.ca1Max}.`;
+    }
+
+    if(st.ca2<0 || st.ca2>s.ca2Max){
+      return `CA2 score for ${st.name} must be between 0 and ${s.ca2Max}.`;
+    }
+
+    if(st.exam<0 || st.exam>s.examMax){
+      return `Examination score for ${st.name} must be between 0 and ${s.examMax}.`;
+    }
+  }
+
+  return "";
+}
+
+/* ================= SAVE RESULT ================= */
+
+function saveResultDraft(){
+  const cls=document.getElementById("resultClass").value;
+  const subject=document.getElementById("resultSubject").value;
+
+  if(!cls||!subject){
+    alert("Select class and subject.");
+    return;
+  }
+
+  const students=collectScoreStudents();
+
+  const session=document.getElementById("resultSession").value;
+  const term=document.getElementById("resultTerm").value;
+
+  let r=db.results.find(x=>
+    x.className===cls &&
+    x.subject===subject &&
+    x.session===session &&
+    x.term===term &&
+    x.teacherId===currentUser.id &&
+    x.status!=="finalized"
+  );
+
+  if(!r){
+    r={
+      id:uid("result"),
+      className:cls,
+      subject,
+      session,
+      term,
+      teacherId:currentUser.id,
+      teacherName:currentUser.name,
+      status:"draft",
+      students:[],
+      createdAt:now()
+    };
+    db.results.push(r);
+  }
+
+  r.students=students;
+  r.updatedAt=now();
+
+  saveDB();
+  refreshDashboard();
+
+  alert("Result saved as draft.");
+}
+
+/* ================= SUBMIT HOD ================= */
+
+function submitResultToHOD(){
+  const cls=document.getElementById("resultClass").value;
+  const subject=document.getElementById("resultSubject").value;
+  const session=document.getElementById("resultSession").value;
+  const term=document.getElementById("resultTerm").value;
+
+  if(!cls||!subject){
+    alert("Select class and subject.");
+    return;
+  }
+
+  const hod=getHOD(subject);
+
+  if(!hod){
+    alert("No HOD has been assigned to this subject. Ask the Administrator to assign the HOD first.");
+    return;
+  }
+
+  const students=collectScoreStudents();
+  const validation=validateScores(students);
+
+  if(validation){
+    alert(validation);
+    return;
+  }
+
+  let r=db.results.find(x=>
+    x.className===cls &&
+    x.subject===subject &&
+    x.session===session &&
+    x.term===term &&
+    x.teacherId===currentUser.id &&
+    x.status!=="finalized"
+  );
+
+  if(!r){
+    r={
+      id:uid("result"),
+      className:cls,
+      subject,
+      session,
+      term,
+      teacherId:currentUser.id,
+      teacherName:currentUser.name,
+      createdAt:now(),
+      students:[]
+    };
+    db.results.push(r);
+  }
+
+  r.students=students;
+  r.status="submitted_hod";
+  r.hodId=hod.id;
+  r.hodName=hod.name;
+  r.submittedAt=now();
+  r.hodComment="";
+  r.updatedAt=now();
+
+  addAudit(
+    "Result Submitted",
+    `${subject} result for ${cls} submitted by ${currentUser.name} to ${hod.name}.`,
+    r.id
+  );
+
+  saveDB();
+  refreshDashboard();
+
+  alert("Result validated successfully and automatically submitted to "+hod.name+".");
+
+  loadResultStudents();
+}
+
+/* ================= GRADE ================= */
+
+function getGrade(total){
+  const grades=[...db.settings.grades].sort((a,b)=>b.min-a.min);
+
+  for(const g of grades){
+    if(total>=g.min){
+      return {
+        grade:g.grade,
+        remark:g.remark
+      };
+    }
+  }
+
+  return {grade:"F",remark:"Fail"};
+}
+
+/* ================= MY SUBMISSIONS ================= */
+
+function renderMySubmissions(){
+  const box=document.getElementById("mySubmissions");
+  if(!box)return;
+
+  const rows=db.results.filter(r=>r.teacherId===currentUser.id);
+
+  if(!rows.length){
+    box.innerHTML='<div class="card muted">You have no result submissions.</div>';
+    return;
+  }
+
+  box.innerHTML=`
+    <div class="card">
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Class</th>
+              <th>Subject</th>
+              <th>Session</th>
+              <th>Term</th>
+              <th>Students</th>
+              <th>Status</th>
+              <th>Comment</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${rows.map(r=>`
+              <tr>
+                <td>${esc(r.className)}</td>
+                <td>${esc(r.subject)}</td>
+                <td>${esc(r.session)}</td>
+                <td>${esc(r.term)}</td>
+                <td>${r.students.length}</td>
+                <td>${statusBadge(r.status)}</td>
+                <td>${esc(r.hodComment||r.examComment||"")}</td>
+              </tr>
+            `).join("")}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  `;
+}
+
+/* ================= HOD ================= */
+
+function renderHodVetting(){
+  const box=document.getElementById("hodVettingArea");
+  if(!box)return;
+
+  if(!currentUser.academicRole?.startsWith("HOD ")){
+    box.innerHTML='<div class="card">You are not assigned as an HOD.</div>';
+    return;
+  }
+
+  const rows=db.results.filter(r=>
+    r.hodId===currentUser.id &&
+    r.status==="submitted_hod"
+  );
+
+  if(!rows.length){
+    box.innerHTML=`
+      <div class="card">
+        <div class="muted">No results are currently awaiting your vetting.</div>
+      </div>
+    `;
+    return;
+  }
+
+  box.innerHTML=`
+    <div class="card">
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Class</th>
+              <th>Subject</th>
+              <th>Teacher</th>
+              <th>Session</th>
+              <th>Term</th>
+              <th>Students</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${rows.map(r=>`
+              <tr>
+                <td>${esc(r.className)}</td>
+                <td><b>${esc(r.subject)}</b></td>
+                <td>${esc(r.teacherName)}</td>
+                <td>${esc(r.session)}</td>
+                <td>${esc(r.term)}</td>
+                <td>${r.students.length}</td>
+                <td>
+                  <button class="btn blue small"
+                    onclick="reviewHodResult('${r.id}')">
+                    Review
+                  </button>
+                </td>
+              </tr>
+            `).join("")}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  `;
+}
+
+function reviewHodResult(id){
+  const r=db.results.find(x=>x.id===id);
+  if(!r)return;
+
+  document.getElementById("reviewTitle").textContent=
+    "HOD Vetting — "+r.subject+" — "+r.className;
+
+  document.getElementById("reviewContent").innerHTML=`
+    <div class="notice">
+      <b>Teacher:</b> ${esc(r.teacherName)}<br>
+      <b>Session:</b> ${esc(r.session)}<br>
+      <b>Term:</b> ${esc(r.term)}
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Student</th>
+            <th>CA1</th>
+            <th>CA2</th>
+            <th>CA Total</th>
+            <th>Exam</th>
+            <th>Total</th>
+            <th>Grade</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${r.students.map(s=>`
+            <tr>
+              <td>${esc(s.name)}</td>
+              <td>${s.ca1}</td>
+              <td>${s.ca2}</td>
+              <td>${s.caTotal}</td>
+              <td>${s.exam}</td>
+              <td><b>${s.total}</b></td>
+              <td>${s.grade}</td>
+            </tr>
+          `).join("")}
+        </tbody>
+      </table>
+    </div>
+
+    <label>HOD Comment</label>
+    <textarea id="reviewComment" placeholder="Enter comment if returning or approving..."></textarea>
+
+    <div class="actions">
+      <button class="btn red" onclick="hodReturn('${r.id}')">
+        Return to Teacher
+      </button>
+      <button class="btn green" onclick="hodApprove('${r.id}')">
+        Approve Result
+      </button>
+    </div>
+  `;
+
+  document.getElementById("reviewModal").classList.remove("hidden");
+}
+
+function hodReturn(id){
+  const r=db.results.find(x=>x.id===id);
+  if(!r)return;
+
+  const comment=document.getElementById("reviewComment").value.trim();
+
+  if(!comment){
+    alert("Please enter a reason for returning the result.");
+    return;
+  }
+
+  r.status="returned_teacher";
+  r.hodComment=comment;
+  r.hodReviewedAt=now();
+
+  addAudit(
+    "HOD Returned Result",
+    `${r.subject} result for ${r.className} returned to ${r.teacherName}. Reason: ${comment}`,
+    r.id
+  );
+
+  saveDB();
+  closeReview();
+  renderHodVetting();
+  refreshDashboard();
+
+  alert("Result returned to the teacher for correction.");
+}
+
+function hodApprove(id){
+  const r=db.results.find(x=>x.id===id);
+  if(!r)return;
+
+  const comment=document.getElementById("reviewComment").value.trim();
+
+  r.status="hod_approved";
+  r.hodComment=comment||"Approved.";
+  r.hodReviewedAt=now();
+
+  addAudit(
+    "HOD Approved Result",
+    `${r.subject} result for ${r.className} approved by ${currentUser.name}.`,
+    r.id
+  );
+
+  saveDB();
+  closeReview();
+
+  /* Automatically move it into Examination Officer queue */
+  r.status="submitted_exam_officer";
+  r.examSubmittedAt=now();
+
+  addAudit(
+    "Sent to Examination Officer",
+    `${r.subject} result for ${r.className} automatically sent to Examination Officer.`,
+    r.id
+  );
+
+  saveDB();
+  renderHodVetting();
+  refreshDashboard();
+
+  alert("Result approved. It has automatically been sent to the Examination Officer.");
+}
+
+/* ================= EXAMINATION OFFICER ================= */
+
+function renderExamReview(){
+  const box=document.getElementById("examReviewArea");
+  if(!box)return;
+
+  if(currentUser.academicRole!=="Examination Officer"){
+    box.innerHTML='<div class="card">You are not assigned as an Examination Officer.</div>';
+    return;
+  }
+
+  const rows=db.results.filter(r=>r.status==="submitted_exam_officer");
+
+  if(!rows.length){
+    box.innerHTML=`
+      <div class="card">
+        <div class="muted">No HOD-approved results are awaiting examination review.</div>
+      </div>
+    `;
+    return;
+  }
+
+  box.innerHTML=`
+    <div class="card">
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Class</th>
+              <th>Subject</th>
+              <th>Teacher</th>
+              <th>HOD</th>
+              <th>Students</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${rows.map(r=>`
+              <tr>
+                <td>${esc(r.className)}</td>
+                <td><b>${esc(r.subject)}</b></td>
+                <td>${esc(r.teacherName)}</td>
+                <td>${esc(r.hodName)}</td>
+                <td>${r.students.length}</td>
+                <td>
+                  <button class="btn blue small"
+                    onclick="reviewExamResult('${r.id}')">
+                    Review
+                  </button>
+                </td>
+              </tr>
+            `).join("")}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  `;
+}
+
+function reviewExamResult(id){
+  const r=db.results.find(x=>x.id===id);
+  if(!r)return;
+
+  document.getElementById("reviewTitle").textContent=
+    "Examination Review — "+r.subject+" — "+r.className;
+
+  document.getElementById("reviewContent").innerHTML=`
+    <div class="notice">
+      <b>Teacher:</b> ${esc(r.teacherName)}<br>
+      <b>HOD:</b> ${esc(r.hodName)}<br>
+      <b>Session:</b> ${esc(r.session)}<br>
+      <b>Term:</b> ${esc(r.term)}
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Student</th>
+            <th>CA1</th>
+            <th>CA2</th>
+            <th>CA Total</th>
+            <th>Exam</th>
+            <th>Total</th>
+            <th>Grade</th>
+            <th>Remark</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${r.students.map(s=>`
+            <tr>
+              <td>${esc(s.name)}</td>
+              <td>${s.ca1}</td>
+              <td>${s.ca2}</td>
+              <td>${s.caTotal}</td>
+              <td>${s.exam}</td>
+              <td><b>${s.total}</b></td>
+              <td>${s.grade}</td>
+              <td>${esc(s.remark)}</td>
+            </tr>
+          `).join("")}
+        </tbody>
+      </table>
+    </div>
+
+    <label>Examination Officer Comment</label>
+    <textarea id="reviewComment" placeholder="Enter comment..."></textarea>
+
+    <div class="actions">
+      <button class="btn red" onclick="examReturn('${r.id}')">
+        Return
+      </button>
+      <button class="btn green" onclick="finalizeResult('${r.id}')">
+        FINALIZE & LOCK RESULT
+      </button>
+    </div>
+  `;
+
+  document.getElementById("reviewModal").classList.remove("hidden");
+}
+
+function examReturn(id){
+  const r=db.results.find(x=>x.id===id);
+  if(!r)return;
+
+  const comment=document.getElementById("reviewComment").value.trim();
+
+  if(!comment){
+    alert("Please enter the reason for returning the result.");
+    return;
+  }
+
+  r.status="returned_teacher";
+  r.examComment=comment;
+  r.examReviewedAt=now();
+
+  addAudit(
+    "Examination Officer Returned Result",
+    `${r.subject} result for ${r.className} returned. Reason: ${comment}`,
+    r.id
+  );
+
+  saveDB();
+  closeReview();
+  renderExamReview();
+  refreshDashboard();
+
+  alert("Result returned for correction.");
+}
+
+function finalizeResult(id){
+  const r=db.results.find(x=>x.id===id);
+  if(!r)return;
+
+  if(!confirm(
+    "Are you sure you want to FINALIZE this result?\n\n"+
+    "After finalization, the result will be locked."
+  ))return;
+
+  r.status="finalized";
+  r.examOfficerId=currentUser.id;
+  r.examOfficerName=currentUser.name;
+  r.examComment=
+    document.getElementById("reviewComment").value.trim() ||
+    "Finalized.";
+  r.examApprovedAt=now();
+  r.finalizedAt=now();
+
+  addAudit(
+    "Result Finalized",
+    `${r.subject} result for ${r.className} finalized by ${currentUser.name}.`,
+    r.id
+  );
+
+  saveDB();
+  closeReview();
+  renderExamReview();
+  refreshDashboard();
+
+  alert("Result finalized and locked successfully.");
+}
+
+/* ================= BROADSHEET ================= */
+
+function generateBroadsheet(){
+  const session=document.getElementById("bSession").value;
+  const term=document.getElementById("bTerm").value;
+  const cls=document.getElementById("bClass").value;
+
+  if(!session||!term||!cls){
+    alert("Select session, term and class.");
+    return;
+  }
+
+  const c=db.classes.find(x=>x.name===cls);
+  if(!c){
+    alert("Class not found.");
+    return;
+  }
+
+  const results=db.results.filter(r=>
+    r.className===cls &&
+    r.session===session &&
+    r.term===term &&
+    r.status==="finalized"
+  );
+
+  if(!results.length){
+    document.getElementById("broadsheetArea").innerHTML=`
+      <div class="card warning">
+        No finalized subject results are available for this class.
+      </div>
+    `;
+    return;
+  }
+
+  const subjects=[...new Set(results.map(r=>r.subject))];
+
+  const students=c.students.map(name=>{
+    const subjectData={};
+
+    results.forEach(r=>{
+      const s=r.students.find(x=>x.name===name);
+      if(s)subjectData[r.subject]=s;
+    });
+
+    const totals=Object.values(subjectData).map(x=>x.total);
+    const total=totals.reduce((a,b)=>a+b,0);
+    const average=totals.length?total/totals.length:0;
+
+    return {
+      name,
+      subjectData,
+      total,
+      average,
+      subjectsCount:totals.length
+    };
+  });
+
+  /* Competition ranking */
+  students.sort((a,b)=>b.average-a.average);
+
+  let previous=null;
+  let position=0;
+
+  students.forEach((s,i)=>{
+    if(s.average!==previous){
+      position=i+1;
+      previous=s.average;
+    }
+    s.position=position;
+  });
+
+  currentBroadsheetData={
+    session,term,cls,subjects,students
+  };
+
+  document.getElementById("broadsheetArea").innerHTML=`
+    <div class="card" id="broadsheetPrint">
+      <div style="text-align:center;margin-bottom:18px">
+        <h2 style="color:#14532d">CALIPHATE TARBIYA ACADEMY SOKOTO</h2>
+        <h3>CLASS BROADSHEET</h3>
+        <p>${esc(cls)} • ${esc(term)} • ${esc(session)}</p>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Student</th>
+              ${subjects.map(s=>`<th>${esc(s)}</th>`).join("")}
+              <th>Total</th>
+              <th>Average</th>
+              <th>Position</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${students.map((s,i)=>`
+              <tr>
+                <td>${i+1}</td>
+                <td><b>${esc(s.name)}</b></td>
+
+                ${subjects.map(sub=>{
+                  const x=s.subjectData[sub];
+                  return `<td>${x?x.total:"-"}</td>`;
+                }).join("")}
+
+                <td class="total-cell">${s.total}</td>
+                <td>${s.average.toFixed(2)}%</td>
+                <td><b>${ordinal(s.position)}</b></td>
+              </tr>
+            `).join("")}
+          </tbody>
+        </table>
+      </div>
+
+      <div style="margin-top:15px;font-size:12px">
+        <b>Note:</b> Broadsheet is generated automatically from finalized subject results.
+      </div>
+    </div>
+  `;
+}
+
+/* ================= STUDENT RESULT ================= */
+
+function loadStudentSelector(){
+  const cls=document.getElementById("sClass").value;
+  const sel=document.getElementById("sStudent");
+
+  sel.innerHTML='<option value="">Select student</option>';
+
+  const c=db.classes.find(x=>x.name===cls);
+  if(!c)return;
+
+  c.students.forEach(name=>{
+    const o=document.createElement("option");
+    o.value=name;
+    o.textContent=name;
+    sel.appendChild(o);
+  });
+}
+
+function generateStudentResult(){
+  const session=document.getElementById("sSession").value;
+  const term=document.getElementById("sTerm").value;
+  const cls=document.getElementById("sClass").value;
+  const student=document.getElementById("sStudent").value;
+
+  if(!session||!term||!cls||!student){
+    alert("Select all fields.");
+    return;
+  }
+
+  const results=db.results.filter(r=>
+    r.className===cls &&
+    r.session===session &&
+    r.term===term &&
+    r.status==="finalized"
+  );
+
+  const subjects=[];
+
+  results.forEach(r=>{
+    const s=r.students.find(x=>x.name===student);
+    if(s){
+      subjects.push({
+        subject:r.subject,
+        ...s
+      });
+    }
+  });
+
+  if(!subjects.length){
+    document.getElementById("studentResultArea").innerHTML=`
+      <div class="card warning">
+        No finalized result is available for this student.
+      </div>
+    `;
+    return;
+  }
+
+  const total=subjects.reduce((a,b)=>a+b.total,0);
+  const average=total/subjects.length;
+
+  /* Determine position from complete class data */
+  const classData=buildClassRanking(cls,session,term);
+  const ranked=classData.find(x=>x.name===student);
+
+  currentStudentData={
+    session,term,cls,student,subjects,total,average,
+    position:ranked?ranked.position:"-"
+  };
+
+  document.getElementById("studentResultArea").innerHTML=`
+    <div class="card" id="studentPrint">
+      <div style="text-align:center;margin-bottom:20px">
+        <h2 style="color:#14532d">CALIPHATE TARBIYA ACADEMY SOKOTO</h2>
+        <h3>STUDENT ACADEMIC REPORT</h3>
+        <p>${esc(term)} • ${esc(session)}</p>
+      </div>
+
+      <div class="grid2" style="margin-bottom:15px">
+        <div>
+          <b>Student:</b><br>${esc(student)}
+        </div>
+        <div>
+          <b>Class:</b><br>${esc(cls)}
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Subject</th>
+              <th>CA1 / 15</th>
+              <th>CA2 / 15</th>
+              <th>CA Total / 30</th>
+              <th>Exam / 70</th>
+              <th>Total / 100</th>
+              <th>Grade</th>
+              <th>Remark</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${subjects.map(s=>`
+              <tr>
+                <td><b>${esc(s.subject)}</b></td>
+                <td>${s.ca1}</td>
+                <td>${s.ca2}</td>
+                <td>${s.caTotal}</td>
+                <td>${s.exam}</td>
+                <td><b>${s.total}</b></td>
+                <td>${s.grade}</td>
+                <td>${esc(s.remark)}</td>
+              </tr>
+            `).join("")}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="grid" style="margin-top:18px">
+        <div class="card">
+          <div class="muted">Subjects</div>
+          <div class="stat">${subjects.length}</div>
+        </div>
+        <div class="card">
+          <div class="muted">Total</div>
+          <div class="stat">${total}</div>
+        </div>
+        <div class="card">
+          <div class="muted">Average</div>
+          <div class="stat">${average.toFixed(2)}%</div>
+        </div>
+        <div class="card">
+          <div class="muted">Position</div>
+          <div class="stat">${ordinal(ranked?ranked.position:"-")}</div>
+        </div>
+      </div>
+
+      <div style="margin-top:45px;display:flex;justify-content:space-between">
+        <div>____________________<br>Class Teacher</div>
+        <div>____________________<br>Examination Officer</div>
+        <div>____________________<br>Principal/Head Teacher</div>
+      </div>
+    </div>
+  `;
+}
+
+function buildClassRanking(cls,session,term){
+  const c=db.classes.find(x=>x.name===cls);
+  if(!c)return [];
+
+  const results=db.results.filter(r=>
+    r.className===cls &&
+    r.session===session &&
+    r.term===term &&
+    r.status==="finalized"
+  );
+
+  const arr=c.students.map(name=>{
+    let total=0;
+    let count=0;
+
+    results.forEach(r=>{
+      const s=r.students.find(x=>x.name===name);
+      if(s){
+        total+=s.total;
+        count++;
+      }
+    });
+
+    return {
+      name,
+      total,
+      average:count?total/count:0,
+      count
+    };
+  });
+
+  arr.sort((a,b)=>b.average-a.average);
+
+  let previous=null;
+  let position=0;
+
+  arr.forEach((x,i)=>{
+    if(x.average!==previous){
+      position=i+1;
+      previous=x.average;
+    }
+    x.position=position;
+  });
+
+  return arr;
+}
+
+/* ================= WORD EXPORT ================= */
+
+function exportBroadsheetWord(){
+  if(!currentBroadsheetData){
+    alert("Generate the broadsheet first.");
+    return;
+  }
+
+  const d=currentBroadsheetData;
+
+  const html=`
+  <html>
+  <head>
+  <meta charset="UTF-8">
+  <title>Class Broadsheet</title>
+  <style>
+    body{font-family:Arial}
+    h2,h3{text-align:center}
+    table{border-collapse:collapse;width:100%}
+    th,td{border:1px solid #000;padding:5px;font-size:10px}
+    th{background:#eee}
+  </style>
+  </head>
+  <body>
+    <h2>CALIPHATE TARBIYA ACADEMY SOKOTO</h2>
+    <h3>CLASS BROADSHEET</h3>
+    <p style="text-align:center">
+      ${esc(d.cls)} — ${esc(d.term)} — ${esc(d.session)}
+    </p>
+
+    <table>
+      <tr>
+        <th>#</th>
+        <th>Student</th>
+        ${d.subjects.map(s=>`<th>${esc(s)}</th>`).join("")}
+        <th>Total</th>
+        <th>Average</th>
+        <th>Position</th>
+      </tr>
+
+      ${d.students.map((s,i)=>`
+        <tr>
+          <td>${i+1}</td>
+          <td>${esc(s.name)}</td>
+          ${d.subjects.map(sub=>{
+            const x=s.subjectData[sub];
+            return `<td>${x?x.total:"-"}</td>`;
+          }).join("")}
+          <td>${s.total}</td>
+          <td>${s.average.toFixed(2)}</td>
+          <td>${ordinal(s.position)}</td>
+        </tr>
+      `).join("")}
+    </table>
+  </body>
+  </html>
+  `;
+
+  downloadWord(html,
+    `${d.cls}-${d.term}-${d.session}-Broadsheet.doc`);
+}
+
+function exportStudentWord(){
+  if(!currentStudentData){
+    alert("Generate the student result first.");
+    return;
+  }
+
+  const d=currentStudentData;
+
+  const html=`
+  <html>
+  <head>
+  <meta charset="UTF-8">
+  <title>Student Result</title>
+  <style>
+    body{font-family:Arial}
+    h2,h3{text-align:center}
+    table{border-collapse:collapse;width:100%}
+    th,td{border:1px solid #000;padding:7px;font-size:11px}
+    th{background:#eee}
+  </style>
+  </head>
+  <body>
+    <h2>CALIPHATE TARBIYA ACADEMY SOKOTO</h2>
+    <h3>STUDENT ACADEMIC REPORT</h3>
+    <p>
+      <b>Student:</b> ${esc(d.student)}<br>
+      <b>Class:</b> ${esc(d.cls)}<br>
+      <b>Term:</b> ${esc(d.term)}<br>
+      <b>Session:</b> ${esc(d.session)}
+    </p>
+
+    <table>
+      <tr>
+        <th>Subject</th>
+        <th>CA1</th>
+        <th>CA2</th>
+        <th>CA Total</th>
+        <th>Exam</th>
+        <th>Total</th>
+        <th>Grade</th>
+        <th>Remark</th>
+      </tr>
+
+      ${d.subjects.map(s=>`
+        <tr>
+          <td>${esc(s.subject)}</td>
+          <td>${s.ca1}</td>
+          <td>${s.ca2}</td>
+          <td>${s.caTotal}</td>
+          <td>${s.exam}</td>
+          <td>${s.total}</td>
+          <td>${s.grade}</td>
+          <td>${esc(s.remark)}</td>
+        </tr>
+      `).join("")}
+    </table>
+
+    <br>
+
+    <p><b>Total:</b> ${d.total}</p>
+    <p><b>Average:</b> ${d.average.toFixed(2)}%</p>
+    <p><b>Position:</b> ${ordinal(d.position)}</p>
+
+    <br><br>
+    ____________________ &nbsp;&nbsp;&nbsp;
+    ____________________ &nbsp;&nbsp;&nbsp;
+    ____________________<br>
+    Class Teacher &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    Examination Officer &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    Principal
+  </body>
+  </html>
+  `;
+
+  downloadWord(html,
+    `${d.student}-${d.term}-${d.session}-Result.doc`);
+}
+
+function downloadWord(html,filename){
+  const blob=new Blob(["\ufeff",html],{
+    type:"application/msword"
+  });
+
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement("a");
+  a.href=url;
+  a.download=filename;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
+}
+
+/* ================= SETTINGS ================= */
+
+function renderSettings(){
+  const s=db.settings;
+
+  const ca1=document.getElementById("setCA1");
+  const ca2=document.getElementById("setCA2");
+  const exam=document.getElementById("setExam");
+
+  if(ca1)ca1.value=s.ca1Max;
+  if(ca2)ca2.value=s.ca2Max;
+  if(exam)exam.value=s.examMax;
+
+  const body=document.getElementById("gradingTable");
+  if(!body)return;
+
+  body.innerHTML=s.grades.map((g,i)=>`
+    <tr>
+      <td>
+        <input id="gradeName-${i}" value="${esc(g.grade)}">
+      </td>
+      <td>
+        <input id="gradeMin-${i}" type="number" value="${g.min}">
+      </td>
+      <td>
+        <input id="gradeRemark-${i}" value="${esc(g.remark)}">
+      </td>
+    </tr>
+  `).join("");
+}
+
+function saveResultSettings(){
+  if(currentUser.role!=="admin"){
+    alert("Only Administrator can change result settings.");
+    return;
+  }
+
+  const ca1=Number(document.getElementById("setCA1").value);
+  const ca2=Number(document.getElementById("setCA2").value);
+  const exam=Number(document.getElementById("setExam").value);
+
+  if(ca1<=0||ca2<=0||exam<=0){
+    alert("Maximum marks must be greater than zero.");
+    return;
+  }
+
+  db.settings.ca1Max=ca1;
+  db.settings.ca2Max=ca2;
+  db.settings.examMax=exam;
+
+  db.settings.grades=db.settings.grades.map((g,i)=>({
+    grade:document.getElementById("gradeName-"+i).value.trim(),
+    min:Number(document.getElementById("gradeMin-"+i).value),
+    remark:document.getElementById("gradeRemark-"+i).value.trim()
+  }));
+
+  saveDB();
+
+  alert("Result settings saved.");
+  loadResultStudents();
+}
+
+/* ================= SECURITY ================= */
+
+function changePassword(){
+  const old=document.getElementById("oldPassword").value;
+  const n=document.getElementById("newPassword").value;
+  const c=document.getElementById("confirmPassword").value;
+  const msg=document.getElementById("passwordMessage");
+
+  if(old!==currentUser.password){
+    msg.className="error";
+    msg.textContent="Current password is incorrect.";
+    return;
+  }
+
+  if(!n||n.length<6){
+    msg.className="error";
+    msg.textContent="New password must be at least 6 characters.";
+    return;
+  }
+
+  if(n!==c){
+    msg.className="error";
+    msg.textContent="Passwords do not match.";
+    return;
+  }
+
+  currentUser.password=n;
+
+  const u=db.users.find(x=>x.id===currentUser.id);
+  if(u)u.password=n;
+
+  saveDB();
+
+  msg.className="success";
+  msg.textContent="Password changed successfully.";
+}
+
+/* ================= BACKUP ================= */
+
+function downloadBackup(){
+  const data=JSON.stringify(db,null,2);
+
+  const blob=new Blob([data],{
+    type:"application/json"
+  });
+
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement("a");
+  a.href=url;
+  a.download="CTA-Academy-Backup-"+Date.now()+".json";
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function restoreBackup(event){
+  if(currentUser.role!=="admin"){
+    alert("Only Administrator can restore backup.");
+    return;
+  }
+
+  const file=event.target.files[0];
+  if(!file)return;
+
+  const reader=new FileReader();
+
+  reader.onload=function(){
+    try{
+      const imported=JSON.parse(reader.result);
+
+      if(!imported.users||!imported.results||!imported.settings){
+        throw new Error("Invalid backup");
+      }
+
+      if(!confirm(
+        "Restore this backup?\n\n"+
+        "Current local data will be replaced."
+      ))return;
+
+      db=imported;
+      saveDB();
+      alert("Backup restored successfully.");
+      location.reload();
+
+    }catch(e){
+      alert("Invalid or damaged backup file.");
+    }
+  };
+
+  reader.readAsText(file);
+}
+
+/* ================= AUDIT ================= */
+
+function addAudit(action,description,resultId=""){
+  db.audit.push({
+    id:uid("audit"),
+    action,
+    description,
+    resultId,
+    userId:currentUser?.id||"",
+    userName:currentUser?.name||"",
+    time:now()
+  });
+}
+
+/* ================= PRINT ================= */
+
+function printCurrent(){
+  window.print();
+}
+
+/* ================= STATUS ================= */
+
+function statusBadge(status){
+  const map={
+    draft:["draft","Draft"],
+    submitted_hod:["pending","Awaiting HOD"],
+    returned_teacher:["returned","Returned"],
+    hod_approved:["approved","HOD Approved"],
+    submitted_exam_officer:["pending","Exam Officer"],
+    finalized:["final","Finalized / Locked"]
+  };
+
+  const x=map[status]||["draft",status];
+
+  return `<span class="badge ${x[0]}">${x[1]}</span>`;
+}
+
+/* ================= UTILITIES ================= */
+
+function ordinal(n){
+  if(n==="-"||n===undefined)return "-";
+
+  const x=Number(n);
+  const mod10=x%10;
+  const mod100=x%100;
+
+  if(mod10===1&&mod100!==11)return x+"st";
+  if(mod10===2&&mod100!==12)return x+"nd";
+  if(mod10===3&&mod100!==13)return x+"rd";
+  return x+"th";
 }
 
 function esc(value){
-return String(value??"")
-.replace(/&/g,"&amp;")
-.replace(/</g,"&lt;")
-.replace(/>/g,"&gt;")
-.replace(/"/g,"&quot;")
-.replace(/'/g,"&#039;");
+  return String(value??"")
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
 }
 
-function dateToday(){
-return new Date().toISOString().slice(0,10);
+function closeReview(){
+  document.getElementById("reviewModal").classList.add("hidden");
 }
 
-function weeks(){
-return Array.from({length:13},(_,i)=>"Week "+(i+1));
-}
-
-function showMessage(id,text,type="error"){
-const el=$(id);
-if(!el)return;
-el.textContent=text;
-el.className="message show "+type;
-}
-
-function hideMessage(id){
-const el=$(id);
-if(!el)return;
-el.className="message";
-el.textContent="";
-}
-
-
-/* =========================
-   LOCAL DATABASE
-========================= */
-
-async function getData(key){
-const raw=localStorage.getItem(DB_KEY);
-if(!raw)return null;
-
-try{
-const data=JSON.parse(raw);
-return data[key];
-}catch(e){
-console.error(e);
-return null;
-}
-}
-
-async function setData(key,value){
-let data={};
-
-try{
-data=JSON.parse(localStorage.getItem(DB_KEY)||"{}");
-}catch(e){
-data={};
-}
-
-data[key]=value;
-
-localStorage.setItem(DB_KEY,JSON.stringify(data));
-
-return value;
-}
-
-
-async function ensureData(){
-
-let data={};
-
-try{
-data=JSON.parse(localStorage.getItem(DB_KEY)||"{}");
-}catch(e){
-data={};
-}
-
-if(!Array.isArray(data.users)){
-data.users=[
-{
-id:"admin_1",
-name:"Administrator",
-username:"admin",
-password:"Admin@12345",
-role:"admin",
-createdAt:new Date().toISOString()
-}
-];
-}
-
-if(!Array.isArray(data.documents))
-data.documents=[];
-
-if(!Array.isArray(data.classes))
-data.classes=[];
-
-if(!Array.isArray(data.attendance))
-data.attendance=[];
-
-for(const key of Object.values(ARCHIVE_KEYS)){
-if(!Array.isArray(data[key]))
-data[key]=[];
-}
-
-localStorage.setItem(DB_KEY,JSON.stringify(data));
-
-state=data;
-}
-
-
-/* =========================
-   LOGIN
-========================= */
-
-async function login(){
-
-hideMessage("loginMessage");
-
-const role=$("loginRole").value;
-const username=$("loginUsername").value.trim();
-const password=$("loginPassword").value;
-
-const users=await getData("users")||[];
-
-const user=users.find(u=>
-u.username.toLowerCase()===username.toLowerCase() &&
-u.password===password &&
-u.role===role
-);
-
-if(!user){
-showMessage(
-"loginMessage",
-"Invalid username, password or login type."
-);
-return;
-}
-
-currentUser=user;
-
-sessionStorage.setItem(
-"CTA_SESSION_USER",
-JSON.stringify(user)
-);
-
-$("loginScreen").style.display="none";
-$("app").style.display="block";
-
-applyRoleAccess();
-updateUserBox();
-await refreshDashboard();
-
-navigate("dashboard");
-}
-
-
-function restoreSession(){
-
-const raw=sessionStorage.getItem("CTA_SESSION_USER");
-
-if(!raw)return;
-
-try{
-
-currentUser=JSON.parse(raw);
-
-$("loginScreen").style.display="none";
-$("app").style.display="block";
-
-applyRoleAccess();
-updateUserBox();
-
-refreshDashboard();
-navigate("dashboard");
-
-}catch(e){
-
-sessionStorage.removeItem("CTA_SESSION_USER");
-
-}
-}
-
-
-function logout(){
-
-sessionStorage.removeItem("CTA_SESSION_USER");
-
-currentUser=null;
-
-$("app").style.display="none";
-$("loginScreen").style.display="flex";
-
-$("loginUsername").value="";
-$("loginPassword").value="";
-}
-
-
-function updateUserBox(){
-
-if(!currentUser)return;
-
-$("userName").textContent=currentUser.name;
-
-$("avatar").textContent=
-currentUser.name.charAt(0).toUpperCase();
-}
-
-
-function applyRoleAccess(){
-
-document.querySelectorAll(".adminOnly").forEach(el=>{
-
-el.style.display=
-currentUser?.role==="admin" ? "" : "none";
-
-});
-
-}
-
-
-function navigate(page){
-
-document.querySelectorAll(".page").forEach(p=>{
-p.classList.remove("active");
-});
-
-const target=$("page-"+page);
-
-if(!target)return;
-
-if(target.classList.contains("adminOnly") &&
-currentUser?.role!=="admin"){
-return;
-}
-
-target.classList.add("active");
-
-document.querySelectorAll(".nav button[data-page]").forEach(btn=>{
-btn.classList.toggle(
-"active",
-btn.dataset.page===page
-);
-});
-
-const titles={
-dashboard:"Dashboard",
-documents:"My Documents",
-assistant:"Teacher Assistant",
-register:"Class Register",
-approval:"Approval Centre",
-archive:"Approved Archive",
-teachers:"Teacher Management",
-classSetup:"Class Setup",
-security:"Account Security",
-backup:"Backup & Restore"
-};
-
-$("pageHeading").textContent=titles[page]||"Dashboard";
-
-if(page==="documents")renderDocuments();
-if(page==="approval")renderApproval();
-if(page==="archive")renderArchive();
-if(page==="teachers")renderTeachers();
-if(page==="classSetup")renderClassSetup();
-if(page==="register")initRegisterPage();
-}
-
-
-/* =========================
-   DASHBOARD
-========================= */
-
-async function refreshDashboard(){
-
-const docs=await getData("documents")||[];
-const users=await getData("users")||[];
-
-const visibleDocs=
-currentUser?.role==="admin"
-?docs
-:docs.filter(d=>d.createdBy===currentUser?.id);
-
-$("statDocs").textContent=visibleDocs.length;
-
-$("statPending").textContent=
-visibleDocs.filter(d=>d.status==="pending").length;
-
-$("statApproved").textContent=
-visibleDocs.filter(d=>d.status==="approved").length;
-
-$("statTeachers").textContent=
-users.filter(u=>u.role==="teacher").length;
-
-$("statAttendance").textContent=
-await overallTodayAttendance();
-
-}
-
-
-async function overallTodayAttendance(){
-
-const date=dateToday();
-
-const a=await getData("attendance")||[];
-
-const today=a.filter(x=>x.date===date);
-
-let attended=0;
-let marked=0;
-
-today.forEach(r=>{
-
-[r.morning,r.afternoon].forEach(v=>{
-
-if(v && v!=="unmarked"){
-
-marked++;
-
-if(v==="present" || v==="late")
-attended++;
-
-}
-
-});
-
-});
-
-return marked?Math.round(attended/marked*100)+"%":"0%";
-}
-
-
-/* =========================
-   DOCUMENTS
-========================= */
-
-function openDocModal(){
-
-$("docModal").classList.add("show");
-
-$("docTitle").value="";
-$("docContent").value="";
-
-}
-
-function closeDocModal(){
-
-$("docModal").classList.remove("show");
-
-}
-
-async function saveDocument(){
-
-const type=$("docType").value;
-const title=$("docTitle").value.trim();
-const content=$("docContent").value.trim();
-
-if(!title||!content){
-
-alert("Please enter a title and content.");
-
-return;
-}
-
-const docs=await getData("documents")||[];
-
-const doc={
-id:uid("doc"),
-type,
-language:$("docLanguage").value,
-className:$("docClass").value,
-subject:$("docSubject").value,
-term:$("docTerm").value,
-week:$("fWeek").value,
-title,
-content,
-status:"draft",
-createdBy:currentUser.id,
-createdByName:currentUser.name,
-createdAt:new Date().toISOString()
-};
-
-docs.push(doc);
-
-await setData("documents",docs);
-
-closeDocModal();
-
-await renderDocuments();
-await refreshDashboard();
-
-alert("Document saved as draft.");
-
-}
-
-
-async function renderDocuments(){
-
-const el=$("documentList");
-
-if(!el)return;
-
-const docs=await getData("documents")||[];
-
-const filter=$("docFilter").value;
-
-let visible=
-currentUser.role==="admin"
-?docs
-:docs.filter(d=>d.createdBy===currentUser.id);
-
-if(filter)
-visible=visible.filter(d=>d.type===filter);
-
-if(!visible.length){
-
-el.innerHTML=
-'<div class="card empty">No documents found.</div>';
-
-return;
-}
-
-el.innerHTML=visible
-.sort((a,b)=>
-new Date(b.createdAt)-new Date(a.createdAt)
-)
-.map(d=>`
-
-<div class="card" style="margin-bottom:12px">
-
-<div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap">
-
-<div>
-
-<h3>${esc(d.title)}</h3>
-
-<p class="muted">
-${esc(d.subject)} • ${esc(d.className)} • ${esc(d.term)}
-</p>
-
-<p class="muted">
-${esc(d.type)} • ${esc(d.language)}
-</p>
-
-</div>
-
-<div>
-
-<span class="badge ${d.status}">
-${esc(d.status)}
-</span>
-
-</div>
-
-</div>
-
-<div style="margin-top:12px;white-space:pre-wrap">
-${esc(d.content).slice(0,800)}
-${d.content.length>800?"...":""}
-</div>
-
-<div class="actions" style="margin-top:12px">
-
-${d.status==="draft"&&currentUser.role==="teacher"
-?`<button class="btn btn-primary" onclick="submitDocument('${d.id}')">Submit for Approval</button>`
-:""}
-
-${d.status==="draft"
-?`<button class="btn btn-danger" onclick="deleteDocument('${d.id}')">Delete</button>`
-:""}
-
-</div>
-
-</div>
-
-`).join("");
-
-}
-
-
-async function submitDocument(id){
-
-const docs=await getData("documents")||[];
-
-const i=docs.findIndex(d=>d.id===id);
-
-if(i<0)return;
-
-docs[i].status="pending";
-docs[i].submittedAt=new Date().toISOString();
-
-await setData("documents",docs);
-
-await renderDocuments();
-await refreshDashboard();
-
-alert("Document submitted for approval.");
-
-}
-
-
-async function deleteDocument(id){
-
-if(!confirm("Delete this document?"))return;
-
-const docs=await getData("documents")||[];
-
-await setData(
-"documents",
-docs.filter(d=>d.id!==id)
-);
-
-await renderDocuments();
-await refreshDashboard();
-
-}
-
-
-/* =========================
-   APPROVAL
-========================= */
-
-async function renderApproval(){
-
-const el=$("approvalList");
-
-if(!el)return;
-
-const docs=await getData("documents")||[];
-
-const pending=docs.filter(d=>d.status==="pending");
-
-if(!pending.length){
-
-el.innerHTML=
-'<div class="card empty">No pending submissions.</div>';
-
-return;
-}
-
-el.innerHTML=pending.map(d=>`
-
-<div class="card" style="margin-bottom:12px">
-
-<h3>
-${esc(d.title)}
-</h3>
-
-<p class="muted">
-Teacher: ${esc(d.createdByName||"Unknown")}
-</p>
-
-<p class="muted">
-${esc(d.subject)} • ${esc(d.className)} • ${esc(d.term)}
-</p>
-
-<div style="white-space:pre-wrap;margin-top:12px">
-${esc(d.content)}
-</div>
-
-<div class="actions" style="margin-top:15px">
-
-<button
-class="btn btn-primary"
-onclick="approveDocument('${d.id}')"
->
-Approve
-</button>
-
-<button
-class="btn btn-danger"
-onclick="rejectDocument('${d.id}')"
->
-Reject
-</button>
-
-</div>
-
-</div>
-
-`).join("");
-
-}
-
-
-async function approveDocument(id){
-
-const docs=await getData("documents")||[];
-
-const i=docs.findIndex(d=>d.id===id);
-
-if(i<0)return;
-
-docs[i].status="approved";
-docs[i].approvedAt=new Date().toISOString();
-docs[i].approvedBy=currentUser.id;
-
-const archiveKey=
-ARCHIVE_KEYS[docs[i].type+"Archive"] ||
-"generalArchive";
-
-const archive=await getData(archiveKey)||[];
-
-archive.push({
-...docs[i],
-archivedAt:new Date().toISOString()
-});
-
-await setData(archiveKey,archive);
-await setData("documents",docs);
-
-await renderApproval();
-await refreshDashboard();
-
-alert("Document approved and archived.");
-
-}
-
-
-async function rejectDocument(id){
-
-const docs=await getData("documents")||[];
-
-const i=docs.findIndex(d=>d.id===id);
-
-if(i<0)return;
-
-const comment=prompt("Reason for rejection:");
-
-docs[i].status="rejected";
-docs[i].rejectionComment=comment||"No reason provided.";
-docs[i].rejectedAt=new Date().toISOString();
-
-await setData("documents",docs);
-
-await renderApproval();
-await refreshDashboard();
-
-}
-
-
-/* =========================
-   ARCHIVE
-========================= */
-
-async function migrateApprovedDocuments(){
-
-const docs=await getData("documents")||[];
-
-for(const d of docs){
-
-if(d.status!=="approved")continue;
-
-const key=
-ARCHIVE_KEYS[d.type+"Archive"] ||
-"generalArchive";
-
-const archive=await getData(key)||[];
-
-if(!archive.some(x=>x.id===d.id)){
-
-archive.push(d);
-
-await setData(key,archive);
-
-}
-
-}
-
-}
-
-
-async function renderArchive(){
-
-const el=$("archiveList");
-
-if(!el)return;
-
-let all=[];
-
-for(const key of Object.values(ARCHIVE_KEYS)){
-
-const list=await getData(key)||[];
-
-all=all.concat(list);
-
-}
-
-const search=$("archiveSearch").value.toLowerCase();
-const term=$("archiveTerm").value;
-const week=$("archiveWeek").value;
-const type=$("archiveType").value;
-
-all=all.filter(d=>{
-
-if(search &&
-!(
-(d.title||"").toLowerCase().includes(search) ||
-(d.subject||"").toLowerCase().includes(search) ||
-(d.createdByName||"").toLowerCase().includes(search)
-)
-)return false;
-
-if(term&&d.term!==term)return false;
-
-if(week&&d.week!==week)return false;
-
-if(type&&d.type!==type)return false;
-
-return true;
-
-});
-
-if(!all.length){
-
-el.innerHTML=
-'<div class="card empty">No archived documents found.</div>';
-
-return;
-}
-
-el.innerHTML=all
-.sort((a,b)=>new Date(b.archivedAt||b.createdAt)-new Date(a.archivedAt||a.createdAt))
-.map(d=>`
-
-<div class="card" style="margin-bottom:12px">
-
-<h3>${esc(d.title)}</h3>
-
-<p class="muted">
-${esc(d.subject)} • ${esc(d.className)}
-</p>
-
-<p class="muted">
-${esc(d.term)} • ${esc(d.week)}
-</p>
-
-<div style="white-space:pre-wrap;margin-top:12px">
-${esc(d.content)}
-</div>
-
-</div>
-
-`).join("");
-
-}
-
-
-/* =========================
-   CLASS SETUP
-========================= */
-
-function populateSetupClassSelect(){
-
-const el=$("setupClass");
-
-if(!el)return;
-
-el.innerHTML=
-'<option value="">Select class</option>'+
-CLASS_LEVELS.map(c=>
-`<option>${esc(c)}</option>`
-).join("");
-
-}
-
-
-async function populateTeachers(){
-
-const el=$("setupTeacher");
-
-if(!el)return;
-
-const users=await getData("users")||[];
-
-const teachers=users.filter(u=>u.role==="teacher");
-
-el.innerHTML=
-'<option value="">Select teacher</option>'+
-teachers.map(t=>
-`<option value="${esc(t.id)}">${esc(t.name)}</option>`
-).join("");
-
-}
-
-
-async function renderClassSetup(){
-
-populateSetupClassSelect();
-await populateTeachers();
-
-const el=$("classSetupList");
-
-const classes=await getData("classes")||[];
-
-if(!classes.length){
-
-el.innerHTML=
-'<div class="card empty">No classes have been configured yet.</div>';
-
-return;
-
-}
-
-el.innerHTML=classes.map(c=>`
-
-<div class="card" style="margin-bottom:12px">
-
-<div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap">
-
-<div>
-
-<h3>${esc(c.name)}</h3>
-
-<p class="muted">
-Class Teacher: ${esc(c.teacherName||"Not assigned")}
-</p>
-
-<p class="muted">
-Students: ${c.students.length}
-</p>
-
-</div>
-
-<div>
-
-<button
-class="btn btn-danger"
-onclick="deleteClass('${c.id}')"
->
-Delete
-</button>
-
-</div>
-
-</div>
-
-<div style="margin-top:10px">
-
-${c.students.map((s,i)=>
-`<span class="badge approved" style="margin:3px">
-${i+1}. ${esc(s.name)}
-</span>`
-).join("")}
-
-</div>
-
-</div>
-
-`).join("");
-
-}
-
-
-async function saveClassSetup(){
-
-const name=$("setupClass").value;
-const teacherId=$("setupTeacher").value;
-
-const studentText=$("setupStudents").value.trim();
-
-if(!name){
-
-showMessage(
-"classSetupMessage",
-"Please select a class."
-);
-
-return;
-}
-
-const classes=await getData("classes")||[];
-
-const users=await getData("users")||[];
-
-const teacher=users.find(u=>u.id===teacherId);
-
-const students=studentText
-.split("\n")
-.map(x=>x.trim())
-.filter(Boolean)
-.map(name=>({
-id:uid("student"),
-name
-}));
-
-const existingIndex=
-classes.findIndex(c=>c.name===name);
-
-const record={
-id:existingIndex>=0?classes[existingIndex].id:uid("class"),
-name,
-teacherId:teacherId||"",
-teacherName:teacher?.name||"",
-students,
-updatedAt:new Date().toISOString()
-};
-
-if(existingIndex>=0)
-classes[existingIndex]=record;
-else
-classes.push(record);
-
-await setData("classes",classes);
-
-$("setupStudents").value="";
-
-showMessage(
-"classSetupMessage",
-"Class saved successfully.",
-"ok"
-);
-
-await renderClassSetup();
-
-}
-
-
-/* =========================
-   CLASS REGISTER
-========================= */
-
-function attendanceOptions(selected){
-
-const options=[
-["unmarked","Not Marked"],
-["present","Present"],
-["absent","Absent"],
-["late","Late"],
-["excused","Excused"]
-];
-
-return options.map(([v,label])=>
-`<option value="${v}" ${selected===v?"selected":""}>${label}</option>`
-).join("");
-
-}
-
-
-function attendancePct(attended,marked){
-
-if(!marked)return 0;
-
-return Math.round(attended/marked*100);
-
-}
-
-
-function pctClass(pct){
-
-const cls=
-pct>=80?"good":
-pct>=60?"warn":
-"bad";
-
-return `<span class="pct ${cls}">${pct}%</span>`;
-
-}
-
-
-async function populateClassSelect(){
-
-const el=$("regClass");
-
-if(!el)return;
-
-const classes=await getData("classes")||[];
-
-let visible=classes;
-
-if(currentUser.role==="teacher"){
-
-visible=classes.filter(
-c=>c.teacherId===currentUser.id
-);
-
-}
-
-el.innerHTML=
-'<option value="">Select class</option>'+
-visible.map(c=>
-`<option value="${esc(c.id)}">${esc(c.name)}</option>`
-).join("");
-
-}
-
-
-async function initRegisterPage(){
-
-$("regDate").value=$("regDate").value||dateToday();
-
-await populateClassSelect();
-
-}
-
-
-async function loadRegister(){
-
-const cid=$("regClass").value;
-const date=$("regDate").value||dateToday();
-
-if(!cid){
-
-alert("Please select a class.");
-
-return;
-}
-
-const classes=await getData("classes")||[];
-
-const c=classes.find(x=>x.id===cid);
-
-if(!c)return;
-
-const attendance=await getData("attendance")||[];
-
-const rows=c.students.map(st=>{
-
-const rec=attendance.find(x=>
-x.date===date &&
-x.classId===cid &&
-x.studentId===st.id
-);
-
-return{
-
-...st,
-
-morning:rec?.morning||"unmarked",
-afternoon:rec?.afternoon||"unmarked"
-
-};
-
-});
-
-
-$("registerTable").innerHTML=`
-
-<div class="table-wrap">
-
-<table>
-
-<thead>
-
-<tr>
-
-<th rowspan="2">
-#
-</th>
-
-<th rowspan="2">
-Student
-</th>
-
-<th colspan="2" class="session-head">
-Morning
-</th>
-
-<th colspan="2" class="session-head">
-Afternoon
-</th>
-
-<th rowspan="2">
-Present
-</th>
-
-<th rowspan="2">
-Absent
-</th>
-
-<th rowspan="2">
-Late
-</th>
-
-<th rowspan="2">
-Excused
-</th>
-
-<th rowspan="2">
-Daily %
-</th>
-
-</tr>
-
-<tr>
-
-<th>
-Status
-</th>
-
-<th>
-Mark
-</th>
-
-<th>
-Status
-</th>
-
-<th>
-Mark
-</th>
-
-</tr>
-
-</thead>
-
-<tbody id="registerBody">
-
-${rows.map((r,i)=>`
-
-<tr data-student="${esc(r.id)}">
-
-<td>${i+1}</td>
-
-<td>
-<strong>${esc(r.name)}</strong>
-</td>
-
-<td>
-
-<select class="morning small-input"
-onchange="updateRegisterRow(this)"
->
-
-${attendanceOptions(r.morning)}
-
-</select>
-
-</td>
-
-<td>
-
-<span class="morningLabel">
-${esc(r.morning)}
-</span>
-
-</td>
-
-<td>
-
-<select class="afternoon small-input"
-onchange="updateRegisterRow(this)"
->
-
-${attendanceOptions(r.afternoon)}
-
-</select>
-
-</td>
-
-<td>
-
-<span class="afternoonLabel">
-${esc(r.afternoon)}
-</span>
-
-</td>
-
-<td class="rowPresent">0</td>
-<td class="rowAbsent">0</td>
-<td class="rowLate">0</td>
-<td class="rowExcused">0</td>
-
-<td class="rowPct">
-0%
-</td>
-
-</tr>
-
-`).join("")}
-
-</tbody>
-
-</table>
-
-</div>
-
-`;
-
-document.querySelectorAll(
-"#registerTable tr[data-student]"
-).forEach(row=>updateRegisterRow(row.querySelector(".morning")));
-
-await renderRegisterSummary(cid);
-
-}
-
-
-function updateRegisterRow(el){
-
-const row=
-el.closest("tr");
-
-if(!row)return;
-
-const m=row.querySelector(".morning").value;
-const a=row.querySelector(".afternoon").value;
-
-const values=[m,a];
-
-const present=
-values.filter(v=>v==="present").length;
-
-const absent=
-values.filter(v=>v==="absent").length;
-
-const late=
-values.filter(v=>v==="late").length;
-
-const excused=
-values.filter(v=>v==="excused").length;
-
-const marked=
-values.filter(v=>v!=="unmarked").length;
-
-row.querySelector(".rowPresent").textContent=present;
-row.querySelector(".rowAbsent").textContent=absent;
-row.querySelector(".rowLate").textContent=late;
-row.querySelector(".rowExcused").textContent=excused;
-
-row.querySelector(".morningLabel").textContent=m;
-row.querySelector(".afternoonLabel").textContent=a;
-
-const pct=
-marked
-?attendancePct(present+late,marked)
-:0;
-
-row.querySelector(".rowPct").innerHTML=
-marked?pctClass(pct):"0%";
-
-}
-
-
-async function saveRegister(){
-
-const cid=$("regClass").value;
-const date=$("regDate").value||dateToday();
-
-if(!cid||!date){
-
-alert("Select a class and date.");
-
-return;
-}
-
-const classes=await getData("classes")||[];
-
-const c=classes.find(x=>x.id===cid);
-
-if(!c)return;
-
-const attendance=await getData("attendance")||[];
-
-document.querySelectorAll(
-"#registerTable tr[data-student]"
-).forEach(row=>{
-
-const sid=row.dataset.student;
-
-const morning=
-row.querySelector(".morning").value;
-
-const afternoon=
-row.querySelector(".afternoon").value;
-
-const idx=attendance.findIndex(x=>
-x.date===date &&
-x.classId===cid &&
-x.studentId===sid
-);
-
-const rec={
-id:idx>=0?attendance[idx].id:uid("att"),
-date,
-classId:cid,
-studentId:sid,
-morning,
-afternoon,
-term:$("regTerm").value,
-session:$("regSession").value,
-updatedAt:new Date().toISOString(),
-updatedBy:currentUser.id
-};
-
-if(idx>=0)
-attendance[idx]=rec;
-else
-attendance.push(rec);
-
-});
-
-await setData("attendance",attendance);
-
-alert(
-"Morning and Afternoon attendance saved successfully."
-);
-
-await loadRegister();
-
-await refreshDashboard();
-
-}
-
-
-async function renderRegisterSummary(cid){
-
-const attendance=await getData("attendance")||[];
-
-const classes=await getData("classes")||[];
-
-const c=classes.find(x=>x.id===cid);
-
-if(!c)return;
-
-const rows=c.students.map(st=>{
-
-const rs=attendance.filter(x=>
-x.classId===cid &&
-x.studentId===st.id
-);
-
-let p=0;
-let ab=0;
-let la=0;
-let ex=0;
-let marked=0;
-
-rs.forEach(r=>{
-
-[r.morning,r.afternoon].forEach(v=>{
-
-if(v&&v!=="unmarked"){
-
-marked++;
-
-if(v==="present"||v==="late")
-p++;
-
-if(v==="absent")
-ab++;
-
-if(v==="late")
-la++;
-
-if(v==="excused")
-ex++;
-
-}
-
-});
-
-});
-
-return{
-name:st.name,
-p,
-ab,
-la,
-ex,
-marked,
-pct:attendancePct(p,marked)
-};
-
-});
-
-
-const total=rows.reduce(
-(s,r)=>s+r.marked,0
-);
-
-const p=rows.reduce(
-(s,r)=>s+r.p,0
-);
-
-const ab=rows.reduce(
-(s,r)=>s+r.ab,0
-);
-
-const la=rows.reduce(
-(s,r)=>s+r.la,0
-);
-
-const ex=rows.reduce(
-(s,r)=>s+r.ex,0
-);
-
-
-$("registerSummary").innerHTML=`
-
-<div class="grid">
-
-<div class="card">
-
-<div class="muted">
-Class Overall Attendance
-</div>
-
-<div class="stat">
-${pctClass(attendancePct(p,total))}
-</div>
-
-</div>
-
-
-<div class="card">
-
-<div class="muted">
-Present Sessions
-</div>
-
-<div class="stat">
-${p}
-</div>
-
-</div>
-
-
-<div class="card">
-
-<div class="muted">
-Absent Sessions
-</div>
-
-<div class="stat">
-${ab}
-</div>
-
-</div>
-
-
-<div class="card">
-
-<div class="muted">
-Late / Excused
-</div>
-
-<div class="stat">
-${la} / ${ex}
-</div>
-
-</div>
-
-</div>
-
-
-<div class="card" style="margin-top:14px">
-
-<h3>
-Term Attendance Summary
-</h3>
-
-<p class="muted" style="margin-top:6px">
-
-Percentage is calculated from all marked Morning + Afternoon sessions.
-
-</p>
-
-
-<div class="table-wrap" style="margin-top:12px">
-
-<table>
-
-<thead>
-
-<tr>
-
-<th>
-Student
-</th>
-
-<th>
-Present
-</th>
-
-<th>
-Absent
-</th>
-
-<th>
-Late
-</th>
-
-<th>
-Excused
-</th>
-
-<th>
-Marked Sessions
-</th>
-
-<th>
-Attendance %
-</th>
-
-</tr>
-
-</thead>
-
-<tbody>
-
-${rows.map(r=>`
-
-<tr>
-
-<td>
-${esc(r.name)}
-</td>
-
-<td>
-${r.p}
-</td>
-
-<td>
-${r.ab}
-</td>
-
-<td>
-${r.la}
-</td>
-
-<td>
-${r.ex}
-</td>
-
-<td>
-${r.marked}
-</td>
-
-<td>
-${pctClass(r.pct)}
-</td>
-
-</tr>
-
-`).join("")}
-
-</tbody>
-
-</table>
-
-</div>
-
-</div>
-
-`;
-
-}
-
-
-function printRegister(){
-
-const content=
-$("registerTable").innerHTML+
-$("registerSummary").innerHTML;
-
-const c=
-$("regClass").selectedOptions[0]?.textContent||"";
-
-const w=window.open("","_blank");
-
-if(!w){
-
-alert(
-"Please allow pop-ups for printing."
-);
-
-return;
-}
-
-w.document.write(`
-
-<html>
-
-<head>
-
-<title>
-Class Register - ${esc(c)}
-</title>
-
-<style>
-
-body{
-font-family:Arial;
-padding:20px;
-color:#111
-}
-
-h1,h2{
-text-align:center
-}
-
-table{
-width:100%;
-border-collapse:collapse;
-margin:12px 0
-}
-
-th,td{
-border:1px solid #777;
-padding:6px;
-font-size:11px
-}
-
-th{
-background:#eee
-}
-
-.grid{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:10px
-}
-
-.card{
-border:1px solid #ddd;
-padding:10px
-}
-
-.stat{
-font-size:20px;
-font-weight:bold
-}
-
-.pct{
-font-weight:bold
-}
-
-</style>
-
-</head>
-
-<body>
-
-<h1>
-Caliphate Tarbiya Academy
-</h1>
-
-<h2>
-Class Register — ${esc(c)}
-</h2>
-
-<p>
-Date: ${esc($("regDate").value)}
-|
-Session: ${esc($("regSession").value)}
-|
-Term: ${esc($("regTerm").value)}
-</p>
-
-${content}
-
-</body>
-
-</html>
-
-`);
-
-w.document.close();
-
-setTimeout(
-()=>w.print(),
-300
-);
-
-}
-
-
-/* =========================
-   DELETE CLASS
-========================= */
-
-async function deleteClass(id){
-
-if(!confirm(
-"Delete this class and its student list?"
-))return;
-
-const classes=await getData("classes")||[];
-
-await setData(
-"classes",
-classes.filter(c=>c.id!==id)
-);
-
-await renderClassSetup();
-
-}
-
-
-/* =========================
-   TEACHERS
-========================= */
-
-async function renderTeachers(){
-
-const el=$("teacherList");
-
-if(!el||currentUser.role!=="admin")
-return;
-
-const users=await getData("users")||[];
-
-const teachers=
-users.filter(u=>u.role==="teacher");
-
-if(!teachers.length){
-
-el.innerHTML=
-'<div class="card empty">No teacher accounts created yet.</div>';
-
-return;
-}
-
-el.innerHTML=`
-
-<div class="table-wrap">
-
-<table>
-
-<thead>
-
-<tr>
-
-<th>
-Name
-</th>
-
-<th>
-Username
-</th>
-
-<th>
-Created
-</th>
-
-<th>
-Action
-</th>
-
-</tr>
-
-</thead>
-
-<tbody>
-
-${teachers.map(t=>`
-
-<tr>
-
-<td>
-${esc(t.name)}
-</td>
-
-<td>
-${esc(t.username)}
-</td>
-
-<td>
-${new Date(t.createdAt).toLocaleDateString()}
-</td>
-
-<td>
-
-<button
-class="btn btn-danger"
-onclick="deleteTeacher('${t.id}')"
->
-Delete Account
-</button>
-
-</td>
-
-</tr>
-
-`).join("")}
-
-</tbody>
-
-</table>
-
-</div>
-
-`;
-
-}
-
-
-async function createTeacher(){
-
-const name=$("newTeacherName").value.trim();
-const username=$("newTeacherUsername").value.trim();
-const password=$("newTeacherPassword").value;
-
-hideMessage("teacherMessage");
-
-if(!name||!username||!password){
-
-showMessage(
-"teacherMessage",
-"Complete all fields."
-);
-
-return;
-}
-
-const users=await getData("users")||[];
-
-if(users.some(
-u=>u.username.toLowerCase()===username.toLowerCase()
-)){
-
-showMessage(
-"teacherMessage",
-"Username already exists."
-);
-
-return;
-}
-
-users.push({
-
-id:uid("teacher"),
-name,
-username,
-password,
-role:"teacher",
-createdAt:new Date().toISOString()
-
-});
-
-await setData("users",users);
-
-$("newTeacherName").value="";
-$("newTeacherUsername").value="";
-$("newTeacherPassword").value="";
-
-showMessage(
-"teacherMessage",
-"Teacher account created.",
-"ok"
-);
-
-await renderTeachers();
-await refreshDashboard();
-
-}
-
-
-async function deleteTeacher(id){
-
-if(!confirm(
-"Delete this teacher account? Existing documents and archive history will remain."
-))return;
-
-const users=await getData("users")||[];
-
-await setData(
-"users",
-users.filter(u=>u.id!==id)
-);
-
-await renderTeachers();
-await refreshDashboard();
-
-}
-
-
-/* =========================
-   TEACHER ASSISTANT
-========================= */
-
-function initTeacherAssistant(){
-
-const btn=$("generateAssistantBtn");
-
-if(!btn)return;
-
-btn.addEventListener(
-"click",
-generateAssistant
-);
-
-}
-
-
-function generateAssistant(){
-
-const type=$("assistantType").value;
-const language=$("assistantLanguage").value;
-const cls=$("assistantClass").value;
-const subject=$("assistantSubject").value;
-const topic=$("assistantTopic").value.trim();
-const subtopic=$("assistantSubtopic").value.trim();
-
-if(!topic){
-
-alert("Please enter a topic.");
-
-return;
-}
-
-let title="";
-
-if(type==="lessonPlan")
-title="Nigerian Standard Lesson Plan";
-
-if(type==="lessonNote")
-title="Lesson Note";
-
-if(type==="scheme")
-title="13-Week Scheme of Work";
-
-if(type==="objectives")
-title="Instructional Objectives";
-
-if(type==="assessment")
-title="Assessment / Continuous Assessment";
-
-let content="";
-
-if(type==="lessonPlan"){
-
-content=
-`SCHOOL: Caliphate Tarbiya Academy Sokoto
-
-TEACHER: ${currentUser.name}
-
-CLASS: ${cls}
-
-SUBJECT: ${subject}
-
-DATE: __________________
-
-DURATION: __________________
-
-TOPIC: ${topic}
-
-SUB-TOPIC: ${subtopic||"__________________"}
-
-SESSION: __________________
-
-TERM: __________________
-
-
-ENTRY BEHAVIOUR / PREVIOUS KNOWLEDGE
-
-Learners should have prior knowledge related to ${topic}.
-
-
-INSTRUCTIONAL OBJECTIVES
-
-By the end of the lesson, learners should be able to:
-
-1. Define and explain ${topic}.
-2. Identify the major concepts related to ${topic}.
-3. Demonstrate understanding of ${topic}.
-4. Answer relevant questions correctly.
-
-
-INSTRUCTIONAL MATERIALS
-
-Textbooks, charts, board, markers, real objects and other relevant instructional materials.
-
-
-REFERENCES
-
-Approved Nigerian curriculum materials and relevant textbooks.
-
-
-SET INDUCTION
-
-The teacher introduces the lesson by asking learners questions related to their previous knowledge and connects their responses to ${topic}.
-
-
-PRESENTATION / LESSON DEVELOPMENT
-
-STEP 1
-
-Teacher's Activities:
-The teacher introduces ${topic}, explains the meaning and presents relevant examples.
-
-Learners' Activities:
-Learners listen, respond to questions and participate actively.
-
-
-STEP 2
-
-Teacher's Activities:
-The teacher explains the main concepts of ${topic} using suitable examples.
-
-Learners' Activities:
-Learners observe, ask questions and provide examples.
-
-
-STEP 3
-
-Teacher's Activities:
-The teacher gives guided activities and checks learners' understanding.
-
-Learners' Activities:
-Learners carry out the activities and answer questions.
-
-
-EVALUATION
-
-1. What is ${topic}?
-2. Mention two important points about ${topic}.
-3. Explain one practical application of ${topic}.
-4. Answer the questions given by the teacher.
-
-
-CONCLUSION
-
-The teacher summarizes the major points and corrects misconceptions.
-
-
-ASSIGNMENT
-
-Write short notes on ${topic} and answer the questions provided by the teacher.
-
-
-TEACHER'S REFLECTION
-
-____________________________________________________
-`;
-
-}
-
-else if(type==="lessonNote"){
-
-content=
-`LESSON NOTE
-
-CLASS: ${cls}
-
-SUBJECT: ${subject}
-
-TOPIC: ${topic}
-
-SUB-TOPIC: ${subtopic||"__________________"}
-
-
-INTRODUCTION
-
-${topic} is an important concept in ${subject}.
-
-
-DEFINITION / MEANING
-
-${topic} should be explained using simple, age-appropriate language.
-
-
-MAIN CONTENT
-
-1. Meaning and explanation of ${topic}.
-2. Main characteristics or components.
-3. Relevant examples.
-4. Practical applications.
-5. Important points learners should remember.
-
-
-CLASS ACTIVITY
-
-Learners should participate in guided questions, discussions and practical activities relating to ${topic}.
-
-
-EVALUATION
-
-1. Define ${topic}.
-2. Mention important points about ${topic}.
-3. Give relevant examples.
-4. Explain one application of ${topic}.
-
-
-SUMMARY
-
-The teacher reviews the major points covered during the lesson.
-
-
-ASSIGNMENT
-
-Answer questions based on ${topic}.
-`;
-
-}
-
-else if(type==="scheme"){
-
-content=
-`13-WEEK SCHEME OF WORK
-
-CLASS: ${cls}
-
-SUBJECT: ${subject}
-
-TERM: __________________
-
-
-WEEK 1
-Topic: Introduction to ${topic}
-Content: Meaning, background and basic concepts.
-
-
-WEEK 2
-Topic: ${topic} – Basic Concepts
-Content: Important terms and explanations.
-
-
-WEEK 3
-Topic: ${topic} – Examples
-Content: Worked examples and practical applications.
-
-
-WEEK 4
-Topic: ${topic} – Further Development
-Content: More detailed concepts and activities.
-
-
-WEEK 5
-Topic: ${topic} – Class Activities
-Content: Guided exercises and learner participation.
-
-
-WEEK 6
-Topic: ${topic} – Application
-Content: Practical applications.
-
-
-WEEK 7
-Topic: Revision
-Content: Revision of topics covered.
-
-
-WEEK 8
-Topic: New Concepts
-Content: Extension of previous learning.
-
-
-WEEK 9
-Topic: Practice
-Content: Exercises and activities.
-
-
-WEEK 10
-Topic: Problem Solving
-Content: Application and problem-solving activities.
-
-
-WEEK 11
-Topic: Review
-Content: Review of major concepts.
-
-
-WEEK 12
-Topic: Revision
-Content: Comprehensive revision.
-
-
-WEEK 13
-Topic: Assessment
-Content: Term assessment and corrections.
-`;
-
-}
-
-else if(type==="objectives"){
-
-content=
-`INSTRUCTIONAL OBJECTIVES
-
-Topic: ${topic}
-
-By the end of the lesson, learners should be able to:
-
-1. Define ${topic}.
-2. Explain the meaning of ${topic}.
-3. Identify the major components of ${topic}.
-4. Give relevant examples.
-5. Demonstrate understanding through class activities.
-6. Apply the knowledge gained to simple situations.
-7. Answer assessment questions correctly.
-`;
-
-}
-
-else{
-
-content=
-`CONTINUOUS ASSESSMENT
-
-CLASS: ${cls}
-
-SUBJECT: ${subject}
-
-TOPIC: ${topic}
-
-
-OBJECTIVE QUESTIONS
-
-1. Which of the following best describes ${topic}?
-
-A. __________________
-B. __________________
-C. __________________
-D. __________________
-
-
-2. What is an important feature of ${topic}?
-
-A. __________________
-B. __________________
-C. __________________
-D. __________________
-
-
-THEORY
-
-1. Define ${topic}.
-
-2. Mention three important points about ${topic}.
-
-3. Explain two practical applications of ${topic}.
-
-
-MARKING GUIDE
-
-Award marks according to the correctness, completeness and clarity of each answer.
-`;
-
-}
-
-$("assistantResult").innerHTML=`
-
-<div class="card">
-
-<div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap">
-
-<div>
-
-<h3>
-${esc(title)}
-</h3>
-
-<p class="muted">
-${esc(language)} • ${esc(cls)} • ${esc(subject)}
-</p>
-
-</div>
-
-<button
-class="btn btn-primary"
-onclick="useAssistantDocument()"
->
-Use in Document
-</button>
-
-</div>
-
-<textarea
-id="assistantGeneratedContent"
-style="margin-top:15px;min-height:500px"
-class="${language==="Arabic"?"lang-rtl":""}"
->${esc(content)}</textarea>
-
-</div>
-
-`;
-
-}
-
-
-function useAssistantDocument(){
-
-const content=$("assistantGeneratedContent")?.value||"";
-
-if(!content)return;
-
-$("docType").value=
-$("assistantType").value==="scheme"
-?"scheme":
-$("assistantType").value==="lessonPlan"
-?"lessonPlan":
-$("assistantType").value==="lessonNote"
-?"lessonNote":
-"general";
-
-$("docLanguage").value=$("assistantLanguage").value;
-$("docClass").value=$("assistantClass").value;
-$("docSubject").value=$("assistantSubject").value;
-$("docTitle").value=$("assistantTopic").value;
-$("docContent").value=content;
-
-$("docModal").classList.add("show");
-
-}
-
-
-/* =========================
-   BACKUP
-========================= */
-
-async function exportBackup(){
-
-const backup={
-version:3,
-exportedAt:new Date().toISOString(),
-users:await getData("users")||[],
-documents:await getData("documents")||[],
-classes:await getData("classes")||[],
-attendance:await getData("attendance")||[]
-};
-
-for(const [type,key] of Object.entries(ARCHIVE_KEYS)){
-
-backup[key]=await getData(key)||[];
-
-}
-
-const blob=new Blob(
-[JSON.stringify(backup,null,2)],
-{type:"application/json"}
-);
-
-const a=document.createElement("a");
-
-a.href=URL.createObjectURL(blob);
-
-a.download=
-"CTA-Academy-Backup-"+
-new Date().toISOString().slice(0,10)+
-".json";
-
-a.click();
-
-setTimeout(
-()=>URL.revokeObjectURL(a.href),
-1000
-);
-
-}
-
-
-async function restoreBackup(file){
-
-if(!file)return;
-
-try{
-
-const text=await file.text();
-
-const b=JSON.parse(text);
-
-if(
-!Array.isArray(b.users)||
-!Array.isArray(b.documents)
-){
-
-throw new Error(
-"Invalid backup file."
-);
-
-}
-
-if(!confirm(
-"Restore this backup? Current data will be replaced by the backup."
-))return;
-
-await setData(
-"users",
-b.users
-);
-
-await setData(
-"documents",
-b.documents
-);
-
-await setData(
-"classes",
-Array.isArray(b.classes)?b.classes:[]
-);
-
-await setData(
-"attendance",
-Array.isArray(b.attendance)?b.attendance:[]
-);
-
-for(const key of Object.values(ARCHIVE_KEYS)){
-
-await setData(
-key,
-Array.isArray(b[key])?b[key]:[]
-);
-
-}
-
-alert(
-"Backup restored successfully."
-);
-
-location.reload();
-
-}catch(e){
-
-alert(
-"Restore failed: "+e.message
-);
-
-}
-
-}
-
-
-/* =========================
-   PASSWORD
-========================= */
-
-async function changePassword(){
-
-hideMessage("securityMessage");
-
-const old=$("oldPassword").value;
-const nw=$("newPassword").value;
-const cf=$("confirmPassword").value;
-
-if(old!==currentUser.password){
-
-showMessage(
-"securityMessage",
-"Current password is incorrect."
-);
-
-return;
-}
-
-if(nw.length<6){
-
-showMessage(
-"securityMessage",
-"New password must be at least 6 characters."
-);
-
-return;
-}
-
-if(nw!==cf){
-
-showMessage(
-"securityMessage",
-"New passwords do not match."
-);
-
-return;
-}
-
-const users=await getData("users")||[];
-
-const i=users.findIndex(
-u=>u.id===currentUser.id
-);
-
-if(i<0){
-
-showMessage(
-"securityMessage",
-"Account not found."
-);
-
-return;
-}
-
-users[i].password=nw;
-
-await setData("users",users);
-
-currentUser.password=nw;
-
-sessionStorage.setItem(
-"CTA_SESSION_USER",
-JSON.stringify(currentUser)
-);
-
-$("oldPassword").value="";
-$("newPassword").value="";
-$("confirmPassword").value="";
-
-showMessage(
-"securityMessage",
-"Password changed successfully.",
-"ok"
-);
-
-}
-
-
-/* =========================
-   EVENTS
-========================= */
-
-function bindEvents(){
-
-$("loginBtn").addEventListener(
-"click",
-login
-);
-
-$("loginPassword").addEventListener(
-"keydown",
-e=>{
-if(e.key==="Enter")login();
-}
-);
-
-$("logoutBtn").addEventListener(
-"click",
-logout
-);
-
-document.querySelectorAll(
-".nav button[data-page]"
-).forEach(b=>
-b.addEventListener(
-"click",
-()=>navigate(b.dataset.page)
-)
-);
-
-$("newDocBtn").addEventListener(
-"click",
-openDocModal
-);
-
-$("closeDocBtn").addEventListener(
-"click",
-closeDocModal
-);
-
-$("closeDocBtn2").addEventListener(
-"click",
-closeDocModal
-);
-
-$("saveDocBtn").addEventListener(
-"click",
-saveDocument
-);
-
-$("docFilter").addEventListener(
-"change",
-renderDocuments
-);
-
-[
-"archiveTerm",
-"archiveWeek",
-"archiveType"
-].forEach(id=>
-$(id).addEventListener(
-"change",
-renderArchive
-)
-);
-
-$("archiveSearch").addEventListener(
-"input",
-renderArchive
-);
-
-$("createTeacherBtn").addEventListener(
-"click",
-createTeacher
-);
-
-$("saveClassBtn").addEventListener(
-"click",
-saveClassSetup
-);
-
-$("loadRegisterBtn").addEventListener(
-"click",
-loadRegister
-);
-
-$("saveRegisterBtn").addEventListener(
-"click",
-saveRegister
-);
-
-$("printRegisterBtn").addEventListener(
-"click",
-printRegister
-);
-
-$("exportBtn").addEventListener(
-"click",
-exportBackup
-);
-
-$("restoreFile").addEventListener(
-"change",
-e=>restoreBackup(e.target.files[0])
-);
-
-$("changePasswordBtn").addEventListener(
-"click",
-changePassword
-);
-
-$("fWeek").innerHTML=
-weeks().map(w=>
-`<option>${w}</option>`
-).join("");
-
-$("archiveWeek").innerHTML=
-'<option value="">All Weeks</option>'+
-weeks().map(w=>
-`<option>${w}</option>`
-).join("");
-
-}
-
-
-/* =========================
-   STARTUP
-========================= */
-
-async function initialize(){
-
-bindEvents();
-
-$("systemStatus").textContent=
-"Checking system storage…";
-
-try{
-
-await ensureData();
-
-$("systemStatus").textContent=
-"System storage: Ready";
-
-$("systemStatus").style.color=
-"#166534";
-
-initTeacherAssistant();
+/* ================= START ================= */
 
 restoreSession();
 
-await migrateApprovedDocuments();
-
-}catch(e){
-
-console.error(e);
-
-$("systemStatus").textContent=
-"Storage unavailable — login still available for the default administrator.";
-
-$("systemStatus").style.color=
-"#b45309";
-
-}
-
-}
-
-
-window.addEventListener(
-"error",
-e=>{
-console.error(
-"CTA error:",
-e.error||e.message
-);
-}
-);
-
-
-window.addEventListener(
-"unhandledrejection",
-e=>{
-console.error(
-"CTA promise error:",
-e.reason
-);
-}
-);
-
-
-initialize();
-
 </script>
-
 </body>
 </html>
