@@ -4260,7 +4260,7 @@ return;
 const hod=
 getHOD(subject);
 
-
+i
 if(!hod){
 
 alert(
@@ -8006,9 +8006,828 @@ document
 START
 ===================================================== */
 
+/* =========================================================
+   CALIPHATE TARBIYA ACADEMY
+   SUPABASE AUTHENTICATION UPGRADE
+   ========================================================= */
+
+const SUPABASE_URL =
+"https://udbocxqfsufpyexxpfkr.supabase.co";
+
+const SUPABASE_PUBLISHABLE_KEY =
+"sb_publishable_eljKKJNBUtRx55847F2RTA_2hfMgs7U";
+
+const ADMIN_AUTH_ID =
+"c77f55a6-91d3-46c6-b021-1687d8870ee3";
+
+let supabaseClient = null;
+
+
+/* LOAD SUPABASE */
+async function getSupabase(){
+
+    if(supabaseClient){
+        return supabaseClient;
+    }
+
+    if(!window.supabase){
+
+        await new Promise((resolve,reject)=>{
+
+            const s=document.createElement("script");
+
+            s.src=
+            "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2";
+
+            s.onload=resolve;
+
+            s.onerror=()=>reject(
+                new Error("Supabase could not be loaded.")
+            );
+
+            document.head.appendChild(s);
+
+        });
+
+    }
+
+    supabaseClient =
+        window.supabase.createClient(
+            SUPABASE_URL,
+            SUPABASE_PUBLISHABLE_KEY
+        );
+
+    return supabaseClient;
+}
+
+
+/* CHANGE USERNAME FIELD TO EMAIL */
+function prepareLogin(){
+
+    const input =
+        document.getElementById("loginUsername");
+
+    if(input){
+
+        input.id="loginEmail";
+
+        input.type="email";
+
+        input.placeholder=
+            "Enter your email address";
+
+        input.autocomplete="email";
+
+    }
+
+    document
+        .querySelectorAll("#loginScreen label")
+        .forEach(label=>{
+
+            if(
+                label.textContent
+                .trim()
+                .toLowerCase()
+                ===
+                "username"
+            ){
+
+                label.textContent=
+                    "Email Address";
+
+            }
+
+        });
+
+}
+
+
+/* LOGIN */
+async function login(){
+
+    const type =
+        document.getElementById(
+            "loginType"
+        ).value;
+
+    const emailInput =
+        document.getElementById(
+            "loginEmail"
+        );
+
+    const passwordInput =
+        document.getElementById(
+            "loginPassword"
+        );
+
+    const errorBox =
+        document.getElementById(
+            "loginError"
+        );
+
+    const email =
+        emailInput
+        ?
+        emailInput.value.trim()
+        :
+        "";
+
+    const password =
+        passwordInput
+        ?
+        passwordInput.value
+        :
+        "";
+
+    if(errorBox){
+        errorBox.textContent="";
+    }
+
+    if(!email){
+
+        if(errorBox){
+            errorBox.textContent=
+                "Please enter your email address.";
+        }
+
+        return;
+    }
+
+    if(!password){
+
+        if(errorBox){
+            errorBox.textContent=
+                "Please enter your password.";
+        }
+
+        return;
+    }
+
+
+    try{
+
+        const supabase =
+            await getSupabase();
+
+        if(errorBox){
+            errorBox.textContent=
+                "Signing in...";
+        }
+
+
+        const {
+            data,
+            error
+        } =
+        await supabase.auth.signInWithPassword({
+
+            email:email,
+
+            password:password
+
+        });
+
+
+        if(error){
+            throw error;
+        }
+
+
+        const authUser =
+            data.user;
+
+
+        /* ADMINISTRATOR */
+
+        if(
+            authUser.id ===
+            ADMIN_AUTH_ID
+        ){
+
+            if(type!=="admin"){
+
+                await supabase.auth.signOut();
+
+                errorBox.textContent=
+                    "Select Administrator.";
+
+                return;
+
+            }
+
+
+            currentUser={
+
+                id:authUser.id,
+
+                name:"Muhammad Zakariya",
+
+                username:"admin",
+
+                email:authUser.email,
+
+                role:"admin",
+
+                academicRole:"Administrator",
+
+                active:true
+
+            };
+
+
+            sessionStorage.setItem(
+                "CTA_CURRENT_USER",
+                JSON.stringify(currentUser)
+            );
+
+
+            openCTA();
+
+            return;
+
+        }
+
+
+        /* OTHER USERS */
+
+        const {
+            data:profile,
+            error:profileError
+        } =
+        await supabase
+            .from("user_profiles")
+            .select("*")
+            .eq("id",authUser.id)
+            .maybeSingle();
+
+
+        if(profileError){
+
+            await supabase.auth.signOut();
+
+            throw profileError;
+
+        }
+
+
+        if(!profile){
+
+            await supabase.auth.signOut();
+
+            errorBox.textContent=
+                "Your account has no Academy profile yet.";
+
+            return;
+
+        }
+
+
+        let role=profile.role;
+
+        if(role==="administrator"){
+            role="admin";
+        }
+
+
+        if(
+            type==="admin" &&
+            role!=="admin"
+        ){
+
+            await supabase.auth.signOut();
+
+            errorBox.textContent=
+                "This is not an Administrator account.";
+
+            return;
+
+        }
+
+
+        if(
+            type==="teacher" &&
+            role!=="teacher"
+        ){
+
+            await supabase.auth.signOut();
+
+            errorBox.textContent=
+                "This is not a Teacher account.";
+
+            return;
+
+        }
+
+
+        currentUser={
+
+            id:authUser.id,
+
+            name:
+                profile.full_name ||
+                authUser.email,
+
+            username:
+                profile.username ||
+                authUser.email,
+
+            email:
+                authUser.email,
+
+            role:role,
+
+            academicRole:
+                profile.academic_role ||
+                "Teacher",
+
+            active:true
+
+        };
+
+
+        sessionStorage.setItem(
+            "CTA_CURRENT_USER",
+            JSON.stringify(currentUser)
+        );
+
+
+        openCTA();
+
+
+    }catch(error){
+
+        console.error(error);
+
+        if(errorBox){
+
+            errorBox.textContent=
+                error.message ||
+                "Login failed.";
+
+        }
+
+    }
+
+}
+
+
+/* OPEN EXISTING APPLICATION */
+
+function openCTA(){
+
+    const loginScreen =
+        document.getElementById(
+            "loginScreen"
+        );
+
+    const app =
+        document.getElementById(
+            "app"
+        );
+
+
+    if(loginScreen){
+        loginScreen.classList.add("hidden");
+    }
+
+    if(app){
+        app.classList.remove("hidden");
+    }
+
+
+    const headerUser =
+        document.getElementById(
+            "headerUser"
+        );
+
+
+    if(
+        headerUser &&
+        currentUser
+    ){
+
+        headerUser.textContent=
+            currentUser.name+
+            " • "+
+            (
+                currentUser.academicRole ||
+                "Teacher"
+            );
+
+    }
+
+
+    /* EXISTING APPLICATION FUNCTIONS */
+
+    try{
+
+        if(
+            typeof refreshDashboard ===
+            "function"
+        ){
+
+            refreshDashboard();
+
+        }
+
+    }catch(e){}
+
+
+    try{
+
+        if(
+            typeof renderDashboard ===
+            "function"
+        ){
+
+            renderDashboard();
+
+        }
+
+    }catch(e){}
+
+
+    try{
+
+        if(
+            typeof populateSelects ===
+            "function"
+        ){
+
+            populateSelects();
+
+        }
+
+    }catch(e){}
+
+
+    try{
+
+        if(
+            typeof renderAll ===
+            "function"
+        ){
+
+            renderAll();
+
+        }
+
+    }catch(e){}
+
+}
+
+
+/* RESTORE SESSION */
+
+async function restoreSession(){
+
+    prepareLogin();
+
+
+    try{
+
+        const supabase =
+            await getSupabase();
+
+
+        const {
+            data,
+            error
+        } =
+        await supabase.auth.getSession();
+
+
+        if(error){
+            console.error(error);
+            return;
+        }
+
+
+        const session =
+            data.session;
+
+
+        if(!session){
+            return;
+        }
+
+
+        const authUser =
+            session.user;
+
+
+        /* ADMIN */
+
+        if(
+            authUser.id ===
+            ADMIN_AUTH_ID
+        ){
+
+            currentUser={
+
+                id:authUser.id,
+
+                name:"Muhammad Zakariya",
+
+                username:"admin",
+
+                email:authUser.email,
+
+                role:"admin",
+
+                academicRole:"Administrator",
+
+                active:true
+
+            };
+
+
+            sessionStorage.setItem(
+                "CTA_CURRENT_USER",
+                JSON.stringify(currentUser)
+            );
+
+
+            openCTA();
+
+            return;
+
+        }
+
+
+        /* TEACHER */
+
+        const {
+            data:profile,
+            error:profileError
+        } =
+        await supabase
+            .from("user_profiles")
+            .select("*")
+            .eq("id",authUser.id)
+            .maybeSingle();
+
+
+        if(profileError){
+
+            await supabase.auth.signOut();
+
+            return;
+
+        }
+
+
+        if(!profile){
+
+            await supabase.auth.signOut();
+
+            return;
+
+        }
+
+
+        currentUser={
+
+            id:authUser.id,
+
+            name:
+                profile.full_name ||
+                authUser.email,
+
+            username:
+                profile.username ||
+                authUser.email,
+
+            email:
+                authUser.email,
+
+            role:
+                profile.role==="administrator"
+                ?
+                "admin"
+                :
+                "teacher",
+
+            academicRole:
+                profile.academic_role ||
+                "Teacher",
+
+            active:true
+
+        };
+
+
+        sessionStorage.setItem(
+            "CTA_CURRENT_USER",
+            JSON.stringify(currentUser)
+        );
+
+
+        openCTA();
+
+
+    }catch(error){
+
+        console.error(
+            "Session restoration error:",
+            error
+        );
+
+    }
+
+}
+
+
+/* LOGOUT */
+
+async function logout(){
+
+    try{
+
+        const supabase =
+            await getSupabase();
+
+        await supabase.auth.signOut();
+
+    }catch(error){
+
+        console.error(error);
+
+    }
+
+
+    currentUser=null;
+
+    sessionStorage.removeItem(
+        "CTA_CURRENT_USER"
+    );
+
+    location.reload();
+
+}
+
+
+/* SUPABASE PASSWORD CHANGE */
+
+async function changePassword(){
+
+    const oldPassword =
+        document.getElementById(
+            "oldPassword"
+        ).value;
+
+    const newPassword =
+        document.getElementById(
+            "newPassword"
+        ).value;
+
+    const confirmPassword =
+        document.getElementById(
+            "confirmPassword"
+        ).value;
+
+    const message =
+        document.getElementById(
+            "passwordMessage"
+        );
+
+
+    if(
+        !newPassword ||
+        newPassword.length<6
+    ){
+
+        message.className="error";
+
+        message.textContent=
+            "New password must contain at least 6 characters.";
+
+        return;
+
+    }
+
+
+    if(
+        newPassword !==
+        confirmPassword
+    ){
+
+        message.className="error";
+
+        message.textContent=
+            "Passwords do not match.";
+
+        return;
+
+    }
+
+
+    try{
+
+        const supabase =
+            await getSupabase();
+
+
+        const {
+            data:sessionData
+        } =
+        await supabase.auth.getSession();
+
+
+        if(
+            !sessionData ||
+            !sessionData.session
+        ){
+
+            message.className="error";
+
+            message.textContent=
+                "Your session has expired.";
+
+            return;
+
+        }
+
+
+        const user =
+            sessionData.session.user;
+
+
+        /* VERIFY OLD PASSWORD */
+
+        const {
+            error:verifyError
+        } =
+        await supabase.auth.signInWithPassword({
+
+            email:user.email,
+
+            password:oldPassword
+
+        });
+
+
+        if(verifyError){
+
+            message.className="error";
+
+            message.textContent=
+                "Current password is incorrect.";
+
+            return;
+
+        }
+
+
+        /* UPDATE PASSWORD */
+
+        const {
+            error:updateError
+        } =
+        await supabase.auth.updateUser({
+
+            password:newPassword
+
+        });
+
+
+        if(updateError){
+            throw updateError;
+        }
+
+
+        message.className="success";
+
+        message.textContent=
+            "Password changed successfully.";
+
+
+        document.getElementById(
+            "oldPassword"
+        ).value="";
+
+        document.getElementById(
+            "newPassword"
+        ).value="";
+
+        document.getElementById(
+            "confirmPassword"
+        ).value="";
+
+
+    }catch(error){
+
+        message.className="error";
+
+        message.textContent=
+            error.message ||
+            "Unable to change password.";
+
+    }
+
+}
+
+
+/* START */
+
 restoreSession();
-
-</script>
-
-</body>
-</html>
