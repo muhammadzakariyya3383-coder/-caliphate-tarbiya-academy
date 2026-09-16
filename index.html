@@ -6570,6 +6570,110 @@ sb.auth.onAuthStateChange(
 restoreSession();
 
 </script>
+<!-- PARENT / STUDENT PORTAL -->
+<section id="parentPortal" style="display:none;padding:20px;max-width:900px;margin:auto;">
+  <div style="background:#14532d;color:white;padding:20px;border-radius:12px;margin-bottom:20px;">
+    <h2 style="margin:0;">Parent / Student Portal</h2>
+    <p style="margin:8px 0 0;">Caliphate Tarbiya Academy Sokoto</p>
+  </div>
 
+  <div style="background:white;padding:20px;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,.08);">
+    <h3>Link Your Child</h3>
+
+    <p>
+      Enter the admission number and parent code provided by the school.
+    </p>
+
+    <input
+      id="parentAdmissionNumber"
+      type="text"
+      placeholder="Student Admission Number"
+      style="width:100%;padding:12px;margin:8px 0;border:1px solid #ccc;border-radius:8px;"
+    >
+
+    <input
+      id="parentCode"
+      type="text"
+      placeholder="Parent Code"
+      style="width:100%;padding:12px;margin:8px 0;border:1px solid #ccc;border-radius:8px;"
+    >
+
+    <button
+      onclick="linkMyChild()"
+      style="background:#14532d;color:white;border:0;padding:12px 20px;border-radius:8px;margin-top:8px;"
+    >
+      Link Child
+    </button>
+
+    <div id="parentLinkMessage" style="margin-top:15px;"></div>
+  </div>
+
+  <div
+    id="parentChildrenList"
+    style="margin-top:20px;"
+  ></div>
+</section>
+
+<script>
+async function linkMyChild(){
+  const admissionNumber =
+    document.getElementById("parentAdmissionNumber").value.trim();
+
+  const parentCode =
+    document.getElementById("parentCode").value.trim();
+
+  const message =
+    document.getElementById("parentLinkMessage");
+
+  if(!admissionNumber || !parentCode){
+    message.innerHTML =
+      '<div style="color:#b91c1c;">Please enter both admission number and parent code.</div>';
+    return;
+  }
+
+  if(!currentUser){
+    message.innerHTML =
+      '<div style="color:#b91c1c;">Please log in first.</div>';
+    return;
+  }
+
+  try{
+    const {data,error} = await sb.rpc(
+      "link_parent_to_student",
+      {
+        p_admission_number: admissionNumber,
+        p_parent_code: parentCode
+      }
+    );
+
+    if(error){
+      console.error(error);
+      message.innerHTML =
+        '<div style="color:#b91c1c;">Unable to link the student. Please try again.</div>';
+      return;
+    }
+
+    if(data === true){
+      message.innerHTML =
+        '<div style="color:#166534;">Student linked successfully.</div>';
+
+      document.getElementById("parentAdmissionNumber").value = "";
+      document.getElementById("parentCode").value = "";
+
+      if(typeof loadParentChildren === "function"){
+        await loadParentChildren();
+      }
+    }else{
+      message.innerHTML =
+        '<div style="color:#b91c1c;">Invalid admission number or parent code.</div>';
+    }
+
+  }catch(error){
+    console.error(error);
+    message.innerHTML =
+      '<div style="color:#b91c1c;">An unexpected error occurred.</div>';
+  }
+}
+</script>
 </body>
 </html>
