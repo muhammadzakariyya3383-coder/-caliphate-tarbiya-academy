@@ -4,435 +4,733 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta name="theme-color" content="#14532d">
-<title>Caliphate Tarbiya Academy | Academic Management System</title>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<title>Caliphate Tarbiya Academy Sokoto | Academic Management System</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{
-  font-family:Arial,Helvetica,sans-serif;
-  background:#f3f6f4;
-  color:#17251c;
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
 }
-button,input,select,textarea{font:inherit}
-button{cursor:pointer}
-.hidden{display:none!important}
 
-.login{
+:root{
+  --green:#14532d;
+  --green2:#166534;
+  --light:#f0fdf4;
+  --lighter:#f8fafc;
+  --white:#fff;
+  --dark:#172033;
+  --gray:#64748b;
+  --border:#e2e8f0;
+  --danger:#dc2626;
+  --warning:#d97706;
+  --blue:#2563eb;
+}
+
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+  background:#f1f5f9;
+  color:var(--dark);
+  min-height:100vh;
+}
+
+button,
+input,
+select,
+textarea{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+.hidden{
+  display:none!important;
+}
+
+/* =========================
+   LOGIN
+========================= */
+
+#loginPage{
   min-height:100vh;
   display:flex;
-  align-items:center;
   justify-content:center;
+  align-items:center;
   padding:20px;
-  background:linear-gradient(135deg,#064e3b,#14532d,#166534);
+  background:linear-gradient(135deg,#14532d,#166534,#052e16);
 }
-.login-card{
+
+.login-box{
   width:100%;
   max-width:460px;
   background:white;
-  border-radius:20px;
-  padding:28px;
-  box-shadow:0 20px 60px #0005;
+  border-radius:22px;
+  padding:30px 24px;
+  box-shadow:0 20px 60px rgba(0,0,0,.25);
 }
-.logo{
-  width:75px;
-  height:75px;
+
+.school-logo{
+  width:82px;
+  height:82px;
   border-radius:50%;
-  background:#14532d;
+  background:var(--green);
+  color:white;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  margin:0 auto 15px;
+  font-size:35px;
+  font-weight:800;
+}
+
+.school-title{
+  text-align:center;
+  color:var(--green);
+  font-size:22px;
+  font-weight:800;
+}
+
+.school-subtitle{
+  text-align:center;
+  color:var(--gray);
+  margin:7px 0 25px;
+  font-size:14px;
+}
+
+.portal-selector{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:8px;
+  margin-bottom:18px;
+}
+
+.portal-btn{
+  border:1px solid var(--border);
+  background:#f8fafc;
+  color:#334155;
+  padding:11px 5px;
+  border-radius:10px;
+  font-size:12px;
+  font-weight:700;
+}
+
+.portal-btn.active{
+  background:var(--green);
+  color:white;
+  border-color:var(--green);
+}
+
+.form-group{
+  margin-bottom:15px;
+}
+
+.form-group label{
+  display:block;
+  margin-bottom:6px;
+  font-size:13px;
+  font-weight:700;
+  color:#334155;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea{
+  width:100%;
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:12px;
+  outline:none;
+  background:white;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{
+  border-color:var(--green);
+  box-shadow:0 0 0 3px rgba(20,83,45,.08);
+}
+
+.login-button{
+  width:100%;
+  border:0;
+  background:var(--green);
+  color:white;
+  padding:13px;
+  border-radius:10px;
+  font-weight:800;
+  margin-top:4px;
+}
+
+.login-button:hover{
+  background:#0f3f23;
+}
+
+.login-message{
+  margin-top:13px;
+  text-align:center;
+  font-size:13px;
+  min-height:20px;
+}
+
+.demo-box{
+  margin-top:20px;
+  padding:12px;
+  background:#f0fdf4;
+  border:1px solid #bbf7d0;
+  border-radius:10px;
+  font-size:12px;
+  color:#166534;
+}
+
+/* =========================
+   APP
+========================= */
+
+#app{
+  min-height:100vh;
+}
+
+.topbar{
+  height:64px;
+  background:white;
+  border-bottom:1px solid var(--border);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 18px;
+  position:sticky;
+  top:0;
+  z-index:100;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.brand-icon{
+  width:40px;
+  height:40px;
+  border-radius:10px;
+  background:var(--green);
   color:white;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-weight:bold;
-  font-size:25px;
-  margin:0 auto 15px;
-}
-.login h1{
-  text-align:center;
-  font-size:23px;
-  color:#14532d
-}
-.login p{
-  text-align:center;
-  color:#667;
-  margin:8px 0 22px
+  font-weight:800;
 }
 
-label{
+.brand-text strong{
   display:block;
-  font-weight:700;
-  margin:12px 0 6px;
-}
-input,select,textarea{
-  width:100%;
-  padding:11px 12px;
-  border:1px solid #ccd5cf;
-  border-radius:9px;
-  background:white;
-  outline:none;
-}
-input:focus,select:focus,textarea:focus{
-  border-color:#15803d;
-  box-shadow:0 0 0 2px #15803d22;
-}
-textarea{
-  min-height:130px;
-  resize:vertical
+  font-size:14px;
 }
 
-.btn{
-  border:0;
-  border-radius:9px;
-  padding:11px 15px;
-  font-weight:700;
-}
-.btn-primary{
-  background:#15803d;
-  color:white
-}
-.btn-primary:hover{
-  background:#166534
-}
-.btn-secondary{
-  background:#e7eee9;
-  color:#14532d
-}
-.btn-danger{
-  background:#dc2626;
-  color:white
-}
-.btn-warning{
-  background:#d97706;
-  color:white
-}
-.btn-info{
-  background:#2563eb;
-  color:white
-}
-.btn:disabled{
-  opacity:.5;
-  cursor:not-allowed
-}
-
-.app{
-  min-height:100vh;
-  display:flex
-}
-.sidebar{
-  width:260px;
-  background:#064e3b;
-  color:white;
-  position:fixed;
-  left:0;
-  top:0;
-  bottom:0;
-  overflow:auto;
-  z-index:20;
-}
-.brand{
-  padding:20px 16px;
-  border-bottom:1px solid #ffffff20;
-}
-.brand strong{
+.brand-text span{
   display:block;
-  font-size:18px
-}
-.brand small{
-  opacity:.75
-}
-.nav{
-  padding:12px
-}
-.nav button{
-  width:100%;
-  text-align:left;
-  background:none;
-  border:0;
-  color:#dcefe3;
-  padding:11px 12px;
-  border-radius:8px;
-  margin-bottom:3px;
-}
-.nav button:hover,
-.nav button.active{
-  background:#ffffff18;
-  color:white;
-}
-.nav-section{
   font-size:11px;
-  color:#9bc4a9;
-  padding:15px 12px 5px;
+  color:var(--gray);
+}
+
+.top-actions{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.icon-button{
+  border:1px solid var(--border);
+  background:white;
+  padding:8px 10px;
+  border-radius:9px;
+}
+
+.logout-button{
+  background:#fee2e2;
+  color:#b91c1c;
+  border:0;
+  padding:9px 12px;
+  border-radius:9px;
+  font-weight:700;
+}
+
+.layout{
+  display:flex;
+  min-height:calc(100vh - 64px);
+}
+
+.sidebar{
+  width:250px;
+  background:#052e16;
+  color:white;
+  padding:18px 12px;
+  flex-shrink:0;
+}
+
+.sidebar-user{
+  padding:14px;
+  background:rgba(255,255,255,.08);
+  border-radius:12px;
+  margin-bottom:15px;
+}
+
+.sidebar-user strong{
+  display:block;
+  font-size:14px;
+}
+
+.sidebar-user span{
+  font-size:11px;
+  color:#bbf7d0;
+}
+
+.nav-title{
+  font-size:10px;
+  color:#86efac;
+  font-weight:800;
   text-transform:uppercase;
-  font-weight:bold;
+  margin:18px 10px 7px;
+}
+
+.nav-item{
+  width:100%;
+  border:0;
+  background:transparent;
+  color:#dcfce7;
+  padding:11px 12px;
+  border-radius:9px;
+  text-align:left;
+  margin-bottom:3px;
+  font-size:13px;
+  font-weight:600;
+}
+
+.nav-item:hover,
+.nav-item.active{
+  background:#166534;
+  color:white;
 }
 
 .main{
-  margin-left:260px;
-  width:calc(100% - 260px);
-  min-height:100vh;
-}
-.topbar{
-  height:65px;
-  background:white;
-  border-bottom:1px solid #ddd;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:0 20px;
-  position:sticky;
-  top:0;
-  z-index:10;
-}
-.menu-btn{
-  display:none;
-  border:0;
-  background:#14532d;
-  color:white;
-  border-radius:7px;
-  padding:8px 11px;
-}
-.page{
+  flex:1;
+  min-width:0;
   padding:22px;
-  max-width:1400px;
-  margin:auto;
-}
-.page-title{
-  font-size:25px;
-  font-weight:800;
-  color:#14532d;
-  margin-bottom:18px;
 }
 
-.cards{
+.page-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  margin-bottom:20px;
+}
+
+.page-header h1{
+  font-size:23px;
+}
+
+.page-header p{
+  color:var(--gray);
+  font-size:13px;
+  margin-top:4px;
+}
+
+.primary-btn{
+  background:var(--green);
+  color:white;
+  border:0;
+  padding:11px 15px;
+  border-radius:9px;
+  font-weight:700;
+}
+
+.secondary-btn{
+  background:white;
+  color:#334155;
+  border:1px solid var(--border);
+  padding:10px 14px;
+  border-radius:9px;
+  font-weight:700;
+}
+
+/* =========================
+   DASHBOARD CARDS
+========================= */
+
+.stats-grid{
   display:grid;
   grid-template-columns:repeat(4,1fr);
   gap:15px;
+  margin-bottom:20px;
 }
+
+.stat-card{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:18px;
+}
+
+.stat-icon{
+  width:38px;
+  height:38px;
+  border-radius:10px;
+  background:var(--light);
+  color:var(--green);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-weight:800;
+  margin-bottom:10px;
+}
+
+.stat-card h3{
+  font-size:25px;
+}
+
+.stat-card p{
+  color:var(--gray);
+  font-size:12px;
+  margin-top:3px;
+}
+
+.content-grid{
+  display:grid;
+  grid-template-columns:2fr 1fr;
+  gap:18px;
+}
+
 .card{
   background:white;
-  border-radius:12px;
+  border:1px solid var(--border);
+  border-radius:14px;
   padding:18px;
-  box-shadow:0 2px 10px #0000000b;
-  border:1px solid #e2e8e4;
-}
-.stat-number{
-  font-size:30px;
-  font-weight:800;
-  color:#14532d;
-}
-.stat-label{
-  color:#68756d;
-  margin-top:4px
+  margin-bottom:18px;
 }
 
-.grid2{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:16px
-}
-.grid3{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:16px
-}
-
-.toolbar{
+.card-title{
   display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-  margin-bottom:15px;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:14px;
 }
-.toolbar>*{
-  flex:0 0 auto
+
+.card-title h2{
+  font-size:16px;
+}
+
+.card-title span{
+  font-size:12px;
+  color:var(--gray);
+}
+
+/* =========================
+   TABLE
+========================= */
+
+.table-wrapper{
+  overflow-x:auto;
 }
 
 table{
   width:100%;
   border-collapse:collapse;
-  background:white;
+  min-width:650px;
 }
-th,td{
-  padding:10px;
-  border-bottom:1px solid #e5e9e6;
+
+th,
+td{
+  padding:11px 10px;
+  border-bottom:1px solid var(--border);
   text-align:left;
-  vertical-align:top;
+  font-size:13px;
 }
+
 th{
-  background:#ecf5ef;
-  color:#14532d
-}
-.table-wrap{
-  overflow:auto;
-  border-radius:10px
+  color:#475569;
+  background:#f8fafc;
+  font-size:11px;
+  text-transform:uppercase;
 }
 
 .badge{
   display:inline-block;
-  padding:4px 8px;
+  padding:5px 8px;
   border-radius:20px;
+  font-size:10px;
+  font-weight:800;
+}
+
+.badge.green{
+  background:#dcfce7;
+  color:#166534;
+}
+
+.badge.orange{
+  background:#ffedd5;
+  color:#c2410c;
+}
+
+.badge.blue{
+  background:#dbeafe;
+  color:#1d4ed8;
+}
+
+.badge.red{
+  background:#fee2e2;
+  color:#b91c1c;
+}
+
+/* =========================
+   QUICK ACTIONS
+========================= */
+
+.quick-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+}
+
+.quick-action{
+  border:1px solid var(--border);
+  background:#f8fafc;
+  border-radius:10px;
+  padding:15px;
+  text-align:left;
+}
+
+.quick-action strong{
+  display:block;
+  font-size:13px;
+}
+
+.quick-action span{
+  display:block;
+  color:var(--gray);
+  font-size:11px;
+  margin-top:4px;
+}
+
+/* =========================
+   PROFILE
+========================= */
+
+.profile{
+  display:flex;
+  gap:18px;
+  align-items:center;
+}
+
+.avatar{
+  width:75px;
+  height:75px;
+  background:var(--green);
+  color:white;
+  border-radius:50%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:25px;
+  font-weight:800;
+}
+
+.profile-info h2{
+  font-size:19px;
+}
+
+.profile-info p{
+  color:var(--gray);
   font-size:12px;
-  font-weight:bold;
-}
-.badge-draft{
-  background:#e5e7eb;
-  color:#374151
-}
-.badge-submitted{
-  background:#fef3c7;
-  color:#92400e
-}
-.badge-approved{
-  background:#dcfce7;
-  color:#166534
-}
-.badge-exam{
-  background:#dbeafe;
-  color:#1d4ed8
-}
-.badge-final{
-  background:#ede9fe;
-  color:#6d28d9
-}
-.badge-published{
-  background:#bbf7d0;
-  color:#166534
-}
-.badge-returned{
-  background:#fee2e2;
-  color:#991b1b
+  margin-top:3px;
 }
 
-.form-card{
-  background:white;
-  border:1px solid #e0e7e2;
-  border-radius:12px;
-  padding:18px;
-  margin-bottom:16px;
-}
-.form-card h3{
-  color:#14532d;
-  margin-bottom:12px
+.info-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
 }
 
-.actions{
-  display:flex;
-  flex-wrap:wrap;
-  gap:7px;
-  margin-top:12px;
+.info-item{
+  padding:13px;
+  border:1px solid var(--border);
+  border-radius:10px;
 }
 
-.alert{
+.info-item label{
+  display:block;
+  color:var(--gray);
+  font-size:10px;
+  text-transform:uppercase;
+  font-weight:800;
+  margin-bottom:4px;
+}
+
+.info-item strong{
+  font-size:13px;
+}
+
+/* =========================
+   NOTICE
+========================= */
+
+.notice{
   padding:12px;
-  border-radius:8px;
-  margin-bottom:12px;
-}
-.alert-error{
-  background:#fee2e2;
-  color:#991b1b
-}
-.alert-success{
-  background:#dcfce7;
-  color:#166534
-}
-.alert-info{
-  background:#dbeafe;
-  color:#1e40af
+  border-radius:10px;
+  background:#eff6ff;
+  border:1px solid #bfdbfe;
+  margin-bottom:10px;
 }
 
-.empty{
-  padding:35px;
-  text-align:center;
-  color:#777;
+.notice strong{
+  font-size:13px;
 }
 
-.portal-tabs{
+.notice p{
+  color:#475569;
+  font-size:11px;
+  margin-top:3px;
+}
+
+/* =========================
+   MODAL
+========================= */
+
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(15,23,42,.55);
   display:flex;
-  gap:8px;
-  margin:10px 0 18px;
-}
-.portal-tabs button{
-  flex:1;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+  z-index:500;
 }
 
-.login-link{
-  text-align:center;
-  margin-top:15px;
-  color:#14532d;
-  font-weight:700;
+.modal-box{
+  width:100%;
+  max-width:600px;
+  background:white;
+  border-radius:16px;
+  padding:22px;
+  max-height:90vh;
+  overflow-y:auto;
 }
-.login-link button{
+
+.modal-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:17px;
+}
+
+.close-btn{
   border:0;
-  background:none;
-  color:#15803d;
-  font-weight:700;
-  text-decoration:underline;
-}
-
-.result-header{
-  text-align:center;
-  margin-bottom:20px;
-}
-.result-header h2{
-  color:#14532d;
-}
-.result-total{
-  font-size:28px;
-  font-weight:800;
-  color:#14532d;
-}
-.result-grade{
-  font-size:20px;
+  background:#f1f5f9;
+  width:32px;
+  height:32px;
+  border-radius:8px;
   font-weight:800;
 }
 
-.mobile-only{
-  display:none
+.form-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+
+.full{
+  grid-column:1/-1;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+.mobile-menu{
+  display:none;
+  border:1px solid var(--border);
+  background:white;
+  padding:8px 10px;
+  border-radius:8px;
 }
 
 @media(max-width:900px){
+  .stats-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .content-grid{
+    grid-template-columns:1fr;
+  }
+
   .sidebar{
-    transform:translateX(-100%);
+    position:fixed;
+    left:-270px;
+    top:64px;
+    bottom:0;
+    z-index:200;
     transition:.25s;
+    overflow-y:auto;
   }
+
   .sidebar.open{
-    transform:translateX(0)
+    left:0;
   }
+
+  .mobile-menu{
+    display:block;
+  }
+
   .main{
-    margin-left:0;
-    width:100%;
-  }
-  .menu-btn{
-    display:block
-  }
-  .cards{
-    grid-template-columns:repeat(2,1fr)
-  }
-  .grid2,.grid3{
-    grid-template-columns:1fr
-  }
-  .mobile-only{
-    display:block
+    padding:16px;
   }
 }
+
 @media(max-width:600px){
-  .cards{
-    grid-template-columns:1fr
-  }
-  .page{
-    padding:13px
-  }
   .topbar{
-    padding:0 12px
+    padding:0 10px;
   }
-  .page-title{
-    font-size:21px
+
+  .brand-text{
+    display:none;
   }
-  .login-card{
-    padding:20px
+
+  .stats-grid{
+    grid-template-columns:1fr 1fr;
+    gap:9px;
   }
-  .portal-tabs{
-    flex-direction:column
+
+  .stat-card{
+    padding:13px;
+  }
+
+  .stat-card h3{
+    font-size:21px;
+  }
+
+  .page-header{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+
+  .page-header .primary-btn{
+    width:100%;
+  }
+
+  .info-grid,
+  .form-grid{
+    grid-template-columns:1fr;
+  }
+
+  .profile{
+    align-items:flex-start;
+  }
+
+  .login-box{
+    padding:22px 17px;
   }
 }
 </style>
@@ -440,6240 +738,2234 @@ th{
 
 <body>
 
-<!-- ============================================================
-     LOGIN
-============================================================ -->
+<!-- =========================
+     LOGIN PAGE
+========================= -->
 
-<div id="loginScreen" class="login">
+<section id="loginPage">
 
-  <div class="login-card">
+  <div class="login-box">
 
-    <div class="logo">CTA</div>
+    <div class="school-logo">CTA</div>
 
-    <h1>Caliphate Tarbiya Academy</h1>
+    <div class="school-title">
+      Caliphate Tarbiya Academy
+    </div>
 
-    <p>School Academic Management System</p>
+    <div class="school-subtitle">
+      Sokoto · Academic Management System
+    </div>
 
-    <div id="loginMessage"></div>
+    <div class="portal-selector">
 
-    <label>Login Type</label>
+      <button class="portal-btn active" onclick="selectPortal('admin',this)">
+        🔐 Admin
+      </button>
 
-    <select id="loginType" onchange="loginTypeChanged()">
-      <option value="administrator">Administrator</option>
-      <option value="teacher">Teacher</option>
-      <option value="parent">Parent / Student</option>
-    </select>
+      <button class="portal-btn" onclick="selectPortal('teacher',this)">
+        👨‍🏫 Teacher
+      </button>
 
-    <div id="staffLoginFields">
+      <button class="portal-btn" onclick="selectPortal('student',this)">
+        🎓 Student
+      </button>
 
-      <label>Email</label>
-      <input
-        id="loginEmail"
-        type="email"
-        placeholder="Enter email">
-
-      <label>Password</label>
-      <input
-        id="loginPassword"
-        type="password"
-        placeholder="Enter password">
-
-      <button
-        class="btn btn-primary"
-        style="width:100%;margin-top:18px"
-        onclick="login()">
-        Login
+      <button class="portal-btn" onclick="selectPortal('parent',this)">
+        👨‍👩‍👧 Parent
       </button>
 
     </div>
 
-    <div id="parentLoginFields" class="hidden">
+    <form id="loginForm">
 
-      <label>Email</label>
-      <input
-        id="parentLoginEmail"
-        type="email"
-        placeholder="Parent email">
+      <div class="form-group">
+        <label id="loginLabel">Username</label>
+        <input
+          type="text"
+          id="loginUsername"
+          placeholder="Enter username"
+          autocomplete="username"
+          required
+        >
+      </div>
 
-      <label>Password</label>
-      <input
-        id="parentLoginPassword"
-        type="password"
-        placeholder="Parent password">
+      <div class="form-group">
+        <label>Password</label>
 
-      <button
-        class="btn btn-primary"
-        style="width:100%;margin-top:18px"
-        onclick="parentLogin()">
-        Parent / Student Login
+        <input
+          type="password"
+          id="loginPassword"
+          placeholder="Enter password"
+          autocomplete="current-password"
+          required
+        >
+      </div>
+
+      <button class="login-button" type="submit">
+        Sign In
       </button>
 
-    </div>
+      <div id="loginMessage" class="login-message"></div>
 
-    <div id="parentRegisterLink" class="login-link hidden">
-      Don't have a parent account?
-      <button onclick="showParentRegistration()">
-        Register here
-      </button>
-    </div>
+    </form>
 
-  </div>
-</div>
+    <div class="demo-box">
+      <strong>Initial demonstration accounts</strong><br><br>
 
-<!-- ============================================================
-     PARENT REGISTRATION
-============================================================ -->
+      Admin: <b>admin</b> / <b>admin123</b><br>
+      Teacher: <b>teacher</b> / <b>teacher123</b><br>
+      Student: <b>student</b> / <b>student123</b><br>
+      Parent: <b>parent</b> / <b>parent123</b>
 
-<div id="parentRegistrationScreen" class="login hidden">
-
-  <div class="login-card">
-
-    <div class="logo">CTA</div>
-
-    <h1>Parent Registration</h1>
-
-    <p>Create your parent account and link your child.</p>
-
-    <div id="registrationMessage"></div>
-
-    <label>Full Name</label>
-    <input
-      id="regFullName"
-      placeholder="Parent / Guardian full name">
-
-    <label>Email</label>
-    <input
-      id="regEmail"
-      type="email"
-      placeholder="Parent email">
-
-    <label>Phone Number</label>
-    <input
-      id="regPhone"
-      type="tel"
-      placeholder="Phone number">
-
-    <label>Password</label>
-    <input
-      id="regPassword"
-      type="password"
-      placeholder="Create password">
-
-    <label>Confirm Password</label>
-    <input
-      id="regConfirmPassword"
-      type="password"
-      placeholder="Confirm password">
-
-    <button
-      class="btn btn-primary"
-      style="width:100%;margin-top:18px"
-      onclick="registerParent()">
-      Create Parent Account
-    </button>
-
-    <div class="login-link">
-      Already have an account?
-      <button onclick="showLoginScreen()">
-        Back to Login
-      </button>
+      <br><br>
+      These are temporary front-end demonstration accounts.
+      Real Supabase authentication can be connected to them.
     </div>
 
   </div>
-</div>
 
-<!-- ============================================================
+</section>
+
+
+<!-- =========================
      APPLICATION
-============================================================ -->
+========================= -->
 
-<div id="app" class="app hidden">
+<section id="app" class="hidden">
 
-  <aside id="sidebar" class="sidebar">
+  <header class="topbar">
 
     <div class="brand">
-      <strong>Caliphate Tarbiya</strong>
-      <small>Academic Management System</small>
-    </div>
 
-    <div class="nav">
-
-      <div class="nav-section">Main</div>
-
-      <button onclick="showPage('dashboard')">
-        🏠 Dashboard
-      </button>
-
-      <div id="staffAcademicNav">
-
-        <div class="nav-section">
-          Academic Documents
-        </div>
-
-        <button onclick="showPage('lessonPlan')">
-          📘 Lesson Plan
-        </button>
-
-        <button onclick="showPage('lessonNote')">
-          📝 Lesson Note
-        </button>
-
-        <button onclick="showPage('scheme')">
-          📚 Scheme of Work
-        </button>
-
-        <button onclick="showPage('assistant')">
-          🤖 Teacher Assistant
-        </button>
-
-        <button onclick="showPage('documents')">
-          📂 My Documents
-        </button>
-
-        <div class="nav-section">Results</div>
-
-        <button onclick="showPage('resultEntry')">
-          📊 Result Entry
-        </button>
-
-        <button onclick="showPage('submissions')">
-          📤 My Result Submissions
-        </button>
-
-      </div>
-
-      <div id="parentNav" class="hidden">
-
-        <div class="nav-section">
-          Parent Portal
-        </div>
-
-        <button onclick="showPage('parentDashboard')">
-          👨‍👩‍👧 Parent Dashboard
-        </button>
-
-        <button onclick="showPage('linkChild')">
-          🔗 Link Child
-        </button>
-
-        <button onclick="showPage('parentResults')">
-          📄 My Child's Results
-        </button>
-
-      </div>
-
-      <div id="hodNav" class="hidden">
-
-        <button onclick="showPage('hod')">
-          ✅ HOD Result Vetting
-        </button>
-
-      </div>
-
-      <div id="examNav" class="hidden">
-
-        <button onclick="showPage('examOfficer')">
-          🔒 Examination Officer
-        </button>
-
-      </div>
-
-      <div id="adminNav" class="hidden">
-
-        <div class="nav-section">
-          Administration
-        </div>
-
-        <button onclick="showPage('teachers')">
-          👨‍🏫 Teacher Management
-        </button>
-
-        <button onclick="showPage('classes')">
-          🏫 Classes & Students
-        </button>
-
-        <button onclick="showPage('hodAssignment')">
-          🎯 HOD Assignment
-        </button>
-
-        <button onclick="showPage('publish')">
-          📢 Publish Results
-        </button>
-
-        <button onclick="showPage('broadsheet')">
-          📋 Broadsheet
-        </button>
-
-        <button onclick="showPage('settings')">
-          ⚙️ School Settings
-        </button>
-
-      </div>
-
-      <div class="nav-section">
-        Account
-      </div>
-
-      <button onclick="showPage('password')">
-        🔑 Change Password
-      </button>
-
-      <button onclick="logout()">
-        🚪 Logout
-      </button>
-
-    </div>
-  </aside>
-
-  <main class="main">
-
-    <div class="topbar">
-
-      <button
-        class="menu-btn"
-        onclick="toggleSidebar()">
+      <button class="mobile-menu" onclick="toggleSidebar()">
         ☰
       </button>
 
-      <strong id="topTitle">
-        Dashboard
-      </strong>
+      <div class="brand-icon">
+        CTA
+      </div>
 
-      <span id="userName">
-        User
-      </span>
+      <div class="brand-text">
+        <strong>Caliphate Tarbiya Academy</strong>
+        <span>Academic Management System</span>
+      </div>
 
     </div>
 
-    <div id="content" class="page"></div>
+    <div class="top-actions">
 
-  </main>
+      <button class="icon-button" onclick="showNotifications()">
+        🔔
+      </button>
+
+      <button class="logout-button" onclick="logout()">
+        Logout
+      </button>
+
+    </div>
+
+  </header>
+
+
+  <div class="layout">
+
+    <!-- SIDEBAR -->
+
+    <aside id="sidebar" class="sidebar">
+
+      <div class="sidebar-user">
+        <strong id="sidebarName">User</strong>
+        <span id="sidebarRole">Portal</span>
+      </div>
+
+      <div class="nav-title">
+        Main
+      </div>
+
+      <button class="nav-item active" onclick="showPage('dashboard',this)">
+        🏠 Dashboard
+      </button>
+
+      <div id="adminNav" class="hidden">
+
+        <div class="nav-title">
+          Administration
+        </div>
+
+        <button class="nav-item" onclick="showPage('teachers',this)">
+          👨‍🏫 Teacher Management
+        </button>
+
+        <button class="nav-item" onclick="showPage('students',this)">
+          🎓 Student Management
+        </button>
+
+        <button class="nav-item" onclick="showPage('parents',this)">
+          👨‍👩‍👧 Parent Management
+        </button>
+
+        <button class="nav-item" onclick="showPage('hod',this)">
+          📚 HOD Assignment
+        </button>
+
+        <button class="nav-item" onclick="showPage('approvals',this)">
+          ✅ Approval Centre
+        </button>
+
+        <button class="nav-item" onclick="showPage('examination',this)">
+          📝 Examination Centre
+        </button>
+
+      </div>
+
+
+      <div id="teacherNav" class="hidden">
+
+        <div class="nav-title">
+          Teaching
+        </div>
+
+        <button class="nav-item" onclick="showPage('lessonPlan',this)">
+          📘 Lesson Plan
+        </button>
+
+        <button class="nav-item" onclick="showPage('lessonNote',this)">
+          📖 Lesson Note
+        </button>
+
+        <button class="nav-item" onclick="showPage('scheme',this)">
+          📑 Scheme of Work
+        </button>
+
+        <button class="nav-item" onclick="showPage('caExam',this)">
+          📝 CA & Examination
+        </button>
+
+        <button class="nav-item" onclick="showPage('assistant',this)">
+          🤖 Teacher Assistant
+        </button>
+
+      </div>
+
+
+      <div id="studentNav" class="hidden">
+
+        <div class="nav-title">
+          Student
+        </div>
+
+        <button class="nav-item" onclick="showPage('subjects',this)">
+          📚 My Subjects
+        </button>
+
+        <button class="nav-item" onclick="showPage('assignments',this)">
+          📝 Assignments
+        </button>
+
+        <button class="nav-item" onclick="showPage('results',this)">
+          📊 My Results
+        </button>
+
+        <button class="nav-item" onclick="showPage('materials',this)">
+          📖 Learning Materials
+        </button>
+
+        <button class="nav-item" onclick="showPage('studentProfile',this)">
+          👤 My Profile
+        </button>
+
+      </div>
+
+
+      <div id="parentNav" class="hidden">
+
+        <div class="nav-title">
+          Parent
+        </div>
+
+        <button class="nav-item" onclick="showPage('children',this)">
+          👨‍👩‍👧 My Children
+        </button>
+
+        <button class="nav-item" onclick="showPage('childResults',this)">
+          📊 Academic Results
+        </button>
+
+        <button class="nav-item" onclick="showPage('childAttendance',this)">
+          📅 Attendance
+        </button>
+
+        <button class="nav-item" onclick="showPage('childAssignments',this)">
+          📝 Assignments
+        </button>
+
+        <button class="nav-item" onclick="showPage('parentProfile',this)">
+          👤 Parent Profile
+        </button>
+
+      </div>
+
+
+      <div class="nav-title">
+        Account
+      </div>
+
+      <button class="nav-item" onclick="showPage('settings',this)">
+        ⚙️ Settings
+      </button>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+
+    <main class="main">
+
+      <!-- DASHBOARD -->
+
+      <div id="page-dashboard" class="page">
+
+        <div class="page-header">
+
+          <div>
+            <h1 id="welcomeTitle">Dashboard</h1>
+            <p id="welcomeText">
+              Welcome to Caliphate Tarbiya Academy.
+            </p>
+          </div>
+
+        </div>
+
+
+        <div class="stats-grid">
+
+          <div class="stat-card">
+            <div class="stat-icon">📚</div>
+            <h3 id="statOne">0</h3>
+            <p id="statOneLabel">Subjects</p>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon">📝</div>
+            <h3 id="statTwo">0</h3>
+            <p id="statTwoLabel">Assignments</p>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon">📊</div>
+            <h3 id="statThree">0</h3>
+            <p id="statThreeLabel">Results</p>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon">📅</div>
+            <h3 id="statFour">0%</h3>
+            <p id="statFourLabel">Attendance</p>
+          </div>
+
+        </div>
+
+
+        <div class="content-grid">
+
+          <div>
+
+            <div class="card">
+
+              <div class="card-title">
+                <h2>Recent Activity</h2>
+                <span>Latest</span>
+              </div>
+
+              <div id="recentActivity">
+
+                <div class="notice">
+                  <strong>Welcome</strong>
+                  <p>Your portal is ready.</p>
+                </div>
+
+                <div class="notice">
+                  <strong>Academic Session</strong>
+                  <p>2026/2027 academic session.</p>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div>
+
+            <div class="card">
+
+              <div class="card-title">
+                <h2>Quick Actions</h2>
+              </div>
+
+              <div class="quick-grid">
+
+                <button class="quick-action" onclick="showPage('profile')">
+                  <strong>👤 Profile</strong>
+                  <span>View account</span>
+                </button>
+
+                <button class="quick-action" onclick="showPage('settings')">
+                  <strong>⚙️ Settings</strong>
+                  <span>Account settings</span>
+                </button>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- ADMIN: TEACHERS -->
+
+      <div id="page-teachers" class="page hidden">
+
+        <div class="page-header">
+          <div>
+            <h1>Teacher Management</h1>
+            <p>Create and manage teacher accounts.</p>
+          </div>
+
+          <button class="primary-btn" onclick="openModal('teacherModal')">
+            + Add Teacher
+          </button>
+        </div>
+
+        <div class="card">
+
+          <div class="table-wrapper">
+
+            <table>
+
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Username</th>
+                  <th>Department</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+
+              <tbody id="teacherTable">
+
+                <tr>
+                  <td>Demo Teacher</td>
+                  <td>teacher</td>
+                  <td>Mathematics</td>
+                  <td><span class="badge green">Active</span></td>
+                </tr>
+
+              </tbody>
+
+            </table>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- ADMIN: STUDENTS -->
+
+      <div id="page-students" class="page hidden">
+
+        <div class="page-header">
+          <div>
+            <h1>Student Management</h1>
+            <p>Create and manage student accounts.</p>
+          </div>
+
+          <button class="primary-btn" onclick="openModal('studentModal')">
+            + Add Student
+          </button>
+        </div>
+
+        <div class="card">
+
+          <div class="table-wrapper">
+
+            <table>
+
+              <thead>
+                <tr>
+                  <th>Student</th>
+                  <th>Admission No.</th>
+                  <th>Class</th>
+                  <th>Parent</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+
+              <tbody id="studentTable">
+
+                <tr>
+                  <td>Demo Student</td>
+                  <td>CTA/2026/001</td>
+                  <td>SS1</td>
+                  <td>Demo Parent</td>
+                  <td>
+                    <span class="badge green">Active</span>
+                  </td>
+                </tr>
+
+              </tbody>
+
+            </table>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- ADMIN: PARENTS -->
+
+      <div id="page-parents" class="page hidden">
+
+        <div class="page-header">
+
+          <div>
+            <h1>Parent Management</h1>
+            <p>Manage parent and guardian accounts.</p>
+          </div>
+
+          <button class="primary-btn" onclick="openModal('parentModal')">
+            + Add Parent
+          </button>
+
+        </div>
+
+        <div class="card">
+
+          <div class="table-wrapper">
+
+            <table>
+
+              <thead>
+                <tr>
+                  <th>Parent</th>
+                  <th>Username</th>
+                  <th>Children</th>
+                  <th>Phone</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+
+              <tbody>
+
+                <tr>
+                  <td>Demo Parent</td>
+                  <td>parent</td>
+                  <td>Demo Student</td>
+                  <td>Not configured</td>
+                  <td>
+                    <span class="badge green">Active</span>
+                  </td>
+                </tr>
+
+              </tbody>
+
+            </table>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- HOD -->
+
+      <div id="page-hod" class="page hidden">
+
+        <div class="page-header">
+          <div>
+            <h1>HOD Assignment</h1>
+            <p>Assign teachers to departments and subjects.</p>
+          </div>
+        </div>
+
+        <div class="card">
+
+          <div class="form-grid">
+
+            <div class="form-group">
+              <label>Department</label>
+              <select>
+                <option>Mathematics</option>
+                <option>English</option>
+                <option>Physics</option>
+                <option>Chemistry</option>
+                <option>Biology</option>
+                <option>Economics</option>
+                <option>Hausa</option>
+                <option>Arabic</option>
+                <option>French</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>HOD</label>
+              <select>
+                <option>Demo Teacher</option>
+              </select>
+            </div>
+
+          </div>
+
+          <button class="primary-btn">
+            Save Assignment
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <!-- APPROVAL -->
+
+      <div id="page-approvals" class="page hidden">
+
+        <div class="page-header">
+          <div>
+            <h1>Approval Centre</h1>
+            <p>Review submitted academic documents.</p>
+          </div>
+        </div>
+
+        <div class="card">
+
+          <div class="table-wrapper">
+
+            <table>
+
+              <thead>
+                <tr>
+                  <th>Document</th>
+                  <th>Teacher</th>
+                  <th>Subject</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+
+              <tbody>
+
+                <tr>
+                  <td>Lesson Plan</td>
+                  <td>Demo Teacher</td>
+                  <td>Mathematics</td>
+                  <td>
+                    <span class="badge orange">Pending</span>
+                  </td>
+                  <td>
+                    <button class="secondary-btn">Review</button>
+                  </td>
+                </tr>
+
+              </tbody>
+
+            </table>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- EXAMINATION -->
+
+      <div id="page-examination" class="page hidden">
+
+        <div class="page-header">
+          <div>
+            <h1>Examination Centre</h1>
+            <p>Manage CA and examination submissions.</p>
+          </div>
+        </div>
+
+        <div class="card">
+
+          <div class="notice">
+            <strong>Examination workflow</strong>
+            <p>
+              Teacher → Subject HOD → Examination Officer → Finalized Document
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- TEACHER PAGES -->
+
+      <div id="page-lessonPlan" class="page hidden">
+
+        <div class="page-header">
+          <div>
+            <h1>Lesson Plan</h1>
+            <p>Create and submit Nigerian-standard lesson plans.</p>
+          </div>
+
+          <button class="primary-btn">
+            + New Lesson Plan
+          </button>
+        </div>
+
+        <div class="card">
+
+          <div class="form-grid">
+
+            <div class="form-group">
+              <label>Subject</label>
+              <input placeholder="e.g. Mathematics">
+            </div>
+
+            <div class="form-group">
+              <label>Class</label>
+              <input placeholder="e.g. SS1">
+            </div>
+
+            <div class="form-group">
+              <label>Topic</label>
+              <input placeholder="Lesson topic">
+            </div>
+
+            <div class="form-group">
+              <label>Week</label>
+              <input placeholder="Week 1">
+            </div>
+
+            <div class="form-group full">
+              <label>Objectives</label>
+              <textarea rows="4" placeholder="Enter lesson objectives..."></textarea>
+            </div>
+
+          </div>
+
+          <button class="primary-btn">
+            Save Draft
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <div id="page-lessonNote" class="page hidden">
+
+        <div class="page-header">
+          <div>
+            <h1>Lesson Note</h1>
+            <p>Create detailed lesson notes.</p>
+          </div>
+        </div>
+
+        <div class="card">
+
+          <div class="notice">
+            <strong>Lesson Note Structure</strong>
+            <p>
+              Introduction · Set Induction · Presentation ·
+              Teacher's Activities · Learners' Activities ·
+              Evaluation · Conclusion · Assignment
+            </p>
+          </div>
+
+          <textarea
+            rows="14"
+            placeholder="Enter or generate your lesson note..."
+            style="width:100%;padding:13px;border:1px solid #e2e8f0;border-radius:10px;"
+          ></textarea>
+
+          <br><br>
+
+          <button class="primary-btn">
+            Save Lesson Note
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <div id="page-scheme" class="page hidden">
+
+        <div class="page-header">
+          <div>
+            <h1>Scheme of Work</h1>
+            <p>Manage weekly scheme of work.</p>
+          </div>
+        </div>
+
+        <div class="card">
+
+          <div class="form-grid">
+
+            <div class="form-group">
+              <label>Subject</label>
+              <input placeholder="Subject">
+            </div>
+
+            <div class="form-group">
+              <label>Class</label>
+              <input placeholder="Class">
+            </div>
+
+            <div class="form-group full">
+              <label>Topic / Sub-topic</label>
+              <textarea rows="8" placeholder="Enter weekly topics..."></textarea>
+            </div>
+
+          </div>
+
+          <button class="primary-btn">
+            Save Scheme
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <div id="page-caExam" class="page hidden">
+
+        <div class="page-header">
+          <div>
+            <h1>CA & Examination</h1>
+            <p>Create continuous assessment and examination papers.</p>
+          </div>
+        </div>
+
+        <div class="card">
+
+          <div class="form-grid">
+
+            <div class="form-group">
+              <label>Subject</label>
+              <input placeholder="Subject">
+            </div>
+
+            <div class="form-group">
+              <label>Class</label>
+              <input placeholder="Class">
+            </div>
+
+            <div class="form-group">
+              <label>Number of Questions</label>
+              <input type="number" value="20">
+            </div>
+
+            <div class="form-group">
+              <label>Question Type</label>
+              <select>
+                <option>Objective + Theory</option>
+                <option>Objective Only</option>
+                <option>Theory Only</option>
+              </select>
+            </div>
+
+            <div class="form-group full">
+              <label>Topics</label>
+              <textarea rows="6" placeholder="Enter all topics to cover..."></textarea>
+            </div>
+
+          </div>
+
+          <button class="primary-btn">
+            Generate Questions
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <div id="page-assistant" class="page hidden">
+
+        <div class="page-header">
+          <div>
+            <h1>Teacher Assistant</h1>
+            <p>Generate academic documents from your topics.</p>
+          </div>
+        </div>
+
+        <div class="card">
+
+          <div class="quick-grid">
+
+            <button class="quick-action">
+              <strong>📘 Generate Lesson Plan</strong>
+              <span>Generate a complete lesson plan.</span>
+            </button>
+
+            <button class="quick-action">
+              <strong>📖 Generate Lesson Note</strong>
+              <span>Create detailed lesson notes.</span>
+            </button>
+
+            <button class="quick-action">
+              <strong>📑 Generate Scheme</strong>
+              <span>Generate a 13-week scheme.</span>
+            </button>
+
+            <button class="quick-action">
+              <strong>📝 Generate CA / Exam</strong>
+              <span>Create questions and marking scheme.</span>
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- =========================
+           STUDENT PORTAL
+      ========================= -->
+
+      <div id="page-subjects" class="page hidden">
+
+        <div class="page-header">
+          <div>
+            <h1>My Subjects</h1>
+            <p>Subjects assigned to your class.</p>
+          </div>
+        </div>
+
+        <div class="card">
+
+          <div class="table-wrapper">
+
+            <table>
+
+              <thead>
+                <tr>
+                  <th>Subject</th>
+                  <th>Teacher</th>
+                  <th>Class</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+
+              <tbody>
+
+                <tr>
+                  <td>Mathematics</td>
+                  <td>Demo Teacher</td>
+                  <td>SS1</td>
+                  <td><span class="badge green">Active</span></td>
+                </tr>
+
+                <tr>
+                  <td>English Language</td>
+                  <td>Not assigned</td>
+                  <td>SS1</td>
+                  <td><span class="badge green">Active</span></td>
+                </tr>
+
+                <tr>
+                  <td>Physics</td>
+                  <td>Not assigned</td>
+                  <td>SS1</td>
+                  <td><span class="badge green">Active</span></td>
+                </tr>
+
+              </tbody>
+
+            </table>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div id="page-assignments" class="page hidden">
+
+        <div class="page-header">
+
+          <div>
+            <h1>Assignments</h1>
+            <p>View assignments given by your teachers.</p>
+          </div>
+
+        </div>
+
+        <div class="card">
+
+          <div class="notice">
+            <strong>Mathematics Assignment</strong>
+            <p>Complete questions 1–20 from the assigned topic.</p>
+          </div>
+
+          <div class="notice">
+            <strong>English Language</strong>
+            <p>Write an essay on the given topic.</p>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div id="page-results" class="page hidden">
+
+        <div class="page-header">
+
+          <div>
+            <h1>My Results</h1>
+            <p>View your academic performance.</p>
+          </div>
+
+        </div>
+
+        <div class="card">
+
+          <div class="table-wrapper">
+
+            <table>
+
+              <thead>
+                <tr>
+                  <th>Subject</th>
+                  <th>CA</th>
+                  <th>Exam</th>
+                  <th>Total</th>
+                  <th>Grade</th>
+                </tr>
+              </thead>
+
+              <tbody>
+
+                <tr>
+                  <td>Mathematics</td>
+                  <td>25</td>
+                  <td>55</td>
+                  <td>80</td>
+                  <td><span class="badge green">A</span></td>
+                </tr>
+
+                <tr>
+                  <td>English</td>
+                  <td>22</td>
+                  <td>48</td>
+                  <td>70</td>
+                  <td><span class="badge blue">B</span></td>
+                </tr>
+
+              </tbody>
+
+            </table>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div id="page-materials" class="page hidden">
+
+        <div class="page-header">
+
+          <div>
+            <h1>Learning Materials</h1>
+            <p>Access lesson notes and learning resources.</p>
+          </div>
+
+        </div>
+
+        <div class="card">
+
+          <div class="quick-grid">
+
+            <button class="quick-action">
+              <strong>📖 Mathematics</strong>
+              <span>Lesson materials</span>
+            </button>
+
+            <button class="quick-action">
+              <strong>📖 English</strong>
+              <span>Lesson materials</span>
+            </button>
+
+            <button class="quick-action">
+              <strong>📖 Physics</strong>
+              <span>Lesson materials</span>
+            </button>
+
+            <button class="quick-action">
+              <strong>📖 Chemistry</strong>
+              <span>Lesson materials</span>
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div id="page-studentProfile" class="page hidden">
+
+        <div class="page-header">
+          <div>
+            <h1>Student Profile</h1>
+            <p>Your academic information.</p>
+          </div>
+        </div>
+
+        <div class="card">
+
+          <div class="profile">
+
+            <div class="avatar">DS</div>
+
+            <div class="profile-info">
+              <h2>Demo Student</h2>
+              <p>Student · SS1</p>
+            </div>
+
+          </div>
+
+          <br>
+
+          <div class="info-grid">
+
+            <div class="info-item">
+              <label>Admission Number</label>
+              <strong>CTA/2026/001</strong>
+            </div>
+
+            <div class="info-item">
+              <label>Class</label>
+              <strong>SS1</strong>
+            </div>
+
+            <div class="info-item">
+              <label>Session</label>
+              <strong>2026/2027</strong>
+            </div>
+
+            <div class="info-item">
+              <label>Term</label>
+              <strong>First Term</strong>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- =========================
+           PARENT PORTAL
+      ========================= -->
+
+      <div id="page-children" class="page hidden">
+
+        <div class="page-header">
+
+          <div>
+            <h1>My Children</h1>
+            <p>Children connected to your parent account.</p>
+          </div>
+
+        </div>
+
+        <div class="card">
+
+          <div class="profile">
+
+            <div class="avatar">DS</div>
+
+            <div class="profile-info">
+              <h2>Demo Student</h2>
+              <p>SS1 · CTA/2026/001</p>
+            </div>
+
+          </div>
+
+          <br>
+
+          <button class="primary-btn">
+            View Child Dashboard
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <div id="page-childResults" class="page hidden">
+
+        <div class="page-header">
+
+          <div>
+            <h1>Academic Results</h1>
+            <p>Monitor your child's academic performance.</p>
+          </div>
+
+        </div>
+
+        <div class="card">
+
+          <div class="table-wrapper">
+
+            <table>
+
+              <thead>
+                <tr>
+                  <th>Subject</th>
+                  <th>CA</th>
+                  <th>Exam</th>
+                  <th>Total</th>
+                  <th>Grade</th>
+                </tr>
+              </thead>
+
+              <tbody>
+
+                <tr>
+                  <td>Mathematics</td>
+                  <td>25</td>
+                  <td>55</td>
+                  <td>80</td>
+                  <td><span class="badge green">A</span></td>
+                </tr>
+
+                <tr>
+                  <td>English</td>
+                  <td>22</td>
+                  <td>48</td>
+                  <td>70</td>
+                  <td><span class="badge blue">B</span></td>
+                </tr>
+
+              </tbody>
+
+            </table>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div id="page-childAttendance" class="page hidden">
+
+        <div class="page-header">
+
+          <div>
+            <h1>Attendance</h1>
+            <p>Monitor your child's attendance.</p>
+          </div>
+
+        </div>
+
+        <div class="stats-grid">
+
+          <div class="stat-card">
+            <div class="stat-icon">📅</div>
+            <h3>92%</h3>
+            <p>Attendance</p>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon">✓</div>
+            <h3>46</h3>
+            <p>Present</p>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon">!</div>
+            <h3>4</h3>
+            <p>Absent</p>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon">📆</div>
+            <h3>50</h3>
+            <p>School Days</p>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div id="page-childAssignments" class="page hidden">
+
+        <div class="page-header">
+
+          <div>
+            <h1>Child's Assignments</h1>
+            <p>Monitor assignments given to your child.</p>
+          </div>
+
+        </div>
+
+        <div class="card">
+
+          <div class="notice">
+
+            <strong>Mathematics Assignment</strong>
+
+            <p>
+              Complete questions 1–20.
+            </p>
+
+            <br>
+
+            <span class="badge orange">
+              Pending
+            </span>
+
+          </div>
+
+          <div class="notice">
+
+            <strong>English Language</strong>
+
+            <p>
+              Essay assignment.
+            </p>
+
+            <br>
+
+            <span class="badge green">
+              Submitted
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div id="page-parentProfile" class="page hidden">
+
+        <div class="page-header">
+
+          <div>
+            <h1>Parent Profile</h1>
+            <p>Manage your parent account.</p>
+          </div>
+
+        </div>
+
+        <div class="card">
+
+          <div class="profile">
+
+            <div class="avatar">DP</div>
+
+            <div class="profile-info">
+              <h2>Demo Parent</h2>
+              <p>Parent / Guardian</p>
+            </div>
+
+          </div>
+
+          <br>
+
+          <div class="info-grid">
+
+            <div class="info-item">
+              <label>Username</label>
+              <strong>parent</strong>
+            </div>
+
+            <div class="info-item">
+              <label>Children</label>
+              <strong>1</strong>
+            </div>
+
+            <div class="info-item">
+              <label>Session</label>
+              <strong>2026/2027</strong>
+            </div>
+
+            <div class="info-item">
+              <label>Status</label>
+              <strong>Active</strong>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- SETTINGS -->
+
+      <div id="page-settings" class="page hidden">
+
+        <div class="page-header">
+
+          <div>
+            <h1>Settings</h1>
+            <p>Manage your account.</p>
+          </div>
+
+        </div>
+
+        <div class="card">
+
+          <div class="form-group">
+
+            <label>Display Name</label>
+
+            <input
+              id="displayNameInput"
+              placeholder="Your name"
+            >
+
+          </div>
+
+          <div class="form-group">
+
+            <label>New Password</label>
+
+            <input
+              type="password"
+              placeholder="Enter new password"
+            >
+
+          </div>
+
+          <button class="primary-btn" onclick="saveSettings()">
+            Save Settings
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <!-- GENERAL PROFILE -->
+
+      <div id="page-profile" class="page hidden">
+
+        <div class="page-header">
+
+          <div>
+            <h1>My Account</h1>
+            <p>Account information.</p>
+          </div>
+
+        </div>
+
+        <div class="card">
+
+          <div class="profile">
+
+            <div class="avatar" id="generalAvatar">
+              U
+            </div>
+
+            <div class="profile-info">
+
+              <h2 id="generalName">
+                User
+              </h2>
+
+              <p id="generalRole">
+                Account
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </main>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     MODALS
+========================= -->
+
+<div id="teacherModal" class="modal hidden">
+
+  <div class="modal-box">
+
+    <div class="modal-header">
+
+      <h2>Add Teacher</h2>
+
+      <button
+        class="close-btn"
+        onclick="closeModal('teacherModal')">
+        ×
+      </button>
+
+    </div>
+
+    <div class="form-grid">
+
+      <div class="form-group">
+        <label>Full Name</label>
+        <input id="newTeacherName">
+      </div>
+
+      <div class="form-group">
+        <label>Username</label>
+        <input id="newTeacherUsername">
+      </div>
+
+      <div class="form-group">
+        <label>Department</label>
+        <input id="newTeacherDepartment">
+      </div>
+
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" id="newTeacherPassword">
+      </div>
+
+    </div>
+
+    <button class="primary-btn" onclick="addTeacher()">
+      Create Teacher
+    </button>
+
+  </div>
 
 </div>
 
+
+<div id="studentModal" class="modal hidden">
+
+  <div class="modal-box">
+
+    <div class="modal-header">
+
+      <h2>Add Student</h2>
+
+      <button
+        class="close-btn"
+        onclick="closeModal('studentModal')">
+        ×
+      </button>
+
+    </div>
+
+    <div class="form-grid">
+
+      <div class="form-group">
+        <label>Full Name</label>
+        <input id="newStudentName">
+      </div>
+
+      <div class="form-group">
+        <label>Admission Number</label>
+        <input id="newStudentAdmission">
+      </div>
+
+      <div class="form-group">
+        <label>Class</label>
+        <input id="newStudentClass">
+      </div>
+
+      <div class="form-group">
+        <label>Username</label>
+        <input id="newStudentUsername">
+      </div>
+
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" id="newStudentPassword">
+      </div>
+
+    </div>
+
+    <button class="primary-btn" onclick="addStudent()">
+      Create Student
+    </button>
+
+  </div>
+
+</div>
+
+
+<div id="parentModal" class="modal hidden">
+
+  <div class="modal-box">
+
+    <div class="modal-header">
+
+      <h2>Add Parent</h2>
+
+      <button
+        class="close-btn"
+        onclick="closeModal('parentModal')">
+        ×
+      </button>
+
+    </div>
+
+    <div class="form-grid">
+
+      <div class="form-group">
+        <label>Parent Name</label>
+        <input id="newParentName">
+      </div>
+
+      <div class="form-group">
+        <label>Username</label>
+        <input id="newParentUsername">
+      </div>
+
+      <div class="form-group">
+        <label>Phone</label>
+        <input id="newParentPhone">
+      </div>
+
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" id="newParentPassword">
+      </div>
+
+    </div>
+
+    <button class="primary-btn" onclick="addParent()">
+      Create Parent
+    </button>
+
+  </div>
+
+</div>
+
+
 <script>
 
-/* ============================================================
-   SUPABASE
-============================================================ */
+/* =========================================
+   APPLICATION DATA
+========================================= */
 
-const SUPABASE_URL =
-  "https://udbocxqfsufpyexxpfkr.supabase.co";
+let selectedPortal = "admin";
 
-const SUPABASE_KEY =
-  "sb_publishable_eljKKJNBUtRx55847F2RTA_2hfMgs7U";
+let currentUser = null;
 
-const sb = window.supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_KEY
-);
+const demoUsers = {
 
-let currentUser=null;
-let currentProfile=null;
-let assistantText="";
-let currentResultRows=[];
-let parentChildren=[];
+  admin:{
+    username:"admin",
+    password:"admin123",
+    name:"System Administrator",
+    role:"Administrator"
+  },
 
-/* ============================================================
-   HELPERS
-============================================================ */
+  teacher:{
+    username:"teacher",
+    password:"teacher123",
+    name:"Demo Teacher",
+    role:"Teacher"
+  },
 
-const $ = id => document.getElementById(id);
+  student:{
+    username:"student",
+    password:"student123",
+    name:"Demo Student",
+    role:"Student"
+  },
 
-function esc(value){
-  return String(value ?? "")
+  parent:{
+    username:"parent",
+    password:"parent123",
+    name:"Demo Parent",
+    role:"Parent"
+  }
+
+};
+
+
+/* =========================================
+   PORTAL SELECTION
+========================================= */
+
+function selectPortal(portal,button){
+
+  selectedPortal = portal;
+
+  document
+    .querySelectorAll(".portal-btn")
+    .forEach(btn => btn.classList.remove("active"));
+
+  button.classList.add("active");
+
+  const usernameInput =
+    document.getElementById("loginUsername");
+
+  if(portal === "student"){
+    usernameInput.placeholder =
+      "Enter student username";
+  }
+
+  else if(portal === "parent"){
+    usernameInput.placeholder =
+      "Enter parent username";
+  }
+
+  else if(portal === "teacher"){
+    usernameInput.placeholder =
+      "Enter teacher username";
+  }
+
+  else{
+    usernameInput.placeholder =
+      "Enter admin username";
+  }
+
+}
+
+
+/* =========================================
+   LOGIN
+========================================= */
+
+document
+.getElementById("loginForm")
+.addEventListener("submit",function(e){
+
+  e.preventDefault();
+
+  const username =
+    document.getElementById("loginUsername")
+    .value
+    .trim();
+
+  const password =
+    document.getElementById("loginPassword")
+    .value;
+
+  const message =
+    document.getElementById("loginMessage");
+
+  const user = demoUsers[selectedPortal];
+
+  if(
+    username === user.username &&
+    password === user.password
+  ){
+
+    currentUser = {
+      ...user,
+      portal:selectedPortal
+    };
+
+    localStorage.setItem(
+      "cta_current_user",
+      JSON.stringify(currentUser)
+    );
+
+    message.textContent = "";
+
+    openApplication();
+
+  }
+
+  else{
+
+    message.style.color = "#dc2626";
+
+    message.textContent =
+      "Invalid login details.";
+
+  }
+
+});
+
+
+/* =========================================
+   OPEN APPLICATION
+========================================= */
+
+function openApplication(){
+
+  document
+    .getElementById("loginPage")
+    .classList.add("hidden");
+
+  document
+    .getElementById("app")
+    .classList.remove("hidden");
+
+  configurePortal();
+
+}
+
+
+/* =========================================
+   CONFIGURE PORTAL
+========================================= */
+
+function configurePortal(){
+
+  if(!currentUser) return;
+
+  document.getElementById("sidebarName")
+    .textContent = currentUser.name;
+
+  document.getElementById("sidebarRole")
+    .textContent = currentUser.role;
+
+  document.getElementById("welcomeTitle")
+    .textContent =
+      "Welcome, " + currentUser.name;
+
+  document.getElementById("welcomeText")
+    .textContent =
+      currentUser.role +
+      " Portal · Caliphate Tarbiya Academy";
+
+  document
+    .getElementById("adminNav")
+    .classList.add("hidden");
+
+  document
+    .getElementById("teacherNav")
+    .classList.add("hidden");
+
+  document
+    .getElementById("studentNav")
+    .classList.add("hidden");
+
+  document
+    .getElementById("parentNav")
+    .classList.add("hidden");
+
+
+  if(currentUser.portal === "admin"){
+
+    document
+      .getElementById("adminNav")
+      .classList.remove("hidden");
+
+    document.getElementById("statOne").textContent="25";
+    document.getElementById("statOneLabel").textContent="Teachers";
+
+    document.getElementById("statTwo").textContent="180";
+    document.getElementById("statTwoLabel").textContent="Students";
+
+    document.getElementById("statThree").textContent="12";
+    document.getElementById("statThreeLabel").textContent="Pending Approvals";
+
+    document.getElementById("statFour").textContent="2026/27";
+    document.getElementById("statFourLabel").textContent="Session";
+
+  }
+
+
+  if(currentUser.portal === "teacher"){
+
+    document
+      .getElementById("teacherNav")
+      .classList.remove("hidden");
+
+    document.getElementById("statOne").textContent="6";
+    document.getElementById("statOneLabel").textContent="Subjects";
+
+    document.getElementById("statTwo").textContent="14";
+    document.getElementById("statTwoLabel").textContent="Documents";
+
+    document.getElementById("statThree").textContent="4";
+    document.getElementById("statThreeLabel").textContent="Pending";
+
+    document.getElementById("statFour").textContent="2026/27";
+    document.getElementById("statFourLabel").textContent="Session";
+
+  }
+
+
+  if(currentUser.portal === "student"){
+
+    document
+      .getElementById("studentNav")
+      .classList.remove("hidden");
+
+    document.getElementById("statOne").textContent="9";
+    document.getElementById("statOneLabel").textContent="Subjects";
+
+    document.getElementById("statTwo").textContent="4";
+    document.getElementById("statTwoLabel").textContent="Assignments";
+
+    document.getElementById("statThree").textContent="8";
+    document.getElementById("statThreeLabel").textContent="Results";
+
+    document.getElementById("statFour").textContent="92%";
+    document.getElementById("statFourLabel").textContent="Attendance";
+
+  }
+
+
+  if(currentUser.portal === "parent"){
+
+    document
+      .getElementById("parentNav")
+      .classList.remove("hidden");
+
+    document.getElementById("statOne").textContent="1";
+    document.getElementById("statOneLabel").textContent="Child";
+
+    document.getElementById("statTwo").textContent="4";
+    document.getElementById("statTwoLabel").textContent="Assignments";
+
+    document.getElementById("statThree").textContent="8";
+    document.getElementById("statThreeLabel").textContent="Results";
+
+    document.getElementById("statFour").textContent="92%";
+    document.getElementById("statFourLabel").textContent="Attendance";
+
+  }
+
+}
+
+
+/* =========================================
+   PAGE NAVIGATION
+========================================= */
+
+function showPage(page,button){
+
+  document
+    .querySelectorAll(".page")
+    .forEach(p => p.classList.add("hidden"));
+
+  const target =
+    document.getElementById("page-" + page);
+
+  if(target){
+    target.classList.remove("hidden");
+  }
+
+  document
+    .querySelectorAll(".nav-item")
+    .forEach(item => item.classList.remove("active"));
+
+  if(button){
+    button.classList.add("active");
+  }
+
+  document
+    .getElementById("sidebar")
+    .classList.remove("open");
+
+}
+
+
+/* =========================================
+   SIDEBAR
+========================================= */
+
+function toggleSidebar(){
+
+  document
+    .getElementById("sidebar")
+    .classList.toggle("open");
+
+}
+
+
+/* =========================================
+   LOGOUT
+========================================= */
+
+function logout(){
+
+  currentUser = null;
+
+  localStorage.removeItem(
+    "cta_current_user"
+  );
+
+  document
+    .getElementById("app")
+    .classList.add("hidden");
+
+  document
+    .getElementById("loginPage")
+    .classList.remove("hidden");
+
+  document
+    .getElementById("loginUsername")
+    .value = "";
+
+  document
+    .getElementById("loginPassword")
+    .value = "";
+
+}
+
+
+/* =========================================
+   MODALS
+========================================= */
+
+function openModal(id){
+
+  document
+    .getElementById(id)
+    .classList.remove("hidden");
+
+}
+
+function closeModal(id){
+
+  document
+    .getElementById(id)
+    .classList.add("hidden");
+
+}
+
+
+/* =========================================
+   ADD TEACHER
+========================================= */
+
+function addTeacher(){
+
+  const name =
+    document.getElementById("newTeacherName").value.trim();
+
+  const username =
+    document.getElementById("newTeacherUsername").value.trim();
+
+  const department =
+    document.getElementById("newTeacherDepartment").value.trim();
+
+  if(!name || !username){
+
+    alert("Please enter the teacher's name and username.");
+
+    return;
+  }
+
+  const table =
+    document.getElementById("teacherTable");
+
+  const row =
+    table.insertRow();
+
+  row.innerHTML = `
+    <td>${escapeHTML(name)}</td>
+    <td>${escapeHTML(username)}</td>
+    <td>${escapeHTML(department || "Not assigned")}</td>
+    <td>
+      <span class="badge green">Active</span>
+    </td>
+  `;
+
+  closeModal("teacherModal");
+
+  alert("Teacher added successfully.");
+
+}
+
+
+/* =========================================
+   ADD STUDENT
+========================================= */
+
+function addStudent(){
+
+  const name =
+    document.getElementById("newStudentName").value.trim();
+
+  const admission =
+    document.getElementById("newStudentAdmission").value.trim();
+
+  const className =
+    document.getElementById("newStudentClass").value.trim();
+
+  const username =
+    document.getElementById("newStudentUsername").value.trim();
+
+  if(!name || !admission || !className || !username){
+
+    alert("Please complete the student information.");
+
+    return;
+  }
+
+  const table =
+    document.getElementById("studentTable");
+
+  const row =
+    table.insertRow();
+
+  row.innerHTML = `
+    <td>${escapeHTML(name)}</td>
+    <td>${escapeHTML(admission)}</td>
+    <td>${escapeHTML(className)}</td>
+    <td>Not linked</td>
+    <td>
+      <span class="badge green">Active</span>
+    </td>
+  `;
+
+  closeModal("studentModal");
+
+  alert("Student added successfully.");
+
+}
+
+
+/* =========================================
+   ADD PARENT
+========================================= */
+
+function addParent(){
+
+  const name =
+    document.getElementById("newParentName").value.trim();
+
+  const username =
+    document.getElementById("newParentUsername").value.trim();
+
+  const phone =
+    document.getElementById("newParentPhone").value.trim();
+
+  if(!name || !username){
+
+    alert("Please enter parent name and username.");
+
+    return;
+  }
+
+  closeModal("parentModal");
+
+  alert(
+    "Parent account created successfully."
+  );
+
+}
+
+
+/* =========================================
+   NOTIFICATIONS
+========================================= */
+
+function showNotifications(){
+
+  alert(
+    "No new notifications."
+  );
+
+}
+
+
+/* =========================================
+   SETTINGS
+========================================= */
+
+function saveSettings(){
+
+  const name =
+    document.getElementById("displayNameInput").value.trim();
+
+  if(name){
+
+    currentUser.name = name;
+
+    localStorage.setItem(
+      "cta_current_user",
+      JSON.stringify(currentUser)
+    );
+
+    configurePortal();
+
+  }
+
+  alert("Settings saved.");
+
+}
+
+
+/* =========================================
+   HTML SECURITY
+========================================= */
+
+function escapeHTML(value){
+
+  return String(value)
     .replace(/&/g,"&amp;")
     .replace(/</g,"&lt;")
     .replace(/>/g,"&gt;")
     .replace(/"/g,"&quot;")
     .replace(/'/g,"&#039;");
-}
-
-function uid(){
-  return crypto.randomUUID();
-}
-
-function randomParentCode(){
-  const chars="ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
-  let result="CTA-";
-
-  for(let i=0;i<8;i++){
-    result+=chars[Math.floor(Math.random()*chars.length)];
-  }
-
-  return result;
-}
-
-function notify(message,type="info"){
-
-  const cls=
-    type==="error"
-      ? "alert-error"
-      : type==="success"
-        ? "alert-success"
-        : "alert-info";
-
-  const el=document.createElement("div");
-
-  el.className="alert "+cls;
-  el.textContent=message;
-
-  const page=$("content");
-
-  if(page){
-    page.prepend(el);
-    setTimeout(()=>el.remove(),5000);
-  }else{
-    alert(message);
-  }
-}
-
-function statusBadge(status){
-
-  const map={
-    draft:"badge-draft",
-    submitted_hod:"badge-submitted",
-    hod_approved:"badge-approved",
-    submitted_exam_officer:"badge-exam",
-    finalized:"badge-final",
-    published:"badge-published",
-    returned:"badge-returned"
-  };
-
-  return `
-    <span class="badge ${map[status]||"badge-draft"}">
-      ${esc(
-        String(status||"")
-          .replaceAll("_"," ")
-          .toUpperCase()
-      )}
-    </span>
-  `;
-}
-
-function grade(total){
-
-  total=Number(total)||0;
-
-  if(total>=75)return "A";
-  if(total>=70)return "B";
-  if(total>=60)return "C";
-  if(total>=50)return "D";
-  if(total>=40)return "E";
-
-  return "F";
-}
-
-function gradeText(g){
-
-  return {
-    A:"Excellent",
-    B:"Very Good",
-    C:"Good",
-    D:"Fair",
-    E:"Pass",
-    F:"Fail"
-  }[g]||"";
-}
-
-function isAdmin(){
-  return currentProfile?.role==="administrator";
-}
-
-function isTeacher(){
-  return currentProfile?.role==="teacher";
-}
-
-function isParent(){
-  return currentProfile?.account_type==="parent" ||
-         currentProfile?.role==="parent";
-}
-
-function isHOD(){
-
-  const r=
-    (currentProfile?.academic_role||"")
-      .toLowerCase();
-
-  return r.includes("hod");
-}
-
-function isExamOfficer(){
-
-  return currentProfile?.is_exam_officer===true ||
-    (currentProfile?.academic_role||"")
-      .toLowerCase()
-      .includes("examination officer");
-}
-
-function canUseHOD(){
-  return isAdmin()||isHOD();
-}
-
-function canUseExam(){
-  return isAdmin()||isExamOfficer();
-}
-
-/* ============================================================
-   LOGIN TYPE
-============================================================ */
-
-function loginTypeChanged(){
-
-  const type=$("loginType").value;
-
-  const parent=type==="parent";
-
-  $("staffLoginFields")
-    .classList.toggle("hidden",parent);
-
-  $("parentLoginFields")
-    .classList.toggle("hidden",!parent);
-
-  $("parentRegisterLink")
-    .classList.toggle("hidden",!parent);
-
-  $("loginMessage").innerHTML="";
-}
-
-function showParentRegistration(){
-
-  $("loginScreen").classList.add("hidden");
-  $("parentRegistrationScreen").classList.remove("hidden");
-
-  $("registrationMessage").innerHTML="";
-}
-
-function showLoginScreen(){
-
-  $("parentRegistrationScreen").classList.add("hidden");
-  $("loginScreen").classList.remove("hidden");
-
-  $("loginType").value="administrator";
-
-  loginTypeChanged();
-}
-
-/* ============================================================
-   STAFF LOGIN
-============================================================ */
-
-async function login(){
-
-  const email=$("loginEmail").value.trim();
-  const password=$("loginPassword").value;
-  const type=$("loginType").value;
-
-  if(type==="parent"){
-    await parentLogin();
-    return;
-  }
-
-  if(!email||!password){
-
-    $("loginMessage").innerHTML=`
-      <div class="alert alert-error">
-        Enter email and password.
-      </div>
-    `;
-
-    return;
-  }
-
-  $("loginMessage").innerHTML=`
-    <div class="alert alert-info">
-      Signing in...
-    </div>
-  `;
-
-  const {data,error}=
-    await sb.auth.signInWithPassword({
-      email,
-      password
-    });
-
-  if(error){
-
-    $("loginMessage").innerHTML=`
-      <div class="alert alert-error">
-        ${esc(error.message)}
-      </div>
-    `;
-
-    return;
-  }
-
-  currentUser=data.user;
-
-  await loadProfile();
-
-  if(!currentProfile){
-
-    await sb.auth.signOut();
-
-    $("loginMessage").innerHTML=`
-      <div class="alert alert-error">
-        Your account profile has not been configured.
-      </div>
-    `;
-
-    return;
-  }
-
-  if(type==="administrator" &&
-     currentProfile.role!=="administrator"){
-
-    await sb.auth.signOut();
-
-    $("loginMessage").innerHTML=`
-      <div class="alert alert-error">
-        This account is not an Administrator account.
-      </div>
-    `;
-
-    return;
-  }
-
-  if(type==="teacher" &&
-     currentProfile.role!=="teacher"){
-
-    await sb.auth.signOut();
-
-    $("loginMessage").innerHTML=`
-      <div class="alert alert-error">
-        This account is not a Teacher account.
-      </div>
-    `;
-
-    return;
-  }
-
-  openApplication();
-}
-
-/* ============================================================
-   PARENT LOGIN
-============================================================ */
-
-async function parentLogin(){
-
-  const email=$("parentLoginEmail").value.trim();
-  const password=$("parentLoginPassword").value;
-
-  if(!email||!password){
-
-    $("loginMessage").innerHTML=`
-      <div class="alert alert-error">
-        Enter parent email and password.
-      </div>
-    `;
-
-    return;
-  }
-
-  $("loginMessage").innerHTML=`
-    <div class="alert alert-info">
-      Signing in...
-    </div>
-  `;
-
-  const {data,error}=
-    await sb.auth.signInWithPassword({
-      email,
-      password
-    });
-
-  if(error){
-
-    $("loginMessage").innerHTML=`
-      <div class="alert alert-error">
-        ${esc(error.message)}
-      </div>
-    `;
-
-    return;
-  }
-
-  currentUser=data.user;
-
-  await loadProfile();
-
-  if(!currentProfile){
-
-    await sb.auth.signOut();
-
-    $("loginMessage").innerHTML=`
-      <div class="alert alert-error">
-        Your parent profile has not been configured.
-      </div>
-    `;
-
-    return;
-  }
-
-  if(!isParent()){
-
-    await sb.auth.signOut();
-
-    $("loginMessage").innerHTML=`
-      <div class="alert alert-error">
-        This account is not registered as a Parent account.
-      </div>
-    `;
-
-    return;
-  }
-
-  openApplication();
-}
-
-/* ============================================================
-   PARENT REGISTRATION
-============================================================ */
-
-async function registerParent(){
-
-  const fullName=$("regFullName").value.trim();
-  const email=$("regEmail").value.trim();
-  const phone=$("regPhone").value.trim();
-  const password=$("regPassword").value;
-  const confirm=$("regConfirmPassword").value;
-
-  if(!fullName||!email||!password){
-
-    $("registrationMessage").innerHTML=`
-      <div class="alert alert-error">
-        Full name, email and password are required.
-      </div>
-    `;
-
-    return;
-  }
-
-  if(password.length<6){
-
-    $("registrationMessage").innerHTML=`
-      <div class="alert alert-error">
-        Password must contain at least 6 characters.
-      </div>
-    `;
-
-    return;
-  }
-
-  if(password!==confirm){
-
-    $("registrationMessage").innerHTML=`
-      <div class="alert alert-error">
-        Passwords do not match.
-      </div>
-    `;
-
-    return;
-  }
-
-  $("registrationMessage").innerHTML=`
-    <div class="alert alert-info">
-      Creating your account...
-    </div>
-  `;
-
-  const {data,error}=
-    await sb.auth.signUp({
-      email,
-      password,
-      options:{
-        data:{
-          full_name:fullName,
-          account_type:"parent"
-        }
-      }
-    });
-
-  if(error){
-
-    $("registrationMessage").innerHTML=`
-      <div class="alert alert-error">
-        ${esc(error.message)}
-      </div>
-    `;
-
-    return;
-  }
-
-  if(!data.user){
-
-    $("registrationMessage").innerHTML=`
-      <div class="alert alert-error">
-        Account creation did not return a user.
-      </div>
-    `;
-
-    return;
-  }
-
-  const {error:profileError}=
-    await sb
-      .from("user_profiles")
-      .upsert({
-        id:data.user.id,
-        full_name:fullName,
-        username:null,
-        role:"parent",
-        academic_role:"Parent",
-        account_type:"parent",
-        phone:phone||null,
-        email:email,
-        is_active:true,
-        updated_at:new Date().toISOString()
-      });
-
-  if(profileError){
-
-    $("registrationMessage").innerHTML=`
-      <div class="alert alert-error">
-        Account was created, but the parent profile could not be created:
-        ${esc(profileError.message)}
-      </div>
-    `;
-
-    return;
-  }
-
-  /*
-    If Supabase email confirmation is enabled, the user will need
-    to confirm the email before normal password login works.
-  */
-
-  $("registrationMessage").innerHTML=`
-    <div class="alert alert-success">
-      Parent account created successfully.
-      You can now return to the login page.
-      If email confirmation is enabled in Supabase,
-      confirm your email first.
-    </div>
-  `;
-
-  $("regPassword").value="";
-  $("regConfirmPassword").value="";
-}
-
-/* ============================================================
-   PROFILE
-============================================================ */
-
-async function loadProfile(){
-
-  if(!currentUser)return;
-
-  const {data,error}=
-    await sb
-      .from("user_profiles")
-      .select("*")
-      .eq("id",currentUser.id)
-      .maybeSingle();
-
-  if(error){
-
-    console.error(error);
-    currentProfile=null;
-
-    return;
-  }
-
-  currentProfile=data;
-}
-
-/* ============================================================
-   OPEN APPLICATION
-============================================================ */
-
-function openApplication(){
-
-  $("loginScreen").classList.add("hidden");
-  $("parentRegistrationScreen").classList.add("hidden");
-
-  $("app").classList.remove("hidden");
-
-  $("userName").textContent=
-    currentProfile?.full_name||
-    currentUser?.email||
-    "User";
-
-  const parent=isParent();
-
-  $("adminNav")
-    .classList.toggle("hidden",!isAdmin());
-
-  $("hodNav")
-    .classList.toggle("hidden",!canUseHOD());
-
-  $("examNav")
-    .classList.toggle("hidden",!canUseExam());
-
-  $("parentNav")
-    .classList.toggle("hidden",!parent);
-
-  $("staffAcademicNav")
-    .classList.toggle("hidden",parent);
-
-  if(parent){
-
-    showPage("parentDashboard");
-
-  }else{
-
-    showPage("dashboard");
-
-  }
-}
-
-/* ============================================================
-   SESSION RESTORE
-============================================================ */
-
-async function restoreSession(){
-
-  const {data}=await sb.auth.getSession();
-
-  if(data?.session?.user){
-
-    currentUser=data.session.user;
-
-    await loadProfile();
-
-    if(currentProfile){
-
-      openApplication();
-
-    }
-  }
-}
-
-/* ============================================================
-   LOGOUT
-============================================================ */
-
-async function logout(){
-
-  await sb.auth.signOut();
-
-  currentUser=null;
-  currentProfile=null;
-  parentChildren=[];
-
-  $("app").classList.add("hidden");
-  $("parentRegistrationScreen").classList.add("hidden");
-  $("loginScreen").classList.remove("hidden");
-
-  $("loginPassword").value="";
-  $("parentLoginPassword").value="";
-
-  $("loginType").value="administrator";
-
-  loginTypeChanged();
-}
-
-/* ============================================================
-   NAVIGATION
-============================================================ */
-
-function toggleSidebar(){
-
-  $("sidebar").classList.toggle("open");
 
 }
 
-function showPage(page){
 
-  $("sidebar").classList.remove("open");
+/* =========================================
+   RESTORE LOGIN SESSION
+========================================= */
 
-  const titles={
+window.addEventListener("load",function(){
 
-    dashboard:"Dashboard",
-
-    lessonPlan:"Lesson Plan",
-    lessonNote:"Lesson Note",
-    scheme:"Scheme of Work",
-    assistant:"Teacher Assistant",
-    documents:"My Documents",
-
-    resultEntry:"Result Entry",
-    submissions:"My Result Submissions",
-
-    hod:"HOD Result Vetting",
-    examOfficer:"Examination Officer",
-
-    teachers:"Teacher Management",
-    classes:"Classes & Students",
-    hodAssignment:"HOD Assignment",
-    publish:"Publish Results",
-    broadsheet:"Broadsheet",
-    settings:"School Settings",
-    password:"Change Password",
-
-    parentDashboard:"Parent Dashboard",
-    linkChild:"Link Child",
-    parentResults:"My Child's Results"
-
-  };
-
-  $("topTitle").textContent=
-    titles[page]||"Dashboard";
-
-  const pages={
-
-    dashboard:dashboardPage,
-
-    lessonPlan:lessonPlanPage,
-    lessonNote:lessonNotePage,
-    scheme:schemePage,
-    assistant:assistantPage,
-    documents:documentsPage,
-
-    resultEntry:resultEntryPage,
-    submissions:submissionsPage,
-
-    hod:hodPage,
-    examOfficer:examOfficerPage,
-
-    teachers:teachersPage,
-    classes:classesPage,
-    hodAssignment:hodAssignmentPage,
-    publish:publishPage,
-    broadsheet:broadsheetPage,
-    settings:settingsPage,
-    password:passwordPage,
-
-    parentDashboard:parentDashboardPage,
-    linkChild:linkChildPage,
-    parentResults:parentResultsPage
-
-  };
-
-  if(!pages[page]){
-
-    $("content").innerHTML=
-      `<div class="empty">Page not found.</div>`;
-
-    return;
-  }
-
-  pages[page]();
-}
-
-/* ============================================================
-   PARENT DASHBOARD
-============================================================ */
-
-async function parentDashboardPage(){
-
-  $("content").innerHTML=`
-
-    <div class="page-title">
-      Parent Dashboard
-    </div>
-
-    <div class="cards">
-
-      <div class="card">
-        <div class="stat-number"
-             id="parentChildCount">
-          0
-        </div>
-        <div class="stat-label">
-          Linked Children
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="stat-number"
-             id="parentPublishedCount">
-          0
-        </div>
-        <div class="stat-label">
-          Published Results
-        </div>
-      </div>
-
-    </div>
-
-    <div class="form-card"
-         style="margin-top:18px">
-
-      <h3>
-        Welcome, ${esc(currentProfile?.full_name||"Parent")}
-      </h3>
-
-      <p>
-        This portal allows you to view results that the school
-        has officially published for your linked children.
-      </p>
-
-      <div class="actions">
-
-        <button class="btn btn-primary"
-                onclick="showPage('linkChild')">
-          🔗 Link a Child
-        </button>
-
-        <button class="btn btn-secondary"
-                onclick="showPage('parentResults')">
-          📄 View Results
-        </button>
-
-      </div>
-
-    </div>
-
-    <div id="parentChildrenDashboard"></div>
-  `;
-
-  await loadParentChildren();
-
-  $("parentChildCount").textContent=
-    parentChildren.length;
-
-  await loadParentPublishedCount();
-
-  renderParentChildrenDashboard();
-}
-
-async function loadParentChildren(){
-
-  if(!currentUser)return;
-
-  const {data,error}=
-    await sb
-      .from("parent_student_links")
-      .select(`
-        id,
-        student_id,
-        relationship,
-        is_active,
-        students(
-          id,
-          full_name,
-          admission_number,
-          admission_no,
-          class_id,
-          classes(name)
-        )
-      `)
-      .eq("parent_user_id",currentUser.id)
-      .eq("is_active",true);
-
-  if(error){
-
-    console.error(error);
-
-    parentChildren=[];
-
-    return;
-  }
-
-  parentChildren=data||[];
-
-}
-
-function renderParentChildrenDashboard(){
-
-  const box=$("parentChildrenDashboard");
-
-  if(!box)return;
-
-  if(!parentChildren.length){
-
-    box.innerHTML=`
-      <div class="card empty">
-
-        <h3 style="color:#14532d">
-          No child linked yet
-        </h3>
-
-        <p style="margin-top:8px">
-          Use the <strong>Link Child</strong> page to connect
-          your child's school record to your parent account.
-        </p>
-
-      </div>
-    `;
-
-    return;
-  }
-
-  box.innerHTML=`
-
-    <div class="form-card">
-
-      <h3>
-        My Children
-      </h3>
-
-      <div class="table-wrap">
-
-        <table>
-
-          <thead>
-
-            <tr>
-              <th>Student</th>
-              <th>Admission Number</th>
-              <th>Class</th>
-              <th>Relationship</th>
-              <th>Action</th>
-            </tr>
-
-          </thead>
-
-          <tbody>
-
-            ${parentChildren.map(link=>{
-
-              const s=link.students||{};
-
-              return `
-
-                <tr>
-
-                  <td>
-                    ${esc(s.full_name)}
-                  </td>
-
-                  <td>
-                    ${esc(
-                      s.admission_number||
-                      s.admission_no||
-                      ""
-                    )}
-                  </td>
-
-                  <td>
-                    ${esc(s.classes?.name||"")}
-                  </td>
-
-                  <td>
-                    ${esc(link.relationship||"Parent")}
-                  </td>
-
-                  <td>
-
-                    <button
-                      class="btn btn-secondary"
-                      onclick="showPage('parentResults')">
-                      View Result
-                    </button>
-
-                  </td>
-
-                </tr>
-
-              `;
-
-            }).join("")}
-
-          </tbody>
-
-        </table>
-
-      </div>
-
-    </div>
-
-  `;
-}
-
-async function loadParentPublishedCount(){
-
-  const countEl=$("parentPublishedCount");
-
-  if(!countEl)return;
-
-  if(!parentChildren.length){
-
-    countEl.textContent="0";
-
-    return;
-  }
-
-  const ids=parentChildren
-    .map(x=>x.student_id)
-    .filter(Boolean);
-
-  const {count,error}=
-    await sb
-      .from("results")
-      .select("id",{count:"exact",head:true})
-      .eq("is_published",true)
-      .in("student_id",ids);
-
-  if(error){
-
-    countEl.textContent="0";
-
-    return;
-  }
-
-  countEl.textContent=count||0;
-}
-
-/* ============================================================
-   LINK CHILD
-============================================================ */
-
-function linkChildPage(){
-
-  $("content").innerHTML=`
-
-    <div class="page-title">
-      Link Child
-    </div>
-
-    <div class="form-card"
-         style="max-width:700px">
-
-      <h3>
-        Link your child to this parent account
-      </h3>
-
-      <div class="alert alert-info">
-
-        Enter the student's official admission number
-        and the school-issued parent link code.
-
-        <br><br>
-
-        <strong>
-          Do not use a student's name alone.
-        </strong>
-
-      </div>
-
-      <label>
-        Admission Number
-      </label>
-
-      <input
-        id="linkAdmissionNumber"
-        placeholder="Enter student's admission number">
-
-      <label>
-        Parent Link Code
-      </label>
-
-      <input
-        id="linkParentCode"
-        placeholder="Enter school-issued parent code">
-
-      <label>
-        Relationship
-      </label>
-
-      <select id="linkRelationship">
-
-        <option>Parent</option>
-        <option>Father</option>
-        <option>Mother</option>
-        <option>Guardian</option>
-
-      </select>
-
-      <button
-        class="btn btn-primary"
-        style="margin-top:15px"
-        onclick="linkChild()">
-
-        Link Child
-
-      </button>
-
-    </div>
-
-    <div id="linkedChildrenBox"></div>
-
-  `;
-
-  renderLinkedChildrenBox();
-}
-
-function renderLinkedChildrenBox(){
-
-  const box=$("linkedChildrenBox");
-
-  if(!box)return;
-
-  if(!parentChildren.length){
-
-    box.innerHTML="";
-
-    return;
-  }
-
-  box.innerHTML=`
-
-    <div class="form-card">
-
-      <h3>
-        Already Linked
-      </h3>
-
-      <div class="table-wrap">
-
-        <table>
-
-          <thead>
-            <tr>
-              <th>Student</th>
-              <th>Admission No.</th>
-              <th>Class</th>
-              <th>Relationship</th>
-            </tr>
-          </thead>
-
-          <tbody>
-
-            ${parentChildren.map(link=>{
-
-              const s=link.students||{};
-
-              return `
-
-                <tr>
-
-                  <td>
-                    ${esc(s.full_name)}
-                  </td>
-
-                  <td>
-                    ${esc(
-                      s.admission_number||
-                      s.admission_no||
-                      ""
-                    )}
-                  </td>
-
-                  <td>
-                    ${esc(s.classes?.name||"")}
-                  </td>
-
-                  <td>
-                    ${esc(link.relationship||"Parent")}
-                  </td>
-
-                </tr>
-
-              `;
-
-            }).join("")}
-
-          </tbody>
-
-        </table>
-
-      </div>
-
-    </div>
-
-  `;
-}
-
-async function linkChild(){
-
-  const admission=
-    $("linkAdmissionNumber")
-      .value
-      .trim();
-
-  const code=
-    $("linkParentCode")
-      .value
-      .trim()
-      .toUpperCase();
-
-  const relationship=
-    $("linkRelationship")
-      .value;
-
-  if(!admission||!code){
-
-    notify(
-      "Admission number and parent link code are required.",
-      "error"
+  const saved =
+    localStorage.getItem(
+      "cta_current_user"
     );
 
-    return;
-  }
+  if(saved){
 
-  /*
-    We deliberately use admission_number OR admission_no
-    because older student records may use admission_no.
-  */
+    try{
 
-  let student=null;
+      currentUser =
+        JSON.parse(saved);
 
-  let result=
-    await sb
-      .from("students")
-      .select(`
-        id,
-        full_name,
-        admission_number,
-        admission_no,
-        class_id,
-        parent_link_code,
-        classes(name)
-      `)
-      .eq("parent_link_code",code)
-      .maybeSingle();
-
-  if(result.error){
-
-    notify(
-      result.error.message,
-      "error"
-    );
-
-    return;
-  }
-
-  student=result.data;
-
-  if(!student){
-
-    notify(
-      "Student not found. Check the admission number and parent link code.",
-      "error"
-    );
-
-    return;
-  }
-
-  const actualAdmission=
-    student.admission_number||
-    student.admission_no||
-    "";
-
-  if(
-    String(actualAdmission).trim().toLowerCase() !==
-    String(admission).trim().toLowerCase()
-  ){
-
-    notify(
-      "The admission number does not match the school-issued link code.",
-      "error"
-    );
-
-    return;
-  }
-
-  const {data:existing,error:existingError}=
-    await sb
-      .from("parent_student_links")
-      .select("id")
-      .eq("parent_user_id",currentUser.id)
-      .eq("student_id",student.id)
-      .maybeSingle();
-
-  if(existingError){
-
-    notify(
-      existingError.message,
-      "error"
-    );
-
-    return;
-  }
-
-  if(existing){
-
-    notify(
-      "This child is already linked to your account.",
-      "info"
-    );
-
-    return;
-  }
-
-  const {error}=
-    await sb
-      .from("parent_student_links")
-      .insert({
-        parent_user_id:currentUser.id,
-        student_id:student.id,
-        relationship,
-        is_active:true
-      });
-
-  if(error){
-
-    notify(
-      error.message,
-      "error"
-    );
-
-    return;
-  }
-
-  notify(
-    `${student.full_name} has been linked successfully.`,
-    "success"
-  );
-
-  $("linkAdmissionNumber").value="";
-  $("linkParentCode").value="";
-
-  await loadParentChildren();
-
-  renderLinkedChildrenBox();
-}
-
-/* ============================================================
-   PARENT RESULTS
-============================================================ */
-
-async function parentResultsPage(){
-
-  $("content").innerHTML=`
-
-    <div class="page-title">
-      My Child's Results
-    </div>
-
-    <div id="parentResultBox">
-
-      <div class="empty">
-        Loading children...
-      </div>
-
-    </div>
-
-  `;
-
-  await loadParentChildren();
-
-  const box=$("parentResultBox");
-
-  if(!parentChildren.length){
-
-    box.innerHTML=`
-
-      <div class="card empty">
-
-        <h3 style="color:#14532d">
-          No child linked
-        </h3>
-
-        <p style="margin-top:8px">
-          Link your child first before viewing results.
-        </p>
-
-        <button
-          class="btn btn-primary"
-          style="margin-top:14px"
-          onclick="showPage('linkChild')">
-          Link Child
-        </button>
-
-      </div>
-
-    `;
-
-    return;
-  }
-
-  box.innerHTML=`
-
-    <div class="form-card">
-
-      <h3>
-        Select Child
-      </h3>
-
-      <select id="parentChildSelect">
-
-        ${parentChildren.map(link=>{
-
-          const s=link.students||{};
-
-          return `
-
-            <option value="${esc(s.id)}">
-              ${esc(s.full_name)}
-              ${
-                s.classes?.name
-                  ? " — "+esc(s.classes.name)
-                  : ""
-              }
-            </option>
-
-          `;
-
-        }).join("")}
-
-      </select>
-
-      <div class="grid3"
-           style="margin-top:15px">
-
-        <div>
-
-          <label>Term</label>
-
-          <select id="parentTerm">
-
-            <option>First Term</option>
-            <option>Second Term</option>
-            <option>Third Term</option>
-
-          </select>
-
-        </div>
-
-        <div>
-
-          <label>Session</label>
-
-          <input
-            id="parentSession"
-            value="2026/2027">
-
-        </div>
-
-      </div>
-
-      <div class="actions">
-
-        <button
-          class="btn btn-primary"
-          onclick="loadParentResults()">
-          View Published Result
-        </button>
-
-      </div>
-
-    </div>
-
-    <div id="parentResultDetails"></div>
-
-  `;
-}
-
-async function loadParentResults(){
-
-  const studentId=
-    $("parentChildSelect").value;
-
-  const term=
-    $("parentTerm").value;
-
-  const session=
-    $("parentSession").value.trim();
-
-  if(!studentId){
-
-    notify(
-      "Select a child.",
-      "error"
-    );
-
-    return;
-  }
-
-  /*
-    The student must already be linked to the parent.
-  */
-
-  const linked=
-    parentChildren.some(
-      x=>x.student_id===studentId
-    );
-
-  if(!linked){
-
-    notify(
-      "This child is not linked to your account.",
-      "error"
-    );
-
-    return;
-  }
-
-  const {data,error}=
-    await sb
-      .from("results")
-      .select(`
-        *,
-        students(
-          id,
-          full_name,
-          admission_number,
-          admission_no,
-          classes(name)
-        ),
-        subjects(name)
-      `)
-      .eq("student_id",studentId)
-      .eq("term",term)
-      .eq("session",session)
-      .eq("is_published",true)
-      .order("created_at");
-
-  if(error){
-
-    notify(
-      error.message,
-      "error"
-    );
-
-    return;
-  }
-
-  renderParentResults(
-    data||[],
-    term,
-    session
-  );
-}
-
-function renderParentResults(
-  results,
-  term,
-  session
-){
-
-  const box=$("parentResultDetails");
-
-  if(!box)return;
-
-  if(!results.length){
-
-    box.innerHTML=`
-
-      <div class="card empty">
-
-        <h3>
-          Result Not Yet Published
-        </h3>
-
-        <p style="margin-top:8px">
-          The school has not published a result
-          for this student, term and session.
-        </p>
-
-      </div>
-
-    `;
-
-    return;
-  }
-
-  const student=results[0].students||{};
-
-  let grandTotal=0;
-
-  results.forEach(r=>{
-
-    grandTotal+=
-      Number(r.ca1||0)+
-      Number(r.ca2||0)+
-      Number(r.exam||0);
-
-  });
-
-  box.innerHTML=`
-
-    <div class="form-card"
-         id="printableParentResult">
-
-      <div class="result-header">
-
-        <h2>
-          Caliphate Tarbiya Academy
-        </h2>
-
-        <p>
-          School Academic Management System
-        </p>
-
-        <h3 style="margin-top:15px">
-          STUDENT RESULT
-        </h3>
-
-      </div>
-
-      <div class="grid3">
-
-        <div>
-          <strong>Student</strong>
-          <br>
-          ${esc(student.full_name)}
-        </div>
-
-        <div>
-          <strong>Admission Number</strong>
-          <br>
-          ${esc(
-            student.admission_number||
-            student.admission_no||
-            ""
-          )}
-        </div>
-
-        <div>
-          <strong>Class</strong>
-          <br>
-          ${esc(student.classes?.name||"")}
-        </div>
-
-        <div>
-          <strong>Term</strong>
-          <br>
-          ${esc(term)}
-        </div>
-
-        <div>
-          <strong>Session</strong>
-          <br>
-          ${esc(session)}
-        </div>
-
-      </div>
-
-      <div class="table-wrap"
-           style="margin-top:20px">
-
-        <table>
-
-          <thead>
-
-            <tr>
-
-              <th>#</th>
-              <th>Subject</th>
-              <th>CA1</th>
-              <th>CA2</th>
-              <th>Exam</th>
-              <th>Total</th>
-              <th>Grade</th>
-
-            </tr>
-
-          </thead>
-
-          <tbody>
-
-            ${results.map((r,i)=>{
-
-              const total=
-                Number(r.ca1||0)+
-                Number(r.ca2||0)+
-                Number(r.exam||0);
-
-              const g=grade(total);
-
-              return `
-
-                <tr>
-
-                  <td>${i+1}</td>
-
-                  <td>
-                    ${esc(r.subjects?.name||"")}
-                  </td>
-
-                  <td>
-                    ${Number(r.ca1||0)}
-                  </td>
-
-                  <td>
-                    ${Number(r.ca2||0)}
-                  </td>
-
-                  <td>
-                    ${Number(r.exam||0)}
-                  </td>
-
-                  <td>
-                    <strong>${total}</strong>
-                  </td>
-
-                  <td>
-                    <strong>${g}</strong>
-                    <br>
-                    <small>${gradeText(g)}</small>
-                  </td>
-
-                </tr>
-
-              `;
-
-            }).join("")}
-
-          </tbody>
-
-        </table>
-
-      </div>
-
-      <div class="grid2"
-           style="margin-top:20px">
-
-        <div class="card">
-
-          <div class="stat-label">
-            Overall Total
-          </div>
-
-          <div class="result-total">
-            ${grandTotal}
-          </div>
-
-        </div>
-
-        <div class="card">
-
-          <div class="stat-label">
-            Published Status
-          </div>
-
-          <div class="result-grade"
-               style="color:#15803d">
-            PUBLISHED
-          </div>
-
-        </div>
-
-      </div>
-
-      <div class="actions">
-
-        <button
-          class="btn btn-primary"
-          onclick="printParentResult()">
-          🖨️ Print Result
-        </button>
-
-      </div>
-
-    </div>
-
-  `;
-}
-
-function printParentResult(){
-
-  const element=
-    $("printableParentResult");
-
-  if(!element)return;
-
-  const w=
-    window.open("","_blank");
-
-  if(!w){
-
-    notify(
-      "Please allow pop-ups for printing.",
-      "error"
-    );
-
-    return;
-  }
-
-  w.document.write(`
-
-    <!DOCTYPE html>
-
-    <html>
-
-    <head>
-
-      <title>
-        Student Result - Caliphate Tarbiya Academy
-      </title>
-
-      <style>
-
-        body{
-          font-family:Arial,sans-serif;
-          padding:30px;
-          color:#17251c;
-        }
-
-        h2,h3{
-          color:#14532d;
-        }
-
-        .result-header{
-          text-align:center;
-          margin-bottom:20px;
-        }
-
-        .grid2,.grid3{
-          display:grid;
-          gap:12px;
-          margin-bottom:15px;
-        }
-
-        .grid2{
-          grid-template-columns:1fr 1fr;
-        }
-
-        .grid3{
-          grid-template-columns:repeat(3,1fr);
-        }
-
-        table{
-          width:100%;
-          border-collapse:collapse;
-        }
-
-        th,td{
-          border:1px solid #999;
-          padding:8px;
-          text-align:left;
-        }
-
-        th{
-          background:#ecf5ef;
-        }
-
-        .card{
-          border:1px solid #ddd;
-          padding:15px;
-        }
-
-        @media print{
-          body{
-            padding:10px;
-          }
-        }
-
-      </style>
-
-    </head>
-
-    <body>
-
-      ${element.innerHTML}
-
-    </body>
-
-    </html>
-
-  `);
-
-  w.document.close();
-  w.focus();
-
-  setTimeout(
-    ()=>w.print(),
-    300
-  );
-}
-
-/* ============================================================
-   DASHBOARD
-============================================================ */
-
-async function dashboardPage(){
-
-  $("content").innerHTML=`
-
-    <div class="page-title">
-      Dashboard
-    </div>
-
-    <div class="cards">
-
-      <div class="card">
-
-        <div class="stat-number"
-             id="dTeachers">
-          0
-        </div>
-
-        <div class="stat-label">
-          Teachers
-        </div>
-
-      </div>
-
-      <div class="card">
-
-        <div class="stat-number"
-             id="dStudents">
-          0
-        </div>
-
-        <div class="stat-label">
-          Students
-        </div>
-
-      </div>
-
-      <div class="card">
-
-        <div class="stat-number"
-             id="dPending">
-          0
-        </div>
-
-        <div class="stat-label">
-          Pending HOD Reviews
-        </div>
-
-      </div>
-
-      <div class="card">
-
-        <div class="stat-number"
-             id="dPublished">
-          0
-        </div>
-
-        <div class="stat-label">
-          Published Results
-        </div>
-
-      </div>
-
-    </div>
-
-    <div class="form-card"
-         style="margin-top:18px">
-
-      <h3>
-        Welcome
-      </h3>
-
-      <p>
-        Welcome,
-        <strong>
-          ${esc(currentProfile?.full_name||"User")}
-        </strong>.
-      </p>
-
-      <p style="margin-top:8px;color:#667">
-
-        Role:
-        <strong>
-          ${esc(
-            currentProfile?.academic_role||
-            currentProfile?.role||
-            ""
-          )}
-        </strong>
-
-      </p>
-
-    </div>
-
-  `;
-
-  const [
-    teachers,
-    students,
-    pending,
-    published
-  ]=await Promise.all([
-
-    sb.from("user_profiles")
-      .select("id",{count:"exact",head:true})
-      .eq("role","teacher"),
-
-    sb.from("students")
-      .select("id",{count:"exact",head:true}),
-
-    sb.from("results")
-      .select("id",{count:"exact",head:true})
-      .eq("status","submitted_hod"),
-
-    sb.from("results")
-      .select("id",{count:"exact",head:true})
-      .eq("is_published",true)
-
-  ]);
-
-  $("dTeachers").textContent=
-    teachers.count||0;
-
-  $("dStudents").textContent=
-    students.count||0;
-
-  $("dPending").textContent=
-    pending.count||0;
-
-  $("dPublished").textContent=
-    published.count||0;
-}
-
-/* ============================================================
-   DOCUMENT FORM
-============================================================ */
-
-function documentForm(type){
-
-  return `
-
-    <div class="form-card">
-
-      <h3>
-        ${esc(type)}
-      </h3>
-
-      <div class="grid2">
-
-        <div>
-
-          <label>
-            Title
-          </label>
-
-          <input
-            id="docTitle"
-            placeholder="${esc(type)} title">
-
-        </div>
-
-        <div>
-
-          <label>
-            Subject
-          </label>
-
-          <input
-            id="docSubject"
-            placeholder="Subject">
-
-        </div>
-
-        <div>
-
-          <label>
-            Class
-          </label>
-
-          <select id="docClass">
-
-            <option>Nursery 1</option>
-            <option>Nursery 2</option>
-            <option>Nursery 3</option>
-            <option>Basic 1</option>
-            <option>Basic 2</option>
-            <option>Basic 3</option>
-            <option>Basic 4</option>
-            <option>Basic 5</option>
-            <option>Basic 6</option>
-            <option>JSS 1</option>
-            <option>JSS 2</option>
-            <option>JSS 3</option>
-            <option>SS 1</option>
-            <option>SS 2</option>
-            <option>SS 3</option>
-
-          </select>
-
-        </div>
-
-        <div>
-
-          <label>
-            Term
-          </label>
-
-          <select id="docTerm">
-
-            <option>First Term</option>
-            <option>Second Term</option>
-            <option>Third Term</option>
-
-          </select>
-
-        </div>
-
-        <div>
-
-          <label>
-            Session
-          </label>
-
-          <input
-            id="docSession"
-            value="2026/2027">
-
-        </div>
-
-      </div>
-
-      <label>
-        Content
-      </label>
-
-      <textarea
-        id="docContent"
-        style="min-height:430px"
-        placeholder="Enter document content..."></textarea>
-
-      <div class="actions">
-
-        <button
-          class="btn btn-primary"
-          onclick="saveDocument('${esc(type)}')">
-          Save Draft
-        </button>
-
-        <button
-          class="btn btn-secondary"
-          onclick="printCurrentDocument()">
-          Print
-        </button>
-
-      </div>
-
-    </div>
-
-  `;
-}
-
-function lessonPlanPage(){
-
-  $("content").innerHTML=
-    `<div class="page-title">Lesson Plan</div>`+
-    documentForm("Lesson Plan");
-
-}
-
-function lessonNotePage(){
-
-  $("content").innerHTML=
-    `<div class="page-title">Lesson Note</div>`+
-    documentForm("Lesson Note");
-
-}
-
-function schemePage(){
-
-  $("content").innerHTML=
-    `<div class="page-title">Scheme of Work</div>`+
-    documentForm("Scheme of Work");
-
-}
-
-async function saveDocument(type){
-
-  const title=$("docTitle").value.trim();
-  const subject=$("docSubject").value.trim();
-  const className=$("docClass").value;
-  const term=$("docTerm").value;
-  const session=$("docSession").value.trim();
-  const content=$("docContent").value;
-
-  if(!title||!content){
-
-    notify(
-      "Enter a title and document content.",
-      "error"
-    );
-
-    return;
-  }
-
-  const {error}=
-    await sb
-      .from("documents")
-      .insert({
-
-        owner_id:currentUser.id,
-        document_type:type,
-        title,
-        subject,
-        class_name:className,
-        term,
-        session,
-        content,
-        status:"draft"
-
-      });
-
-  if(error){
-
-    console.error(error);
-
-    notify(
-      error.message,
-      "error"
-    );
-
-    return;
-  }
-
-  notify(
-    "Document saved successfully.",
-    "success"
-  );
-}
-
-/* ============================================================
-   TEACHER ASSISTANT
-============================================================ */
-
-function assistantPage(){
-
-  $("content").innerHTML=`
-
-    <div class="page-title">
-      Teacher Assistant
-    </div>
-
-    <div class="form-card">
-
-      <div class="grid2">
-
-        <div>
-
-          <label>
-            Document Type
-          </label>
-
-          <select id="aType">
-
-            <option>Lesson Plan</option>
-            <option>Lesson Note</option>
-            <option>Scheme of Work</option>
-            <option>CA Questions</option>
-            <option>Examination Questions</option>
-
-          </select>
-
-        </div>
-
-        <div>
-
-          <label>
-            Language
-          </label>
-
-          <select id="aLanguage">
-
-            <option>English</option>
-            <option>Hausa</option>
-            <option>Arabic</option>
-            <option>French</option>
-
-          </select>
-
-        </div>
-
-        <div>
-
-          <label>
-            Subject
-          </label>
-
-          <input
-            id="aSubject"
-            placeholder="e.g. Mathematics">
-
-        </div>
-
-        <div>
-
-          <label>
-            Class
-          </label>
-
-          <input
-            id="aClass"
-            placeholder="e.g. JSS 1">
-
-        </div>
-
-        <div>
-
-          <label>
-            Topic
-          </label>
-
-          <input
-            id="aTopic"
-            placeholder="Enter topic">
-
-        </div>
-
-        <div>
-
-          <label>
-            Number of Questions
-          </label>
-
-          <input
-            id="aCount"
-            type="number"
-            value="10"
-            min="1">
-
-        </div>
-
-      </div>
-
-      <label>
-        Additional Instructions
-      </label>
-
-      <textarea
-        id="aInstructions"
-        placeholder="Enter any special instruction..."></textarea>
-
-      <div class="actions">
-
-        <button
-          class="btn btn-primary"
-          onclick="generateAssistant()">
-          Generate
-        </button>
-
-        <button
-          class="btn btn-secondary"
-          onclick="useAssistant()">
-          Use This in Document
-        </button>
-
-      </div>
-
-    </div>
-
-    <div class="form-card">
-
-      <h3>
-        Generated Work
-      </h3>
-
-      <textarea
-        id="assistantOutput"
-        style="min-height:500px"
-        placeholder="Generated content will appear here..."></textarea>
-
-    </div>
-
-  `;
-}
-
-function generateAssistant(){
-
-  const type=$("aType").value;
-  const subject=
-    $("aSubject").value.trim()||
-    "Subject";
-
-  const cls=
-    $("aClass").value.trim()||
-    "Class";
-
-  const topic=
-    $("aTopic").value.trim()||
-    "Topic";
-
-  const count=
-    Number($("aCount").value)||10;
-
-  const language=
-    $("aLanguage").value;
-
-  let text="";
-
-  if(type==="Lesson Plan"){
-
-    text=
-`LESSON PLAN
-
-School: Caliphate Tarbiya Academy
-Subject: ${subject}
-Class: ${cls}
-Topic: ${topic}
-Language: ${language}
-
-Date: __________________
-Week: __________________
-Duration: ______________
-
-Entry Behaviour:
-Learners should have basic knowledge related to ${topic}.
-
-Learning Objectives:
-At the end of the lesson, learners should be able to:
-1. Explain ${topic}.
-2. Identify the main concepts related to ${topic}.
-3. Apply the knowledge gained.
-4. Answer questions correctly on ${topic}.
-
-Instructional Materials:
-Textbooks, board, marker, charts and relevant teaching materials.
-
-References:
-Approved Nigerian curriculum and relevant textbook.
-
-Set Induction:
-The teacher introduces the lesson by asking learners questions related to their previous knowledge.
-
-PRESENTATION
-
-Step 1
-
-Teacher's Activities:
-The teacher introduces ${topic}, explains the meaning and presents relevant examples.
-
-Learners' Activities:
-Learners listen, respond to questions and participate in the discussion.
-
-Step 2
-
-Teacher's Activities:
-The teacher explains the main concepts and demonstrates appropriate examples.
-
-Learners' Activities:
-Learners observe, ask questions and practise the examples.
-
-Step 3
-
-Teacher's Activities:
-The teacher gives learners guided activities and corrects their responses.
-
-Learners' Activities:
-Learners complete the activities and present their answers.
-
-Evaluation:
-1. Define ${topic}.
-2. Mention two important points about ${topic}.
-3. Explain one example related to ${topic}.
-4. Answer the practical question given by the teacher.
-
-Conclusion:
-The teacher summarizes the main points and allows learners to ask questions.
-
-Assignment:
-Learners should answer additional questions on ${topic}.`;
-
-  }else if(type==="Lesson Note"){
-
-    text=
-`LESSON NOTE
-
-Subject: ${subject}
-Class: ${cls}
-Topic: ${topic}
-
-Introduction:
-${topic} is an important concept in ${subject}.
-
-Objectives:
-By the end of the lesson, learners should be able to explain, identify and apply the major ideas connected with ${topic}.
-
-Content:
-${topic}
-
-Teacher's Explanation:
-The teacher explains the topic using simple examples appropriate to ${cls} learners.
-
-Examples:
-1. Example one related to ${topic}.
-2. Example two related to ${topic}.
-3. Example three related to ${topic}.
-
-Class Activity:
-Learners work individually and in groups to answer questions on the topic.
-
-Evaluation:
-1. What is ${topic}?
-2. Mention two features of ${topic}.
-3. Give an example of ${topic}.
-4. Explain what you have learnt.
-
-Conclusion:
-The teacher summarizes the lesson.
-
-Assignment:
-Write short notes and answer additional questions on ${topic}.`;
-
-  }else if(type==="Scheme of Work"){
-
-    text=
-`SCHEME OF WORK
-
-Subject: ${subject}
-Class: ${cls}
-
-WEEK 1
-Topic: ${topic}
-Content: Introduction to ${topic}
-Activities: Explanation, discussion and examples.
-Evaluation: Oral and written questions.
-
-WEEK 2
-Topic: ${topic} – Basic Concepts
-Content: Important concepts and terminology.
-Activities: Explanation and learner participation.
-Evaluation: Class exercise.
-
-WEEK 3
-Topic: ${topic} – Applications
-Content: Practical applications.
-Activities: Guided practice.
-Evaluation: Written exercise.
-
-WEEK 4
-Topic: Revision
-Content: Review of previous topics.
-Activities: Revision exercises.
-Evaluation: Test.
-
-WEEK 5
-Topic: Further Development
-Content: Extension of the topic.
-Activities: Demonstration and practice.
-Evaluation: Classwork.
-
-WEEK 6
-Topic: Practical Activities
-Content: Practical application.
-Activities: Group activities.
-Evaluation: Practical assessment.
-
-WEEK 7
-Topic: Mid-Term Review
-Content: Revision.
-Activities: Questions and answers.
-Evaluation: Short test.
-
-WEEK 8
-Topic: Advanced Concepts
-Content: Further explanation.
-Activities: Teacher demonstration.
-Evaluation: Exercise.
-
-WEEK 9
-Topic: Application
-Content: Application of knowledge.
-Activities: Practice.
-Evaluation: Written work.
-
-WEEK 10
-Topic: Revision
-Content: Revision of topics covered.
-Activities: Revision.
-Evaluation: Test.
-
-WEEK 11
-Topic: Examination Preparation
-Content: Important areas.
-Activities: Questions and answers.
-Evaluation: Practice.
-
-WEEK 12
-Topic: General Revision
-Content: Complete revision.
-Activities: Revision exercises.
-Evaluation: Mock assessment.
-
-WEEK 13
-Topic: Examination
-Content: Final assessment.`;
-
-  }else{
-
-    text=
-`${type.toUpperCase()}
-
-Subject: ${subject}
-Class: ${cls}
-Topic: ${topic}
-
-SECTION A – OBJECTIVE QUESTIONS
-
-Answer all questions.
-
-`;
-
-    for(let i=1;i<=count;i++){
-
-      text+=`${i}. Choose the correct answer about ${topic}.
-A. Option A
-B. Option B
-C. Option C
-D. Option D
-
-`;
-
-    }
-
-    text+=`
-SECTION B – THEORY
-
-1. Explain ${topic}.
-2. Mention and explain important points about ${topic}.
-3. Give relevant examples.
-
-MARKING GUIDE
-
-Answers should be awarded according to correctness, completeness and appropriate working where applicable.`;
-
-  }
-
-  assistantText=text;
-
-  $("assistantOutput").value=text;
-}
-
-function useAssistant(){
-
-  const text=
-    $("assistantOutput")?.value||
-    assistantText;
-
-  if(!text){
-
-    notify(
-      "Generate something first.",
-      "error"
-    );
-
-    return;
-  }
-
-  assistantText=text;
-
-  const type=
-    $("aType")?.value||
-    "Lesson Plan";
-
-  if(type==="Lesson Plan"){
-
-    showPage("lessonPlan");
-
-    setTimeout(()=>{
-
-      $("docTitle").value=
-        $("aTopic")?.value||
-        "Lesson Plan";
-
-      $("docSubject").value=
-        $("aSubject")?.value||
-        "";
-
-      $("docContent").value=text;
-
-    },100);
-
-  }else if(type==="Lesson Note"){
-
-    showPage("lessonNote");
-
-    setTimeout(()=>{
-
-      $("docTitle").value=
-        $("aTopic")?.value||
-        "Lesson Note";
-
-      $("docSubject").value=
-        $("aSubject")?.value||
-        "";
-
-      $("docContent").value=text;
-
-    },100);
-
-  }else if(type==="Scheme of Work"){
-
-    showPage("scheme");
-
-    setTimeout(()=>{
-
-      $("docTitle").value=
-        $("aTopic")?.value||
-        "Scheme of Work";
-
-      $("docSubject").value=
-        $("aSubject")?.value||
-        "";
-
-      $("docContent").value=text;
-
-    },100);
-
-  }else{
-
-    notify(
-      "Generated work is ready.",
-      "success"
-    );
-
-  }
-}
-
-/* ============================================================
-   DOCUMENTS
-============================================================ */
-
-async function documentsPage(){
-
-  $("content").innerHTML=`
-
-    <div class="page-title">
-      My Documents
-    </div>
-
-    <div id="documentsBox">
-
-      <div class="empty">
-        Loading...
-      </div>
-
-    </div>
-
-  `;
-
-  let query=
-    sb
-      .from("documents")
-      .select("*")
-      .order("created_at",{ascending:false});
-
-  if(!isAdmin()){
-
-    query=
-      query.eq(
-        "owner_id",
-        currentUser.id
-      );
-
-  }
-
-  const {data,error}=await query;
-
-  if(error){
-
-    $("documentsBox").innerHTML=`
-
-      <div class="alert alert-error">
-        ${esc(error.message)}
-      </div>
-
-    `;
-
-    return;
-  }
-
-  if(!data?.length){
-
-    $("documentsBox").innerHTML=`
-
-      <div class="card empty">
-        No documents found.
-      </div>
-
-    `;
-
-    return;
-  }
-
-  $("documentsBox").innerHTML=`
-
-    <div class="table-wrap">
-
-      <table>
-
-        <thead>
-
-          <tr>
-
-            <th>Title</th>
-            <th>Type</th>
-            <th>Subject</th>
-            <th>Class</th>
-            <th>Status</th>
-            <th>Action</th>
-
-          </tr>
-
-        </thead>
-
-        <tbody>
-
-          ${data.map(d=>`
-
-            <tr>
-
-              <td>${esc(d.title)}</td>
-              <td>${esc(d.document_type)}</td>
-              <td>${esc(d.subject)}</td>
-              <td>${esc(d.class_name)}</td>
-              <td>${statusBadge(d.status)}</td>
-
-              <td>
-
-                <button
-                  class="btn btn-secondary"
-                  onclick='viewDocument(${JSON.stringify(d)})'>
-                  View
-                </button>
-
-              </td>
-
-            </tr>
-
-          `).join("")}
-
-        </tbody>
-
-      </table>
-
-    </div>
-
-  `;
-}
-
-function viewDocument(d){
-
-  $("content").innerHTML=`
-
-    <div class="page-title">
-      ${esc(d.title)}
-    </div>
-
-    <div class="form-card">
-
-      <p>
-        <strong>Type:</strong>
-        ${esc(d.document_type)}
-      </p>
-
-      <p>
-        <strong>Subject:</strong>
-        ${esc(d.subject)}
-      </p>
-
-      <p>
-        <strong>Class:</strong>
-        ${esc(d.class_name)}
-      </p>
-
-      <textarea
-        id="viewDocContent"
-        style="min-height:600px;margin-top:15px">${esc(d.content)}</textarea>
-
-      <div class="actions">
-
-        <button
-          class="btn btn-secondary"
-          onclick="printCurrentDocument()">
-          Print
-        </button>
-
-        <button
-          class="btn btn-secondary"
-          onclick="showPage('documents')">
-          Back
-        </button>
-
-      </div>
-
-    </div>
-
-  `;
-}
-
-/* ============================================================
-   RESULT ENTRY
-============================================================ */
-
-async function resultEntryPage(){
-
-  const subjects=await loadSubjects();
-  const classes=await loadClasses();
-
-  $("content").innerHTML=`
-
-    <div class="page-title">
-      Result Entry
-    </div>
-
-    <div class="form-card">
-
-      <div class="grid3">
-
-        <div>
-
-          <label>Class</label>
-
-          <select id="resultClass">
-
-            <option value="">
-              Select class
-            </option>
-
-            ${classes.map(c=>`
-
-              <option value="${esc(c.id)}">
-                ${esc(c.name)}
-              </option>
-
-            `).join("")}
-
-          </select>
-
-        </div>
-
-        <div>
-
-          <label>Subject</label>
-
-          <select id="resultSubject">
-
-            <option value="">
-              Select subject
-            </option>
-
-            ${subjects.map(s=>`
-
-              <option value="${esc(s.id)}">
-                ${esc(s.name)}
-              </option>
-
-            `).join("")}
-
-          </select>
-
-        </div>
-
-        <div>
-
-          <label>Term</label>
-
-          <select id="resultTerm">
-
-            <option>First Term</option>
-            <option>Second Term</option>
-            <option>Third Term</option>
-
-          </select>
-
-        </div>
-
-        <div>
-
-          <label>Session</label>
-
-          <input
-            id="resultSession"
-            value="2026/2027">
-
-        </div>
-
-      </div>
-
-      <div class="actions">
-
-        <button
-          class="btn btn-primary"
-          onclick="loadResultStudents()">
-          Load Students
-        </button>
-
-      </div>
-
-    </div>
-
-    <div id="resultTable"></div>
-
-  `;
-}
-
-async function loadSubjects(){
-
-  const {data,error}=
-    await sb
-      .from("subjects")
-      .select("*")
-      .order("name");
-
-  if(error){
-
-    console.error(error);
-
-    return [];
-
-  }
-
-  return data||[];
-}
-
-async function loadClasses(){
-
-  const {data,error}=
-    await sb
-      .from("classes")
-      .select("*")
-      .order("name");
-
-  if(error){
-
-    console.error(error);
-
-    return [];
-
-  }
-
-  return data||[];
-}
-
-async function loadResultStudents(){
-
-  const classId=
-    $("resultClass").value;
-
-  if(!classId){
-
-    notify(
-      "Select a class.",
-      "error"
-    );
-
-    return;
-  }
-
-  const {data,error}=
-    await sb
-      .from("students")
-      .select("*")
-      .eq("class_id",classId)
-      .order("full_name");
-
-  if(error){
-
-    notify(
-      error.message,
-      "error"
-    );
-
-    return;
-  }
-
-  currentResultRows=data||[];
-
-  if(!currentResultRows.length){
-
-    $("resultTable").innerHTML=`
-
-      <div class="card empty">
-        No students found in this class.
-      </div>
-
-    `;
-
-    return;
-  }
-
-  $("resultTable").innerHTML=`
-
-    <div class="form-card">
-
-      <h3>
-        Enter Scores
-      </h3>
-
-      <p style="margin-bottom:12px;color:#667">
-
-        CA1 = 15 &nbsp; | &nbsp;
-        CA2 = 15 &nbsp; | &nbsp;
-        Examination = 70 &nbsp; | &nbsp;
-        Total = 100
-
-      </p>
-
-      <div class="table-wrap">
-
-        <table>
-
-          <thead>
-
-            <tr>
-
-              <th>#</th>
-              <th>Student</th>
-              <th>CA1 /15</th>
-              <th>CA2 /15</th>
-              <th>Exam /70</th>
-              <th>Total</th>
-              <th>Grade</th>
-
-            </tr>
-
-          </thead>
-
-          <tbody>
-
-            ${currentResultRows.map((s,i)=>`
-
-              <tr>
-
-                <td>${i+1}</td>
-
-                <td>
-                  ${esc(s.full_name)}
-                </td>
-
-                <td>
-
-                  <input
-                    type="number"
-                    min="0"
-                    max="15"
-                    id="ca1_${s.id}"
-                    oninput="calculateRow('${s.id}')">
-
-                </td>
-
-                <td>
-
-                  <input
-                    type="number"
-                    min="0"
-                    max="15"
-                    id="ca2_${s.id}"
-                    oninput="calculateRow('${s.id}')">
-
-                </td>
-
-                <td>
-
-                  <input
-                    type="number"
-                    min="0"
-                    max="70"
-                    id="exam_${s.id}"
-                    oninput="calculateRow('${s.id}')">
-
-                </td>
-
-                <td id="total_${s.id}">
-                  0
-                </td>
-
-                <td id="grade_${s.id}">
-                  F
-                </td>
-
-              </tr>
-
-            `).join("")}
-
-          </tbody>
-
-        </table>
-
-      </div>
-
-      <div class="actions">
-
-        <button
-          class="btn btn-secondary"
-          onclick="saveResults('draft')">
-          Save Draft
-        </button>
-
-        <button
-          class="btn btn-primary"
-          onclick="saveResults('submitted_hod')">
-          Submit to HOD
-        </button>
-
-      </div>
-
-    </div>
-
-  `;
-}
-
-function calculateRow(id){
-
-  const ca1=
-    Math.min(
-      15,
-      Math.max(
-        0,
-        Number($("ca1_"+id).value)||0
-      )
-    );
-
-  const ca2=
-    Math.min(
-      15,
-      Math.max(
-        0,
-        Number($("ca2_"+id).value)||0
-      )
-    );
-
-  const exam=
-    Math.min(
-      70,
-      Math.max(
-        0,
-        Number($("exam_"+id).value)||0
-      )
-    );
-
-  const total=
-    ca1+ca2+exam;
-
-  const g=grade(total);
-
-  $("total_"+id).textContent=
-    total;
-
-  $("grade_"+id).textContent=
-    `${g} - ${gradeText(g)}`;
-}
-
-async function saveResults(status){
-
-  const classId=
-    $("resultClass").value;
-
-  const subjectId=
-    $("resultSubject").value;
-
-  const term=
-    $("resultTerm").value;
-
-  const session=
-    $("resultSession").value.trim();
-
-  if(!classId||!subjectId){
-
-    notify(
-      "Select class and subject.",
-      "error"
-    );
-
-    return;
-  }
-
-  const submissionId=
-    "SUB-"+uid();
-
-  const rows=
-    currentResultRows.map(s=>{
-
-      const ca1=
-        Math.min(
-          15,
-          Math.max(
-            0,
-            Number($("ca1_"+s.id).value)||0
-          )
-        );
-
-      const ca2=
-        Math.min(
-          15,
-          Math.max(
-            0,
-            Number($("ca2_"+s.id).value)||0
-          )
-        );
-
-      const exam=
-        Math.min(
-          70,
-          Math.max(
-            0,
-            Number($("exam_"+s.id).value)||0
-          )
-        );
-
-      return {
-
-        id:uid(),
-        submission_id:submissionId,
-        teacher_id:currentUser.id,
-        student_id:s.id,
-        class_id:classId,
-        subject_id:subjectId,
-        term,
-        session,
-        ca1,
-        ca2,
-        exam,
-        status,
-        is_published:false,
-        created_at:new Date().toISOString()
-
-      };
-
-    });
-
-  const {error}=
-    await sb
-      .from("results")
-      .insert(rows);
-
-  if(error){
-
-    console.error(error);
-
-    notify(
-      error.message,
-      "error"
-    );
-
-    return;
-  }
-
-  notify(
-
-    status==="submitted_hod"
-      ? "Result submitted to HOD successfully."
-      : "Result draft saved successfully.",
-
-    "success"
-
-  );
-
-  showPage("submissions");
-}
-
-/* ============================================================
-   SUBMISSIONS
-============================================================ */
-
-async function submissionsPage(){
-
-  $("content").innerHTML=`
-
-    <div class="page-title">
-      My Result Submissions
-    </div>
-
-    <div id="submissionBox">
-
-      <div class="empty">
-        Loading...
-      </div>
-
-    </div>
-
-  `;
-
-  let query=
-    sb
-      .from("results")
-      .select(`
-        submission_id,
-        status,
-        subject_id,
-        class_id,
-        term,
-        session,
-        created_at
-      `)
-      .order("created_at",{ascending:false});
-
-  if(!isAdmin()){
-
-    query=
-      query.eq(
-        "teacher_id",
-        currentUser.id
-      );
-
-  }
-
-  const {data,error}=await query;
-
-  if(error){
-
-    $("submissionBox").innerHTML=`
-
-      <div class="alert alert-error">
-        ${esc(error.message)}
-      </div>
-
-    `;
-
-    return;
-  }
-
-  const groups={};
-
-  (data||[]).forEach(r=>{
-
-    if(!groups[r.submission_id]){
-      groups[r.submission_id]=r;
-    }
-
-  });
-
-  const list=
-    Object.values(groups);
-
-  if(!list.length){
-
-    $("submissionBox").innerHTML=`
-
-      <div class="card empty">
-        No submissions found.
-      </div>
-
-    `;
-
-    return;
-  }
-
-  $("submissionBox").innerHTML=`
-
-    <div class="table-wrap">
-
-      <table>
-
-        <thead>
-
-          <tr>
-
-            <th>Submission</th>
-            <th>Term</th>
-            <th>Session</th>
-            <th>Status</th>
-            <th>Action</th>
-
-          </tr>
-
-        </thead>
-
-        <tbody>
-
-          ${list.map(r=>`
-
-            <tr>
-
-              <td>
-                ${esc(r.submission_id)}
-              </td>
-
-              <td>
-                ${esc(r.term)}
-              </td>
-
-              <td>
-                ${esc(r.session)}
-              </td>
-
-              <td>
-                ${statusBadge(r.status)}
-              </td>
-
-              <td>
-
-                <button
-                  class="btn btn-secondary"
-                  onclick="viewSubmission('${esc(r.submission_id)}')">
-                  View
-                </button>
-
-              </td>
-
-            </tr>
-
-          `).join("")}
-
-        </tbody>
-
-      </table>
-
-    </div>
-
-  `;
-}
-
-async function viewSubmission(id){
-
-  const {data,error}=
-    await sb
-      .from("results")
-      .select(`
-        *,
-        students(full_name),
-        subjects(name),
-        classes(name)
-      `)
-      .eq("submission_id",id)
-      .order("created_at");
-
-  if(error){
-
-    notify(
-      error.message,
-      "error"
-    );
-
-    return;
-  }
-
-  $("content").innerHTML=`
-
-    <div class="page-title">
-      Result Submission
-    </div>
-
-    <div class="form-card">
-
-      <div class="table-wrap">
-
-        <table>
-
-          <thead>
-
-            <tr>
-
-              <th>Student</th>
-              <th>CA1</th>
-              <th>CA2</th>
-              <th>Exam</th>
-              <th>Total</th>
-              <th>Grade</th>
-
-            </tr>
-
-          </thead>
-
-          <tbody>
-
-            ${(data||[]).map(r=>{
-
-              const total=
-                Number(r.ca1||0)+
-                Number(r.ca2||0)+
-                Number(r.exam||0);
-
-              return `
-
-                <tr>
-
-                  <td>
-                    ${esc(r.students?.full_name)}
-                  </td>
-
-                  <td>${r.ca1}</td>
-                  <td>${r.ca2}</td>
-                  <td>${r.exam}</td>
-
-                  <td>
-                    ${total}
-                  </td>
-
-                  <td>
-                    ${grade(total)}
-                  </td>
-
-                </tr>
-
-              `;
-
-            }).join("")}
-
-          </tbody>
-
-        </table>
-
-      </div>
-
-      <div class="actions">
-
-        <button
-          class="btn btn-secondary"
-          onclick="printCurrentDocument()">
-          Print
-        </button>
-
-        <button
-          class="btn btn-secondary"
-          onclick="showPage('submissions')">
-          Back
-        </button>
-
-      </div>
-
-    </div>
-
-  `;
-}
-
-/* ============================================================
-   HOD
-============================================================ */
-
-async function hodPage(){
-
-  if(!canUseHOD()){
-
-    $("content").innerHTML=`
-
-      <div class="alert alert-error">
-        HOD access denied.
-      </div>
-
-    `;
-
-    return;
-  }
-
-  $("content").innerHTML=`
-
-    <div class="page-title">
-      HOD Result Vetting
-    </div>
-
-    <div id="hodBox">
-
-      <div class="empty">
-        Loading...
-      </div>
-
-    </div>
-
-  `;
-
-  const {data,error}=
-    await sb
-      .from("results")
-      .select(`
-        submission_id,
-        status,
-        subject_id,
-        class_id,
-        term,
-        session,
-        teacher_id,
-        hod_comment,
-        created_at
-      `)
-      .eq("status","submitted_hod")
-      .order("created_at",{ascending:false});
-
-  if(error){
-
-    $("hodBox").innerHTML=`
-
-      <div class="alert alert-error">
-        ${esc(error.message)}
-      </div>
-
-    `;
-
-    return;
-  }
-
-  const groups={};
-
-  (data||[]).forEach(r=>{
-
-    if(!groups[r.submission_id]){
-      groups[r.submission_id]=r;
-    }
-
-  });
-
-  const list=
-    Object.values(groups);
-
-  if(!list.length){
-
-    $("hodBox").innerHTML=`
-
-      <div class="card empty">
-        No results awaiting HOD review.
-      </div>
-
-    `;
-
-    return;
-  }
-
-  $("hodBox").innerHTML=`
-
-    <div class="table-wrap">
-
-      <table>
-
-        <thead>
-
-          <tr>
-
-            <th>Submission</th>
-            <th>Term</th>
-            <th>Session</th>
-            <th>Status</th>
-            <th>Action</th>
-
-          </tr>
-
-        </thead>
-
-        <tbody>
-
-          ${list.map(r=>`
-
-            <tr>
-
-              <td>
-                ${esc(r.submission_id)}
-              </td>
-
-              <td>
-                ${esc(r.term)}
-              </td>
-
-              <td>
-                ${esc(r.session)}
-              </td>
-
-              <td>
-                ${statusBadge(r.status)}
-              </td>
-
-              <td>
-
-                <button
-                  class="btn btn-secondary"
-                  onclick="hodReview('${esc(r.submission_id)}')">
-                  Review
-                </button>
-
-              </td>
-
-            </tr>
-
-          `).join("")}
-
-        </tbody>
-
-      </table>
-
-    </div>
-
-  `;
-}
-
-async function hodReview(submissionId){
-
-  const {data,error}=
-    await sb
-      .from("results")
-      .select(`
-        *,
-        students(full_name),
-        subjects(name),
-        classes(name)
-      `)
-      .eq("submission_id",submissionId)
-      .order("created_at");
-
-  if(error){
-
-    notify(
-      error.message,
-      "error"
-    );
-
-    return;
-  }
-
-  $("content").innerHTML=`
-
-    <div class="page-title">
-      HOD Review
-    </div>
-
-    <div class="form-card">
-
-      <div class="table-wrap">
-
-        <table>
-
-          <thead>
-
-            <tr>
-
-              <th>Student</th>
-              <th>CA1</th>
-              <th>CA2</th>
-              <th>Exam</th>
-              <th>Total</th>
-              <th>Grade</th>
-
-            </tr>
-
-          </thead>
-
-          <tbody>
-
-            ${(data||[]).map(r=>{
-
-              const total=
-                Number(r.ca1||0)+
-                Number(r.ca2||0)+
-                Number(r.exam||0);
-
-              return `
-
-                <tr>
-
-                  <td>
-                    ${esc(r.students?.full_name)}
-                  </td>
-
-                  <td>${r.ca1}</td>
-                  <td>${r.ca2}</td>
-                  <td>${r.exam}</td>
-
-                  <td>
-                    ${total}
-                  </td>
-
-                  <td>
-                    ${grade(total)}
-                  </td>
-
-                </tr>
-
-              `;
-
-            }).join("")}
-
-          </tbody>
-
-        </table>
-
-      </div>
-
-      <label>
-        HOD Comment
-      </label>
-
-      <textarea
-        id="hodComment"
-        placeholder="Enter comment..."></textarea>
-
-      <div class="actions">
-
-        <button
-          class="btn btn-danger"
-          onclick="returnToTeacher('${esc(submissionId)}')">
-          Return to Teacher
-        </button>
-
-        <button
-          class="btn btn-primary"
-          onclick="approveHOD('${esc(submissionId)}')">
-          Approve
-        </button>
-
-      </div>
-
-    </div>
-
-  `;
-}
-
-async function approveHOD(submissionId){
-
-  const comment=
-    $("hodComment")?.value.trim()||
-    "";
-
-  const {error}=
-    await sb
-      .from("results")
-      .update({
-
-        status:"hod_approved",
-        hod_comment:comment,
-        hod_approved_by:currentUser.id,
-        hod_approved_at:
-          new Date().toISOString()
-
-      })
-      .eq("submission_id",submissionId)
-      .eq("status","submitted_hod");
-
-  if(error){
-
-    notify(
-      error.message,
-      "error"
-    );
-
-    return;
-  }
-
-  notify(
-    "HOD approval completed.",
-    "success"
-  );
-
-  showPage("hod");
-}
-
-async function returnToTeacher(submissionId){
-
-  const comment=
-    $("hodComment")?.value.trim()||
-    "";
-
-  const {error}=
-    await sb
-      .from("results")
-      .update({
-
-        status:"returned",
-        hod_comment:comment
-
-      })
-      .eq("submission_id",submissionId)
-      .eq("status","submitted_hod");
-
-  if(error){
-
-    notify(
-      error.message,
-      "error"
-    );
-
-    return;
-  }
-
-  notify(
-    "Result returned to teacher.",
-    "success"
-  );
-
-  showPage("hod");
-}
-
-async function sendToExamOfficer(submissionId){
-
-  if(!canUseHOD()){
-
-    notify(
-      "HOD access denied.",
-      "error"
-    );
-
-    return;
-  }
-
-  const {error}=
-    await sb
-      .from("results")
-      .update({
-
-        status:"submitted_exam_officer",
-        sent_to_exam_officer_by:
-          currentUser.id,
-        sent_to_exam_officer_at:
-          new Date().toISOString()
-
-      })
-      .eq("submission_id",submissionId)
-      .eq("status","hod_approved");
-
-  if(error){
-
-    notify(
-      error.message,
-      "error"
-    );
-
-    return;
-  }
-
-  notify(
-    "Result sent to Examination Officer successfully.",
-    "success"
-  );
-
-  showPage("hod");
-}
-
-/* ============================================================
-   EXAMINATION OFFICER
-============================================================ */
-
-async function examOfficerPage(){
-
-  if(!canUseExam()){
-
-    $("content").innerHTML=`
-
-      <div class="alert alert-error">
-        Examination Officer access denied.
-      </div>
-
-    `;
-
-    return;
-  }
-
-  $("content").innerHTML=`
-
-    <div class="page-title">
-      Examination Officer
-    </div>
-
-    <div id="examBox">
-
-      <div class="empty">
-        Loading...
-      </div>
-
-    </div>
-
-  `;
-
-  const {data,error}=
-    await sb
-      .from("results")
-      .select("*")
-      .eq("status","submitted_exam_officer")
-      .order("created_at",{ascending:false});
-
-  if(error){
-
-    $("examBox").innerHTML=`
-
-      <div class="alert alert-error">
-        ${esc(error.message)}
-      </div>
-
-    `;
-
-    return;
-  }
-
-  const groups={};
-
-  (data||[]).forEach(r=>{
-
-    if(!groups[r.submission_id]){
-      groups[r.submission_id]=r;
-    }
-
-  });
-
-  const list=
-    Object.values(groups);
-
-  if(!list.length){
-
-    $("examBox").innerHTML=`
-
-      <div class="card empty">
-        No results awaiting Examination Officer review.
-      </div>
-
-    `;
-
-    return;
-  }
-
-  $("examBox").innerHTML=`
-
-    <div class="table-wrap">
-
-      <table>
-
-        <thead>
-
-          <tr>
-
-            <th>Submission</th>
-            <th>Term</th>
-            <th>Session</th>
-            <th>Status</th>
-            <th>Action</th>
-
-          </tr>
-
-        </thead>
-
-        <tbody>
-
-          ${list.map(r=>`
-
-            <tr>
-
-              <td>
-                ${esc(r.submission_id)}
-              </td>
-
-              <td>
-                ${esc(r.term)}
-              </td>
-
-              <td>
-                ${esc(r.session)}
-              </td>
-
-              <td>
-                ${statusBadge(r.status)}
-              </td>
-
-              <td>
-
-                <button
-                  class="btn btn-primary"
-                  onclick="examReview('${esc(r.submission_id)}')">
-                  Review & Finalize
-                </button>
-
-              </td>
-
-            </tr>
-
-          `).join("")}
-
-        </tbody>
-
-      </table>
-
-    </div>
-
-  `;
-}
-
-async function examReview(submissionId){
-
-  const {data,error}=
-    await sb
-      .from("results")
-      .select(`
-        *,
-        students(full_name)
-      `)
-      .eq("submission_id",submissionId)
-      .order("created_at");
-
-  if(error){
-
-    notify(
-      error.message,
-      "error"
-    );
-
-    return;
-  }
-
-  $("content").innerHTML=`
-
-    <div class="page-title">
-      Examination Officer Review
-    </div>
-
-    <div class="form-card">
-
-      <div class="alert alert-info">
-
-        Finalization locks this result from normal
-        teacher/HOD editing.
-
-      </div>
-
-      <div class="table-wrap">
-
-        <table>
-
-          <thead>
-
-            <tr>
-
-              <th>Student</th>
-              <th>CA1</th>
-              <th>CA2</th>
-              <th>Exam</th>
-              <th>Total</th>
-              <th>Grade</th>
-
-            </tr>
-
-          </thead>
-
-          <tbody>
-
-            ${(data||[]).map(r=>{
-
-              const total=
-                Number(r.ca1||0)+
-                Number(r.ca2||0)+
-                Number(r.exam||0);
-
-              return `
-
-                <tr>
-
-                  <td>
-                    ${esc(r.students?.full_name)}
-                  </td>
-
-                  <td>${r.ca1}</td>
-                  <td>${r.ca2}</td>
-                  <td>${r.exam}</td>
-
-                  <td>
-                    ${total}
-                  </td>
-
-                  <td>
-                    ${grade(total)}
-                  </td>
-
-                </tr>
-
-              `;
-
-            }).join("")}
-
-          </tbody>
-
-        </table>
-
-      </div>
-
-      <div class="actions">
-
-        <button
-          class="btn btn-primary"
-          onclick="finalizeResult('${esc(submissionId)}')">
-          Finalize & Lock
-        </button>
-
-        <button
-          class="btn btn-secondary"
-          onclick="showPage('examOfficer')">
-          Back
-        </button>
-
-      </div>
-
-    </div>
-
-  `;
-}
-
-async function finalizeResult(submissionId){
-
-  if(!canUseExam()){
-
-    notify(
-      "Access denied.",
-      "error"
-    );
-
-    return;
-  }
-
-  if(!confirm(
-    "Finalize and lock this result? This should only be done after review."
-  ))return;
-
-  const {error}=
-    await sb
-      .from("results")
-      .update({
-
-        status:"finalized",
-        finalized_by:currentUser.id,
-        finalized_at:
-          new Date().toISOString()
-
-      })
-      .eq("submission_id",submissionId)
-      .eq("status","submitted_exam_officer");
-
-  if(error){
-
-    notify(
-      error.message,
-      "error"
-    );
-
-    return;
-  }
-
-  notify(
-    "Result finalized and locked successfully.",
-    "success"
-  );
-
-  showPage("examOfficer");
-}
-
-/* ============================================================
-   ADMIN PUBLISH
-============================================================ */
-
-async function publishPage(){
-
-  if(!isAdmin()){
-
-    $("content").innerHTML=`
-
-      <div class="alert alert-error">
-        Administrator access denied.
-      </div>
-
-    `;
-
-    return;
-  }
-
-  $("content").innerHTML=`
-
-    <div class="page-title">
-      Publish Results
-    </div>
-
-    <div id="publishBox">
-
-      <div class="empty">
-        Loading...
-      </div>
-
-    </div>
-
-  `;
-
-  const {data,error}=
-    await sb
-      .from("results")
-      .select("*")
-      .eq("status","finalized")
-      .order("created_at",{ascending:false});
-
-  if(error){
-
-    $("publishBox").innerHTML=`
-
-      <div class="alert alert-error">
-        ${esc(error.message)}
-      </div>
-
-    `;
-
-    return;
-  }
-
-  const groups={};
-
-  (data||[]).forEach(r=>{
-
-    if(!groups[r.submission_id]){
-      groups[r.submission_id]=r;
-    }
-
-  });
-
-  const list=
-    Object.values(groups);
-
-  if(!list.length){
-
-    $("publishBox").innerHTML=`
-
-      <div class="card empty">
-        No finalized results awaiting publication.
-      </div>
-
-    `;
-
-    return;
-  }
-
-  $("publishBox").innerHTML=`
-
-    <div class="table-wrap">
-
-      <table>
-
-        <thead>
-
-          <tr>
-
-            <th>Submission</th>
-            <th>Term</th>
-            <th>Session</th>
-            <th>Status</th>
-            <th>Action</th>
-
-          </tr>
-
-        </thead>
-
-        <tbody>
-
-          ${list.map(r=>`
-
-            <tr>
-
-              <td>
-                ${esc(r.submission_id)}
-              </td>
-
-              <td>
-                ${esc(r.term)}
-              </td>
-
-              <td>
-                ${esc(r.session)}
-              </td>
-
-              <td>
-                ${statusBadge(r.status)}
-              </td>
-
-              <td>
-
-                <button
-                  class="btn btn-primary"
-                  onclick="publishResult('${esc(r.submission_id)}')">
-                  Publish
-                </button>
-
-              </td>
-
-            </tr>
-
-          `).join("")}
-
-        </tbody>
-
-      </table>
-
-    </div>
-
-  `;
-}
-
-async function publishResult(submissionId){
-
-  if(!isAdmin()){
-
-    notify(
-      "Administrator access required.",
-      "error"
-    );
-
-    return;
-  }
-
-  if(!confirm(
-    "Publish this result? Parents and students will be able to see it when their portals are connected."
-  ))return;
-
-  const {error}=
-    await sb
-      .from("results")
-      .update({
-
-        status:"published",
-        is_published:true,
-        published_by:currentUser.id,
-        published_at:
-          new Date().toISOString()
-
-      })
-      .eq("submission_id",submissionId)
-      .eq("status","finalized");
-
-  if(error){
-
-    notify(
-      error.message,
-      "error"
-    );
-
-    return;
-  }
-
-  notify(
-    "Result published successfully.",
-    "success"
-  );
-
-  showPage("publish");
-}
-
-/* ============================================================
-   TEACHER MANAGEMENT
-============================================================ */
-
-async function teachersPage(){
-
-  if(!isAdmin()){
-
-    $("content").innerHTML=`
-
-      <div class="alert alert-error">
-        Administrator access denied.
-      </div>
-
-    `;
-
-    return;
-  }
-
-  $("content").innerHTML=`
-
-    <div class="page-title">
-      Teacher Management
-    </div>
-
-    <div class="form-card">
-
-      <h3>
-        Create Teacher Profile
-      </h3>
-
-      <div class="alert alert-info">
-
-        Teacher authentication accounts should be created
-        from Supabase Authentication.
-
-        This page manages the academic profile.
-
-      </div>
-
-      <div class="grid2">
-
-        <div>
-
-          <label>
-            Auth User ID
-          </label>
-
-          <input
-            id="teacherAuthId"
-            placeholder="Paste Supabase Auth User ID">
-
-        </div>
-
-        <div>
-
-          <label>
-            Full Name
-          </label>
-
-          <input id="teacherName">
-
-        </div>
-
-        <div>
-
-          <label>
-            Username
-          </label>
-
-          <input id="teacherUsername">
-
-        </div>
-
-        <div>
-
-          <label>
-            Academic Role
-          </label>
-
-          <select id="teacherRole">
-
-            <option>Teacher</option>
-            <option>HOD Mathematics</option>
-            <option>HOD English</option>
-            <option>HOD Physics</option>
-            <option>HOD Chemistry</option>
-            <option>HOD Biology</option>
-            <option>HOD Economics</option>
-            <option>HOD Hausa</option>
-            <option>HOD Arabic</option>
-            <option>HOD French</option>
-            <option>HOD Computer Studies</option>
-            <option>Examination Officer</option>
-
-          </select>
-
-        </div>
-
-      </div>
-
-      <button
-        class="btn btn-primary"
-        style="margin-top:14px"
-        onclick="createTeacherProfile()">
-
-        Save Teacher Profile
-
-      </button>
-
-    </div>
-
-    <div id="teacherList"></div>
-
-  `;
-
-  loadTeachers();
-}
-
-async function createTeacherProfile(){
-
-  const id=
-    $("teacherAuthId").value.trim();
-
-  const name=
-    $("teacherName").value.trim();
-
-  const username=
-    $("teacherUsername").value.trim();
-
-  const academicRole=
-    $("teacherRole").value;
-
-  if(!id||!name){
-
-    notify(
-      "Auth User ID and full name are required.",
-      "error"
-    );
-
-    return;
-  }
-
-  const isExam=
-    academicRole==="Examination Officer";
-
-  const {error}=
-    await sb
-      .from("user_profiles")
-      .upsert({
-
-        id,
-        full_name:name,
-        username:username||null,
-        role:"teacher",
-        academic_role:academicRole,
-        is_exam_officer:isExam,
-        account_type:"staff",
-        updated_at:
-          new Date().toISOString()
-
-      });
-
-  if(error){
-
-    notify(
-      error.message,
-      "error"
-    );
-
-    return;
-  }
-
-  notify(
-    "Teacher profile saved.",
-    "success"
-  );
-
-  $("teacherAuthId").value="";
-  $("teacherName").value="";
-  $("teacherUsername").value="";
-
-  loadTeachers();
-}
-
-async function loadTeachers(){
-
-  const {data,error}=
-    await sb
-      .from("user_profiles")
-      .select("*")
-      .eq("role","teacher")
-      .order("full_name");
-
-  if(error){
-
-    $("teacherList").innerHTML=`
-
-      <div class="alert alert-error">
-        ${esc(error.message)}
-      </div>
-
-    `;
-
-    return;
-  }
-
-  $("teacherList").innerHTML=`
-
-    <div class="form-card">
-
-      <h3>
-        Teachers
-      </h3>
-
-      <div class="table-wrap">
-
-        <table>
-
-          <thead>
-
-            <tr>
-
-              <th>Name</th>
-              <th>Username</th>
-              <th>Academic Role</th>
-              <th>Exam Officer</th>
-              <th>Status</th>
-
-            </tr>
-
-          </thead>
-
-          <tbody>
-
-            ${(data||[]).map(t=>`
-
-              <tr>
-
-                <td>
-                  ${esc(t.full_name)}
-                </td>
-
-                <td>
-                  ${esc(t.username)}
-                </td>
-
-                <td>
-                  ${esc(t.academic_role)}
-                </td>
-
-                <td>
-                  ${t.is_exam_officer?"Yes":"No"}
-                </td>
-
-                <td>
-                  ${t.is_active===false
-                    ?"Inactive"
-                    :"Active"}
-                </td>
-
-              </tr>
-
-            `).join("")}
-
-          </tbody>
-
-        </table>
-
-      </div>
-
-    </div>
-
-  `;
-}
-
-/* ============================================================
-   CLASSES / STUDENTS
-============================================================ */
-
-async function classesPage(){
-
-  if(!isAdmin()){
-
-    $("content").innerHTML=`
-
-      <div class="alert alert-error">
-        Administrator access denied.
-      </div>
-
-    `;
-
-    return;
-  }
-
-  const classes=
-    await loadClasses();
-
-  $("content").innerHTML=`
-
-    <div class="page-title">
-      Classes & Students
-    </div>
-
-    <div class="form-card">
-
-      <h3>
-        Add Student
-      </h3>
-
-      <div class="grid3">
-
-        <div>
-
-          <label>
-            Student Full Name
-          </label>
-
-          <input id="studentName">
-
-        </div>
-
-        <div>
-
-          <label>
-            Class
-          </label>
-
-          <select id="studentClass">
-
-            ${classes.map(c=>`
-
-              <option value="${esc(c.id)}">
-                ${esc(c.name)}
-              </option>
-
-            `).join("")}
-
-          </select>
-
-        </div>
-
-        <div>
-
-          <label>
-            Admission Number
-          </label>
-
-          <input
-            id="admissionNo"
-            placeholder="e.g. CTA/2026/001">
-
-        </div>
-
-      </div>
-
-      <button
-        class="btn btn-primary"
-        style="margin-top:12px"
-        onclick="addStudent()">
-
-        Add Student
-
-      </button>
-
-    </div>
-
-    <div id="studentList"></div>
-
-  `;
-
-  loadAllStudents();
-}
-
-async function addStudent(){
-
-  const name=
-    $("studentName").value.trim();
-
-  const classId=
-    $("studentClass").value;
-
-  const admission=
-    $("admissionNo").value.trim();
-
-  if(!name||!classId){
-
-    notify(
-      "Student name and class are required.",
-      "error"
-    );
-
-    return;
-  }
-
-  /*
-    Generate the secure parent code when the student
-    is created. The code is displayed to the administrator
-    and can be given privately to the parent.
-  */
-
-  const parentCode=
-    randomParentCode();
-
-  const payload={
-
-    full_name:name,
-    class_id:classId,
-    parent_link_code:parentCode
-
-  };
-
-  /*
-    Use admission_number because that is the field we
-    prepared for the parent portal.
-  */
-
-  if(admission){
-
-    payload.admission_number=
-      admission;
-
-  }
-
-  const {data,error}=
-    await sb
-      .from("students")
-      .insert(payload)
-      .select("*")
-      .single();
-
-  if(error){
-
-    notify(
-      error.message,
-      "error"
-    );
-
-    return;
-  }
-
-  notify(
-    "Student added. Parent link code: "+parentCode,
-    "success"
-  );
-
-  $("studentName").value="";
-  $("admissionNo").value="";
-
-  loadAllStudents();
-}
-
-async function loadAllStudents(){
-
-  const {data,error}=
-    await sb
-      .from("students")
-      .select(`
-        id,
-        full_name,
-        admission_number,
-        admission_no,
-        parent_link_code,
-        classes(name)
-      `)
-      .order("full_name");
-
-  if(error){
-
-    $("studentList").innerHTML=`
-
-      <div class="alert alert-error">
-        ${esc(error.message)}
-      </div>
-
-    `;
-
-    return;
-  }
-
-  $("studentList").innerHTML=`
-
-    <div class="form-card">
-
-      <h3>
-        Students & Parent Link Codes
-      </h3>
-
-      <div class="alert alert-info">
-
-        Give the parent the student's admission number
-        and link code privately.
-
-      </div>
-
-      <div class="table-wrap">
-
-        <table>
-
-          <thead>
-
-            <tr>
-
-              <th>Name</th>
-              <th>Admission No.</th>
-              <th>Class</th>
-              <th>Parent Link Code</th>
-
-            </tr>
-
-          </thead>
-
-          <tbody>
-
-            ${(data||[]).map(s=>`
-
-              <tr>
-
-                <td>
-                  ${esc(s.full_name)}
-                </td>
-
-                <td>
-                  ${esc(
-                    s.admission_number||
-                    s.admission_no||
-                    ""
-                  )}
-                </td>
-
-                <td>
-                  ${esc(s.classes?.name||"")}
-                </td>
-
-                <td>
-                  <strong>
-                    ${esc(s.parent_link_code||"Not generated")}
-                  </strong>
-                </td>
-
-              </tr>
-
-            `).join("")}
-
-          </tbody>
-
-        </table>
-
-      </div>
-
-    </div>
-
-  `;
-}
-
-/* ============================================================
-   HOD ASSIGNMENT
-============================================================ */
-
-async function hodAssignmentPage(){
-
-  if(!isAdmin()){
-
-    $("content").innerHTML=`
-
-      <div class="alert alert-error">
-        Administrator access denied.
-      </div>
-
-    `;
-
-    return;
-  }
-
-  const teachers=
-    await sb
-      .from("user_profiles")
-      .select("*")
-      .eq("role","teacher")
-      .order("full_name");
-
-  const subjects=
-    await loadSubjects();
-
-  $("content").innerHTML=`
-
-    <div class="page-title">
-      HOD Assignment
-    </div>
-
-    <div class="form-card">
-
-      <div class="alert alert-info">
-
-        HODs remain Teachers. Their academic role
-        determines the subject they supervise.
-
-      </div>
-
-      <div class="grid2">
-
-        <div>
-
-          <label>
-            Teacher
-          </label>
-
-          <select id="hodTeacher">
-
-            ${(teachers.data||[]).map(t=>`
-
-              <option value="${esc(t.id)}">
-                ${esc(t.full_name)}
-              </option>
-
-            `).join("")}
-
-          </select>
-
-        </div>
-
-        <div>
-
-          <label>
-            Subject
-          </label>
-
-          <select id="hodSubject">
-
-            ${subjects.map(s=>`
-
-              <option>
-                ${esc(s.name)}
-              </option>
-
-            `).join("")}
-
-          </select>
-
-        </div>
-
-      </div>
-
-      <button
-        class="btn btn-primary"
-        style="margin-top:12px"
-        onclick="assignHOD()">
-
-        Assign HOD
-
-      </button>
-
-    </div>
-
-  `;
-}
-
-async function assignHOD(){
-
-  const teacherId=
-    $("hodTeacher").value;
-
-  const subject=
-    $("hodSubject").value;
-
-  const academicRole=
-    "HOD "+subject;
-
-  const {error}=
-    await sb
-      .from("user_profiles")
-      .update({
-
-        academic_role:academicRole,
-        updated_at:
-          new Date().toISOString()
-
-      })
-      .eq("id",teacherId);
-
-  if(error){
-
-    notify(
-      error.message,
-      "error"
-    );
-
-    return;
-  }
-
-  notify(
-    `${subject} HOD assigned successfully.`,
-    "success"
-  );
-}
-
-/* ============================================================
-   BROADSHEET
-============================================================ */
-
-async function broadsheetPage(){
-
-  if(!isAdmin()){
-
-    $("content").innerHTML=`
-
-      <div class="alert alert-error">
-        Administrator access denied.
-      </div>
-
-    `;
-
-    return;
-  }
-
-  const classes=
-    await loadClasses();
-
-  $("content").innerHTML=`
-
-    <div class="page-title">
-      Broadsheet
-    </div>
-
-    <div class="form-card">
-
-      <div class="grid3">
-
-        <div>
-
-          <label>
-            Class
-          </label>
-
-          <select id="bClass">
-
-            ${classes.map(c=>`
-
-              <option value="${esc(c.id)}">
-                ${esc(c.name)}
-              </option>
-
-            `).join("")}
-
-          </select>
-
-        </div>
-
-        <div>
-
-          <label>
-            Term
-          </label>
-
-          <select id="bTerm">
-
-            <option>First Term</option>
-            <option>Second Term</option>
-            <option>Third Term</option>
-
-          </select>
-
-        </div>
-
-        <div>
-
-          <label>
-            Session
-          </label>
-
-          <input
-            id="bSession"
-            value="2026/2027">
-
-        </div>
-
-      </div>
-
-      <button
-        class="btn btn-primary"
-        style="margin-top:12px"
-        onclick="loadBroadsheet()">
-
-        Load Broadsheet
-
-      </button>
-
-    </div>
-
-    <div id="broadsheetBox"></div>
-
-  `;
-}
-
-async function loadBroadsheet(){
-
-  const classId=
-    $("bClass").value;
-
-  const term=
-    $("bTerm").value;
-
-  const session=
-    $("bSession").value.trim();
-
-  const {data,error}=
-    await sb
-      .from("results")
-      .select(`
-        *,
-        students(full_name),
-        subjects(name)
-      `)
-      .eq("class_id",classId)
-      .eq("term",term)
-      .eq("session",session)
-      .eq("is_published",true)
-      .order("created_at");
-
-  if(error){
-
-    notify(
-      error.message,
-      "error"
-    );
-
-    return;
-  }
-
-  if(!data?.length){
-
-    $("broadsheetBox").innerHTML=`
-
-      <div class="card empty">
-        No published results found.
-      </div>
-
-    `;
-
-    return;
-  }
-
-  const students={};
-  const subjects={};
-
-  data.forEach(r=>{
-
-    const sid=r.student_id;
-
-    if(!students[sid]){
-
-      students[sid]={
-
-        name:r.students?.full_name,
-        scores:{}
-
-      };
-
-    }
-
-    const sub=
-      r.subjects?.name||
-      "Subject";
-
-    students[sid].scores[sub]=
-
-      Number(r.ca1||0)+
-      Number(r.ca2||0)+
-      Number(r.exam||0);
-
-    subjects[sub]=true;
-
-  });
-
-  const subjectNames=
-    Object.keys(subjects);
-
-  $("broadsheetBox").innerHTML=`
-
-    <div class="form-card">
-
-      <div class="table-wrap">
-
-        <table>
-
-          <thead>
-
-            <tr>
-
-              <th>
-                Student
-              </th>
-
-              ${subjectNames.map(s=>`
-
-                <th>
-                  ${esc(s)}
-                </th>
-
-              `).join("")}
-
-              <th>
-                Grand Total
-              </th>
-
-            </tr>
-
-          </thead>
-
-          <tbody>
-
-            ${Object.values(students).map(s=>{
-
-              const total=
-                subjectNames.reduce(
-                  (a,x)=>
-                    a+(s.scores[x]||0),
-                  0
-                );
-
-              return `
-
-                <tr>
-
-                  <td>
-                    ${esc(s.name)}
-                  </td>
-
-                  ${subjectNames.map(x=>`
-
-                    <td>
-                      ${s.scores[x]??"-"}
-                    </td>
-
-                  `).join("")}
-
-                  <td>
-                    <strong>
-                      ${total}
-                    </strong>
-                  </td>
-
-                </tr>
-
-              `;
-
-            }).join("")}
-
-          </tbody>
-
-        </table>
-
-      </div>
-
-      <button
-        class="btn btn-secondary"
-        style="margin-top:12px"
-        onclick="printCurrentDocument()">
-
-        Print Broadsheet
-
-      </button>
-
-    </div>
-
-  `;
-}
-
-/* ============================================================
-   SCHOOL SETTINGS
-============================================================ */
-
-async function settingsPage(){
-
-  if(!isAdmin()){
-
-    $("content").innerHTML=`
-
-      <div class="alert alert-error">
-        Administrator access denied.
-      </div>
-
-    `;
-
-    return;
-  }
-
-  const {data,error}=
-    await sb
-      .from("school_profiles")
-      .select("*")
-      .limit(1)
-      .maybeSingle();
-
-  if(error){
-
-    notify(
-      error.message,
-      "error"
-    );
-
-    return;
-  }
-
-  $("content").innerHTML=`
-
-    <div class="page-title">
-      School Settings
-    </div>
-
-    <div class="form-card">
-
-      <label>
-        School Name
-      </label>
-
-      <input
-        id="schoolName"
-        value="${esc(
-          data?.school_name||
-          "Caliphate Tarbiya Academy"
-        )}">
-
-      <label>
-        Motto
-      </label>
-
-      <input
-        id="schoolMotto"
-        value="${esc(data?.motto||"")}">
-
-      <label>
-        Address
-      </label>
-
-      <textarea
-        id="schoolAddress">${esc(
-          data?.address||""
-        )}</textarea>
-
-      <label>
-        Contact
-      </label>
-
-      <input
-        id="schoolContact"
-        value="${esc(data?.contact||"")}">
-
-      <button
-        class="btn btn-primary"
-        style="margin-top:12px"
-        onclick="saveSchoolSettings()">
-
-        Save Settings
-
-      </button>
-
-    </div>
-
-  `;
-}
-
-async function saveSchoolSettings(){
-
-  const school_name=
-    $("schoolName").value.trim();
-
-  const motto=
-    $("schoolMotto").value.trim();
-
-  const address=
-    $("schoolAddress").value.trim();
-
-  const contact=
-    $("schoolContact").value.trim();
-
-  const {data:existing}=
-    await sb
-      .from("school_profiles")
-      .select("id")
-      .limit(1)
-      .maybeSingle();
-
-  let result;
-
-  if(existing?.id){
-
-    result=
-      await sb
-        .from("school_profiles")
-        .update({
-
-          school_name,
-          motto,
-          address,
-          contact
-
-        })
-        .eq("id",existing.id);
-
-  }else{
-
-    result=
-      await sb
-        .from("school_profiles")
-        .insert({
-
-          school_name,
-          motto,
-          address,
-          contact
-
-        });
-
-  }
-
-  if(result.error){
-
-    notify(
-      result.error.message,
-      "error"
-    );
-
-    return;
-  }
-
-  notify(
-    "School settings saved.",
-    "success"
-  );
-}
-
-/* ============================================================
-   PASSWORD
-============================================================ */
-
-function passwordPage(){
-
-  $("content").innerHTML=`
-
-    <div class="page-title">
-      Change Password
-    </div>
-
-    <div class="form-card"
-         style="max-width:500px">
-
-      <label>
-        New Password
-      </label>
-
-      <input
-        id="newPassword"
-        type="password">
-
-      <label>
-        Confirm Password
-      </label>
-
-      <input
-        id="confirmPassword"
-        type="password">
-
-      <button
-        class="btn btn-primary"
-        style="margin-top:12px"
-        onclick="changePassword()">
-
-        Change Password
-
-      </button>
-
-    </div>
-
-  `;
-}
-
-async function changePassword(){
-
-  const p1=
-    $("newPassword").value;
-
-  const p2=
-    $("confirmPassword").value;
-
-  if(p1.length<6){
-
-    notify(
-      "Password must contain at least 6 characters.",
-      "error"
-    );
-
-    return;
-  }
-
-  if(p1!==p2){
-
-    notify(
-      "Passwords do not match.",
-      "error"
-    );
-
-    return;
-  }
-
-  const {error}=
-    await sb.auth.updateUser({
-      password:p1
-    });
-
-  if(error){
-
-    notify(
-      error.message,
-      "error"
-    );
-
-    return;
-  }
-
-  notify(
-    "Password changed successfully.",
-    "success"
-  );
-
-  $("newPassword").value="";
-  $("confirmPassword").value="";
-}
-
-/* ============================================================
-   PRINT
-============================================================ */
-
-function printCurrentDocument(){
-
-  const content=
-    $("viewDocContent")?.value||
-    $("docContent")?.value||
-    $("assistantOutput")?.value||
-    $("content")?.innerText||
-    "";
-
-  const w=
-    window.open(
-      "",
-      "_blank"
-    );
-
-  if(!w){
-
-    notify(
-      "Please allow pop-ups for printing.",
-      "error"
-    );
-
-    return;
-  }
-
-  w.document.write(`
-
-    <!DOCTYPE html>
-
-    <html>
-
-    <head>
-
-      <title>
-        Caliphate Tarbiya Academy
-      </title>
-
-      <style>
-
-        body{
-          font-family:Arial,sans-serif;
-          padding:40px;
-          line-height:1.6;
-        }
-
-        h1,h2,h3{
-          color:#14532d;
-        }
-
-        pre{
-          white-space:pre-wrap;
-          font-family:Arial,sans-serif;
-        }
-
-      </style>
-
-    </head>
-
-    <body>
-
-      <h2>
-        Caliphate Tarbiya Academy
-      </h2>
-
-      <pre>
-${esc(content)}
-      </pre>
-
-    </body>
-
-    </html>
-
-  `);
-
-  w.document.close();
-  w.focus();
-
-  setTimeout(
-    ()=>w.print(),
-    300
-  );
-}
-
-/* ============================================================
-   AUTH LISTENER
-============================================================ */
-
-sb.auth.onAuthStateChange(
-  async(event,session)=>{
-
-    if(event==="SIGNED_OUT"){
-
-      currentUser=null;
-      currentProfile=null;
-      parentChildren=[];
-
-      return;
-    }
-
-    if(
-      session?.user &&
-      !currentProfile
-    ){
-
-      currentUser=session.user;
-
-      await loadProfile();
-
-      if(currentProfile){
+      if(currentUser &&
+         currentUser.portal){
 
         openApplication();
 
       }
 
+    }catch(error){
+
+      localStorage.removeItem(
+        "cta_current_user"
+      );
+
     }
 
   }
-);
 
-/* ============================================================
-   START
-============================================================ */
-
-restoreSession();
+});
 
 </script>
-<!-- PARENT / STUDENT PORTAL -->
-<section id="parentPortal" style="display:none;padding:20px;max-width:900px;margin:auto;">
-  <div style="background:#14532d;color:white;padding:20px;border-radius:12px;margin-bottom:20px;">
-    <h2 style="margin:0;">Parent / Student Portal</h2>
-    <p style="margin:8px 0 0;">Caliphate Tarbiya Academy Sokoto</p>
-  </div>
 
-  <div style="background:white;padding:20px;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,.08);">
-    <h3>Link Your Child</h3>
-
-    <p>
-      Enter the admission number and parent code provided by the school.
-    </p>
-
-    <input
-      id="parentAdmissionNumber"
-      type="text"
-      placeholder="Student Admission Number"
-      style="width:100%;padding:12px;margin:8px 0;border:1px solid #ccc;border-radius:8px;"
-    >
-
-    <input
-      id="parentCode"
-      type="text"
-      placeholder="Parent Code"
-      style="width:100%;padding:12px;margin:8px 0;border:1px solid #ccc;border-radius:8px;"
-    >
-
-    <button
-      onclick="linkMyChild()"
-      style="background:#14532d;color:white;border:0;padding:12px 20px;border-radius:8px;margin-top:8px;"
-    >
-      Link Child
-    </button>
-
-    <div id="parentLinkMessage" style="margin-top:15px;"></div>
-  </div>
-
-  <div
-    id="parentChildrenList"
-    style="margin-top:20px;"
-  ></div>
-</section>
-
-<script>
-async function linkMyChild(){
-  const admissionNumber =
-    document.getElementById("parentAdmissionNumber").value.trim();
-
-  const parentCode =
-    document.getElementById("parentCode").value.trim();
-
-  const message =
-    document.getElementById("parentLinkMessage");
-
-  if(!admissionNumber || !parentCode){
-    message.innerHTML =
-      '<div style="color:#b91c1c;">Please enter both admission number and parent code.</div>';
-    return;
-  }
-
-  if(!currentUser){
-    message.innerHTML =
-      '<div style="color:#b91c1c;">Please log in first.</div>';
-    return;
-  }
-
-  try{
-    const {data,error} = await sb.rpc(
-      "link_parent_to_student",
-      {
-        p_admission_number: admissionNumber,
-        p_parent_code: parentCode
-      }
-    );
-
-    if(error){
-      console.error(error);
-      message.innerHTML =
-        '<div style="color:#b91c1c;">Unable to link the student. Please try again.</div>';
-      return;
-    }
-
-    if(data === true){
-      message.innerHTML =
-        '<div style="color:#166534;">Student linked successfully.</div>';
-
-      document.getElementById("parentAdmissionNumber").value = "";
-      document.getElementById("parentCode").value = "";
-
-      if(typeof loadParentChildren === "function"){
-        await loadParentChildren();
-      }
-    }else{
-      message.innerHTML =
-        '<div style="color:#b91c1c;">Invalid admission number or parent code.</div>';
-    }
-
-  }catch(error){
-    console.error(error);
-    message.innerHTML =
-      '<div style="color:#b91c1c;">An unexpected error occurred.</div>';
-  }
-}
-</script>
 </body>
 </html>
