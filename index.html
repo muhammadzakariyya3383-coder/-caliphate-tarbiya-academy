@@ -2,111 +2,2576 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Verify Email - Caliphate Tarbiya Academy</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="theme-color" content="#14532d">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>Caliphate Tarbiya Academy | School Management System</title>
 
 <style>
-*{
-    box-sizing:border-box;
+*{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+ --primary:#14532d;
+ --primary2:#166534;
+ --primary3:#22c55e;
+ --light:#f0fdf4;
+ --lighter:#f8fafc;
+ --white:#fff;
+ --dark:#17202a;
+ --muted:#64748b;
+ --border:#dbe3ea;
+ --danger:#dc2626;
+ --warning:#d97706;
+ --success:#15803d;
+ --shadow:0 8px 25px rgba(0,0,0,.08);
+ --radius:14px;
 }
 
 body{
-    margin:0;
-    padding:20px;
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background:#064e3b;
-    font-family:Arial,sans-serif;
+ font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+ background:#f4f7f5;
+ color:var(--dark);
+ min-height:100vh;
 }
 
-.box{
-    width:100%;
-    max-width:420px;
-    background:white;
-    padding:35px 25px;
-    border-radius:18px;
-    text-align:center;
-    box-shadow:0 10px 30px rgba(0,0,0,.25);
-}
-
-.logo{
-    width:70px;
-    height:70px;
-    margin:0 auto 20px;
-    border-radius:50%;
-    background:#14532d;
-    color:white;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:24px;
-    font-weight:bold;
-}
-
-h1{
-    color:#14532d;
-    margin-bottom:15px;
-}
-
-p{
-    color:#555;
-    line-height:1.6;
+button,input,select,textarea{
+ font:inherit;
 }
 
 button{
-    width:100%;
-    padding:14px;
-    margin-top:20px;
-    border:0;
-    border-radius:10px;
-    background:#14532d;
-    color:white;
-    font-size:16px;
-    font-weight:bold;
+ cursor:pointer;
+ border:0;
 }
 
-a{
-    display:block;
-    margin-top:20px;
-    color:#14532d;
-    font-weight:bold;
-    text-decoration:none;
+.hidden{display:none!important}
+
+#loginPage{
+ min-height:100vh;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ padding:20px;
+ background:linear-gradient(135deg,#052e16,#14532d,#166534);
+}
+
+.login-box{
+ width:100%;
+ max-width:430px;
+ background:#fff;
+ border-radius:22px;
+ padding:28px 22px;
+ box-shadow:0 20px 60px rgba(0,0,0,.25);
+}
+
+.logo{
+ width:72px;
+ height:72px;
+ border-radius:50%;
+ background:var(--primary);
+ color:white;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ font-size:28px;
+ font-weight:800;
+ margin:0 auto 15px;
+}
+
+.login-title{
+ text-align:center;
+ color:var(--primary);
+ font-size:22px;
+ font-weight:800;
+}
+
+.login-subtitle{
+ text-align:center;
+ color:var(--muted);
+ margin:6px 0 22px;
+ font-size:13px;
+}
+
+.form-group{
+ margin-bottom:15px;
+}
+
+.form-group label{
+ display:block;
+ font-size:13px;
+ font-weight:700;
+ margin-bottom:7px;
+}
+
+input,select,textarea{
+ width:100%;
+ padding:12px 13px;
+ border:1px solid var(--border);
+ border-radius:10px;
+ outline:none;
+ background:#fff;
+ color:var(--dark);
+}
+
+input:focus,select:focus,textarea:focus{
+ border-color:var(--primary2);
+ box-shadow:0 0 0 3px rgba(34,197,94,.12);
+}
+
+textarea{
+ min-height:110px;
+ resize:vertical;
+}
+
+.password-wrap{
+ position:relative;
+}
+
+.password-wrap input{
+ padding-right:75px;
+}
+
+.show-btn{
+ position:absolute;
+ right:8px;
+ top:7px;
+ padding:6px 9px;
+ background:#eef6f0;
+ color:var(--primary);
+ border-radius:7px;
+ font-size:11px;
+ font-weight:700;
+}
+
+.primary-btn{
+ width:100%;
+ padding:13px;
+ border-radius:10px;
+ background:var(--primary);
+ color:white;
+ font-weight:800;
+}
+
+.primary-btn:hover{
+ background:var(--primary2);
+}
+
+.secondary-btn{
+ padding:10px 14px;
+ border-radius:9px;
+ background:#e8f5eb;
+ color:var(--primary);
+ font-weight:700;
+}
+
+.danger-btn{
+ padding:10px 14px;
+ border-radius:9px;
+ background:#fee2e2;
+ color:#b91c1c;
+ font-weight:700;
+}
+
+.warning-btn{
+ padding:10px 14px;
+ border-radius:9px;
+ background:#fef3c7;
+ color:#92400e;
+ font-weight:700;
+}
+
+.login-note{
+ margin-top:15px;
+ padding:10px;
+ background:#f0fdf4;
+ border-radius:9px;
+ color:#166534;
+ font-size:12px;
+ line-height:1.5;
+}
+
+#errorBox{
+ margin-bottom:12px;
+ padding:10px;
+ background:#fee2e2;
+ color:#991b1b;
+ border-radius:9px;
+ font-size:13px;
+ display:none;
+}
+
+/* APP */
+
+#app{
+ display:none;
+ min-height:100vh;
+}
+
+.topbar{
+ height:64px;
+ background:var(--primary);
+ color:white;
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ padding:0 15px;
+ position:sticky;
+ top:0;
+ z-index:100;
+ box-shadow:0 3px 12px rgba(0,0,0,.12);
+}
+
+.brand{
+ display:flex;
+ align-items:center;
+ gap:10px;
+ font-weight:800;
+ font-size:15px;
+}
+
+.brand-logo{
+ width:38px;
+ height:38px;
+ background:white;
+ color:var(--primary);
+ border-radius:10px;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ font-weight:900;
+}
+
+.menu-btn{
+ background:rgba(255,255,255,.15);
+ color:white;
+ width:40px;
+ height:40px;
+ border-radius:9px;
+ font-size:20px;
+}
+
+.layout{
+ display:flex;
+ min-height:calc(100vh - 64px);
+}
+
+.sidebar{
+ width:245px;
+ background:#fff;
+ border-right:1px solid var(--border);
+ padding:15px 10px;
+ position:fixed;
+ top:64px;
+ bottom:0;
+ overflow-y:auto;
+ transition:.25s;
+ z-index:90;
+}
+
+.sidebar.closed{
+ transform:translateX(-100%);
+}
+
+.nav-title{
+ color:#94a3b8;
+ font-size:10px;
+ font-weight:800;
+ text-transform:uppercase;
+ margin:15px 10px 7px;
+}
+
+.nav-btn{
+ width:100%;
+ text-align:left;
+ background:transparent;
+ color:#334155;
+ padding:11px 12px;
+ border-radius:9px;
+ margin-bottom:3px;
+ font-weight:600;
+ font-size:13px;
+}
+
+.nav-btn:hover,
+.nav-btn.active{
+ background:#eaf7ed;
+ color:var(--primary);
+}
+
+.main{
+ margin-left:245px;
+ width:calc(100% - 245px);
+ padding:20px;
+ transition:.25s;
+}
+
+.main.expanded{
+ margin-left:0;
+ width:100%;
+}
+
+.page{
+ display:none;
+}
+
+.page.active{
+ display:block;
+}
+
+.page-header{
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:12px;
+ margin-bottom:20px;
+ flex-wrap:wrap;
+}
+
+.page-header h1{
+ font-size:23px;
+ color:var(--primary);
+}
+
+.page-header p{
+ color:var(--muted);
+ font-size:13px;
+ margin-top:4px;
+}
+
+.user-chip{
+ background:#eaf7ed;
+ color:var(--primary);
+ padding:8px 11px;
+ border-radius:20px;
+ font-size:12px;
+ font-weight:700;
+}
+
+/* DASHBOARD */
+
+.cards{
+ display:grid;
+ grid-template-columns:repeat(4,1fr);
+ gap:14px;
+ margin-bottom:20px;
+}
+
+.card{
+ background:white;
+ border:1px solid var(--border);
+ border-radius:var(--radius);
+ padding:18px;
+ box-shadow:var(--shadow);
+}
+
+.stat-card{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+}
+
+.stat-label{
+ color:var(--muted);
+ font-size:12px;
+}
+
+.stat-number{
+ font-size:27px;
+ font-weight:900;
+ margin-top:5px;
+}
+
+.stat-icon{
+ width:45px;
+ height:45px;
+ background:#eaf7ed;
+ color:var(--primary);
+ border-radius:12px;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ font-size:20px;
+}
+
+.grid2{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:15px;
+}
+
+.section-title{
+ font-size:16px;
+ font-weight:800;
+ color:var(--primary);
+ margin-bottom:13px;
+}
+
+.quick-grid{
+ display:grid;
+ grid-template-columns:repeat(2,1fr);
+ gap:10px;
+}
+
+.quick-btn{
+ background:#f8fafc;
+ border:1px solid var(--border);
+ border-radius:10px;
+ padding:14px;
+ text-align:left;
+ color:var(--dark);
+ font-weight:700;
+}
+
+.quick-btn:hover{
+ border-color:#86efac;
+ background:#f0fdf4;
+}
+
+.quick-btn small{
+ display:block;
+ color:var(--muted);
+ font-weight:400;
+ margin-top:4px;
+}
+
+/* TABLE */
+
+.table-wrap{
+ overflow-x:auto;
+}
+
+table{
+ width:100%;
+ border-collapse:collapse;
+ min-width:650px;
+}
+
+th,td{
+ padding:11px;
+ border-bottom:1px solid var(--border);
+ text-align:left;
+ font-size:12px;
+}
+
+th{
+ background:#f8fafc;
+ color:#475569;
+ font-weight:800;
+}
+
+.badge{
+ display:inline-block;
+ padding:5px 8px;
+ border-radius:20px;
+ font-size:10px;
+ font-weight:800;
+}
+
+.badge.pending{
+ background:#fef3c7;
+ color:#92400e;
+}
+
+.badge.approved{
+ background:#dcfce7;
+ color:#166534;
+}
+
+.badge.rejected{
+ background:#fee2e2;
+ color:#991b1b;
+}
+
+.badge.active{
+ background:#dcfce7;
+ color:#166534;
+}
+
+.badge.disabled{
+ background:#e2e8f0;
+ color:#475569;
+}
+
+.action-row{
+ display:flex;
+ gap:6px;
+ flex-wrap:wrap;
+}
+
+/* FORMS */
+
+.form-grid{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:14px;
+}
+
+.full{
+ grid-column:1/-1;
+}
+
+.form-actions{
+ display:flex;
+ gap:10px;
+ margin-top:15px;
+ flex-wrap:wrap;
+}
+
+.form-actions button{
+ width:auto;
+}
+
+.empty{
+ text-align:center;
+ padding:30px;
+ color:var(--muted);
+}
+
+/* MODAL */
+
+.modal{
+ position:fixed;
+ inset:0;
+ background:rgba(0,0,0,.5);
+ display:none;
+ align-items:center;
+ justify-content:center;
+ padding:15px;
+ z-index:200;
+}
+
+.modal.show{
+ display:flex;
+}
+
+.modal-box{
+ width:100%;
+ max-width:650px;
+ max-height:90vh;
+ overflow-y:auto;
+ background:white;
+ border-radius:17px;
+ padding:20px;
+}
+
+.modal-header{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ margin-bottom:18px;
+}
+
+.modal-header h2{
+ color:var(--primary);
+ font-size:19px;
+}
+
+.close{
+ width:34px;
+ height:34px;
+ border-radius:8px;
+ background:#f1f5f9;
+ font-size:18px;
+}
+
+/* ALERT */
+
+.toast{
+ position:fixed;
+ right:15px;
+ bottom:15px;
+ max-width:330px;
+ background:#17202a;
+ color:white;
+ padding:12px 15px;
+ border-radius:10px;
+ box-shadow:var(--shadow);
+ display:none;
+ z-index:500;
+ font-size:13px;
+}
+
+.toast.show{
+ display:block;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+ .sidebar{
+  width:230px;
+  transform:translateX(-100%);
+ }
+ .sidebar.open{
+  transform:translateX(0);
+ }
+ .main{
+  margin-left:0;
+  width:100%;
+ }
+ .cards{
+  grid-template-columns:repeat(2,1fr);
+ }
+ .grid2{
+  grid-template-columns:1fr;
+ }
+}
+
+@media(max-width:600px){
+ .main{
+  padding:13px;
+ }
+ .topbar{
+  height:60px;
+ }
+ .sidebar{
+  top:60px;
+ }
+ .cards{
+  grid-template-columns:1fr 1fr;
+  gap:9px;
+ }
+ .card{
+  padding:13px;
+ }
+ .stat-number{
+  font-size:22px;
+ }
+ .stat-icon{
+  width:37px;
+  height:37px;
+  font-size:17px;
+ }
+ .form-grid{
+  grid-template-columns:1fr;
+ }
+ .full{
+  grid-column:auto;
+ }
+ .page-header h1{
+  font-size:20px;
+ }
+ .brand span{
+  display:none;
+ }
+}
+
+@media(max-width:390px){
+ .cards{
+  grid-template-columns:1fr;
+ }
 }
 </style>
 </head>
 
 <body>
 
-<div class="box">
+<!-- LOGIN -->
+<section id="loginPage">
+ <div class="login-box">
 
-    <div class="logo">
-        CTA
+  <div class="logo">CTA</div>
+
+  <div class="login-title">Caliphate Tarbiya Academy</div>
+  <div class="login-subtitle">Digital School Management & Teacher Planning System</div>
+
+  <div id="errorBox"></div>
+
+  <form id="loginForm">
+
+   <div class="form-group">
+    <label>Login As</label>
+    <select id="loginRole">
+     <option value="admin">Administrator</option>
+     <option value="teacher">Teacher</option>
+    </select>
+   </div>
+
+   <div class="form-group">
+    <label>Username</label>
+    <input id="loginUsername" type="text" autocomplete="username" placeholder="Enter username" required>
+   </div>
+
+   <div class="form-group">
+    <label>Password</label>
+    <div class="password-wrap">
+     <input id="loginPassword" type="password" autocomplete="current-password" placeholder="Enter password" required>
+     <button type="button" class="show-btn" onclick="togglePassword('loginPassword',this)">Show</button>
     </div>
+   </div>
 
-    <h1>Verify Your Email</h1>
+   <button class="primary-btn" type="submit">Login</button>
 
-    <p>
-        Welcome to
-        <strong>Caliphate Tarbiya Academy</strong>.
-    </p>
+  </form>
 
-    <p>
-        Please check your email inbox and click the
-        verification link sent to you.
-    </p>
+  <div class="login-note">
+   <b>Default Administrator</b><br>
+   Username: <b>admin</b><br>
+   Password: <b>Admin@2026!</b><br><br>
+   Teachers must be created by the Administrator.
+  </div>
 
-    <button onclick="location.href='index.html'">
-        Back to Login
+ </div>
+</section>
+
+
+<!-- APPLICATION -->
+<div id="app">
+
+ <header class="topbar">
+  <div class="brand">
+   <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+   <div class="brand-logo">CTA</div>
+   <span>Caliphate Tarbiya Academy</span>
+  </div>
+
+  <div>
+   <button class="menu-btn" onclick="logout()">↪</button>
+  </div>
+ </header>
+
+ <div class="layout">
+
+  <aside id="sidebar" class="sidebar">
+
+   <div class="nav-title">Main</div>
+
+   <button class="nav-btn active" data-page="dashboard" onclick="showPage('dashboard')">
+    🏠 Dashboard
+   </button>
+
+   <button class="nav-btn" data-page="scheme" onclick="showPage('scheme')">
+    📚 Scheme of Work
+   </button>
+
+   <button class="nav-btn" data-page="lessonplan" onclick="showPage('lessonplan')">
+    📝 Lesson Plan
+   </button>
+
+   <button class="nav-btn" data-page="lessonnote" onclick="showPage('lessonnote')">
+    📖 Lesson Note
+   </button>
+
+   <button class="nav-btn" data-page="documents" onclick="showPage('documents')">
+    📂 Documents
+   </button>
+
+   <button class="nav-btn" data-page="assistant" onclick="showPage('assistant')">
+    🤖 Teacher Assistant
+   </button>
+
+   <div id="adminNav">
+
+    <div class="nav-title">Administration</div>
+
+    <button class="nav-btn" data-page="teachers" onclick="showPage('teachers')">
+     👨‍🏫 Teachers
     </button>
 
-    <a href="index.html">
-        Return to Login
-    </a>
+    <button class="nav-btn" data-page="approvals" onclick="showPage('approvals')">
+     ✅ Approval Centre
+    </button>
 
+   </div>
+
+   <div class="nav-title">Account</div>
+
+   <button class="nav-btn" data-page="security" onclick="showPage('security')">
+    🔐 Security
+   </button>
+
+   <button class="nav-btn" data-page="backup" onclick="showPage('backup')">
+    💾 Backup & Restore
+   </button>
+
+  </aside>
+
+
+  <main id="main" class="main">
+
+   <!-- DASHBOARD -->
+   <section id="page-dashboard" class="page active">
+
+    <div class="page-header">
+     <div>
+      <h1>Dashboard</h1>
+      <p>Welcome to the digital school management system.</p>
+     </div>
+     <div class="user-chip" id="userChip"></div>
+    </div>
+
+    <div class="cards">
+
+     <div class="card stat-card">
+      <div>
+       <div class="stat-label">Teachers</div>
+       <div class="stat-number" id="statTeachers">0</div>
+      </div>
+      <div class="stat-icon">👨‍🏫</div>
+     </div>
+
+     <div class="card stat-card">
+      <div>
+       <div class="stat-label">Documents</div>
+       <div class="stat-number" id="statDocuments">0</div>
+      </div>
+      <div class="stat-icon">📄</div>
+     </div>
+
+     <div class="card stat-card">
+      <div>
+       <div class="stat-label">Pending</div>
+       <div class="stat-number" id="statPending">0</div>
+      </div>
+      <div class="stat-icon">⏳</div>
+     </div>
+
+     <div class="card stat-card">
+      <div>
+       <div class="stat-label">Approved</div>
+       <div class="stat-number" id="statApproved">0</div>
+      </div>
+      <div class="stat-icon">✓</div>
+     </div>
+
+    </div>
+
+
+    <div class="grid2">
+
+     <div class="card">
+      <div class="section-title">Quick Actions</div>
+
+      <div class="quick-grid">
+
+       <button class="quick-btn" onclick="showPage('scheme')">
+        📚 Scheme of Work
+        <small>Create a scheme</small>
+       </button>
+
+       <button class="quick-btn" onclick="showPage('lessonplan')">
+        📝 Lesson Plan
+        <small>Prepare a lesson</small>
+       </button>
+
+       <button class="quick-btn" onclick="showPage('lessonnote')">
+        📖 Lesson Note
+        <small>Create lesson note</small>
+       </button>
+
+       <button class="quick-btn" onclick="showPage('assistant')">
+        🤖 Assistant
+        <small>Get planning help</small>
+       </button>
+
+      </div>
+     </div>
+
+
+     <div class="card">
+      <div class="section-title">Recent Documents</div>
+      <div id="recentDocuments"></div>
+     </div>
+
+    </div>
+
+   </section>
+
+
+   <!-- SCHEME -->
+   <section id="page-scheme" class="page">
+
+    <div class="page-header">
+     <div>
+      <h1>Scheme of Work</h1>
+      <p>Prepare and submit a scheme of work.</p>
+     </div>
+     <button class="secondary-btn" onclick="openDocumentForm('Scheme of Work')">+ New Scheme</button>
+    </div>
+
+    <div class="card">
+     <div id="schemeList"></div>
+    </div>
+
+   </section>
+
+
+   <!-- LESSON PLAN -->
+   <section id="page-lessonplan" class="page">
+
+    <div class="page-header">
+     <div>
+      <h1>Lesson Plan</h1>
+      <p>Create structured lesson plans.</p>
+     </div>
+     <button class="secondary-btn" onclick="openDocumentForm('Lesson Plan')">+ New Lesson Plan</button>
+    </div>
+
+    <div class="card">
+     <div id="lessonPlanList"></div>
+    </div>
+
+   </section>
+
+
+   <!-- LESSON NOTE -->
+   <section id="page-lessonnote" class="page">
+
+    <div class="page-header">
+     <div>
+      <h1>Lesson Note</h1>
+      <p>Prepare and manage lesson notes.</p>
+     </div>
+     <button class="secondary-btn" onclick="openDocumentForm('Lesson Note')">+ New Lesson Note</button>
+    </div>
+
+    <div class="card">
+     <div id="lessonNoteList"></div>
+    </div>
+
+   </section>
+
+
+   <!-- DOCUMENTS -->
+   <section id="page-documents" class="page">
+
+    <div class="page-header">
+     <div>
+      <h1>Documents</h1>
+      <p>View your academic documents and submission status.</p>
+     </div>
+    </div>
+
+    <div class="card">
+     <div id="allDocuments"></div>
+    </div>
+
+   </section>
+
+
+   <!-- TEACHERS -->
+   <section id="page-teachers" class="page">
+
+    <div class="page-header">
+     <div>
+      <h1>Teachers</h1>
+      <p>Create and manage teacher accounts.</p>
+     </div>
+
+     <button class="secondary-btn" onclick="openTeacherModal()">+ Add Teacher</button>
+    </div>
+
+    <div class="card">
+     <div id="teacherList"></div>
+    </div>
+
+   </section>
+
+
+   <!-- APPROVALS -->
+   <section id="page-approvals" class="page">
+
+    <div class="page-header">
+     <div>
+      <h1>Approval Centre</h1>
+      <p>Review teacher submissions.</p>
+     </div>
+    </div>
+
+    <div class="card">
+     <div id="approvalList"></div>
+    </div>
+
+   </section>
+
+
+   <!-- ASSISTANT -->
+   <section id="page-assistant" class="page">
+
+    <div class="page-header">
+     <div>
+      <h1>Teacher Assistant</h1>
+      <p>Offline assistance for lesson preparation.</p>
+     </div>
+    </div>
+
+    <div class="card">
+
+     <div class="form-grid">
+
+      <div class="form-group">
+       <label>What do you need?</label>
+       <select id="assistantType">
+        <option value="lessonplan">Lesson Plan</option>
+        <option value="lessonnote">Lesson Note</option>
+        <option value="scheme">Scheme of Work</option>
+        <option value="objectives">Learning Objectives</option>
+        <option value="assessment">Assessment Questions</option>
+       </select>
+      </div>
+
+      <div class="form-group">
+       <label>Subject</label>
+       <input id="assistantSubject" placeholder="e.g. Mathematics">
+      </div>
+
+      <div class="form-group">
+       <label>Class</label>
+       <input id="assistantClass" placeholder="e.g. Basic 4">
+      </div>
+
+      <div class="form-group">
+       <label>Topic</label>
+       <input id="assistantTopic" placeholder="e.g. Fractions">
+      </div>
+
+     </div>
+
+     <div class="form-actions">
+      <button class="primary-btn" style="width:auto" onclick="generateAssistant()">Generate</button>
+     </div>
+
+     <div id="assistantResult" style="margin-top:18px"></div>
+
+    </div>
+
+   </section>
+
+
+   <!-- SECURITY -->
+   <section id="page-security" class="page">
+
+    <div class="page-header">
+     <div>
+      <h1>Account Security</h1>
+      <p>Change your username or password.</p>
+     </div>
+    </div>
+
+    <div class="card">
+
+     <form id="securityForm">
+
+      <div class="form-grid">
+
+       <div class="form-group">
+        <label>Current Username</label>
+        <input id="currentUsername" readonly>
+       </div>
+
+       <div class="form-group">
+        <label>New Username</label>
+        <input id="newUsername" placeholder="Leave empty to keep current">
+       </div>
+
+       <div class="form-group">
+        <label>New Password</label>
+        <div class="password-wrap">
+         <input id="newPassword" type="password" placeholder="Leave empty to keep current">
+         <button type="button" class="show-btn" onclick="togglePassword('newPassword',this)">Show</button>
+        </div>
+       </div>
+
+       <div class="form-group">
+        <label>Confirm New Password</label>
+        <div class="password-wrap">
+         <input id="confirmPassword" type="password" placeholder="Confirm new password">
+         <button type="button" class="show-btn" onclick="togglePassword('confirmPassword',this)">Show</button>
+        </div>
+       </div>
+
+      </div>
+
+      <div class="form-actions">
+       <button class="primary-btn" style="width:auto" type="submit">Save Changes</button>
+      </div>
+
+     </form>
+
+    </div>
+
+   </section>
+
+
+   <!-- BACKUP -->
+   <section id="page-backup" class="page">
+
+    <div class="page-header">
+     <div>
+      <h1>Backup & Restore</h1>
+      <p>Protect your locally stored school data.</p>
+     </div>
+    </div>
+
+    <div class="card">
+
+     <h3 class="section-title">Backup</h3>
+
+     <p style="font-size:13px;color:#64748b;line-height:1.6;margin-bottom:15px">
+      Export users and documents into a backup file. Keep the file in a safe location.
+     </p>
+
+     <button class="primary-btn" style="width:auto" onclick="backupData()">Download Backup</button>
+
+     <hr style="margin:25px 0;border:0;border-top:1px solid var(--border)">
+
+     <h3 class="section-title">Restore</h3>
+
+     <p style="font-size:13px;color:#64748b;line-height:1.6;margin-bottom:15px">
+      Restore a previously exported backup. Existing data will be replaced.
+     </p>
+
+     <input id="restoreFile" type="file" accept=".json">
+
+     <div class="form-actions">
+      <button class="danger-btn" onclick="restoreData()">Restore Backup</button>
+     </div>
+
+    </div>
+
+   </section>
+
+  </main>
+ </div>
 </div>
+
+
+<!-- DOCUMENT MODAL -->
+<div id="documentModal" class="modal">
+
+ <div class="modal-box">
+
+  <div class="modal-header">
+   <h2 id="documentModalTitle">New Document</h2>
+   <button class="close" onclick="closeModal('documentModal')">×</button>
+  </div>
+
+  <form id="documentForm">
+
+   <input type="hidden" id="docType">
+
+   <div class="form-grid">
+
+    <div class="form-group">
+     <label>Subject</label>
+     <input id="docSubject" required placeholder="e.g. Mathematics">
+    </div>
+
+    <div class="form-group">
+     <label>Class</label>
+     <input id="docClass" required placeholder="e.g. Basic 4">
+    </div>
+
+    <div class="form-group">
+     <label>Term</label>
+     <select id="docTerm">
+      <option>First Term</option>
+      <option>Second Term</option>
+      <option>Third Term</option>
+     </select>
+    </div>
+
+    <div class="form-group">
+     <label>Week / Date</label>
+     <input id="docWeek" placeholder="e.g. Week 3 / 10 Sept 2026">
+    </div>
+
+    <div class="form-group full">
+     <label>Topic / Title</label>
+     <input id="docTitle" required placeholder="Enter topic or title">
+    </div>
+
+    <div class="form-group full">
+     <label>Learning Objectives</label>
+     <textarea id="docObjectives" placeholder="What should learners achieve?"></textarea>
+    </div>
+
+    <div class="form-group full">
+     <label>Content / Main Document</label>
+     <textarea id="docContent" required placeholder="Enter the complete content here..."></textarea>
+    </div>
+
+    <div class="form-group full">
+     <label>Evaluation / Assessment</label>
+     <textarea id="docEvaluation" placeholder="Enter questions or evaluation activities"></textarea>
+    </div>
+
+    <div class="form-group full">
+     <label>Assignment / Remarks</label>
+     <textarea id="docRemarks" placeholder="Optional assignment or remarks"></textarea>
+    </div>
+
+   </div>
+
+   <div class="form-actions">
+    <button type="submit" class="primary-btn" style="width:auto">Save & Submit</button>
+    <button type="button" class="secondary-btn" onclick="closeModal('documentModal')">Cancel</button>
+   </div>
+
+  </form>
+
+ </div>
+</div>
+
+
+<!-- TEACHER MODAL -->
+<div id="teacherModal" class="modal">
+
+ <div class="modal-box">
+
+  <div class="modal-header">
+   <h2>Add Teacher</h2>
+   <button class="close" onclick="closeModal('teacherModal')">×</button>
+  </div>
+
+  <form id="teacherForm">
+
+   <div class="form-grid">
+
+    <div class="form-group">
+     <label>Full Name</label>
+     <input id="teacherName" required placeholder="Teacher full name">
+    </div>
+
+    <div class="form-group">
+     <label>Username</label>
+     <input id="teacherUsername" required placeholder="Unique username">
+    </div>
+
+    <div class="form-group">
+     <label>Password</label>
+     <div class="password-wrap">
+      <input id="teacherPassword" type="password" required placeholder="Create password">
+      <button type="button" class="show-btn" onclick="togglePassword('teacherPassword',this)">Show</button>
+     </div>
+    </div>
+
+    <div class="form-group">
+     <label>Confirm Password</label>
+     <div class="password-wrap">
+      <input id="teacherConfirmPassword" type="password" required placeholder="Confirm password">
+      <button type="button" class="show-btn" onclick="togglePassword('teacherConfirmPassword',this)">Show</button>
+     </div>
+    </div>
+
+    <div class="form-group">
+     <label>Subject</label>
+     <input id="teacherSubject" placeholder="e.g. Mathematics">
+    </div>
+
+    <div class="form-group">
+     <label>Class</label>
+     <input id="teacherClass" placeholder="e.g. Basic 4">
+    </div>
+
+   </div>
+
+   <div class="form-actions">
+    <button class="primary-btn" style="width:auto" type="submit">Create Teacher</button>
+    <button class="secondary-btn" type="button" onclick="closeModal('teacherModal')">Cancel</button>
+   </div>
+
+  </form>
+
+ </div>
+</div>
+
+
+<div id="toast" class="toast"></div>
+
+
+<script>
+"use strict";
+
+/* =========================================================
+   DATABASE
+========================================================= */
+
+const DB_NAME = "CTA_ACADEMY_V10";
+const DB_VERSION = 1;
+const STORE = "data";
+
+let db = null;
+let currentUser = null;
+
+
+/* =========================================================
+   UTILITIES
+========================================================= */
+
+function uid(){
+ return Date.now().toString(36) + Math.random().toString(36).slice(2,9);
+}
+
+function esc(value){
+ return String(value ?? "")
+  .replace(/&/g,"&amp;")
+  .replace(/</g,"&lt;")
+  .replace(/>/g,"&gt;")
+  .replace(/"/g,"&quot;")
+  .replace(/'/g,"&#039;");
+}
+
+function now(){
+ return new Date().toISOString();
+}
+
+function formatDate(value){
+ if(!value) return "";
+ try{
+  return new Date(value).toLocaleString();
+ }catch(e){
+  return value;
+ }
+}
+
+function toast(message){
+ const el=document.getElementById("toast");
+ el.textContent=message;
+ el.classList.add("show");
+
+ clearTimeout(window.toastTimer);
+ window.toastTimer=setTimeout(()=>{
+  el.classList.remove("show");
+ },3000);
+}
+
+function togglePassword(id,button){
+ const input=document.getElementById(id);
+
+ if(input.type==="password"){
+  input.type="text";
+  button.textContent="Hide";
+ }else{
+  input.type="password";
+  button.textContent="Show";
+ }
+}
+
+
+/* =========================================================
+   INDEXED DB
+========================================================= */
+
+function openDB(){
+ return new Promise((resolve,reject)=>{
+
+  if(!window.indexedDB){
+   reject(new Error("IndexedDB is not supported by this browser."));
+   return;
+  }
+
+  const request=indexedDB.open(DB_NAME,DB_VERSION);
+
+  request.onupgradeneeded=function(e){
+
+   const database=e.target.result;
+
+   if(!database.objectStoreNames.contains(STORE)){
+    database.createObjectStore(STORE,{keyPath:"key"});
+   }
+  };
+
+  request.onsuccess=function(e){
+   db=e.target.result;
+   resolve(db);
+  };
+
+  request.onerror=function(){
+   reject(request.error);
+  };
+
+ });
+}
+
+function dbGet(key){
+ return new Promise((resolve,reject)=>{
+
+  const tx=db.transaction(STORE,"readonly");
+  const store=tx.objectStore(STORE);
+  const request=store.get(key);
+
+  request.onsuccess=()=>resolve(request.result ? request.result.value : null);
+  request.onerror=()=>reject(request.error);
+
+ });
+}
+
+function dbSet(key,value){
+ return new Promise((resolve,reject)=>{
+
+  const tx=db.transaction(STORE,"readwrite");
+
+  tx.objectStore(STORE).put({
+   key:key,
+   value:value
+  });
+
+  tx.oncomplete=()=>resolve();
+  tx.onerror=()=>reject(tx.error);
+
+ });
+}
+
+
+/* =========================================================
+   INITIAL DATA
+========================================================= */
+
+async function initializeData(){
+
+ let users=await dbGet("users");
+
+ if(!Array.isArray(users)){
+
+  users=[
+   {
+    id:uid(),
+    name:"System Administrator",
+    username:"admin",
+    password:"Admin@2026!",
+    role:"admin",
+    subject:"",
+    className:"",
+    status:"active",
+    createdAt:now()
+   }
+  ];
+
+  await dbSet("users",users);
+ }
+
+ let documents=await dbGet("documents");
+
+ if(!Array.isArray(documents)){
+  await dbSet("documents",[]);
+ }
+}
+
+
+/* =========================================================
+   LOGIN
+========================================================= */
+
+document.getElementById("loginForm").addEventListener("submit",async function(e){
+
+ e.preventDefault();
+
+ const role=document.getElementById("loginRole").value;
+ const username=document.getElementById("loginUsername").value.trim();
+ const password=document.getElementById("loginPassword").value;
+
+ const error=document.getElementById("errorBox");
+
+ error.style.display="none";
+
+ try{
+
+  const users=await dbGet("users") || [];
+
+  const user=users.find(u=>
+   u.username.toLowerCase()===username.toLowerCase() &&
+   u.password===password &&
+   u.role===role
+  );
+
+  if(!user){
+   error.textContent="Invalid username, password, or login type.";
+   error.style.display="block";
+   return;
+  }
+
+  if(user.status!=="active"){
+   error.textContent="This account has been disabled by the Administrator.";
+   error.style.display="block";
+   return;
+  }
+
+  currentUser=user;
+
+  sessionStorage.setItem("cta_logged_in",user.id);
+
+  document.getElementById("loginPage").style.display="none";
+  document.getElementById("app").style.display="block";
+
+  setupInterface();
+  refreshAll();
+
+ }catch(err){
+
+  error.textContent="Unable to open the school database. Please use the hosted app in Safari/Chrome.";
+  error.style.display="block";
+
+  console.error(err);
+ }
+
+});
+
+
+/* =========================================================
+   SESSION
+========================================================= */
+
+async function restoreSession(){
+
+ const id=sessionStorage.getItem("cta_logged_in");
+
+ if(!id) return;
+
+ const users=await dbGet("users") || [];
+
+ const user=users.find(u=>u.id===id);
+
+ if(user && user.status==="active"){
+
+  currentUser=user;
+
+  document.getElementById("loginPage").style.display="none";
+  document.getElementById("app").style.display="block";
+
+  setupInterface();
+  refreshAll();
+ }
+}
+
+function logout(){
+
+ sessionStorage.removeItem("cta_logged_in");
+ currentUser=null;
+
+ document.getElementById("app").style.display="none";
+ document.getElementById("loginPage").style.display="flex";
+
+ document.getElementById("loginPassword").value="";
+}
+
+
+/* =========================================================
+   UI
+========================================================= */
+
+function setupInterface(){
+
+ document.getElementById("userChip").textContent=
+  currentUser.name+" • "+(currentUser.role==="admin"?"Administrator":"Teacher");
+
+ document.getElementById("currentUsername").value=currentUser.username;
+
+ if(currentUser.role==="admin"){
+  document.getElementById("adminNav").style.display="block";
+ }else{
+  document.getElementById("adminNav").style.display="none";
+ }
+}
+
+function toggleSidebar(){
+
+ const sidebar=document.getElementById("sidebar");
+
+ if(window.innerWidth<=900){
+  sidebar.classList.toggle("open");
+ }else{
+  sidebar.classList.toggle("closed");
+  document.getElementById("main").classList.toggle("expanded");
+ }
+}
+
+function showPage(page){
+
+ document.querySelectorAll(".page").forEach(p=>{
+  p.classList.remove("active");
+ });
+
+ const target=document.getElementById("page-"+page);
+
+ if(target){
+  target.classList.add("active");
+ }
+
+ document.querySelectorAll(".nav-btn").forEach(btn=>{
+  btn.classList.toggle("active",btn.dataset.page===page);
+ });
+
+ if(window.innerWidth<=900){
+  document.getElementById("sidebar").classList.remove("open");
+ }
+
+ refreshAll();
+}
+
+
+/* =========================================================
+   DOCUMENT MODAL
+========================================================= */
+
+function openDocumentForm(type){
+
+ document.getElementById("documentModalTitle").textContent="New "+type;
+ document.getElementById("docType").value=type;
+
+ document.getElementById("documentForm").reset();
+
+ document.getElementById("docType").value=type;
+
+ if(currentUser.role==="teacher"){
+
+  document.getElementById("docSubject").value=currentUser.subject || "";
+  document.getElementById("docClass").value=currentUser.className || "";
+
+ }
+
+ document.getElementById("documentModal").classList.add("show");
+}
+
+function closeModal(id){
+ document.getElementById(id).classList.remove("show");
+}
+
+
+/* =========================================================
+   CREATE DOCUMENT
+========================================================= */
+
+document.getElementById("documentForm").addEventListener("submit",async function(e){
+
+ e.preventDefault();
+
+ const type=document.getElementById("docType").value;
+
+ const documentData={
+  id:uid(),
+  type:type,
+  subject:document.getElementById("docSubject").value.trim(),
+  className:document.getElementById("docClass").value.trim(),
+  term:document.getElementById("docTerm").value,
+  week:document.getElementById("docWeek").value.trim(),
+  title:document.getElementById("docTitle").value.trim(),
+  objectives:document.getElementById("docObjectives").value.trim(),
+  content:document.getElementById("docContent").value.trim(),
+  evaluation:document.getElementById("docEvaluation").value.trim(),
+  remarks:document.getElementById("docRemarks").value.trim(),
+  teacherId:currentUser.id,
+  teacherName:currentUser.name,
+  status:currentUser.role==="admin"?"approved":"pending",
+  rejectionReason:"",
+  createdAt:now(),
+  updatedAt:now()
+ };
+
+ const documents=await dbGet("documents") || [];
+
+ documents.unshift(documentData);
+
+ await dbSet("documents",documents);
+
+ closeModal("documentModal");
+
+ toast(
+  currentUser.role==="admin"
+   ?"Document saved."
+   :"Document submitted successfully. It is now pending approval."
+ );
+
+ refreshAll();
+
+});
+
+
+/* =========================================================
+   DOCUMENT RENDERING
+========================================================= */
+
+async function getVisibleDocuments(){
+
+ const documents=await dbGet("documents") || [];
+
+ if(currentUser.role==="admin"){
+  return documents;
+ }
+
+ return documents.filter(d=>d.teacherId===currentUser.id);
+}
+
+function documentTable(documents,admin=false){
+
+ if(!documents.length){
+  return '<div class="empty">No documents found.</div>';
+ }
+
+ return `
+ <div class="table-wrap">
+ <table>
+  <thead>
+   <tr>
+    <th>Type</th>
+    <th>Subject</th>
+    <th>Class</th>
+    <th>Title</th>
+    <th>Status</th>
+    <th>Date</th>
+    <th>Action</th>
+   </tr>
+  </thead>
+
+  <tbody>
+
+   ${documents.map(d=>`
+
+    <tr>
+
+     <td>${esc(d.type)}</td>
+     <td>${esc(d.subject)}</td>
+     <td>${esc(d.className)}</td>
+     <td>${esc(d.title)}</td>
+
+     <td>
+      <span class="badge ${esc(d.status)}">
+       ${esc(d.status.toUpperCase())}
+      </span>
+     </td>
+
+     <td>${esc(formatDate(d.createdAt))}</td>
+
+     <td>
+      <div class="action-row">
+
+       <button class="secondary-btn" onclick="viewDocument('${d.id}')">
+        View
+       </button>
+
+       ${
+        admin && d.status==="pending"
+        ?
+        `
+        <button class="secondary-btn" onclick="approveDocument('${d.id}')">
+         Approve
+        </button>
+
+        <button class="danger-btn" onclick="rejectDocument('${d.id}')">
+         Reject
+        </button>
+        `
+        :
+        ""
+       }
+
+       ${
+        admin
+        ?
+        `<button class="danger-btn" onclick="deleteDocument('${d.id}')">Delete</button>`
+        :
+        ""
+       }
+
+      </div>
+     </td>
+
+    </tr>
+
+   `).join("")}
+
+  </tbody>
+ </table>
+ </div>
+ `;
+}
+
+async function renderDocuments(){
+
+ const documents=await getVisibleDocuments();
+
+ document.getElementById("allDocuments").innerHTML=
+  documentTable(documents,currentUser.role==="admin");
+
+ document.getElementById("schemeList").innerHTML=
+  documentTable(documents.filter(d=>d.type==="Scheme of Work"),currentUser.role==="admin");
+
+ document.getElementById("lessonPlanList").innerHTML=
+  documentTable(documents.filter(d=>d.type==="Lesson Plan"),currentUser.role==="admin");
+
+ document.getElementById("lessonNoteList").innerHTML=
+  documentTable(documents.filter(d=>d.type==="Lesson Note"),currentUser.role==="admin");
+
+ if(currentUser.role==="admin"){
+
+  const pending=documents.filter(d=>d.status==="pending");
+
+  document.getElementById("approvalList").innerHTML=
+   documentTable(pending,true);
+
+ }else{
+  document.getElementById("approvalList").innerHTML="";
+ }
+}
+
+
+/* =========================================================
+   VIEW DOCUMENT
+========================================================= */
+
+async function viewDocument(id){
+
+ const documents=await dbGet("documents") || [];
+
+ const d=documents.find(x=>x.id===id);
+
+ if(!d) return;
+
+ alert(
+`DOCUMENT
+
+Type: ${d.type}
+Teacher: ${d.teacherName}
+Subject: ${d.subject}
+Class: ${d.className}
+Term: ${d.term}
+Week/Date: ${d.week}
+
+Title:
+${d.title}
+
+Learning Objectives:
+${d.objectives}
+
+Content:
+${d.content}
+
+Evaluation:
+${d.evaluation}
+
+Assignment / Remarks:
+${d.remarks}
+
+Status:
+${d.status.toUpperCase()}${d.rejectionReason ? "\n\nRejection Reason:\n"+d.rejectionReason : ""}`
+ );
+}
+
+
+/* =========================================================
+   APPROVAL
+========================================================= */
+
+async function approveDocument(id){
+
+ if(currentUser.role!=="admin") return;
+
+ const documents=await dbGet("documents") || [];
+
+ const index=documents.findIndex(d=>d.id===id);
+
+ if(index===-1) return;
+
+ documents[index].status="approved";
+ documents[index].rejectionReason="";
+ documents[index].updatedAt=now();
+
+ await dbSet("documents",documents);
+
+ toast("Document approved successfully.");
+
+ refreshAll();
+}
+
+async function rejectDocument(id){
+
+ if(currentUser.role!=="admin") return;
+
+ const reason=prompt("Enter the reason for rejecting this document:");
+
+ if(reason===null) return;
+
+ if(!reason.trim()){
+  alert("Please enter a rejection reason.");
+  return;
+ }
+
+ const documents=await dbGet("documents") || [];
+
+ const index=documents.findIndex(d=>d.id===id);
+
+ if(index===-1) return;
+
+ documents[index].status="rejected";
+ documents[index].rejectionReason=reason.trim();
+ documents[index].updatedAt=now();
+
+ await dbSet("documents",documents);
+
+ toast("Document rejected.");
+
+ refreshAll();
+}
+
+async function deleteDocument(id){
+
+ if(currentUser.role!=="admin") return;
+
+ if(!confirm("Delete this document permanently?")) return;
+
+ const documents=await dbGet("documents") || [];
+
+ const updated=documents.filter(d=>d.id!==id);
+
+ await dbSet("documents",updated);
+
+ toast("Document deleted.");
+
+ refreshAll();
+}
+
+
+/* =========================================================
+   TEACHERS
+========================================================= */
+
+function openTeacherModal(){
+
+ document.getElementById("teacherForm").reset();
+ document.getElementById("teacherModal").classList.add("show");
+}
+
+document.getElementById("teacherForm").addEventListener("submit",async function(e){
+
+ e.preventDefault();
+
+ if(currentUser.role!=="admin") return;
+
+ const name=document.getElementById("teacherName").value.trim();
+ const username=document.getElementById("teacherUsername").value.trim();
+ const password=document.getElementById("teacherPassword").value;
+ const confirm=document.getElementById("teacherConfirmPassword").value;
+ const subject=document.getElementById("teacherSubject").value.trim();
+ const className=document.getElementById("teacherClass").value.trim();
+
+ if(password!==confirm){
+  alert("Passwords do not match.");
+  return;
+ }
+
+ if(password.length<4){
+  alert("Password must contain at least 4 characters.");
+  return;
+ }
+
+ const users=await dbGet("users") || [];
+
+ if(users.some(u=>u.username.toLowerCase()===username.toLowerCase())){
+  alert("That username already exists.");
+  return;
+ }
+
+ users.push({
+  id:uid(),
+  name:name,
+  username:username,
+  password:password,
+  role:"teacher",
+  subject:subject,
+  className:className,
+  status:"active",
+  createdAt:now()
+ });
+
+ await dbSet("users",users);
+
+ closeModal("teacherModal");
+
+ toast("Teacher account created successfully.");
+
+ refreshAll();
+
+});
+
+
+async function renderTeachers(){
+
+ if(currentUser.role!=="admin") return;
+
+ const users=await dbGet("users") || [];
+
+ const teachers=users.filter(u=>u.role==="teacher");
+
+ const container=document.getElementById("teacherList");
+
+ if(!teachers.length){
+  container.innerHTML='<div class="empty">No teacher accounts have been created yet.</div>';
+  return;
+ }
+
+ container.innerHTML=`
+ <div class="table-wrap">
+ <table>
+
+  <thead>
+   <tr>
+    <th>Name</th>
+    <th>Username</th>
+    <th>Subject</th>
+    <th>Class</th>
+    <th>Status</th>
+    <th>Created</th>
+    <th>Action</th>
+   </tr>
+  </thead>
+
+  <tbody>
+
+   ${teachers.map(t=>`
+
+    <tr>
+
+     <td>${esc(t.name)}</td>
+     <td>${esc(t.username)}</td>
+     <td>${esc(t.subject)}</td>
+     <td>${esc(t.className)}</td>
+
+     <td>
+      <span class="badge ${t.status==="active"?"active":"disabled"}">
+       ${esc(t.status.toUpperCase())}
+      </span>
+     </td>
+
+     <td>${esc(formatDate(t.createdAt))}</td>
+
+     <td>
+      <div class="action-row">
+
+       <button class="secondary-btn"
+        onclick="toggleTeacher('${t.id}')">
+        ${t.status==="active"?"Disable":"Enable"}
+       </button>
+
+       <button class="danger-btn"
+        onclick="deleteTeacher('${t.id}')">
+        Delete
+       </button>
+
+      </div>
+     </td>
+
+    </tr>
+
+   `).join("")}
+
+  </tbody>
+ </table>
+ </div>
+ `;
+}
+
+
+async function toggleTeacher(id){
+
+ if(currentUser.role!=="admin") return;
+
+ const users=await dbGet("users") || [];
+
+ const index=users.findIndex(u=>u.id===id);
+
+ if(index===-1) return;
+
+ users[index].status=
+  users[index].status==="active"?"disabled":"active";
+
+ await dbSet("users",users);
+
+ toast("Teacher account status updated.");
+
+ renderTeachers();
+}
+
+
+async function deleteTeacher(id){
+
+ if(currentUser.role!=="admin") return;
+
+ if(!confirm("Delete this teacher account?")) return;
+
+ const users=await dbGet("users") || [];
+
+ const updated=users.filter(u=>u.id!==id);
+
+ await dbSet("users",updated);
+
+ toast("Teacher account deleted.");
+
+ refreshAll();
+}
+
+
+/* =========================================================
+   DASHBOARD
+========================================================= */
+
+async function renderDashboard(){
+
+ const users=await dbGet("users") || [];
+ const documents=await dbGet("documents") || [];
+
+ const teachers=users.filter(u=>u.role==="teacher");
+
+ const visible=currentUser.role==="admin"
+  ? documents
+  : documents.filter(d=>d.teacherId===currentUser.id);
+
+ document.getElementById("statTeachers").textContent=
+  currentUser.role==="admin"?teachers.length:1;
+
+ document.getElementById("statDocuments").textContent=
+  visible.length;
+
+ document.getElementById("statPending").textContent=
+  visible.filter(d=>d.status==="pending").length;
+
+ document.getElementById("statApproved").textContent=
+  visible.filter(d=>d.status==="approved").length;
+
+ const recent=visible.slice(0,5);
+
+ if(!recent.length){
+  document.getElementById("recentDocuments").innerHTML=
+   '<div class="empty">No documents yet.</div>';
+  return;
+ }
+
+ document.getElementById("recentDocuments").innerHTML=
+ recent.map(d=>`
+  <div style="padding:11px 0;border-bottom:1px solid var(--border)">
+   <div style="font-weight:800;font-size:13px">${esc(d.title)}</div>
+   <div style="font-size:11px;color:#64748b;margin-top:3px">
+    ${esc(d.type)} • ${esc(d.subject)} • ${esc(d.className)}
+   </div>
+   <div style="margin-top:6px">
+    <span class="badge ${esc(d.status)}">${esc(d.status.toUpperCase())}</span>
+   </div>
+  </div>
+ `).join("");
+}
+
+
+/* =========================================================
+   ASSISTANT
+========================================================= */
+
+function generateAssistant(){
+
+ const type=document.getElementById("assistantType").value;
+ const subject=document.getElementById("assistantSubject").value.trim() || "________________";
+ const className=document.getElementById("assistantClass").value.trim() || "________________";
+ const topic=document.getElementById("assistantTopic").value.trim() || "________________";
+
+ let html="";
+
+ if(type==="lessonplan"){
+
+  html=`
+  <div class="card" style="background:#f8fafc">
+   <h3 class="section-title">Lesson Plan Template</h3>
+
+   <p><b>Subject:</b> ${esc(subject)}</p>
+   <p><b>Class:</b> ${esc(className)}</p>
+   <p><b>Topic:</b> ${esc(topic)}</p>
+   <p><b>Duration:</b> __________________</p>
+
+   <br>
+
+   <p><b>Learning Objectives</b></p>
+   <p>By the end of the lesson, learners should be able to:</p>
+   <p>1. Define/explain ${esc(topic)}.</p>
+   <p>2. Identify important examples related to ${esc(topic)}.</p>
+   <p>3. Apply the concept through guided activities.</p>
+
+   <br>
+
+   <p><b>Previous Knowledge:</b> ______________________________</p>
+   <p><b>Instructional Materials:</b> __________________________</p>
+
+   <br>
+
+   <p><b>Introduction:</b> Teacher introduces the topic using questions, examples, or real-life situations.</p>
+
+   <p><b>Presentation:</b> Teacher explains the concept step by step and demonstrates relevant examples.</p>
+
+   <p><b>Learner Activities:</b> Learners participate in discussion, practice, questions, and class activities.</p>
+
+   <p><b>Evaluation:</b> Ask learners questions to determine whether the objectives have been achieved.</p>
+
+   <p><b>Assignment:</b> Give learners suitable exercises related to ${esc(topic)}.</p>
+  </div>`;
+ }
+
+ else if(type==="lessonnote"){
+
+  html=`
+  <div class="card" style="background:#f8fafc">
+   <h3 class="section-title">Lesson Note Template</h3>
+
+   <p><b>Subject:</b> ${esc(subject)}</p>
+   <p><b>Class:</b> ${esc(className)}</p>
+   <p><b>Topic:</b> ${esc(topic)}</p>
+
+   <br>
+
+   <p><b>Introduction</b></p>
+   <p>Introduce ${esc(topic)} by connecting the topic with learners' previous knowledge and everyday experiences.</p>
+
+   <br>
+
+   <p><b>Meaning / Definition</b></p>
+   <p>${esc(topic)} refers to ______________________________________________.</p>
+
+   <br>
+
+   <p><b>Explanation</b></p>
+   <p>Explain the major ideas of the topic clearly and provide suitable examples.</p>
+
+   <br>
+
+   <p><b>Examples</b></p>
+   <p>1. __________________________________</p>
+   <p>2. __________________________________</p>
+   <p>3. __________________________________</p>
+
+   <br>
+
+   <p><b>Class Activity</b></p>
+   <p>Allow learners to answer questions and perform practical exercises related to the topic.</p>
+
+   <br>
+
+   <p><b>Evaluation</b></p>
+   <p>1. __________________________________</p>
+   <p>2. __________________________________</p>
+   <p>3. __________________________________</p>
+
+   <br>
+
+   <p><b>Assignment</b></p>
+   <p>__________________________________</p>
+  </div>`;
+ }
+
+ else if(type==="scheme"){
+
+  html=`
+  <div class="card" style="background:#f8fafc">
+   <h3 class="section-title">Scheme of Work Template</h3>
+
+   <div class="table-wrap">
+   <table>
+    <tr>
+     <th>Week</th>
+     <th>Topic</th>
+     <th>Learning Objectives</th>
+     <th>Activities</th>
+    </tr>
+
+    <tr>
+     <td>1</td>
+     <td>${esc(topic)}</td>
+     <td>Learners should understand the basic concept.</td>
+     <td>Discussion and examples.</td>
+    </tr>
+
+    <tr>
+     <td>2</td>
+     <td>________________</td>
+     <td>Learners should identify and explain key ideas.</td>
+     <td>Class activities.</td>
+    </tr>
+
+    <tr>
+     <td>3</td>
+     <td>________________</td>
+     <td>Learners should apply the concept.</td>
+     <td>Exercises.</td>
+    </tr>
+   </table>
+   </div>
+  </div>`;
+ }
+
+ else if(type==="objectives"){
+
+  html=`
+  <div class="card" style="background:#f8fafc">
+   <h3 class="section-title">Learning Objectives</h3>
+
+   <p>For <b>${esc(topic)}</b> in <b>${esc(className)}</b>, learners should be able to:</p>
+
+   <br>
+
+   <p>1. Define and explain ${esc(topic)}.</p>
+   <p>2. Identify the main features or components of ${esc(topic)}.</p>
+   <p>3. Give relevant examples of ${esc(topic)}.</p>
+   <p>4. Demonstrate understanding through class activities.</p>
+   <p>5. Answer assessment questions correctly.</p>
+  </div>`;
+ }
+
+ else{
+
+  html=`
+  <div class="card" style="background:#f8fafc">
+   <h3 class="section-title">Assessment Questions</h3>
+
+   <p><b>Subject:</b> ${esc(subject)}</p>
+   <p><b>Class:</b> ${esc(className)}</p>
+   <p><b>Topic:</b> ${esc(topic)}</p>
+
+   <br>
+
+   <p><b>Objective Questions</b></p>
+
+   <p>1. What is ${esc(topic)}?</p>
+   <p>A. __________________</p>
+   <p>B. __________________</p>
+   <p>C. __________________</p>
+   <p>D. __________________</p>
+
+   <br>
+
+   <p>2. Which of the following is related to ${esc(topic)}?</p>
+   <p>A. __________________</p>
+   <p>B. __________________</p>
+   <p>C. __________________</p>
+   <p>D. __________________</p>
+
+   <br>
+
+   <p><b>Theory Questions</b></p>
+
+   <p>1. Explain ${esc(topic)}.</p>
+   <p>2. Give three examples related to the topic.</p>
+   <p>3. State two important uses or applications.</p>
+  </div>`;
+ }
+
+ document.getElementById("assistantResult").innerHTML=html;
+}
+
+
+/* =========================================================
+   SECURITY
+========================================================= */
+
+document.getElementById("securityForm").addEventListener("submit",async function(e){
+
+ e.preventDefault();
+
+ const newUsername=document.getElementById("newUsername").value.trim();
+ const newPassword=document.getElementById("newPassword").value;
+ const confirm=document.getElementById("confirmPassword").value;
+
+ if(newPassword && newPassword!==confirm){
+  alert("New passwords do not match.");
+  return;
+ }
+
+ if(newPassword && newPassword.length<4){
+  alert("New password must contain at least 4 characters.");
+  return;
+ }
+
+ const users=await dbGet("users") || [];
+
+ const index=users.findIndex(u=>u.id===currentUser.id);
+
+ if(index===-1){
+  alert("Account not found.");
+  return;
+ }
+
+ if(newUsername){
+
+  const exists=users.some(
+   (u,i)=>i!==index &&
+   u.username.toLowerCase()===newUsername.toLowerCase()
+  );
+
+  if(exists){
+   alert("That username is already being used.");
+   return;
+  }
+
+  users[index].username=newUsername;
+ }
+
+ if(newPassword){
+  users[index].password=newPassword;
+ }
+
+ await dbSet("users",users);
+
+ currentUser=users[index];
+
+ document.getElementById("currentUsername").value=currentUser.username;
+
+ document.getElementById("newUsername").value="";
+ document.getElementById("newPassword").value="";
+ document.getElementById("confirmPassword").value="";
+
+ setupInterface();
+
+ toast("Account details updated successfully.");
+
+});
+
+
+/* =========================================================
+   BACKUP
+========================================================= */
+
+async function backupData(){
+
+ if(currentUser.role!=="admin"){
+  alert("Only the Administrator can create backups.");
+  return;
+ }
+
+ const users=await dbGet("users") || [];
+ const documents=await dbGet("documents") || [];
+
+ const backup={
+  system:"Caliphate Tarbiya Academy",
+  version:"V10",
+  exportedAt:now(),
+  users:users,
+  documents:documents
+ };
+
+ const blob=new Blob(
+  [JSON.stringify(backup,null,2)],
+  {type:"application/json"}
+ );
+
+ const url=URL.createObjectURL(blob);
+
+ const a=document.createElement("a");
+ a.href=url;
+ a.download="CTA_School_System_Backup_"+new Date().toISOString().slice(0,10)+".json";
+
+ document.body.appendChild(a);
+ a.click();
+ a.remove();
+
+ URL.revokeObjectURL(url);
+
+ toast("Backup downloaded successfully.");
+}
+
+
+async function restoreData(){
+
+ if(currentUser.role!=="admin"){
+  alert("Only the Administrator can restore data.");
+  return;
+ }
+
+ const input=document.getElementById("restoreFile");
+
+ if(!input.files.length){
+  alert("Please select a backup JSON file.");
+  return;
+ }
+
+ if(!confirm("Restore this backup? Existing system data will be replaced.")){
+  return;
+ }
+
+ const file=input.files[0];
+
+ try{
+
+  const text=await file.text();
+  const backup=JSON.parse(text);
+
+  if(!Array.isArray(backup.users) || !Array.isArray(backup.documents)){
+   throw new Error("Invalid backup file.");
+  }
+
+  await dbSet("users",backup.users);
+  await dbSet("documents",backup.documents);
+
+  alert("Backup restored successfully. Please log in again.");
+
+  logout();
+
+ }catch(err){
+
+  alert("Unable to restore this backup. Please select a valid CTA backup file.");
+
+  console.error(err);
+ }
+}
+
+
+/* =========================================================
+   REFRESH
+========================================================= */
+
+async function refreshAll(){
+
+ if(!currentUser) return;
+
+ setupInterface();
+
+ await renderDashboard();
+ await renderDocuments();
+
+ if(currentUser.role==="admin"){
+
+  await renderTeachers();
+
+ }
+
+}
+
+
+/* =========================================================
+   START SYSTEM
+========================================================= */
+
+(async function(){
+
+ try{
+
+  await openDB();
+  await initializeData();
+  await restoreSession();
+
+ }catch(error){
+
+  console.error(error);
+
+  const errorBox=document.getElementById("errorBox");
+
+  errorBox.textContent=
+   "Offline storage could not be opened. Please open the live HTTPS website in Safari or Chrome, not an in-app preview.";
+
+  errorBox.style.display="block";
+ }
+
+})();
+
+
+/* =========================================================
+   CLOSE MODALS WHEN CLICKING OUTSIDE
+========================================================= */
+
+document.querySelectorAll(".modal").forEach(modal=>{
+
+ modal.addEventListener("click",function(e){
+
+  if(e.target===modal){
+   modal.classList.remove("show");
+  }
+
+ });
+
+});
+</script>
 
 </body>
 </html>
