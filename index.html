@@ -4,2967 +4,3554 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta name="theme-color" content="#14532d">
-
-<title>Caliphate Tarbiya Academy Sokoto | Academic Management System</title>
+<meta name="description" content="Caliphate Tarbiya Academy Digital School Management System">
+<title>Caliphate Tarbiya Academy | Academic Management System</title>
 
 <style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
-
+*{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --green:#14532d;
-  --green2:#166534;
-  --light:#f0fdf4;
-  --lighter:#f8fafc;
-  --white:#fff;
-  --dark:#172033;
-  --gray:#64748b;
-  --border:#e2e8f0;
-  --danger:#dc2626;
-  --warning:#d97706;
-  --blue:#2563eb;
+ --primary:#14532d;
+ --primary2:#166534;
+ --green:#22c55e;
+ --light:#f0fdf4;
+ --lighter:#f7fff9;
+ --dark:#123524;
+ --danger:#dc2626;
+ --warning:#d97706;
+ --blue:#2563eb;
+ --gray:#64748b;
+ --border:#dbe5df;
+ --white:#fff;
+ --shadow:0 8px 25px rgba(20,83,45,.08);
 }
-
 body{
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
-  background:#f1f5f9;
-  color:var(--dark);
-  min-height:100vh;
+ font-family:Arial,Helvetica,sans-serif;
+ background:#f4f8f5;
+ color:#17231c;
+ line-height:1.5;
 }
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+.hidden{display:none!important}
+.app{min-height:100vh}
 
-button,
-input,
-select,
-textarea{
-  font:inherit;
+/* LOGIN */
+.login-screen{
+ min-height:100vh;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ padding:20px;
+ background:linear-gradient(135deg,#052e16,#14532d,#166534);
 }
-
-button{
-  cursor:pointer;
+.login-card{
+ width:100%;
+ max-width:430px;
+ background:white;
+ border-radius:22px;
+ padding:30px;
+ box-shadow:0 20px 60px rgba(0,0,0,.25);
 }
-
-.hidden{
-  display:none!important;
+.logo{
+ width:72px;height:72px;
+ border-radius:18px;
+ background:var(--primary);
+ color:white;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ font-size:27px;
+ font-weight:800;
+ margin:0 auto 15px;
 }
-
-/* =========================
-   LOGIN
-========================= */
-
-#loginPage{
-  min-height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  padding:20px;
-  background:linear-gradient(135deg,#14532d,#166534,#052e16);
-}
-
-.login-box{
-  width:100%;
-  max-width:460px;
-  background:white;
-  border-radius:22px;
-  padding:30px 24px;
-  box-shadow:0 20px 60px rgba(0,0,0,.25);
-}
-
-.school-logo{
-  width:82px;
-  height:82px;
-  border-radius:50%;
-  background:var(--green);
-  color:white;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  margin:0 auto 15px;
-  font-size:35px;
-  font-weight:800;
-}
-
-.school-title{
-  text-align:center;
-  color:var(--green);
-  font-size:22px;
-  font-weight:800;
-}
-
-.school-subtitle{
-  text-align:center;
-  color:var(--gray);
-  margin:7px 0 25px;
-  font-size:14px;
-}
-
-.portal-selector{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:8px;
-  margin-bottom:18px;
-}
-
-.portal-btn{
-  border:1px solid var(--border);
-  background:#f8fafc;
-  color:#334155;
-  padding:11px 5px;
-  border-radius:10px;
-  font-size:12px;
-  font-weight:700;
-}
-
-.portal-btn.active{
-  background:var(--green);
-  color:white;
-  border-color:var(--green);
-}
-
-.form-group{
-  margin-bottom:15px;
-}
-
+.login-card h1{text-align:center;color:var(--primary);font-size:22px}
+.login-card .subtitle{text-align:center;color:var(--gray);margin:5px 0 25px}
+.form-group{margin-bottom:15px}
 .form-group label{
-  display:block;
-  margin-bottom:6px;
-  font-size:13px;
-  font-weight:700;
-  color:#334155;
+ display:block;
+ font-weight:700;
+ font-size:13px;
+ margin-bottom:6px;
+ color:#334155;
+}
+.form-control{
+ width:100%;
+ padding:12px 13px;
+ border:1px solid var(--border);
+ border-radius:10px;
+ outline:none;
+ background:white;
+}
+.form-control:focus{
+ border-color:var(--green);
+ box-shadow:0 0 0 3px rgba(34,197,94,.12);
+}
+.password-wrap{position:relative}
+.password-wrap .form-control{padding-right:80px}
+.password-toggle{
+ position:absolute;
+ right:7px;
+ top:6px;
+ height:34px;
+ border:0;
+ background:#f1f5f9;
+ border-radius:7px;
+ padding:0 10px;
+ font-size:12px;
+}
+.caps-warning{
+ color:var(--danger);
+ font-size:12px;
+ margin-top:5px;
+ display:none;
+}
+.btn{
+ border:0;
+ border-radius:9px;
+ padding:10px 15px;
+ font-weight:700;
+ transition:.15s;
+}
+.btn:hover{transform:translateY(-1px)}
+.btn-primary{background:var(--primary);color:white}
+.btn-success{background:#16a34a;color:white}
+.btn-danger{background:var(--danger);color:white}
+.btn-warning{background:#f59e0b;color:white}
+.btn-blue{background:var(--blue);color:white}
+.btn-light{background:#ecfdf3;color:var(--primary)}
+.btn-gray{background:#e2e8f0;color:#334155}
+.btn-block{width:100%}
+.login-note{
+ background:#f0fdf4;
+ color:#166534;
+ border:1px solid #bbf7d0;
+ padding:10px;
+ border-radius:9px;
+ margin-bottom:15px;
+ font-size:12px;
+}
+.login-error{
+ background:#fef2f2;
+ color:#b91c1c;
+ padding:10px;
+ border-radius:9px;
+ margin-bottom:12px;
+ font-size:13px;
 }
 
-.form-group input,
-.form-group select,
-.form-group textarea{
-  width:100%;
-  border:1px solid var(--border);
-  border-radius:10px;
-  padding:12px;
-  outline:none;
-  background:white;
-}
-
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus{
-  border-color:var(--green);
-  box-shadow:0 0 0 3px rgba(20,83,45,.08);
-}
-
-.login-button{
-  width:100%;
-  border:0;
-  background:var(--green);
-  color:white;
-  padding:13px;
-  border-radius:10px;
-  font-weight:800;
-  margin-top:4px;
-}
-
-.login-button:hover{
-  background:#0f3f23;
-}
-
-.login-message{
-  margin-top:13px;
-  text-align:center;
-  font-size:13px;
-  min-height:20px;
-}
-
-.demo-box{
-  margin-top:20px;
-  padding:12px;
-  background:#f0fdf4;
-  border:1px solid #bbf7d0;
-  border-radius:10px;
-  font-size:12px;
-  color:#166534;
-}
-
-/* =========================
-   APP
-========================= */
-
-#app{
-  min-height:100vh;
-}
-
-.topbar{
-  height:64px;
-  background:white;
-  border-bottom:1px solid var(--border);
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:0 18px;
-  position:sticky;
-  top:0;
-  z-index:100;
-}
-
-.brand{
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-
-.brand-icon{
-  width:40px;
-  height:40px;
-  border-radius:10px;
-  background:var(--green);
-  color:white;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-weight:800;
-}
-
-.brand-text strong{
-  display:block;
-  font-size:14px;
-}
-
-.brand-text span{
-  display:block;
-  font-size:11px;
-  color:var(--gray);
-}
-
-.top-actions{
-  display:flex;
-  align-items:center;
-  gap:8px;
-}
-
-.icon-button{
-  border:1px solid var(--border);
-  background:white;
-  padding:8px 10px;
-  border-radius:9px;
-}
-
-.logout-button{
-  background:#fee2e2;
-  color:#b91c1c;
-  border:0;
-  padding:9px 12px;
-  border-radius:9px;
-  font-weight:700;
-}
-
-.layout{
-  display:flex;
-  min-height:calc(100vh - 64px);
-}
-
+/* LAYOUT */
+.layout{display:flex;min-height:100vh}
 .sidebar{
-  width:250px;
-  background:#052e16;
-  color:white;
-  padding:18px 12px;
-  flex-shrink:0;
+ width:255px;
+ background:#052e16;
+ color:white;
+ position:fixed;
+ top:0;bottom:0;left:0;
+ overflow-y:auto;
+ z-index:100;
+ transition:.25s;
 }
-
-.sidebar-user{
-  padding:14px;
-  background:rgba(255,255,255,.08);
-  border-radius:12px;
-  margin-bottom:15px;
+.brand{
+ padding:20px 17px;
+ border-bottom:1px solid rgba(255,255,255,.12);
 }
-
-.sidebar-user strong{
-  display:block;
-  font-size:14px;
+.brand-title{font-size:17px;font-weight:800}
+.brand-sub{font-size:11px;color:#bbf7d0;margin-top:3px}
+.user-box{
+ padding:15px 17px;
+ background:rgba(255,255,255,.06);
+ margin:10px;
+ border-radius:10px;
 }
-
-.sidebar-user span{
-  font-size:11px;
-  color:#bbf7d0;
-}
-
+.user-name{font-weight:700;font-size:14px}
+.user-role{font-size:11px;color:#86efac}
 .nav-title{
-  font-size:10px;
-  color:#86efac;
-  font-weight:800;
-  text-transform:uppercase;
-  margin:18px 10px 7px;
+ color:#86efac;
+ font-size:10px;
+ font-weight:800;
+ text-transform:uppercase;
+ padding:12px 17px 5px;
+ letter-spacing:.6px;
 }
-
 .nav-item{
-  width:100%;
-  border:0;
-  background:transparent;
-  color:#dcfce7;
-  padding:11px 12px;
-  border-radius:9px;
-  text-align:left;
-  margin-bottom:3px;
-  font-size:13px;
-  font-weight:600;
+ display:flex;
+ align-items:center;
+ gap:10px;
+ padding:10px 17px;
+ color:#dcfce7;
+ font-size:13px;
+ cursor:pointer;
 }
-
-.nav-item:hover,
-.nav-item.active{
-  background:#166534;
-  color:white;
+.nav-item:hover,.nav-item.active{
+ background:#166534;
+ color:white;
 }
-
 .main{
-  flex:1;
-  min-width:0;
-  padding:22px;
+ margin-left:255px;
+ width:calc(100% - 255px);
+ min-width:0;
 }
-
-.page-header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:10px;
-  margin-bottom:20px;
+.topbar{
+ height:64px;
+ background:white;
+ border-bottom:1px solid var(--border);
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ padding:0 22px;
+ position:sticky;
+ top:0;
+ z-index:50;
 }
-
-.page-header h1{
-  font-size:23px;
+.menu-btn{display:none}
+.page{padding:22px}
+.page-title{
+ font-size:23px;
+ color:var(--dark);
+ font-weight:800;
+ margin-bottom:5px;
 }
+.page-subtitle{color:var(--gray);font-size:13px;margin-bottom:20px}
 
-.page-header p{
-  color:var(--gray);
-  font-size:13px;
-  margin-top:4px;
+/* CARDS */
+.grid{
+ display:grid;
+ grid-template-columns:repeat(4,1fr);
+ gap:15px;
 }
-
-.primary-btn{
-  background:var(--green);
-  color:white;
-  border:0;
-  padding:11px 15px;
-  border-radius:9px;
-  font-weight:700;
-}
-
-.secondary-btn{
-  background:white;
-  color:#334155;
-  border:1px solid var(--border);
-  padding:10px 14px;
-  border-radius:9px;
-  font-weight:700;
-}
-
-/* =========================
-   DASHBOARD CARDS
-========================= */
-
-.stats-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:15px;
-  margin-bottom:20px;
-}
-
-.stat-card{
-  background:white;
-  border:1px solid var(--border);
-  border-radius:14px;
-  padding:18px;
-}
-
-.stat-icon{
-  width:38px;
-  height:38px;
-  border-radius:10px;
-  background:var(--light);
-  color:var(--green);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  font-weight:800;
-  margin-bottom:10px;
-}
-
-.stat-card h3{
-  font-size:25px;
-}
-
-.stat-card p{
-  color:var(--gray);
-  font-size:12px;
-  margin-top:3px;
-}
-
-.content-grid{
-  display:grid;
-  grid-template-columns:2fr 1fr;
-  gap:18px;
-}
-
 .card{
-  background:white;
-  border:1px solid var(--border);
-  border-radius:14px;
-  padding:18px;
-  margin-bottom:18px;
+ background:white;
+ border:1px solid var(--border);
+ border-radius:14px;
+ padding:17px;
+ box-shadow:var(--shadow);
 }
-
-.card-title{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:14px;
+.stat-title{font-size:12px;color:var(--gray)}
+.stat-number{font-size:28px;font-weight:800;color:var(--primary);margin-top:4px}
+.stat-icon{font-size:25px}
+.section{
+ background:white;
+ border:1px solid var(--border);
+ border-radius:14px;
+ margin-bottom:18px;
+ overflow:hidden;
+ box-shadow:var(--shadow);
 }
-
-.card-title h2{
-  font-size:16px;
+.section-header{
+ padding:14px 16px;
+ border-bottom:1px solid var(--border);
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ gap:10px;
+ flex-wrap:wrap;
 }
+.section-header h3{font-size:16px;color:var(--dark)}
+.section-body{padding:16px}
 
-.card-title span{
-  font-size:12px;
-  color:var(--gray);
+/* TABLE */
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;min-width:650px}
+th,td{
+ padding:10px;
+ border-bottom:1px solid #e5eee8;
+ text-align:left;
+ font-size:12px;
+ vertical-align:top;
 }
-
-/* =========================
-   TABLE
-========================= */
-
-.table-wrapper{
-  overflow-x:auto;
-}
-
-table{
-  width:100%;
-  border-collapse:collapse;
-  min-width:650px;
-}
-
-th,
-td{
-  padding:11px 10px;
-  border-bottom:1px solid var(--border);
-  text-align:left;
-  font-size:13px;
-}
-
-th{
-  color:#475569;
-  background:#f8fafc;
-  font-size:11px;
-  text-transform:uppercase;
-}
-
+th{background:#f0fdf4;color:#14532d;font-weight:800}
+tr:hover td{background:#fbfffc}
 .badge{
-  display:inline-block;
-  padding:5px 8px;
-  border-radius:20px;
-  font-size:10px;
-  font-weight:800;
+ display:inline-block;
+ padding:4px 8px;
+ border-radius:20px;
+ font-size:10px;
+ font-weight:800;
 }
+.badge-green{background:#dcfce7;color:#166534}
+.badge-red{background:#fee2e2;color:#b91c1c}
+.badge-yellow{background:#fef3c7;color:#92400e}
+.badge-blue{background:#dbeafe;color:#1d4ed8}
+.badge-gray{background:#e2e8f0;color:#475569}
 
-.badge.green{
-  background:#dcfce7;
-  color:#166534;
-}
-
-.badge.orange{
-  background:#ffedd5;
-  color:#c2410c;
-}
-
-.badge.blue{
-  background:#dbeafe;
-  color:#1d4ed8;
-}
-
-.badge.red{
-  background:#fee2e2;
-  color:#b91c1c;
-}
-
-/* =========================
-   QUICK ACTIONS
-========================= */
-
-.quick-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:10px;
-}
-
-.quick-action{
-  border:1px solid var(--border);
-  background:#f8fafc;
-  border-radius:10px;
-  padding:15px;
-  text-align:left;
-}
-
-.quick-action strong{
-  display:block;
-  font-size:13px;
-}
-
-.quick-action span{
-  display:block;
-  color:var(--gray);
-  font-size:11px;
-  margin-top:4px;
-}
-
-/* =========================
-   PROFILE
-========================= */
-
-.profile{
-  display:flex;
-  gap:18px;
-  align-items:center;
-}
-
-.avatar{
-  width:75px;
-  height:75px;
-  background:var(--green);
-  color:white;
-  border-radius:50%;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  font-size:25px;
-  font-weight:800;
-}
-
-.profile-info h2{
-  font-size:19px;
-}
-
-.profile-info p{
-  color:var(--gray);
-  font-size:12px;
-  margin-top:3px;
-}
-
-.info-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:12px;
-}
-
-.info-item{
-  padding:13px;
-  border:1px solid var(--border);
-  border-radius:10px;
-}
-
-.info-item label{
-  display:block;
-  color:var(--gray);
-  font-size:10px;
-  text-transform:uppercase;
-  font-weight:800;
-  margin-bottom:4px;
-}
-
-.info-item strong{
-  font-size:13px;
-}
-
-/* =========================
-   NOTICE
-========================= */
-
-.notice{
-  padding:12px;
-  border-radius:10px;
-  background:#eff6ff;
-  border:1px solid #bfdbfe;
-  margin-bottom:10px;
-}
-
-.notice strong{
-  font-size:13px;
-}
-
-.notice p{
-  color:#475569;
-  font-size:11px;
-  margin-top:3px;
-}
-
-/* =========================
-   MODAL
-========================= */
-
-.modal{
-  position:fixed;
-  inset:0;
-  background:rgba(15,23,42,.55);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  padding:20px;
-  z-index:500;
-}
-
-.modal-box{
-  width:100%;
-  max-width:600px;
-  background:white;
-  border-radius:16px;
-  padding:22px;
-  max-height:90vh;
-  overflow-y:auto;
-}
-
-.modal-header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:17px;
-}
-
-.close-btn{
-  border:0;
-  background:#f1f5f9;
-  width:32px;
-  height:32px;
-  border-radius:8px;
-  font-weight:800;
-}
-
+/* FORMS */
 .form-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
+ display:grid;
+ grid-template-columns:repeat(2,1fr);
+ gap:14px;
+}
+.form-grid-3{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:14px;
+}
+textarea.form-control{min-height:130px;resize:vertical}
+.form-full{grid-column:1/-1}
+.action-row{
+ display:flex;
+ gap:8px;
+ flex-wrap:wrap;
+ margin-top:12px;
 }
 
-.full{
-  grid-column:1/-1;
+/* DASHBOARD */
+.quick-grid{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:12px;
+}
+.quick{
+ border:1px solid var(--border);
+ padding:16px;
+ border-radius:12px;
+ cursor:pointer;
+ background:#fbfffc;
+}
+.quick:hover{border-color:#86efac;background:#f0fdf4}
+.quick b{display:block;color:var(--primary);margin-bottom:4px}
+.quick span{font-size:12px;color:var(--gray)}
+
+/* DOCUMENT */
+.document-preview{
+ background:#fff;
+ border:1px solid #d9e2dc;
+ border-radius:10px;
+ padding:22px;
+ white-space:pre-wrap;
+ line-height:1.65;
+ min-height:200px;
+}
+.paper{
+ max-width:850px;
+ margin:auto;
+ background:white;
+ padding:35px;
+ border:1px solid #ddd;
+}
+.paper h1,.paper h2,.paper h3{text-align:center}
+.paper .school-name{text-align:center;font-size:20px;font-weight:800}
+.paper .doc-title{text-align:center;font-size:17px;font-weight:800;margin:12px 0 20px}
+
+/* QUESTIONS */
+.question-box{
+ border:1px solid var(--border);
+ border-radius:10px;
+ padding:14px;
+ margin-bottom:12px;
+}
+.question-box strong{display:block;margin-bottom:7px}
+.option{margin:3px 0;font-size:13px}
+.answer-key{
+ background:#f0fdf4;
+ border-left:4px solid #16a34a;
+ padding:12px;
+ margin-top:12px;
 }
 
-/* =========================
-   MOBILE
-========================= */
+/* MODAL */
+.modal{
+ position:fixed;
+ inset:0;
+ background:rgba(15,23,42,.6);
+ z-index:500;
+ display:none;
+ align-items:center;
+ justify-content:center;
+ padding:15px;
+}
+.modal.show{display:flex}
+.modal-box{
+ background:white;
+ border-radius:15px;
+ max-width:900px;
+ width:100%;
+ max-height:92vh;
+ overflow:auto;
+}
+.modal-head{
+ padding:15px 18px;
+ border-bottom:1px solid var(--border);
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+}
+.modal-body{padding:18px}
 
-.mobile-menu{
-  display:none;
-  border:1px solid var(--border);
-  background:white;
-  padding:8px 10px;
-  border-radius:8px;
+/* TOAST */
+.toast{
+ position:fixed;
+ right:20px;
+ bottom:20px;
+ background:#052e16;
+ color:white;
+ padding:13px 17px;
+ border-radius:10px;
+ box-shadow:0 8px 30px rgba(0,0,0,.2);
+ z-index:1000;
+ display:none;
+ max-width:350px;
+ font-size:13px;
+}
+.toast.show{display:block}
+
+/* PRINT */
+@media print{
+ body{background:white}
+ .sidebar,.topbar,.no-print,.modal{display:none!important}
+ .main{margin:0;width:100%}
+ .page{padding:0}
+ .section{box-shadow:none;border:0}
+ .paper{border:0;max-width:none}
 }
 
+/* MOBILE */
 @media(max-width:900px){
-  .stats-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .content-grid{
-    grid-template-columns:1fr;
-  }
-
-  .sidebar{
-    position:fixed;
-    left:-270px;
-    top:64px;
-    bottom:0;
-    z-index:200;
-    transition:.25s;
-    overflow-y:auto;
-  }
-
-  .sidebar.open{
-    left:0;
-  }
-
-  .mobile-menu{
-    display:block;
-  }
-
-  .main{
-    padding:16px;
-  }
+ .sidebar{
+  transform:translateX(-100%);
+  width:270px;
+ }
+ .sidebar.open{transform:translateX(0)}
+ .main{margin-left:0;width:100%}
+ .menu-btn{
+  display:block;
+  border:0;
+  background:#f0fdf4;
+  color:var(--primary);
+  padding:8px 11px;
+  border-radius:8px;
+ }
+ .grid{grid-template-columns:repeat(2,1fr)}
+ .quick-grid{grid-template-columns:1fr 1fr}
+ .form-grid-3{grid-template-columns:1fr}
 }
-
 @media(max-width:600px){
-  .topbar{
-    padding:0 10px;
-  }
-
-  .brand-text{
-    display:none;
-  }
-
-  .stats-grid{
-    grid-template-columns:1fr 1fr;
-    gap:9px;
-  }
-
-  .stat-card{
-    padding:13px;
-  }
-
-  .stat-card h3{
-    font-size:21px;
-  }
-
-  .page-header{
-    align-items:flex-start;
-    flex-direction:column;
-  }
-
-  .page-header .primary-btn{
-    width:100%;
-  }
-
-  .info-grid,
-  .form-grid{
-    grid-template-columns:1fr;
-  }
-
-  .profile{
-    align-items:flex-start;
-  }
-
-  .login-box{
-    padding:22px 17px;
-  }
+ .page{padding:14px}
+ .grid{grid-template-columns:1fr 1fr}
+ .quick-grid{grid-template-columns:1fr}
+ .form-grid{grid-template-columns:1fr}
+ .topbar{padding:0 13px}
+ .topbar-title{font-size:14px}
+ .page-title{font-size:20px}
+ .card{padding:13px}
+ .stat-number{font-size:23px}
 }
 </style>
 </head>
 
 <body>
 
-<!-- =========================
-     LOGIN PAGE
-========================= -->
+<!-- ================= LOGIN ================= -->
+<div id="loginScreen" class="login-screen">
+ <div class="login-card">
+  <div class="logo">CTA</div>
+  <h1>Caliphate Tarbiya Academy</h1>
+  <div class="subtitle">Digital School Management System</div>
 
-<section id="loginPage">
-
-  <div class="login-box">
-
-    <div class="school-logo">CTA</div>
-
-    <div class="school-title">
-      Caliphate Tarbiya Academy
-    </div>
-
-    <div class="school-subtitle">
-      Sokoto · Academic Management System
-    </div>
-
-    <div class="portal-selector">
-
-      <button class="portal-btn active" onclick="selectPortal('admin',this)">
-        🔐 Admin
-      </button>
-
-      <button class="portal-btn" onclick="selectPortal('teacher',this)">
-        👨‍🏫 Teacher
-      </button>
-
-      <button class="portal-btn" onclick="selectPortal('student',this)">
-        🎓 Student
-      </button>
-
-      <button class="portal-btn" onclick="selectPortal('parent',this)">
-        👨‍👩‍👧 Parent
-      </button>
-
-    </div>
-
-    <form id="loginForm">
-
-      <div class="form-group">
-        <label id="loginLabel">Username</label>
-        <input
-          type="text"
-          id="loginUsername"
-          placeholder="Enter username"
-          autocomplete="username"
-          required
-        >
-      </div>
-
-      <div class="form-group">
-        <label>Password</label>
-
-        <input
-          type="password"
-          id="loginPassword"
-          placeholder="Enter password"
-          autocomplete="current-password"
-          required
-        >
-      </div>
-
-      <button class="login-button" type="submit">
-        Sign In
-      </button>
-
-      <div id="loginMessage" class="login-message"></div>
-
-    </form>
-
-    <div class="demo-box">
-      <strong>Initial demonstration accounts</strong><br><br>
-
-      Admin: <b>admin</b> / <b>admin123</b><br>
-      Teacher: <b>teacher</b> / <b>teacher123</b><br>
-      Student: <b>student</b> / <b>student123</b><br>
-      Parent: <b>parent</b> / <b>parent123</b>
-
-      <br><br>
-      These are temporary front-end demonstration accounts.
-      Real Supabase authentication can be connected to them.
-    </div>
-
+  <div class="login-note">
+   <b>Secure Access</b><br>
+   Only the Administrator can create and manage teacher accounts.
+   HOD and Examination Officer are permissions assigned to teachers by the Administrator.
   </div>
 
-</section>
-
-
-<!-- =========================
-     APPLICATION
-========================= -->
-
-<section id="app" class="hidden">
-
-  <header class="topbar">
-
-    <div class="brand">
-
-      <button class="mobile-menu" onclick="toggleSidebar()">
-        ☰
-      </button>
-
-      <div class="brand-icon">
-        CTA
-      </div>
-
-      <div class="brand-text">
-        <strong>Caliphate Tarbiya Academy</strong>
-        <span>Academic Management System</span>
-      </div>
-
-    </div>
-
-    <div class="top-actions">
-
-      <button class="icon-button" onclick="showNotifications()">
-        🔔
-      </button>
-
-      <button class="logout-button" onclick="logout()">
-        Logout
-      </button>
-
-    </div>
-
-  </header>
-
-
-  <div class="layout">
-
-    <!-- SIDEBAR -->
-
-    <aside id="sidebar" class="sidebar">
-
-      <div class="sidebar-user">
-        <strong id="sidebarName">User</strong>
-        <span id="sidebarRole">Portal</span>
-      </div>
-
-      <div class="nav-title">
-        Main
-      </div>
-
-      <button class="nav-item active" onclick="showPage('dashboard',this)">
-        🏠 Dashboard
-      </button>
-
-      <div id="adminNav" class="hidden">
-
-        <div class="nav-title">
-          Administration
-        </div>
-
-        <button class="nav-item" onclick="showPage('teachers',this)">
-          👨‍🏫 Teacher Management
-        </button>
-
-        <button class="nav-item" onclick="showPage('students',this)">
-          🎓 Student Management
-        </button>
-
-        <button class="nav-item" onclick="showPage('parents',this)">
-          👨‍👩‍👧 Parent Management
-        </button>
-
-        <button class="nav-item" onclick="showPage('hod',this)">
-          📚 HOD Assignment
-        </button>
-
-        <button class="nav-item" onclick="showPage('approvals',this)">
-          ✅ Approval Centre
-        </button>
-
-        <button class="nav-item" onclick="showPage('examination',this)">
-          📝 Examination Centre
-        </button>
-
-      </div>
-
-
-      <div id="teacherNav" class="hidden">
-
-        <div class="nav-title">
-          Teaching
-        </div>
-
-        <button class="nav-item" onclick="showPage('lessonPlan',this)">
-          📘 Lesson Plan
-        </button>
-
-        <button class="nav-item" onclick="showPage('lessonNote',this)">
-          📖 Lesson Note
-        </button>
-
-        <button class="nav-item" onclick="showPage('scheme',this)">
-          📑 Scheme of Work
-        </button>
-
-        <button class="nav-item" onclick="showPage('caExam',this)">
-          📝 CA & Examination
-        </button>
-
-        <button class="nav-item" onclick="showPage('assistant',this)">
-          🤖 Teacher Assistant
-        </button>
-
-      </div>
-
-
-      <div id="studentNav" class="hidden">
-
-        <div class="nav-title">
-          Student
-        </div>
-
-        <button class="nav-item" onclick="showPage('subjects',this)">
-          📚 My Subjects
-        </button>
-
-        <button class="nav-item" onclick="showPage('assignments',this)">
-          📝 Assignments
-        </button>
-
-        <button class="nav-item" onclick="showPage('results',this)">
-          📊 My Results
-        </button>
-
-        <button class="nav-item" onclick="showPage('materials',this)">
-          📖 Learning Materials
-        </button>
-
-        <button class="nav-item" onclick="showPage('studentProfile',this)">
-          👤 My Profile
-        </button>
-
-      </div>
-
-
-      <div id="parentNav" class="hidden">
-
-        <div class="nav-title">
-          Parent
-        </div>
-
-        <button class="nav-item" onclick="showPage('children',this)">
-          👨‍👩‍👧 My Children
-        </button>
-
-        <button class="nav-item" onclick="showPage('childResults',this)">
-          📊 Academic Results
-        </button>
-
-        <button class="nav-item" onclick="showPage('childAttendance',this)">
-          📅 Attendance
-        </button>
-
-        <button class="nav-item" onclick="showPage('childAssignments',this)">
-          📝 Assignments
-        </button>
-
-        <button class="nav-item" onclick="showPage('parentProfile',this)">
-          👤 Parent Profile
-        </button>
-
-      </div>
-
-
-      <div class="nav-title">
-        Account
-      </div>
-
-      <button class="nav-item" onclick="showPage('settings',this)">
-        ⚙️ Settings
-      </button>
-
-    </aside>
-
-
-    <!-- MAIN CONTENT -->
-
-    <main class="main">
-
-      <!-- DASHBOARD -->
-
-      <div id="page-dashboard" class="page">
-
-        <div class="page-header">
-
-          <div>
-            <h1 id="welcomeTitle">Dashboard</h1>
-            <p id="welcomeText">
-              Welcome to Caliphate Tarbiya Academy.
-            </p>
-          </div>
-
-        </div>
-
-
-        <div class="stats-grid">
-
-          <div class="stat-card">
-            <div class="stat-icon">📚</div>
-            <h3 id="statOne">0</h3>
-            <p id="statOneLabel">Subjects</p>
-          </div>
-
-          <div class="stat-card">
-            <div class="stat-icon">📝</div>
-            <h3 id="statTwo">0</h3>
-            <p id="statTwoLabel">Assignments</p>
-          </div>
-
-          <div class="stat-card">
-            <div class="stat-icon">📊</div>
-            <h3 id="statThree">0</h3>
-            <p id="statThreeLabel">Results</p>
-          </div>
-
-          <div class="stat-card">
-            <div class="stat-icon">📅</div>
-            <h3 id="statFour">0%</h3>
-            <p id="statFourLabel">Attendance</p>
-          </div>
-
-        </div>
-
-
-        <div class="content-grid">
-
-          <div>
-
-            <div class="card">
-
-              <div class="card-title">
-                <h2>Recent Activity</h2>
-                <span>Latest</span>
-              </div>
-
-              <div id="recentActivity">
-
-                <div class="notice">
-                  <strong>Welcome</strong>
-                  <p>Your portal is ready.</p>
-                </div>
-
-                <div class="notice">
-                  <strong>Academic Session</strong>
-                  <p>2026/2027 academic session.</p>
-                </div>
-
-              </div>
-
-            </div>
-
-          </div>
-
-
-          <div>
-
-            <div class="card">
-
-              <div class="card-title">
-                <h2>Quick Actions</h2>
-              </div>
-
-              <div class="quick-grid">
-
-                <button class="quick-action" onclick="showPage('profile')">
-                  <strong>👤 Profile</strong>
-                  <span>View account</span>
-                </button>
-
-                <button class="quick-action" onclick="showPage('settings')">
-                  <strong>⚙️ Settings</strong>
-                  <span>Account settings</span>
-                </button>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <!-- ADMIN: TEACHERS -->
-
-      <div id="page-teachers" class="page hidden">
-
-        <div class="page-header">
-          <div>
-            <h1>Teacher Management</h1>
-            <p>Create and manage teacher accounts.</p>
-          </div>
-
-          <button class="primary-btn" onclick="openModal('teacherModal')">
-            + Add Teacher
-          </button>
-        </div>
-
-        <div class="card">
-
-          <div class="table-wrapper">
-
-            <table>
-
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Username</th>
-                  <th>Department</th>
-                  <th>Status</th>
-                </tr>
-              </thead>
-
-              <tbody id="teacherTable">
-
-                <tr>
-                  <td>Demo Teacher</td>
-                  <td>teacher</td>
-                  <td>Mathematics</td>
-                  <td><span class="badge green">Active</span></td>
-                </tr>
-
-              </tbody>
-
-            </table>
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <!-- ADMIN: STUDENTS -->
-
-      <div id="page-students" class="page hidden">
-
-        <div class="page-header">
-          <div>
-            <h1>Student Management</h1>
-            <p>Create and manage student accounts.</p>
-          </div>
-
-          <button class="primary-btn" onclick="openModal('studentModal')">
-            + Add Student
-          </button>
-        </div>
-
-        <div class="card">
-
-          <div class="table-wrapper">
-
-            <table>
-
-              <thead>
-                <tr>
-                  <th>Student</th>
-                  <th>Admission No.</th>
-                  <th>Class</th>
-                  <th>Parent</th>
-                  <th>Status</th>
-                </tr>
-              </thead>
-
-              <tbody id="studentTable">
-
-                <tr>
-                  <td>Demo Student</td>
-                  <td>CTA/2026/001</td>
-                  <td>SS1</td>
-                  <td>Demo Parent</td>
-                  <td>
-                    <span class="badge green">Active</span>
-                  </td>
-                </tr>
-
-              </tbody>
-
-            </table>
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <!-- ADMIN: PARENTS -->
-
-      <div id="page-parents" class="page hidden">
-
-        <div class="page-header">
-
-          <div>
-            <h1>Parent Management</h1>
-            <p>Manage parent and guardian accounts.</p>
-          </div>
-
-          <button class="primary-btn" onclick="openModal('parentModal')">
-            + Add Parent
-          </button>
-
-        </div>
-
-        <div class="card">
-
-          <div class="table-wrapper">
-
-            <table>
-
-              <thead>
-                <tr>
-                  <th>Parent</th>
-                  <th>Username</th>
-                  <th>Children</th>
-                  <th>Phone</th>
-                  <th>Status</th>
-                </tr>
-              </thead>
-
-              <tbody>
-
-                <tr>
-                  <td>Demo Parent</td>
-                  <td>parent</td>
-                  <td>Demo Student</td>
-                  <td>Not configured</td>
-                  <td>
-                    <span class="badge green">Active</span>
-                  </td>
-                </tr>
-
-              </tbody>
-
-            </table>
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <!-- HOD -->
-
-      <div id="page-hod" class="page hidden">
-
-        <div class="page-header">
-          <div>
-            <h1>HOD Assignment</h1>
-            <p>Assign teachers to departments and subjects.</p>
-          </div>
-        </div>
-
-        <div class="card">
-
-          <div class="form-grid">
-
-            <div class="form-group">
-              <label>Department</label>
-              <select>
-                <option>Mathematics</option>
-                <option>English</option>
-                <option>Physics</option>
-                <option>Chemistry</option>
-                <option>Biology</option>
-                <option>Economics</option>
-                <option>Hausa</option>
-                <option>Arabic</option>
-                <option>French</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label>HOD</label>
-              <select>
-                <option>Demo Teacher</option>
-              </select>
-            </div>
-
-          </div>
-
-          <button class="primary-btn">
-            Save Assignment
-          </button>
-
-        </div>
-
-      </div>
-
-
-      <!-- APPROVAL -->
-
-      <div id="page-approvals" class="page hidden">
-
-        <div class="page-header">
-          <div>
-            <h1>Approval Centre</h1>
-            <p>Review submitted academic documents.</p>
-          </div>
-        </div>
-
-        <div class="card">
-
-          <div class="table-wrapper">
-
-            <table>
-
-              <thead>
-                <tr>
-                  <th>Document</th>
-                  <th>Teacher</th>
-                  <th>Subject</th>
-                  <th>Status</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-
-              <tbody>
-
-                <tr>
-                  <td>Lesson Plan</td>
-                  <td>Demo Teacher</td>
-                  <td>Mathematics</td>
-                  <td>
-                    <span class="badge orange">Pending</span>
-                  </td>
-                  <td>
-                    <button class="secondary-btn">Review</button>
-                  </td>
-                </tr>
-
-              </tbody>
-
-            </table>
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <!-- EXAMINATION -->
-
-      <div id="page-examination" class="page hidden">
-
-        <div class="page-header">
-          <div>
-            <h1>Examination Centre</h1>
-            <p>Manage CA and examination submissions.</p>
-          </div>
-        </div>
-
-        <div class="card">
-
-          <div class="notice">
-            <strong>Examination workflow</strong>
-            <p>
-              Teacher → Subject HOD → Examination Officer → Finalized Document
-            </p>
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <!-- TEACHER PAGES -->
-
-      <div id="page-lessonPlan" class="page hidden">
-
-        <div class="page-header">
-          <div>
-            <h1>Lesson Plan</h1>
-            <p>Create and submit Nigerian-standard lesson plans.</p>
-          </div>
-
-          <button class="primary-btn">
-            + New Lesson Plan
-          </button>
-        </div>
-
-        <div class="card">
-
-          <div class="form-grid">
-
-            <div class="form-group">
-              <label>Subject</label>
-              <input placeholder="e.g. Mathematics">
-            </div>
-
-            <div class="form-group">
-              <label>Class</label>
-              <input placeholder="e.g. SS1">
-            </div>
-
-            <div class="form-group">
-              <label>Topic</label>
-              <input placeholder="Lesson topic">
-            </div>
-
-            <div class="form-group">
-              <label>Week</label>
-              <input placeholder="Week 1">
-            </div>
-
-            <div class="form-group full">
-              <label>Objectives</label>
-              <textarea rows="4" placeholder="Enter lesson objectives..."></textarea>
-            </div>
-
-          </div>
-
-          <button class="primary-btn">
-            Save Draft
-          </button>
-
-        </div>
-
-      </div>
-
-
-      <div id="page-lessonNote" class="page hidden">
-
-        <div class="page-header">
-          <div>
-            <h1>Lesson Note</h1>
-            <p>Create detailed lesson notes.</p>
-          </div>
-        </div>
-
-        <div class="card">
-
-          <div class="notice">
-            <strong>Lesson Note Structure</strong>
-            <p>
-              Introduction · Set Induction · Presentation ·
-              Teacher's Activities · Learners' Activities ·
-              Evaluation · Conclusion · Assignment
-            </p>
-          </div>
-
-          <textarea
-            rows="14"
-            placeholder="Enter or generate your lesson note..."
-            style="width:100%;padding:13px;border:1px solid #e2e8f0;border-radius:10px;"
-          ></textarea>
-
-          <br><br>
-
-          <button class="primary-btn">
-            Save Lesson Note
-          </button>
-
-        </div>
-
-      </div>
-
-
-      <div id="page-scheme" class="page hidden">
-
-        <div class="page-header">
-          <div>
-            <h1>Scheme of Work</h1>
-            <p>Manage weekly scheme of work.</p>
-          </div>
-        </div>
-
-        <div class="card">
-
-          <div class="form-grid">
-
-            <div class="form-group">
-              <label>Subject</label>
-              <input placeholder="Subject">
-            </div>
-
-            <div class="form-group">
-              <label>Class</label>
-              <input placeholder="Class">
-            </div>
-
-            <div class="form-group full">
-              <label>Topic / Sub-topic</label>
-              <textarea rows="8" placeholder="Enter weekly topics..."></textarea>
-            </div>
-
-          </div>
-
-          <button class="primary-btn">
-            Save Scheme
-          </button>
-
-        </div>
-
-      </div>
-
-
-      <div id="page-caExam" class="page hidden">
-
-        <div class="page-header">
-          <div>
-            <h1>CA & Examination</h1>
-            <p>Create continuous assessment and examination papers.</p>
-          </div>
-        </div>
-
-        <div class="card">
-
-          <div class="form-grid">
-
-            <div class="form-group">
-              <label>Subject</label>
-              <input placeholder="Subject">
-            </div>
-
-            <div class="form-group">
-              <label>Class</label>
-              <input placeholder="Class">
-            </div>
-
-            <div class="form-group">
-              <label>Number of Questions</label>
-              <input type="number" value="20">
-            </div>
-
-            <div class="form-group">
-              <label>Question Type</label>
-              <select>
-                <option>Objective + Theory</option>
-                <option>Objective Only</option>
-                <option>Theory Only</option>
-              </select>
-            </div>
-
-            <div class="form-group full">
-              <label>Topics</label>
-              <textarea rows="6" placeholder="Enter all topics to cover..."></textarea>
-            </div>
-
-          </div>
-
-          <button class="primary-btn">
-            Generate Questions
-          </button>
-
-        </div>
-
-      </div>
-
-
-      <div id="page-assistant" class="page hidden">
-
-        <div class="page-header">
-          <div>
-            <h1>Teacher Assistant</h1>
-            <p>Generate academic documents from your topics.</p>
-          </div>
-        </div>
-
-        <div class="card">
-
-          <div class="quick-grid">
-
-            <button class="quick-action">
-              <strong>📘 Generate Lesson Plan</strong>
-              <span>Generate a complete lesson plan.</span>
-            </button>
-
-            <button class="quick-action">
-              <strong>📖 Generate Lesson Note</strong>
-              <span>Create detailed lesson notes.</span>
-            </button>
-
-            <button class="quick-action">
-              <strong>📑 Generate Scheme</strong>
-              <span>Generate a 13-week scheme.</span>
-            </button>
-
-            <button class="quick-action">
-              <strong>📝 Generate CA / Exam</strong>
-              <span>Create questions and marking scheme.</span>
-            </button>
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <!-- =========================
-           STUDENT PORTAL
-      ========================= -->
-
-      <div id="page-subjects" class="page hidden">
-
-        <div class="page-header">
-          <div>
-            <h1>My Subjects</h1>
-            <p>Subjects assigned to your class.</p>
-          </div>
-        </div>
-
-        <div class="card">
-
-          <div class="table-wrapper">
-
-            <table>
-
-              <thead>
-                <tr>
-                  <th>Subject</th>
-                  <th>Teacher</th>
-                  <th>Class</th>
-                  <th>Status</th>
-                </tr>
-              </thead>
-
-              <tbody>
-
-                <tr>
-                  <td>Mathematics</td>
-                  <td>Demo Teacher</td>
-                  <td>SS1</td>
-                  <td><span class="badge green">Active</span></td>
-                </tr>
-
-                <tr>
-                  <td>English Language</td>
-                  <td>Not assigned</td>
-                  <td>SS1</td>
-                  <td><span class="badge green">Active</span></td>
-                </tr>
-
-                <tr>
-                  <td>Physics</td>
-                  <td>Not assigned</td>
-                  <td>SS1</td>
-                  <td><span class="badge green">Active</span></td>
-                </tr>
-
-              </tbody>
-
-            </table>
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div id="page-assignments" class="page hidden">
-
-        <div class="page-header">
-
-          <div>
-            <h1>Assignments</h1>
-            <p>View assignments given by your teachers.</p>
-          </div>
-
-        </div>
-
-        <div class="card">
-
-          <div class="notice">
-            <strong>Mathematics Assignment</strong>
-            <p>Complete questions 1–20 from the assigned topic.</p>
-          </div>
-
-          <div class="notice">
-            <strong>English Language</strong>
-            <p>Write an essay on the given topic.</p>
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div id="page-results" class="page hidden">
-
-        <div class="page-header">
-
-          <div>
-            <h1>My Results</h1>
-            <p>View your academic performance.</p>
-          </div>
-
-        </div>
-
-        <div class="card">
-
-          <div class="table-wrapper">
-
-            <table>
-
-              <thead>
-                <tr>
-                  <th>Subject</th>
-                  <th>CA</th>
-                  <th>Exam</th>
-                  <th>Total</th>
-                  <th>Grade</th>
-                </tr>
-              </thead>
-
-              <tbody>
-
-                <tr>
-                  <td>Mathematics</td>
-                  <td>25</td>
-                  <td>55</td>
-                  <td>80</td>
-                  <td><span class="badge green">A</span></td>
-                </tr>
-
-                <tr>
-                  <td>English</td>
-                  <td>22</td>
-                  <td>48</td>
-                  <td>70</td>
-                  <td><span class="badge blue">B</span></td>
-                </tr>
-
-              </tbody>
-
-            </table>
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div id="page-materials" class="page hidden">
-
-        <div class="page-header">
-
-          <div>
-            <h1>Learning Materials</h1>
-            <p>Access lesson notes and learning resources.</p>
-          </div>
-
-        </div>
-
-        <div class="card">
-
-          <div class="quick-grid">
-
-            <button class="quick-action">
-              <strong>📖 Mathematics</strong>
-              <span>Lesson materials</span>
-            </button>
-
-            <button class="quick-action">
-              <strong>📖 English</strong>
-              <span>Lesson materials</span>
-            </button>
-
-            <button class="quick-action">
-              <strong>📖 Physics</strong>
-              <span>Lesson materials</span>
-            </button>
-
-            <button class="quick-action">
-              <strong>📖 Chemistry</strong>
-              <span>Lesson materials</span>
-            </button>
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div id="page-studentProfile" class="page hidden">
-
-        <div class="page-header">
-          <div>
-            <h1>Student Profile</h1>
-            <p>Your academic information.</p>
-          </div>
-        </div>
-
-        <div class="card">
-
-          <div class="profile">
-
-            <div class="avatar">DS</div>
-
-            <div class="profile-info">
-              <h2>Demo Student</h2>
-              <p>Student · SS1</p>
-            </div>
-
-          </div>
-
-          <br>
-
-          <div class="info-grid">
-
-            <div class="info-item">
-              <label>Admission Number</label>
-              <strong>CTA/2026/001</strong>
-            </div>
-
-            <div class="info-item">
-              <label>Class</label>
-              <strong>SS1</strong>
-            </div>
-
-            <div class="info-item">
-              <label>Session</label>
-              <strong>2026/2027</strong>
-            </div>
-
-            <div class="info-item">
-              <label>Term</label>
-              <strong>First Term</strong>
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <!-- =========================
-           PARENT PORTAL
-      ========================= -->
-
-      <div id="page-children" class="page hidden">
-
-        <div class="page-header">
-
-          <div>
-            <h1>My Children</h1>
-            <p>Children connected to your parent account.</p>
-          </div>
-
-        </div>
-
-        <div class="card">
-
-          <div class="profile">
-
-            <div class="avatar">DS</div>
-
-            <div class="profile-info">
-              <h2>Demo Student</h2>
-              <p>SS1 · CTA/2026/001</p>
-            </div>
-
-          </div>
-
-          <br>
-
-          <button class="primary-btn">
-            View Child Dashboard
-          </button>
-
-        </div>
-
-      </div>
-
-
-      <div id="page-childResults" class="page hidden">
-
-        <div class="page-header">
-
-          <div>
-            <h1>Academic Results</h1>
-            <p>Monitor your child's academic performance.</p>
-          </div>
-
-        </div>
-
-        <div class="card">
-
-          <div class="table-wrapper">
-
-            <table>
-
-              <thead>
-                <tr>
-                  <th>Subject</th>
-                  <th>CA</th>
-                  <th>Exam</th>
-                  <th>Total</th>
-                  <th>Grade</th>
-                </tr>
-              </thead>
-
-              <tbody>
-
-                <tr>
-                  <td>Mathematics</td>
-                  <td>25</td>
-                  <td>55</td>
-                  <td>80</td>
-                  <td><span class="badge green">A</span></td>
-                </tr>
-
-                <tr>
-                  <td>English</td>
-                  <td>22</td>
-                  <td>48</td>
-                  <td>70</td>
-                  <td><span class="badge blue">B</span></td>
-                </tr>
-
-              </tbody>
-
-            </table>
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div id="page-childAttendance" class="page hidden">
-
-        <div class="page-header">
-
-          <div>
-            <h1>Attendance</h1>
-            <p>Monitor your child's attendance.</p>
-          </div>
-
-        </div>
-
-        <div class="stats-grid">
-
-          <div class="stat-card">
-            <div class="stat-icon">📅</div>
-            <h3>92%</h3>
-            <p>Attendance</p>
-          </div>
-
-          <div class="stat-card">
-            <div class="stat-icon">✓</div>
-            <h3>46</h3>
-            <p>Present</p>
-          </div>
-
-          <div class="stat-card">
-            <div class="stat-icon">!</div>
-            <h3>4</h3>
-            <p>Absent</p>
-          </div>
-
-          <div class="stat-card">
-            <div class="stat-icon">📆</div>
-            <h3>50</h3>
-            <p>School Days</p>
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div id="page-childAssignments" class="page hidden">
-
-        <div class="page-header">
-
-          <div>
-            <h1>Child's Assignments</h1>
-            <p>Monitor assignments given to your child.</p>
-          </div>
-
-        </div>
-
-        <div class="card">
-
-          <div class="notice">
-
-            <strong>Mathematics Assignment</strong>
-
-            <p>
-              Complete questions 1–20.
-            </p>
-
-            <br>
-
-            <span class="badge orange">
-              Pending
-            </span>
-
-          </div>
-
-          <div class="notice">
-
-            <strong>English Language</strong>
-
-            <p>
-              Essay assignment.
-            </p>
-
-            <br>
-
-            <span class="badge green">
-              Submitted
-            </span>
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div id="page-parentProfile" class="page hidden">
-
-        <div class="page-header">
-
-          <div>
-            <h1>Parent Profile</h1>
-            <p>Manage your parent account.</p>
-          </div>
-
-        </div>
-
-        <div class="card">
-
-          <div class="profile">
-
-            <div class="avatar">DP</div>
-
-            <div class="profile-info">
-              <h2>Demo Parent</h2>
-              <p>Parent / Guardian</p>
-            </div>
-
-          </div>
-
-          <br>
-
-          <div class="info-grid">
-
-            <div class="info-item">
-              <label>Username</label>
-              <strong>parent</strong>
-            </div>
-
-            <div class="info-item">
-              <label>Children</label>
-              <strong>1</strong>
-            </div>
-
-            <div class="info-item">
-              <label>Session</label>
-              <strong>2026/2027</strong>
-            </div>
-
-            <div class="info-item">
-              <label>Status</label>
-              <strong>Active</strong>
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <!-- SETTINGS -->
-
-      <div id="page-settings" class="page hidden">
-
-        <div class="page-header">
-
-          <div>
-            <h1>Settings</h1>
-            <p>Manage your account.</p>
-          </div>
-
-        </div>
-
-        <div class="card">
-
-          <div class="form-group">
-
-            <label>Display Name</label>
-
-            <input
-              id="displayNameInput"
-              placeholder="Your name"
-            >
-
-          </div>
-
-          <div class="form-group">
-
-            <label>New Password</label>
-
-            <input
-              type="password"
-              placeholder="Enter new password"
-            >
-
-          </div>
-
-          <button class="primary-btn" onclick="saveSettings()">
-            Save Settings
-          </button>
-
-        </div>
-
-      </div>
-
-
-      <!-- GENERAL PROFILE -->
-
-      <div id="page-profile" class="page hidden">
-
-        <div class="page-header">
-
-          <div>
-            <h1>My Account</h1>
-            <p>Account information.</p>
-          </div>
-
-        </div>
-
-        <div class="card">
-
-          <div class="profile">
-
-            <div class="avatar" id="generalAvatar">
-              U
-            </div>
-
-            <div class="profile-info">
-
-              <h2 id="generalName">
-                User
-              </h2>
-
-              <p id="generalRole">
-                Account
-              </p>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </main>
-
+  <div id="loginError" class="login-error hidden"></div>
+
+  <div class="form-group">
+   <label>Login As</label>
+   <select id="loginRole" class="form-control">
+    <option value="admin">Administrator</option>
+    <option value="teacher">Teacher</option>
+   </select>
   </div>
 
-</section>
-
-
-<!-- =========================
-     MODALS
-========================= -->
-
-<div id="teacherModal" class="modal hidden">
-
-  <div class="modal-box">
-
-    <div class="modal-header">
-
-      <h2>Add Teacher</h2>
-
-      <button
-        class="close-btn"
-        onclick="closeModal('teacherModal')">
-        ×
-      </button>
-
-    </div>
-
-    <div class="form-grid">
-
-      <div class="form-group">
-        <label>Full Name</label>
-        <input id="newTeacherName">
-      </div>
-
-      <div class="form-group">
-        <label>Username</label>
-        <input id="newTeacherUsername">
-      </div>
-
-      <div class="form-group">
-        <label>Department</label>
-        <input id="newTeacherDepartment">
-      </div>
-
-      <div class="form-group">
-        <label>Password</label>
-        <input type="password" id="newTeacherPassword">
-      </div>
-
-    </div>
-
-    <button class="primary-btn" onclick="addTeacher()">
-      Create Teacher
-    </button>
-
+  <div class="form-group">
+   <label>Username</label>
+   <input id="loginUsername" class="form-control" placeholder="Enter username" autocomplete="username">
   </div>
 
+  <div class="form-group">
+   <label>Password</label>
+   <div class="password-wrap">
+    <input id="loginPassword" type="password" class="form-control" placeholder="Enter password" autocomplete="current-password">
+    <button class="password-toggle" type="button" onclick="togglePassword('loginPassword',this)">Show</button>
+   </div>
+   <div id="capsWarning" class="caps-warning">Caps Lock is ON</div>
+  </div>
+
+  <button class="btn btn-primary btn-block" onclick="login()">Login</button>
+
+  <div style="text-align:center;margin-top:14px;font-size:11px;color:#64748b">
+   Caliphate Tarbiya Academy Sokoto
+  </div>
+ </div>
 </div>
 
+<!-- ================= APPLICATION ================= -->
+<div id="app" class="app hidden">
+ <div class="layout">
 
-<div id="studentModal" class="modal hidden">
+  <aside id="sidebar" class="sidebar">
+   <div class="brand">
+    <div class="brand-title">Caliphate Tarbiya Academy</div>
+    <div class="brand-sub">Academic Management System</div>
+   </div>
 
-  <div class="modal-box">
+   <div class="user-box">
+    <div id="sideUserName" class="user-name">User</div>
+    <div id="sideUserRole" class="user-role">Teacher</div>
+   </div>
 
-    <div class="modal-header">
+   <div class="nav-title">Main</div>
+   <div class="nav-item active" data-page="dashboard" onclick="showPage('dashboard')">🏠 Dashboard</div>
+   <div class="nav-item" data-page="lesson-plan" onclick="showPage('lesson-plan')">📘 Lesson Plan</div>
+   <div class="nav-item" data-page="lesson-note" onclick="showPage('lesson-note')">📖 Lesson Note</div>
+   <div class="nav-item" data-page="scheme" onclick="showPage('scheme')">📚 Scheme of Work</div>
+   <div class="nav-item" data-page="assessment" onclick="showPage('assessment')">📝 CA & Examination</div>
+   <div class="nav-item" data-page="assistant" onclick="showPage('assistant')">🤖 Teacher Assistant</div>
+   <div class="nav-item" data-page="submissions" onclick="showPage('submissions')">📤 My Submissions</div>
 
-      <h2>Add Student</h2>
+   <div id="teacherManagementNav" class="hidden">
+    <div class="nav-title">Teacher Administration</div>
+    <div class="nav-item" data-page="teachers" onclick="showPage('teachers')">👨‍🏫 Teacher Management</div>
+    <div class="nav-item" data-page="assignments" onclick="showPage('assignments')">🎯 HOD & Officer Assignment</div>
+   </div>
 
-      <button
-        class="close-btn"
-        onclick="closeModal('studentModal')">
-        ×
-      </button>
+   <div id="hodNav" class="hidden">
+    <div class="nav-title">HOD</div>
+    <div class="nav-item" data-page="hod" onclick="showPage('hod')">✅ HOD Approval Centre</div>
+   </div>
 
+   <div id="examOfficerNav" class="hidden">
+    <div class="nav-title">Examination</div>
+    <div class="nav-item" data-page="exam-officer" onclick="showPage('exam-officer')">🧾 Examination Officer</div>
+   </div>
+
+   <div id="adminNav" class="hidden">
+    <div class="nav-title">Administration</div>
+    <div class="nav-item" data-page="archive" onclick="showPage('archive')">🗄 Academic Archive</div>
+    <div class="nav-item" data-page="settings" onclick="showPage('settings')">⚙️ School Settings</div>
+    <div class="nav-item" data-page="audit" onclick="showPage('audit')">🔐 Activity Log</div>
+    <div class="nav-item" data-page="backup" onclick="showPage('backup')">💾 Backup & Restore</div>
+   </div>
+
+   <div class="nav-title">Account</div>
+   <div class="nav-item" data-page="password" onclick="showPage('password')">🔑 Change Password</div>
+   <div class="nav-item" onclick="logout()">🚪 Logout</div>
+  </aside>
+
+  <main class="main">
+   <header class="topbar">
+    <div style="display:flex;align-items:center;gap:10px">
+     <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+     <div id="topTitle" class="topbar-title" style="font-weight:800;color:#14532d">Dashboard</div>
     </div>
+    <div id="topUser" style="font-size:12px;color:#64748b"></div>
+   </header>
 
-    <div class="form-grid">
-
-      <div class="form-group">
-        <label>Full Name</label>
-        <input id="newStudentName">
-      </div>
-
-      <div class="form-group">
-        <label>Admission Number</label>
-        <input id="newStudentAdmission">
-      </div>
-
-      <div class="form-group">
-        <label>Class</label>
-        <input id="newStudentClass">
-      </div>
-
-      <div class="form-group">
-        <label>Username</label>
-        <input id="newStudentUsername">
-      </div>
-
-      <div class="form-group">
-        <label>Password</label>
-        <input type="password" id="newStudentPassword">
-      </div>
-
-    </div>
-
-    <button class="primary-btn" onclick="addStudent()">
-      Create Student
-    </button>
-
-  </div>
-
+   <div id="pageContainer" class="page"></div>
+  </main>
+ </div>
 </div>
 
-
-<div id="parentModal" class="modal hidden">
-
-  <div class="modal-box">
-
-    <div class="modal-header">
-
-      <h2>Add Parent</h2>
-
-      <button
-        class="close-btn"
-        onclick="closeModal('parentModal')">
-        ×
-      </button>
-
-    </div>
-
-    <div class="form-grid">
-
-      <div class="form-group">
-        <label>Parent Name</label>
-        <input id="newParentName">
-      </div>
-
-      <div class="form-group">
-        <label>Username</label>
-        <input id="newParentUsername">
-      </div>
-
-      <div class="form-group">
-        <label>Phone</label>
-        <input id="newParentPhone">
-      </div>
-
-      <div class="form-group">
-        <label>Password</label>
-        <input type="password" id="newParentPassword">
-      </div>
-
-    </div>
-
-    <button class="primary-btn" onclick="addParent()">
-      Create Parent
-    </button>
-
+<!-- MODAL -->
+<div id="modal" class="modal">
+ <div class="modal-box">
+  <div class="modal-head">
+   <strong id="modalTitle">Details</strong>
+   <button class="btn btn-gray" onclick="closeModal()">✕</button>
   </div>
-
+  <div id="modalBody" class="modal-body"></div>
+ </div>
 </div>
 
+<div id="toast" class="toast"></div>
 
 <script>
+/* =========================================================
+   CALIPHATE TARBIYA ACADEMY
+   AMENDED SINGLE-FILE ACADEMIC MANAGEMENT SYSTEM
+   ========================================================= */
 
-/* =========================================
-   APPLICATION DATA
-========================================= */
+const DB_KEY="CTA_ACADEMY_DATABASE_FINAL_AMENDED_V1";
 
-let selectedPortal = "admin";
-
-let currentUser = null;
-
-const demoUsers = {
-
-  admin:{
-    username:"admin",
-    password:"admin123",
-    name:"System Administrator",
-    role:"Administrator"
+let db={
+ users:[
+  {
+   id:"admin-1",
+   username:"admin",
+   password:"admin123",
+   name:"System Administrator",
+   role:"admin",
+   active:true,
+   hodSubjects:[],
+   examOfficer:false,
+   subjects:[],
+   classes:[]
   },
-
-  teacher:{
-    username:"teacher",
-    password:"teacher123",
-    name:"Demo Teacher",
-    role:"Teacher"
-  },
-
-  student:{
-    username:"student",
-    password:"student123",
-    name:"Demo Student",
-    role:"Student"
-  },
-
-  parent:{
-    username:"parent",
-    password:"parent123",
-    name:"Demo Parent",
-    role:"Parent"
+  {
+   id:"teacher-1",
+   username:"teacher",
+   password:"teacher123",
+   name:"Demo Teacher",
+   role:"teacher",
+   active:true,
+   hodSubjects:["Mathematics"],
+   examOfficer:true,
+   subjects:["Mathematics"],
+   classes:["JSS 1"]
   }
-
+ ],
+ documents:[],
+ assessments:[],
+ archive:[],
+ audit:[],
+ settings:{
+  schoolName:"Caliphate Tarbiya Academy",
+  location:"Sokoto State, Nigeria",
+  phone:"",
+  email:"",
+  logoText:"CTA",
+  currentSession:"2026/2027",
+  currentTerm:"First Term"
+ },
+ classes:[
+  "Nursery 1","Nursery 2","Nursery 3",
+  "Basic 1","Basic 2","Basic 3","Basic 4","Basic 5","Basic 6",
+  "JSS 1","JSS 2","JSS 3",
+  "SS 1","SS 2","SS 3"
+ ],
+ subjects:[
+  "Mathematics","English Studies","Basic Science","Basic Technology",
+  "Computer Studies","ICT","Physics","Chemistry","Biology",
+  "Economics","Accounting","Business Studies","Civic Education",
+  "Social Studies","Agricultural Science","Geography","Government",
+  "Hausa","Arabic","French","Islamic Religious Studies",
+  "Christian Religious Studies"
+ ]
 };
 
+let currentUser=null;
+let currentPage="dashboard";
+let generated={};
 
-/* =========================================
-   PORTAL SELECTION
-========================================= */
-
-function selectPortal(portal,button){
-
-  selectedPortal = portal;
-
-  document
-    .querySelectorAll(".portal-btn")
-    .forEach(btn => btn.classList.remove("active"));
-
-  button.classList.add("active");
-
-  const usernameInput =
-    document.getElementById("loginUsername");
-
-  if(portal === "student"){
-    usernameInput.placeholder =
-      "Enter student username";
-  }
-
-  else if(portal === "parent"){
-    usernameInput.placeholder =
-      "Enter parent username";
-  }
-
-  else if(portal === "teacher"){
-    usernameInput.placeholder =
-      "Enter teacher username";
-  }
-
-  else{
-    usernameInput.placeholder =
-      "Enter admin username";
-  }
-
+/* ---------- STORAGE ---------- */
+function saveDB(){
+ localStorage.setItem(DB_KEY,JSON.stringify(db));
 }
 
-
-/* =========================================
-   LOGIN
-========================================= */
-
-document
-.getElementById("loginForm")
-.addEventListener("submit",function(e){
-
-  e.preventDefault();
-
-  const username =
-    document.getElementById("loginUsername")
-    .value
-    .trim();
-
-  const password =
-    document.getElementById("loginPassword")
-    .value;
-
-  const message =
-    document.getElementById("loginMessage");
-
-  const user = demoUsers[selectedPortal];
-
-  if(
-    username === user.username &&
-    password === user.password
-  ){
-
-    currentUser = {
-      ...user,
-      portal:selectedPortal
-    };
-
-    localStorage.setItem(
-      "cta_current_user",
-      JSON.stringify(currentUser)
-    );
-
-    message.textContent = "";
-
-    openApplication();
-
+function loadDB(){
+ const saved=localStorage.getItem(DB_KEY);
+ if(saved){
+  try{
+   db=JSON.parse(saved);
+  }catch(e){
+   console.error(e);
   }
-
-  else{
-
-    message.style.color = "#dc2626";
-
-    message.textContent =
-      "Invalid login details.";
-
-  }
-
-});
-
-
-/* =========================================
-   OPEN APPLICATION
-========================================= */
-
-function openApplication(){
-
-  document
-    .getElementById("loginPage")
-    .classList.add("hidden");
-
-  document
-    .getElementById("app")
-    .classList.remove("hidden");
-
-  configurePortal();
-
+ }
+ saveDB();
 }
+loadDB();
 
-
-/* =========================================
-   CONFIGURE PORTAL
-========================================= */
-
-function configurePortal(){
-
-  if(!currentUser) return;
-
-  document.getElementById("sidebarName")
-    .textContent = currentUser.name;
-
-  document.getElementById("sidebarRole")
-    .textContent = currentUser.role;
-
-  document.getElementById("welcomeTitle")
-    .textContent =
-      "Welcome, " + currentUser.name;
-
-  document.getElementById("welcomeText")
-    .textContent =
-      currentUser.role +
-      " Portal · Caliphate Tarbiya Academy";
-
-  document
-    .getElementById("adminNav")
-    .classList.add("hidden");
-
-  document
-    .getElementById("teacherNav")
-    .classList.add("hidden");
-
-  document
-    .getElementById("studentNav")
-    .classList.add("hidden");
-
-  document
-    .getElementById("parentNav")
-    .classList.add("hidden");
-
-
-  if(currentUser.portal === "admin"){
-
-    document
-      .getElementById("adminNav")
-      .classList.remove("hidden");
-
-    document.getElementById("statOne").textContent="25";
-    document.getElementById("statOneLabel").textContent="Teachers";
-
-    document.getElementById("statTwo").textContent="180";
-    document.getElementById("statTwoLabel").textContent="Students";
-
-    document.getElementById("statThree").textContent="12";
-    document.getElementById("statThreeLabel").textContent="Pending Approvals";
-
-    document.getElementById("statFour").textContent="2026/27";
-    document.getElementById("statFourLabel").textContent="Session";
-
-  }
-
-
-  if(currentUser.portal === "teacher"){
-
-    document
-      .getElementById("teacherNav")
-      .classList.remove("hidden");
-
-    document.getElementById("statOne").textContent="6";
-    document.getElementById("statOneLabel").textContent="Subjects";
-
-    document.getElementById("statTwo").textContent="14";
-    document.getElementById("statTwoLabel").textContent="Documents";
-
-    document.getElementById("statThree").textContent="4";
-    document.getElementById("statThreeLabel").textContent="Pending";
-
-    document.getElementById("statFour").textContent="2026/27";
-    document.getElementById("statFourLabel").textContent="Session";
-
-  }
-
-
-  if(currentUser.portal === "student"){
-
-    document
-      .getElementById("studentNav")
-      .classList.remove("hidden");
-
-    document.getElementById("statOne").textContent="9";
-    document.getElementById("statOneLabel").textContent="Subjects";
-
-    document.getElementById("statTwo").textContent="4";
-    document.getElementById("statTwoLabel").textContent="Assignments";
-
-    document.getElementById("statThree").textContent="8";
-    document.getElementById("statThreeLabel").textContent="Results";
-
-    document.getElementById("statFour").textContent="92%";
-    document.getElementById("statFourLabel").textContent="Attendance";
-
-  }
-
-
-  if(currentUser.portal === "parent"){
-
-    document
-      .getElementById("parentNav")
-      .classList.remove("hidden");
-
-    document.getElementById("statOne").textContent="1";
-    document.getElementById("statOneLabel").textContent="Child";
-
-    document.getElementById("statTwo").textContent="4";
-    document.getElementById("statTwoLabel").textContent="Assignments";
-
-    document.getElementById("statThree").textContent="8";
-    document.getElementById("statThreeLabel").textContent="Results";
-
-    document.getElementById("statFour").textContent="92%";
-    document.getElementById("statFourLabel").textContent="Attendance";
-
-  }
-
+/* ---------- UTILITIES ---------- */
+function uid(prefix="id"){
+ return prefix+"-"+Date.now()+"-"+Math.random().toString(36).slice(2,8);
 }
-
-
-/* =========================================
-   PAGE NAVIGATION
-========================================= */
-
-function showPage(page,button){
-
-  document
-    .querySelectorAll(".page")
-    .forEach(p => p.classList.add("hidden"));
-
-  const target =
-    document.getElementById("page-" + page);
-
-  if(target){
-    target.classList.remove("hidden");
-  }
-
-  document
-    .querySelectorAll(".nav-item")
-    .forEach(item => item.classList.remove("active"));
-
-  if(button){
-    button.classList.add("active");
-  }
-
-  document
-    .getElementById("sidebar")
-    .classList.remove("open");
-
-}
-
-
-/* =========================================
-   SIDEBAR
-========================================= */
-
-function toggleSidebar(){
-
-  document
-    .getElementById("sidebar")
-    .classList.toggle("open");
-
-}
-
-
-/* =========================================
-   LOGOUT
-========================================= */
-
-function logout(){
-
-  currentUser = null;
-
-  localStorage.removeItem(
-    "cta_current_user"
-  );
-
-  document
-    .getElementById("app")
-    .classList.add("hidden");
-
-  document
-    .getElementById("loginPage")
-    .classList.remove("hidden");
-
-  document
-    .getElementById("loginUsername")
-    .value = "";
-
-  document
-    .getElementById("loginPassword")
-    .value = "";
-
-}
-
-
-/* =========================================
-   MODALS
-========================================= */
-
-function openModal(id){
-
-  document
-    .getElementById(id)
-    .classList.remove("hidden");
-
-}
-
-function closeModal(id){
-
-  document
-    .getElementById(id)
-    .classList.add("hidden");
-
-}
-
-
-/* =========================================
-   ADD TEACHER
-========================================= */
-
-function addTeacher(){
-
-  const name =
-    document.getElementById("newTeacherName").value.trim();
-
-  const username =
-    document.getElementById("newTeacherUsername").value.trim();
-
-  const department =
-    document.getElementById("newTeacherDepartment").value.trim();
-
-  if(!name || !username){
-
-    alert("Please enter the teacher's name and username.");
-
-    return;
-  }
-
-  const table =
-    document.getElementById("teacherTable");
-
-  const row =
-    table.insertRow();
-
-  row.innerHTML = `
-    <td>${escapeHTML(name)}</td>
-    <td>${escapeHTML(username)}</td>
-    <td>${escapeHTML(department || "Not assigned")}</td>
-    <td>
-      <span class="badge green">Active</span>
-    </td>
-  `;
-
-  closeModal("teacherModal");
-
-  alert("Teacher added successfully.");
-
-}
-
-
-/* =========================================
-   ADD STUDENT
-========================================= */
-
-function addStudent(){
-
-  const name =
-    document.getElementById("newStudentName").value.trim();
-
-  const admission =
-    document.getElementById("newStudentAdmission").value.trim();
-
-  const className =
-    document.getElementById("newStudentClass").value.trim();
-
-  const username =
-    document.getElementById("newStudentUsername").value.trim();
-
-  if(!name || !admission || !className || !username){
-
-    alert("Please complete the student information.");
-
-    return;
-  }
-
-  const table =
-    document.getElementById("studentTable");
-
-  const row =
-    table.insertRow();
-
-  row.innerHTML = `
-    <td>${escapeHTML(name)}</td>
-    <td>${escapeHTML(admission)}</td>
-    <td>${escapeHTML(className)}</td>
-    <td>Not linked</td>
-    <td>
-      <span class="badge green">Active</span>
-    </td>
-  `;
-
-  closeModal("studentModal");
-
-  alert("Student added successfully.");
-
-}
-
-
-/* =========================================
-   ADD PARENT
-========================================= */
-
-function addParent(){
-
-  const name =
-    document.getElementById("newParentName").value.trim();
-
-  const username =
-    document.getElementById("newParentUsername").value.trim();
-
-  const phone =
-    document.getElementById("newParentPhone").value.trim();
-
-  if(!name || !username){
-
-    alert("Please enter parent name and username.");
-
-    return;
-  }
-
-  closeModal("parentModal");
-
-  alert(
-    "Parent account created successfully."
-  );
-
-}
-
-
-/* =========================================
-   NOTIFICATIONS
-========================================= */
-
-function showNotifications(){
-
-  alert(
-    "No new notifications."
-  );
-
-}
-
-
-/* =========================================
-   SETTINGS
-========================================= */
-
-function saveSettings(){
-
-  const name =
-    document.getElementById("displayNameInput").value.trim();
-
-  if(name){
-
-    currentUser.name = name;
-
-    localStorage.setItem(
-      "cta_current_user",
-      JSON.stringify(currentUser)
-    );
-
-    configurePortal();
-
-  }
-
-  alert("Settings saved.");
-
-}
-
-
-/* =========================================
-   HTML SECURITY
-========================================= */
 
 function escapeHTML(value){
-
-  return String(value)
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
-
+ return String(value??"")
+  .replace(/&/g,"&amp;")
+  .replace(/</g,"&lt;")
+  .replace(/>/g,"&gt;")
+  .replace(/"/g,"&quot;")
+  .replace(/'/g,"&#039;");
 }
 
+function toast(message){
+ const t=document.getElementById("toast");
+ t.textContent=message;
+ t.classList.add("show");
+ setTimeout(()=>t.classList.remove("show"),2800);
+}
 
-/* =========================================
-   RESTORE LOGIN SESSION
-========================================= */
+function now(){
+ return new Date().toLocaleString("en-NG");
+}
 
-window.addEventListener("load",function(){
+function logAction(action){
+ if(!currentUser)return;
+ db.audit.unshift({
+  id:uid("log"),
+  user:currentUser.name,
+  username:currentUser.username,
+  action,
+  date:now()
+ });
+ if(db.audit.length>500)db.audit.length=500;
+ saveDB();
+}
 
-  const saved =
-    localStorage.getItem(
-      "cta_current_user"
-    );
+function modal(title,body){
+ document.getElementById("modalTitle").textContent=title;
+ document.getElementById("modalBody").innerHTML=body;
+ document.getElementById("modal").classList.add("show");
+}
 
-  if(saved){
+function closeModal(){
+ document.getElementById("modal").classList.remove("show");
+}
 
-    try{
+function toggleSidebar(){
+ document.getElementById("sidebar").classList.toggle("open");
+}
 
-      currentUser =
-        JSON.parse(saved);
+function togglePassword(id,button){
+ const input=document.getElementById(id);
+ if(input.type==="password"){
+  input.type="text";
+  button.textContent="Hide";
+ }else{
+  input.type="password";
+  button.textContent="Show";
+ }
+}
 
-      if(currentUser &&
-         currentUser.portal){
-
-        openApplication();
-
-      }
-
-    }catch(error){
-
-      localStorage.removeItem(
-        "cta_current_user"
-      );
-
-    }
-
-  }
-
+document.getElementById("loginPassword").addEventListener("keyup",e=>{
+ document.getElementById("capsWarning").style.display=e.getModifierState("CapsLock")?"block":"none";
 });
 
+/* ---------- LOGIN ---------- */
+function login(){
+ const role=document.getElementById("loginRole").value;
+ const username=document.getElementById("loginUsername").value.trim();
+ const password=document.getElementById("loginPassword").value;
+
+ const user=db.users.find(u=>
+  u.username===username &&
+  u.password===password &&
+  u.role===role &&
+  u.active!==false
+ );
+
+ const error=document.getElementById("loginError");
+
+ if(!user){
+  error.textContent="Invalid username, password, or login category.";
+  error.classList.remove("hidden");
+  return;
+ }
+
+ error.classList.add("hidden");
+ currentUser=user;
+
+ localStorage.setItem("CTA_CURRENT_USER",user.id);
+
+ document.getElementById("loginScreen").classList.add("hidden");
+ document.getElementById("app").classList.remove("hidden");
+
+ document.getElementById("sideUserName").textContent=user.name;
+ document.getElementById("sideUserRole").textContent=
+  user.role==="admin" ? "Administrator" :
+  (user.examOfficer ? "Teacher • Examination Officer" :
+  user.hodSubjects?.length ? "Teacher • HOD" : "Teacher");
+
+ document.getElementById("topUser").textContent=user.name;
+
+ configureNavigation();
+ logAction("Logged in");
+ showPage("dashboard");
+}
+
+function restoreLogin(){
+ const id=localStorage.getItem("CTA_CURRENT_USER");
+ if(!id)return;
+
+ const user=db.users.find(u=>u.id===id && u.active!==false);
+ if(!user)return;
+
+ currentUser=user;
+ document.getElementById("loginScreen").classList.add("hidden");
+ document.getElementById("app").classList.remove("hidden");
+ document.getElementById("sideUserName").textContent=user.name;
+ document.getElementById("sideUserRole").textContent=user.role==="admin"?"Administrator":"Teacher";
+ document.getElementById("topUser").textContent=user.name;
+ configureNavigation();
+ showPage("dashboard");
+}
+
+function logout(){
+ logAction("Logged out");
+ localStorage.removeItem("CTA_CURRENT_USER");
+ currentUser=null;
+ document.getElementById("app").classList.add("hidden");
+ document.getElementById("loginScreen").classList.remove("hidden");
+ document.getElementById("loginUsername").value="";
+ document.getElementById("loginPassword").value="";
+}
+
+function isAdmin(){
+ return currentUser?.role==="admin";
+}
+
+function isHOD(){
+ return currentUser?.role==="teacher" && Array.isArray(currentUser.hodSubjects) && currentUser.hodSubjects.length>0;
+}
+
+function isExamOfficer(){
+ return currentUser?.role==="teacher" && currentUser.examOfficer===true;
+}
+
+function configureNavigation(){
+ document.getElementById("teacherManagementNav").classList.toggle("hidden",!isAdmin());
+ document.getElementById("adminNav").classList.toggle("hidden",!isAdmin());
+ document.getElementById("hodNav").classList.toggle("hidden",!isHOD()&&!isAdmin());
+ document.getElementById("examOfficerNav").classList.toggle("hidden",!isExamOfficer()&&!isAdmin());
+}
+
+/* ---------- PAGES ---------- */
+const titles={
+ dashboard:"Dashboard",
+ "lesson-plan":"Lesson Plan",
+ "lesson-note":"Lesson Note",
+ scheme:"Scheme of Work",
+ assessment:"CA & Examination",
+ assistant:"AI Teacher Assistant",
+ submissions:"My Submissions",
+ teachers:"Teacher Management",
+ assignments:"HOD & Officer Assignment",
+ hod:"HOD Approval Centre",
+ "exam-officer":"Examination Officer",
+ archive:"Academic Archive",
+ settings:"School Settings",
+ audit:"Activity Log",
+ backup:"Backup & Restore",
+ password:"Change Password"
+};
+
+function showPage(page){
+ currentPage=page;
+ document.getElementById("topTitle").textContent=titles[page]||"Dashboard";
+
+ document.querySelectorAll(".nav-item[data-page]").forEach(x=>{
+  x.classList.toggle("active",x.dataset.page===page);
+ });
+
+ const pages={
+  dashboard:renderDashboard,
+  "lesson-plan":renderLessonPlan,
+  "lesson-note":renderLessonNote,
+  scheme:renderScheme,
+  assessment:renderAssessment,
+  assistant:renderAssistant,
+  submissions:renderSubmissions,
+  teachers:renderTeachers,
+  assignments:renderAssignments,
+  hod:renderHOD,
+  "exam-officer":renderExamOfficer,
+  archive:renderArchive,
+  settings:renderSettings,
+  audit:renderAudit,
+  backup:renderBackup,
+  password:renderPassword
+ };
+
+ if(pages[page])pages[page]();
+ else renderDashboard();
+
+ document.getElementById("sidebar").classList.remove("open");
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+
+/* =========================================================
+   DASHBOARD
+   ========================================================= */
+function renderDashboard(){
+ const myDocs=db.documents.filter(d=>d.teacherId===currentUser.id);
+ const myAssess=db.assessments.filter(a=>a.teacherId===currentUser.id);
+
+ const approved=db.archive.length;
+ const pendingHOD=db.documents.filter(d=>d.status==="Submitted to HOD").length+
+                  db.assessments.filter(a=>a.status==="Submitted to HOD").length;
+
+ document.getElementById("pageContainer").innerHTML=`
+  <div class="page-title">Welcome, ${escapeHTML(currentUser.name)}</div>
+  <div class="page-subtitle">
+   ${isAdmin()?"Administrator Dashboard":"Teacher Workspace"} • ${escapeHTML(db.settings.currentSession)} • ${escapeHTML(db.settings.currentTerm)}
+  </div>
+
+  <div class="grid">
+   <div class="card">
+    <div class="stat-title">My Documents</div>
+    <div class="stat-number">${myDocs.length}</div>
+   </div>
+   <div class="card">
+    <div class="stat-title">My Assessments</div>
+    <div class="stat-number">${myAssess.length}</div>
+   </div>
+   <div class="card">
+    <div class="stat-title">Approved Archive</div>
+    <div class="stat-number">${approved}</div>
+   </div>
+   <div class="card">
+    <div class="stat-title">${isAdmin()?"Pending Approvals":"My Pending Work"}</div>
+    <div class="stat-number">${isAdmin()?pendingHOD:myDocs.filter(d=>!["Approved","Rejected"].includes(d.status)).length}</div>
+   </div>
+  </div>
+
+  <div class="section" style="margin-top:18px">
+   <div class="section-header"><h3>Quick Actions</h3></div>
+   <div class="section-body">
+    <div class="quick-grid">
+     <div class="quick" onclick="showPage('assistant')">
+      <b>🤖 Generate with Teacher Assistant</b>
+      <span>Create lesson plans, schemes, notes, CA and examinations.</span>
+     </div>
+     <div class="quick" onclick="showPage('lesson-plan')">
+      <b>📘 Create Lesson Plan</b>
+      <span>Nigerian-standard detailed lesson plan.</span>
+     </div>
+     <div class="quick" onclick="showPage('scheme')">
+      <b>📚 Create Scheme</b>
+      <span>Create a structured scheme of work.</span>
+     </div>
+     <div class="quick" onclick="showPage('assessment')">
+      <b>📝 Create CA / Examination</b>
+      <span>Generate objectives, theory and marking scheme.</span>
+     </div>
+     <div class="quick" onclick="showPage('submissions')">
+      <b>📤 My Submissions</b>
+      <span>Track submitted and approved academic documents.</span>
+     </div>
+     ${isAdmin()?`
+     <div class="quick" onclick="showPage('teachers')">
+      <b>👨‍🏫 Manage Teachers</b>
+      <span>Create, edit, activate and assign teachers.</span>
+     </div>
+     <div class="quick" onclick="showPage('archive')">
+      <b>🗄 Academic Archive</b>
+      <span>Search all permanently approved academic records.</span>
+     </div>`:""}
+    </div>
+   </div>
+  </div>
+
+  <div class="section">
+   <div class="section-header"><h3>Recent Activity</h3></div>
+   <div class="section-body">
+    ${renderRecentActivity()}
+   </div>
+  </div>
+ `;
+}
+
+function renderRecentActivity(){
+ const list=db.audit.slice(0,8);
+ if(!list.length)return `<div style="color:#64748b;font-size:13px">No activity yet.</div>`;
+ return `<div class="table-wrap"><table>
+  <thead><tr><th>Date</th><th>User</th><th>Action</th></tr></thead>
+  <tbody>${list.map(x=>`
+   <tr><td>${escapeHTML(x.date)}</td><td>${escapeHTML(x.user)}</td><td>${escapeHTML(x.action)}</td></tr>
+  `).join("")}</tbody>
+ </table></div>`;
+}
+
+/* =========================================================
+   COMMON DOCUMENT FORM
+   ========================================================= */
+function classOptions(){
+ return db.classes.map(x=>`<option value="${escapeHTML(x)}">${escapeHTML(x)}</option>`).join("");
+}
+
+function subjectOptions(){
+ let list=currentUser?.subjects?.length?currentUser.subjects:db.subjects;
+ return list.map(x=>`<option value="${escapeHTML(x)}">${escapeHTML(x)}</option>`).join("");
+}
+
+function languageOptions(){
+ return `
+ <option value="English">English</option>
+ <option value="Hausa">Hausa</option>
+ <option value="Arabic">Arabic</option>
+ <option value="French">French</option>`;
+}
+
+function documentMetaForm(){
+ return `
+ <div class="form-grid">
+  <div class="form-group">
+   <label>Subject</label>
+   <select id="docSubject" class="form-control">${subjectOptions()}</select>
+  </div>
+  <div class="form-group">
+   <label>Class</label>
+   <select id="docClass" class="form-control">${classOptions()}</select>
+  </div>
+  <div class="form-group">
+   <label>Session</label>
+   <input id="docSession" class="form-control" value="${escapeHTML(db.settings.currentSession)}">
+  </div>
+  <div class="form-group">
+   <label>Term</label>
+   <select id="docTerm" class="form-control">
+    <option ${db.settings.currentTerm==="First Term"?"selected":""}>First Term</option>
+    <option ${db.settings.currentTerm==="Second Term"?"selected":""}>Second Term</option>
+    <option ${db.settings.currentTerm==="Third Term"?"selected":""}>Third Term</option>
+   </select>
+  </div>
+  <div class="form-group">
+   <label>Language</label>
+   <select id="docLanguage" class="form-control">${languageOptions()}</select>
+  </div>
+  <div class="form-group">
+   <label>Week</label>
+   <input id="docWeek" class="form-control" placeholder="e.g. Week 1">
+  </div>
+ </div>`;
+}
+
+/* =========================================================
+   LESSON PLAN
+   ========================================================= */
+function renderLessonPlan(){
+ document.getElementById("pageContainer").innerHTML=`
+  <div class="page-title">Lesson Plan</div>
+  <div class="page-subtitle">Nigerian-standard detailed lesson plan. You can also automatically import work generated by the Teacher Assistant.</div>
+
+  <div class="section">
+   <div class="section-header">
+    <h3>Create Lesson Plan</h3>
+    <button class="btn btn-success" onclick="useGenerated('lesson-plan')">⚡ Use Generated Lesson Plan</button>
+   </div>
+   <div class="section-body">
+    ${documentMetaForm()}
+
+    <div class="form-grid">
+     <div class="form-group"><label>Date</label><input id="lpDate" class="form-control" type="date"></div>
+     <div class="form-group"><label>Duration</label><input id="lpDuration" class="form-control" placeholder="e.g. 40 minutes"></div>
+     <div class="form-group"><label>Topic</label><input id="lpTopic" class="form-control"></div>
+     <div class="form-group"><label>Sub-topic</label><input id="lpSubtopic" class="form-control"></div>
+     <div class="form-group"><label>Class Size</label><input id="lpClassSize" class="form-control" placeholder="e.g. 35 learners"></div>
+     <div class="form-group"><label>Previous Knowledge</label><input id="lpPrevious" class="form-control"></div>
+     <div class="form-group form-full"><label>Specific Learning Objectives</label><textarea id="lpObjectives" class="form-control" placeholder="By the end of the lesson, learners should be able to..."></textarea></div>
+     <div class="form-group form-full"><label>Instructional Materials / Resources</label><textarea id="lpMaterials" class="form-control"></textarea></div>
+     <div class="form-group form-full"><label>Introduction / Set Induction</label><textarea id="lpIntro" class="form-control"></textarea></div>
+     <div class="form-group form-full"><label>Presentation / Teacher Activities</label><textarea id="lpPresentation" class="form-control"></textarea></div>
+     <div class="form-group form-full"><label>Learner Activities</label><textarea id="lpLearner" class="form-control"></textarea></div>
+     <div class="form-group form-full"><label>Evaluation</label><textarea id="lpEvaluation" class="form-control"></textarea></div>
+     <div class="form-group form-full"><label>Conclusion / Summary</label><textarea id="lpConclusion" class="form-control"></textarea></div>
+     <div class="form-group form-full"><label>Assignment</label><textarea id="lpAssignment" class="form-control"></textarea></div>
+     <div class="form-group form-full"><label>Teacher's Reflection</label><textarea id="lpReflection" class="form-control"></textarea></div>
+    </div>
+
+    <div class="action-row">
+     <button class="btn btn-primary" onclick="saveLessonPlan()">Save Draft</button>
+     <button class="btn btn-blue" onclick="previewLessonPlan()">Preview</button>
+    </div>
+   </div>
+  </div>
+ `;
+}
+
+function getLessonPlanData(){
+ return {
+  subject:val("docSubject"),
+  className:val("docClass"),
+  session:val("docSession"),
+  term:val("docTerm"),
+  language:val("docLanguage"),
+  week:val("docWeek"),
+  date:val("lpDate"),
+  duration:val("lpDuration"),
+  topic:val("lpTopic"),
+  subtopic:val("lpSubtopic"),
+  classSize:val("lpClassSize"),
+  previousKnowledge:val("lpPrevious"),
+  objectives:val("lpObjectives"),
+  materials:val("lpMaterials"),
+  introduction:val("lpIntro"),
+  presentation:val("lpPresentation"),
+  learnerActivities:val("lpLearner"),
+  evaluation:val("lpEvaluation"),
+  conclusion:val("lpConclusion"),
+  assignment:val("lpAssignment"),
+  reflection:val("lpReflection")
+ };
+}
+
+function saveLessonPlan(){
+ const data=getLessonPlanData();
+ if(!data.subject||!data.className||!data.topic){
+  toast("Please enter subject, class and topic.");
+  return;
+ }
+
+ db.documents.push({
+  id:uid("doc"),
+  type:"Lesson Plan",
+  teacherId:currentUser.id,
+  teacherName:currentUser.name,
+  status:"Draft",
+  createdAt:now(),
+  ...data,
+  content:formatLessonPlan(data)
+ });
+ saveDB();
+ logAction("Created Lesson Plan");
+ toast("Lesson Plan saved as draft.");
+}
+
+function formatLessonPlan(d){
+ return `
+LESSON PLAN
+
+School: ${db.settings.schoolName}
+Subject: ${d.subject}
+Class: ${d.className}
+Session: ${d.session}
+Term: ${d.term}
+Week: ${d.week}
+Date: ${d.date}
+Duration: ${d.duration}
+Topic: ${d.topic}
+Sub-topic: ${d.subtopic}
+Class Size: ${d.classSize}
+
+PREVIOUS KNOWLEDGE
+${d.previousKnowledge}
+
+SPECIFIC LEARNING OBJECTIVES
+${d.objectives}
+
+INSTRUCTIONAL MATERIALS / RESOURCES
+${d.materials}
+
+INTRODUCTION / SET INDUCTION
+${d.introduction}
+
+PRESENTATION / TEACHER ACTIVITIES
+${d.presentation}
+
+LEARNER ACTIVITIES
+${d.learnerActivities}
+
+EVALUATION
+${d.evaluation}
+
+CONCLUSION / SUMMARY
+${d.conclusion}
+
+ASSIGNMENT
+${d.assignment}
+
+TEACHER'S REFLECTION
+${d.reflection}
+ `.trim();
+}
+
+function previewLessonPlan(){
+ const d=getLessonPlanData();
+ modal("Lesson Plan Preview",`
+  <div class="paper">
+   <div class="school-name">${escapeHTML(db.settings.schoolName)}</div>
+   <div class="doc-title">DETAILED LESSON PLAN</div>
+   <div class="document-preview">${escapeHTML(formatLessonPlan(d))}</div>
+   <div class="action-row no-print">
+    <button class="btn btn-primary" onclick="printCurrentModal()">Print</button>
+   </div>
+  </div>
+ `);
+}
+
+/* =========================================================
+   LESSON NOTE
+   ========================================================= */
+function renderLessonNote(){
+ document.getElementById("pageContainer").innerHTML=`
+ <div class="page-title">Lesson Note</div>
+ <div class="page-subtitle">Create a full lesson note or automatically use the Teacher Assistant generated note.</div>
+
+ <div class="section">
+  <div class="section-header">
+   <h3>Lesson Note</h3>
+   <button class="btn btn-success" onclick="useGenerated('lesson-note')">⚡ Use Generated Lesson Note</button>
+  </div>
+  <div class="section-body">
+   ${documentMetaForm()}
+   <div class="form-grid">
+    <div class="form-group"><label>Topic</label><input id="lnTopic" class="form-control"></div>
+    <div class="form-group"><label>Sub-topic</label><input id="lnSubtopic" class="form-control"></div>
+    <div class="form-group form-full"><label>Introduction</label><textarea id="lnIntro" class="form-control"></textarea></div>
+    <div class="form-group form-full"><label>Detailed Lesson Content</label><textarea id="lnContent" class="form-control" style="min-height:280px"></textarea></div>
+    <div class="form-group form-full"><label>Examples / Worked Examples</label><textarea id="lnExamples" class="form-control"></textarea></div>
+    <div class="form-group form-full"><label>Evaluation Questions</label><textarea id="lnEvaluation" class="form-control"></textarea></div>
+    <div class="form-group form-full"><label>Assignment</label><textarea id="lnAssignment" class="form-control"></textarea></div>
+   </div>
+   <div class="action-row">
+    <button class="btn btn-primary" onclick="saveLessonNote()">Save Draft</button>
+    <button class="btn btn-blue" onclick="previewLessonNote()">Preview</button>
+   </div>
+  </div>
+ </div>`;
+}
+
+function getLessonNoteData(){
+ return {
+  subject:val("docSubject"),
+  className:val("docClass"),
+  session:val("docSession"),
+  term:val("docTerm"),
+  language:val("docLanguage"),
+  week:val("docWeek"),
+  topic:val("lnTopic"),
+  subtopic:val("lnSubtopic"),
+  introduction:val("lnIntro"),
+  content:val("lnContent"),
+  examples:val("lnExamples"),
+  evaluation:val("lnEvaluation"),
+  assignment:val("lnAssignment")
+ };
+}
+
+function formatLessonNote(d){
+ return `
+LESSON NOTE
+
+School: ${db.settings.schoolName}
+Subject: ${d.subject}
+Class: ${d.className}
+Session: ${d.session}
+Term: ${d.term}
+Week: ${d.week}
+Topic: ${d.topic}
+Sub-topic: ${d.subtopic}
+
+INTRODUCTION
+${d.introduction}
+
+LESSON CONTENT
+${d.content}
+
+EXAMPLES / WORKED EXAMPLES
+${d.examples}
+
+EVALUATION
+${d.evaluation}
+
+ASSIGNMENT
+${d.assignment}
+ `.trim();
+}
+
+function saveLessonNote(){
+ const d=getLessonNoteData();
+ if(!d.subject||!d.className||!d.topic){
+  toast("Please enter subject, class and topic.");
+  return;
+ }
+ db.documents.push({
+  id:uid("doc"),
+  type:"Lesson Note",
+  teacherId:currentUser.id,
+  teacherName:currentUser.name,
+  status:"Draft",
+  createdAt:now(),
+  ...d,
+  content:formatLessonNote(d)
+ });
+ saveDB();
+ logAction("Created Lesson Note");
+ toast("Lesson Note saved.");
+}
+
+function previewLessonNote(){
+ const d=getLessonNoteData();
+ modal("Lesson Note Preview",`
+ <div class="paper">
+  <div class="school-name">${escapeHTML(db.settings.schoolName)}</div>
+  <div class="doc-title">LESSON NOTE</div>
+  <div class="document-preview">${escapeHTML(formatLessonNote(d))}</div>
+  <div class="action-row no-print">
+   <button class="btn btn-primary" onclick="printCurrentModal()">Print</button>
+  </div>
+ </div>`);
+}
+
+/* =========================================================
+   SCHEME
+   ========================================================= */
+function renderScheme(){
+ document.getElementById("pageContainer").innerHTML=`
+ <div class="page-title">Scheme of Work</div>
+ <div class="page-subtitle">Standard scheme of work with weekly topics, sub-topics, objectives and resources.</div>
+
+ <div class="section">
+  <div class="section-header">
+   <h3>Create Scheme of Work</h3>
+   <button class="btn btn-success" onclick="useGenerated('scheme')">⚡ Use Generated Scheme</button>
+  </div>
+  <div class="section-body">
+   ${documentMetaForm()}
+   <div class="form-grid">
+    <div class="form-group"><label>Number of Weeks</label><input id="schemeWeeks" class="form-control" type="number" min="1" max="20" value="12"></div>
+    <div class="form-group"><label>Subject Area / Theme</label><input id="schemeTheme" class="form-control"></div>
+   </div>
+   <div class="form-group">
+    <label>Scheme Content</label>
+    <textarea id="schemeContent" class="form-control" style="min-height:350px" placeholder="Week 1: Topic...&#10;Sub-topic...&#10;Objectives..."></textarea>
+   </div>
+   <div class="action-row">
+    <button class="btn btn-primary" onclick="saveScheme()">Save Draft</button>
+    <button class="btn btn-blue" onclick="previewScheme()">Preview</button>
+   </div>
+  </div>
+ </div>`;
+}
+
+function saveScheme(){
+ const data={
+  subject:val("docSubject"),
+  className:val("docClass"),
+  session:val("docSession"),
+  term:val("docTerm"),
+  language:val("docLanguage"),
+  week:val("docWeek"),
+  theme:val("schemeTheme"),
+  weeks:val("schemeWeeks"),
+  content:val("schemeContent")
+ };
+ if(!data.subject||!data.className||!data.content){
+  toast("Enter subject, class and scheme content.");
+  return;
+ }
+ db.documents.push({
+  id:uid("doc"),
+  type:"Scheme of Work",
+  teacherId:currentUser.id,
+  teacherName:currentUser.name,
+  status:"Draft",
+  createdAt:now(),
+  ...data
+ });
+ saveDB();
+ logAction("Created Scheme of Work");
+ toast("Scheme saved.");
+}
+
+function previewScheme(){
+ modal("Scheme of Work Preview",`
+ <div class="paper">
+  <div class="school-name">${escapeHTML(db.settings.schoolName)}</div>
+  <div class="doc-title">SCHEME OF WORK</div>
+  <div class="document-preview">${escapeHTML(val("schemeContent"))}</div>
+  <div class="action-row no-print">
+   <button class="btn btn-primary" onclick="printCurrentModal()">Print</button>
+  </div>
+ </div>`);
+}
+
+/* =========================================================
+   TEACHER ASSISTANT
+   ========================================================= */
+function renderAssistant(){
+ document.getElementById("pageContainer").innerHTML=`
+ <div class="page-title">AI Teacher Assistant</div>
+ <div class="page-subtitle">
+  Generate academic materials and then automatically use them in the corresponding module without retyping.
+ </div>
+
+ <div class="section">
+  <div class="section-header"><h3>Generation Settings</h3></div>
+  <div class="section-body">
+   <div class="form-grid-3">
+    <div class="form-group">
+     <label>Material Type</label>
+     <select id="aiType" class="form-control">
+      <option value="lesson-plan">Lesson Plan</option>
+      <option value="lesson-note">Lesson Note</option>
+      <option value="scheme">Scheme of Work</option>
+      <option value="ca">CA Questions</option>
+      <option value="exam">Examination Questions</option>
+     </select>
+    </div>
+    <div class="form-group">
+     <label>Subject</label>
+     <select id="aiSubject" class="form-control">${subjectOptions()}</select>
+    </div>
+    <div class="form-group">
+     <label>Class</label>
+     <select id="aiClass" class="form-control">${classOptions()}</select>
+    </div>
+    <div class="form-group">
+     <label>Topic</label>
+     <input id="aiTopic" class="form-control" placeholder="Enter topic">
+    </div>
+    <div class="form-group">
+     <label>Sub-topic</label>
+     <input id="aiSubtopic" class="form-control">
+    </div>
+    <div class="form-group">
+     <label>Language</label>
+     <select id="aiLanguage" class="form-control">${languageOptions()}</select>
+    </div>
+    <div class="form-group">
+     <label>Number of Objective Questions</label>
+     <input id="aiObjectiveCount" class="form-control" type="number" min="0" value="10">
+    </div>
+    <div class="form-group">
+     <label>Number of Theory Questions</label>
+     <input id="aiTheoryCount" class="form-control" type="number" min="0" value="5">
+    </div>
+    <div class="form-group">
+     <label>Difficulty</label>
+     <select id="aiDifficulty" class="form-control">
+      <option>Standard</option>
+      <option>Easy</option>
+      <option>Moderate</option>
+      <option>Advanced</option>
+     </select>
+    </div>
+   </div>
+
+   <div class="action-row">
+    <button class="btn btn-primary" onclick="generateAssistantWork()">🤖 Generate</button>
+    <button class="btn btn-gray" onclick="clearGenerated()">Clear</button>
+   </div>
+  </div>
+ </div>
+
+ <div id="assistantResult"></div>`;
+}
+
+function generateAssistantWork(){
+ const type=val("aiType");
+ const subject=val("aiSubject");
+ const className=val("aiClass");
+ const topic=val("aiTopic")||"General Topic";
+ const subtopic=val("aiSubtopic");
+ const language=val("aiLanguage");
+ const difficulty=val("aiDifficulty");
+ const objectiveCount=Math.max(0,parseInt(val("aiObjectiveCount")||0));
+ const theoryCount=Math.max(0,parseInt(val("aiTheoryCount")||0));
+
+ if(!subject||!className){
+  toast("Select subject and class.");
+  return;
+ }
+
+ let result;
+
+ if(type==="lesson-plan"){
+  result=generateLessonPlan(subject,className,topic,subtopic,language);
+ }else if(type==="lesson-note"){
+  result=generateLessonNote(subject,className,topic,subtopic,language);
+ }else if(type==="scheme"){
+  result=generateScheme(subject,className,topic,language);
+ }else{
+  result=generateAssessment(subject,className,topic,language,objectiveCount,theoryCount,difficulty,type);
+ }
+
+ generated[type]=result;
+
+ renderAssistantResult(type,result);
+ logAction("Generated "+type+" using Teacher Assistant");
+}
+
+function generateLessonPlan(subject,className,topic,subtopic,language){
+ if(language==="Hausa"){
+  return {
+   subject,className,topic,subtopic,language,
+   duration:"40 minutes",
+   objectives:`1. Dalibai za su iya bayyana ma'anar ${topic}.
+2. Dalibai za su iya gano muhimman abubuwan da suka shafi ${topic}.
+3. Dalibai za su iya amfani da abin da suka koya wajen amsa tambayoyi.`,
+   materials:"Allo, marker, littafin karatu, hotuna/kayan koyarwa.",
+   introduction:`Malami zai fara da tambayoyin da suka shafi abin da dalibai suka sani game da ${topic}.`,
+   presentation:`Malami zai gabatar da ${topic} a hankali, ya yi bayani, ya bada misalai sannan ya tambayi dalibai.`,
+   learnerActivities:"Dalibai za su saurara, su bada amsoshi, su yi misalai sannan su rubuta muhimman bayanai.",
+   evaluation:`1. Menene ${topic}?
+2. Bayyana muhimman abubuwan da ka koya.
+3. Bada misali guda.`,
+   conclusion:"Malami zai taƙaita darasin kuma ya gyara kura-kuran dalibai.",
+   assignment:`Rubuta bayanin ${topic} kuma bada misalai biyu.`
+  };
+ }
+
+ if(language==="Arabic"){
+  return {
+   subject,className,topic,subtopic,language,
+   duration:"40 minutes",
+   objectives:`1. أن يعرّف التلاميذ مفهوم ${topic}.
+2. أن يحدد التلاميذ أهم عناصر الموضوع.
+3. أن يطبق التلاميذ ما تعلموه في الإجابة عن الأسئلة.`,
+   materials:"السبورة، الأقلام، الكتاب المدرسي، الوسائل التعليمية.",
+   introduction:`يبدأ المعلم بأسئلة تمهيدية حول ${topic}.`,
+   presentation:`يشرح المعلم ${topic} بطريقة تدريجية مع الأمثلة والمشاركة الصفية.`,
+   learnerActivities:"يستمع الطلاب ويجيبون عن الأسئلة ويكتبون النقاط المهمة.",
+   evaluation:`1. ما المقصود بـ ${topic}؟
+2. اذكر أهم النقاط التي تعلمتها.
+3. أعط مثالاً.`,
+   conclusion:"يلخص المعلم الدرس ويصحح الأخطاء.",
+   assignment:`اكتب عن ${topic} مع ذكر مثالين.`
+  };
+ }
+
+ if(language==="French"){
+  return {
+   subject,className,topic,subtopic,language,
+   duration:"40 minutes",
+   objectives:`1. Les apprenants doivent définir ${topic}.
+2. Les apprenants doivent identifier les principaux éléments.
+3. Les apprenants doivent appliquer la connaissance dans des exercices.`,
+   materials:"Tableau, marqueur, manuel et supports pédagogiques.",
+   introduction:`L'enseignant pose des questions simples sur ${topic}.`,
+   presentation:`L'enseignant présente ${topic}, explique les points essentiels et donne des exemples.`,
+   learnerActivities:"Les apprenants participent, répondent aux questions et prennent des notes.",
+   evaluation:`1. Définissez ${topic}.
+2. Citez les points principaux.
+3. Donnez un exemple.`,
+   conclusion:"L'enseignant résume la leçon.",
+   assignment:`Écrivez une courte note sur ${topic} avec deux exemples.`
+  };
+ }
+
+ return {
+  subject,className,topic,subtopic,language,
+  duration:"40 minutes",
+  objectives:`1. Define/explain ${topic}.
+2. Identify the major concepts associated with ${topic}.
+3. Apply the knowledge of ${topic} to simple classroom tasks.`,
+  materials:"Whiteboard, marker, textbook, charts/pictures and relevant instructional materials.",
+  introduction:`The teacher begins with questions that connect learners' previous knowledge to ${topic}.`,
+  presentation:`The teacher introduces ${topic}, explains the key concepts step-by-step, demonstrates examples and checks learners' understanding.`,
+  learnerActivities:"Learners listen, answer questions, participate in demonstrations, ask questions and complete guided activities.",
+  evaluation:`1. Define/explain ${topic}.
+2. Mention two important points about the topic.
+3. Give one relevant example.`,
+  conclusion:"The teacher summarizes the major points and corrects misconceptions.",
+  assignment:`Write a short note on ${topic} and give two relevant examples.`
+ };
+}
+
+function generateLessonNote(subject,className,topic,subtopic,language){
+ const lp=generateLessonPlan(subject,className,topic,subtopic,language);
+ return {
+  subject,className,topic,subtopic,language,
+  introduction:lp.introduction,
+  content:language==="Hausa"
+   ?`${topic} yana da muhimmanci wajen fahimtar wannan fanni. Malami zai bayyana ma'anar kalmomin da suka shafi batun, ya yi amfani da misalai, sannan ya nuna yadda ake amfani da ilimin a rayuwa.`
+   :language==="Arabic"
+   ?`يعتبر موضوع ${topic} مهماً في فهم هذا المجال. يشرح المعلم المفاهيم الأساسية ويقدم الأمثلة والتطبيقات المناسبة.`
+   :language==="French"
+   ?`Le sujet ${topic} est important pour comprendre ce domaine. L'enseignant explique les concepts essentiels et présente des exemples pratiques.`
+   :`${topic} is an important concept in this subject. The teacher explains the key terms, major ideas and practical applications. Learners are guided through examples and activities related to the topic.`,
+  examples:language==="English"
+   ?`Example 1: A simple classroom example related to ${topic}.
+Example 2: A practical application of ${topic}.`
+   :`Examples related to ${topic} should be discussed and solved with learners.`,
+  evaluation:lp.evaluation,
+  assignment:lp.assignment
+ };
+}
+
+function generateScheme(subject,className,topic,language){
+ const weeks=[];
+ const themes=[
+  topic,
+  "Basic Concepts and Definitions",
+  "Identification and Classification",
+  "Examples and Applications",
+  "Practical Activities",
+  "Problem Solving",
+  "Review of Previous Topics",
+  "Advanced Applications",
+  "Revision",
+  "Assessment and Correction",
+  "Consolidation",
+  "General Revision"
+ ];
+ for(let i=0;i<12;i++){
+  weeks.push(`WEEK ${i+1}
+Topic: ${themes[i]}
+Sub-topic: Key concepts and classroom activities
+Objectives: Learners should understand, explain and apply the major ideas.
+Resources: Textbook, board, charts, practical materials and teacher-prepared resources.`);
+ }
+ return {subject,className,topic,language,weeks:weeks.join("\n\n")};
+}
+
+/* =========================================================
+   ASSESSMENT GENERATOR
+   ========================================================= */
+function shuffle(arr){
+ const a=[...arr];
+ for(let i=a.length-1;i>0;i--){
+  const j=Math.floor(Math.random()*(i+1));
+  [a[i],a[j]]=[a[j],a[i]];
+ }
+ return a;
+}
+
+function isCalculationSubject(subject){
+ return [
+  "Mathematics","Physics","Chemistry","Economics",
+  "Accounting","Business Studies","Agricultural Science"
+ ].includes(subject);
+}
+
+function randomInt(min,max){
+ return Math.floor(Math.random()*(max-min+1))+min;
+}
+
+function calculationQuestion(subject,index){
+ if(subject==="Mathematics"){
+  const a=randomInt(10,80);
+  const b=randomInt(5,40);
+  const type=index%4;
+
+  if(type===0){
+   const correct=a+b;
+   return makeMCQ(
+    `${a} + ${b} = ?`,
+    correct,
+    [correct+2,correct-3,correct+5],
+    "Calculation"
+   );
+  }
+
+  if(type===1){
+   const correct=a-b;
+   return makeMCQ(
+    `${a} - ${b} = ?`,
+    correct,
+    [correct+4,correct-5,correct+8],
+    "Calculation"
+   );
+  }
+
+  if(type===2){
+   const correct=a*b;
+   return makeMCQ(
+    `${a} × ${b} = ?`,
+    correct,
+    [correct+10,correct-10,correct+5],
+    "Calculation"
+   );
+  }
+
+  const divisor=randomInt(2,10);
+  const quotient=randomInt(3,15);
+  const dividend=divisor*quotient;
+  return makeMCQ(
+   `${dividend} ÷ ${divisor} = ?`,
+   quotient,
+   [quotient+2,quotient-1,quotient+4],
+   "Calculation"
+  );
+ }
+
+ if(subject==="Physics"){
+  const m=randomInt(2,10);
+  const a=randomInt(2,8);
+  const correct=m*a;
+  return makeMCQ(
+   `A body of mass ${m} kg accelerates at ${a} m/s². What is the force?`,
+   correct+" N",
+   [(correct+5)+" N",(correct-2)+" N",(correct+10)+" N"],
+   "Calculation"
+  );
+ }
+
+ if(subject==="Chemistry"){
+  const mass=randomInt(2,10);
+  const volume=randomInt(2,8);
+  const correct=(mass/volume).toFixed(2);
+  return makeMCQ(
+   `A substance has a mass of ${mass} g and a volume of ${volume} cm³. What is its density?`,
+   correct+" g/cm³",
+   [(mass+volume)+" g/cm³",(mass-volume)+" g/cm³",(volume/mass).toFixed(2)+" g/cm³"],
+   "Calculation"
+  );
+ }
+
+ if(subject==="Economics"){
+  const q=randomInt(20,80);
+  const p=randomInt(2,10);
+  const correct=q*p;
+  return makeMCQ(
+   `If ${q} units are sold at ₦${p} each, what is the total revenue?`,
+   "₦"+correct,
+   ["₦"+(correct+50),"₦"+(correct-20),"₦"+(correct+100)],
+   "Calculation"
+  );
+ }
+
+ if(subject==="Accounting"){
+  const income=randomInt(100,500)*100;
+  const expense=randomInt(20,80)*100;
+  const correct=income-expense;
+  return makeMCQ(
+   `A business has revenue of ₦${income.toLocaleString()} and expenses of ₦${expense.toLocaleString()}. What is the profit?`,
+   "₦"+correct.toLocaleString(),
+   ["₦"+(correct+10000).toLocaleString(),"₦"+(correct-5000).toLocaleString(),"₦"+(income+expense).toLocaleString()],
+   "Calculation"
+  );
+ }
+
+ const a=randomInt(5,20);
+ const b=randomInt(2,8);
+ const correct=a*b;
+ return makeMCQ(
+  `Calculate ${a} × ${b}.`,
+  correct,
+  [correct+3,correct-2,correct+7],
+  "Calculation"
+ );
+}
+
+function makeMCQ(text,correct,wrong,topic){
+ const options=shuffle([String(correct),...wrong.map(String)]);
+ const answerIndex=options.indexOf(String(correct));
+
+ return {
+  id:uid("q"),
+  text,
+  options,
+  answerIndex,
+  answerLetter:String.fromCharCode(65+answerIndex),
+  answerText:String(correct),
+  marks:1,
+  topic,
+  difficulty:"Standard",
+  solution:`Correct answer: ${correct}`
+ };
+}
+
+function genericMCQ(subject,topic,index){
+ const questionTemplates=[
+  `Which statement best describes ${topic}?`,
+  `What is an important feature of ${topic}?`,
+  `Which of the following is related to ${topic}?`,
+  `Which option is the best example of ${topic}?`,
+  `What is the main purpose of ${topic}?`
+ ];
+
+ const corrects=[
+  `It explains the major idea of ${topic}`,
+  `It identifies an important aspect of ${topic}`,
+  `It is directly related to ${topic}`,
+  `It provides a relevant example of ${topic}`,
+  `It helps us understand and apply ${topic}`
+ ];
+
+ const correct=corrects[index%corrects.length];
+
+ return makeMCQ(
+  questionTemplates[index%questionTemplates.length],
+  correct,
+  [
+   "An unrelated idea",
+   "A statement that contradicts the topic",
+   "An incorrect generalization"
+  ],
+  topic
+ );
+}
+
+function theoryQuestion(subject,topic,index){
+ const forms=[
+  `Define ${topic} and explain two important features.`,
+  `Explain the importance of ${topic} and give two examples.`,
+  `Differentiate between two related concepts under ${topic}.`,
+  `Describe how ${topic} can be applied in a practical situation.`,
+  `Discuss ${topic} and state three relevant points.`
+ ];
+
+ return {
+  id:uid("tq"),
+  text:forms[index%forms.length],
+  marks:index%2===0?5:10,
+  solution:`Expected answer should correctly define/explain ${topic}, identify the relevant points and provide appropriate examples where required.`
+ };
+}
+
+function generateAssessment(subject,className,topic,language,objectiveCount,theoryCount,difficulty,type){
+ const objectives=[];
+ const theories=[];
+
+ for(let i=0;i<objectiveCount;i++){
+  let q;
+  if(isCalculationSubject(subject)){
+   q=calculationQuestion(subject,i);
+  }else{
+   q=genericMCQ(subject,topic,i);
+  }
+  q.difficulty=difficulty;
+  objectives.push(q);
+ }
+
+ for(let i=0;i<theoryCount;i++){
+  theories.push(theoryQuestion(subject,topic,i));
+ }
+
+ return {
+  type,
+  subject,
+  className,
+  topic,
+  language,
+  difficulty,
+  objectives,
+  theories,
+  title:type==="ca"?"CONTINUOUS ASSESSMENT":"EXAMINATION",
+  instructions:"Answer all objective questions. Follow the instructions for the theory section.",
+  generatedAt:now()
+ };
+}
+
+function renderAssistantResult(type,result){
+ let html="";
+
+ if(type==="lesson-plan"){
+  html=`
+  <div class="section">
+   <div class="section-header">
+    <h3>Generated Lesson Plan</h3>
+    <button class="btn btn-success" onclick="useGenerated('lesson-plan')">⚡ Use This in Lesson Plan</button>
+   </div>
+   <div class="section-body">
+    <div class="document-preview">${escapeHTML(formatLessonPlan(result))}</div>
+   </div>
+  </div>`;
+ }
+
+ else if(type==="lesson-note"){
+  html=`
+  <div class="section">
+   <div class="section-header">
+    <h3>Generated Lesson Note</h3>
+    <button class="btn btn-success" onclick="useGenerated('lesson-note')">⚡ Use This in Lesson Note</button>
+   </div>
+   <div class="section-body">
+    <div class="document-preview">${escapeHTML(formatLessonNote(result))}</div>
+   </div>
+  </div>`;
+ }
+
+ else if(type==="scheme"){
+  html=`
+  <div class="section">
+   <div class="section-header">
+    <h3>Generated Scheme of Work</h3>
+    <button class="btn btn-success" onclick="useGenerated('scheme')">⚡ Use This in Scheme</button>
+   </div>
+   <div class="section-body">
+    <div class="document-preview">${escapeHTML(result.weeks)}</div>
+   </div>
+  </div>`;
+ }
+
+ else{
+  html=`
+  <div class="section">
+   <div class="section-header">
+    <h3>Generated ${type==="ca"?"CA":"Examination"}</h3>
+    <button class="btn btn-success" onclick="useGenerated('${type}')">⚡ Use This in CA & Examination</button>
+   </div>
+   <div class="section-body">
+    ${renderAssessmentPreview(result)}
+   </div>
+  </div>`;
+ }
+
+ document.getElementById("assistantResult").innerHTML=html;
+}
+
+function formatLessonPlan(r){
+ return `
+LESSON PLAN
+
+School: ${db.settings.schoolName}
+Subject: ${r.subject}
+Class: ${r.className}
+Topic: ${r.topic}
+Sub-topic: ${r.subtopic||""}
+Duration: ${r.duration}
+
+SPECIFIC OBJECTIVES
+${r.objectives}
+
+INSTRUCTIONAL MATERIALS
+${r.materials}
+
+INTRODUCTION / SET INDUCTION
+${r.introduction}
+
+PRESENTATION / TEACHER ACTIVITIES
+${r.presentation}
+
+LEARNER ACTIVITIES
+${r.learnerActivities}
+
+EVALUATION
+${r.evaluation}
+
+CONCLUSION
+${r.conclusion}
+
+ASSIGNMENT
+${r.assignment}
+ `.trim();
+}
+
+function formatLessonNote(r){
+ return `
+LESSON NOTE
+
+School: ${db.settings.schoolName}
+Subject: ${r.subject}
+Class: ${r.className}
+Topic: ${r.topic}
+Sub-topic: ${r.subtopic||""}
+
+INTRODUCTION
+${r.introduction}
+
+DETAILED CONTENT
+${r.content}
+
+EXAMPLES
+${r.examples}
+
+EVALUATION
+${r.evaluation}
+
+ASSIGNMENT
+${r.assignment}
+ `.trim();
+}
+
+function renderAssessmentPreview(r){
+ return `
+ <div class="paper">
+  <div class="school-name">${escapeHTML(db.settings.schoolName)}</div>
+  <div class="doc-title">${escapeHTML(r.title)}</div>
+  <p><b>Subject:</b> ${escapeHTML(r.subject)} &nbsp; <b>Class:</b> ${escapeHTML(r.className)}</p>
+  <p><b>Topic:</b> ${escapeHTML(r.topic)}</p>
+  <hr style="margin:15px 0">
+  <h3 style="text-align:left;margin-bottom:12px">SECTION A — OBJECTIVE</h3>
+  ${r.objectives.map((q,i)=>`
+   <div class="question-box">
+    <strong>${i+1}. ${escapeHTML(q.text)}</strong>
+    ${q.options.map((o,j)=>`<div class="option">${String.fromCharCode(65+j)}. ${escapeHTML(o)}</div>`).join("")}
+   </div>
+  `).join("")}
+
+  <h3 style="text-align:left;margin:20px 0 12px">SECTION B — THEORY</h3>
+  ${r.theories.map((q,i)=>`
+   <div class="question-box">
+    <strong>${i+1}. ${escapeHTML(q.text)}</strong>
+    <div><b>${q.marks} marks</b></div>
+   </div>
+  `).join("")}
+
+  <div class="answer-key">
+   <b>Teacher Marking Scheme / Answer Key</b><br><br>
+   ${r.objectives.map((q,i)=>`${i+1}. ${q.answerLetter} — ${escapeHTML(q.answerText)}`).join("<br>")}
+   <br><br>
+   <b>Theory marking guide:</b><br>
+   ${r.theories.map((q,i)=>`${i+1}. ${q.marks} marks — ${escapeHTML(q.solution)}`).join("<br>")}
+  </div>
+ </div>`;
+}
+
+function clearGenerated(){
+ generated={};
+ document.getElementById("assistantResult").innerHTML="";
+}
+
+/* =========================================================
+   AUTOMATIC USE OF GENERATED WORK
+   ========================================================= */
+function useGenerated(type){
+ const work=generated[type];
+
+ if(!work){
+  toast("Generate the work in Teacher Assistant first.");
+  showPage("assistant");
+  return;
+ }
+
+ if(type==="lesson-plan"){
+  showPage("lesson-plan");
+  setTimeout(()=>{
+   fill("docSubject",work.subject);
+   fill("docClass",work.className);
+   fill("docSession",db.settings.currentSession);
+   fill("docTerm",db.settings.currentTerm);
+   fill("docLanguage",work.language);
+   fill("lpDuration",work.duration);
+   fill("lpTopic",work.topic);
+   fill("lpSubtopic",work.subtopic);
+   fill("lpObjectives",work.objectives);
+   fill("lpMaterials",work.materials);
+   fill("lpIntro",work.introduction);
+   fill("lpPresentation",work.presentation);
+   fill("lpLearner",work.learnerActivities);
+   fill("lpEvaluation",work.evaluation);
+   fill("lpConclusion",work.conclusion);
+   fill("lpAssignment",work.assignment);
+   toast("Generated Lesson Plan has been imported. Review and save it.");
+  },50);
+ }
+
+ else if(type==="lesson-note"){
+  showPage("lesson-note");
+  setTimeout(()=>{
+   fill("docSubject",work.subject);
+   fill("docClass",work.className);
+   fill("docSession",db.settings.currentSession);
+   fill("docTerm",db.settings.currentTerm);
+   fill("docLanguage",work.language);
+   fill("lnTopic",work.topic);
+   fill("lnSubtopic",work.subtopic);
+   fill("lnIntro",work.introduction);
+   fill("lnContent",work.content);
+   fill("lnExamples",work.examples);
+   fill("lnEvaluation",work.evaluation);
+   fill("lnAssignment",work.assignment);
+   toast("Generated Lesson Note has been imported.");
+  },50);
+ }
+
+ else if(type==="scheme"){
+  showPage("scheme");
+  setTimeout(()=>{
+   fill("docSubject",work.subject);
+   fill("docClass",work.className);
+   fill("docSession",db.settings.currentSession);
+   fill("docTerm",db.settings.currentTerm);
+   fill("docLanguage",work.language);
+   fill("schemeTheme",work.topic);
+   fill("schemeWeeks","12");
+   fill("schemeContent",work.weeks);
+   toast("Generated Scheme has been imported.");
+  },50);
+ }
+
+ else if(type==="ca"||type==="exam"){
+  showPage("assessment");
+  setTimeout(()=>{
+   assessmentDraft=work;
+   renderAssessmentEditor(work);
+   toast("Generated assessment has been imported into CA & Examination.");
+  },50);
+ }
+}
+
+/* =========================================================
+   ASSESSMENT MODULE
+   ========================================================= */
+let assessmentDraft=null;
+
+function renderAssessment(){
+ document.getElementById("pageContainer").innerHTML=`
+ <div class="page-title">CA & Examination</div>
+ <div class="page-subtitle">
+  Create, edit, preview, print and submit continuous assessment or examination questions.
+ </div>
+
+ <div class="section">
+  <div class="section-header"><h3>Assessment Details</h3></div>
+  <div class="section-body">
+   <div class="form-grid-3">
+    <div class="form-group"><label>Assessment Type</label>
+     <select id="assessType" class="form-control">
+      <option value="ca">Continuous Assessment</option>
+      <option value="exam">Examination</option>
+     </select>
+    </div>
+    <div class="form-group"><label>Subject</label>
+     <select id="assessSubject" class="form-control">${subjectOptions()}</select>
+    </div>
+    <div class="form-group"><label>Class</label>
+     <select id="assessClass" class="form-control">${classOptions()}</select>
+    </div>
+    <div class="form-group"><label>Session</label>
+     <input id="assessSession" class="form-control" value="${escapeHTML(db.settings.currentSession)}">
+    </div>
+    <div class="form-group"><label>Term</label>
+     <select id="assessTerm" class="form-control">
+      <option>First Term</option><option>Second Term</option><option>Third Term</option>
+     </select>
+    </div>
+    <div class="form-group"><label>Topic</label><input id="assessTopic" class="form-control"></div>
+   </div>
+
+   <div class="action-row">
+    <button class="btn btn-primary" onclick="createManualAssessment()">Create Assessment</button>
+    <button class="btn btn-success" onclick="showPage('assistant')">🤖 Generate with Teacher Assistant</button>
+   </div>
+  </div>
+ </div>
+
+ <div id="assessmentEditor"></div>`;
+}
+
+function createManualAssessment(){
+ const type=val("assessType");
+ const subject=val("assessSubject");
+ const className=val("assessClass");
+ const topic=val("assessTopic")||"General Topic";
+
+ assessmentDraft=generateAssessment(
+  subject,className,topic,"English",10,5,"Standard",type
+ );
+ renderAssessmentEditor(assessmentDraft);
+}
+
+function renderAssessmentEditor(r){
+ if(!r)return;
+
+ document.getElementById("assessmentEditor").innerHTML=`
+ <div class="section">
+  <div class="section-header">
+   <h3>${r.type==="ca"?"Continuous Assessment":"Examination"} Editor</h3>
+   <div class="action-row" style="margin:0">
+    <button class="btn btn-blue" onclick="previewAssessment()">Preview / Print</button>
+    <button class="btn btn-success" onclick="saveAssessmentDraft()">Save Draft</button>
+    <button class="btn btn-primary" onclick="submitAssessment()">Submit to HOD</button>
+   </div>
+  </div>
+  <div class="section-body">
+
+   <h4 style="margin-bottom:10px;color:#14532d">SECTION A — OBJECTIVE QUESTIONS</h4>
+
+   ${r.objectives.map((q,i)=>`
+    <div class="question-box">
+     <strong>${i+1}. ${escapeHTML(q.text)}</strong>
+     ${q.options.map((o,j)=>`
+      <div class="option">
+       ${String.fromCharCode(65+j)}. ${escapeHTML(o)}
+      </div>
+     `).join("")}
+     <div style="font-size:11px;color:#64748b;margin-top:6px">
+      Correct answer: ${q.answerLetter}
+     </div>
+    </div>
+   `).join("")}
+
+   <h4 style="margin:20px 0 10px;color:#14532d">SECTION B — THEORY / STRUCTURED QUESTIONS</h4>
+
+   ${r.theories.map((q,i)=>`
+    <div class="question-box">
+     <strong>${i+1}. ${escapeHTML(q.text)}</strong>
+     <span class="badge badge-blue">${q.marks} marks</span>
+    </div>
+   `).join("")}
+
+   <div class="answer-key">
+    <b>Marking Scheme</b>
+    <p style="font-size:12px;margin-top:6px">
+     Objective answers are automatically linked to the actual displayed option after shuffling.
+    </p>
+    ${r.objectives.map((q,i)=>`
+     <div>${i+1}. <b>${q.answerLetter}</b> — ${escapeHTML(q.answerText)}</div>
+    `).join("")}
+    <hr style="margin:10px 0">
+    ${r.theories.map((q,i)=>`
+     <div>${i+1}. ${q.marks} marks — ${escapeHTML(q.solution)}</div>
+    `).join("")}
+   </div>
+
+  </div>
+ </div>`;
+}
+
+function saveAssessmentDraft(){
+ if(!assessmentDraft){
+  toast("Create or generate an assessment first.");
+  return;
+ }
+
+ db.assessments.push({
+  id:uid("assessment"),
+  teacherId:currentUser.id,
+  teacherName:currentUser.name,
+  type:assessmentDraft.type,
+  subject:assessmentDraft.subject,
+  className:assessmentDraft.className,
+  session:db.settings.currentSession,
+  term:db.settings.currentTerm,
+  topic:assessmentDraft.topic,
+  status:"Draft",
+  createdAt:now(),
+  data:assessmentDraft
+ });
+
+ saveDB();
+ logAction("Saved assessment draft");
+ toast("Assessment draft saved.");
+}
+
+function submitAssessment(){
+ if(!assessmentDraft){
+  toast("Create or generate an assessment first.");
+  return;
+ }
+
+ db.assessments.push({
+  id:uid("assessment"),
+  teacherId:currentUser.id,
+  teacherName:currentUser.name,
+  type:assessmentDraft.type,
+  subject:assessmentDraft.subject,
+  className:assessmentDraft.className,
+  session:db.settings.currentSession,
+  term:db.settings.currentTerm,
+  topic:assessmentDraft.topic,
+  status:"Submitted to HOD",
+  createdAt:now(),
+  submittedAt:now(),
+  data:assessmentDraft
+ });
+
+ saveDB();
+ logAction("Submitted "+assessmentDraft.type+" to HOD");
+ toast("Assessment submitted to the assigned HOD.");
+ showPage("submissions");
+}
+
+function previewAssessment(){
+ if(!assessmentDraft)return;
+ modal("Assessment Preview",`
+  <div id="printArea" class="paper">
+   ${renderAssessmentPreview(assessmentDraft)}
+  </div>
+  <div class="action-row no-print">
+   <button class="btn btn-primary" onclick="printCurrentModal()">Print</button>
+   <button class="btn btn-blue" onclick="exportAssessmentWord()">Export to Word (.doc)</button>
+  </div>`);
+}
+
+function exportAssessmentWord(){
+ if(!assessmentDraft)return;
+
+ const html=`
+<html>
+<head><meta charset="UTF-8"><title>${assessmentDraft.title}</title></head>
+<body>
+<h2 style="text-align:center">${db.settings.schoolName}</h2>
+<h3 style="text-align:center">${assessmentDraft.title}</h3>
+<p><b>Subject:</b> ${escapeHTML(assessmentDraft.subject)}</p>
+<p><b>Class:</b> ${escapeHTML(assessmentDraft.className)}</p>
+${assessmentDraft.objectives.map((q,i)=>`
+<p><b>${i+1}. ${escapeHTML(q.text)}</b></p>
+${q.options.map((o,j)=>`<p>${String.fromCharCode(65+j)}. ${escapeHTML(o)}</p>`).join("")}
+`).join("")}
+<h3>THEORY</h3>
+${assessmentDraft.theories.map((q,i)=>`<p><b>${i+1}. ${escapeHTML(q.text)}</b> (${q.marks} marks)</p>`).join("")}
+<h3>MARKING SCHEME</h3>
+${assessmentDraft.objectives.map((q,i)=>`<p>${i+1}. ${q.answerLetter} — ${escapeHTML(q.answerText)}</p>`).join("")}
+</body></html>`;
+
+ downloadBlob(
+  new Blob([html],{type:"application/msword"}),
+  `${assessmentDraft.subject}_${assessmentDraft.className}_${assessmentDraft.type}.doc`
+ );
+}
+
+function downloadBlob(blob,name){
+ const url=URL.createObjectURL(blob);
+ const a=document.createElement("a");
+ a.href=url;
+ a.download=name;
+ document.body.appendChild(a);
+ a.click();
+ a.remove();
+ setTimeout(()=>URL.revokeObjectURL(url),1000);
+}
+
+/* =========================================================
+   SUBMISSIONS
+   ========================================================= */
+function renderSubmissions(){
+ const docs=db.documents.filter(d=>d.teacherId===currentUser.id);
+ const assessments=db.assessments.filter(a=>a.teacherId===currentUser.id);
+
+ document.getElementById("pageContainer").innerHTML=`
+ <div class="page-title">My Submissions</div>
+ <div class="page-subtitle">Track documents and assessments sent for HOD and Examination Officer review.</div>
+
+ <div class="section">
+  <div class="section-header"><h3>Academic Documents</h3></div>
+  <div class="section-body">
+   ${docs.length?`
+   <div class="table-wrap"><table>
+    <thead><tr><th>Type</th><th>Subject</th><th>Class</th><th>Status</th><th>Date</th><th>Action</th></tr></thead>
+    <tbody>
+     ${docs.map(d=>`
+      <tr>
+       <td>${escapeHTML(d.type)}</td>
+       <td>${escapeHTML(d.subject)}</td>
+       <td>${escapeHTML(d.className)}</td>
+       <td>${statusBadge(d.status)}</td>
+       <td>${escapeHTML(d.createdAt)}</td>
+       <td>
+        <button class="btn btn-gray" onclick="viewDocument('${d.id}')">View</button>
+        ${d.status==="Draft"?`<button class="btn btn-primary" onclick="submitDocument('${d.id}')">Submit</button>`:""}
+       </td>
+      </tr>
+     `).join("")}
+    </tbody>
+   </table></div>`:`<p style="color:#64748b">No documents yet.</p>`}
+  </div>
+ </div>
+
+ <div class="section">
+  <div class="section-header"><h3>CA & Examination Submissions</h3></div>
+  <div class="section-body">
+   ${assessments.length?`
+   <div class="table-wrap"><table>
+    <thead><tr><th>Type</th><th>Subject</th><th>Class</th><th>Status</th><th>Date</th><th>Action</th></tr></thead>
+    <tbody>
+     ${assessments.map(a=>`
+      <tr>
+       <td>${a.type==="exam"?"Examination":"CA"}</td>
+       <td>${escapeHTML(a.subject)}</td>
+       <td>${escapeHTML(a.className)}</td>
+       <td>${statusBadge(a.status)}</td>
+       <td>${escapeHTML(a.createdAt)}</td>
+       <td><button class="btn btn-gray" onclick="viewAssessment('${a.id}')">View</button></td>
+      </tr>
+     `).join("")}
+    </tbody>
+   </table></div>`:`<p style="color:#64748b">No assessment submissions yet.</p>`}
+  </div>
+ </div>`;
+}
+
+function statusBadge(status){
+ let cls="badge-gray";
+ if(["Approved","Final Approved","Archived"].includes(status))cls="badge-green";
+ else if(["Rejected","Exam Rejected"].includes(status))cls="badge-red";
+ else if(["Submitted to HOD","HOD Approved","Submitted to Examination Officer"].includes(status))cls="badge-yellow";
+ return `<span class="badge ${cls}">${escapeHTML(status)}</span>`;
+}
+
+function submitDocument(id){
+ const d=db.documents.find(x=>x.id===id && x.teacherId===currentUser.id);
+ if(!d)return;
+
+ d.status="Submitted to HOD";
+ d.submittedAt=now();
+ saveDB();
+ logAction("Submitted "+d.type+" to HOD");
+ toast("Document submitted to HOD.");
+ renderSubmissions();
+}
+
+function viewDocument(id){
+ const d=db.documents.find(x=>x.id===id);
+ if(!d)return;
+ modal(d.type,`
+  <div class="paper">
+   <div class="school-name">${escapeHTML(db.settings.schoolName)}</div>
+   <div class="doc-title">${escapeHTML(d.type)}</div>
+   <div class="document-preview">${escapeHTML(d.content||"")}</div>
+   <div class="action-row no-print">
+    <button class="btn btn-primary" onclick="printCurrentModal()">Print</button>
+    <button class="btn btn-blue" onclick="exportDocumentWord('${d.id}')">Export Word</button>
+   </div>
+  </div>`);
+}
+
+function viewAssessment(id){
+ const a=db.assessments.find(x=>x.id===id);
+ if(!a)return;
+ modal(a.type==="exam"?"Examination":"CA",renderAssessmentPreview(a.data)+`
+ <div class="action-row no-print">
+  <button class="btn btn-primary" onclick="printCurrentModal()">Print</button>
+  <button class="btn btn-blue" onclick="exportSavedAssessment('${a.id}')">Export Word</button>
+ </div>`);
+}
+
+function exportSavedAssessment(id){
+ const a=db.assessments.find(x=>x.id===id);
+ if(!a)return;
+ assessmentDraft=a.data;
+ exportAssessmentWord();
+}
+
+function exportDocumentWord(id){
+ const d=db.documents.find(x=>x.id===id);
+ if(!d)return;
+
+ const html=`<html><body><h2>${escapeHTML(db.settings.schoolName)}</h2><pre>${escapeHTML(d.content||"")}</pre></body></html>`;
+ downloadBlob(
+  new Blob([html],{type:"application/msword"}),
+  `${d.type.replace(/\s/g,"_")}.doc`
+ );
+}
+
+/* =========================================================
+   HOD APPROVAL
+   ========================================================= */
+function renderHOD(){
+ if(!isHOD()&&!isAdmin()){
+  document.getElementById("pageContainer").innerHTML=`<div class="card">Access denied.</div>`;
+  return;
+ }
+
+ const docs=db.documents.filter(d=>
+  d.status==="Submitted to HOD" &&
+  (isAdmin() || currentUser.hodSubjects.includes(d.subject))
+ );
+
+ const assessments=db.assessments.filter(a=>
+  a.status==="Submitted to HOD" &&
+  (isAdmin() || currentUser.hodSubjects.includes(a.subject))
+ );
+
+ document.getElementById("pageContainer").innerHTML=`
+ <div class="page-title">HOD Approval Centre</div>
+ <div class="page-subtitle">Review documents and assessments submitted by teachers in your assigned subject.</div>
+
+ <div class="section">
+  <div class="section-header"><h3>Academic Documents Awaiting HOD Review</h3></div>
+  <div class="section-body">
+   ${docs.length?`
+   <div class="table-wrap"><table>
+    <thead><tr><th>Teacher</th><th>Type</th><th>Subject</th><th>Class</th><th>Date</th><th>Action</th></tr></thead>
+    <tbody>${docs.map(d=>`
+     <tr>
+      <td>${escapeHTML(d.teacherName)}</td>
+      <td>${escapeHTML(d.type)}</td>
+      <td>${escapeHTML(d.subject)}</td>
+      <td>${escapeHTML(d.className)}</td>
+      <td>${escapeHTML(d.submittedAt||d.createdAt)}</td>
+      <td><button class="btn btn-blue" onclick="reviewDocument('${d.id}')">Review</button></td>
+     </tr>`).join("")}</tbody>
+   </table></div>`:`<p>No documents waiting for HOD review.</p>`}
+  </div>
+ </div>
+
+ <div class="section">
+  <div class="section-header"><h3>Assessments Awaiting HOD Review</h3></div>
+  <div class="section-body">
+   ${assessments.length?`
+   <div class="table-wrap"><table>
+    <thead><tr><th>Teacher</th><th>Type</th><th>Subject</th><th>Class</th><th>Date</th><th>Action</th></tr></thead>
+    <tbody>${assessments.map(a=>`
+     <tr>
+      <td>${escapeHTML(a.teacherName)}</td>
+      <td>${a.type==="exam"?"Examination":"CA"}</td>
+      <td>${escapeHTML(a.subject)}</td>
+      <td>${escapeHTML(a.className)}</td>
+      <td>${escapeHTML(a.submittedAt||a.createdAt)}</td>
+      <td><button class="btn btn-blue" onclick="reviewAssessment('${a.id}')">Review</button></td>
+     </tr>`).join("")}</tbody>
+   </table></div>`:`<p>No assessments waiting for HOD review.</p>`}
+  </div>
+ </div>`;
+}
+
+function reviewDocument(id){
+ const d=db.documents.find(x=>x.id===id);
+ if(!d)return;
+
+ modal("HOD Document Review",`
+  <div class="document-preview">${escapeHTML(d.content||"")}</div>
+  <div class="form-group" style="margin-top:15px">
+   <label>Review Comment</label>
+   <textarea id="reviewComment" class="form-control" placeholder="Enter approval/rejection comment"></textarea>
+  </div>
+  <div class="action-row">
+   <button class="btn btn-success" onclick="hodDecisionDocument('${id}','approve')">Approve</button>
+   <button class="btn btn-danger" onclick="hodDecisionDocument('${id}','reject')">Reject</button>
+  </div>`);
+}
+
+function hodDecisionDocument(id,decision){
+ const d=db.documents.find(x=>x.id===id);
+ if(!d)return;
+
+ if(!isAdmin() && !currentUser.hodSubjects.includes(d.subject)){
+  toast("You are not the HOD for this subject.");
+  return;
+ }
+
+ const comment=val("reviewComment");
+
+ if(decision==="approve"){
+  d.status="HOD Approved";
+  d.hodApprovedBy=currentUser.name;
+  d.hodApprovedAt=now();
+ }else{
+  d.status="Rejected";
+  d.rejectedBy=currentUser.name;
+  d.rejectedAt=now();
+ }
+
+ d.hodComment=comment;
+ saveDB();
+ logAction(`${decision==="approve"?"Approved":"Rejected"} ${d.type} as HOD`);
+ closeModal();
+ toast("HOD decision saved.");
+ renderHOD();
+}
+
+function reviewAssessment(id){
+ const a=db.assessments.find(x=>x.id===id);
+ if(!a)return;
+
+ modal("HOD Assessment Review",`
+  ${renderAssessmentPreview(a.data)}
+  <div class="form-group" style="margin-top:15px">
+   <label>Review Comment</label>
+   <textarea id="reviewComment" class="form-control"></textarea>
+  </div>
+  <div class="action-row">
+   <button class="btn btn-success" onclick="hodDecisionAssessment('${id}','approve')">Approve</button>
+   <button class="btn btn-danger" onclick="hodDecisionAssessment('${id}','reject')">Reject</button>
+  </div>`);
+}
+
+function hodDecisionAssessment(id,decision){
+ const a=db.assessments.find(x=>x.id===id);
+ if(!a)return;
+
+ if(!isAdmin() && !currentUser.hodSubjects.includes(a.subject)){
+  toast("You are not the HOD for this subject.");
+  return;
+ }
+
+ const comment=val("reviewComment");
+
+ if(decision==="approve"){
+  a.status="HOD Approved";
+  a.hodApprovedBy=currentUser.name;
+  a.hodApprovedAt=now();
+ }else{
+  a.status="Rejected";
+ }
+
+ a.hodComment=comment;
+ saveDB();
+ logAction(`${decision==="approve"?"Approved":"Rejected"} assessment as HOD`);
+ closeModal();
+ toast("HOD decision saved.");
+ renderHOD();
+}
+
+/* =========================================================
+   EXAMINATION OFFICER
+   ========================================================= */
+function renderExamOfficer(){
+ if(!isExamOfficer()&&!isAdmin()){
+  document.getElementById("pageContainer").innerHTML=`<div class="card">Access denied.</div>`;
+  return;
+ }
+
+ const list=db.assessments.filter(a=>
+  a.status==="HOD Approved" &&
+  (isAdmin() || currentUser.examOfficer)
+ );
+
+ document.getElementById("pageContainer").innerHTML=`
+ <div class="page-title">Examination Officer</div>
+ <div class="page-subtitle">Final review of HOD-approved CA and examination materials.</div>
+
+ <div class="section">
+  <div class="section-header"><h3>Awaiting Examination Officer Review</h3></div>
+  <div class="section-body">
+   ${list.length?`
+   <div class="table-wrap"><table>
+    <thead><tr><th>Teacher</th><th>Type</th><th>Subject</th><th>Class</th><th>HOD</th><th>Action</th></tr></thead>
+    <tbody>${list.map(a=>`
+     <tr>
+      <td>${escapeHTML(a.teacherName)}</td>
+      <td>${a.type==="exam"?"Examination":"CA"}</td>
+      <td>${escapeHTML(a.subject)}</td>
+      <td>${escapeHTML(a.className)}</td>
+      <td>${escapeHTML(a.hodApprovedBy||"")}</td>
+      <td><button class="btn btn-blue" onclick="reviewExamAssessment('${a.id}')">Review</button></td>
+     </tr>`).join("")}</tbody>
+   </table></div>`:`<p>No assessments waiting for final examination review.</p>`}
+  </div>
+ </div>`;
+}
+
+function reviewExamAssessment(id){
+ const a=db.assessments.find(x=>x.id===id);
+ if(!a)return;
+
+ modal("Examination Officer Final Review",`
+  ${renderAssessmentPreview(a.data)}
+  <div class="form-group" style="margin-top:15px">
+   <label>Examination Officer Comment</label>
+   <textarea id="examComment" class="form-control"></textarea>
+  </div>
+  <div class="action-row">
+   <button class="btn btn-success" onclick="examDecision('${id}','approve')">Final Approve & Archive</button>
+   <button class="btn btn-danger" onclick="examDecision('${id}','reject')">Reject</button>
+  </div>`);
+}
+
+function examDecision(id,decision){
+ const a=db.assessments.find(x=>x.id===id);
+ if(!a)return;
+
+ if(decision==="approve"){
+  a.status="Final Approved";
+  a.examOfficerApprovedBy=currentUser.name;
+  a.examOfficerApprovedAt=now();
+  a.examOfficerComment=val("examComment");
+
+  archiveAssessment(a);
+  toast("Assessment final-approved and archived.");
+ }else{
+  a.status="Exam Rejected";
+  a.examOfficerApprovedBy=currentUser.name;
+  a.examOfficerApprovedAt=now();
+  a.examOfficerComment=val("examComment");
+  toast("Assessment rejected by Examination Officer.");
+ }
+
+ saveDB();
+ logAction(decision==="approve"?"Final approved and archived assessment":"Rejected assessment as Examination Officer");
+ closeModal();
+ renderExamOfficer();
+}
+
+function archiveAssessment(a){
+ const copy=JSON.parse(JSON.stringify(a));
+
+ db.archive.push({
+  id:uid("archive"),
+  archiveType:"Assessment",
+  originalId:a.id,
+  documentType:a.type==="exam"?"Examination":"CA",
+  teacherId:a.teacherId,
+  teacherName:a.teacherName,
+  subject:a.subject,
+  className:a.className,
+  session:a.session,
+  term:a.term,
+  topic:a.topic,
+  submittedAt:a.submittedAt,
+  hodApprovedBy:a.hodApprovedBy,
+  hodApprovedAt:a.hodApprovedAt,
+  examOfficerApprovedBy:a.examOfficerApprovedBy,
+  examOfficerApprovedAt:a.examOfficerApprovedAt,
+  archivedAt:now(),
+  data:copy.data
+ });
+}
+
+/* =========================================================
+   ARCHIVE — FULL ADMIN CENTRE
+   ========================================================= */
+function renderArchive(){
+ if(!isAdmin()){
+  document.getElementById("pageContainer").innerHTML=`<div class="card">Only the Administrator can access the Academic Archive.</div>`;
+  return;
+ }
+
+ document.getElementById("pageContainer").innerHTML=`
+ <div class="page-title">Academic Archive</div>
+ <div class="page-subtitle">
+  Permanent repository of approved schemes, lesson plans, lesson notes, CA and examinations.
+ </div>
+
+ <div class="grid">
+  <div class="card"><div class="stat-title">Total Approved Works</div><div class="stat-number">${db.archive.length}</div></div>
+  <div class="card"><div class="stat-title">Schemes</div><div class="stat-number">${archiveCount("Scheme of Work")}</div></div>
+  <div class="card"><div class="stat-title">Lesson Plans</div><div class="stat-number">${archiveCount("Lesson Plan")}</div></div>
+  <div class="card"><div class="stat-title">Lesson Notes</div><div class="stat-number">${archiveCount("Lesson Note")}</div></div>
+ </div>
+
+ <div class="section" style="margin-top:18px">
+  <div class="section-header"><h3>Search & Filter Academic Records</h3></div>
+  <div class="section-body">
+   <div class="form-grid-3">
+    <div class="form-group"><label>Search</label><input id="arcSearch" class="form-control" oninput="filterArchive()" placeholder="Teacher, topic, subject..."></div>
+    <div class="form-group"><label>Teacher</label><select id="arcTeacher" class="form-control" onchange="filterArchive()"><option value="">All Teachers</option>${db.users.filter(u=>u.role==="teacher").map(u=>`<option>${escapeHTML(u.name)}</option>`).join("")}</select></div>
+    <div class="form-group"><label>Subject</label><select id="arcSubject" class="form-control" onchange="filterArchive()"><option value="">All Subjects</option>${db.subjects.map(s=>`<option>${escapeHTML(s)}</option>`).join("")}</select></div>
+    <div class="form-group"><label>Class</label><select id="arcClass" class="form-control" onchange="filterArchive()"><option value="">All Classes</option>${db.classes.map(s=>`<option>${escapeHTML(s)}</option>`).join("")}</select></div>
+    <div class="form-group"><label>Session</label><input id="arcSession" class="form-control" oninput="filterArchive()" placeholder="2026/2027"></div>
+    <div class="form-group"><label>Term</label><select id="arcTerm" class="form-control" onchange="filterArchive()"><option value="">All Terms</option><option>First Term</option><option>Second Term</option><option>Third Term</option></select></div>
+    <div class="form-group"><label>Document Type</label><select id="arcType" class="form-control" onchange="filterArchive()"><option value="">All Types</option><option>Scheme of Work</option><option>Lesson Plan</option><option>Lesson Note</option><option>CA</option><option>Examination</option></select></div>
+    <div class="form-group"><label>From Date</label><input id="arcFrom" class="form-control" type="date" onchange="filterArchive()"></div>
+    <div class="form-group"><label>To Date</label><input id="arcTo" class="form-control" type="date" onchange="filterArchive()"></div>
+   </div>
+
+   <div class="action-row">
+    <button class="btn btn-gray" onclick="clearArchiveFilters()">Clear Filters</button>
+   </div>
+  </div>
+ </div>
+
+ <div class="section">
+  <div class="section-header">
+   <h3>Approved Academic Records</h3>
+   <span id="archiveResultCount" class="badge badge-green"></span>
+  </div>
+  <div class="section-body" id="archiveTable"></div>
+ </div>`;
+ filterArchive();
+}
+
+function archiveCount(type){
+ return db.archive.filter(a=>a.documentType===type).length;
+}
+
+function filterArchive(){
+ const search=(val("arcSearch")||"").toLowerCase();
+ const teacher=val("arcTeacher");
+ const subject=val("arcSubject");
+ const className=val("arcClass");
+ const session=val("arcSession");
+ const term=val("arcTerm");
+ const type=val("arcType");
+ const from=val("arcFrom");
+ const to=val("arcTo");
+
+ const records=db.archive.filter(a=>{
+  const hay=[
+   a.teacherName,a.subject,a.className,a.session,a.term,a.topic,a.documentType
+  ].join(" ").toLowerCase();
+
+  if(search&&!hay.includes(search))return false;
+  if(teacher&&a.teacherName!==teacher)return false;
+  if(subject&&a.subject!==subject)return false;
+  if(className&&a.className!==className)return false;
+  if(session&&!String(a.session||"").includes(session))return false;
+  if(term&&a.term!==term)return false;
+  if(type&&a.documentType!==type)return false;
+
+  const date=new Date(a.archivedAt);
+  if(from&&date<new Date(from+"T00:00:00"))return false;
+  if(to&&date>new Date(to+"T23:59:59"))return false;
+
+  return true;
+ });
+
+ document.getElementById("archiveResultCount").textContent=records.length+" records";
+
+ document.getElementById("archiveTable").innerHTML=records.length?`
+ <div class="table-wrap"><table>
+  <thead>
+   <tr>
+    <th>Date</th>
+    <th>Teacher</th>
+    <th>Document Type</th>
+    <th>Subject</th>
+    <th>Class</th>
+    <th>Session</th>
+    <th>Term</th>
+    <th>Approval</th>
+    <th>Options</th>
+   </tr>
+  </thead>
+  <tbody>
+   ${records.map(a=>`
+    <tr>
+     <td>${escapeHTML(a.archivedAt)}</td>
+     <td>${escapeHTML(a.teacherName)}</td>
+     <td>${escapeHTML(a.documentType)}</td>
+     <td>${escapeHTML(a.subject)}</td>
+     <td>${escapeHTML(a.className)}</td>
+     <td>${escapeHTML(a.session)}</td>
+     <td>${escapeHTML(a.term)}</td>
+     <td>
+      <span class="badge badge-green">Approved</span><br>
+      <small>HOD: ${escapeHTML(a.hodApprovedBy||"—")}</small><br>
+      ${a.examOfficerApprovedBy?`<small>Exam: ${escapeHTML(a.examOfficerApprovedBy)}</small>`:""}
+     </td>
+     <td>
+      <div class="action-row" style="margin:0">
+       <button class="btn btn-gray" onclick="viewArchive('${a.id}')">View</button>
+       <button class="btn btn-blue" onclick="printArchive('${a.id}')">Print</button>
+       <button class="btn btn-success" onclick="reuseArchive('${a.id}')">Reuse</button>
+      </div>
+     </td>
+    </tr>
+   `).join("")}
+  </tbody>
+ </table></div>`:
+ `<div style="padding:20px;text-align:center;color:#64748b">No approved records match your filters.</div>`;
+}
+
+function clearArchiveFilters(){
+ ["arcSearch","arcTeacher","arcSubject","arcClass","arcSession","arcTerm","arcType","arcFrom","arcTo"].forEach(id=>{
+  const x=document.getElementById(id);
+  if(x)x.value="";
+ });
+ filterArchive();
+}
+
+function viewArchive(id){
+ const a=db.archive.find(x=>x.id===id);
+ if(!a)return;
+
+ if(a.archiveType==="Assessment"){
+  modal("Archived "+a.documentType,`
+   ${renderAssessmentPreview(a.data)}
+   <div class="action-row no-print">
+    <button class="btn btn-primary" onclick="printCurrentModal()">Print</button>
+    <button class="btn btn-blue" onclick="exportArchiveWord('${id}')">Export Word</button>
+    <button class="btn btn-success" onclick="reuseArchive('${id}')">Reuse</button>
+   </div>`);
+  return;
+ }
+
+ modal("Archived "+a.documentType,`
+  <div class="paper">
+   <div class="school-name">${escapeHTML(db.settings.schoolName)}</div>
+   <div class="doc-title">${escapeHTML(a.documentType)}</div>
+   <div class="document-preview">${escapeHTML(a.content||"")}</div>
+   <hr style="margin:15px 0">
+   <p><b>Submitted by:</b> ${escapeHTML(a.teacherName)}</p>
+   <p><b>HOD approved by:</b> ${escapeHTML(a.hodApprovedBy||"—")}</p>
+   <p><b>Archived:</b> ${escapeHTML(a.archivedAt)}</p>
+   <div class="action-row no-print">
+    <button class="btn btn-primary" onclick="printCurrentModal()">Print</button>
+    <button class="btn btn-blue" onclick="exportArchiveWord('${id}')">Export Word</button>
+   </div>
+  </div>`);
+}
+
+function printArchive(id){
+ const a=db.archive.find(x=>x.id===id);
+ if(!a)return;
+
+ if(a.archiveType==="Assessment"){
+  assessmentDraft=a.data;
+  previewAssessment();
+ }else{
+  viewArchive(id);
+  setTimeout(()=>printCurrentModal(),100);
+ }
+}
+
+function exportArchiveWord(id){
+ const a=db.archive.find(x=>x.id===id);
+ if(!a)return;
+
+ if(a.archiveType==="Assessment"){
+  assessmentDraft=a.data;
+  exportAssessmentWord();
+ }else{
+  const html=`<html><body><h2>${escapeHTML(db.settings.schoolName)}</h2><h3>${escapeHTML(a.documentType)}</h3><pre>${escapeHTML(a.content||"")}</pre></body></html>`;
+  downloadBlob(new Blob([html],{type:"application/msword"}),`${a.documentType.replace(/\s/g,"_")}.doc`);
+ }
+}
+
+function reuseArchive(id){
+ const a=db.archive.find(x=>x.id===id);
+ if(!a)return;
+
+ if(a.archiveType==="Assessment"){
+  assessmentDraft=JSON.parse(JSON.stringify(a.data));
+  showPage("assessment");
+  setTimeout(()=>renderAssessmentEditor(assessmentDraft),50);
+  toast("Archived assessment copied into the assessment editor.");
+  return;
+ }
+
+ if(a.documentType==="Lesson Plan"){
+  generated["lesson-plan"]={
+   subject:a.subject,
+   className:a.className,
+   language:"English",
+   topic:a.topic||"",
+   subtopic:"",
+   duration:"",
+   objectives:"",
+   materials:"",
+   introduction:"",
+   presentation:"",
+   learnerActivities:"",
+   evaluation:"",
+   conclusion:"",
+   assignment:"",
+   reflection:"",
+   content:a.content
+  };
+  showPage("lesson-plan");
+  toast("Archived Lesson Plan is ready to reuse. Review it before saving.");
+ }else if(a.documentType==="Lesson Note"){
+  generated["lesson-note"]={
+   subject:a.subject,
+   className:a.className,
+   language:"English",
+   topic:a.topic||"",
+   subtopic:"",
+   introduction:"",
+   content:a.content,
+   examples:"",
+   evaluation:"",
+   assignment:""
+  };
+  showPage("lesson-note");
+  toast("Archived Lesson Note is ready to reuse.");
+ }else{
+  generated.scheme={
+   subject:a.subject,
+   className:a.className,
+   language:"English",
+   topic:a.topic||"",
+   weeks:a.content||""
+  };
+  showPage("scheme");
+  toast("Archived Scheme is ready to reuse.");
+ }
+}
+
+/* =========================================================
+   ADMIN — TEACHER MANAGEMENT
+   ========================================================= */
+function renderTeachers(){
+ if(!isAdmin()){
+  document.getElementById("pageContainer").innerHTML=`<div class="card">Administrator access required.</div>`;
+  return;
+ }
+
+ const teachers=db.users.filter(u=>u.role==="teacher");
+
+ document.getElementById("pageContainer").innerHTML=`
+ <div class="page-title">Teacher Management</div>
+ <div class="page-subtitle">
+  Only the Administrator can create teacher accounts. Teachers cannot create other teachers.
+ </div>
+
+ <div class="section">
+  <div class="section-header">
+   <h3>Create Teacher Account</h3>
+   <span class="badge badge-green">ADMIN ONLY</span>
+  </div>
+  <div class="section-body">
+   <div class="form-grid-3">
+    <div class="form-group"><label>Full Name</label><input id="newTeacherName" class="form-control"></div>
+    <div class="form-group"><label>Username</label><input id="newTeacherUsername" class="form-control"></div>
+    <div class="form-group"><label>Temporary Password</label><input id="newTeacherPassword" class="form-control"></div>
+   </div>
+   <div class="action-row">
+    <button class="btn btn-primary" onclick="createTeacher()">Create Teacher</button>
+   </div>
+  </div>
+ </div>
+
+ <div class="section">
+  <div class="section-header"><h3>Teacher Accounts</h3></div>
+  <div class="section-body">
+   <div class="table-wrap"><table>
+    <thead>
+     <tr><th>Name</th><th>Username</th><th>Subjects</th><th>Classes</th><th>HOD Subjects</th><th>Exam Officer</th><th>Status</th><th>Actions</th></tr>
+    </thead>
+    <tbody>
+     ${teachers.map(t=>`
+      <tr>
+       <td>${escapeHTML(t.name)}</td>
+       <td>${escapeHTML(t.username)}</td>
+       <td>${escapeHTML((t.subjects||[]).join(", ")||"None")}</td>
+       <td>${escapeHTML((t.classes||[]).join(", ")||"None")}</td>
+       <td>${escapeHTML((t.hodSubjects||[]).join(", ")||"None")}</td>
+       <td>${t.examOfficer?"Yes":"No"}</td>
+       <td>${t.active!==false?`<span class="badge badge-green">Active</span>`:`<span class="badge badge-red">Inactive</span>`}</td>
+       <td>
+        <button class="btn btn-blue" onclick="editTeacher('${t.id}')">Edit</button>
+        <button class="btn btn-warning" onclick="resetTeacherPassword('${t.id}')">Reset Password</button>
+        <button class="btn ${t.active!==false?"btn-danger":"btn-success"}" onclick="toggleTeacher('${t.id}')">${t.active!==false?"Deactivate":"Activate"}</button>
+       </td>
+      </tr>
+     `).join("")}
+    </tbody>
+   </table></div>
+  </div>
+ </div>`;
+}
+
+function createTeacher(){
+ if(!isAdmin()){
+  toast("Only Administrator can create teachers.");
+  return;
+ }
+
+ const name=val("newTeacherName").trim();
+ const username=val("newTeacherUsername").trim();
+ const password=val("newTeacherPassword");
+
+ if(!name||!username||!password){
+  toast("Complete all teacher account fields.");
+  return;
+ }
+
+ if(db.users.some(u=>u.username.toLowerCase()===username.toLowerCase())){
+  toast("Username already exists.");
+  return;
+ }
+
+ db.users.push({
+  id:uid("teacher"),
+  name,
+  username,
+  password,
+  role:"teacher",
+  active:true,
+  subjects:[],
+  classes:[],
+  hodSubjects:[],
+  examOfficer:false
+ });
+
+ saveDB();
+ logAction("Created teacher account: "+username);
+ toast("Teacher account created successfully.");
+ renderTeachers();
+}
+
+function editTeacher(id){
+ const t=db.users.find(u=>u.id===id);
+ if(!t)return;
+
+ modal("Edit Teacher Account",`
+  <div class="form-grid">
+   <div class="form-group"><label>Full Name</label><input id="editName" class="form-control" value="${escapeHTML(t.name)}"></div>
+   <div class="form-group"><label>Username</label><input id="editUsername" class="form-control" value="${escapeHTML(t.username)}"></div>
+   <div class="form-group form-full"><label>Assigned Subjects</label>
+    <select id="editSubjects" class="form-control" multiple size="6">
+     ${db.subjects.map(s=>`<option value="${escapeHTML(s)}" ${(t.subjects||[]).includes(s)?"selected":""}>${escapeHTML(s)}</option>`).join("")}
+    </select>
+   </div>
+   <div class="form-group form-full"><label>Assigned Classes</label>
+    <select id="editClasses" class="form-control" multiple size="6">
+     ${db.classes.map(s=>`<option value="${escapeHTML(s)}" ${(t.classes||[]).includes(s)?"selected":""}>${escapeHTML(s)}</option>`).join("")}
+    </select>
+   </div>
+  </div>
+  <div class="action-row">
+   <button class="btn btn-primary" onclick="saveTeacherEdit('${id}')">Save Changes</button>
+  </div>`);
+}
+
+function getMulti(id){
+ return [...document.getElementById(id).selectedOptions].map(o=>o.value);
+}
+
+function saveTeacherEdit(id){
+ const t=db.users.find(u=>u.id===id);
+ if(!t)return;
+
+ t.name=val("editName");
+ t.username=val("editUsername");
+ t.subjects=getMulti("editSubjects");
+ t.classes=getMulti("editClasses");
+
+ saveDB();
+ logAction("Edited teacher account: "+t.username);
+ closeModal();
+ toast("Teacher account updated.");
+ renderTeachers();
+}
+
+function resetTeacherPassword(id){
+ const t=db.users.find(u=>u.id===id);
+ if(!t)return;
+
+ const p=prompt("Enter new temporary password for "+t.name+":");
+ if(p===null)return;
+
+ if(p.length<6){
+  alert("Password should be at least 6 characters.");
+  return;
+ }
+
+ t.password=p;
+ saveDB();
+ logAction("Reset teacher password: "+t.username);
+ toast("Teacher password reset.");
+}
+
+function toggleTeacher(id){
+ const t=db.users.find(u=>u.id===id);
+ if(!t)return;
+
+ t.active=t.active===false;
+ saveDB();
+ logAction(`${t.active?"Activated":"Deactivated"} teacher: ${t.username}`);
+ toast(`Teacher ${t.active?"activated":"deactivated"}.`);
+ renderTeachers();
+}
+
+/* =========================================================
+   HOD / EXAM OFFICER ASSIGNMENT
+   ========================================================= */
+function renderAssignments(){
+ if(!isAdmin()){
+  document.getElementById("pageContainer").innerHTML=`<div class="card">Administrator access required.</div>`;
+  return;
+ }
+
+ const teachers=db.users.filter(u=>u.role==="teacher");
+
+ document.getElementById("pageContainer").innerHTML=`
+ <div class="page-title">HOD & Examination Officer Assignment</div>
+ <div class="page-subtitle">
+  HOD and Examination Officer are responsibilities assigned to teachers. They are not separate login categories.
+ </div>
+
+ <div class="section">
+  <div class="section-header"><h3>Assign Responsibilities</h3></div>
+  <div class="section-body">
+   <div class="form-grid-3">
+    <div class="form-group">
+     <label>Teacher</label>
+     <select id="assignTeacher" class="form-control">
+      ${teachers.map(t=>`<option value="${t.id}">${escapeHTML(t.name)}</option>`).join("")}
+     </select>
+    </div>
+    <div class="form-group">
+     <label>HOD Subject</label>
+     <select id="assignHODSubject" class="form-control">
+      <option value="">No HOD assignment</option>
+      ${db.subjects.map(s=>`<option>${escapeHTML(s)}</option>`).join("")}
+     </select>
+    </div>
+    <div class="form-group">
+     <label>Examination Officer</label>
+     <select id="assignExamOfficer" class="form-control">
+      <option value="no">No</option>
+      <option value="yes">Yes</option>
+     </select>
+    </div>
+   </div>
+   <div class="action-row">
+    <button class="btn btn-primary" onclick="assignResponsibilities()">Save Assignment</button>
+   </div>
+  </div>
+ </div>
+
+ <div class="section">
+  <div class="section-header"><h3>Current Assignments</h3></div>
+  <div class="section-body">
+   <div class="table-wrap"><table>
+    <thead><tr><th>Teacher</th><th>HOD Subjects</th><th>Examination Officer</th></tr></thead>
+    <tbody>
+     ${teachers.map(t=>`
+      <tr>
+       <td>${escapeHTML(t.name)}</td>
+       <td>${escapeHTML((t.hodSubjects||[]).join(", ")||"None")}</td>
+       <td>${t.examOfficer?"Yes":"No"}</td>
+      </tr>
+     `).join("")}
+    </tbody>
+   </table></div>
+  </div>
+ </div>`;
+}
+
+function assignResponsibilities(){
+ const t=db.users.find(u=>u.id===val("assignTeacher"));
+ if(!t)return;
+
+ const subject=val("assignHODSubject");
+ t.hodSubjects=subject?[subject]:[];
+ t.examOfficer=val("assignExamOfficer")==="yes";
+
+ saveDB();
+ logAction("Updated HOD/Examination Officer assignment for "+t.name);
+ toast("Assignment saved.");
+ renderAssignments();
+}
+
+/* =========================================================
+   SETTINGS
+   ========================================================= */
+function renderSettings(){
+ if(!isAdmin()){
+  document.getElementById("pageContainer").innerHTML=`<div class="card">Administrator access required.</div>`;
+  return;
+ }
+
+ document.getElementById("pageContainer").innerHTML=`
+ <div class="page-title">School Settings</div>
+ <div class="page-subtitle">Manage school branding and academic session settings.</div>
+
+ <div class="section">
+  <div class="section-body">
+   <div class="form-grid">
+    <div class="form-group"><label>School Name</label><input id="setSchoolName" class="form-control" value="${escapeHTML(db.settings.schoolName)}"></div>
+    <div class="form-group"><label>Location</label><input id="setLocation" class="form-control" value="${escapeHTML(db.settings.location)}"></div>
+    <div class="form-group"><label>Phone</label><input id="setPhone" class="form-control" value="${escapeHTML(db.settings.phone)}"></div>
+    <div class="form-group"><label>Email</label><input id="setEmail" class="form-control" value="${escapeHTML(db.settings.email)}"></div>
+    <div class="form-group"><label>Current Session</label><input id="setSession" class="form-control" value="${escapeHTML(db.settings.currentSession)}"></div>
+    <div class="form-group"><label>Current Term</label>
+     <select id="setTerm" class="form-control">
+      <option ${db.settings.currentTerm==="First Term"?"selected":""}>First Term</option>
+      <option ${db.settings.currentTerm==="Second Term"?"selected":""}>Second Term</option>
+      <option ${db.settings.currentTerm==="Third Term"?"selected":""}>Third Term</option>
+     </select>
+    </div>
+   </div>
+   <div class="action-row">
+    <button class="btn btn-primary" onclick="saveSettings()">Save Settings</button>
+   </div>
+  </div>
+ </div>`;
+}
+
+function saveSettings(){
+ db.settings.schoolName=val("setSchoolName");
+ db.settings.location=val("setLocation");
+ db.settings.phone=val("setPhone");
+ db.settings.email=val("setEmail");
+ db.settings.currentSession=val("setSession");
+ db.settings.currentTerm=val("setTerm");
+ saveDB();
+ logAction("Updated school settings");
+ toast("School settings saved.");
+}
+
+/* =========================================================
+   AUDIT
+   ========================================================= */
+function renderAudit(){
+ if(!isAdmin()){
+  document.getElementById("pageContainer").innerHTML=`<div class="card">Administrator access required.</div>`;
+  return;
+ }
+
+ document.getElementById("pageContainer").innerHTML=`
+ <div class="page-title">Activity / Audit Log</div>
+ <div class="page-subtitle">Record of important actions performed in the system.</div>
+
+ <div class="section">
+  <div class="section-body">
+   <div class="table-wrap"><table>
+    <thead><tr><th>Date</th><th>User</th><th>Username</th><th>Action</th></tr></thead>
+    <tbody>
+     ${db.audit.map(x=>`
+      <tr>
+       <td>${escapeHTML(x.date)}</td>
+       <td>${escapeHTML(x.user)}</td>
+       <td>${escapeHTML(x.username)}</td>
+       <td>${escapeHTML(x.action)}</td>
+      </tr>
+     `).join("")}
+    </tbody>
+   </table></div>
+  </div>
+ </div>`;
+}
+
+/* =========================================================
+   BACKUP & RESTORE
+   ========================================================= */
+function renderBackup(){
+ if(!isAdmin()){
+  document.getElementById("pageContainer").innerHTML=`<div class="card">Administrator access required.</div>`;
+  return;
+ }
+
+ document.getElementById("pageContainer").innerHTML=`
+ <div class="page-title">Backup & Restore</div>
+ <div class="page-subtitle">Create a local backup of the current system database or restore a previous backup.</div>
+
+ <div class="section">
+  <div class="section-body">
+   <h3 style="margin-bottom:8px">Backup</h3>
+   <p style="color:#64748b;font-size:13px">The backup contains users, documents, assessments, archive records, settings and audit logs.</p>
+   <div class="action-row">
+    <button class="btn btn-primary" onclick="backupDatabase()">Download Backup</button>
+   </div>
+
+   <hr style="margin:22px 0;border:0;border-top:1px solid #e2e8f0">
+
+   <h3 style="margin-bottom:8px">Restore</h3>
+   <p style="color:#64748b;font-size:13px">Select a previously downloaded CTA backup JSON file.</p>
+   <input id="restoreFile" type="file" accept=".json" class="form-control">
+   <div class="action-row">
+    <button class="btn btn-warning" onclick="restoreDatabase()">Restore Backup</button>
+   </div>
+  </div>
+ </div>`;
+}
+
+function backupDatabase(){
+ const copy=JSON.stringify(db,null,2);
+ downloadBlob(
+  new Blob([copy],{type:"application/json"}),
+  `CTA_Backup_${new Date().toISOString().slice(0,10)}.json`
+ );
+ logAction("Downloaded system backup");
+ toast("Backup downloaded.");
+}
+
+function restoreDatabase(){
+ const file=document.getElementById("restoreFile").files[0];
+ if(!file){
+  toast("Select a backup file.");
+  return;
+ }
+
+ const reader=new FileReader();
+
+ reader.onload=()=>{
+  try{
+   const restored=JSON.parse(reader.result);
+
+   if(!restored.users||!restored.settings){
+    throw new Error("Invalid backup");
+   }
+
+   if(!confirm("Restore this backup? Current data will be replaced."))return;
+
+   db=restored;
+   saveDB();
+   alert("Backup restored successfully. The system will reload.");
+   location.reload();
+  }catch(e){
+   alert("Invalid backup file.");
+  }
+ };
+
+ reader.readAsText(file);
+}
+
+/* =========================================================
+   PASSWORD
+   ========================================================= */
+function renderPassword(){
+ document.getElementById("pageContainer").innerHTML=`
+ <div class="page-title">Change Password</div>
+ <div class="page-subtitle">Change your current account password.</div>
+
+ <div class="section">
+  <div class="section-body" style="max-width:600px">
+   <div class="form-group">
+    <label>Current Password</label>
+    <div class="password-wrap">
+     <input id="oldPassword" type="password" class="form-control">
+     <button class="password-toggle" onclick="togglePassword('oldPassword',this)">Show</button>
+    </div>
+   </div>
+
+   <div class="form-group">
+    <label>New Password</label>
+    <div class="password-wrap">
+     <input id="newPassword" type="password" class="form-control">
+     <button class="password-toggle" onclick="togglePassword('newPassword',this)">Show</button>
+    </div>
+   </div>
+
+   <div class="form-group">
+    <label>Confirm New Password</label>
+    <div class="password-wrap">
+     <input id="confirmPassword" type="password" class="form-control">
+     <button class="password-toggle" onclick="togglePassword('confirmPassword',this)">Show</button>
+    </div>
+   </div>
+
+   <button class="btn btn-primary" onclick="changePassword()">Change Password</button>
+  </div>
+ </div>`;
+}
+
+function changePassword(){
+ const old=val("oldPassword");
+ const np=val("newPassword");
+ const cp=val("confirmPassword");
+
+ if(old!==currentUser.password){
+  toast("Current password is incorrect.");
+  return;
+ }
+
+ if(np.length<6){
+  toast("New password must contain at least 6 characters.");
+  return;
+ }
+
+ if(np!==cp){
+  toast("New passwords do not match.");
+  return;
+ }
+
+ const u=db.users.find(x=>x.id===currentUser.id);
+ u.password=np;
+ currentUser=u;
+ saveDB();
+ logAction("Changed account password");
+ toast("Password changed successfully.");
+}
+
+/* =========================================================
+   DOCUMENT APPROVAL → ARCHIVE
+   ========================================================= */
+function approveDocumentToArchive(id){
+ const d=db.documents.find(x=>x.id===id);
+ if(!d)return;
+
+ d.status="Approved";
+ d.approvedBy=currentUser.name;
+ d.approvedAt=now();
+
+ db.archive.push({
+  id:uid("archive"),
+  archiveType:"Document",
+  originalId:d.id,
+  documentType:d.type,
+  teacherId:d.teacherId,
+  teacherName:d.teacherName,
+  subject:d.subject,
+  className:d.className,
+  session:d.session,
+  term:d.term,
+  topic:d.topic||"",
+  content:d.content||formatDocumentGeneric(d),
+  submittedAt:d.submittedAt,
+  hodApprovedBy:d.hodApprovedBy||currentUser.name,
+  hodApprovedAt:d.hodApprovedAt||now(),
+  archivedAt:now()
+ });
+
+ saveDB();
+}
+
+function formatDocumentGeneric(d){
+ return Object.keys(d)
+  .filter(k=>!["id","teacherId","teacherName","status","createdAt"].includes(k))
+  .map(k=>`${k.toUpperCase()}\n${d[k]}`)
+  .join("\n\n");
+}
+
+/* =========================================================
+   FIX: HOD-APPROVED NORMAL DOCUMENTS GO TO ARCHIVE
+   ========================================================= */
+function finalizeHODDocumentIfApproved(d){
+ if(d.status!=="HOD Approved")return;
+
+ d.status="Approved";
+ d.approvedBy=currentUser.name;
+ d.approvedAt=now();
+
+ db.archive.push({
+  id:uid("archive"),
+  archiveType:"Document",
+  originalId:d.id,
+  documentType:d.type,
+  teacherId:d.teacherId,
+  teacherName:d.teacherName,
+  subject:d.subject,
+  className:d.className,
+  session:d.session,
+  term:d.term,
+  topic:d.topic||"",
+  content:d.content||formatDocumentGeneric(d),
+  submittedAt:d.submittedAt,
+  hodApprovedBy:d.hodApprovedBy,
+  hodApprovedAt:d.hodApprovedAt,
+  archivedAt:now()
+ });
+
+ saveDB();
+}
+
+/* =========================================================
+   OVERRIDE HOD DOCUMENT APPROVAL TO ARCHIVE
+   ========================================================= */
+const originalHodDecisionDocument=hodDecisionDocument;
+
+hodDecisionDocument=function(id,decision){
+ const d=db.documents.find(x=>x.id===id);
+ if(!d)return;
+
+ if(!isAdmin() && !currentUser.hodSubjects.includes(d.subject)){
+  toast("You are not the HOD for this subject.");
+  return;
+ }
+
+ const comment=val("reviewComment");
+
+ if(decision==="approve"){
+  d.status="HOD Approved";
+  d.hodApprovedBy=currentUser.name;
+  d.hodApprovedAt=now();
+  d.hodComment=comment;
+
+  finalizeHODDocumentIfApproved(d);
+
+  saveDB();
+  logAction("Approved and archived "+d.type);
+  closeModal();
+  toast("Document approved and permanently archived.");
+ }else{
+  d.status="Rejected";
+  d.hodComment=comment;
+  saveDB();
+  logAction("Rejected "+d.type+" as HOD");
+  closeModal();
+  toast("Document rejected.");
+ }
+
+ renderHOD();
+};
+
+/* =========================================================
+   PRINT
+   ========================================================= */
+function printCurrentModal(){
+ const body=document.getElementById("modalBody").innerHTML;
+ const w=window.open("","_blank");
+
+ if(!w){
+  toast("Please allow pop-ups for printing.");
+  return;
+ }
+
+ w.document.write(`
+ <!DOCTYPE html>
+ <html>
+ <head>
+ <meta charset="UTF-8">
+ <title>${escapeHTML(db.settings.schoolName)}</title>
+ <style>
+ body{font-family:Arial,sans-serif;padding:30px;color:#111}
+ .paper{max-width:850px;margin:auto}
+ .school-name{text-align:center;font-size:22px;font-weight:bold}
+ .doc-title{text-align:center;font-size:18px;font-weight:bold;margin:15px}
+ .document-preview{white-space:pre-wrap;line-height:1.6}
+ .question-box{border:1px solid #ddd;padding:12px;margin:10px 0}
+ .answer-key{background:#f5f5f5;padding:12px;margin-top:20px}
+ .no-print{display:none!important}
+ </style>
+ </head>
+ <body>${body}</body>
+ </html>`);
+
+ w.document.close();
+ setTimeout(()=>{
+  w.focus();
+  w.print();
+ },400);
+}
+
+/* =========================================================
+   HELPERS
+   ========================================================= */
+function val(id){
+ const el=document.getElementById(id);
+ return el?el.value:"";
+}
+
+function fill(id,value){
+ const el=document.getElementById(id);
+ if(el)el.value=value??"";
+}
+
+/* =========================================================
+   INIT
+   ========================================================= */
+restoreLogin();
 </script>
 
 </body>
