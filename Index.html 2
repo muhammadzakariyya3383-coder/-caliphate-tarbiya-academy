@@ -1,0 +1,2506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#7c2d12">
+<title>Finisher Tailor Management System</title>
+
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f7f5f2;color:#292524}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+.hidden{display:none!important}
+
+.login{
+ min-height:100vh;display:flex;align-items:center;justify-content:center;
+ padding:20px;background:linear-gradient(135deg,#431407,#9a3412)
+}
+.login-box{
+ width:100%;max-width:420px;background:white;padding:30px;
+ border-radius:20px;box-shadow:0 20px 60px #0005;text-align:center
+}
+.logo{
+ width:75px;height:75px;margin:auto auto 15px;border-radius:50%;
+ background:#7c2d12;color:white;display:grid;place-items:center;font-size:38px
+}
+.login-box h1{font-size:24px;color:#7c2d12}
+.login-box p{color:#78716c}
+label{display:block;text-align:left;font-weight:bold;font-size:13px;margin:12px 0 6px}
+input,select,textarea{
+ width:100%;padding:11px;border:1px solid #d6d3d1;border-radius:8px;
+ background:white;outline:none
+}
+textarea{min-height:90px;resize:vertical}
+input:focus,select:focus,textarea:focus{border-color:#9a3412}
+
+.btn{
+ border:0;border-radius:8px;padding:10px 14px;font-weight:bold
+}
+.primary{background:#9a3412;color:white}
+.dark{background:#292524;color:white}
+.light{background:#f1ece7;color:#7c2d12}
+.red{background:#b91c1c;color:white}
+.green{background:#166534;color:white}
+
+.layout{display:flex;min-height:100vh}
+.sidebar{
+ width:240px;background:#29150e;color:white;position:fixed;
+ left:0;top:0;bottom:0;padding:20px;overflow:auto
+}
+.brand{font-size:21px;font-weight:bold;margin-bottom:25px}
+.brand small{display:block;font-size:11px;color:#d6b9aa;margin-top:4px}
+.nav button{
+ width:100%;border:0;background:none;color:#e7d8d0;
+ text-align:left;padding:12px;border-radius:8px;margin:3px 0
+}
+.nav button:hover,.nav button.active{background:#7c2d12;color:white}
+
+.main{margin-left:240px;width:calc(100% - 240px);padding:20px}
+.top{
+ display:flex;justify-content:space-between;align-items:center;
+ gap:10px;margin-bottom:20px
+}
+.top h2{margin:0;color:#7c2d12}
+.cards{
+ display:grid;grid-template-columns:repeat(4,1fr);gap:15px;margin-bottom:20px
+}
+.card{
+ background:white;border-radius:14px;padding:18px;
+ box-shadow:0 3px 15px #0000000d
+}
+.card small{color:#78716c}
+.big{font-size:27px;font-weight:bold;color:#7c2d12;margin-top:8px}
+
+.panel{
+ background:white;border-radius:14px;padding:20px;
+ margin-bottom:20px;box-shadow:0 3px 15px #0000000d
+}
+.panel-head{
+ display:flex;justify-content:space-between;align-items:center;
+ gap:10px;flex-wrap:wrap;margin-bottom:15px
+}
+.actions{display:flex;gap:7px;flex-wrap:wrap}
+
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px 15px}
+.full{grid-column:1/-1}
+
+.table{overflow:auto}
+table{border-collapse:collapse;width:100%;min-width:750px}
+th,td{padding:11px;border-bottom:1px solid #eee;text-align:left;font-size:13px}
+th{background:#f5f1ed}
+
+.badge{
+ display:inline-block;padding:5px 8px;border-radius:20px;
+ font-size:11px;font-weight:bold;background:#ffedd5;color:#9a3412
+}
+.ready{background:#dcfce7;color:#166534}
+.delivered{background:#e0e7ff;color:#3730a3}
+
+.modal{
+ position:fixed;inset:0;background:#0008;display:flex;
+ align-items:center;justify-content:center;padding:15px;z-index:20
+}
+.modal-box{
+ background:white;width:100%;max-width:800px;max-height:92vh;
+ overflow:auto;border-radius:16px;padding:22px
+}
+.close{float:right;border:0;border-radius:50%;width:32px;height:32px}
+.empty{text-align:center;padding:30px;color:#78716c}
+.toast{
+ position:fixed;right:20px;bottom:20px;background:#292524;color:white;
+ padding:13px 18px;border-radius:9px;z-index:50
+}
+
+.measure-grid{
+ display:grid;grid-template-columns:repeat(3,1fr);gap:10px
+}
+.measure-card{
+ background:#faf8f6;padding:12px;border-radius:9px
+}
+
+@media(max-width:900px){
+.sidebar{width:200px}
+.main{margin-left:200px;width:calc(100% - 200px)}
+.cards{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:650px){
+.layout{display:block}
+.sidebar{position:relative;width:100%;padding:12px}
+.brand{margin-bottom:10px}
+.nav{display:flex;overflow:auto;gap:4px}
+.nav button{white-space:nowrap;width:auto}
+.main{margin:0;width:100%;padding:12px}
+.cards{grid-template-columns:1fr 1fr}
+.grid{grid-template-columns:1fr}
+.full{grid-column:auto}
+.measure-grid{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+
+<body>
+
+<!-- LOGIN -->
+<div id="loginScreen" class="login">
+<div class="login-box">
+
+<div class="logo">✂️</div>
+
+<h1>FINISHER TAILOR</h1>
+<p>Tailor Management System</p>
+
+<label>Username</label>
+<input id="loginUsername" placeholder="Username">
+
+<label>Password</label>
+<input id="loginPassword" type="password" placeholder="Password">
+
+<button class="btn primary"
+style="width:100%;margin-top:15px"
+onclick="login()">LOGIN</button>
+
+<p style="font-size:12px;margin-top:15px">
+Default login: <b>Admin</b> / <b>Finisher@2026</b>
+</p>
+
+</div>
+</div>
+
+
+<!-- SOFTWARE -->
+<div id="software" class="layout hidden">
+
+<aside class="sidebar">
+
+<div class="brand">
+✂️ Finisher Tailor
+<small>Tailor Management System</small>
+</div>
+
+<div class="nav">
+
+<button data-page="dashboard" onclick="openPage('dashboard')">
+📊 Dashboard
+</button>
+
+<button data-page="customers" onclick="openPage('customers')">
+👤 Customers
+</button>
+
+<button data-page="measurements" onclick="openPage('measurements')">
+📏 Measurements
+</button>
+
+<button data-page="jobs" onclick="openPage('jobs')">
+🧵 Tailoring Jobs
+</button>
+
+<button data-page="payments" onclick="openPage('payments')">
+💰 Payments
+</button>
+
+<button data-page="deliveries" onclick="openPage('deliveries')">
+📦 Deliveries
+</button>
+
+<button data-page="expenses" onclick="openPage('expenses')">
+💸 Expenses
+</button>
+
+<button data-page="staff" onclick="openPage('staff')">
+👨‍🔧 Staff
+</button>
+
+<button data-page="reports" onclick="openPage('reports')">
+📈 Reports
+</button>
+
+<button data-page="settings" onclick="openPage('settings')">
+⚙️ Settings
+</button>
+
+<button onclick="logout()">🚪 Logout</button>
+
+</div>
+</aside>
+
+
+<main class="main">
+
+<div class="top">
+<div>
+<h2 id="pageTitle">Dashboard</h2>
+<small id="currentDate"></small>
+</div>
+
+<button class="btn light" onclick="backupData()">
+💾 Backup
+</button>
+</div>
+
+
+<!-- DASHBOARD -->
+<section id="dashboard" class="page">
+
+<div class="cards">
+
+<div class="card">
+<small>Customers</small>
+<div class="big" id="dashCustomers">0</div>
+</div>
+
+<div class="card">
+<small>Active Jobs</small>
+<div class="big" id="dashJobs">0</div>
+</div>
+
+<div class="card">
+<small>Money Received</small>
+<div class="big" id="dashReceived">₦0</div>
+</div>
+
+<div class="card">
+<small>Outstanding</small>
+<div class="big" id="dashOutstanding">₦0</div>
+</div>
+
+</div>
+
+<div class="panel">
+
+<div class="panel-head">
+<h3>Recent Tailoring Jobs</h3>
+<button class="btn primary" onclick="newJob()">+ New Job</button>
+</div>
+
+<div id="recentJobs"></div>
+
+</div>
+
+</section>
+
+
+<!-- CUSTOMERS -->
+<section id="customers" class="page hidden">
+
+<div class="panel">
+
+<div class="panel-head">
+<h3>Customer Register</h3>
+
+<div class="actions">
+
+<input id="customerSearch"
+placeholder="Search customer..."
+oninput="renderCustomers()">
+
+<button class="btn primary"
+onclick="newCustomer()">+ Customer</button>
+
+</div>
+</div>
+
+<div id="customersList"></div>
+
+</div>
+
+</section>
+
+
+<!-- MEASUREMENTS -->
+<section id="measurements" class="page hidden">
+
+<div class="panel">
+
+<div class="panel-head">
+<h3>Measurement Book</h3>
+
+<select id="measurementCustomer"
+onchange="loadMeasurements()">
+<option value="">Select customer</option>
+</select>
+
+</div>
+
+<div id="measurementArea">
+<div class="empty">
+Select a customer.
+</div>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- JOBS -->
+<section id="jobs" class="page hidden">
+
+<div class="panel">
+
+<div class="panel-head">
+<h3>Tailoring Jobs</h3>
+
+<div class="actions">
+
+<input id="jobSearch"
+placeholder="Search job..."
+oninput="renderJobs()">
+
+<button class="btn primary"
+onclick="newJob()">+ New Job</button>
+
+</div>
+</div>
+
+<div id="jobsList"></div>
+
+</div>
+
+</section>
+
+
+<!-- PAYMENTS -->
+<section id="payments" class="page hidden">
+
+<div class="panel">
+
+<div class="panel-head">
+<h3>Payment Register</h3>
+
+<button class="btn primary"
+onclick="newPayment()">+ Payment</button>
+
+</div>
+
+<div id="paymentsList"></div>
+
+</div>
+
+</section>
+
+
+<!-- DELIVERIES -->
+<section id="deliveries" class="page hidden">
+
+<div class="panel">
+
+<div class="panel-head">
+<h3>Delivery & Collection</h3>
+</div>
+
+<div id="deliveryList"></div>
+
+</div>
+
+</section>
+
+
+<!-- EXPENSES -->
+<section id="expenses" class="page hidden">
+
+<div class="panel">
+
+<div class="panel-head">
+<h3>Business Expenses</h3>
+
+<button class="btn primary"
+onclick="newExpense()">+ Expense</button>
+
+</div>
+
+<div id="expensesList"></div>
+
+</div>
+
+</section>
+
+
+<!-- STAFF -->
+<section id="staff" class="page hidden">
+
+<div class="panel">
+
+<div class="panel-head">
+<h3>Staff</h3>
+
+<button class="btn primary"
+onclick="newStaff()">+ Staff</button>
+
+</div>
+
+<div id="staffList"></div>
+
+</div>
+
+</section>
+
+
+<!-- REPORTS -->
+<section id="reports" class="page hidden">
+
+<div class="cards">
+
+<div class="card">
+<small>Total Job Value</small>
+<div class="big" id="reportSales">₦0</div>
+</div>
+
+<div class="card">
+<small>Received</small>
+<div class="big" id="reportReceived">₦0</div>
+</div>
+
+<div class="card">
+<small>Expenses</small>
+<div class="big" id="reportExpenses">₦0</div>
+</div>
+
+<div class="card">
+<small>Outstanding</small>
+<div class="big" id="reportBalance">₦0</div>
+</div>
+
+</div>
+
+<div class="panel">
+<h3>Business Summary</h3>
+<div id="reportSummary"></div>
+</div>
+
+</section>
+
+
+<!-- SETTINGS -->
+<section id="settings" class="page hidden">
+
+<div class="panel">
+
+<h3>Business Profile</h3>
+
+<div class="grid">
+
+<div>
+<label>Business Name</label>
+<input id="setBusinessName">
+</div>
+
+<div>
+<label>Phone</label>
+<input id="setPhone">
+</div>
+
+<div>
+<label>Address</label>
+<input id="setAddress">
+</div>
+
+<div>
+<label>Currency</label>
+<input id="setCurrency">
+</div>
+
+</div>
+
+<button class="btn primary"
+style="margin-top:15px"
+onclick="saveSettings()">Save Settings</button>
+
+</div>
+
+</section>
+
+</main>
+</div>
+
+
+<!-- MODAL -->
+<div id="modal" class="modal hidden">
+
+<div class="modal-box">
+
+<button class="close" onclick="closeModal()">×</button>
+
+<div id="modalContent"></div>
+
+</div>
+</div>
+
+
+<div id="toast" class="toast hidden"></div>
+
+
+<script>
+
+/* =========================================
+FINISHER TAILOR DATABASE
+COMPLETELY SEPARATE DATABASE
+========================================= */
+
+const DATABASE_KEY="FINISHER_TAILOR_SEPARATE_DATABASE_V1";
+
+let db=JSON.parse(localStorage.getItem(DATABASE_KEY)||"null")||{
+
+customers:[],
+jobs:[],
+payments:[],
+expenses:[],
+staff:[],
+
+settings:{
+name:"Finisher Tailor",
+phone:"",
+address:"",
+currency:"₦"
+}
+
+};
+
+
+/* =========================================
+HELPERS
+========================================= */
+
+function saveDatabase(){
+localStorage.setItem(DATABASE_KEY,JSON.stringify(db));
+refreshAll();
+}
+
+function id(prefix){
+return prefix+"-"+Date.now().toString(36).toUpperCase();
+}
+
+function money(value){
+return (db.settings.currency||"₦")+
+Number(value||0).toLocaleString("en-NG",{
+minimumFractionDigits:2,
+maximumFractionDigits:2
+});
+}
+
+function esc(value){
+return String(value||"")
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;");
+}
+
+function notify(message){
+
+let box=document.getElementById("toast");
+
+box.textContent=message;
+box.classList.remove("hidden");
+
+setTimeout(()=>{
+box.classList.add("hidden");
+},2500);
+
+}
+
+
+/* =========================================
+LOGIN
+========================================= */
+
+function login(){
+
+let user=document.getElementById("loginUsername").value.trim();
+let pass=document.getElementById("loginPassword").value;
+
+if(user==="Admin" && pass==="Finisher@2026"){
+
+sessionStorage.setItem("finisherTailorLogin","yes");
+
+document.getElementById("loginScreen").classList.add("hidden");
+document.getElementById("software").classList.remove("hidden");
+
+refreshAll();
+openPage("dashboard");
+
+}else{
+
+notify("Invalid login details");
+
+}
+
+}
+
+function logout(){
+
+sessionStorage.removeItem("finisherTailorLogin");
+location.reload();
+
+}
+
+
+/* =========================================
+NAVIGATION
+========================================= */
+
+function openPage(name){
+
+document.querySelectorAll(".page")
+.forEach(x=>x.classList.add("hidden"));
+
+document.getElementById(name)
+.classList.remove("hidden");
+
+document.querySelectorAll("[data-page]")
+.forEach(btn=>{
+btn.classList.toggle("active",btn.dataset.page===name);
+});
+
+let titles={
+dashboard:"Dashboard",
+customers:"Customers",
+measurements:"Measurements",
+jobs:"Tailoring Jobs",
+payments:"Payments",
+deliveries:"Deliveries & Collection",
+expenses:"Expenses",
+staff:"Staff",
+reports:"Reports",
+settings:"Settings"
+};
+
+document.getElementById("pageTitle").textContent=titles[name];
+
+if(name==="measurements"){
+fillMeasurementCustomers();
+}
+
+}
+
+
+/* =========================================
+REFRESH
+========================================= */
+
+function refreshAll(){
+
+document.getElementById("currentDate").textContent=
+new Date().toLocaleDateString("en-NG",{
+weekday:"long",
+year:"numeric",
+month:"long",
+day:"numeric"
+});
+
+let received=db.payments.reduce(
+(total,p)=>total+Number(p.amount),0
+);
+
+let outstanding=db.jobs.reduce((total,j)=>{
+
+let paid=db.payments
+.filter(p=>p.jobId===j.id)
+.reduce((x,p)=>x+Number(p.amount),0);
+
+return total+Math.max(0,Number(j.price)-paid);
+
+},0);
+
+document.getElementById("dashCustomers").textContent=
+db.customers.length;
+
+document.getElementById("dashJobs").textContent=
+db.jobs.filter(j=>j.status!=="Delivered").length;
+
+document.getElementById("dashReceived").textContent=
+money(received);
+
+document.getElementById("dashOutstanding").textContent=
+money(outstanding);
+
+renderCustomers();
+renderJobs();
+renderPayments();
+renderDeliveries();
+renderExpenses();
+renderStaff();
+renderReports();
+renderRecentJobs();
+loadSettings();
+
+}
+
+
+/* =========================================
+CUSTOMERS
+========================================= */
+
+function newCustomer(existing=""){
+
+let c=db.customers.find(x=>x.id===existing)||{};
+
+document.getElementById("modalContent").innerHTML=`
+
+<h2>${existing?"Edit":"Register"} Customer</h2>
+
+<div class="grid">
+
+<div>
+<label>Full Name *</label>
+<input id="customerName"
+value="${esc(c.name)}">
+</div>
+
+<div>
+<label>Phone Number *</label>
+<input id="customerPhone"
+value="${esc(c.phone)}">
+</div>
+
+<div>
+<label>Gender</label>
+<select id="customerGender">
+
+<option ${c.gender==="Male"?"selected":""}>Male</option>
+<option ${c.gender==="Female"?"selected":""}>Female</option>
+<option ${c.gender==="Child"?"selected":""}>Child</option>
+
+</select>
+</div>
+
+<div>
+<label>Customer Type</label>
+
+<select id="customerType">
+
+<option ${c.type==="Regular"?"selected":""}>Regular</option>
+<option ${c.type==="VIP"?"selected":""}>VIP</option>
+<option ${c.type==="New"?"selected":""}>New</option>
+
+</select>
+
+</div>
+
+<div class="full">
+<label>Address</label>
+<input id="customerAddress"
+value="${esc(c.address)}">
+</div>
+
+<div class="full">
+<label>Notes</label>
+<textarea id="customerNotes">${esc(c.notes)}</textarea>
+</div>
+
+</div>
+
+<button class="btn primary"
+style="margin-top:15px"
+onclick="saveCustomer('${existing}')">
+Save Customer
+</button>
+
+`;
+
+openModal();
+
+}
+
+function saveCustomer(existing){
+
+let name=document.getElementById("customerName").value.trim();
+let phone=document.getElementById("customerPhone").value.trim();
+
+if(!name||!phone){
+
+notify("Name and phone are required");
+return;
+
+}
+
+let c=db.customers.find(x=>x.id===existing);
+
+if(!c){
+
+c={
+id:id("CUS"),
+created:new Date().toISOString(),
+measurements:{}
+};
+
+db.customers.push(c);
+
+}
+
+Object.assign(c,{
+
+name:name,
+phone:phone,
+gender:document.getElementById("customerGender").value,
+type:document.getElementById("customerType").value,
+address:document.getElementById("customerAddress").value.trim(),
+notes:document.getElementById("customerNotes").value.trim()
+
+});
+
+saveDatabase();
+closeModal();
+
+notify("Customer saved");
+
+}
+
+function renderCustomers(){
+
+let search=
+(document.getElementById("customerSearch")?.value||"")
+.toLowerCase();
+
+let list=db.customers.filter(c=>
+(c.name+" "+c.phone)
+.toLowerCase()
+.includes(search)
+);
+
+document.getElementById("customersList").innerHTML=
+
+list.length?
+
+`<div class="table">
+
+<table>
+
+<tr>
+<th>Customer</th>
+<th>Phone</th>
+<th>Type</th>
+<th>Jobs</th>
+<th>Actions</th>
+</tr>
+
+${list.map(c=>`
+
+<tr>
+
+<td>
+<b>${esc(c.name)}</b><br>
+<small>${esc(c.gender)}</small>
+</td>
+
+<td>${esc(c.phone)}</td>
+
+<td>${esc(c.type)}</td>
+
+<td>
+${db.jobs.filter(j=>j.customerId===c.id).length}
+</td>
+
+<td class="actions">
+
+<button class="btn light"
+onclick="newCustomer('${c.id}')">
+Edit
+</button>
+
+<button class="btn light"
+onclick="viewCustomer('${c.id}')">
+View
+</button>
+
+<button class="btn red"
+onclick="deleteCustomer('${c.id}')">
+Delete
+</button>
+
+</td>
+
+</tr>
+
+`).join("")}
+
+</table>
+</div>`
+
+:
+
+`<div class="empty">
+No customers registered.
+</div>`;
+
+}
+
+function deleteCustomer(id){
+
+if(db.jobs.some(j=>j.customerId===id)){
+
+notify("Customer has existing jobs");
+
+return;
+
+}
+
+if(confirm("Delete customer?")){
+
+db.customers=db.customers.filter(c=>c.id!==id);
+
+saveDatabase();
+
+}
+
+}
+
+function viewCustomer(id){
+
+let c=db.customers.find(x=>x.id===id);
+
+let jobs=db.jobs.filter(j=>j.customerId===id);
+
+document.getElementById("modalContent").innerHTML=`
+
+<h2>${esc(c.name)}</h2>
+
+<p>
+${esc(c.phone)} · ${esc(c.gender)}
+</p>
+
+<hr style="margin:15px 0">
+
+<h3>Job History</h3>
+
+${jobs.length?
+
+jobs.map(j=>`
+
+<div style="padding:9px 0;border-bottom:1px solid #eee">
+
+<b>${esc(j.jobNo)}</b><br>
+${esc(j.outfit)} —
+${money(j.price)} —
+${esc(j.status)}
+
+</div>
+
+`).join("")
+
+:
+
+"<div class='empty'>No jobs.</div>"}
+
+<br>
+
+<button class="btn primary"
+onclick="newJob('','${c.id}')">
++ New Tailoring Job
+</button>
+
+`;
+
+openModal();
+
+}
+
+
+/* =========================================
+MEASUREMENTS
+========================================= */
+
+const measurementFields=[
+"Neck",
+"Shoulder",
+"Chest",
+"Waist",
+"Hip",
+"Sleeve",
+"Top Length",
+"Trouser Length",
+"Thigh",
+"Knee",
+"Ankle",
+"Armhole",
+"Wrist",
+"Cap Size",
+"Other"
+];
+
+function fillMeasurementCustomers(){
+
+let select=document.getElementById("measurementCustomer");
+
+select.innerHTML=
+`<option value="">Select customer</option>`+
+db.customers.map(c=>
+`<option value="${c.id}">
+${esc(c.name)} — ${esc(c.phone)}
+</option>`
+).join("");
+
+}
+
+function loadMeasurements(){
+
+let id=document.getElementById("measurementCustomer").value;
+
+if(!id){
+
+document.getElementById("measurementArea").innerHTML=
+`<div class="empty">Select a customer.</div>`;
+
+return;
+
+}
+
+let c=db.customers.find(x=>x.id===id);
+
+c.measurements=c.measurements||{};
+
+document.getElementById("measurementArea").innerHTML=`
+
+<h3>${esc(c.name)}</h3>
+
+<p style="margin-bottom:15px">
+Measurements can be stored and reused for future orders.
+</p>
+
+<div class="measure-grid">
+
+${measurementFields.map((f,i)=>`
+
+<div class="measure-card">
+
+<label>${f}</label>
+
+<input id="measure_${i}"
+value="${esc(c.measurements[f]||"")}">
+
+</div>
+
+`).join("")}
+
+</div>
+
+<button class="btn primary"
+style="margin-top:15px"
+onclick="saveMeasurements('${id}')">
+Save Measurements
+</button>
+
+`;
+
+}
+
+function saveMeasurements(id){
+
+let c=db.customers.find(x=>x.id===id);
+
+c.measurements={};
+
+measurementFields.forEach((f,i)=>{
+
+c.measurements[f]=
+document.getElementById("measure_"+i).value.trim();
+
+});
+
+saveDatabase();
+
+notify("Measurements saved");
+
+}
+
+
+/* =========================================
+TAILORING JOBS
+========================================= */
+
+function newJob(existing="",customer=""){
+
+let j=db.jobs.find(x=>x.id===existing)||{};
+
+document.getElementById("modalContent").innerHTML=`
+
+<h2>${existing?"Edit":"Create"} Tailoring Job</h2>
+
+<div class="grid">
+
+<div>
+<label>Customer *</label>
+
+<select id="jobCustomer">
+
+<option value="">Select customer</option>
+
+${db.customers.map(c=>`
+
+<option value="${c.id}"
+${j.customerId===c.id||customer===c.id?"selected":""}>
+
+${esc(c.name)} — ${esc(c.phone)}
+
+</option>
+
+`).join("")}
+
+</select>
+</div>
+
+<div>
+<label>Job Number</label>
+<input value="${existing?esc(j.jobNo):"Automatic"}" disabled>
+</div>
+
+<div>
+<label>Outfit *</label>
+
+<input id="jobOutfit"
+placeholder="Kaftan, Agbada, Gown..."
+value="${esc(j.outfit)}">
+
+</div>
+
+<div>
+<label>Quantity</label>
+
+<input id="jobQuantity"
+type="number"
+min="1"
+value="${j.quantity||1}">
+
+</div>
+
+<div>
+<label>Fabric</label>
+
+<input id="jobFabric"
+placeholder="Fabric type"
+value="${esc(j.fabric)}">
+
+</div>
+
+<div>
+<label>Colour</label>
+
+<input id="jobColour"
+value="${esc(j.colour)}">
+
+</div>
+
+<div>
+<label>Total Price *</label>
+
+<input id="jobPrice"
+type="number"
+min="0"
+value="${j.price||""}">
+
+</div>
+
+<div>
+<label>Expected Delivery</label>
+
+<input id="jobDelivery"
+type="date"
+value="${j.deliveryDate||""}">
+
+</div>
+
+<div>
+<label>Status</label>
+
+<select id="jobStatus">
+
+${[
+"Booked",
+"Measuring",
+"Cutting",
+"Sewing",
+"Finishing",
+"Ready",
+"Delivered"
+].map(x=>`
+
+<option ${j.status===x?"selected":""}>
+${x}
+</option>
+
+`).join("")}
+
+</select>
+
+</div>
+
+<div>
+<label>Assigned Staff</label>
+
+<select id="jobStaff">
+
+<option value="">Not assigned</option>
+
+${db.staff.map(s=>`
+
+<option value="${s.id}"
+${j.staffId===s.id?"selected":""}>
+
+${esc(s.name)}
+
+</option>
+
+`).join("")}
+
+</select>
+
+</div>
+
+<div class="full">
+<label>Design / Special Instructions</label>
+
+<textarea id="jobNotes">
+${esc(j.notes)}
+</textarea>
+</div>
+
+</div>
+
+<div class="actions" style="margin-top:15px">
+
+<button class="btn primary"
+onclick="saveJob('${existing}')">
+Save Job
+</button>
+
+${existing?
+`<button class="btn light"
+onclick="printJob('${existing}')">
+Print Job Card
+</button>`:""}
+
+</div>
+
+`;
+
+openModal();
+
+}
+
+function saveJob(existing){
+
+let customer=
+document.getElementById("jobCustomer").value;
+
+let outfit=
+document.getElementById("jobOutfit").value.trim();
+
+let price=
+document.getElementById("jobPrice").value;
+
+if(!customer||!outfit||!price){
+
+notify("Customer, outfit and price are required");
+
+return;
+
+}
+
+let j=db.jobs.find(x=>x.id===existing);
+
+if(!j){
+
+j={
+id:id("JOB"),
+jobNo:"FT-"+new Date().getFullYear()+"-"+String(db.jobs.length+1).padStart(4,"0"),
+created:new Date().toISOString()
+};
+
+db.jobs.push(j);
+
+}
+
+Object.assign(j,{
+
+customerId:customer,
+outfit:outfit,
+quantity:Number(document.getElementById("jobQuantity").value)||1,
+fabric:document.getElementById("jobFabric").value.trim(),
+colour:document.getElementById("jobColour").value.trim(),
+price:Number(price),
+deliveryDate:document.getElementById("jobDelivery").value,
+status:document.getElementById("jobStatus").value,
+staffId:document.getElementById("jobStaff").value,
+notes:document.getElementById("jobNotes").value.trim()
+
+});
+
+saveDatabase();
+closeModal();
+
+notify("Tailoring job saved");
+
+}
+
+function renderJobs(){
+
+let search=
+(document.getElementById("jobSearch")?.value||"")
+.toLowerCase();
+
+let list=db.jobs.filter(j=>{
+
+let c=db.customers.find(x=>x.id===j.customerId)||{};
+
+return(
+j.jobNo+" "+
+j.outfit+" "+
+c.name
+).toLowerCase().includes(search);
+
+});
+
+document.getElementById("jobsList").innerHTML=
+
+list.length?
+
+`<div class="table">
+
+<table>
+
+<tr>
+<th>Job</th>
+<th>Customer</th>
+<th>Outfit</th>
+<th>Price</th>
+<th>Paid</th>
+<th>Balance</th>
+<th>Status</th>
+<th>Actions</th>
+</tr>
+
+${list.map(j=>{
+
+let c=db.customers.find(x=>x.id===j.customerId)||{};
+
+let paid=db.payments
+.filter(p=>p.jobId===j.id)
+.reduce((a,p)=>a+Number(p.amount),0);
+
+return`
+
+<tr>
+
+<td><b>${esc(j.jobNo)}</b></td>
+
+<td>${esc(c.name)}</td>
+
+<td>${esc(j.outfit)}</td>
+
+<td>${money(j.price)}</td>
+
+<td>${money(paid)}</td>
+
+<td>${money(Math.max(0,j.price-paid))}</td>
+
+<td>
+<span class="badge ${j.status==="Ready"?"ready":j.status==="Delivered"?"delivered":""}">
+${esc(j.status)}
+</span>
+</td>
+
+<td class="actions">
+
+<button class="btn light"
+onclick="newJob('${j.id}')">
+Edit
+</button>
+
+<button class="btn primary"
+onclick="newPayment('','${j.id}')">
+Payment
+</button>
+
+<button class="btn light"
+onclick="printJob('${j.id}')">
+Print
+</button>
+
+<button class="btn red"
+onclick="deleteJob('${j.id}')">
+Delete
+</button>
+
+</td>
+
+</tr>
+
+`;
+
+}).join("")}
+
+</table>
+
+</div>`
+
+:
+
+`<div class="empty">
+No tailoring jobs.
+</div>`;
+
+}
+
+function deleteJob(id){
+
+if(confirm("Delete this job and its payments?")){
+
+db.jobs=db.jobs.filter(j=>j.id!==id);
+
+db.payments=db.payments.filter(p=>p.jobId!==id);
+
+saveDatabase();
+
+}
+
+}
+
+
+/* =========================================
+PAYMENTS
+========================================= */
+
+function newPayment(existing="",jobId=""){
+
+let p=db.payments.find(x=>x.id===existing)||{};
+
+document.getElementById("modalContent").innerHTML=`
+
+<h2>Record Payment</h2>
+
+<div class="grid">
+
+<div>
+<label>Job *</label>
+
+<select id="paymentJob">
+
+<option value="">Select job</option>
+
+${db.jobs.map(j=>{
+
+let c=db.customers.find(x=>x.id===j.customerId)||{};
+
+return`
+
+<option value="${j.id}"
+${p.jobId===j.id||jobId===j.id?"selected":""}>
+
+${esc(j.jobNo)} —
+${esc(c.name)} —
+${esc(j.outfit)}
+
+</option>
+
+`;
+
+}).join("")}
+
+</select>
+
+</div>
+
+<div>
+<label>Amount *</label>
+
+<input id="paymentAmount"
+type="number"
+min="0"
+value="${p.amount||""}">
+
+</div>
+
+<div>
+<label>Payment Method</label>
+
+<select id="paymentMethod">
+
+<option>Cash</option>
+<option>Bank Transfer</option>
+<option>POS</option>
+<option>Other</option>
+
+</select>
+
+</div>
+
+<div>
+<label>Date</label>
+
+<input id="paymentDate"
+type="date"
+value="${p.date||new Date().toISOString().slice(0,10)}">
+
+</div>
+
+<div class="full">
+<label>Note</label>
+
+<textarea id="paymentNote">
+${esc(p.note)}
+</textarea>
+</div>
+
+</div>
+
+<button class="btn primary"
+style="margin-top:15px"
+onclick="savePayment('${existing}')">
+Save Payment
+</button>
+
+`;
+
+openModal();
+
+}
+
+function savePayment(existing){
+
+let job=
+document.getElementById("paymentJob").value;
+
+let amount=
+document.getElementById("paymentAmount").value;
+
+if(!job||!amount){
+
+notify("Job and amount are required");
+
+return;
+
+}
+
+let p=db.payments.find(x=>x.id===existing);
+
+if(!p){
+
+p={
+id:id("PAY")
+};
+
+db.payments.push(p);
+
+}
+
+Object.assign(p,{
+
+jobId:job,
+amount:Number(amount),
+method:document.getElementById("paymentMethod").value,
+date:document.getElementById("paymentDate").value,
+note:document.getElementById("paymentNote").value.trim()
+
+});
+
+saveDatabase();
+closeModal();
+
+notify("Payment saved");
+
+}
+
+function renderPayments(){
+
+let list=[...db.payments].reverse();
+
+document.getElementById("paymentsList").innerHTML=
+
+list.length?
+
+`<div class="table">
+
+<table>
+
+<tr>
+<th>Date</th>
+<th>Job</th>
+<th>Customer</th>
+<th>Amount</th>
+<th>Method</th>
+<th>Action</th>
+</tr>
+
+${list.map(p=>{
+
+let j=db.jobs.find(x=>x.id===p.jobId)||{};
+
+let c=db.customers.find(x=>x.id===j.customerId)||{};
+
+return`
+
+<tr>
+
+<td>${esc(p.date)}</td>
+<td>${esc(j.jobNo||p.jobId)}</td>
+<td>${esc(c.name)}</td>
+<td>${money(p.amount)}</td>
+<td>${esc(p.method)}</td>
+
+<td>
+
+<button class="btn red"
+onclick="deletePayment('${p.id}')">
+Delete
+</button>
+
+</td>
+
+</tr>
+
+`;
+
+}).join("")}
+
+</table>
+
+</div>`
+
+:
+
+`<div class="empty">
+No payments recorded.
+</div>`;
+
+}
+
+function deletePayment(id){
+
+if(confirm("Delete this payment?")){
+
+db.payments=db.payments.filter(p=>p.id!==id);
+
+saveDatabase();
+
+}
+
+}
+
+
+/* =========================================
+DELIVERIES
+========================================= */
+
+function renderDeliveries(){
+
+let list=db.jobs
+.filter(j=>j.status==="Ready"||j.status==="Delivered");
+
+document.getElementById("deliveryList").innerHTML=
+
+list.length?
+
+`<div class="table">
+
+<table>
+
+<tr>
+<th>Job</th>
+<th>Customer</th>
+<th>Outfit</th>
+<th>Delivery Date</th>
+<th>Status</th>
+<th>Action</th>
+</tr>
+
+${list.map(j=>{
+
+let c=db.customers.find(x=>x.id===j.customerId)||{};
+
+return`
+
+<tr>
+
+<td>${esc(j.jobNo)}</td>
+
+<td>${esc(c.name)}</td>
+
+<td>${esc(j.outfit)}</td>
+
+<td>${esc(j.deliveryDate||"-")}</td>
+
+<td>
+
+<span class="badge ${j.status==="Delivered"?"delivered":"ready"}">
+${esc(j.status)}
+</span>
+
+</td>
+
+<td>
+
+${j.status!=="Delivered"?
+
+`<button class="btn green"
+onclick="markDelivered('${j.id}')">
+Mark Delivered
+</button>`
+
+:
+
+`<span>Collected ✓</span>`
+
+}
+
+</td>
+
+</tr>
+
+`;
+
+}).join("")}
+
+</table>
+
+</div>`
+
+:
+
+`<div class="empty">
+No ready or delivered jobs.
+</div>`;
+
+}
+
+function markDelivered(id){
+
+let j=db.jobs.find(x=>x.id===id);
+
+j.status="Delivered";
+j.deliveredDate=new Date().toISOString().slice(0,10);
+
+saveDatabase();
+
+notify("Job marked as delivered");
+
+}
+
+
+/* =========================================
+EXPENSES
+========================================= */
+
+function newExpense(existing=""){
+
+let e=db.expenses.find(x=>x.id===existing)||{};
+
+document.getElementById("modalContent").innerHTML=`
+
+<h2>Business Expense</h2>
+
+<div class="grid">
+
+<div>
+<label>Category *</label>
+
+<input id="expenseCategory"
+placeholder="Thread, electricity, transport..."
+value="${esc(e.category)}">
+
+</div>
+
+<div>
+<label>Amount *</label>
+
+<input id="expenseAmount"
+type="number"
+value="${e.amount||""}">
+
+</div>
+
+<div>
+<label>Date</label>
+
+<input id="expenseDate"
+type="date"
+value="${e.date||new Date().toISOString().slice(0,10)}">
+
+</div>
+
+<div class="full">
+<label>Note</label>
+
+<textarea id="expenseNote">
+${esc(e.note)}
+</textarea>
+</div>
+
+</div>
+
+<button class="btn primary"
+style="margin-top:15px"
+onclick="saveExpense('${existing}')">
+Save Expense
+</button>
+
+`;
+
+openModal();
+
+}
+
+function saveExpense(existing){
+
+let category=
+document.getElementById("expenseCategory").value.trim();
+
+let amount=
+document.getElementById("expenseAmount").value;
+
+if(!category||!amount){
+
+notify("Category and amount are required");
+return;
+
+}
+
+let e=db.expenses.find(x=>x.id===existing);
+
+if(!e){
+
+e={id:id("EXP")};
+db.expenses.push(e);
+
+}
+
+Object.assign(e,{
+
+category,
+amount:Number(amount),
+date:document.getElementById("expenseDate").value,
+note:document.getElementById("expenseNote").value.trim()
+
+});
+
+saveDatabase();
+closeModal();
+
+notify("Expense saved");
+
+}
+
+function renderExpenses(){
+
+let list=[...db.expenses].reverse();
+
+document.getElementById("expensesList").innerHTML=
+
+list.length?
+
+`<div class="table">
+
+<table>
+
+<tr>
+<th>Date</th>
+<th>Category</th>
+<th>Amount</th>
+<th>Note</th>
+<th>Action</th>
+</tr>
+
+${list.map(e=>`
+
+<tr>
+
+<td>${esc(e.date)}</td>
+<td>${esc(e.category)}</td>
+<td>${money(e.amount)}</td>
+<td>${esc(e.note)}</td>
+
+<td>
+
+<button class="btn red"
+onclick="deleteExpense('${e.id}')">
+Delete
+</button>
+
+</td>
+
+</tr>
+
+`).join("")}
+
+</table>
+
+</div>`
+
+:
+
+`<div class="empty">
+No expenses recorded.
+</div>`;
+
+}
+
+function deleteExpense(id){
+
+if(confirm("Delete expense?")){
+
+db.expenses=db.expenses.filter(e=>e.id!==id);
+
+saveDatabase();
+
+}
+
+}
+
+
+/* =========================================
+STAFF
+========================================= */
+
+function newStaff(existing=""){
+
+let s=db.staff.find(x=>x.id===existing)||{};
+
+document.getElementById("modalContent").innerHTML=`
+
+<h2>${existing?"Edit":"Add"} Staff</h2>
+
+<div class="grid">
+
+<div>
+<label>Full Name *</label>
+<input id="staffName"
+value="${esc(s.name)}">
+</div>
+
+<div>
+<label>Phone</label>
+<input id="staffPhone"
+value="${esc(s.phone)}">
+</div>
+
+<div>
+<label>Role</label>
+
+<select id="staffRole">
+
+${[
+"Tailor",
+"Cutter",
+"Finisher",
+"Designer",
+"Apprentice",
+"Other"
+].map(x=>`
+
+<option ${s.role===x?"selected":""}>
+${x}
+</option>
+
+`).join("")}
+
+</select>
+
+</div>
+
+</div>
+
+<button class="btn primary"
+style="margin-top:15px"
+onclick="saveStaff('${existing}')">
+Save Staff
+</button>
+
+`;
+
+openModal();
+
+}
+
+function saveStaff(existing){
+
+let name=document.getElementById("staffName").value.trim();
+
+if(!name){
+
+notify("Staff name is required");
+return;
+
+}
+
+let s=db.staff.find(x=>x.id===existing);
+
+if(!s){
+
+s={id:id("STAFF")};
+db.staff.push(s);
+
+}
+
+Object.assign(s,{
+
+name,
+phone:document.getElementById("staffPhone").value.trim(),
+role:document.getElementById("staffRole").value
+
+});
+
+saveDatabase();
+closeModal();
+
+notify("Staff saved");
+
+}
+
+function renderStaff(){
+
+document.getElementById("staffList").innerHTML=
+
+db.staff.length?
+
+`<div class="table">
+
+<table>
+
+<tr>
+<th>Name</th>
+<th>Phone</th>
+<th>Role</th>
+<th>Action</th>
+</tr>
+
+${db.staff.map(s=>`
+
+<tr>
+
+<td>${esc(s.name)}</td>
+<td>${esc(s.phone)}</td>
+<td>${esc(s.role)}</td>
+
+<td>
+
+<button class="btn light"
+onclick="newStaff('${s.id}')">
+Edit
+</button>
+
+<button class="btn red"
+onclick="deleteStaff('${s.id}')">
+Delete
+</button>
+
+</td>
+
+</tr>
+
+`).join("")}
+
+</table>
+
+</div>`
+
+:
+
+`<div class="empty">
+No staff added.
+</div>`;
+
+}
+
+function deleteStaff(id){
+
+if(confirm("Delete staff member?")){
+
+db.staff=db.staff.filter(s=>s.id!==id);
+
+saveDatabase();
+
+}
+
+}
+
+
+/* =========================================
+REPORTS
+========================================= */
+
+function renderReports(){
+
+let sales=db.jobs.reduce(
+(a,j)=>a+Number(j.price),0
+);
+
+let received=db.payments.reduce(
+(a,p)=>a+Number(p.amount),0
+);
+
+let expenses=db.expenses.reduce(
+(a,e)=>a+Number(e.amount),0
+);
+
+document.getElementById("reportSales").textContent=money(sales);
+
+document.getElementById("reportReceived").textContent=money(received);
+
+document.getElementById("reportExpenses").textContent=money(expenses);
+
+document.getElementById("reportBalance").textContent=
+money(Math.max(0,sales-received));
+
+document.getElementById("reportSummary").innerHTML=`
+
+<div class="kv">
+<span>Total Customers</span>
+<b>${db.customers.length}</b>
+</div>
+
+<div class="kv">
+<span>Total Jobs</span>
+<b>${db.jobs.length}</b>
+</div>
+
+<div class="kv">
+<span>Completed Jobs</span>
+<b>${db.jobs.filter(j=>j.status==="Delivered").length}</b>
+</div>
+
+<div class="kv">
+<span>Jobs In Progress</span>
+<b>${db.jobs.filter(j=>j.status!=="Delivered").length}</b>
+</div>
+
+<div class="kv">
+<span>Net After Recorded Expenses</span>
+<b>${money(received-expenses)}</b>
+</div>
+
+`;
+
+}
+
+
+/* =========================================
+RECENT JOBS
+========================================= */
+
+function renderRecentJobs(){
+
+let list=[...db.jobs].reverse().slice(0,8);
+
+document.getElementById("recentJobs").innerHTML=
+
+list.length?
+
+`<div class="table">
+
+<table>
+
+<tr>
+<th>Job</th>
+<th>Customer</th>
+<th>Outfit</th>
+<th>Status</th>
+<th>Price</th>
+</tr>
+
+${list.map(j=>{
+
+let c=db.customers.find(x=>x.id===j.customerId)||{};
+
+return`
+
+<tr>
+
+<td>${esc(j.jobNo)}</td>
+<td>${esc(c.name)}</td>
+<td>${esc(j.outfit)}</td>
+<td><span class="badge">${esc(j.status)}</span></td>
+<td>${money(j.price)}</td>
+
+</tr>
+
+`;
+
+}).join("")}
+
+</table>
+
+</div>`
+
+:
+
+`<div class="empty">
+No jobs yet.
+</div>`;
+
+}
+
+
+/* =========================================
+SETTINGS
+========================================= */
+
+function loadSettings(){
+
+document.getElementById("setBusinessName").value=
+db.settings.name;
+
+document.getElementById("setPhone").value=
+db.settings.phone;
+
+document.getElementById("setAddress").value=
+db.settings.address;
+
+document.getElementById("setCurrency").value=
+db.settings.currency;
+
+}
+
+function saveSettings(){
+
+db.settings={
+
+name:document.getElementById("setBusinessName").value.trim()||
+"Finisher Tailor",
+
+phone:document.getElementById("setPhone").value.trim(),
+
+address:document.getElementById("setAddress").value.trim(),
+
+currency:document.getElementById("setCurrency").value.trim()||"₦"
+
+};
+
+saveDatabase();
+
+notify("Business settings saved");
+
+}
+
+
+/* =========================================
+PRINT JOB CARD
+========================================= */
+
+function printJob(id){
+
+let j=db.jobs.find(x=>x.id===id);
+
+let c=db.customers.find(x=>x.id===j.customerId)||{};
+
+let staff=db.staff.find(x=>x.id===j.staffId)||{};
+
+let paid=db.payments
+.filter(p=>p.jobId===id)
+.reduce((a,p)=>a+Number(p.amount),0);
+
+let w=window.open("","_blank");
+
+w.document.write(`
+
+<html>
+
+<head>
+
+<title>${esc(j.jobNo)}</title>
+
+<style>
+
+body{
+font-family:Arial;
+padding:30px
+}
+
+.box{
+max-width:700px;
+margin:auto
+}
+
+h1,h2{
+text-align:center;
+color:#7c2d12
+}
+
+.line{
+display:flex;
+justify-content:space-between;
+padding:9px;
+border-bottom:1px solid #ddd
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="box">
+
+<h1>${esc(db.settings.name)}</h1>
+
+<p style="text-align:center">
+${esc(db.settings.address)}<br>
+${esc(db.settings.phone)}
+</p>
+
+<hr>
+
+<h2>TAILORING JOB CARD</h2>
+
+<div class="line">
+<span>Job Number</span>
+<b>${esc(j.jobNo)}</b>
+</div>
+
+<div class="line">
+<span>Customer</span>
+<b>${esc(c.name)}</b>
+</div>
+
+<div class="line">
+<span>Phone</span>
+<b>${esc(c.phone)}</b>
+</div>
+
+<div class="line">
+<span>Outfit</span>
+<b>${esc(j.outfit)}</b>
+</div>
+
+<div class="line">
+<span>Quantity</span>
+<b>${j.quantity}</b>
+</div>
+
+<div class="line">
+<span>Fabric</span>
+<b>${esc(j.fabric)}</b>
+</div>
+
+<div class="line">
+<span>Colour</span>
+<b>${esc(j.colour)}</b>
+</div>
+
+<div class="line">
+<span>Price</span>
+<b>${money(j.price)}</b>
+</div>
+
+<div class="line">
+<span>Paid</span>
+<b>${money(paid)}</b>
+</div>
+
+<div class="line">
+<span>Balance</span>
+<b>${money(Math.max(0,j.price-paid))}</b>
+</div>
+
+<div class="line">
+<span>Delivery</span>
+<b>${esc(j.deliveryDate||"-")}</b>
+</div>
+
+<div class="line">
+<span>Status</span>
+<b>${esc(j.status)}</b>
+</div>
+
+<div class="line">
+<span>Assigned Staff</span>
+<b>${esc(staff.name||"Not assigned")}</b>
+</div>
+
+<br>
+
+<h3>Special Instructions</h3>
+
+<p>${esc(j.notes||"None")}</p>
+
+<br>
+
+<button onclick="print()">PRINT</button>
+
+</div>
+
+</body>
+
+</html>
+
+`);
+
+w.document.close();
+
+}
+
+
+/* =========================================
+BACKUP
+========================================= */
+
+function backupData(){
+
+let blob=new Blob(
+[JSON.stringify(db,null,2)],
+{type:"application/json"}
+);
+
+let a=document.createElement("a");
+
+a.href=URL.createObjectURL(blob);
+
+a.download="Finisher-Tailor-Database-Backup.json";
+
+a.click();
+
+URL.revokeObjectURL(a.href);
+
+notify("Backup created");
+
+}
+
+
+/* =========================================
+MODAL
+========================================= */
+
+function openModal(){
+
+document.getElementById("modal")
+.classList.remove("hidden");
+
+}
+
+function closeModal(){
+
+document.getElementById("modal")
+.classList.add("hidden");
+
+}
+
+document.getElementById("modal")
+.addEventListener("click",function(e){
+
+if(e.target.id==="modal"){
+closeModal();
+}
+
+});
+
+
+/* =========================================
+START
+========================================= */
+
+if(sessionStorage.getItem("finisherTailorLogin")==="yes"){
+
+document.getElementById("loginScreen").classList.add("hidden");
+
+document.getElementById("software").classList.remove("hidden");
+
+refreshAll();
+
+openPage("dashboard");
+
+}
+
+</script>
+
+</body>
+</html>
