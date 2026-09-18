@@ -20,7 +20,10 @@ body{
     color:#1e293b;
 }
 
-button,input,select,textarea{
+button,
+input,
+select,
+textarea{
     font:inherit;
 }
 
@@ -34,127 +37,109 @@ button{
 
 /* LOGIN */
 
-.login-page{
+.login{
     min-height:100vh;
     display:flex;
     align-items:center;
     justify-content:center;
     padding:20px;
-    background:linear-gradient(135deg,#14532d,#166534,#052e16);
+    background:linear-gradient(135deg,#14532d,#052e16);
 }
 
-.login-card{
+.login-box{
+    background:#fff;
     width:100%;
-    max-width:440px;
-    background:white;
-    border-radius:20px;
+    max-width:450px;
     padding:30px;
+    border-radius:20px;
     box-shadow:0 20px 60px rgba(0,0,0,.25);
 }
 
 .logo{
-    width:75px;
-    height:75px;
-    border-radius:50%;
-    background:#dcfce7;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    margin:0 auto 15px;
-    font-size:35px;
+    text-align:center;
+    font-size:50px;
+    margin-bottom:10px;
 }
 
-.login-card h1{
+.login-title{
     text-align:center;
     color:#14532d;
-    font-size:23px;
+    font-size:25px;
+    margin-bottom:6px;
 }
 
-.login-card .subtitle{
+.login-subtitle{
     text-align:center;
     color:#64748b;
-    margin:7px 0 25px;
-    font-size:13px;
-}
-
-.role-tabs{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:5px;
     margin-bottom:20px;
 }
 
-.role-tab{
-    border:1px solid #dbe4dd;
+.login-types{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:8px;
+    margin-bottom:20px;
+}
+
+.login-types button{
+    border:1px solid #d1d5db;
     background:#f8fafc;
-    padding:9px 4px;
+    padding:11px;
     border-radius:8px;
-    font-size:11px;
+    font-size:13px;
 }
 
-.role-tab.active{
+.login-types button.active{
     background:#14532d;
-    color:white;
+    color:#fff;
+    border-color:#14532d;
 }
 
-.form-group{
-    margin-bottom:15px;
-}
-
-.form-group label{
+label{
     display:block;
-    margin-bottom:6px;
     font-size:13px;
     font-weight:bold;
+    margin:12px 0 6px;
 }
 
-.form-group input,
-.form-group select,
-.form-group textarea{
+input,
+select,
+textarea{
     width:100%;
-    padding:12px;
+    padding:11px;
     border:1px solid #cbd5e1;
-    border-radius:9px;
+    border-radius:8px;
     outline:none;
-    background:white;
 }
 
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus{
-    border-color:#16a34a;
+input:focus,
+select:focus,
+textarea:focus{
+    border-color:#14532d;
 }
 
-.primary-btn{
+.primary{
     width:100%;
-    border:none;
-    background:#14532d;
-    color:white;
-    padding:13px;
-    border-radius:10px;
-    font-weight:bold;
-}
-
-.login-message{
-    margin-top:15px;
-    text-align:center;
-    font-size:13px;
-}
-
-.demo-note{
-    margin-top:18px;
     padding:12px;
-    background:#f0fdf4;
-    border-radius:9px;
-    font-size:12px;
-    color:#166534;
+    border:0;
+    border-radius:8px;
+    background:#14532d;
+    color:#fff;
+    font-weight:bold;
+    margin-top:15px;
+}
+
+.primary:hover{
+    background:#166534;
+}
+
+.login-error{
+    color:#dc2626;
+    text-align:center;
+    margin-top:12px;
 }
 
 /* APP */
-
-.app{
-    min-height:100vh;
-}
 
 .topbar{
     height:65px;
@@ -163,21 +148,12 @@ button{
     display:flex;
     align-items:center;
     justify-content:space-between;
-    padding:0 20px;
-    position:sticky;
-    top:0;
-    z-index:20;
+    padding:0 18px;
 }
 
-.brand{
+.school-name{
+    font-size:18px;
     font-weight:bold;
-}
-
-.brand small{
-    display:block;
-    opacity:.75;
-    font-size:10px;
-    margin-top:3px;
 }
 
 .user-area{
@@ -186,47 +162,38 @@ button{
     gap:10px;
 }
 
-.logout-btn{
-    border:1px solid rgba(255,255,255,.4);
+.logout{
+    border:1px solid rgba(255,255,255,.5);
+    color:#fff;
     background:transparent;
-    color:white;
     padding:8px 12px;
-    border-radius:8px;
+    border-radius:7px;
 }
 
 .layout{
-    display:flex;
     min-height:calc(100vh - 65px);
+    display:flex;
 }
 
 .sidebar{
-    width:250px;
+    width:245px;
     background:#052e16;
-    color:white;
-    padding:15px;
-    flex:none;
-}
-
-.nav-title{
-    font-size:11px;
-    opacity:.55;
-    margin:10px 8px;
-    text-transform:uppercase;
-}
-
-.nav-btn{
-    width:100%;
-    border:none;
-    background:transparent;
-    color:white;
-    text-align:left;
     padding:12px;
-    border-radius:8px;
-    margin-bottom:4px;
 }
 
-.nav-btn:hover,
-.nav-btn.active{
+.sidebar button{
+    display:block;
+    width:100%;
+    text-align:left;
+    border:0;
+    background:transparent;
+    color:#fff;
+    padding:11px;
+    border-radius:7px;
+    margin-bottom:3px;
+}
+
+.sidebar button:hover{
     background:#166534;
 }
 
@@ -244,54 +211,64 @@ button{
     display:block;
 }
 
-.page-header{
-    margin-bottom:20px;
-}
-
-.page-header h2{
+.page-title{
     color:#14532d;
-    margin-bottom:5px;
-}
-
-.page-header p{
-    color:#64748b;
-    font-size:14px;
+    margin-bottom:18px;
 }
 
 /* CARDS */
 
 .cards{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
     gap:15px;
 }
 
 .card{
-    background:white;
-    border-radius:14px;
+    background:#fff;
     padding:20px;
+    border-radius:13px;
     box-shadow:0 2px 12px rgba(0,0,0,.06);
 }
 
-.card h3{
-    font-size:14px;
+.card-title{
     color:#64748b;
-    margin-bottom:10px;
+    font-size:14px;
 }
 
-.card .number{
-    font-size:28px;
-    font-weight:bold;
+.card-number{
     color:#14532d;
+    font-size:30px;
+    font-weight:bold;
+    margin-top:8px;
+}
+
+/* PANELS */
+
+.panel{
+    background:#fff;
+    border-radius:13px;
+    padding:20px;
+    box-shadow:0 2px 12px rgba(0,0,0,.05);
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:14px;
+}
+
+.full{
+    grid-column:1/-1;
 }
 
 /* TABLE */
 
-.table-wrap{
-    background:white;
-    border-radius:14px;
+.table-wrapper{
     overflow:auto;
-    box-shadow:0 2px 12px rgba(0,0,0,.05);
+    background:#fff;
+    border-radius:12px;
+    margin-top:18px;
 }
 
 table{
@@ -300,9 +277,10 @@ table{
     min-width:700px;
 }
 
-th,td{
-    padding:12px;
-    border-bottom:1px solid #e2e8f0;
+th,
+td{
+    padding:11px;
+    border-bottom:1px solid #e5e7eb;
     text-align:left;
     font-size:13px;
 }
@@ -312,219 +290,110 @@ th{
     color:#14532d;
 }
 
-.action-btn{
-    border:none;
+.small-btn{
     background:#14532d;
-    color:white;
+    color:#fff;
+    border:0;
+    border-radius:6px;
     padding:7px 10px;
-    border-radius:7px;
-    font-size:12px;
 }
 
-.danger-btn{
+.delete-btn{
     background:#dc2626;
-}
-
-/* ACCOUNT FORM */
-
-.form-card{
-    background:white;
-    padding:20px;
-    border-radius:14px;
-    box-shadow:0 2px 12px rgba(0,0,0,.05);
-    max-width:800px;
-}
-
-.form-grid{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:15px;
-}
-
-.form-actions{
-    margin-top:15px;
-    display:flex;
-    gap:10px;
-}
-
-.form-actions button{
-    border:none;
-    padding:11px 15px;
-    border-radius:8px;
-    background:#14532d;
-    color:white;
 }
 
 /* TEACHER ASSISTANT */
 
-.ta-layout{
+.assistant-layout{
     display:grid;
-    grid-template-columns:250px 1fr;
-    gap:18px;
+    grid-template-columns:230px 1fr;
+    gap:15px;
 }
 
-.ta-sidebar{
-    background:white;
-    border-radius:15px;
-    padding:15px;
-    box-shadow:0 2px 12px rgba(0,0,0,.06);
-    height:max-content;
+.assistant-menu{
+    background:#fff;
+    padding:12px;
+    border-radius:13px;
 }
 
-.ta-action{
+.assistant-menu button{
     width:100%;
-    border:1px solid #e2e8f0;
-    background:white;
-    padding:11px;
-    margin-bottom:7px;
-    border-radius:8px;
     text-align:left;
+    border:1px solid #e2e8f0;
+    background:#fff;
+    padding:10px;
+    border-radius:8px;
+    margin-bottom:7px;
 }
 
-.ta-action:hover{
+.assistant-menu button:hover{
     background:#f0fdf4;
 }
 
-.ta-chat{
-    background:white;
-    border-radius:15px;
-    min-height:650px;
+.chat{
+    background:#fff;
+    border-radius:13px;
+    overflow:hidden;
     display:flex;
     flex-direction:column;
-    overflow:hidden;
-    box-shadow:0 2px 12px rgba(0,0,0,.06);
+    min-height:600px;
 }
 
-.ta-top{
-    padding:17px;
-    border-bottom:1px solid #e2e8f0;
-    display:flex;
-    gap:12px;
-    align-items:center;
+.chat-header{
+    padding:15px;
+    border-bottom:1px solid #e5e7eb;
 }
 
-.ta-avatar{
-    width:45px;
-    height:45px;
-    border-radius:50%;
-    background:#dcfce7;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:22px;
-}
-
-.ta-top h3{
-    color:#14532d;
-}
-
-.ta-top small{
-    color:#15803d;
-}
-
-.ta-messages{
+.chat-messages{
     flex:1;
-    padding:20px;
+    padding:18px;
     background:#f8fafc;
     overflow-y:auto;
-    min-height:440px;
 }
 
 .message{
     display:flex;
-    gap:9px;
-    margin-bottom:18px;
+    margin-bottom:15px;
 }
 
 .message.user{
     justify-content:flex-end;
 }
 
+.bubble{
+    max-width:82%;
+    padding:12px;
+    border-radius:11px;
+    background:#fff;
+    border:1px solid #e2e8f0;
+    white-space:pre-wrap;
+    line-height:1.5;
+}
+
 .message.user .bubble{
     background:#14532d;
-    color:white;
+    color:#fff;
+    border:none;
 }
 
-.message-icon{
-    width:32px;
-    height:32px;
-    border-radius:50%;
-    background:#dcfce7;
+.chat-input{
     display:flex;
-    justify-content:center;
-    align-items:center;
-    flex:none;
-}
-
-.bubble{
-    max-width:80%;
-    background:white;
-    border:1px solid #e2e8f0;
-    padding:12px 14px;
-    border-radius:12px;
-    line-height:1.6;
-    white-space:pre-wrap;
-}
-
-.ta-input{
-    display:flex;
-    gap:10px;
-    padding:14px;
-    border-top:1px solid #e2e8f0;
-}
-
-.ta-input textarea{
-    flex:1;
-    resize:none;
-    border:1px solid #cbd5e1;
-    border-radius:10px;
+    gap:8px;
     padding:12px;
+    border-top:1px solid #ddd;
+}
+
+.chat-input textarea{
     min-height:50px;
 }
 
-.ta-input button{
-    width:52px;
-    border:none;
-    border-radius:10px;
-    background:#14532d;
-    color:white;
-    font-size:20px;
-}
-
-.quick-actions{
-    padding:10px 14px;
-    border-top:1px solid #e2e8f0;
-    display:flex;
-    gap:6px;
-    flex-wrap:wrap;
-}
-
-.quick-actions button{
-    border:1px solid #bbf7d0;
-    background:#f0fdf4;
-    color:#166534;
-    padding:7px 9px;
-    border-radius:7px;
-    font-size:11px;
-}
-
-/* ALERT */
-
-.alert{
-    padding:12px;
+.send-btn{
+    width:55px;
+    border:0;
     border-radius:8px;
-    margin-bottom:15px;
-    font-size:13px;
-}
-
-.alert.success{
-    background:#dcfce7;
-    color:#166534;
-}
-
-.alert.error{
-    background:#fee2e2;
-    color:#991b1b;
+    background:#14532d;
+    color:#fff;
+    font-size:20px;
 }
 
 /* MOBILE */
@@ -532,53 +401,41 @@ th{
 @media(max-width:800px){
 
     .sidebar{
-        width:65px;
-        padding:8px;
+        width:62px;
+        padding:7px;
     }
 
-    .nav-btn{
-        font-size:0;
+    .sidebar button{
         text-align:center;
+        font-size:0;
     }
 
-    .nav-btn:first-letter{
-        font-size:18px;
-    }
-
-    .nav-title{
-        display:none;
-    }
-
-    .brand small{
-        display:none;
-    }
-
-    .topbar{
-        padding:0 10px;
+    .sidebar button:first-letter{
+        font-size:19px;
     }
 
     .content{
         padding:12px;
     }
 
-    .form-grid{
+    .grid{
         grid-template-columns:1fr;
     }
 
-    .ta-layout{
+    .assistant-layout{
         grid-template-columns:1fr;
     }
 
-    .ta-sidebar{
-        order:2;
+    .topbar{
+        padding:0 10px;
     }
 
-    .ta-chat{
-        order:1;
+    .school-name{
+        font-size:13px;
     }
 
-    .role-tabs{
-        grid-template-columns:repeat(2,1fr);
+    .user-area{
+        font-size:11px;
     }
 }
 </style>
@@ -586,115 +443,89 @@ th{
 
 <body>
 
-<!-- =====================================================
-     LOGIN
-===================================================== -->
+<!-- ================= LOGIN ================= -->
 
-<div id="loginPage" class="login-page">
+<div id="loginScreen" class="login">
 
-<div class="login-card">
+<div class="login-box">
 
 <div class="logo">🏫</div>
 
-<h1>Caliphate Tarbiya Academy</h1>
+<h1 class="login-title">
+Caliphate Tarbiya Academy
+</h1>
 
-<p class="subtitle">
+<p class="login-subtitle">
 School Academic Management System
 </p>
 
-<div class="role-tabs">
+<div class="login-types">
 
-<button class="role-tab active"
+<button id="adminType"
+        class="active"
         onclick="selectLoginRole('admin',this)">
 Administrator
 </button>
 
-<button class="role-tab"
-        onclick="selectLoginRole('teacher',this)">
+<button onclick="selectLoginRole('teacher',this)">
 Teacher
 </button>
 
-<button class="role-tab"
-        onclick="selectLoginRole('student',this)">
+<button onclick="selectLoginRole('student',this)">
 Student
 </button>
 
-<button class="role-tab"
-        onclick="selectLoginRole('parent',this)">
+<button onclick="selectLoginRole('parent',this)">
 Parent
 </button>
 
 </div>
 
-<form onsubmit="login(event)">
-
-<div class="form-group">
-
 <label>Username</label>
 
-<input id="loginUsername"
-       type="text"
-       required
-       autocomplete="username"
-       placeholder="Enter username">
-
-</div>
-
-<div class="form-group">
+<input
+id="loginUsername"
+type="text"
+autocomplete="username"
+placeholder="Enter username">
 
 <label>Password</label>
 
-<input id="loginPassword"
-       type="password"
-       required
-       autocomplete="current-password"
-       placeholder="Enter password">
+<input
+id="loginPassword"
+type="password"
+autocomplete="current-password"
+placeholder="Enter password">
 
-</div>
-
-<button class="primary-btn">
+<button
+class="primary"
+onclick="login()">
 Login
 </button>
 
-</form>
-
-<div id="loginMessage"
-     class="login-message"></div>
-
-<div class="demo-note">
-
-<strong>Initial Administrator</strong><br>
-Username: <b>admin</b><br>
-Password: <b>admin123</b><br><br>
-
-After login, the Administrator should create
-all Teacher, Student and Parent accounts.
-
-</div>
+<p id="loginError" class="login-error"></p>
 
 </div>
 </div>
 
 
-<!-- =====================================================
-     APPLICATION
-===================================================== -->
+<!-- ================= APPLICATION ================= -->
 
-<div id="app" class="app hidden">
+<div id="app" class="hidden">
 
 <header class="topbar">
 
-<div class="brand">
-Caliphate Tarbiya Academy
-<small>Academic Management System</small>
+<div class="school-name">
+Caliphate Tarbiya Academy Sokoto
 </div>
 
 <div class="user-area">
 
-<span id="currentUserName"></span>
+<span id="currentUser"></span>
 
-<button class="logout-btn"
-        onclick="logout()">
+<button
+class="logout"
+onclick="logout()">
 Logout
 </button>
 
@@ -705,359 +536,253 @@ Logout
 
 <div class="layout">
 
-<aside class="sidebar"
-       id="sidebar">
-
-<div class="nav-title">Main</div>
-
-<div id="adminNavigation">
-
-<button class="nav-btn"
-        onclick="showPage('dashboard')">
-🏠 Dashboard
-</button>
-
-<button class="nav-btn"
-        onclick="showPage('accounts')">
-👥 Account Management
-</button>
-
-<button class="nav-btn"
-        onclick="showPage('teachers')">
-👨‍🏫 Teacher Management
-</button>
-
-<button class="nav-btn"
-        onclick="showPage('students')">
-👨‍🎓 Student Management
-</button>
-
-<button class="nav-btn"
-        onclick="showPage('parents')">
-👪 Parent Management
-</button>
-
-<button class="nav-btn"
-        onclick="showPage('settings')">
-⚙️ Settings
-</button>
-
-</div>
-
-
-<div id="teacherNavigation">
-
-<button class="nav-btn"
-        onclick="showPage('teacherDashboard')">
-🏠 Dashboard
-</button>
-
-<button class="nav-btn"
-        onclick="showPage('teacherAssistant')">
-🤖 Teacher Assistant
-</button>
-
-<button class="nav-btn"
-        onclick="showPage('lessonPlan')">
-📘 Lesson Plan
-</button>
-
-<button class="nav-btn"
-        onclick="showPage('lessonNote')">
-📖 Lesson Note
-</button>
-
-<button class="nav-btn"
-        onclick="showPage('scheme')">
-📚 Scheme
-</button>
-
-<button class="nav-btn"
-        onclick="showPage('caExam')">
-📝 CA & Examination
-</button>
-
-<button class="nav-btn"
-        onclick="showPage('submissions')">
-📤 My Submissions
-</button>
-
-</div>
-
-
-<div id="studentNavigation">
-
-<button class="nav-btn"
-        onclick="showPage('studentDashboard')">
-🏠 Dashboard
-</button>
-
-<button class="nav-btn"
-        onclick="showPage('studentResults')">
-📊 My Results
-</button>
-
-</div>
-
-
-<div id="parentNavigation">
-
-<button class="nav-btn"
-        onclick="showPage('parentDashboard')">
-🏠 Dashboard
-</button>
-
-<button class="nav-btn"
-        onclick="showPage('parentResults')">
-📊 Child Results
-</button>
-
-</div>
-
-</aside>
+<aside id="sidebar" class="sidebar"></aside>
 
 
 <main class="content">
 
 
-<!-- ADMIN DASHBOARD -->
+<!-- ================= ADMIN DASHBOARD ================= -->
 
-<section id="dashboard"
-         class="page">
+<section id="adminDashboard" class="page">
 
-<div class="page-header">
-<h2>Administrator Dashboard</h2>
-<p>Manage the entire academy system.</p>
-</div>
+<h2 class="page-title">
+Administrator Dashboard
+</h2>
 
 <div class="cards">
 
 <div class="card">
-<h3>Administrators</h3>
-<div class="number"
-     id="adminCount">0</div>
+<div class="card-title">Administrators</div>
+<div id="adminCount" class="card-number">0</div>
 </div>
 
 <div class="card">
-<h3>Teachers</h3>
-<div class="number"
-     id="teacherCount">0</div>
+<div class="card-title">Teachers</div>
+<div id="teacherCount" class="card-number">0</div>
 </div>
 
 <div class="card">
-<h3>Students</h3>
-<div class="number"
-     id="studentCount">0</div>
+<div class="card-title">Students</div>
+<div id="studentCount" class="card-number">0</div>
 </div>
 
 <div class="card">
-<h3>Parents</h3>
-<div class="number"
-     id="parentCount">0</div>
+<div class="card-title">Parents</div>
+<div id="parentCount" class="card-number">0</div>
 </div>
+
+</div>
+
+<br>
+
+<div class="panel">
+
+<h3>System Overview</h3>
+
+<p style="margin-top:10px">
+The Administrator controls account creation, teacher assignments,
+student registration, parent accounts and the academic management system.
+</p>
 
 </div>
 
 </section>
 
 
-<!-- ACCOUNT MANAGEMENT -->
+<!-- ================= ACCOUNT MANAGEMENT ================= -->
 
-<section id="accounts"
-         class="page">
+<section id="accounts" class="page">
 
-<div class="page-header">
-<h2>Account Management</h2>
-<p>
-Only Administrators can create and manage accounts.
-</p>
-</div>
+<h2 class="page-title">
+Account Management
+</h2>
 
-<div id="accountMessage"></div>
+<div class="panel">
 
-<div class="form-card">
+<h3>Create New Account</h3>
 
-<h3>Create Account</h3>
+<div class="grid">
 
-<br>
-
-<div class="form-grid">
-
-<div class="form-group">
+<div>
 
 <label>Account Type</label>
 
-<select id="newRole"
-        onchange="updateAccountFields()">
+<select id="accountRole"
+onchange="accountRoleChanged()">
 
-<option value="admin">Administrator</option>
-<option value="teacher">Teacher</option>
-<option value="student">Student</option>
-<option value="parent">Parent</option>
+<option value="admin">
+Administrator
+</option>
+
+<option value="teacher">
+Teacher
+</option>
+
+<option value="student">
+Student
+</option>
+
+<option value="parent">
+Parent
+</option>
 
 </select>
 
 </div>
 
-<div class="form-group">
+
+<div>
 
 <label>Full Name</label>
 
-<input id="newName"
-       placeholder="Full name">
+<input
+id="accountName"
+placeholder="Full name">
 
 </div>
 
-<div class="form-group">
+
+<div>
 
 <label>Username</label>
 
-<input id="newUsername"
-       placeholder="Unique username">
+<input
+id="accountUsername"
+placeholder="Username">
 
 </div>
 
-<div class="form-group">
+
+<div>
 
 <label>Password</label>
 
-<input id="newPassword"
-       type="password"
-       placeholder="Create password">
+<input
+id="accountPassword"
+type="password"
+placeholder="Password">
 
 </div>
 
-</div>
 
-
-<div id="teacherFields">
-
-<div class="form-grid">
-
-<div class="form-group">
-
-<label>Staff ID</label>
-
-<input id="staffId"
-       placeholder="Staff ID">
-
-</div>
-
-<div class="form-group">
+<div id="teacherSubjectField">
 
 <label>Subject</label>
 
-<input id="teacherSubject"
-       placeholder="e.g. Mathematics">
+<input
+id="teacherSubject"
+placeholder="e.g. Mathematics">
 
 </div>
 
-<div class="form-group">
+
+<div id="teacherClassField">
 
 <label>Class</label>
 
-<input id="teacherClass"
-       placeholder="e.g. SS1">
+<input
+id="teacherClass"
+placeholder="e.g. SS1">
 
 </div>
 
-<div class="form-group">
+
+<div id="hodField">
 
 <label>HOD Subject</label>
 
-<input id="hodSubject"
-       placeholder="Leave blank if not HOD">
+<input
+id="hodSubject"
+placeholder="Leave blank if not HOD">
 
 </div>
 
-<div class="form-group">
+
+<div id="examOfficerField">
 
 <label>Examination Officer</label>
 
 <select id="examOfficer">
 
-<option value="no">No</option>
-<option value="yes">Yes</option>
+<option value="no">
+No
+</option>
+
+<option value="yes">
+Yes
+</option>
 
 </select>
 
 </div>
 
-</div>
 
-</div>
-
-
-<div id="studentFields">
-
-<div class="form-grid">
-
-<div class="form-group">
+<div id="studentIdField">
 
 <label>Student ID</label>
 
-<input id="studentId"
-       placeholder="Student ID">
-
-</div>
-
-<div class="form-group">
-
-<label>Class</label>
-
-<input id="studentClass"
-       placeholder="e.g. JSS2">
-
-</div>
-
-</div>
+<input
+id="studentId"
+placeholder="Student ID">
 
 </div>
 
 
-<div id="parentFields">
+<div id="studentClassField">
 
-<div class="form-group">
+<label>Student Class</label>
 
-<label>Student Username to Link</label>
+<input
+id="studentClass"
+placeholder="e.g. JSS2">
 
-<input id="parentStudent"
-       placeholder="Enter student username">
+</div>
+
+
+<div id="parentStudentField">
+
+<label>Linked Student Username</label>
+
+<input
+id="linkedStudent"
+placeholder="Student username">
 
 </div>
 
 </div>
 
+<button
+class="primary"
+onclick="createAccount()">
 
-<div class="form-actions">
-
-<button onclick="createAccount()">
 Create Account
+
 </button>
 
 </div>
 
-</div>
 
-<br>
-
-<div class="table-wrap">
+<div class="table-wrapper">
 
 <table>
 
 <thead>
 
 <tr>
+
 <th>Name</th>
 <th>Username</th>
 <th>Account Type</th>
 <th>Status</th>
 <th>Action</th>
+
 </tr>
 
 </thead>
 
-<tbody id="accountsTable"></tbody>
+<tbody id="accountsTable">
+</tbody>
 
 </table>
 
@@ -1066,17 +791,15 @@ Create Account
 </section>
 
 
-<!-- TEACHERS -->
+<!-- ================= TEACHERS ================= -->
 
-<section id="teachers"
-         class="page">
+<section id="teachers" class="page">
 
-<div class="page-header">
-<h2>Teacher Management</h2>
-<p>Teachers, subjects, classes and responsibilities.</p>
-</div>
+<h2 class="page-title">
+Teacher Management
+</h2>
 
-<div class="table-wrap">
+<div class="table-wrapper">
 
 <table>
 
@@ -1093,7 +816,8 @@ Create Account
 
 </thead>
 
-<tbody id="teachersTable"></tbody>
+<tbody id="teachersTable">
+</tbody>
 
 </table>
 
@@ -1102,17 +826,15 @@ Create Account
 </section>
 
 
-<!-- STUDENTS -->
+<!-- ================= STUDENTS ================= -->
 
-<section id="students"
-         class="page">
+<section id="students" class="page">
 
-<div class="page-header">
-<h2>Student Management</h2>
-<p>Students created and managed by the Administrator.</p>
-</div>
+<h2 class="page-title">
+Student Management
+</h2>
 
-<div class="table-wrap">
+<div class="table-wrapper">
 
 <table>
 
@@ -1123,30 +845,28 @@ Create Account
 <th>Username</th>
 <th>Student ID</th>
 <th>Class</th>
+<th>Status</th>
 </tr>
 
 </thead>
 
-<tbody id="studentsTable"></tbody>
-
-</table>
+<tbody id="studentsTable">
+</tbody>
 
 </div>
 
 </section>
 
 
-<!-- PARENTS -->
+<!-- ================= PARENTS ================= -->
 
-<section id="parents"
-         class="page">
+<section id="parents" class="page">
 
-<div class="page-header">
-<h2>Parent Management</h2>
-<p>Parents created and managed by the Administrator.</p>
-</div>
+<h2 class="page-title">
+Parent Management
+</h2>
 
-<div class="table-wrap">
+<div class="table-wrapper">
 
 <table>
 
@@ -1156,11 +876,13 @@ Create Account
 <th>Name</th>
 <th>Username</th>
 <th>Linked Student</th>
+<th>Status</th>
 </tr>
 
 </thead>
 
-<tbody id="parentsTable"></tbody>
+<tbody id="parentsTable">
+</tbody>
 
 </table>
 
@@ -1169,203 +891,164 @@ Create Account
 </section>
 
 
-<!-- TEACHER DASHBOARD -->
+<!-- ================= TEACHER DASHBOARD ================= -->
 
-<section id="teacherDashboard"
-         class="page">
+<section id="teacherDashboard" class="page">
 
-<div class="page-header">
-<h2>Teacher Dashboard</h2>
-<p id="teacherWelcome"></p>
-</div>
+<h2 class="page-title">
+Teacher Dashboard
+</h2>
 
 <div class="cards">
 
 <div class="card">
-<h3>Subject</h3>
-<div id="teacherDashSubject">-</div>
+<div class="card-title">Teacher</div>
+<div id="teacherNameCard"></div>
 </div>
 
 <div class="card">
-<h3>Class</h3>
-<div id="teacherDashClass">-</div>
+<div class="card-title">Subject</div>
+<div id="teacherSubjectCard"></div>
 </div>
 
 <div class="card">
-<h3>HOD Assignment</h3>
-<div id="teacherDashHod">None</div>
+<div class="card-title">Class</div>
+<div id="teacherClassCard"></div>
 </div>
 
 <div class="card">
-<h3>Examination Officer</h3>
-<div id="teacherDashExam">No</div>
+<div class="card-title">HOD Assignment</div>
+<div id="teacherHodCard"></div>
 </div>
+
+<div class="card">
+<div class="card-title">Examination Officer</div>
+<div id="teacherExamCard"></div>
+</div>
+
+</div>
+
+<br>
+
+<div class="panel">
+
+<h3>Teacher Functions</h3>
+
+<p style="margin-top:10px">
+Use the Teacher Assistant to prepare lessons, schemes,
+continuous assessment, examinations, marking schemes and
+other academic materials.
+</p>
 
 </div>
 
 </section>
 
 
-<!-- TEACHER ASSISTANT -->
+<!-- ================= TEACHER ASSISTANT ================= -->
 
-<section id="teacherAssistant"
-         class="page">
+<section id="teacherAssistant" class="page">
 
-<div class="page-header">
+<h2 class="page-title">
+🤖 Teacher Assistant
+</h2>
 
-<h2>🤖 Teacher Assistant</h2>
+<div class="assistant-layout">
 
-<p>
-Have a conversation with your academic assistant about
-teaching, learning, lesson preparation, assessments and
-other academic work.
-</p>
+<div class="assistant-menu">
+
+<button onclick="quickPrompt('Explain this topic to me in a simple way that I can teach my students.')">
+💡 Explain Topic
+</button>
+
+<button onclick="quickPrompt('Prepare a Nigerian-standard lesson plan for me. Ask me for any missing information.')">
+📘 Lesson Plan
+</button>
+
+<button onclick="quickPrompt('Prepare a detailed lesson note for me.')">
+📖 Lesson Note
+</button>
+
+<button onclick="quickPrompt('Prepare a 13-week scheme of work for me.')">
+📚 Scheme of Work
+</button>
+
+<button onclick="quickPrompt('Create a continuous assessment for me.')">
+📝 CA
+</button>
+
+<button onclick="quickPrompt('Prepare an examination and marking scheme for me.')">
+📄 Examination
+</button>
+
+<button onclick="quickPrompt('Give me practical strategies for teaching a weak class.')">
+🧑‍🏫 Teaching Strategy
+</button>
+
+<button onclick="quickPrompt('Help me translate this academic material into Hausa, Arabic or French.')">
+🌍 Translation
+</button>
 
 </div>
 
 
-<div class="ta-layout">
+<div class="chat">
 
-<aside class="ta-sidebar">
+<div class="chat-header">
 
-<button class="ta-action"
-onclick="taQuick('Prepare a Nigerian-standard lesson plan. Ask me for any information you need.')">
-📘 Lesson Plan
-</button>
+<b>🤖 Teacher Assistant</b>
 
-<button class="ta-action"
-onclick="taQuick('Help me prepare a detailed lesson note.')">
-📖 Lesson Note
-</button>
-
-<button class="ta-action"
-onclick="taQuick('Help me prepare a 13-week scheme of work.')">
-📚 Scheme of Work
-</button>
-
-<button class="ta-action"
-onclick="taQuick('Help me create a continuous assessment.')">
-📝 CA
-</button>
-
-<button class="ta-action"
-onclick="taQuick('Help me prepare an examination.')">
-📄 Examination
-</button>
-
-<button class="ta-action"
-onclick="taQuick('Create a complete marking scheme.')">
-✅ Marking Scheme
-</button>
-
-<button class="ta-action"
-onclick="taQuick('Explain an academic topic to me in a simple way that I can teach to my students.')">
-💡 Explain Topic
-</button>
-
-<button class="ta-action"
-onclick="taQuick('Give me practical teaching strategies for my class.')">
-🧑‍🏫 Teaching Strategy
-</button>
-
-<button class="ta-action"
-onclick="taQuick('Help me translate academic material into Hausa, Arabic or French.')">
-🌍 Translation
-</button>
-
-<button class="ta-action"
-onclick="taQuick('Review my academic work for correctness and quality.')">
-🔍 Review Work
-</button>
-
-</aside>
-
-
-<div class="ta-chat">
-
-<div class="ta-top">
-
-<div class="ta-avatar">🤖</div>
-
-<div>
-
-<h3>Teacher Assistant</h3>
+<br>
 
 <small>
-Academic Assistant
+Academic Assistant • Caliphate Tarbiya Academy
 </small>
 
 </div>
 
-</div>
 
-
-<div id="taMessages"
-     class="ta-messages">
+<div id="chatMessages"
+class="chat-messages">
 
 <div class="message">
-
-<div class="message-icon">
-🤖
-</div>
 
 <div class="bubble">
 
 Hello! 👋
 
-<br><br>
-
 I am your Teacher Assistant.
 
-You can have a normal conversation with me about
-academic work, teaching, lesson preparation,
-assessment, examination questions, curriculum
-planning and classroom challenges.
+You can ask me about:
 
-<br><br>
+• Lesson Plans  
+• Lesson Notes  
+• Schemes of Work  
+• CA  
+• Examinations  
+• Marking Schemes  
+• Teaching Strategies  
+• Student exercises  
+• Curriculum planning  
+• Hausa, Arabic and French academic support  
+• Topic explanations
 
-What would you like help with today?
+</div>
 
 </div>
 
 </div>
 
-</div>
 
-
-<div class="quick-actions">
-
-<button onclick="useLastTA('lesson-plan')">
-Use as Lesson Plan
-</button>
-
-<button onclick="useLastTA('lesson-note')">
-Use as Lesson Note
-</button>
-
-<button onclick="useLastTA('scheme')">
-Use as Scheme
-</button>
-
-<button onclick="useLastTA('ca')">
-Use as CA
-</button>
-
-<button onclick="useLastTA('exam')">
-Use as Examination
-</button>
-
-</div>
-
-
-<div class="ta-input">
+<div class="chat-input">
 
 <textarea
-id="taInput"
+id="chatQuestion"
 placeholder="Ask your academic assistant anything..."
-onkeydown="taEnter(event)"></textarea>
+onkeydown="chatEnter(event)"></textarea>
 
-<button onclick="sendTA()">
+<button
+class="send-btn"
+onclick="sendAssistantMessage()">
 ➤
 </button>
 
@@ -1378,145 +1061,65 @@ onkeydown="taEnter(event)"></textarea>
 </section>
 
 
-<!-- LESSON PLAN -->
+<!-- ================= DOCUMENTS ================= -->
 
-<section id="lessonPlan"
-         class="page">
+<section id="documents" class="page">
 
-<div class="page-header">
-<h2>📘 Lesson Plan</h2>
-<p>Lesson plans generated or prepared by teachers.</p>
-</div>
+<h2 class="page-title">
+Academic Documents
+</h2>
 
-<div class="form-card">
+<div class="panel">
 
-<div class="form-group">
-<label>Topic</label>
-<input id="lessonTopic"
-placeholder="Enter topic">
-</div>
+<label>
+Document Type
+</label>
 
-<div class="form-group">
-<label>Lesson Content</label>
-<textarea id="lessonContent"
-rows="15"
-placeholder="Teacher Assistant content can be placed here."></textarea>
-</div>
+<select id="documentType">
 
-<button class="primary-btn"
-onclick="saveDocument('Lesson Plan')">
-Save Lesson Plan
-</button>
+<option>
+Lesson Plan
+</option>
 
-</div>
+<option>
+Lesson Note
+</option>
 
-</section>
+<option>
+Scheme of Work
+</option>
 
+<option>
+Continuous Assessment
+</option>
 
-<!-- LESSON NOTE -->
+<option>
+Examination
+</option>
 
-<section id="lessonNote"
-         class="page">
-
-<div class="page-header">
-<h2>📖 Lesson Note</h2>
-<p>Prepare and save lesson notes.</p>
-</div>
-
-<div class="form-card">
-
-<div class="form-group">
-<label>Topic</label>
-<input id="noteTopic">
-</div>
-
-<div class="form-group">
-<label>Lesson Note</label>
-<textarea id="noteContent"
-rows="18"></textarea>
-</div>
-
-<button class="primary-btn"
-onclick="saveDocument('Lesson Note')">
-Save Lesson Note
-</button>
-
-</div>
-
-</section>
-
-
-<!-- SCHEME -->
-
-<section id="scheme"
-         class="page">
-
-<div class="page-header">
-<h2>📚 Scheme of Work</h2>
-<p>Prepare and save schemes of work.</p>
-</div>
-
-<div class="form-card">
-
-<div class="form-group">
-<label>Subject</label>
-<input id="schemeSubject">
-</div>
-
-<div class="form-group">
-<label>Scheme</label>
-<textarea id="schemeContent"
-rows="20"
-placeholder="Week 1...
-Week 2...
-Week 3..."></textarea>
-</div>
-
-<button class="primary-btn"
-onclick="saveDocument('Scheme of Work')">
-Save Scheme
-</button>
-
-</div>
-
-</section>
-
-
-<!-- CA EXAM -->
-
-<section id="caExam"
-         class="page">
-
-<div class="page-header">
-<h2>📝 CA & Examination</h2>
-<p>Prepare assessments and examinations.</p>
-</div>
-
-<div class="form-card">
-
-<div class="form-group">
-
-<label>Document Type</label>
-
-<select id="assessmentType">
-
-<option>Continuous Assessment</option>
-<option>Examination</option>
-<option>Marking Scheme</option>
+<option>
+Marking Scheme
+</option>
 
 </select>
 
-</div>
 
-<div class="form-group">
-<label>Questions / Content</label>
-<textarea id="assessmentContent"
-rows="20"></textarea>
-</div>
+<label>
+Document Content
+</label>
 
-<button class="primary-btn"
-onclick="saveDocument('Assessment')">
-Save Assessment
+<textarea
+id="documentContent"
+rows="22"
+placeholder="Enter or generate your academic document here..."></textarea>
+
+
+<button
+class="primary"
+onclick="saveDraft()">
+
+Save Draft
+
 </button>
 
 </div>
@@ -1524,171 +1127,71 @@ Save Assessment
 </section>
 
 
-<!-- SUBMISSIONS -->
+<!-- ================= STUDENT PORTAL ================= -->
 
-<section id="submissions"
-         class="page">
+<section id="studentPortal" class="page">
 
-<div class="page-header">
-<h2>📤 My Submissions</h2>
-<p>Academic documents prepared by you.</p>
-</div>
-
-<div class="table-wrap">
-
-<table>
-
-<thead>
-<tr>
-<th>Document</th>
-<th>Subject</th>
-<th>Date</th>
-<th>Status</th>
-</tr>
-</thead>
-
-<tbody id="submissionsTable"></tbody>
-
-</table>
-
-</div>
-
-</section>
-
-
-<!-- STUDENT -->
-
-<section id="studentDashboard"
-         class="page">
-
-<div class="page-header">
-
-<h2>Student Portal</h2>
-
-<p>
-Welcome to your academic portal.
-</p>
-
-</div>
+<h2 class="page-title">
+Student Portal
+</h2>
 
 <div class="cards">
 
 <div class="card">
-<h3>Name</h3>
-<div id="studentPortalName">-</div>
+<div class="card-title">Student Name</div>
+<div id="portalStudentName"></div>
 </div>
 
 <div class="card">
-<h3>Student ID</h3>
-<div id="studentPortalId">-</div>
+<div class="card-title">Student ID</div>
+<div id="portalStudentID"></div>
 </div>
 
 <div class="card">
-<h3>Class</h3>
-<div id="studentPortalClass">-</div>
+<div class="card-title">Class</div>
+<div id="portalStudentClass"></div>
 </div>
+
+</div>
+
+<br>
+
+<div class="panel">
+
+<h3>Student Academic Portal</h3>
+
+<p style="margin-top:10px">
+Your attendance, continuous assessment, examinations
+and results will appear here when configured by the school.
+</p>
 
 </div>
 
 </section>
 
 
-<section id="studentResults"
-         class="page">
+<!-- ================= PARENT PORTAL ================= -->
 
-<div class="page-header">
-<h2>📊 My Results</h2>
-</div>
+<section id="parentPortal" class="page">
 
-<div class="card">
-No results have been published yet.
-</div>
+<h2 class="page-title">
+Parent Portal
+</h2>
 
-</section>
-
-
-<!-- PARENT -->
-
-<section id="parentDashboard"
-         class="page">
-
-<div class="page-header">
-
-<h2>Parent Portal</h2>
-
-<p>
-View information about your linked student.
-</p>
+<div id="parentInformation"
+class="panel">
 
 </div>
-
-<div class="card"
-     id="parentStudentInfo">
-No linked student information available.
-</div>
-
-</section>
-
-
-<section id="parentResults"
-         class="page">
-
-<div class="page-header">
-<h2>📊 Child Results</h2>
-</div>
-
-<div class="card">
-No results have been published yet.
-</div>
-
-</section>
-
-
-<!-- SETTINGS -->
-
-<section id="settings"
-         class="page">
-
-<div class="page-header">
-
-<h2>⚙️ Settings</h2>
-
-<p>
-Academy system settings.
-</p>
-
-</div>
-
-<div class="card">
-
-<h3>System Information</h3>
 
 <br>
 
-<p>
-<strong>School:</strong>
-Caliphate Tarbiya Academy Sokoto
-</p>
+<div class="panel">
 
-<br>
+<h3>Academic Information</h3>
 
-<p>
-<strong>Login Types:</strong>
-Administrator, Teacher, Student, Parent
-</p>
-
-<br>
-
-<p>
-<strong>HOD:</strong>
-Teacher responsibility
-</p>
-
-<br>
-
-<p>
-<strong>Examination Officer:</strong>
-Teacher responsibility
+<p style="margin-top:10px">
+Linked student's attendance, results, CA and examination
+information will appear here.
 </p>
 
 </div>
@@ -1707,79 +1210,83 @@ Teacher responsibility
    DATABASE
 ========================================================= */
 
-const DB_KEY =
-"CTA_ACADEMY_V10_DATABASE";
+const DATABASE_KEY = "CTA_ACADEMY_V11_DATABASE";
+const SESSION_KEY = "CTA_ACADEMY_V11_SESSION";
 
-const SESSION_KEY =
-"CTA_ACADEMY_V10_SESSION";
-
-
-let db =
-JSON.parse(
-localStorage.getItem(DB_KEY)
-);
+let database =
+JSON.parse(localStorage.getItem(DATABASE_KEY) || "null");
 
 
 /*
- IMPORTANT:
-
- ONLY ONE ACCOUNT EXISTS WHEN THE SYSTEM
- IS FIRST CREATED:
-
- Administrator
- username: admin
- password: admin123
-
- NO DEFAULT TEACHER
- NO DEFAULT STUDENT
- NO DEFAULT PARENT
+ INITIAL DATABASE
+ ONLY ADMINISTRATOR EXISTS
 */
 
-if(!db){
+if(!database){
 
-    db = {
+database = {
 
-        accounts:[
+accounts:[
 
-            {
-                id:"admin-001",
-                role:"admin",
-                name:"System Administrator",
-                username:"admin",
-                password:"admin123",
-                active:true
-            }
+{
+id:"admin-001",
+role:"admin",
+name:"System Administrator",
+username:"Admin",
+password:"Admin@2026!",
+active:true
+}
 
-        ],
+],
 
-        documents:[],
+documents:[]
 
-        messages:[]
+};
 
-    };
-
-    saveDB();
+saveDatabase();
 
 }
 
 
-let currentUser = null;
+/*
+ MAKE SURE INITIAL ADMIN USES REQUESTED CREDENTIALS
+*/
 
-let selectedLoginRole = "admin";
+let initialAdmin =
+database.accounts.find(
+account => account.id === "admin-001"
+);
 
-let lastTAAnswer = "";
+if(initialAdmin){
+
+initialAdmin.role = "admin";
+initialAdmin.username = "Admin";
+initialAdmin.password = "Admin@2026!";
+initialAdmin.active = true;
+
+saveDatabase();
+
+}
 
 
 /* =========================================================
-   DATABASE FUNCTIONS
+   VARIABLES
 ========================================================= */
 
-function saveDB(){
+let selectedLoginRole = "admin";
+let currentUser = null;
 
-    localStorage.setItem(
-        DB_KEY,
-        JSON.stringify(db)
-    );
+
+/* =========================================================
+   DATABASE SAVE
+========================================================= */
+
+function saveDatabase(){
+
+localStorage.setItem(
+DATABASE_KEY,
+JSON.stringify(database)
+);
 
 }
 
@@ -1790,19 +1297,17 @@ function saveDB(){
 
 function selectLoginRole(role,button){
 
-    selectedLoginRole = role;
+selectedLoginRole = role;
 
-    document
-    .querySelectorAll(".role-tab")
-    .forEach(
-        b=>b.classList.remove("active")
-    );
+document
+.querySelectorAll(".login-types button")
+.forEach(btn=>{
+btn.classList.remove("active");
+});
 
-    button.classList.add("active");
+button.classList.add("active");
 
-    document.getElementById(
-        "loginMessage"
-    ).textContent = "";
+document.getElementById("loginError").textContent="";
 
 }
 
@@ -1811,66 +1316,66 @@ function selectLoginRole(role,button){
    LOGIN
 ========================================================= */
 
-function login(event){
+function login(){
 
-    event.preventDefault();
+const username =
+document.getElementById("loginUsername")
+.value
+.trim();
 
-    const username =
-        document
-        .getElementById("loginUsername")
-        .value
-        .trim();
+const password =
+document.getElementById("loginPassword")
+.value;
 
-    const password =
-        document
-        .getElementById("loginPassword")
-        .value;
-
-    const account =
-        db.accounts.find(
-            a =>
-            a.username.toLowerCase() ===
-            username.toLowerCase()
-            &&
-            a.password === password
-            &&
-            a.active !== false
-        );
+const error =
+document.getElementById("loginError");
 
 
-    if(!account){
+const account =
+database.accounts.find(account =>
 
-        document.getElementById(
-            "loginMessage"
-        ).innerHTML =
-        '<span style="color:#dc2626">Invalid username or password.</span>';
+account.username.toLowerCase() ===
+username.toLowerCase()
 
-        return;
+&&
 
-    }
+account.password === password
 
+&&
 
-    if(account.role !== selectedLoginRole){
+account.active !== false
 
-        document.getElementById(
-            "loginMessage"
-        ).innerHTML =
-        '<span style="color:#dc2626">Please select the correct account type.</span>';
-
-        return;
-
-    }
+);
 
 
-    currentUser = account;
+if(!account){
 
-    localStorage.setItem(
-        SESSION_KEY,
-        account.id
-    );
+error.textContent =
+"Invalid username or password.";
+
+return;
+
+}
 
 
-    openApplication();
+if(account.role !== selectedLoginRole){
+
+error.textContent =
+"Please select the correct account type.";
+
+return;
+
+}
+
+
+currentUser = account;
+
+localStorage.setItem(
+SESSION_KEY,
+account.id
+);
+
+openApplication();
 
 }
 
@@ -1881,74 +1386,58 @@ function login(event){
 
 function openApplication(){
 
-    document
-    .getElementById("loginPage")
-    .classList.add("hidden");
+document
+.getElementById("loginScreen")
+.classList.add("hidden");
 
-    document
-    .getElementById("app")
-    .classList.remove("hidden");
-
-
-    document.getElementById(
-        "currentUserName"
-    ).textContent =
-        currentUser.name;
+document
+.getElementById("app")
+.classList.remove("hidden");
 
 
-    hideAllNavigation();
+document
+.getElementById("currentUser")
+.textContent =
+currentUser.name;
 
 
-    if(currentUser.role === "admin"){
-
-        document
-        .getElementById("adminNavigation")
-        .style.display = "block";
-
-        showPage("dashboard");
-
-        refreshAdmin();
-
-    }
+buildNavigation();
 
 
-    if(currentUser.role === "teacher"){
+if(currentUser.role === "admin"){
 
-        document
-        .getElementById("teacherNavigation")
-        .style.display = "block";
+showPage("adminDashboard");
 
-        setupTeacher();
+refreshAdminData();
 
-        showPage("teacherDashboard");
-
-    }
+}
 
 
-    if(currentUser.role === "student"){
+if(currentUser.role === "teacher"){
 
-        document
-        .getElementById("studentNavigation")
-        .style.display = "block";
+showPage("teacherDashboard");
 
-        setupStudent();
+loadTeacherDashboard();
 
-        showPage("studentDashboard");
-
-    }
+}
 
 
-    if(currentUser.role === "parent"){
+if(currentUser.role === "student"){
 
-        document
-        .getElementById("parentNavigation")
-        .style.display = "block";
+showPage("studentPortal");
 
-        setupParent();
+loadStudentPortal();
 
-        showPage("parentDashboard");
+}
 
-    }
+
+if(currentUser.role === "parent"){
+
+showPage("parentPortal");
+
+loadParentPortal();
+
+}
 
 }
 
@@ -1957,37 +1446,1228 @@ function openApplication(){
    NAVIGATION
 ========================================================= */
 
-function hideAllNavigation(){
+function buildNavigation(){
 
-    [
-        "adminNavigation",
-        "teacherNavigation",
-        "studentNavigation",
-        "parentNavigation"
-    ].forEach(id=>{
+const sidebar =
+document.getElementById("sidebar");
 
-        document.getElementById(id)
-        .style.display = "none";
+let html = "";
 
-    });
+
+if(currentUser.role === "admin"){
+
+html += `
+<button onclick="showPage('adminDashboard')">
+🏠 Dashboard
+</button>
+
+<button onclick="showPage('accounts')">
+👥 Account Management
+</button>
+
+<button onclick="showPage('teachers')">
+👨‍🏫 Teacher Management
+</button>
+
+<button onclick="showPage('students')">
+👨‍🎓 Student Management
+</button>
+
+<button onclick="showPage('parents')">
+👪 Parent Management
+</button>
+`;
 
 }
 
 
-function showPage(id){
+if(currentUser.role === "teacher"){
 
-    document
-    .querySelectorAll(".page")
-    .forEach(
-        p=>p.classList.remove("active")
-    );
+html += `
+<button onclick="showPage('teacherDashboard')">
+🏠 Dashboard
+</button>
 
-    const page =
-        document.getElementById(id);
+<button onclick="showPage('teacherAssistant')">
+🤖 Teacher Assistant
+</button>
 
-    if(page){
-        page.classList.add("active");
-    }
+<button onclick="showPage('documents')">
+📚 Academic Documents
+</button>
+`;
+
+}
+
+
+if(currentUser.role === "student"){
+
+html += `
+<button onclick="showPage('studentPortal')">
+🏠 Student Portal
+</button>
+`;
+
+}
+
+
+if(currentUser.role === "parent"){
+
+html += `
+<button onclick="showPage('parentPortal')">
+🏠 Parent Portal
+</button>
+`;
+
+}
+
+
+sidebar.innerHTML = html;
+
+}
+
+
+/* =========================================================
+   SHOW PAGE
+========================================================= */
+
+function showPage(pageID){
+
+document
+.querySelectorAll(".page")
+.forEach(page=>{
+page.classList.remove("active");
+});
+
+
+const page =
+document.getElementById(pageID);
+
+if(page){
+
+page.classList.add("active");
+
+}
+
+}
+
+
+/* =========================================================
+   ADMIN DATA
+========================================================= */
+
+function refreshAdminData(){
+
+const admins =
+database.accounts.filter(
+a=>a.role==="admin"
+).length;
+
+const teachers =
+database.accounts.filter(
+a=>a.role==="teacher"
+).length;
+
+const students =
+database.accounts.filter(
+a=>a.role==="student"
+).length;
+
+const parents =
+database.accounts.filter(
+a=>a.role==="parent"
+).length;
+
+
+document.getElementById("adminCount")
+.textContent=admins;
+
+document.getElementById("teacherCount")
+.textContent=teachers;
+
+document.getElementById("studentCount")
+.textContent=students;
+
+document.getElementById("parentCount")
+.textContent=parents;
+
+
+loadAccountsTable();
+loadTeachersTable();
+loadStudentsTable();
+loadParentsTable();
+
+}
+
+
+/* =========================================================
+   ACCOUNT FORM
+========================================================= */
+
+function accountRoleChanged(){
+
+const role =
+document.getElementById("accountRole").value;
+
+
+const teacher =
+role==="teacher";
+
+const student =
+role==="student";
+
+const parent =
+role==="parent";
+
+
+document.getElementById(
+"teacherSubjectField"
+).style.display =
+teacher ? "block" : "none";
+
+
+document.getElementById(
+"teacherClassField"
+).style.display =
+teacher ? "block" : "none";
+
+
+document.getElementById(
+"hodField"
+).style.display =
+teacher ? "block" : "none";
+
+
+document.getElementById(
+"examOfficerField"
+).style.display =
+teacher ? "block" : "none";
+
+
+document.getElementById(
+"studentIdField"
+).style.display =
+student ? "block" : "none";
+
+
+document.getElementById(
+"studentClassField"
+).style.display =
+student ? "block" : "none";
+
+
+document.getElementById(
+"parentStudentField"
+).style.display =
+parent ? "block" : "none";
+
+}
+
+
+accountRoleChanged();
+
+
+/* =========================================================
+   CREATE ACCOUNT
+========================================================= */
+
+function createAccount(){
+
+if(!currentUser ||
+currentUser.role !== "admin"){
+
+alert(
+"Only the Administrator can create accounts."
+);
+
+return;
+
+}
+
+
+const role =
+document.getElementById("accountRole").value;
+
+const name =
+document.getElementById("accountName").value.trim();
+
+const username =
+document.getElementById("accountUsername").value.trim();
+
+const password =
+document.getElementById("accountPassword").value;
+
+
+if(!name || !username || !password){
+
+alert(
+"Please fill in Name, Username and Password."
+);
+
+return;
+
+}
+
+
+const exists =
+database.accounts.some(
+a =>
+a.username.toLowerCase() ===
+username.toLowerCase()
+);
+
+
+if(exists){
+
+alert(
+"This username already exists."
+);
+
+return;
+
+}
+
+
+const account = {
+
+id:"user-" + Date.now(),
+
+role:role,
+
+name:name,
+
+username:username,
+
+password:password,
+
+active:true
+
+};
+
+
+if(role==="teacher"){
+
+account.subject =
+document.getElementById("teacherSubject")
+.value.trim();
+
+account.className =
+document.getElementById("teacherClass")
+.value.trim();
+
+account.hodSubject =
+document.getElementById("hodSubject")
+.value.trim();
+
+account.examOfficer =
+document.getElementById("examOfficer")
+.value === "yes";
+
+}
+
+
+if(role==="student"){
+
+account.studentId =
+document.getElementById("studentId")
+.value.trim();
+
+account.className =
+document.getElementById("studentClass")
+.value.trim();
+
+}
+
+
+if(role==="parent"){
+
+account.linkedStudent =
+document.getElementById("linkedStudent")
+.value.trim();
+
+}
+
+
+database.accounts.push(account);
+
+saveDatabase();
+
+clearAccountForm();
+
+refreshAdminData();
+
+alert(
+"Account created successfully."
+);
+
+}
+
+
+/* =========================================================
+   CLEAR FORM
+========================================================= */
+
+function clearAccountForm(){
+
+[
+"accountName",
+"accountUsername",
+"accountPassword",
+"teacherSubject",
+"teacherClass",
+"hodSubject",
+"studentId",
+"studentClass",
+"linkedStudent"
+
+].forEach(id=>{
+
+const element =
+document.getElementById(id);
+
+if(element){
+element.value="";
+}
+
+});
+
+}
+
+
+/* =========================================================
+   ACCOUNTS TABLE
+========================================================= */
+
+function loadAccountsTable(){
+
+const table =
+document.getElementById("accountsTable");
+
+table.innerHTML = "";
+
+
+database.accounts.forEach(account=>{
+
+const row =
+document.createElement("tr");
+
+
+row.innerHTML = `
+
+<td>
+${escapeHTML(account.name)}
+</td>
+
+<td>
+${escapeHTML(account.username)}
+</td>
+
+<td>
+${account.role}
+</td>
+
+<td>
+${account.active === false
+? "Inactive"
+: "Active"}
+</td>
+
+<td>
+
+${
+account.id !== currentUser.id
+
+?
+
+`
+
+<button
+class="small-btn"
+onclick="toggleAccount('${account.id}')">
+
+${account.active === false
+? "Activate"
+: "Deactivate"}
+
+</button>
+
+<button
+class="small-btn delete-btn"
+onclick="deleteAccount('${account.id}')">
+
+Delete
+
+</button>
+
+`
+
+:
+
+"Current Account"
+
+}
+
+</td>
+
+`;
+
+
+table.appendChild(row);
+
+});
+
+}
+
+
+/* =========================================================
+   TEACHER TABLE
+========================================================= */
+
+function loadTeachersTable(){
+
+const table =
+document.getElementById("teachersTable");
+
+table.innerHTML = "";
+
+
+database.accounts
+
+.filter(a=>a.role==="teacher")
+
+.forEach(account=>{
+
+const row =
+document.createElement("tr");
+
+
+row.innerHTML = `
+
+<td>
+${escapeHTML(account.name)}
+</td>
+
+<td>
+${escapeHTML(account.username)}
+</td>
+
+<td>
+${escapeHTML(account.subject || "-")}
+</td>
+
+<td>
+${escapeHTML(account.className || "-")}
+</td>
+
+<td>
+${escapeHTML(account.hodSubject || "None")}
+</td>
+
+<td>
+${account.examOfficer ? "Yes" : "No"}
+</td>
+
+`;
+
+
+table.appendChild(row);
+
+});
+
+}
+
+
+/* =========================================================
+   STUDENTS TABLE
+========================================================= */
+
+function loadStudentsTable(){
+
+const table =
+document.getElementById("studentsTable");
+
+table.innerHTML = "";
+
+
+database.accounts
+
+.filter(a=>a.role==="student")
+
+.forEach(account=>{
+
+const row =
+document.createElement("tr");
+
+
+row.innerHTML = `
+
+<td>
+${escapeHTML(account.name)}
+</td>
+
+<td>
+${escapeHTML(account.username)}
+</td>
+
+<td>
+${escapeHTML(account.studentId || "-")}
+</td>
+
+<td>
+${escapeHTML(account.className || "-")}
+</td>
+
+<td>
+${account.active ? "Active" : "Inactive"}
+</td>
+
+`;
+
+
+table.appendChild(row);
+
+});
+
+}
+
+
+/* =========================================================
+   PARENT TABLE
+========================================================= */
+
+function loadParentsTable(){
+
+const table =
+document.getElementById("parentsTable");
+
+table.innerHTML = "";
+
+
+database.accounts
+
+.filter(a=>a.role==="parent")
+
+.forEach(account=>{
+
+const row =
+document.createElement("tr");
+
+
+row.innerHTML = `
+
+<td>
+${escapeHTML(account.name)}
+</td>
+
+<td>
+${escapeHTML(account.username)}
+</td>
+
+<td>
+${escapeHTML(account.linkedStudent || "-")}
+</td>
+
+<td>
+${account.active ? "Active" : "Inactive"}
+</td>
+
+`;
+
+
+table.appendChild(row);
+
+});
+
+}
+
+
+/* =========================================================
+   TOGGLE ACCOUNT
+========================================================= */
+
+function toggleAccount(id){
+
+const account =
+database.accounts.find(
+a=>a.id===id
+);
+
+
+if(!account){
+return;
+}
+
+
+account.active =
+!account.active;
+
+
+saveDatabase();
+
+refreshAdminData();
+
+}
+
+
+/* =========================================================
+   DELETE ACCOUNT
+========================================================= */
+
+function deleteAccount(id){
+
+if(!confirm(
+"Are you sure you want to delete this account?"
+)){
+
+return;
+
+}
+
+
+database.accounts =
+database.accounts.filter(
+a=>a.id!==id
+);
+
+
+saveDatabase();
+
+refreshAdminData();
+
+}
+
+
+/* =========================================================
+   TEACHER DASHBOARD
+========================================================= */
+
+function loadTeacherDashboard(){
+
+document.getElementById(
+"teacherNameCard"
+).textContent =
+currentUser.name;
+
+
+document.getElementById(
+"teacherSubjectCard"
+).textContent =
+currentUser.subject || "-";
+
+
+document.getElementById(
+"teacherClassCard"
+).textContent =
+currentUser.className || "-";
+
+
+document.getElementById(
+"teacherHodCard"
+).textContent =
+currentUser.hodSubject || "Not assigned";
+
+
+document.getElementById(
+"teacherExamCard"
+).textContent =
+currentUser.examOfficer
+? "Yes"
+: "No";
+
+}
+
+
+/* =========================================================
+   STUDENT PORTAL
+========================================================= */
+
+function loadStudentPortal(){
+
+document.getElementById(
+"portalStudentName"
+).textContent =
+currentUser.name;
+
+
+document.getElementById(
+"portalStudentID"
+).textContent =
+currentUser.studentId || "-";
+
+
+document.getElementById(
+"portalStudentClass"
+).textContent =
+currentUser.className || "-";
+
+}
+
+
+/* =========================================================
+   PARENT PORTAL
+========================================================= */
+
+function loadParentPortal(){
+
+const box =
+document.getElementById(
+"parentInformation"
+);
+
+
+const student =
+database.accounts.find(
+
+a =>
+
+a.role==="student"
+
+&&
+
+a.username.toLowerCase() ===
+String(currentUser.linkedStudent || "")
+.toLowerCase()
+
+);
+
+
+if(!student){
+
+box.innerHTML = `
+
+<h3>
+Parent Account
+</h3>
+
+<p style="margin-top:10px">
+No student has been linked to this parent account yet.
+</p>
+
+`;
+
+return;
+
+}
+
+
+box.innerHTML = `
+
+<h3>
+Linked Student
+</h3>
+
+<br>
+
+<p>
+<b>Name:</b>
+${escapeHTML(student.name)}
+</p>
+
+<p>
+<b>Student ID:</b>
+${escapeHTML(student.studentId || "-")}
+</p>
+
+<p>
+<b>Class:</b>
+${escapeHTML(student.className || "-")}
+</p>
+
+`;
+
+}
+
+
+/* =========================================================
+   TEACHER ASSISTANT
+========================================================= */
+
+function quickPrompt(text){
+
+document.getElementById(
+"chatQuestion"
+).value=text;
+
+document.getElementById(
+"chatQuestion"
+).focus();
+
+}
+
+
+function chatEnter(event){
+
+if(
+event.key==="Enter"
+&&
+!event.shiftKey
+){
+
+event.preventDefault();
+
+sendAssistantMessage();
+
+}
+
+}
+
+
+/*
+ The frontend sends the request to a secure backend.
+ Do NOT place an OpenAI/API secret key inside this HTML.
+*/
+
+async function sendAssistantMessage(){
+
+const input =
+document.getElementById(
+"chatQuestion"
+);
+
+const question =
+input.value.trim();
+
+
+if(!question){
+return;
+}
+
+
+addChatMessage(
+"user",
+question
+);
+
+
+input.value="";
+
+
+try{
+
+const response =
+await fetch(
+"/api/teacher-assistant",
+{
+
+method:"POST",
+
+headers:{
+"Content-Type":
+"application/json"
+},
+
+body:JSON.stringify({
+
+message:question,
+
+teacher:{
+name:currentUser.name,
+subject:currentUser.subject || "",
+className:currentUser.className || "",
+hodSubject:currentUser.hodSubject || "",
+examOfficer:currentUser.examOfficer || false
+},
+
+school:
+"Caliphate Tarbiya Academy Sokoto"
+
+})
+
+}
+);
+
+
+if(!response.ok){
+
+throw new Error(
+"Backend unavailable"
+);
+
+}
+
+
+const data =
+await response.json();
+
+
+const answer =
+data.answer ||
+data.message ||
+"No response was returned.";
+
+
+addChatMessage(
+"assistant",
+answer
+);
+
+
+}
+
+catch(error){
+
+const answer =
+localAssistantResponse(question);
+
+
+addChatMessage(
+"assistant",
+answer
+);
+
+}
+
+}
+
+
+/* =========================================================
+   CHAT MESSAGE
+========================================================= */
+
+function addChatMessage(type,text){
+
+const container =
+document.getElementById(
+"chatMessages"
+);
+
+
+const message =
+document.createElement("div");
+
+message.className =
+"message " +
+(type==="user" ? "user" : "");
+
+
+const bubble =
+document.createElement("div");
+
+bubble.className="bubble";
+
+bubble.textContent=text;
+
+
+message.appendChild(bubble);
+
+container.appendChild(message);
+
+container.scrollTop =
+container.scrollHeight;
+
+}
+
+
+/* =========================================================
+   LOCAL TEACHER ASSISTANT FALLBACK
+========================================================= */
+
+function localAssistantResponse(question){
+
+const q =
+question.toLowerCase();
+
+
+if(
+q.includes("lesson plan")
+){
+
+return `I can prepare a Nigerian-standard Lesson Plan.
+
+The lesson plan should include:
+
+1. Date
+2. Class
+3. Subject
+4. Topic
+5. Duration
+6. Entry Behaviour
+7. Objectives
+8. Instructional Materials
+9. References
+10. Set Induction
+11. Presentation
+12. Teacher's Activities
+13. Learners' Activities
+14. Evaluation
+15. Conclusion
+16. Assignment
+
+For a complete lesson plan, provide the class, subject, topic and duration.`;
+
+}
+
+
+if(
+q.includes("lesson note")
+){
+
+return `I can prepare a detailed Lesson Note.
+
+Please provide:
+
+• Class
+• Subject
+• Topic
+• Sub-topic
+• Term
+• Week
+• Duration
+
+I will structure it for classroom teaching.`;
+
+}
+
+
+if(
+q.includes("scheme")
+){
+
+return `I can prepare a 13-week Scheme of Work.
+
+Please provide:
+
+• Class
+• Subject
+• Term
+• Session
+• Curriculum/topic requirements
+
+The scheme can include Week, Topic, Sub-topic, Objectives and Suggested Activities.`;
+
+}
+
+
+if(
+q.includes("examination")
+||
+q.includes("exam")
+||
+q.includes("ca")
+){
+
+return `I can prepare Continuous Assessment or Examination questions.
+
+Please provide:
+
+• Class
+• Subject
+• Topics
+• Number of questions
+• Objective/theory preference
+
+I can also prepare a marking scheme.`;
+
+}
+
+
+if(
+q.includes("explain")
+){
+
+return `I can explain academic topics in a simple classroom-friendly way.
+
+Please tell me the topic, class and subject.
+
+For example:
+
+"Explain Standard Form to SS1 Mathematics students."
+
+I can then provide the explanation, examples, class activity and evaluation questions.`;
+
+}
+
+
+return `I am ready to assist you with your academic work.
+
+You can ask me things such as:
+
+"Explain indices to SS1."
+
+"Prepare a lesson plan for JSS2 Mathematics."
+
+"Give me 20 questions on fractions."
+
+"Prepare a 13-week SS1 Mathematics scheme."
+
+"Create an examination and marking scheme."
+
+"Translate this lesson into Hausa."
+
+The full AI conversation requires the secure Teacher Assistant backend to be connected.`;
+
+}
+
+
+/* =========================================================
+   ACADEMIC DOCUMENTS
+========================================================= */
+
+function saveDraft(){
+
+if(
+!currentUser ||
+currentUser.role!=="teacher"
+){
+
+alert(
+"Only teachers can save academic documents."
+);
+
+return;
+
+}
+
+
+const type =
+document.getElementById(
+"documentType"
+).value;
+
+
+const content =
+document.getElementById(
+"documentContent"
+).value.trim();
+
+
+if(!content){
+
+alert(
+"Please enter document content."
+);
+
+return;
+
+}
+
+
+database.documents.push({
+
+id:"doc-"+Date.now(),
+
+teacherId:currentUser.id,
+
+teacherName:currentUser.name,
+
+type:type,
+
+content:content,
+
+status:"Draft",
+
+createdAt:
+new Date().toISOString()
+
+});
+
+
+saveDatabase();
+
+
+alert(
+"Academic document saved as draft."
+);
 
 }
 
@@ -1998,1315 +2678,73 @@ function showPage(id){
 
 function logout(){
 
-    currentUser = null;
+localStorage.removeItem(
+SESSION_KEY
+);
 
-    localStorage.removeItem(
-        SESSION_KEY
-    );
-
-    location.reload();
+location.reload();
 
 }
 
 
 /* =========================================================
-   ADMIN
-========================================================= */
-
-function refreshAdmin(){
-
-    const admins =
-        db.accounts.filter(
-            a=>a.role==="admin"
-        );
-
-    const teachers =
-        db.accounts.filter(
-            a=>a.role==="teacher"
-        );
-
-    const students =
-        db.accounts.filter(
-            a=>a.role==="student"
-        );
-
-    const parents =
-        db.accounts.filter(
-            a=>a.role==="parent"
-        );
-
-
-    document.getElementById(
-        "adminCount"
-    ).textContent = admins.length;
-
-    document.getElementById(
-        "teacherCount"
-    ).textContent = teachers.length;
-
-    document.getElementById(
-        "studentCount"
-    ).textContent = students.length;
-
-    document.getElementById(
-        "parentCount"
-    ).textContent = parents.length;
-
-
-    renderAccounts();
-    renderTeachers();
-    renderStudents();
-    renderParents();
-
-}
-
-
-function updateAccountFields(){
-
-    const role =
-        document.getElementById(
-            "newRole"
-        ).value;
-
-
-    document.getElementById(
-        "teacherFields"
-    ).style.display =
-        role==="teacher"
-        ? "block"
-        : "none";
-
-
-    document.getElementById(
-        "studentFields"
-    ).style.display =
-        role==="student"
-        ? "block"
-        : "none";
-
-
-    document.getElementById(
-        "parentFields"
-    ).style.display =
-        role==="parent"
-        ? "block"
-        : "none";
-
-}
-
-
-function createAccount(){
-
-    if(
-        !currentUser ||
-        currentUser.role !== "admin"
-    ){
-
-        alert(
-            "Only an Administrator can create accounts."
-        );
-
-        return;
-
-    }
-
-
-    const role =
-        document.getElementById(
-            "newRole"
-        ).value;
-
-    const name =
-        document.getElementById(
-            "newName"
-        ).value.trim();
-
-    const username =
-        document.getElementById(
-            "newUsername"
-        ).value.trim();
-
-    const password =
-        document.getElementById(
-            "newPassword"
-        ).value;
-
-
-    if(!name || !username || !password){
-
-        alert(
-            "Please fill in name, username and password."
-        );
-
-        return;
-
-    }
-
-
-    const exists =
-        db.accounts.some(
-            a =>
-            a.username.toLowerCase() ===
-            username.toLowerCase()
-        );
-
-
-    if(exists){
-
-        alert(
-            "That username already exists."
-        );
-
-        return;
-
-    }
-
-
-    const account = {
-
-        id:
-        "account-" +
-        Date.now(),
-
-        role:role,
-
-        name:name,
-
-        username:username,
-
-        password:password,
-
-        active:true
-
-    };
-
-
-    if(role==="teacher"){
-
-        account.staffId =
-            document.getElementById(
-                "staffId"
-            ).value.trim();
-
-        account.subject =
-            document.getElementById(
-                "teacherSubject"
-            ).value.trim();
-
-        account.className =
-            document.getElementById(
-                "teacherClass"
-            ).value.trim();
-
-        account.hodSubject =
-            document.getElementById(
-                "hodSubject"
-            ).value.trim();
-
-        account.examOfficer =
-            document.getElementById(
-                "examOfficer"
-            ).value === "yes";
-
-    }
-
-
-    if(role==="student"){
-
-        account.studentId =
-            document.getElementById(
-                "studentId"
-            ).value.trim();
-
-        account.className =
-            document.getElementById(
-                "studentClass"
-            ).value.trim();
-
-    }
-
-
-    if(role==="parent"){
-
-        account.linkedStudent =
-            document.getElementById(
-                "parentStudent"
-            ).value.trim();
-
-    }
-
-
-    db.accounts.push(account);
-
-    saveDB();
-
-    clearAccountForm();
-
-    refreshAdmin();
-
-
-    document.getElementById(
-        "accountMessage"
-    ).innerHTML =
-    '<div class="alert success">Account created successfully.</div>';
-
-}
-
-
-function clearAccountForm(){
-
-    [
-        "newName",
-        "newUsername",
-        "newPassword",
-        "staffId",
-        "teacherSubject",
-        "teacherClass",
-        "hodSubject",
-        "studentId",
-        "studentClass",
-        "parentStudent"
-    ].forEach(id=>{
-
-        const el =
-            document.getElementById(id);
-
-        if(el) el.value = "";
-
-    });
-
-}
-
-
-function renderAccounts(){
-
-    const tbody =
-        document.getElementById(
-            "accountsTable"
-        );
-
-    tbody.innerHTML = "";
-
-
-    db.accounts.forEach(account=>{
-
-        const roleName =
-            account.role==="admin"
-            ? "Administrator"
-            : account.role==="teacher"
-            ? "Teacher"
-            : account.role==="student"
-            ? "Student"
-            : "Parent";
-
-
-        const tr =
-            document.createElement("tr");
-
-
-        tr.innerHTML = `
-
-            <td>${escapeHTML(account.name)}</td>
-
-            <td>${escapeHTML(account.username)}</td>
-
-            <td>${roleName}</td>
-
-            <td>
-                ${account.active!==false
-                ? "Active"
-                : "Inactive"}
-            </td>
-
-            <td>
-
-                <button
-                class="action-btn"
-                onclick="toggleAccount('${account.id}')">
-
-                ${account.active!==false
-                ? "Deactivate"
-                : "Activate"}
-
-                </button>
-
-                ${
-                    account.id !== currentUser.id
-                    ?
-                    `
-                    <button
-                    class="action-btn danger-btn"
-                    onclick="deleteAccount('${account.id}')">
-
-                    Delete
-
-                    </button>
-                    `
-                    :
-                    ""
-                }
-
-            </td>
-
-        `;
-
-        tbody.appendChild(tr);
-
-    });
-
-}
-
-
-function toggleAccount(id){
-
-    if(
-        !currentUser ||
-        currentUser.role!=="admin"
-    ) return;
-
-
-    const account =
-        db.accounts.find(
-            a=>a.id===id
-        );
-
-    if(!account) return;
-
-    account.active =
-        account.active === false;
-
-
-    saveDB();
-
-    refreshAdmin();
-
-}
-
-
-function deleteAccount(id){
-
-    if(
-        !currentUser ||
-        currentUser.role!=="admin"
-    ) return;
-
-
-    if(
-        id === currentUser.id
-    ){
-
-        alert(
-            "You cannot delete the Administrator account you are currently using."
-        );
-
-        return;
-
-    }
-
-
-    if(
-        !confirm(
-            "Delete this account permanently?"
-        )
-    ) return;
-
-
-    db.accounts =
-        db.accounts.filter(
-            a=>a.id!==id
-        );
-
-
-    saveDB();
-
-    refreshAdmin();
-
-}
-
-
-/* =========================================================
-   TEACHERS
-========================================================= */
-
-function renderTeachers(){
-
-    const tbody =
-        document.getElementById(
-            "teachersTable"
-        );
-
-    tbody.innerHTML = "";
-
-
-    db.accounts
-    .filter(a=>a.role==="teacher")
-    .forEach(t=>{
-
-        const tr =
-            document.createElement("tr");
-
-
-        tr.innerHTML = `
-
-        <td>${escapeHTML(t.name)}</td>
-
-        <td>${escapeHTML(t.username)}</td>
-
-        <td>${escapeHTML(t.subject||"-")}</td>
-
-        <td>${escapeHTML(t.className||"-")}</td>
-
-        <td>${escapeHTML(t.hodSubject||"None")}</td>
-
-        <td>${t.examOfficer ? "Yes" : "No"}</td>
-
-        `;
-
-
-        tbody.appendChild(tr);
-
-    });
-
-}
-
-
-/* =========================================================
-   STUDENTS
-========================================================= */
-
-function renderStudents(){
-
-    const tbody =
-        document.getElementById(
-            "studentsTable"
-        );
-
-    tbody.innerHTML = "";
-
-
-    db.accounts
-    .filter(a=>a.role==="student")
-    .forEach(s=>{
-
-        const tr =
-            document.createElement("tr");
-
-
-        tr.innerHTML = `
-
-        <td>${escapeHTML(s.name)}</td>
-
-        <td>${escapeHTML(s.username)}</td>
-
-        <td>${escapeHTML(s.studentId||"-")}</td>
-
-        <td>${escapeHTML(s.className||"-")}</td>
-
-        `;
-
-
-        tbody.appendChild(tr);
-
-    });
-
-}
-
-
-/* =========================================================
-   PARENTS
-========================================================= */
-
-function renderParents(){
-
-    const tbody =
-        document.getElementById(
-            "parentsTable"
-        );
-
-    tbody.innerHTML = "";
-
-
-    db.accounts
-    .filter(a=>a.role==="parent")
-    .forEach(p=>{
-
-        const student =
-            db.accounts.find(
-                s =>
-                s.role==="student" &&
-                s.username ===
-                p.linkedStudent
-            );
-
-
-        const tr =
-            document.createElement("tr");
-
-
-        tr.innerHTML = `
-
-        <td>${escapeHTML(p.name)}</td>
-
-        <td>${escapeHTML(p.username)}</td>
-
-        <td>
-        ${
-            student
-            ? escapeHTML(student.name)
-            : "Not linked"
-        }
-        </td>
-
-        `;
-
-
-        tbody.appendChild(tr);
-
-    });
-
-}
-
-
-/* =========================================================
-   TEACHER
-========================================================= */
-
-function setupTeacher(){
-
-    document.getElementById(
-        "teacherWelcome"
-    ).textContent =
-        "Welcome, " + currentUser.name + ".";
-
-
-    document.getElementById(
-        "teacherDashSubject"
-    ).textContent =
-        currentUser.subject || "-";
-
-
-    document.getElementById(
-        "teacherDashClass"
-    ).textContent =
-        currentUser.className || "-";
-
-
-    document.getElementById(
-        "teacherDashHod"
-    ).textContent =
-        currentUser.hodSubject || "None";
-
-
-    document.getElementById(
-        "teacherDashExam"
-    ).textContent =
-        currentUser.examOfficer
-        ? "Yes"
-        : "No";
-
-}
-
-
-/* =========================================================
-   STUDENT
-========================================================= */
-
-function setupStudent(){
-
-    document.getElementById(
-        "studentPortalName"
-    ).textContent =
-        currentUser.name;
-
-
-    document.getElementById(
-        "studentPortalId"
-    ).textContent =
-        currentUser.studentId || "-";
-
-
-    document.getElementById(
-        "studentPortalClass"
-    ).textContent =
-        currentUser.className || "-";
-
-}
-
-
-/* =========================================================
-   PARENT
-========================================================= */
-
-function setupParent(){
-
-    const student =
-        db.accounts.find(
-            s =>
-            s.role==="student" &&
-            s.username ===
-            currentUser.linkedStudent
-        );
-
-
-    document.getElementById(
-        "parentStudentInfo"
-    ).innerHTML =
-        student
-        ?
-        `
-        <strong>Linked Student</strong><br><br>
-        Name: ${escapeHTML(student.name)}<br>
-        Student ID: ${escapeHTML(student.studentId||"-")}<br>
-        Class: ${escapeHTML(student.className||"-")}
-        `
-        :
-        "No linked student information available.";
-
-}
-
-
-/* =========================================================
-   TEACHER ASSISTANT
-========================================================= */
-
-function taQuick(text){
-
-    document.getElementById(
-        "taInput"
-    ).value = text;
-
-    document.getElementById(
-        "taInput"
-    ).focus();
-
-}
-
-
-function taEnter(event){
-
-    if(
-        event.key==="Enter" &&
-        !event.shiftKey
-    ){
-
-        event.preventDefault();
-
-        sendTA();
-
-    }
-
-}
-
-
-async function sendTA(){
-
-    if(
-        !currentUser ||
-        currentUser.role!=="teacher"
-    ){
-
-        alert(
-            "Teacher Assistant is available to Teacher accounts."
-        );
-
-        return;
-
-    }
-
-
-    const input =
-        document.getElementById(
-            "taInput"
-        );
-
-    const message =
-        input.value.trim();
-
-
-    if(!message) return;
-
-
-    addTAMessage(
-        "user",
-        message
-    );
-
-
-    input.value = "";
-
-
-    /*
-       IMPORTANT:
-
-       This front-end is prepared for the secure AI backend.
-
-       The backend endpoint should be:
-
-       /api/teacher-assistant
-
-       Never place your private AI API key here.
-    */
-
-
-    try{
-
-        const response =
-            await fetch(
-                "/api/teacher-assistant",
-                {
-
-                    method:"POST",
-
-                    headers:{
-                        "Content-Type":
-                        "application/json"
-                    },
-
-                    body:
-                    JSON.stringify({
-
-                        message:message,
-
-                        teacher:{
-                            name:currentUser.name,
-                            subject:currentUser.subject,
-                            class:currentUser.className,
-                            hodSubject:currentUser.hodSubject,
-                            examOfficer:currentUser.examOfficer
-                        },
-
-                        school:{
-                            name:
-                            "Caliphate Tarbiya Academy Sokoto",
-
-                            country:
-                            "Nigeria"
-                        }
-
-                    })
-
-                }
-            );
-
-
-        if(!response.ok){
-
-            throw new Error(
-                "AI backend not connected"
-            );
-
-        }
-
-
-        const data =
-            await response.json();
-
-
-        const answer =
-            data.answer ||
-            data.message ||
-            "No response was returned.";
-
-
-        lastTAAnswer =
-            answer;
-
-
-        addTAMessage(
-            "assistant",
-            answer
-        );
-
-
-    }catch(error){
-
-        /*
-           Until the secure backend is connected,
-           provide a useful local academic response.
-        */
-
-        const answer =
-            localAcademicAssistant(
-                message
-            );
-
-
-        lastTAAnswer =
-            answer;
-
-
-        addTAMessage(
-            "assistant",
-            answer
-        );
-
-    }
-
-}
-
-
-function addTAMessage(role,text){
-
-    const container =
-        document.getElementById(
-            "taMessages"
-        );
-
-
-    const message =
-        document.createElement("div");
-
-
-    message.className =
-        "message " +
-        (role==="user" ? "user" : "");
-
-
-    message.innerHTML = `
-
-        <div class="message-icon">
-            ${role==="user" ? "👨‍🏫" : "🤖"}
-        </div>
-
-        <div class="bubble"></div>
-
-    `;
-
-
-    message
-    .querySelector(".bubble")
-    .textContent = text;
-
-
-    container.appendChild(message);
-
-
-    container.scrollTop =
-        container.scrollHeight;
-
-}
-
-
-/*
-   Temporary local assistant.
-
-   This is NOT a replacement for the real AI connection.
-   It allows the interface to remain usable until
-   /api/teacher-assistant is connected.
-*/
-
-function localAcademicAssistant(message){
-
-    const m =
-        message.toLowerCase();
-
-
-    if(
-        m.includes("lesson plan")
-    ){
-
-        return `I can help you prepare the lesson plan.
-
-Please provide:
-1. Class
-2. Subject
-3. Topic
-4. Duration
-5. Week
-6. Term
-
-The final Nigerian-standard lesson plan can include:
-
-• Entry Behaviour
-• Learning Objectives
-• Instructional Materials
-• References
-• Set Induction
-• Presentation
-• Teacher's Activities
-• Learners' Activities
-• Evaluation
-• Conclusion
-• Assignment`;
-
-    }
-
-
-    if(
-        m.includes("scheme")
-    ){
-
-        return `I can prepare a 13-week Scheme of Work.
-
-Please provide:
-• Class
-• Subject
-• Session
-• Term
-• Main curriculum/topics
-
-I can structure the scheme by week, topic,
-sub-topic, objectives and suggested activities.`;
-
-    }
-
-
-    if(
-        m.includes("exam") ||
-        m.includes("question")
-    ){
-
-        return `I can help you prepare assessment or examination questions.
-
-Please tell me:
-• Class
-• Subject
-• Topics
-• Number of questions
-• Objective/theory format
-• Examination duration
-
-For Mathematics, I can include a mixture of
-calculations, application questions and theory.`;
-
-    }
-
-
-    return `I understand.
-
-I can help you with:
-• Lesson preparation
-• Lesson notes
-• Schemes of Work
-• Continuous Assessment
-• Examinations
-• Marking schemes
-• Topic explanations
-• Teaching strategies
-• Student exercises
-• Curriculum planning
-• Hausa, Arabic and French academic support
-
-For a complete AI conversation, the secure AI
-backend still needs to be connected to this system.
-
-Please tell me the academic problem you want to solve.`;
-
-}
-
-
-/* =========================================================
-   USE TEACHER ASSISTANT RESPONSE
-========================================================= */
-
-function useLastTA(type){
-
-    if(!lastTAAnswer){
-
-        alert(
-            "Please have a conversation with Teacher Assistant first."
-        );
-
-        return;
-
-    }
-
-
-    const content =
-        lastTAAnswer;
-
-
-    if(type==="lesson-plan"){
-
-        document.getElementById(
-            "lessonContent"
-        ).value = content;
-
-        showPage("lessonPlan");
-
-    }
-
-
-    if(type==="lesson-note"){
-
-        document.getElementById(
-            "noteContent"
-        ).value = content;
-
-        showPage("lessonNote");
-
-    }
-
-
-    if(type==="scheme"){
-
-        document.getElementById(
-            "schemeContent"
-        ).value = content;
-
-        showPage("scheme");
-
-    }
-
-
-    if(type==="ca"){
-
-        document.getElementById(
-            "assessmentType"
-        ).value =
-        "Continuous Assessment";
-
-        document.getElementById(
-            "assessmentContent"
-        ).value = content;
-
-        showPage("caExam");
-
-    }
-
-
-    if(type==="exam"){
-
-        document.getElementById(
-            "assessmentType"
-        ).value =
-        "Examination";
-
-        document.getElementById(
-            "assessmentContent"
-        ).value = content;
-
-        showPage("caExam");
-
-    }
-
-}
-
-
-/* =========================================================
-   SAVE DOCUMENT
-========================================================= */
-
-function saveDocument(type){
-
-    if(
-        !currentUser ||
-        currentUser.role!=="teacher"
-    ){
-
-        alert(
-            "Only teachers can save teaching documents."
-        );
-
-        return;
-
-    }
-
-
-    let content = "";
-
-
-    if(type==="Lesson Plan"){
-
-        content =
-            document.getElementById(
-                "lessonContent"
-            ).value;
-
-    }
-
-
-    if(type==="Lesson Note"){
-
-        content =
-            document.getElementById(
-                "noteContent"
-            ).value;
-
-    }
-
-
-    if(type==="Scheme of Work"){
-
-        content =
-            document.getElementById(
-                "schemeContent"
-            ).value;
-
-    }
-
-
-    if(type==="Assessment"){
-
-        content =
-            document.getElementById(
-                "assessmentContent"
-            ).value;
-
-    }
-
-
-    if(!content.trim()){
-
-        alert(
-            "Please enter content first."
-        );
-
-        return;
-
-    }
-
-
-    db.documents.push({
-
-        id:"doc-"+Date.now(),
-
-        teacherId:
-            currentUser.id,
-
-        teacher:
-            currentUser.name,
-
-        type:type,
-
-        subject:
-            currentUser.subject || "",
-
-        content:content,
-
-        status:"Draft",
-
-        createdAt:
-            new Date().toISOString()
-
-    });
-
-
-    saveDB();
-
-    alert(
-        type +
-        " saved successfully."
-    );
-
-
-    renderSubmissions();
-
-}
-
-
-function renderSubmissions(){
-
-    const tbody =
-        document.getElementById(
-            "submissionsTable"
-        );
-
-    if(!tbody) return;
-
-    tbody.innerHTML = "";
-
-
-    if(
-        !currentUser ||
-        currentUser.role!=="teacher"
-    ) return;
-
-
-    db.documents
-    .filter(
-        d =>
-        d.teacherId ===
-        currentUser.id
-    )
-    .forEach(d=>{
-
-        const tr =
-            document.createElement("tr");
-
-
-        tr.innerHTML = `
-
-        <td>${escapeHTML(d.type)}</td>
-
-        <td>${escapeHTML(d.subject)}</td>
-
-        <td>
-        ${new Date(d.createdAt)
-        .toLocaleDateString()}
-        </td>
-
-        <td>${escapeHTML(d.status)}</td>
-
-        `;
-
-
-        tbody.appendChild(tr);
-
-    });
-
-}
-
-
-/* =========================================================
-   HTML ESCAPE
+   SECURITY HELPER FOR DISPLAY
 ========================================================= */
 
 function escapeHTML(value){
 
-    return String(value ?? "")
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
+return String(value ?? "")
+.replace(
+/[&<>"']/g,
+function(character){
+
+return {
+
+"&":"&amp;",
+"<":"&lt;",
+">":"&gt;",
+'"':"&quot;",
+"'":"&#039;"
+
+}[character];
+
+}
+);
 
 }
 
 
 /* =========================================================
-   SESSION RESTORE
+   RESTORE SESSION
 ========================================================= */
 
-function restoreSession(){
-
-    const id =
-        localStorage.getItem(
-            SESSION_KEY
-        );
+const savedSession =
+localStorage.getItem(
+SESSION_KEY
+);
 
 
-    if(!id) return;
+if(savedSession){
+
+const savedUser =
+database.accounts.find(
+a=>a.id===savedSession
+);
 
 
-    const account =
-        db.accounts.find(
-            a=>a.id===id
-        );
+if(
+savedUser &&
+savedUser.active!==false
+){
 
+currentUser =
+savedUser;
 
-    if(
-        account &&
-        account.active!==false
-    ){
-
-        currentUser =
-            account;
-
-        openApplication();
-
-    }
+openApplication();
 
 }
 
-
-/* =========================================================
-   STARTUP
-========================================================= */
-
-updateAccountFields();
-
-restoreSession();
+}
 
 </script>
 
