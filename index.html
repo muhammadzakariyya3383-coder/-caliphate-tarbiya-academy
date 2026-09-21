@@ -7,6 +7,8 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="Global Kids Academy">
+<meta name="mobile-web-app-capable" content="yes">
+
 <title>Global Kids Academy Sokoto</title>
 
 <style>
@@ -15,53 +17,64 @@
   -webkit-tap-highlight-color:transparent;
 }
 
-:root{
-  --green:#166534;
-  --green2:#15803d;
-  --light:#f0fdf4;
-  --dark:#172033;
-  --muted:#64748b;
-  --border:#dbe4dc;
-  --white:#fff;
-  --red:#b91c1c;
-  --blue:#1d4ed8;
-  --orange:#b45309;
+html{
+  width:100%;
+  min-width:0;
+  overflow-x:hidden;
+  -webkit-text-size-adjust:100%;
+  text-size-adjust:100%;
 }
 
 body{
   margin:0;
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+  width:100%;
+  min-width:0;
+  overflow-x:hidden;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
   background:#f5f7f6;
-  color:var(--dark);
+  color:#172033;
 }
 
-button,input,select,textarea{
+button,
+input,
+select,
+textarea{
   font:inherit;
+  max-width:100%;
 }
 
 button{
   cursor:pointer;
+  touch-action:manipulation;
 }
 
 .hidden{
   display:none!important;
 }
 
-/* LOGIN */
+/* =========================
+   LOGIN
+========================= */
+
 .login-page{
   min-height:100vh;
+  min-height:100dvh;
   display:flex;
   align-items:center;
   justify-content:center;
   padding:20px;
-  background:
-    linear-gradient(135deg,#14532d,#166534 45%,#064e3b);
+  background:linear-gradient(
+    135deg,
+    #14532d,
+    #166534 48%,
+    #064e3b
+  );
 }
 
 .login-card{
   width:100%;
   max-width:460px;
-  background:white;
+  background:#fff;
   border-radius:22px;
   padding:30px;
   box-shadow:0 25px 70px rgba(0,0,0,.25);
@@ -82,15 +95,19 @@ button{
 
 .login-card h1{
   text-align:center;
-  color:var(--green);
-  margin:0 0 4px;
+  color:#166534;
+  margin:0 0 5px;
   font-size:25px;
 }
 
-.login-card .subtitle{
+.subtitle{
   text-align:center;
-  color:var(--muted);
+  color:#64748b;
   margin-bottom:25px;
+}
+
+.form-group{
+  margin-bottom:15px;
 }
 
 label{
@@ -100,22 +117,23 @@ label{
   font-size:14px;
 }
 
-input,select,textarea{
+input,
+select,
+textarea{
   width:100%;
-  border:1px solid var(--border);
+  border:1px solid #dbe4dc;
   border-radius:9px;
   padding:11px 12px;
   outline:none;
   background:#fff;
+  color:#172033;
 }
 
-input:focus,select:focus,textarea:focus{
-  border-color:var(--green2);
+input:focus,
+select:focus,
+textarea:focus{
+  border-color:#15803d;
   box-shadow:0 0 0 3px rgba(22,101,52,.08);
-}
-
-.form-group{
-  margin-bottom:15px;
 }
 
 .btn{
@@ -123,8 +141,9 @@ input:focus,select:focus,textarea:focus{
   border-radius:9px;
   padding:10px 15px;
   background:#334155;
-  color:white;
+  color:#fff;
   font-weight:700;
+  min-height:40px;
 }
 
 .btn:hover{
@@ -132,7 +151,7 @@ input:focus,select:focus,textarea:focus{
 }
 
 .btn.primary{
-  background:var(--green);
+  background:#166534;
 }
 
 .btn.success{
@@ -174,21 +193,26 @@ input:focus,select:focus,textarea:focus{
   color:#166534;
 }
 
-/* APP */
+/* =========================
+   APPLICATION
+========================= */
+
 .app{
   min-height:100vh;
+  min-height:100dvh;
   display:flex;
 }
 
 .sidebar{
   width:255px;
   background:#123c28;
-  color:white;
+  color:#fff;
   position:fixed;
   left:0;
   top:0;
   bottom:0;
-  overflow:auto;
+  overflow-y:auto;
+  overflow-x:hidden;
   z-index:100;
 }
 
@@ -227,7 +251,7 @@ input:focus,select:focus,textarea:focus{
 .nav button:hover,
 .nav button.active{
   background:#166534;
-  color:white;
+  color:#fff;
 }
 
 .main{
@@ -240,8 +264,8 @@ input:focus,select:focus,textarea:focus{
   position:sticky;
   top:0;
   z-index:50;
-  background:white;
-  border-bottom:1px solid var(--border);
+  background:#fff;
+  border-bottom:1px solid #dbe4dc;
   padding:13px 20px;
   display:flex;
   align-items:center;
@@ -265,11 +289,14 @@ input:focus,select:focus,textarea:focus{
 }
 
 .page-subtitle{
-  color:var(--muted);
+  color:#64748b;
   margin-bottom:20px;
 }
 
-/* CARDS */
+/* =========================
+   CARDS
+========================= */
+
 .grid{
   display:grid;
   gap:15px;
@@ -288,8 +315,8 @@ input:focus,select:focus,textarea:focus{
 }
 
 .card{
-  background:white;
-  border:1px solid var(--border);
+  background:#fff;
+  border:1px solid #dbe4dc;
   border-radius:13px;
   padding:18px;
   margin-bottom:16px;
@@ -303,11 +330,11 @@ input:focus,select:focus,textarea:focus{
 .stat-number{
   font-size:29px;
   font-weight:800;
-  color:var(--green);
+  color:#166534;
 }
 
 .stat-label{
-  color:var(--muted);
+  color:#64748b;
   margin-top:5px;
 }
 
@@ -324,8 +351,11 @@ input:focus,select:focus,textarea:focus{
 }
 
 .table-wrap{
-  overflow:auto;
+  overflow-x:auto;
+  overflow-y:hidden;
   width:100%;
+  max-width:100%;
+  -webkit-overflow-scrolling:touch;
 }
 
 table{
@@ -334,7 +364,8 @@ table{
   min-width:700px;
 }
 
-th,td{
+th,
+td{
   border:1px solid #d7e0da;
   padding:9px;
   text-align:left;
@@ -380,7 +411,10 @@ tr:nth-child(even) td{
   color:#1e40af;
 }
 
-/* DASHBOARD */
+/* =========================
+   DASHBOARD
+========================= */
+
 .quick{
   display:grid;
   grid-template-columns:repeat(4,1fr);
@@ -388,27 +422,30 @@ tr:nth-child(even) td{
 }
 
 .quick button{
-  background:white;
-  border:1px solid var(--border);
+  background:#fff;
+  border:1px solid #dbe4dc;
   border-radius:12px;
   padding:17px;
   text-align:left;
-  color:var(--dark);
+  color:#172033;
 }
 
 .quick button strong{
   display:block;
-  color:var(--green);
+  color:#166534;
   margin-bottom:4px;
 }
 
-/* REGISTER */
+/* =========================
+   REGISTER
+========================= */
+
 .register-header{
   text-align:center;
   border:2px solid #1f2937;
   border-bottom:0;
   padding:18px;
-  background:white;
+  background:#fff;
 }
 
 .register-school{
@@ -446,6 +483,7 @@ tr:nth-child(even) td{
 }
 
 .register-table{
+  min-width:max-content;
   font-size:11px;
 }
 
@@ -467,10 +505,21 @@ tr:nth-child(even) td{
   white-space:nowrap;
 }
 
+.register-table .student-name{
+  min-width:150px;
+  max-width:220px;
+}
+
+.register-table .admission{
+  min-width:100px;
+}
+
 .mark{
   display:inline-flex;
   width:28px;
   height:28px;
+  min-width:28px;
+  min-height:28px;
   border:1px solid #cbd5e1;
   border-radius:4px;
   align-items:center;
@@ -481,6 +530,7 @@ tr:nth-child(even) td{
   background:#fff;
   user-select:none;
   -webkit-user-select:none;
+  touch-action:manipulation;
 }
 
 .mark.P{
@@ -514,26 +564,13 @@ tr:nth-child(even) td{
   font-weight:800;
 }
 
-.register-summary{
-  display:grid;
-  grid-template-columns:repeat(5,1fr);
-  gap:10px;
-  margin:14px 0;
-}
-
-.stat-box{
-  border:1px solid #cbd5e1;
-  background:white;
-  padding:12px;
-  text-align:center;
-  border-radius:8px;
+.register-live-help{
+  background:#f0fdf4;
+  border:1px solid #bbf7d0;
+  padding:10px;
+  margin-bottom:12px;
+  border-radius:7px;
   font-size:12px;
-}
-
-.stat-box strong{
-  display:block;
-  font-size:20px;
-  color:#14532d;
 }
 
 .legend{
@@ -551,13 +588,26 @@ tr:nth-child(even) td{
   gap:5px;
 }
 
-.register-live-help{
-  background:#f0fdf4;
-  border:1px solid #bbf7d0;
-  padding:10px;
-  margin-bottom:12px;
-  border-radius:7px;
+.register-summary{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:10px;
+  margin:14px 0;
+}
+
+.stat-box{
+  border:1px solid #cbd5e1;
+  background:#fff;
+  padding:12px;
+  text-align:center;
+  border-radius:8px;
   font-size:12px;
+}
+
+.stat-box strong{
+  display:block;
+  font-size:20px;
+  color:#14532d;
 }
 
 .signature-grid{
@@ -574,7 +624,10 @@ tr:nth-child(even) td{
   font-size:12px;
 }
 
-/* MODAL */
+/* =========================
+   MODAL
+========================= */
+
 .modal{
   position:fixed;
   inset:0;
@@ -591,7 +644,7 @@ tr:nth-child(even) td{
   max-width:600px;
   max-height:92vh;
   overflow:auto;
-  background:white;
+  background:#fff;
   border-radius:14px;
   padding:20px;
 }
@@ -617,12 +670,20 @@ tr:nth-child(even) td{
   font-size:20px;
 }
 
-/* MOBILE */
+/* =========================
+   MOBILE MENU
+========================= */
+
 .mobile-menu{
   display:none;
 }
 
+/* =========================
+   TABLET
+========================= */
+
 @media(max-width:1100px){
+
   .grid-4,
   .quick{
     grid-template-columns:repeat(2,1fr);
@@ -631,12 +692,19 @@ tr:nth-child(even) td{
   .register-summary{
     grid-template-columns:repeat(3,1fr);
   }
+
 }
 
+/* =========================
+   PHONES
+========================= */
+
 @media(max-width:800px){
+
   .sidebar{
     transform:translateX(-100%);
     transition:.2s;
+    box-shadow:10px 0 30px rgba(0,0,0,.15);
   }
 
   .sidebar.open{
@@ -672,36 +740,159 @@ tr:nth-child(even) td{
   .content{
     padding:12px;
   }
+
 }
 
-@media(max-width:550px){
-  .grid-4,
-  .quick,
+/* =========================
+   SMALL PHONES
+========================= */
+
+@media(max-width:600px){
+
+  .content{
+    padding:10px;
+  }
+
+  .card{
+    padding:14px;
+  }
+
+  .page-title{
+    font-size:22px;
+  }
+
+  .toolbar{
+    width:100%;
+  }
+
+  .toolbar .btn,
+  .toolbar select,
+  .toolbar input{
+    width:100%;
+  }
+
+  .quick{
+    grid-template-columns:1fr;
+  }
+
+}
+
+/* =========================
+   VERY SMALL PHONES
+   320px - 360px
+========================= */
+
+@media(max-width:360px){
+
+  .login-page{
+    padding:10px;
+  }
+
+  .login-card{
+    padding:18px 14px;
+    border-radius:15px;
+  }
+
+  .login-card h1{
+    font-size:20px;
+  }
+
+  .logo{
+    width:62px;
+    height:62px;
+    font-size:25px;
+  }
+
+  .content{
+    padding:8px;
+  }
+
+  .card{
+    padding:12px;
+    border-radius:10px;
+  }
+
+  .page-title{
+    font-size:20px;
+  }
+
+  .page-subtitle{
+    font-size:12px;
+  }
+
+  .topbar{
+    padding:9px;
+  }
+
+  .top-title{
+    font-size:12px;
+  }
+
+  .btn{
+    padding:9px 10px;
+    font-size:12px;
+  }
+
+  input,
+  select,
+  textarea{
+    font-size:14px;
+    padding:10px;
+  }
+
+  .register-meta{
+    grid-template-columns:1fr;
+  }
+
+  .register-meta div{
+    border-right:0;
+    border-bottom:1px solid #64748b;
+  }
+
   .register-summary{
     grid-template-columns:1fr;
   }
 
-  .topbar{
-    padding:11px;
-  }
-
-  .top-title{
-    font-size:13px;
-  }
-
-  .register-school{
-    font-size:17px;
-  }
-
-  .register-title{
-    font-size:13px;
-  }
 }
 
-/* PRINT */
+/* =========================
+   SAFE AREA
+========================= */
+
+@supports(padding:max(0px)){
+
+  .topbar{
+    padding-left:max(10px,env(safe-area-inset-left));
+    padding-right:max(10px,env(safe-area-inset-right));
+  }
+
+  .content{
+    padding-bottom:max(
+      12px,
+      env(safe-area-inset-bottom)
+    );
+  }
+
+}
+
+/* =========================
+   MEDIA
+========================= */
+
+img,
+video,
+iframe{
+  max-width:100%;
+}
+
+/* =========================
+   PRINT
+========================= */
+
 @media print{
+
   body{
-    background:white;
+    background:#fff;
   }
 
   .sidebar,
@@ -741,23 +932,32 @@ tr:nth-child(even) td{
     size:A4 landscape;
     margin:8mm;
   }
+
 }
 </style>
 </head>
 
 <body>
 
-<!-- LOGIN -->
+<!-- =====================================================
+     LOGIN
+===================================================== -->
+
 <div id="loginPage" class="login-page">
+
   <div class="login-card">
 
     <div class="logo">🎓</div>
 
     <h1>Global Kids Academy Sokoto</h1>
-    <div class="subtitle">School Management System</div>
+
+    <div class="subtitle">
+      School Management System
+    </div>
 
     <div class="form-group">
       <label>Login Type</label>
+
       <select id="loginRole">
         <option value="Administrator">Administrator</option>
         <option value="Teacher">Teacher</option>
@@ -768,15 +968,22 @@ tr:nth-child(even) td{
 
     <div class="form-group">
       <label>Username</label>
-      <input id="loginUsername" autocomplete="username">
+      <input
+        id="loginUsername"
+        autocomplete="username">
     </div>
 
     <div class="form-group">
       <label>Password</label>
-      <input id="loginPassword" type="password" autocomplete="current-password">
+      <input
+        id="loginPassword"
+        type="password"
+        autocomplete="current-password">
     </div>
 
-    <button class="btn primary full" onclick="login()">
+    <button
+      class="btn primary full"
+      onclick="login()">
       Sign In
     </button>
 
@@ -785,22 +992,33 @@ tr:nth-child(even) td{
     </div>
 
   </div>
+
 </div>
 
 
-<!-- APPLICATION -->
+<!-- =====================================================
+     APPLICATION
+===================================================== -->
+
 <div id="app" class="app hidden">
 
   <aside id="sidebar" class="sidebar">
 
     <div class="brand">
-      <div class="brand-title">Global Kids Academy</div>
-      <div class="brand-small">Sokoto • Academic Management</div>
+      <div class="brand-title">
+        Global Kids Academy
+      </div>
+
+      <div class="brand-small">
+        Sokoto • Academic Management
+      </div>
     </div>
 
     <nav class="nav">
 
-      <button onclick="showPage('dashboard',this)" class="active">
+      <button
+        onclick="showPage('dashboard',this)"
+        class="active">
         🏠 Dashboard
       </button>
 
@@ -857,20 +1075,39 @@ tr:nth-child(even) td{
       </button>
 
     </nav>
+
   </aside>
 
 
   <main class="main">
 
     <header class="topbar">
-      <div style="display:flex;align-items:center;gap:10px">
-        <button class="btn light mobile-menu" onclick="toggleSidebar()">☰</button>
-        <div class="top-title" id="topTitle">
+
+      <div
+        style="
+        display:flex;
+        align-items:center;
+        gap:10px">
+
+        <button
+          class="btn light mobile-menu"
+          onclick="toggleSidebar()">
+          ☰
+        </button>
+
+        <div
+          class="top-title"
+          id="topTitle">
           Global Kids Academy Sokoto
         </div>
+
       </div>
 
-      <div id="userBadge" class="badge green"></div>
+      <div
+        id="userBadge"
+        class="badge green">
+      </div>
+
     </header>
 
 
@@ -878,9 +1115,15 @@ tr:nth-child(even) td{
 
 
       <!-- DASHBOARD -->
-      <section id="page-dashboard" class="page">
 
-        <h1 class="page-title">Dashboard</h1>
+      <section
+        id="page-dashboard"
+        class="page">
+
+        <h1 class="page-title">
+          Dashboard
+        </h1>
+
         <div class="page-subtitle">
           Global Kids Academy Sokoto School Management System
         </div>
@@ -888,30 +1131,61 @@ tr:nth-child(even) td{
         <div class="grid grid-4">
 
           <div class="card stat">
-            <div class="stat-number" id="dashTeachers">0</div>
-            <div class="stat-label">Teachers</div>
+            <div
+              class="stat-number"
+              id="dashTeachers">
+              0
+            </div>
+
+            <div class="stat-label">
+              Teachers
+            </div>
           </div>
 
           <div class="card stat">
-            <div class="stat-number" id="dashStudents">0</div>
-            <div class="stat-label">Students</div>
+            <div
+              class="stat-number"
+              id="dashStudents">
+              0
+            </div>
+
+            <div class="stat-label">
+              Students
+            </div>
           </div>
 
           <div class="card stat">
-            <div class="stat-number" id="dashParents">0</div>
-            <div class="stat-label">Parents</div>
+            <div
+              class="stat-number"
+              id="dashParents">
+              0
+            </div>
+
+            <div class="stat-label">
+              Parents
+            </div>
           </div>
 
           <div class="card stat">
-            <div class="stat-number" id="dashDocuments">0</div>
-            <div class="stat-label">Academic Documents</div>
+            <div
+              class="stat-number"
+              id="dashDocuments">
+              0
+            </div>
+
+            <div class="stat-label">
+              Academic Documents
+            </div>
           </div>
 
         </div>
 
 
         <div class="card">
-          <h2 class="section-title">Quick Access</h2>
+
+          <h2 class="section-title">
+            Quick Access
+          </h2>
 
           <div class="quick">
 
@@ -936,32 +1210,55 @@ tr:nth-child(even) td{
             </button>
 
           </div>
+
         </div>
 
+
         <div class="card">
-          <h2 class="section-title">Current Academic Session</h2>
+
+          <h2 class="section-title">
+            Current Academic Session
+          </h2>
+
           <div id="academicInfo"></div>
+
         </div>
 
       </section>
 
 
       <!-- TEACHERS -->
-      <section id="page-teachers" class="page hidden">
 
-        <h1 class="page-title">Teacher Management</h1>
-        <div class="page-subtitle">Create and manage teacher accounts.</div>
+      <section
+        id="page-teachers"
+        class="page hidden">
+
+        <h1 class="page-title">
+          Teacher Management
+        </h1>
+
+        <div class="page-subtitle">
+          Create and manage teacher accounts.
+        </div>
 
         <div class="toolbar">
-          <button class="btn primary" onclick="teacherForm()">
+
+          <button
+            class="btn primary"
+            onclick="teacherForm()">
             + Add Teacher
           </button>
+
         </div>
 
         <div class="card">
+
           <div class="table-wrap">
+
             <table>
+
               <thead>
+
                 <tr>
                   <th>S/N</th>
                   <th>Name</th>
@@ -971,31 +1268,52 @@ tr:nth-child(even) td{
                   <th>Status</th>
                   <th>Actions</th>
                 </tr>
+
               </thead>
+
               <tbody id="teacherTable"></tbody>
+
             </table>
+
           </div>
+
         </div>
 
       </section>
 
 
       <!-- STUDENTS -->
-      <section id="page-students" class="page hidden">
 
-        <h1 class="page-title">Student Management</h1>
-        <div class="page-subtitle">Register and manage students.</div>
+      <section
+        id="page-students"
+        class="page hidden">
+
+        <h1 class="page-title">
+          Student Management
+        </h1>
+
+        <div class="page-subtitle">
+          Register and manage students.
+        </div>
 
         <div class="toolbar">
-          <button class="btn primary" onclick="studentForm()">
+
+          <button
+            class="btn primary"
+            onclick="studentForm()">
             + Add Student
           </button>
+
         </div>
 
         <div class="card">
+
           <div class="table-wrap">
+
             <table>
+
               <thead>
+
                 <tr>
                   <th>S/N</th>
                   <th>Name</th>
@@ -1005,31 +1323,52 @@ tr:nth-child(even) td{
                   <th>Username</th>
                   <th>Actions</th>
                 </tr>
+
               </thead>
+
               <tbody id="studentTable"></tbody>
+
             </table>
+
           </div>
+
         </div>
 
       </section>
 
 
       <!-- PARENTS -->
-      <section id="page-parents" class="page hidden">
 
-        <h1 class="page-title">Parent Management</h1>
-        <div class="page-subtitle">Manage parent portal accounts.</div>
+      <section
+        id="page-parents"
+        class="page hidden">
+
+        <h1 class="page-title">
+          Parent Management
+        </h1>
+
+        <div class="page-subtitle">
+          Manage parent portal accounts.
+        </div>
 
         <div class="toolbar">
-          <button class="btn primary" onclick="parentForm()">
+
+          <button
+            class="btn primary"
+            onclick="parentForm()">
             + Add Parent
           </button>
+
         </div>
 
         <div class="card">
+
           <div class="table-wrap">
+
             <table>
+
               <thead>
+
                 <tr>
                   <th>S/N</th>
                   <th>Parent Name</th>
@@ -1038,31 +1377,48 @@ tr:nth-child(even) td{
                   <th>Student</th>
                   <th>Actions</th>
                 </tr>
+
               </thead>
+
               <tbody id="parentTable"></tbody>
+
             </table>
+
           </div>
+
         </div>
 
       </section>
 
 
       <!-- CLASSES -->
-      <section id="page-classes" class="page hidden">
 
-        <h1 class="page-title">Classes & Subjects</h1>
+      <section
+        id="page-classes"
+        class="page hidden">
+
+        <h1 class="page-title">
+          Classes & Subjects
+        </h1>
+
         <div class="page-subtitle">
           Academic structure of Global Kids Academy Sokoto.
         </div>
 
         <div class="card">
 
-          <h2 class="section-title">Classes</h2>
+          <h2 class="section-title">
+            Classes
+          </h2>
 
           <div class="toolbar">
-            <button class="btn primary" onclick="addClass()">
+
+            <button
+              class="btn primary"
+              onclick="addClass()">
               + Add Class
             </button>
+
           </div>
 
           <div id="classList"></div>
@@ -1072,12 +1428,18 @@ tr:nth-child(even) td{
 
         <div class="card">
 
-          <h2 class="section-title">Subjects</h2>
+          <h2 class="section-title">
+            Subjects
+          </h2>
 
           <div class="toolbar">
-            <button class="btn primary" onclick="addSubject()">
+
+            <button
+              class="btn primary"
+              onclick="addSubject()">
               + Add Subject
             </button>
+
           </div>
 
           <div id="subjectList"></div>
@@ -1088,20 +1450,26 @@ tr:nth-child(even) td{
 
 
       <!-- REGISTER -->
-      <section id="page-register" class="page hidden">
 
-        <h1 class="page-title">School Register</h1>
+      <section
+        id="page-register"
+        class="page hidden">
+
+        <h1 class="page-title">
+          School Register
+        </h1>
 
         <div class="page-subtitle">
           Professional monthly attendance register.
         </div>
 
-
         <div class="card">
 
           <div class="toolbar no-print">
 
-            <select id="registerClass" onchange="renderRegister()">
+            <select
+              id="registerClass"
+              onchange="renderRegister()">
             </select>
 
             <input
@@ -1109,15 +1477,21 @@ tr:nth-child(even) td{
               type="month"
               onchange="renderRegister()">
 
-            <button class="btn blue" onclick="publicHolidayForm()">
+            <button
+              class="btn blue"
+              onclick="publicHolidayForm()">
               Add Public Holiday
             </button>
 
-            <button class="btn secondary" onclick="clearRegisterMonth()">
+            <button
+              class="btn secondary"
+              onclick="clearRegisterMonth()">
               Clear Month
             </button>
 
-            <button class="btn" onclick="window.print()">
+            <button
+              class="btn"
+              onclick="window.print()">
               Print Official Register
             </button>
 
@@ -1125,9 +1499,15 @@ tr:nth-child(even) td{
 
 
           <div class="register-live-help no-print">
+
             <b>Attendance:</b>
+
             Tap a student/date cell to cycle:
-            <strong>Blank → P → A → Blank</strong>
+
+            <strong>
+              Blank → P → A → Blank
+            </strong>
+
           </div>
 
 
@@ -1139,33 +1519,53 @@ tr:nth-child(even) td{
 
 
       <!-- RESULTS -->
-      <section id="page-results" class="page hidden">
 
-        <h1 class="page-title">Results Management</h1>
+      <section
+        id="page-results"
+        class="page hidden">
+
+        <h1 class="page-title">
+          Results Management
+        </h1>
+
         <div class="page-subtitle">
-          CA1 15 marks + CA2 15 marks + Examination 70 marks = 100.
+          CA1 15 + CA2 15 + Examination 70 = 100.
         </div>
 
         <div class="toolbar">
 
-          <select id="resultClass" onchange="renderResults()"></select>
+          <select
+            id="resultClass"
+            onchange="renderResults()">
+          </select>
 
-          <select id="resultSubject" onchange="renderResults()"></select>
+          <select
+            id="resultSubject"
+            onchange="renderResults()">
+          </select>
 
-          <button class="btn primary" onclick="saveResults()">
+          <button
+            class="btn primary"
+            onclick="saveResults()">
             Save Results
           </button>
 
-          <button class="btn success" onclick="publishResults()">
+          <button
+            class="btn success"
+            onclick="publishResults()">
             Publish Results
           </button>
 
         </div>
 
         <div class="card">
+
           <div class="table-wrap">
+
             <table>
+
               <thead>
+
                 <tr>
                   <th>S/N</th>
                   <th>Student</th>
@@ -1175,36 +1575,52 @@ tr:nth-child(even) td{
                   <th>Total /100</th>
                   <th>Grade</th>
                 </tr>
+
               </thead>
 
               <tbody id="resultTable"></tbody>
 
             </table>
+
           </div>
+
         </div>
 
       </section>
 
 
       <!-- DOCUMENTS -->
-      <section id="page-documents" class="page hidden">
 
-        <h1 class="page-title">Academic Documents</h1>
+      <section
+        id="page-documents"
+        class="page hidden">
+
+        <h1 class="page-title">
+          Academic Documents
+        </h1>
+
         <div class="page-subtitle">
-          Lesson plans, lesson notes, schemes and examination questions.
+          Lesson plans, lesson notes, schemes and questions.
         </div>
 
         <div class="toolbar">
-          <button class="btn primary" onclick="documentForm()">
+
+          <button
+            class="btn primary"
+            onclick="documentForm()">
             + Create Academic Document
           </button>
+
         </div>
 
         <div class="card">
+
           <div class="table-wrap">
 
             <table>
+
               <thead>
+
                 <tr>
                   <th>Title</th>
                   <th>Type</th>
@@ -1214,6 +1630,7 @@ tr:nth-child(even) td{
                   <th>Status</th>
                   <th>Actions</th>
                 </tr>
+
               </thead>
 
               <tbody id="documentTable"></tbody>
@@ -1221,15 +1638,21 @@ tr:nth-child(even) td{
             </table>
 
           </div>
+
         </div>
 
       </section>
 
 
       <!-- APPROVAL -->
-      <section id="page-approval" class="page hidden">
 
-        <h1 class="page-title">Approval Centre</h1>
+      <section
+        id="page-approval"
+        class="page hidden">
+
+        <h1 class="page-title">
+          Approval Centre
+        </h1>
 
         <div class="page-subtitle">
           Review submitted academic documents.
@@ -1238,9 +1661,11 @@ tr:nth-child(even) td{
         <div class="card">
 
           <div class="table-wrap">
+
             <table>
 
               <thead>
+
                 <tr>
                   <th>Document</th>
                   <th>Teacher</th>
@@ -1248,11 +1673,13 @@ tr:nth-child(even) td{
                   <th>Submitted</th>
                   <th>Action</th>
                 </tr>
+
               </thead>
 
               <tbody id="approvalTable"></tbody>
 
             </table>
+
           </div>
 
         </div>
@@ -1261,9 +1688,14 @@ tr:nth-child(even) td{
 
 
       <!-- ARCHIVE -->
-      <section id="page-archive" class="page hidden">
 
-        <h1 class="page-title">Approved Work Archive</h1>
+      <section
+        id="page-archive"
+        class="page hidden">
+
+        <h1 class="page-title">
+          Approved Work Archive
+        </h1>
 
         <div class="page-subtitle">
           Permanent archive of approved academic documents.
@@ -1276,24 +1708,46 @@ tr:nth-child(even) td{
             placeholder="Search approved work..."
             oninput="renderArchive()">
 
-          <select id="archiveType" onchange="renderArchive()">
-            <option value="">All Types</option>
-            <option>Lesson Plan</option>
-            <option>Lesson Note</option>
-            <option>Scheme of Work</option>
-            <option>CA Questions</option>
-            <option>Examination Questions</option>
+          <select
+            id="archiveType"
+            onchange="renderArchive()">
+
+            <option value="">
+              All Types
+            </option>
+
+            <option>
+              Lesson Plan
+            </option>
+
+            <option>
+              Lesson Note
+            </option>
+
+            <option>
+              Scheme of Work
+            </option>
+
+            <option>
+              CA Questions
+            </option>
+
+            <option>
+              Examination Questions
+            </option>
+
           </select>
 
         </div>
-
 
         <div class="card">
 
           <div class="table-wrap">
 
             <table>
+
               <thead>
+
                 <tr>
                   <th>Title</th>
                   <th>Type</th>
@@ -1304,6 +1758,7 @@ tr:nth-child(even) td{
                   <th>Date</th>
                   <th>Action</th>
                 </tr>
+
               </thead>
 
               <tbody id="archiveTable"></tbody>
@@ -1318,9 +1773,14 @@ tr:nth-child(even) td{
 
 
       <!-- ASSISTANT -->
-      <section id="page-assistant" class="page hidden">
 
-        <h1 class="page-title">Teacher Assistant</h1>
+      <section
+        id="page-assistant"
+        class="page hidden">
+
+        <h1 class="page-title">
+          Teacher Assistant
+        </h1>
 
         <div class="page-subtitle">
           Academic planning assistant.
@@ -1329,15 +1789,21 @@ tr:nth-child(even) td{
         <div class="card">
 
           <div class="form-group">
-            <label>What do you need?</label>
+
+            <label>
+              What do you need?
+            </label>
 
             <textarea
               id="assistantQuestion"
               rows="5"
               placeholder="Example: Prepare a JSS1 lesson note on fractions with examples and exercises."></textarea>
+
           </div>
 
-          <button class="btn primary" onclick="assistantAnswer()">
+          <button
+            class="btn primary"
+            onclick="assistantAnswer()">
             Generate Guidance
           </button>
 
@@ -1352,9 +1818,14 @@ tr:nth-child(even) td{
 
 
       <!-- SETTINGS -->
-      <section id="page-settings" class="page hidden">
 
-        <h1 class="page-title">School Settings</h1>
+      <section
+        id="page-settings"
+        class="page hidden">
+
+        <h1 class="page-title">
+          School Settings
+        </h1>
 
         <div class="card">
 
@@ -1384,17 +1855,30 @@ tr:nth-child(even) td{
           </div>
 
           <div class="form-group">
+
             <label>Current Term</label>
 
             <select id="settingTerm">
-              <option>First Term</option>
-              <option>Second Term</option>
-              <option>Third Term</option>
+
+              <option>
+                First Term
+              </option>
+
+              <option>
+                Second Term
+              </option>
+
+              <option>
+                Third Term
+              </option>
+
             </select>
 
           </div>
 
-          <button class="btn primary" onclick="saveSettings()">
+          <button
+            class="btn primary"
+            onclick="saveSettings()">
             Save School Settings
           </button>
 
@@ -1404,28 +1888,38 @@ tr:nth-child(even) td{
 
 
       <!-- BACKUP -->
-      <section id="page-backup" class="page hidden">
 
-        <h1 class="page-title">Backup & Restore</h1>
+      <section
+        id="page-backup"
+        class="page hidden">
+
+        <h1 class="page-title">
+          Backup & Restore
+        </h1>
 
         <div class="card">
 
-          <h2 class="section-title">Backup</h2>
+          <h2 class="section-title">
+            Backup
+          </h2>
 
           <p>
-            Download a complete copy of your school's local database.
+            Download a complete copy of the school's local database.
           </p>
 
-          <button class="btn primary" onclick="downloadBackup()">
+          <button
+            class="btn primary"
+            onclick="downloadBackup()">
             Download Backup
           </button>
 
         </div>
 
-
         <div class="card">
 
-          <h2 class="section-title">Restore</h2>
+          <h2 class="section-title">
+            Restore
+          </h2>
 
           <p>
             Restore a previously downloaded school database.
@@ -1438,7 +1932,9 @@ tr:nth-child(even) td{
 
           <br><br>
 
-          <button class="btn warning" onclick="restoreBackup()">
+          <button
+            class="btn warning"
+            onclick="restoreBackup()">
             Restore Database
           </button>
 
@@ -1448,20 +1944,34 @@ tr:nth-child(even) td{
 
 
     </div>
+
   </main>
 
 </div>
 
 
-<!-- MODAL -->
-<div id="modal" class="modal hidden">
+<!-- =====================================================
+     MODAL
+===================================================== -->
+
+<div
+  id="modal"
+  class="modal hidden">
 
   <div class="modal-card">
 
     <div class="modal-head">
-      <h3 id="modalTitle">Form</h3>
 
-      <button class="close" onclick="closeModal()">×</button>
+      <h3 id="modalTitle">
+        Form
+      </h3>
+
+      <button
+        class="close"
+        onclick="closeModal()">
+        ×
+      </button>
+
     </div>
 
     <div id="modalBody"></div>
@@ -1473,16 +1983,20 @@ tr:nth-child(even) td{
 
 <script>
 
-/* =========================================================
+/* =====================================================
    DATABASE
-========================================================= */
+===================================================== */
 
-const DB_KEY="GLOBAL_KIDS_ACADEMY_SOKOTO_DATABASE_V1";
-const SESSION_KEY="GLOBAL_KIDS_ACADEMY_SOKOTO_SESSION_V1";
+const DB_KEY =
+  "GLOBAL_KIDS_ACADEMY_SOKOTO_DATABASE_V1";
+
+const SESSION_KEY =
+  "GLOBAL_KIDS_ACADEMY_SOKOTO_SESSION_V1";
+
 
 function emptyDB(){
 
-  return{
+  return {
 
     accounts:[],
 
@@ -1511,12 +2025,23 @@ function emptyDB(){
     registerSignatures:{},
 
     settings:{
-      schoolName:"Global Kids Academy Sokoto",
-      location:"Sokoto State",
+
+      schoolName:
+        "Global Kids Academy Sokoto",
+
+      location:
+        "Sokoto State",
+
       phone:"",
+
       email:"",
-      currentSession:"2026/2027",
-      currentTerm:"First Term"
+
+      currentSession:
+        "2026/2027",
+
+      currentTerm:
+        "First Term"
+
     }
 
   };
@@ -1531,21 +2056,24 @@ function loadDB(){
 
   try{
 
-    const saved=localStorage.getItem(DB_KEY);
+    const saved=
+      localStorage.getItem(DB_KEY);
 
     if(saved){
 
-      const data=JSON.parse(saved);
+      const data=
+        JSON.parse(saved);
 
-      const base=emptyDB();
-
-      return Object.assign(base,data);
+      return Object.assign(
+        emptyDB(),
+        data
+      );
 
     }
 
-  }catch(e){
+  }catch(error){
 
-    console.error(e);
+    console.error(error);
 
   }
 
@@ -1564,21 +2092,24 @@ function saveDB(){
 }
 
 
-/* =========================================================
+/* =====================================================
    DEFAULT ADMIN
-========================================================= */
+===================================================== */
 
 function ensureAdmin(){
 
-  const exists=db.accounts.find(
-    a=>a.role==="Administrator" && a.username==="Admin"
-  );
+  const exists=
+    db.accounts.find(
+      a=>
+        a.role==="Administrator" &&
+        a.username==="Admin"
+    );
 
   if(!exists){
 
     db.accounts.push({
 
-      id:uid(),
+      id:"ADMIN",
 
       role:"Administrator",
 
@@ -1601,15 +2132,17 @@ function ensureAdmin(){
 ensureAdmin();
 
 
-/* =========================================================
+/* =====================================================
    HELPERS
-========================================================= */
+===================================================== */
 
 function uid(){
 
-  return "ID"+Date.now()+Math.random()
-    .toString(36)
-    .slice(2,8);
+  return "ID"+
+    Date.now()+
+    Math.random()
+      .toString(36)
+      .slice(2,8);
 
 }
 
@@ -1628,14 +2161,18 @@ function esc(value){
 
 function today(){
 
-  return new Date().toISOString().slice(0,10);
+  return new Date()
+    .toISOString()
+    .slice(0,10);
 
 }
 
 
 function monthNow(){
 
-  return new Date().toISOString().slice(0,7);
+  return new Date()
+    .toISOString()
+    .slice(0,7);
 
 }
 
@@ -1645,10 +2182,12 @@ function currentUser(){
   try{
 
     return JSON.parse(
-      sessionStorage.getItem(SESSION_KEY)
+      sessionStorage.getItem(
+        SESSION_KEY
+      )
     );
 
-  }catch(e){
+  }catch(error){
 
     return null;
 
@@ -1657,22 +2196,30 @@ function currentUser(){
 }
 
 
-/* =========================================================
+/* =====================================================
    LOGIN
-========================================================= */
+===================================================== */
 
 function login(){
 
   const role=
-    document.getElementById("loginRole").value;
+    document.getElementById(
+      "loginRole"
+    ).value;
 
   const username=
-    document.getElementById("loginUsername").value.trim();
+    document.getElementById(
+      "loginUsername"
+    ).value.trim();
 
   const password=
-    document.getElementById("loginPassword").value;
+    document.getElementById(
+      "loginPassword"
+    ).value;
+
 
   let user=null;
+
 
   if(
     role==="Administrator" &&
@@ -1681,27 +2228,36 @@ function login(){
   ){
 
     user={
+
       id:"ADMIN",
+
       name:"School Administrator",
+
       role:"Administrator",
+
       username:"Admin"
+
     };
 
   }else{
 
-    user=db.accounts.find(a=>
-      a.role===role &&
-      a.username===username &&
-      a.password===password &&
-      a.active!==false
-    );
+    user=
+      db.accounts.find(
+        a=>
+          a.role===role &&
+          a.username===username &&
+          a.password===password &&
+          a.active!==false
+      );
 
   }
 
 
   if(!user){
 
-    document.getElementById("loginMessage").innerHTML=
+    document.getElementById(
+      "loginMessage"
+    ).innerHTML=
       `<span style="color:#b91c1c">
         Invalid login details.
       </span>`;
@@ -1716,6 +2272,7 @@ function login(){
     JSON.stringify(user)
   );
 
+
   startApp();
 
 }
@@ -1723,7 +2280,9 @@ function login(){
 
 function logout(){
 
-  sessionStorage.removeItem(SESSION_KEY);
+  sessionStorage.removeItem(
+    SESSION_KEY
+  );
 
   location.reload();
 
@@ -1736,14 +2295,24 @@ function startApp(){
 
   if(!user)return;
 
-  document.getElementById("loginPage")
-    .classList.add("hidden");
 
-  document.getElementById("app")
-    .classList.remove("hidden");
+  document.getElementById(
+    "loginPage"
+  ).classList.add("hidden");
 
-  document.getElementById("userBadge").textContent=
-    user.name+" • "+user.role;
+
+  document.getElementById(
+    "app"
+  ).classList.remove("hidden");
+
+
+  document.getElementById(
+    "userBadge"
+  ).textContent=
+    user.name+
+    " • "+
+    user.role;
+
 
   renderDashboard();
 
@@ -1754,79 +2323,122 @@ function startApp(){
 
 function toggleSidebar(){
 
-  document.getElementById("sidebar")
-    .classList.toggle("open");
+  document.getElementById(
+    "sidebar"
+  ).classList.toggle("open");
 
 }
 
 
-/* =========================================================
+/* =====================================================
    NAVIGATION
-========================================================= */
+===================================================== */
 
 function showPage(page,button){
 
-  document.querySelectorAll(".page")
-    .forEach(p=>p.classList.add("hidden"));
+  document.querySelectorAll(
+    ".page"
+  ).forEach(
+    p=>p.classList.add("hidden")
+  );
+
 
   const target=
-    document.getElementById("page-"+page);
+    document.getElementById(
+      "page-"+page
+    );
+
 
   if(target)
     target.classList.remove("hidden");
 
-  document.querySelectorAll(".nav button")
-    .forEach(b=>b.classList.remove("active"));
+
+  document.querySelectorAll(
+    ".nav button"
+  ).forEach(
+    b=>b.classList.remove("active")
+  );
+
 
   if(button)
     button.classList.add("active");
 
+
   const titles={
+
     dashboard:"Dashboard",
+
     teachers:"Teachers",
+
     students:"Students",
+
     parents:"Parents",
+
     classes:"Classes & Subjects",
+
     register:"School Register",
+
     results:"Results",
+
     documents:"Academic Documents",
+
     approval:"Approval Centre",
+
     archive:"Approved Work Archive",
+
     assistant:"Teacher Assistant",
+
     settings:"School Settings",
+
     backup:"Backup & Restore"
+
   };
 
-  document.getElementById("topTitle").textContent=
-    titles[page]||"Global Kids Academy Sokoto";
+
+  document.getElementById(
+    "topTitle"
+  ).textContent=
+    titles[page]||
+    "Global Kids Academy Sokoto";
 
 
-  if(page==="dashboard")renderDashboard();
+  if(page==="dashboard")
+    renderDashboard();
 
-  if(page==="teachers")renderTeachers();
+  if(page==="teachers")
+    renderTeachers();
 
-  if(page==="students")renderStudents();
+  if(page==="students")
+    renderStudents();
 
-  if(page==="parents")renderParents();
+  if(page==="parents")
+    renderParents();
 
-  if(page==="classes")renderClasses();
+  if(page==="classes")
+    renderClasses();
 
-  if(page==="register")initRegister();
+  if(page==="register")
+    initRegister();
 
-  if(page==="results")initResults();
+  if(page==="results")
+    initResults();
 
-  if(page==="documents")renderDocuments();
+  if(page==="documents")
+    renderDocuments();
 
-  if(page==="approval")renderApproval();
+  if(page==="approval")
+    renderApproval();
 
-  if(page==="archive")renderArchive();
+  if(page==="archive")
+    renderArchive();
 
-  if(page==="settings")loadSettings();
+  if(page==="settings")
+    loadSettings();
 
-  if(page==="backup"){}
 
-  document.getElementById("sidebar")
-    .classList.remove("open");
+  document.getElementById(
+    "sidebar"
+  ).classList.remove("open");
 
 }
 
@@ -1834,118 +2446,189 @@ function showPage(page,button){
 function openPage(page){
 
   const button=
-    [...document.querySelectorAll(".nav button")]
-      .find(b=>
-        b.getAttribute("onclick")?.includes(
-          "'"+page+"'"
-        )
-      );
+    [...document.querySelectorAll(
+      ".nav button"
+    )].find(
+      b=>
+        b.getAttribute("onclick")
+        ?.includes("'"+page+"'")
+    );
+
 
   showPage(page,button);
 
 }
 
 
-/* =========================================================
+/* =====================================================
    DASHBOARD
-========================================================= */
+===================================================== */
 
 function renderDashboard(){
 
-  document.getElementById("dashTeachers")
-    .textContent=db.teachers.length;
+  document.getElementById(
+    "dashTeachers"
+  ).textContent=
+    db.teachers.length;
 
-  document.getElementById("dashStudents")
-    .textContent=db.students.length;
 
-  document.getElementById("dashParents")
-    .textContent=db.parents.length;
+  document.getElementById(
+    "dashStudents"
+  ).textContent=
+    db.students.length;
 
-  document.getElementById("dashDocuments")
-    .textContent=db.documents.length;
 
-  document.getElementById("academicInfo").innerHTML=`
+  document.getElementById(
+    "dashParents"
+  ).textContent=
+    db.parents.length;
 
-    <strong>${esc(db.settings.schoolName)}</strong><br>
 
-    ${esc(db.settings.location)}<br><br>
+  document.getElementById(
+    "dashDocuments"
+  ).textContent=
+    db.documents.length;
+
+
+  document.getElementById(
+    "academicInfo"
+  ).innerHTML=`
+
+    <strong>
+      ${esc(db.settings.schoolName)}
+    </strong>
+
+    <br>
+
+    ${esc(db.settings.location)}
+
+    <br><br>
 
     Session:
-    <b>${esc(db.settings.currentSession)}</b>
+    <b>
+      ${esc(db.settings.currentSession)}
+    </b>
+
     &nbsp; | &nbsp;
+
     Term:
-    <b>${esc(db.settings.currentTerm)}</b>
+    <b>
+      ${esc(db.settings.currentTerm)}
+    </b>
 
   `;
 
 }
 
 
-/* =========================================================
+/* =====================================================
    MODAL
-========================================================= */
+===================================================== */
 
 function openModal(title,html){
 
-  document.getElementById("modalTitle")
-    .textContent=title;
+  document.getElementById(
+    "modalTitle"
+  ).textContent=title;
 
-  document.getElementById("modalBody")
-    .innerHTML=html;
 
-  document.getElementById("modal")
-    .classList.remove("hidden");
+  document.getElementById(
+    "modalBody"
+  ).innerHTML=html;
+
+
+  document.getElementById(
+    "modal"
+  ).classList.remove("hidden");
 
 }
 
 
 function closeModal(){
 
-  document.getElementById("modal")
-    .classList.add("hidden");
+  document.getElementById(
+    "modal"
+  ).classList.add("hidden");
 
 }
 
 
-/* =========================================================
+/* =====================================================
    TEACHERS
-========================================================= */
+===================================================== */
 
 function teacherForm(){
 
   openModal(
     "Add Teacher",
+
     `
 
     <div class="form-group">
-      <label>Full Name</label>
+
+      <label>
+        Full Name
+      </label>
+
       <input id="fTeacherName">
+
     </div>
 
+
     <div class="form-group">
-      <label>Username</label>
+
+      <label>
+        Username
+      </label>
+
       <input id="fTeacherUsername">
+
     </div>
 
-    <div class="form-group">
-      <label>Password</label>
-      <input id="fTeacherPassword" value="Teacher@2026!">
-    </div>
 
     <div class="form-group">
-      <label>Phone</label>
+
+      <label>
+        Password
+      </label>
+
+      <input
+        id="fTeacherPassword"
+        value="Teacher@2026!">
+
+    </div>
+
+
+    <div class="form-group">
+
+      <label>
+        Phone
+      </label>
+
       <input id="fTeacherPhone">
+
     </div>
+
 
     <div class="form-group">
-      <label>Subjects</label>
-      <input id="fTeacherSubjects"
+
+      <label>
+        Subjects
+      </label>
+
+      <input
+        id="fTeacherSubjects"
         placeholder="Mathematics, English Language">
+
     </div>
 
-    <button class="btn primary"
+
+    <button
+      class="btn primary"
       onclick="saveTeacher()">
+
       Save Teacher
+
     </button>
 
     `
@@ -1957,17 +2640,30 @@ function teacherForm(){
 function saveTeacher(){
 
   const name=
-    document.getElementById("fTeacherName").value.trim();
+    document.getElementById(
+      "fTeacherName"
+    ).value.trim();
 
   const username=
-    document.getElementById("fTeacherUsername").value.trim();
+    document.getElementById(
+      "fTeacherUsername"
+    ).value.trim();
 
   const password=
-    document.getElementById("fTeacherPassword").value;
+    document.getElementById(
+      "fTeacherPassword"
+    ).value;
 
-  if(!name||!username||!password){
 
-    alert("Please complete the required fields.");
+  if(
+    !name||
+    !username||
+    !password
+  ){
+
+    alert(
+      "Please complete the required fields."
+    );
 
     return;
 
@@ -1980,7 +2676,9 @@ function saveTeacher(){
     )
   ){
 
-    alert("Username already exists.");
+    alert(
+      "Username already exists."
+    );
 
     return;
 
@@ -1995,9 +2693,15 @@ function saveTeacher(){
 
     username,
 
-    phone:document.getElementById("fTeacherPhone").value,
+    phone:
+      document.getElementById(
+        "fTeacherPhone"
+      ).value,
 
-    subjects:document.getElementById("fTeacherSubjects").value,
+    subjects:
+      document.getElementById(
+        "fTeacherSubjects"
+      ).value,
 
     active:true
 
@@ -2005,6 +2709,7 @@ function saveTeacher(){
 
 
   db.teachers.push(teacher);
+
 
   db.accounts.push({
 
@@ -2037,32 +2742,48 @@ function saveTeacher(){
 function renderTeachers(){
 
   const tbody=
-    document.getElementById("teacherTable");
+    document.getElementById(
+      "teacherTable"
+    );
+
 
   if(!db.teachers.length){
 
     tbody.innerHTML=
-      `<tr><td colspan="7">No teachers registered.</td></tr>`;
+      `<tr>
+        <td colspan="7">
+          No teachers registered.
+        </td>
+      </tr>`;
 
     return;
 
   }
 
 
-  tbody.innerHTML=db.teachers.map(
-    (t,i)=>`
+  tbody.innerHTML=
+    db.teachers.map(
+      (t,i)=>`
 
       <tr>
 
         <td>${i+1}</td>
 
-        <td>${esc(t.name)}</td>
+        <td>
+          ${esc(t.name)}
+        </td>
 
-        <td>${esc(t.username)}</td>
+        <td>
+          ${esc(t.username)}
+        </td>
 
-        <td>${esc(t.phone)}</td>
+        <td>
+          ${esc(t.phone)}
+        </td>
 
-        <td>${esc(t.subjects)}</td>
+        <td>
+          ${esc(t.subjects)}
+        </td>
 
         <td>
           <span class="badge green">
@@ -2071,29 +2792,43 @@ function renderTeachers(){
         </td>
 
         <td>
-          <button class="btn danger"
+
+          <button
+            class="btn danger"
             onclick="deleteTeacher('${t.id}')">
+
             Delete
+
           </button>
+
         </td>
 
       </tr>
 
     `
-  ).join("");
+    ).join("");
 
 }
 
 
 function deleteTeacher(id){
 
-  if(!confirm("Delete this teacher?"))return;
+  if(!confirm(
+    "Delete this teacher?"
+  ))return;
+
 
   db.teachers=
-    db.teachers.filter(t=>t.id!==id);
+    db.teachers.filter(
+      t=>t.id!==id
+    );
+
 
   db.accounts=
-    db.accounts.filter(a=>a.id!==id);
+    db.accounts.filter(
+      a=>a.id!==id
+    );
+
 
   saveDB();
 
@@ -2104,66 +2839,110 @@ function deleteTeacher(id){
 }
 
 
-/* =========================================================
+/* =====================================================
    STUDENTS
-========================================================= */
+===================================================== */
 
 function studentForm(){
 
-  const classes=
-    db.classes.length
-    ?db.classes
-    :defaultClasses();
-
   openModal(
     "Add Student",
+
     `
 
     <div class="form-group">
-      <label>Full Name</label>
+
+      <label>
+        Full Name
+      </label>
+
       <input id="fStudentName">
+
     </div>
 
+
     <div class="form-group">
-      <label>Admission Number</label>
+
+      <label>
+        Admission Number
+      </label>
+
       <input id="fStudentAdmission">
+
     </div>
 
+
     <div class="form-group">
-      <label>Class</label>
+
+      <label>
+        Class
+      </label>
 
       <select id="fStudentClass">
-        ${classes.map(c=>
-          `<option>${esc(c.name)}</option>`
+
+        ${db.classes.map(
+          c=>
+            `<option value="${esc(c.name)}">
+              ${esc(c.name)}
+            </option>`
         ).join("")}
+
       </select>
 
     </div>
 
+
     <div class="form-group">
-      <label>Gender</label>
+
+      <label>
+        Gender
+      </label>
 
       <select id="fStudentGender">
-        <option>Male</option>
-        <option>Female</option>
+
+        <option>
+          Male
+        </option>
+
+        <option>
+          Female
+        </option>
+
       </select>
 
     </div>
 
+
     <div class="form-group">
-      <label>Username</label>
+
+      <label>
+        Username
+      </label>
+
       <input id="fStudentUsername">
+
     </div>
+
 
     <div class="form-group">
-      <label>Password</label>
-      <input id="fStudentPassword"
+
+      <label>
+        Password
+      </label>
+
+      <input
+        id="fStudentPassword"
         value="Student@2026!">
+
     </div>
 
-    <button class="btn primary"
+
+    <button
+      class="btn primary"
       onclick="saveStudent()">
+
       Save Student
+
     </button>
 
     `
@@ -2175,20 +2954,36 @@ function studentForm(){
 function saveStudent(){
 
   const name=
-    document.getElementById("fStudentName").value.trim();
+    document.getElementById(
+      "fStudentName"
+    ).value.trim();
 
   const admission=
-    document.getElementById("fStudentAdmission").value.trim();
+    document.getElementById(
+      "fStudentAdmission"
+    ).value.trim();
 
   const username=
-    document.getElementById("fStudentUsername").value.trim();
+    document.getElementById(
+      "fStudentUsername"
+    ).value.trim();
 
   const password=
-    document.getElementById("fStudentPassword").value;
+    document.getElementById(
+      "fStudentPassword"
+    ).value;
 
-  if(!name||!admission||!username||!password){
 
-    alert("Complete all required fields.");
+  if(
+    !name||
+    !admission||
+    !username||
+    !password
+  ){
+
+    alert(
+      "Complete all required fields."
+    );
 
     return;
 
@@ -2196,10 +2991,14 @@ function saveStudent(){
 
 
   if(
-    db.accounts.some(a=>a.username===username)
+    db.accounts.some(
+      a=>a.username===username
+    )
   ){
 
-    alert("Username already exists.");
+    alert(
+      "Username already exists."
+    );
 
     return;
 
@@ -2215,10 +3014,14 @@ function saveStudent(){
     admission,
 
     className:
-      document.getElementById("fStudentClass").value,
+      document.getElementById(
+        "fStudentClass"
+      ).value,
 
     gender:
-      document.getElementById("fStudentGender").value,
+      document.getElementById(
+        "fStudentGender"
+      ).value,
 
     username,
 
@@ -2228,6 +3031,7 @@ function saveStudent(){
 
 
   db.students.push(student);
+
 
   db.accounts.push({
 
@@ -2260,20 +3064,28 @@ function saveStudent(){
 function renderStudents(){
 
   const tbody=
-    document.getElementById("studentTable");
+    document.getElementById(
+      "studentTable"
+    );
+
 
   if(!db.students.length){
 
     tbody.innerHTML=
-      `<tr><td colspan="7">No students registered.</td></tr>`;
+      `<tr>
+        <td colspan="7">
+          No students registered.
+        </td>
+      </tr>`;
 
     return;
 
   }
 
 
-  tbody.innerHTML=db.students.map(
-    (s,i)=>`
+  tbody.innerHTML=
+    db.students.map(
+      (s,i)=>`
 
       <tr>
 
@@ -2291,9 +3103,12 @@ function renderStudents(){
 
         <td>
 
-          <button class="btn danger"
+          <button
+            class="btn danger"
             onclick="deleteStudent('${s.id}')">
+
             Delete
+
           </button>
 
         </td>
@@ -2301,20 +3116,29 @@ function renderStudents(){
       </tr>
 
     `
-  ).join("");
+    ).join("");
 
 }
 
 
 function deleteStudent(id){
 
-  if(!confirm("Delete this student?"))return;
+  if(!confirm(
+    "Delete this student?"
+  ))return;
+
 
   db.students=
-    db.students.filter(s=>s.id!==id);
+    db.students.filter(
+      s=>s.id!==id
+    );
+
 
   db.accounts=
-    db.accounts.filter(a=>a.id!==id);
+    db.accounts.filter(
+      a=>a.id!==id
+    );
+
 
   saveDB();
 
@@ -2325,15 +3149,17 @@ function deleteStudent(id){
 }
 
 
-/* =========================================================
+/* =====================================================
    PARENTS
-========================================================= */
+===================================================== */
 
 function parentForm(){
 
   if(!db.students.length){
 
-    alert("Register a student first.");
+    alert(
+      "Register a student first."
+    );
 
     return;
 
@@ -2342,45 +3168,83 @@ function parentForm(){
 
   openModal(
     "Add Parent",
+
     `
 
     <div class="form-group">
-      <label>Parent Name</label>
+
+      <label>
+        Parent Name
+      </label>
+
       <input id="fParentName">
+
     </div>
 
+
     <div class="form-group">
-      <label>Phone</label>
+
+      <label>
+        Phone
+      </label>
+
       <input id="fParentPhone">
+
     </div>
 
+
     <div class="form-group">
-      <label>Username</label>
+
+      <label>
+        Username
+      </label>
+
       <input id="fParentUsername">
+
     </div>
 
+
     <div class="form-group">
-      <label>Password</label>
-      <input id="fParentPassword"
+
+      <label>
+        Password
+      </label>
+
+      <input
+        id="fParentPassword"
         value="Parent@2026!">
+
     </div>
 
+
     <div class="form-group">
-      <label>Student</label>
+
+      <label>
+        Student
+      </label>
 
       <select id="fParentStudent">
-        ${db.students.map(s=>
-          `<option value="${s.id}">
-            ${esc(s.name)} - ${esc(s.admission)}
-          </option>`
+
+        ${db.students.map(
+          s=>
+            `<option value="${s.id}">
+              ${esc(s.name)}
+              -
+              ${esc(s.admission)}
+            </option>`
         ).join("")}
+
       </select>
 
     </div>
 
-    <button class="btn primary"
+
+    <button
+      class="btn primary"
       onclick="saveParent()">
+
       Save Parent
+
     </button>
 
     `
@@ -2392,17 +3256,30 @@ function parentForm(){
 function saveParent(){
 
   const name=
-    document.getElementById("fParentName").value.trim();
+    document.getElementById(
+      "fParentName"
+    ).value.trim();
 
   const username=
-    document.getElementById("fParentUsername").value.trim();
+    document.getElementById(
+      "fParentUsername"
+    ).value.trim();
 
   const password=
-    document.getElementById("fParentPassword").value;
+    document.getElementById(
+      "fParentPassword"
+    ).value;
 
-  if(!name||!username||!password){
 
-    alert("Complete all required fields.");
+  if(
+    !name||
+    !username||
+    !password
+  ){
+
+    alert(
+      "Complete all required fields."
+    );
 
     return;
 
@@ -2410,10 +3287,14 @@ function saveParent(){
 
 
   if(
-    db.accounts.some(a=>a.username===username)
+    db.accounts.some(
+      a=>a.username===username
+    )
   ){
 
-    alert("Username already exists.");
+    alert(
+      "Username already exists."
+    );
 
     return;
 
@@ -2426,12 +3307,17 @@ function saveParent(){
 
     name,
 
-    phone:document.getElementById("fParentPhone").value,
+    phone:
+      document.getElementById(
+        "fParentPhone"
+      ).value,
 
     username,
 
     studentId:
-      document.getElementById("fParentStudent").value,
+      document.getElementById(
+        "fParentStudent"
+      ).value,
 
     active:true
 
@@ -2439,6 +3325,7 @@ function saveParent(){
 
 
   db.parents.push(parent);
+
 
   db.accounts.push({
 
@@ -2471,66 +3358,89 @@ function saveParent(){
 function renderParents(){
 
   const tbody=
-    document.getElementById("parentTable");
+    document.getElementById(
+      "parentTable"
+    );
+
 
   if(!db.parents.length){
 
     tbody.innerHTML=
-      `<tr><td colspan="6">No parents registered.</td></tr>`;
+      `<tr>
+        <td colspan="6">
+          No parents registered.
+        </td>
+      </tr>`;
 
     return;
 
   }
 
 
-  tbody.innerHTML=db.parents.map(
-    (p,i)=>{
+  tbody.innerHTML=
+    db.parents.map(
+      (p,i)=>{
 
-      const student=
-        db.students.find(s=>s.id===p.studentId);
+        const student=
+          db.students.find(
+            s=>s.id===p.studentId
+          );
 
-      return `
 
-      <tr>
+        return`
 
-        <td>${i+1}</td>
+        <tr>
 
-        <td>${esc(p.name)}</td>
+          <td>${i+1}</td>
 
-        <td>${esc(p.phone)}</td>
+          <td>${esc(p.name)}</td>
 
-        <td>${esc(p.username)}</td>
+          <td>${esc(p.phone)}</td>
 
-        <td>${esc(student?.name||"")}</td>
+          <td>${esc(p.username)}</td>
 
-        <td>
+          <td>${esc(student?.name||"")}</td>
 
-          <button class="btn danger"
-            onclick="deleteParent('${p.id}')">
-            Delete
-          </button>
+          <td>
 
-        </td>
+            <button
+              class="btn danger"
+              onclick="deleteParent('${p.id}')">
 
-      </tr>
+              Delete
 
-      `;
+            </button>
 
-    }
-  ).join("");
+          </td>
+
+        </tr>
+
+        `;
+
+      }
+    ).join("");
 
 }
 
 
 function deleteParent(id){
 
-  if(!confirm("Delete this parent?"))return;
+  if(!confirm(
+    "Delete this parent?"
+  ))return;
+
 
   db.parents=
-    db.parents.filter(p=>p.id!==id);
+    db.parents.filter(
+      p=>p.id!==id
+    );
+
 
   db.accounts=
-    db.accounts.filter(a=>a.id!==id);
+    db.accounts.filter(
+      a=>a.id!==id
+    );
+
 
   saveDB();
 
@@ -2541,32 +3451,57 @@ function deleteParent(id){
 }
 
 
-/* =========================================================
+/* =====================================================
    CLASSES
-========================================================= */
+===================================================== */
 
 function defaultClasses(){
 
-  return[
-    "Nursery 1 A","Nursery 1 B",
-    "Nursery 2 A","Nursery 2 B",
-    "Nursery 3 A","Nursery 3 B",
-    "Basic 1 A","Basic 1 B",
-    "Basic 2 A","Basic 2 B",
-    "Basic 3 A","Basic 3 B",
-    "Basic 4 A","Basic 4 B",
-    "Basic 5 A","Basic 5 B",
-    "Basic 6 A","Basic 6 B",
-    "JSS1 A","JSS1 B",
-    "JSS2 A","JSS2 B",
-    "JSS3 A","JSS3 B",
-    "SS1 A","SS1 B",
-    "SS2 A","SS2 B",
-    "SS3 A","SS3 B"
-  ].map(name=>({
-    id:uid(),
-    name
-  }));
+  const names=[
+
+    "Nursery 1 A",
+    "Nursery 1 B",
+    "Nursery 2 A",
+    "Nursery 2 B",
+    "Nursery 3 A",
+    "Nursery 3 B",
+
+    "Basic 1 A",
+    "Basic 1 B",
+    "Basic 2 A",
+    "Basic 2 B",
+    "Basic 3 A",
+    "Basic 3 B",
+    "Basic 4 A",
+    "Basic 4 B",
+    "Basic 5 A",
+    "Basic 5 B",
+    "Basic 6 A",
+    "Basic 6 B",
+
+    "JSS1 A",
+    "JSS1 B",
+    "JSS2 A",
+    "JSS2 B",
+    "JSS3 A",
+    "JSS3 B",
+
+    "SS1 A",
+    "SS1 B",
+    "SS2 A",
+    "SS2 B",
+    "SS3 A",
+    "SS3 B"
+
+  ];
+
+
+  return names.map(
+    name=>({
+      id:uid(),
+      name
+    })
+  );
 
 }
 
@@ -2575,7 +3510,8 @@ function ensureClasses(){
 
   if(!db.classes.length){
 
-    db.classes=defaultClasses();
+    db.classes=
+      defaultClasses();
 
     saveDB();
 
@@ -2588,6 +3524,7 @@ ensureClasses();
 
 
 const DEFAULT_SUBJECTS=[
+
   "Mathematics",
   "English Language",
   "Physics",
@@ -2612,6 +3549,7 @@ const DEFAULT_SUBJECTS=[
   "Commerce",
   "Financial Accounting",
   "Further Mathematics"
+
 ];
 
 
@@ -2619,10 +3557,13 @@ function ensureSubjects(){
 
   if(!db.subjects.length){
 
-    db.subjects=DEFAULT_SUBJECTS.map(name=>({
-      id:uid(),
-      name
-    }));
+    db.subjects=
+      DEFAULT_SUBJECTS.map(
+        name=>({
+          id:uid(),
+          name
+        })
+      );
 
     saveDB();
 
@@ -2637,14 +3578,21 @@ ensureSubjects();
 function addClass(){
 
   const name=
-    prompt("Enter class name:");
+    prompt(
+      "Enter class name:"
+    );
 
   if(!name)return;
 
+
   db.classes.push({
+
     id:uid(),
+
     name:name.trim()
+
   });
+
 
   saveDB();
 
@@ -2656,14 +3604,21 @@ function addClass(){
 function addSubject(){
 
   const name=
-    prompt("Enter subject name:");
+    prompt(
+      "Enter subject name:"
+    );
 
   if(!name)return;
 
+
   db.subjects.push({
+
     id:uid(),
+
     name:name.trim()
+
   });
+
 
   saveDB();
 
@@ -2674,54 +3629,66 @@ function addSubject(){
 
 function renderClasses(){
 
-  const classes=
-    document.getElementById("classList");
+  document.getElementById(
+    "classList"
+  ).innerHTML=
 
-  classes.innerHTML=
-    db.classes.map(c=>
-      `<span class="badge green"
-        style="margin:4px">
-        ${esc(c.name)}
-      </span>`
+    db.classes.map(
+      c=>
+        `<span
+          class="badge green"
+          style="margin:4px">
+          ${esc(c.name)}
+        </span>`
     ).join("");
 
 
-  document.getElementById("subjectList").innerHTML=
-    db.subjects.map(s=>
-      `<span class="badge blue"
-        style="margin:4px">
-        ${esc(s.name)}
-      </span>`
+  document.getElementById(
+    "subjectList"
+  ).innerHTML=
+
+    db.subjects.map(
+      s=>
+        `<span
+          class="badge blue"
+          style="margin:4px">
+          ${esc(s.name)}
+        </span>`
     ).join("");
 
 }
 
 
-/* =========================================================
+/* =====================================================
    REGISTER
-========================================================= */
+===================================================== */
 
 function initRegister(){
 
   const select=
-    document.getElementById("registerClass");
+    document.getElementById(
+      "registerClass"
+    );
 
-  if(!select.options.length){
 
-    select.innerHTML=
-      db.classes.map(c=>
+  select.innerHTML=
+    db.classes.map(
+      c=>
         `<option value="${esc(c.name)}">
           ${esc(c.name)}
         </option>`
-      ).join("");
+    ).join("");
 
-  }
 
   const month=
-    document.getElementById("registerMonth");
+    document.getElementById(
+      "registerMonth"
+    );
+
 
   if(!month.value)
     month.value=monthNow();
+
 
   renderRegister();
 
@@ -2730,52 +3697,87 @@ function initRegister(){
 
 function dateKey(date){
 
-  return date.toISOString().slice(0,10);
+  return date
+    .toISOString()
+    .slice(0,10);
 
 }
 
 
 function isWeekend(date){
 
-  const day=date.getDay();
+  const day=
+    date.getDay();
 
-  return day===0||day===6;
+  return day===0||
+         day===6;
 
 }
 
 
 function isHoliday(date){
 
-  const key=dateKey(date);
-
-  return !!db.holidays[key];
+  return !!db.holidays[
+    dateKey(date)
+  ];
 
 }
 
 
 function getMonthDays(month){
 
-  const [year,mon]=month.split("-").map(Number);
+  const parts=
+    month.split("-")
+      .map(Number);
+
+  const year=parts[0];
+
+  const mon=parts[1];
 
   const daysInMonth=
-    new Date(year,mon,0).getDate();
+    new Date(
+      year,
+      mon,
+      0
+    ).getDate();
+
 
   const result=[];
 
-  for(let d=1;d<=daysInMonth;d++){
+
+  for(
+    let d=1;
+    d<=daysInMonth;
+    d++
+  ){
 
     const date=
-      new Date(year,mon-1,d);
+      new Date(
+        year,
+        mon-1,
+        d
+      );
+
 
     result.push({
+
       day:d,
+
       date,
-      key:dateKey(date),
-      weekend:isWeekend(date),
-      holiday:isHoliday(date)
+
+      key:
+        dateKey(date),
+
+      weekend:
+        isWeekend(date),
+
+      holiday:
+        isHoliday(date)
+
     });
 
   }
+
 
   return result;
 
@@ -2785,186 +3787,249 @@ function getMonthDays(month){
 function renderRegister(){
 
   const className=
-    document.getElementById("registerClass").value;
+    document.getElementById(
+      "registerClass"
+    ).value;
+
 
   const month=
-    document.getElementById("registerMonth").value;
+    document.getElementById(
+      "registerMonth"
+    ).value;
 
-  if(!className||!month)return;
+
+  if(!className||!month)
+    return;
 
 
   const students=
     db.students.filter(
-      s=>s.className===className
+      s=>
+        s.className===className
     );
 
 
-  const days=getMonthDays(month);
+  const days=
+    getMonthDays(month);
 
 
   const officialDays=
     days.filter(
-      d=>!d.weekend&&!d.holiday
+      d=>
+        !d.weekend &&
+        !d.holiday
     ).length;
 
 
   const publicHolidayDays=
     days.filter(
-      d=>!d.weekend&&d.holiday
+      d=>
+        !d.weekend &&
+        d.holiday
     ).length;
 
 
   let grandPresent=0;
-  let grandAbsent=0;
 
+  let grandAbsent=0;
 
   let rows="";
 
 
-  students.forEach((student,index)=>{
+  students.forEach(
+    (student,index)=>{
 
-    let P=0;
-    let A=0;
+      let P=0;
 
-    let cells="";
+      let A=0;
 
-
-    days.forEach(day=>{
-
-      let status=
-        db.attendance[
-          student.id+"_"+day.key
-        ]||"";
+      let cells="";
 
 
-      if(day.weekend){
+      days.forEach(
+        day=>{
 
-        cells+=`
+          const key=
+            student.id+
+            "_"+
+            day.key;
+
+
+          const status=
+            db.attendance[key]||
+            "";
+
+
+          if(day.weekend){
+
+            cells+=`
+
+              <td>
+
+                <div class="mark NA">
+                  —
+                </div>
+
+              </td>
+
+            `;
+
+            return;
+
+          }
+
+
+          if(day.holiday){
+
+            cells+=`
+
+              <td>
+
+                <div class="mark PH">
+                  PH
+                </div>
+
+              </td>
+
+            `;
+
+            return;
+
+          }
+
+
+          if(status==="P")
+            P++;
+
+
+          if(status==="A")
+            A++;
+
+
+          cells+=`
+
+            <td>
+
+              <div
+
+                class="mark ${status}"
+
+                onclick="
+                  cycleRegisterMark(
+                    '${student.id}',
+                    '${day.key}'
+                  )
+                "
+
+                title="
+                  Tap to change attendance
+                ">
+
+                ${status}
+
+              </div>
+
+            </td>
+
+          `;
+
+        }
+      );
+
+
+      grandPresent+=P;
+
+      grandAbsent+=A;
+
+
+      const percentage=
+        officialDays
+        ?(
+          P/
+          officialDays*
+          100
+        ).toFixed(1)
+        :"0.0";
+
+
+      rows+=`
+
+        <tr>
+
           <td>
-            <div class="mark NA">—</div>
+            ${index+1}
           </td>
-        `;
 
-        return;
-
-      }
-
-
-      if(day.holiday){
-
-        cells+=`
-          <td>
-            <div class="mark PH">PH</div>
+          <td class="student-name">
+            ${esc(student.name)}
           </td>
-        `;
 
-        return;
+          <td class="admission">
+            ${esc(student.admission)}
+          </td>
 
-      }
+          ${cells}
 
+          <td class="total-col">
+            ${officialDays}
+          </td>
 
-      if(status==="P")P++;
+          <td class="total-col">
+            ${P}
+          </td>
 
-      if(status==="A")A++;
+          <td class="total-col">
+            ${A}
+          </td>
 
+          <td class="total-col">
+            ${publicHolidayDays}
+          </td>
 
-      cells+=`
+          <td class="total-col">
+            ${percentage}%
+          </td>
 
-        <td>
-
-          <div
-            class="mark ${status}"
-            onclick="cycleRegisterMark(
-              '${student.id}',
-              '${day.key}'
-            )"
-            title="Tap to change attendance">
-
-            ${status}
-
-          </div>
-
-        </td>
+        </tr>
 
       `;
 
-    });
-
-
-    grandPresent+=P;
-    grandAbsent+=A;
-
-
-    const percentage=
-      officialDays
-      ?((P/officialDays)*100).toFixed(1)
-      :"0.0";
-
-
-    rows+=`
-
-      <tr>
-
-        <td>${index+1}</td>
-
-        <td class="student-name">
-          ${esc(student.name)}
-        </td>
-
-        <td class="admission">
-          ${esc(student.admission)}
-        </td>
-
-        ${cells}
-
-        <td class="total-col">
-          ${officialDays}
-        </td>
-
-        <td class="total-col">
-          ${P}
-        </td>
-
-        <td class="total-col">
-          ${A}
-        </td>
-
-        <td class="total-col">
-          ${publicHolidayDays}
-        </td>
-
-        <td class="total-col">
-          ${percentage}%
-        </td>
-
-      </tr>
-
-    `;
-
-  });
+    }
+  );
 
 
   const classPercentage=
-    officialDays && students.length
+    officialDays &&
+    students.length
+
     ?(
       grandPresent/
-      (officialDays*students.length)*
+      (
+        officialDays*
+        students.length
+      )*
       100
     ).toFixed(1)
+
     :"0.0";
 
 
-  document.getElementById("registerArea")
-    .innerHTML=`
+  document.getElementById(
+    "registerArea"
+  ).innerHTML=`
 
     <div class="register-header">
 
       <div class="register-school">
-        ${esc(db.settings.schoolName)}
+        ${esc(
+          db.settings.schoolName
+        )}
       </div>
 
       <div>
-        ${esc(db.settings.location)}
+        ${esc(
+          db.settings.location
+        )}
       </div>
 
       <div class="register-title">
@@ -2988,12 +4053,16 @@ function renderRegister(){
 
       <div>
         <strong>SESSION</strong>
-        ${esc(db.settings.currentSession)}
+        ${esc(
+          db.settings.currentSession
+        )}
       </div>
 
       <div>
         <strong>TERM</strong>
-        ${esc(db.settings.currentTerm)}
+        ${esc(
+          db.settings.currentTerm
+        )}
       </div>
 
     </div>
@@ -3007,7 +4076,9 @@ function renderRegister(){
 
           <tr>
 
-            <th rowspan="2">S/N</th>
+            <th rowspan="2">
+              S/N
+            </th>
 
             <th rowspan="2">
               STUDENT NAME
@@ -3017,8 +4088,11 @@ function renderRegister(){
               ADMISSION NO.
             </th>
 
-            ${days.map(d=>
-              `<th>${d.day}</th>`
+            ${days.map(
+              d=>
+                `<th>
+                  ${d.day}
+                </th>`
             ).join("")}
 
             <th rowspan="2">
@@ -3043,13 +4117,26 @@ function renderRegister(){
 
           </tr>
 
+
           <tr>
 
-            ${days.map(d=>
-              `<th>
-                ${["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]
-                  [d.date.getDay()]}
-              </th>`
+            ${days.map(
+              d=>
+                `<th>
+                  ${
+                    [
+                      "Sun",
+                      "Mon",
+                      "Tue",
+                      "Wed",
+                      "Thu",
+                      "Fri",
+                      "Sat"
+                    ][
+                      d.date.getDay()
+                    ]
+                  }
+                </th>`
             ).join("")}
 
           </tr>
@@ -3060,13 +4147,21 @@ function renderRegister(){
         <tbody>
 
           ${
-            rows ||
+            rows||
+
             `<tr>
-              <td colspan="${days.length+8}"
+
+              <td
+                colspan="${days.length+8}"
                 style="text-align:center">
-                No students registered in this class.
+
+                No students registered
+                in this class.
+
               </td>
+
             </tr>`
+
           }
 
         </tbody>
@@ -3080,19 +4175,30 @@ function renderRegister(){
               CLASS TOTAL
             </th>
 
-            ${days.map(()=>
-              `<th></th>`
+            ${days.map(
+              ()=>
+                `<th></th>`
             ).join("")}
 
-            <th>${officialDays}</th>
+            <th>
+              ${officialDays}
+            </th>
 
-            <th>${grandPresent}</th>
+            <th>
+              ${grandPresent}
+            </th>
 
-            <th>${grandAbsent}</th>
+            <th>
+              ${grandAbsent}
+            </th>
 
-            <th>${publicHolidayDays}</th>
+            <th>
+              ${publicHolidayDays}
+            </th>
 
-            <th>${classPercentage}%</th>
+            <th>
+              ${classPercentage}%
+            </th>
 
           </tr>
 
@@ -3106,23 +4212,46 @@ function renderRegister(){
     <div class="legend">
 
       <div class="legend-item">
-        <span class="mark P">P</span>
+
+        <span class="mark P">
+          P
+        </span>
+
         Present
+
       </div>
 
+
       <div class="legend-item">
-        <span class="mark A">A</span>
+
+        <span class="mark A">
+          A
+        </span>
+
         Absent
+
       </div>
 
+
       <div class="legend-item">
-        <span class="mark PH">PH</span>
+
+        <span class="mark PH">
+          PH
+        </span>
+
         Public Holiday
+
       </div>
 
+
       <div class="legend-item">
-        <span class="mark NA">—</span>
+
+        <span class="mark NA">
+          —
+        </span>
+
         Weekend
+
       </div>
 
     </div>
@@ -3131,28 +4260,57 @@ function renderRegister(){
     <div class="register-summary">
 
       <div class="stat-box">
-        <strong>${officialDays}</strong>
+
+        <strong>
+          ${officialDays}
+        </strong>
+
         Official School Days
+
       </div>
 
+
       <div class="stat-box">
-        <strong>${grandPresent}</strong>
+
+        <strong>
+          ${grandPresent}
+        </strong>
+
         Present
+
       </div>
 
+
       <div class="stat-box">
-        <strong>${grandAbsent}</strong>
+
+        <strong>
+          ${grandAbsent}
+        </strong>
+
         Absent
+
       </div>
 
+
       <div class="stat-box">
-        <strong>${publicHolidayDays}</strong>
+
+        <strong>
+          ${publicHolidayDays}
+        </strong>
+
         Public Holidays
+
       </div>
 
+
       <div class="stat-box">
-        <strong>${classPercentage}%</strong>
+
+        <strong>
+          ${classPercentage}%
+        </strong>
+
         Class Attendance
+
       </div>
 
     </div>
@@ -3174,26 +4332,29 @@ function renderRegister(){
 
     </div>
 
-    `;
+  `;
 
 }
 
 
-/*
-  IMPORTANT:
-  Attendance cycle is ONLY:
+/* =====================================================
+   BLANK → P → A → BLANK
+===================================================== */
 
-  Blank → P → A → Blank
-*/
-
-function cycleRegisterMark(studentId,date){
+function cycleRegisterMark(
+  studentId,
+  date
+){
 
   if(!db.attendance)
     db.attendance={};
 
 
   const key=
-    studentId+"_"+date;
+    studentId+
+    "_"+
+    date;
+
 
   const current=
     db.attendance[key]||"";
@@ -3216,7 +4377,8 @@ function cycleRegisterMark(studentId,date){
 
   const next=
     order[
-      (index+1)%order.length
+      (index+1)%
+      order.length
     ];
 
 
@@ -3238,15 +4400,23 @@ function cycleRegisterMark(studentId,date){
 }
 
 
+/* =====================================================
+   PUBLIC HOLIDAY
+===================================================== */
+
 function publicHolidayForm(){
 
   openModal(
+
     "Add Public Holiday",
+
     `
 
     <div class="form-group">
 
-      <label>Date</label>
+      <label>
+        Date
+      </label>
 
       <input
         type="date"
@@ -3254,15 +4424,19 @@ function publicHolidayForm(){
 
     </div>
 
+
     <div class="form-group">
 
-      <label>Holiday Name</label>
+      <label>
+        Holiday Name
+      </label>
 
       <input
         id="holidayName"
         placeholder="Example: Independence Day">
 
     </div>
+
 
     <button
       class="btn primary"
@@ -3281,14 +4455,22 @@ function publicHolidayForm(){
 function saveHoliday(){
 
   const date=
-    document.getElementById("holidayDate").value;
+    document.getElementById(
+      "holidayDate"
+    ).value;
+
 
   const name=
-    document.getElementById("holidayName").value.trim();
+    document.getElementById(
+      "holidayName"
+    ).value.trim();
+
 
   if(!date){
 
-    alert("Select a date.");
+    alert(
+      "Select a date."
+    );
 
     return;
 
@@ -3296,7 +4478,8 @@ function saveHoliday(){
 
 
   db.holidays[date]=
-    name||"Public Holiday";
+    name||
+    "Public Holiday";
 
 
   saveDB();
@@ -3311,32 +4494,47 @@ function saveHoliday(){
 function clearRegisterMonth(){
 
   const month=
-    document.getElementById("registerMonth").value;
+    document.getElementById(
+      "registerMonth"
+    ).value;
+
 
   if(!confirm(
     "Clear attendance records for this month?"
   ))return;
 
 
-  const prefix=month+"-";
+  const prefix=
+    month+"-";
 
 
-  Object.keys(db.attendance)
-    .forEach(key=>{
+  Object.keys(
+    db.attendance
+  ).forEach(
+    key=>{
 
-      if(key.includes("_")){
+      const position=
+        key.lastIndexOf("_");
 
-        const date=
-          key.substring(
-            key.lastIndexOf("_")+1
-          );
 
-        if(date.startsWith(prefix))
-          delete db.attendance[key];
+      if(position===-1)
+        return;
+
+
+      const date=
+        key.substring(
+          position+1
+        );
+
+
+      if(date.startsWith(prefix)){
+
+        delete db.attendance[key];
 
       }
 
-    });
+    }
+  );
 
 
   saveDB();
@@ -3346,32 +4544,39 @@ function clearRegisterMonth(){
 }
 
 
-/* =========================================================
+/* =====================================================
    RESULTS
-========================================================= */
+===================================================== */
 
 function initResults(){
 
   const classSelect=
-    document.getElementById("resultClass");
+    document.getElementById(
+      "resultClass"
+    );
+
 
   const subjectSelect=
-    document.getElementById("resultSubject");
+    document.getElementById(
+      "resultSubject"
+    );
 
 
   classSelect.innerHTML=
-    db.classes.map(c=>
-      `<option value="${esc(c.name)}">
-        ${esc(c.name)}
-      </option>`
+    db.classes.map(
+      c=>
+        `<option value="${esc(c.name)}">
+          ${esc(c.name)}
+        </option>`
     ).join("");
 
 
   subjectSelect.innerHTML=
-    db.subjects.map(s=>
-      `<option value="${esc(s.name)}">
-        ${esc(s.name)}
-      </option>`
+    db.subjects.map(
+      s=>
+        `<option value="${esc(s.name)}">
+          ${esc(s.name)}
+        </option>`
     ).join("");
 
 
@@ -3400,104 +4605,160 @@ function grade(total){
 function renderResults(){
 
   const className=
-    document.getElementById("resultClass").value;
+    document.getElementById(
+      "resultClass"
+    ).value;
+
 
   const subject=
-    document.getElementById("resultSubject").value;
+    document.getElementById(
+      "resultSubject"
+    ).value;
 
 
   const students=
     db.students.filter(
-      s=>s.className===className
+      s=>
+        s.className===className
     );
 
 
   const tbody=
-    document.getElementById("resultTable");
+    document.getElementById(
+      "resultTable"
+    );
 
 
-  tbody.innerHTML=students.map(
-    (s,i)=>{
+  tbody.innerHTML=
+    students.map(
+      (s,i)=>{
 
-      const existing=
-        db.results.find(
-          r=>
-            r.studentId===s.id &&
-            r.className===className &&
-            r.subject===subject
-        );
-
-
-      const ca1=existing?.ca1||"";
-
-      const ca2=existing?.ca2||"";
-
-      const exam=existing?.exam||"";
-
-      const total=
-        Number(ca1)+
-        Number(ca2)+
-        Number(exam);
+        const existing=
+          db.results.find(
+            r=>
+              r.studentId===s.id &&
+              r.className===className &&
+              r.subject===subject
+          );
 
 
-      return`
+        const ca1=
+          existing?.ca1??"";
 
-      <tr>
+        const ca2=
+          existing?.ca2??"";
 
-        <td>${i+1}</td>
+        const exam=
+          existing?.exam??"";
 
-        <td>${esc(s.name)}</td>
 
-        <td>
-          <input
-            class="result-ca1"
-            data-id="${s.id}"
-            type="number"
-            min="0"
-            max="15"
-            value="${ca1}">
-        </td>
+        const total=
+          Number(ca1)+
+          Number(ca2)+
+          Number(exam);
 
-        <td>
-          <input
-            class="result-ca2"
-            data-id="${s.id}"
-            type="number"
-            min="0"
-            max="15"
-            value="${ca2}">
-        </td>
 
-        <td>
-          <input
-            class="result-exam"
-            data-id="${s.id}"
-            type="number"
-            min="0"
-            max="70"
-            value="${exam}">
-        </td>
+        return`
 
-        <td>
-          <strong>${total}</strong>
-        </td>
+        <tr>
 
-        <td>
-          <span class="badge ${
-            grade(total)==="F"
-            ?"red"
-            :"green"
-          }">
-            ${grade(total)}
-          </span>
-        </td>
+          <td>
+            ${i+1}
+          </td>
 
-      </tr>
+          <td>
+            ${esc(s.name)}
+          </td>
 
-      `;
+          <td>
 
-    }
-  ).join("");
+            <input
+
+              class="result-ca1"
+
+              data-id="${s.id}"
+
+              type="number"
+
+              min="0"
+
+              max="15"
+
+              value="${ca1}"
+
+            >
+
+          </td>
+
+          <td>
+
+            <input
+
+              class="result-ca2"
+
+              data-id="${s.id}"
+
+              type="number"
+
+              min="0"
+
+              max="15"
+
+              value="${ca2}"
+
+            >
+
+          </td>
+
+          <td>
+
+            <input
+
+              class="result-exam"
+
+              data-id="${s.id}"
+
+              type="number"
+
+              min="0"
+
+              max="70"
+
+              value="${exam}"
+
+            >
+
+          </td>
+
+          <td>
+
+            <strong>
+              ${total}
+            </strong>
+
+          </td>
+
+          <td>
+
+            <span
+              class="badge ${
+                grade(total)==="F"
+                ?"red"
+                :"green"
+              }">
+
+              ${grade(total)}
+
+            </span>
+
+          </td>
+
+        </tr>
+
+        `;
+
+      }
+    ).join("");
 
 }
 
@@ -3505,19 +4766,25 @@ function renderResults(){
 function saveResults(){
 
   const className=
-    document.getElementById("resultClass").value;
+    document.getElementById(
+      "resultClass"
+    ).value;
+
 
   const subject=
-    document.getElementById("resultSubject").value;
+    document.getElementById(
+      "resultSubject"
+    ).value;
 
 
   const students=
     db.students.filter(
-      s=>s.className===className
+      s=>
+        s.className===className
     );
 
 
-  students.forEach(student=>{
+  for(const student of students){
 
     const ca1=
       Number(
@@ -3526,12 +4793,14 @@ function saveResults(){
         )?.value||0
       );
 
+
     const ca2=
       Number(
         document.querySelector(
           `.result-ca2[data-id="${student.id}"]`
         )?.value||0
       );
+
 
     const exam=
       Number(
@@ -3541,10 +4810,17 @@ function saveResults(){
       );
 
 
-    if(ca1>15||ca2>15||exam>70){
+    if(
+      ca1<0||
+      ca1>15||
+      ca2<0||
+      ca2>15||
+      exam<0||
+      exam>70
+    ){
 
       alert(
-        "Invalid mark detected. CA1/CA2 maximum is 15 and Exam maximum is 70."
+        "Invalid mark. CA1 and CA2 maximum = 15. Examination maximum = 70."
       );
 
       return;
@@ -3567,9 +4843,11 @@ function saveResults(){
 
         id:uid(),
 
-        studentId:student.id,
+        studentId:
+          student.id,
 
-        studentName:student.name,
+        studentName:
+          student.name,
 
         className,
 
@@ -3587,6 +4865,7 @@ function saveResults(){
 
       };
 
+
       db.results.push(record);
 
     }
@@ -3598,16 +4877,19 @@ function saveResults(){
 
     record.exam=exam;
 
-    record.updatedAt=today();
+    record.updatedAt=
+      today();
 
-  });
+  }
 
 
   saveDB();
 
   renderResults();
 
-  alert("Results saved successfully.");
+  alert(
+    "Results saved successfully."
+  );
 
 }
 
@@ -3615,10 +4897,15 @@ function saveResults(){
 function publishResults(){
 
   const className=
-    document.getElementById("resultClass").value;
+    document.getElementById(
+      "resultClass"
+    ).value;
+
 
   const subject=
-    document.getElementById("resultSubject").value;
+    document.getElementById(
+      "resultSubject"
+    ).value;
 
 
   db.results
@@ -3628,75 +4915,121 @@ function publishResults(){
         r.subject===subject
     )
     .forEach(
-      r=>r.published=true
+      r=>
+        r.published=true
     );
 
 
   saveDB();
 
-  alert("Results published successfully.");
+  alert(
+    "Results published successfully."
+  );
 
 }
 
 
-/* =========================================================
+/* =====================================================
    DOCUMENTS
-========================================================= */
+===================================================== */
 
 function documentForm(){
 
   openModal(
+
     "Create Academic Document",
+
     `
 
     <div class="form-group">
-      <label>Title</label>
+
+      <label>
+        Title
+      </label>
+
       <input id="docTitle">
+
     </div>
 
+
     <div class="form-group">
-      <label>Document Type</label>
+
+      <label>
+        Document Type
+      </label>
 
       <select id="docType">
 
-        <option>Lesson Plan</option>
-        <option>Lesson Note</option>
-        <option>Scheme of Work</option>
-        <option>CA Questions</option>
-        <option>Examination Questions</option>
+        <option>
+          Lesson Plan
+        </option>
+
+        <option>
+          Lesson Note
+        </option>
+
+        <option>
+          Scheme of Work
+        </option>
+
+        <option>
+          CA Questions
+        </option>
+
+        <option>
+          Examination Questions
+        </option>
 
       </select>
 
     </div>
 
+
     <div class="form-group">
-      <label>Subject</label>
+
+      <label>
+        Subject
+      </label>
 
       <select id="docSubject">
 
-        ${db.subjects.map(s=>
-          `<option>${esc(s.name)}</option>`
+        ${db.subjects.map(
+          s=>
+            `<option>
+              ${esc(s.name)}
+            </option>`
         ).join("")}
 
       </select>
 
     </div>
 
+
     <div class="form-group">
-      <label>Class</label>
+
+      <label>
+        Class
+      </label>
 
       <select id="docClass">
 
-        ${db.classes.map(c=>
-          `<option>${esc(c.name)}</option>`
+        ${db.classes.map(
+          c=>
+            `<option>
+              ${esc(c.name)}
+            </option>`
         ).join("")}
 
       </select>
 
     </div>
 
+
     <div class="form-group">
-      <label>Content</label>
+
+      <label>
+        Content
+      </label>
 
       <textarea
         id="docContent"
@@ -3704,6 +5037,7 @@ function documentForm(){
         placeholder="Write the academic document here..."></textarea>
 
     </div>
+
 
     <button
       class="btn primary"
@@ -3721,40 +5055,60 @@ function documentForm(){
 
 function saveDocument(){
 
-  const user=currentUser();
+  const user=
+    currentUser();
+
 
   const doc={
 
     id:uid(),
 
     title:
-      document.getElementById("docTitle").value.trim(),
+      document.getElementById(
+        "docTitle"
+      ).value.trim(),
 
     type:
-      document.getElementById("docType").value,
+      document.getElementById(
+        "docType"
+      ).value,
 
     subject:
-      document.getElementById("docSubject").value,
+      document.getElementById(
+        "docSubject"
+      ).value,
 
     className:
-      document.getElementById("docClass").value,
+      document.getElementById(
+        "docClass"
+      ).value,
 
     content:
-      document.getElementById("docContent").value,
+      document.getElementById(
+        "docContent"
+      ).value,
 
     teacher:
-      user?.name||"Administrator",
+      user?.name||
+      "Administrator",
 
-    status:"Draft",
+    status:
+      "Draft",
 
-    createdAt:today()
+    createdAt:
+      today()
 
   };
 
 
-  if(!doc.title||!doc.content){
+  if(
+    !doc.title||
+    !doc.content
+  ){
 
-    alert("Title and content are required.");
+    alert(
+      "Title and content are required."
+    );
 
     return;
 
@@ -3777,66 +5131,106 @@ function saveDocument(){
 function renderDocuments(){
 
   const tbody=
-    document.getElementById("documentTable");
+    document.getElementById(
+      "documentTable"
+    );
 
 
   tbody.innerHTML=
-    db.documents.map(d=>`
+    db.documents.map(
+      d=>`
 
       <tr>
 
-        <td>${esc(d.title)}</td>
-
-        <td>${esc(d.type)}</td>
-
-        <td>${esc(d.subject)}</td>
-
-        <td>${esc(d.className)}</td>
-
-        <td>${esc(d.teacher)}</td>
+        <td>
+          ${esc(d.title)}
+        </td>
 
         <td>
-          <span class="badge ${
-            d.status==="Approved"
-            ?"green"
-            :d.status==="Submitted"
-            ?"blue"
-            :"orange"
-          }">
+          ${esc(d.type)}
+        </td>
+
+        <td>
+          ${esc(d.subject)}
+        </td>
+
+        <td>
+          ${esc(d.className)}
+        </td>
+
+        <td>
+          ${esc(d.teacher)}
+        </td>
+
+        <td>
+
+          <span
+            class="badge ${
+              d.status==="Approved"
+              ?"green"
+              :
+              d.status==="Submitted"
+              ?"blue"
+              :"orange"
+            }">
+
             ${esc(d.status)}
+
           </span>
+
         </td>
 
         <td>
 
           ${
             d.status==="Draft"
+
             ?`
+
               <button
                 class="btn primary"
-                onclick="submitDocument('${d.id}')">
+                onclick="
+                  submitDocument('${d.id}')
+                ">
+
                 Submit
+
               </button>
+
             `
+
             :""
+
           }
+
 
           <button
             class="btn"
-            onclick="viewDocument('${d.id}')">
+            onclick="
+              viewDocument('${d.id}')
+            ">
+
             View
+
           </button>
 
         </td>
 
       </tr>
 
-    `).join("")||`
+      `
+    ).join("")
+
+    ||
+
+    `
 
       <tr>
+
         <td colspan="7">
           No academic documents.
         </td>
+
       </tr>
 
     `;
@@ -3847,13 +5241,20 @@ function renderDocuments(){
 function submitDocument(id){
 
   const doc=
-    db.documents.find(d=>d.id===id);
+    db.documents.find(
+      d=>d.id===id
+    );
+
 
   if(!doc)return;
 
-  doc.status="Submitted";
 
-  doc.submittedAt=today();
+  doc.status=
+    "Submitted";
+
+  doc.submittedAt=
+    today();
+
 
   db.approvals.push({
 
@@ -3861,9 +5262,11 @@ function submitDocument(id){
 
     documentId:id,
 
-    submittedAt:today(),
+    submittedAt:
+      today(),
 
-    status:"Pending"
+    status:
+      "Pending"
 
   });
 
@@ -3872,19 +5275,23 @@ function submitDocument(id){
 
   renderDocuments();
 
-  alert("Document submitted for approval.");
+  alert(
+    "Document submitted for approval."
+  );
 
 }
 
 
-/* =========================================================
-   APPROVAL CENTRE
-========================================================= */
+/* =====================================================
+   APPROVAL
+===================================================== */
 
 function renderApproval(){
 
   const tbody=
-    document.getElementById("approvalTable");
+    document.getElementById(
+      "approvalTable"
+    );
 
 
   const pending=
@@ -3894,42 +5301,67 @@ function renderApproval(){
 
 
   tbody.innerHTML=
-    pending.map(d=>`
+    pending.map(
+      d=>`
 
       <tr>
 
-        <td>${esc(d.title)}</td>
+        <td>
+          ${esc(d.title)}
+        </td>
 
-        <td>${esc(d.teacher)}</td>
+        <td>
+          ${esc(d.teacher)}
+        </td>
 
-        <td>${esc(d.type)}</td>
+        <td>
+          ${esc(d.type)}
+        </td>
 
-        <td>${esc(d.submittedAt)}</td>
+        <td>
+          ${esc(d.submittedAt)}
+        </td>
 
         <td>
 
           <button
             class="btn success"
-            onclick="approveDocument('${d.id}')">
+            onclick="
+              approveDocument('${d.id}')
+            ">
+
             Approve
+
           </button>
+
 
           <button
             class="btn danger"
-            onclick="rejectDocument('${d.id}')">
+            onclick="
+              rejectDocument('${d.id}')
+            ">
+
             Reject
+
           </button>
 
         </td>
 
       </tr>
 
-    `).join("")||`
+      `
+    ).join("")
+
+    ||
+
+    `
 
       <tr>
+
         <td colspan="5">
           No documents awaiting approval.
         </td>
+
       </tr>
 
     `;
@@ -3940,14 +5372,19 @@ function renderApproval(){
 function approveDocument(id){
 
   const doc=
-    db.documents.find(d=>d.id===id);
+    db.documents.find(
+      d=>d.id===id
+    );
+
 
   if(!doc)return;
 
 
-  doc.status="Approved";
+  doc.status=
+    "Approved";
 
-  doc.approvedAt=today();
+  doc.approvedAt=
+    today();
 
   doc.approvedBy=
     currentUser()?.name||
@@ -3968,21 +5405,29 @@ function approveDocument(id){
 
       documentId:id,
 
-      title:doc.title,
+      title:
+        doc.title,
 
-      type:doc.type,
+      type:
+        doc.type,
 
-      subject:doc.subject,
+      subject:
+        doc.subject,
 
-      className:doc.className,
+      className:
+        doc.className,
 
-      teacher:doc.teacher,
+      teacher:
+        doc.teacher,
 
-      approvedBy:doc.approvedBy,
+      approvedBy:
+        doc.approvedBy,
 
-      approvedAt:doc.approvedAt,
+      approvedAt:
+        doc.approvedAt,
 
-      content:doc.content
+      content:
+        doc.content
 
     });
 
@@ -3994,11 +5439,14 @@ function approveDocument(id){
       a=>a.documentId===id
     );
 
+
   if(approval){
 
-    approval.status="Approved";
+    approval.status=
+      "Approved";
 
-    approval.approvedAt=today();
+    approval.approvedAt=
+      today();
 
   }
 
@@ -4021,18 +5469,26 @@ function approveDocument(id){
 function rejectDocument(id){
 
   const doc=
-    db.documents.find(d=>d.id===id);
+    db.documents.find(
+      d=>d.id===id
+    );
+
 
   if(!doc)return;
 
 
   const reason=
-    prompt("Enter rejection comment:");
+    prompt(
+      "Enter rejection comment:"
+    );
 
-  doc.status="Rejected";
+
+  doc.status=
+    "Rejected";
 
   doc.rejectionComment=
-    reason||"No comment";
+    reason||
+    "No comment";
 
 
   const approval=
@@ -4040,12 +5496,15 @@ function rejectDocument(id){
       a=>a.documentId===id
     );
 
+
   if(approval){
 
-    approval.status="Rejected";
+    approval.status=
+      "Rejected";
 
     approval.comment=
-      reason||"No comment";
+      reason||
+      "No comment";
 
   }
 
@@ -4059,84 +5518,138 @@ function rejectDocument(id){
 }
 
 
-/* =========================================================
+/* =====================================================
    ARCHIVE
-========================================================= */
+===================================================== */
 
 function renderArchive(){
 
   const search=
-    (document.getElementById("archiveSearch")?.value||"")
-      .toLowerCase();
+    (
+      document.getElementById(
+        "archiveSearch"
+      )?.value||""
+    ).toLowerCase();
+
 
   const type=
-    document.getElementById("archiveType")?.value||"";
+    document.getElementById(
+      "archiveType"
+    )?.value||"";
 
 
   const records=
-    db.archive.filter(a=>{
+    db.archive.filter(
+      a=>{
 
-      const matchesSearch=
-        !search||
-        a.title.toLowerCase().includes(search)||
-        a.subject.toLowerCase().includes(search)||
-        a.className.toLowerCase().includes(search);
+        const text=
+          (
+            a.title+
+            " "+
+            a.subject+
+            " "+
+            a.className+
+            " "+
+            a.teacher
+          ).toLowerCase();
 
-      const matchesType=
-        !type||a.type===type;
 
-      return matchesSearch&&matchesType;
+        const searchMatch=
+          !search||
+          text.includes(search);
 
-    });
+
+        const typeMatch=
+          !type||
+          a.type===type;
+
+
+        return searchMatch&&typeMatch;
+
+      }
+    );
 
 
   const tbody=
-    document.getElementById("archiveTable");
+    document.getElementById(
+      "archiveTable"
+    );
 
 
   tbody.innerHTML=
-    records.map(a=>`
+    records.map(
+      a=>`
 
       <tr>
 
-        <td>${esc(a.title)}</td>
+        <td>
+          ${esc(a.title)}
+        </td>
 
-        <td>${esc(a.type)}</td>
+        <td>
+          ${esc(a.type)}
+        </td>
 
-        <td>${esc(a.subject)}</td>
+        <td>
+          ${esc(a.subject)}
+        </td>
 
-        <td>${esc(a.className)}</td>
+        <td>
+          ${esc(a.className)}
+        </td>
 
-        <td>${esc(a.teacher)}</td>
+        <td>
+          ${esc(a.teacher)}
+        </td>
 
-        <td>${esc(a.approvedBy)}</td>
+        <td>
+          ${esc(a.approvedBy)}
+        </td>
 
-        <td>${esc(a.approvedAt)}</td>
+        <td>
+          ${esc(a.approvedAt)}
+        </td>
 
         <td>
 
           <button
             class="btn"
-            onclick="viewArchive('${a.id}')">
+            onclick="
+              viewArchive('${a.id}')
+            ">
+
             View
+
           </button>
+
 
           <button
             class="btn danger"
-            onclick="deleteArchive('${a.id}')">
+            onclick="
+              deleteArchive('${a.id}')
+            ">
+
             Delete
+
           </button>
 
         </td>
 
       </tr>
 
-    `).join("")||`
+      `
+    ).join("")
+
+    ||
+
+    `
 
       <tr>
+
         <td colspan="8">
           No approved work in archive.
         </td>
+
       </tr>
 
     `;
@@ -4147,31 +5660,44 @@ function renderArchive(){
 function viewDocument(id){
 
   const doc=
-    db.documents.find(d=>d.id===id);
+    db.documents.find(
+      d=>d.id===id
+    );
+
 
   if(!doc)return;
 
 
   openModal(
+
     doc.title,
+
     `
 
       <p>
-        <b>Type:</b> ${esc(doc.type)}
+        <b>Type:</b>
+        ${esc(doc.type)}
       </p>
 
       <p>
-        <b>Subject:</b> ${esc(doc.subject)}
+        <b>Subject:</b>
+        ${esc(doc.subject)}
       </p>
 
       <p>
-        <b>Class:</b> ${esc(doc.className)}
+        <b>Class:</b>
+        ${esc(doc.className)}
       </p>
 
       <hr>
 
-      <div style="white-space:pre-wrap;line-height:1.7">
+      <div
+        style="
+        white-space:pre-wrap;
+        line-height:1.7">
+
         ${esc(doc.content)}
+
       </div>
 
     `
@@ -4183,35 +5709,49 @@ function viewDocument(id){
 function viewArchive(id){
 
   const doc=
-    db.archive.find(a=>a.id===id);
+    db.archive.find(
+      a=>a.id===id
+    );
+
 
   if(!doc)return;
 
 
   openModal(
+
     doc.title,
+
     `
 
       <p>
-        <b>Type:</b> ${esc(doc.type)}
+        <b>Type:</b>
+        ${esc(doc.type)}
       </p>
 
       <p>
-        <b>Subject:</b> ${esc(doc.subject)}
+        <b>Subject:</b>
+        ${esc(doc.subject)}
       </p>
 
       <p>
-        <b>Class:</b> ${esc(doc.className)}
+        <b>Class:</b>
+        ${esc(doc.className)}
       </p>
 
       <p>
-        <b>Approved by:</b> ${esc(doc.approvedBy)}
+        <b>Approved by:</b>
+        ${esc(doc.approvedBy)}
       </p>
 
       <hr>
 
-      <div style="white-space:pre-wrap;line-height:1.7">
+      <div
+        style="
+        white-space:pre-wrap;
+        line-height:1.7">
+
         ${esc(doc.content)}
+
       </div>
 
     `
@@ -4228,7 +5768,10 @@ function deleteArchive(id){
 
 
   db.archive=
-    db.archive.filter(a=>a.id!==id);
+    db.archive.filter(
+      a=>a.id!==id
+    );
+
 
   saveDB();
 
@@ -4237,105 +5780,154 @@ function deleteArchive(id){
 }
 
 
-/* =========================================================
-   TEACHER ASSISTANT
-========================================================= */
+/* =====================================================
+   ASSISTANT
+===================================================== */
 
 function assistantAnswer(){
 
   const question=
-    document.getElementById("assistantQuestion")
-      .value.trim();
+    document.getElementById(
+      "assistantQuestion"
+    ).value.trim();
+
 
   if(!question){
 
-    alert("Enter your academic request.");
+    alert(
+      "Enter your academic request."
+    );
 
     return;
 
   }
 
 
-  const answer=`
+  document.getElementById(
+    "assistantAnswer"
+  ).innerHTML=
 
-    <div class="card"
-      style="background:#f0fdf4;border-color:#bbf7d0">
+    `
 
-      <h3>Academic Planning Guidance</h3>
+    <div
+      class="card"
+      style="
+      background:#f0fdf4;
+      border-color:#bbf7d0">
+
+      <h3>
+        Academic Planning Guidance
+      </h3>
 
       <p>
         Your request:
-        <b>${esc(question)}</b>
+        <b>
+          ${esc(question)}
+        </b>
       </p>
 
-      <h4>Suggested structure</h4>
+      <h4>
+        Suggested structure
+      </h4>
 
       <ol>
 
-        <li>Topic and sub-topic</li>
+        <li>
+          Topic and sub-topic
+        </li>
 
-        <li>Learning objectives</li>
+        <li>
+          Learning objectives
+        </li>
 
-        <li>Entry behaviour</li>
+        <li>
+          Entry behaviour
+        </li>
 
-        <li>Teaching and learning materials</li>
+        <li>
+          Teaching and learning materials
+        </li>
 
-        <li>Set induction</li>
+        <li>
+          Set induction
+        </li>
 
-        <li>Presentation / lesson development</li>
+        <li>
+          Presentation
+        </li>
 
-        <li>Teacher activities</li>
+        <li>
+          Teacher activities
+        </li>
 
-        <li>Learner activities</li>
+        <li>
+          Learner activities
+        </li>
 
-        <li>Examples and guided practice</li>
+        <li>
+          Examples and guided practice
+        </li>
 
-        <li>Evaluation</li>
+        <li>
+          Evaluation
+        </li>
 
-        <li>Conclusion</li>
+        <li>
+          Conclusion
+        </li>
 
-        <li>Assignment</li>
+        <li>
+          Assignment
+        </li>
 
       </ol>
 
-      <p>
-        For a complete school document, include the
-        class, subject, week, date, term and references.
-      </p>
-
     </div>
 
-  `;
-
-
-  document.getElementById("assistantAnswer")
-    .innerHTML=answer;
+    `;
 
 }
 
 
-/* =========================================================
+/* =====================================================
    SETTINGS
-========================================================= */
+===================================================== */
 
 function loadSettings(){
 
-  document.getElementById("settingName").value=
+  document.getElementById(
+    "settingName"
+  ).value=
     db.settings.schoolName;
 
-  document.getElementById("settingLocation").value=
+
+  document.getElementById(
+    "settingLocation"
+  ).value=
     db.settings.location;
 
-  document.getElementById("settingPhone").value=
+
+  document.getElementById(
+    "settingPhone"
+  ).value=
     db.settings.phone;
 
-  document.getElementById("settingEmail").value=
+
+  document.getElementById(
+    "settingEmail"
+  ).value=
     db.settings.email;
 
-  document.getElementById("settingSession").value=
+
+  document.getElementById(
+    "settingSession"
+  ).value=
     db.settings.currentSession;
 
-  document.getElementById("settingTerm").value=
+
+  document.getElementById(
+    "settingTerm"
+  ).value=
     db.settings.currentTerm;
 
 }
@@ -4344,63 +5936,108 @@ function loadSettings(){
 function saveSettings(){
 
   db.settings.schoolName=
-    document.getElementById("settingName").value.trim()||
+    document.getElementById(
+      "settingName"
+    ).value.trim()||
     "Global Kids Academy Sokoto";
 
+
   db.settings.location=
-    document.getElementById("settingLocation").value.trim();
+    document.getElementById(
+      "settingLocation"
+    ).value.trim();
+
 
   db.settings.phone=
-    document.getElementById("settingPhone").value.trim();
+    document.getElementById(
+      "settingPhone"
+    ).value.trim();
+
 
   db.settings.email=
-    document.getElementById("settingEmail").value.trim();
+    document.getElementById(
+      "settingEmail"
+    ).value.trim();
+
 
   db.settings.currentSession=
-    document.getElementById("settingSession").value.trim();
+    document.getElementById(
+      "settingSession"
+    ).value.trim();
+
 
   db.settings.currentTerm=
-    document.getElementById("settingTerm").value;
+    document.getElementById(
+      "settingTerm"
+    ).value;
 
 
   saveDB();
 
   renderDashboard();
 
-  alert("School settings saved successfully.");
+  alert(
+    "School settings saved successfully."
+  );
 
 }
 
 
-/* =========================================================
+/* =====================================================
    BACKUP
-========================================================= */
+===================================================== */
 
 function downloadBackup(){
 
   const data=
-    JSON.stringify(db,null,2);
+    JSON.stringify(
+      db,
+      null,
+      2
+    );
+
 
   const blob=
     new Blob(
       [data],
-      {type:"application/json"}
+      {
+        type:"application/json"
+      }
     );
 
+
   const url=
-    URL.createObjectURL(blob);
+    URL.createObjectURL(
+      blob
+    );
+
 
   const a=
-    document.createElement("a");
+    document.createElement(
+      "a"
+    );
+
 
   a.href=url;
 
+
   a.download=
-    "Global-Kids-Academy-Backup-"+today()+".json";
+    "Global-Kids-Academy-Backup-"+
+    today()+
+    ".json";
+
+
+  document.body.appendChild(a);
 
   a.click();
 
-  URL.revokeObjectURL(url);
+  a.remove();
+
+
+  setTimeout(
+    ()=>URL.revokeObjectURL(url),
+    500
+  );
 
 }
 
@@ -4408,12 +6045,16 @@ function downloadBackup(){
 function restoreBackup(){
 
   const file=
-    document.getElementById("restoreFile")
-      .files[0];
+    document.getElementById(
+      "restoreFile"
+    ).files[0];
+
 
   if(!file){
 
-    alert("Select a backup file.");
+    alert(
+      "Select a backup file."
+    );
 
     return;
 
@@ -4434,19 +6075,37 @@ function restoreBackup(){
     try{
 
       const restored=
-        JSON.parse(reader.result);
+        JSON.parse(
+          reader.result
+        );
+
+
+      if(
+        !restored||
+        typeof restored!=="object"
+      ){
+
+        throw new Error(
+          "Invalid database"
+        );
+
+      }
+
 
       db=restored;
 
       saveDB();
 
+
       alert(
         "Database restored successfully. The page will reload."
       );
 
+
       location.reload();
 
-    }catch(e){
+
+    }catch(error){
 
       alert(
         "Invalid backup file."
@@ -4462,42 +6121,9 @@ function restoreBackup(){
 }
 
 
-/* =========================================================
-   STUDENT / PARENT BASIC PORTAL SUPPORT
-========================================================= */
-
-function getStudentForUser(user){
-
-  if(!user)return null;
-
-  return db.students.find(
-    s=>s.id===user.id
-  );
-
-}
-
-
-function getParentStudent(user){
-
-  if(!user)return null;
-
-  const parent=
-    db.parents.find(
-      p=>p.id===user.id
-    );
-
-  if(!parent)return null;
-
-  return db.students.find(
-    s=>s.id===parent.studentId
-  );
-
-}
-
-
-/* =========================================================
-   START
-========================================================= */
+/* =====================================================
+   START APPLICATION
+===================================================== */
 
 if(currentUser()){
 
