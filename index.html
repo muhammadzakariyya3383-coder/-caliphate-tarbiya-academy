@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#166534">
-<title>Caliphate Tarbiya Academy Sokoto</title>
+<title>Global Kids Academy Sokoto</title>
 
 <style>
 *{box-sizing:border-box}
@@ -160,14 +160,12 @@ display:none;border:0;background:var(--green);color:#fff;
 border-radius:7px;padding:8px 12px
 }
 
-/* ================= REGISTER ================= */
-
+/* REGISTER */
 .register-title{text-align:center;margin-bottom:14px}
 .register-title h2{
 margin:0;font-size:21px;text-transform:uppercase;color:#14532d
 }
 .register-title h3{margin:6px 0;font-size:16px}
-
 .register-meta{
 display:grid;grid-template-columns:repeat(4,1fr);
 gap:10px;margin-bottom:12px
@@ -179,243 +177,86 @@ border:1px solid #cbd5e1;padding:7px;background:#fff
 display:block;font-size:10px;color:#64748b;
 text-transform:uppercase;margin-bottom:3px
 }
-
-.register-table{
-min-width:1450px;
-border-collapse:collapse
+.register-table{min-width:1450px;border-collapse:collapse}
+.register-table th,.register-table td{
+border:1px solid #9ca3af;padding:5px;text-align:center
 }
-.register-table th,
-.register-table td{
-border:1px solid #9ca3af;
-padding:5px;
-text-align:center
-}
-.register-table th{
-background:#dcfce7;font-size:11px
-}
-.register-table td{
-font-size:11px;height:38px
-}
-.register-table .student-name{
-text-align:left;
-min-width:240px;
-font-weight:700
-}
+.register-table th{background:#dcfce7;font-size:11px}
+.register-table td{font-size:11px;height:38px}
+.register-table .student-name{text-align:left;min-width:240px;font-weight:700}
 .register-table .admission{min-width:105px}
-
-.date-head{
-min-width:42px;
-height:78px;
-vertical-align:bottom
-}
-.date-number{
-font-weight:bold;
-font-size:12px
-}
-.day-small{
-font-size:9px;
-color:#475569;
-display:block;
-margin-top:2px
-}
-
-.weekend-head{
-background:#f1f5f9!important;
-color:#64748b!important
-}
-.weekend-cell{
-background:#f8fafc!important;
-color:#94a3b8
-}
-.weekend-cell .mark{
-background:#f1f5f9;
-color:#94a3b8;
-border-color:#cbd5e1;
-cursor:not-allowed
-}
-
-.holiday-head{
-background:#dbeafe!important;
-color:#1e40af!important
-}
-
+.date-head{min-width:42px;height:78px;vertical-align:bottom}
+.date-number{font-weight:bold;font-size:12px}
+.day-small{font-size:9px;color:#475569;display:block;margin-top:2px}
+.weekend-head{background:#f1f5f9!important;color:#64748b!important}
+.weekend-cell{background:#f8fafc!important;color:#94a3b8}
+.holiday-head{background:#dbeafe!important;color:#1e40af!important}
+.holiday-cell{background:#eff6ff!important}
 .mark{
-display:inline-flex;
-width:27px;
-height:27px;
-border:1px solid #cbd5e1;
-border-radius:4px;
-align-items:center;
-justify-content:center;
-font-weight:bold;
-font-size:11px;
-cursor:pointer;
-background:#fff;
-user-select:none;
--webkit-user-select:none
+display:inline-flex;width:27px;height:27px;border:1px solid #cbd5e1;
+border-radius:4px;align-items:center;justify-content:center;
+font-weight:bold;font-size:11px;cursor:pointer;background:#fff;
+user-select:none;-webkit-user-select:none
 }
-.mark.P{
-background:#dcfce7;color:#166534;border-color:#86efac
-}
-.mark.A{
-background:#fee2e2;color:#991b1b;border-color:#fca5a5
-}
-.mark.S{
-background:#fef3c7;color:#92400e;border-color:#fcd34d
-}
-.mark.PH{
-background:#dbeafe;color:#1e40af;border-color:#93c5fd;
-cursor:not-allowed
-}
-.mark.NA{
-background:#f1f5f9;color:#94a3b8;border-color:#cbd5e1;
-cursor:not-allowed
-}
-
-.total-col{
-background:#f8fafc!important;
-font-weight:bold
-}
-
+.mark.P{background:#dcfce7;color:#166534;border-color:#86efac}
+.mark.A{background:#fee2e2;color:#991b1b;border-color:#fca5a5}
+.mark.S{background:#fef3c7;color:#92400e;border-color:#fcd34d}
+.mark.PH{background:#dbeafe;color:#1e40af;border-color:#93c5fd;cursor:not-allowed}
+.mark.NA{background:#f1f5f9;color:#94a3b8;border-color:#cbd5e1;cursor:not-allowed}
+.total-col{background:#f8fafc!important;font-weight:bold}
 .register-summary{
-display:grid;
-grid-template-columns:repeat(6,1fr);
-gap:10px;
-margin-top:15px
+display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:15px
 }
 .register-summary .stat-box{text-align:center}
-
 .register-footer{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:20px;
-margin-top:30px
+display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:30px
 }
-
 .signature-card{
-border:1px solid #cbd5e1;
-border-radius:10px;
-padding:12px;
-background:#f8fafc;
-text-align:center
+border:1px solid #cbd5e1;border-radius:10px;padding:12px;
+background:#f8fafc;text-align:center
 }
-.signature-card h4{
-margin:0 0 8px;
-color:#14532d
-}
+.signature-card h4{margin:0 0 8px;color:#14532d}
 .signature-image{
-width:100%;
-height:90px;
-object-fit:contain;
-background:#fff;
-border-bottom:1px solid #334155;
-margin:8px auto
+width:100%;height:90px;object-fit:contain;background:#fff;
+border-bottom:1px solid #334155;margin:8px auto
 }
-.signature-meta{
-font-size:11px;
-color:#475569;
-line-height:1.5
-}
+.signature-meta{font-size:11px;color:#475569;line-height:1.5}
 .signature-actions{
-display:flex;
-gap:5px;
-justify-content:center;
-flex-wrap:wrap;
-margin-top:8px
+display:flex;gap:5px;justify-content:center;flex-wrap:wrap;margin-top:8px
 }
 .signature-pad-wrap{
-border:2px dashed #94a3b8;
-border-radius:10px;
-background:#fff;
-overflow:hidden
+border:2px dashed #94a3b8;border-radius:10px;background:#fff;overflow:hidden
 }
 #signatureCanvas{
-width:100%;
-height:220px;
-display:block;
-touch-action:none;
-background:#fff
+width:100%;height:220px;display:block;touch-action:none;background:#fff
 }
-.signature-help{
-text-align:center;
-color:#64748b;
-font-size:12px
-}
+.signature-help{text-align:center;color:#64748b;font-size:12px}
 .verify-banner{
-padding:12px;
-border-radius:8px;
-margin-top:15px;
-font-weight:bold;
-text-align:center
+padding:12px;border-radius:8px;margin-top:15px;font-weight:bold;text-align:center
 }
-.verify-banner.ok{
-background:#dcfce7;color:#166534
-}
-.verify-banner.wait{
-background:#fef3c7;color:#92400e
-}
-
-.legend{
-display:flex;
-flex-wrap:wrap;
-gap:8px;
-align-items:center;
-margin:10px 0
-}
-.legend-item{
-display:flex;
-align-items:center;
-gap:5px;
-font-size:12px
-}
-
+.verify-banner.ok{background:#dcfce7;color:#166534}
+.verify-banner.wait{background:#fef3c7;color:#92400e}
+.legend{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:10px 0}
+.legend-item{display:flex;align-items:center;gap:5px;font-size:12px}
 .register-live-help{
-background:#eff6ff;
-border:1px solid #bfdbfe;
-color:#1e40af;
-padding:12px;
-border-radius:8px;
-font-size:13px;
-margin-bottom:15px
+background:#eff6ff;border:1px solid #bfdbfe;color:#1e40af;
+padding:12px;border-radius:8px;font-size:13px;margin-bottom:15px
 }
 
-/* ================= ARCHIVE ================= */
-
+/* ARCHIVE */
 .archive-card{
-border:1px solid #d9e4dc;
-border-radius:10px;
-padding:16px;
-margin-bottom:12px;
-background:#fff
+border:1px solid #d9e4dc;border-radius:10px;padding:16px;
+margin-bottom:12px;background:#fff
 }
-.archive-card h3{
-margin:0 0 7px;
-color:#14532d
-}
-.archive-meta{
-display:flex;
-flex-wrap:wrap;
-gap:8px;
-margin:8px 0 12px
-}
+.archive-card h3{margin:0 0 7px;color:#14532d}
+.archive-meta{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px}
 .archive-meta span{
-background:#f1f5f9;
-padding:5px 8px;
-border-radius:5px;
-font-size:11px
+background:#f1f5f9;padding:5px 8px;border-radius:5px;font-size:11px
 }
 .archive-content{
-background:#f8fafc;
-border:1px solid #e2e8f0;
-border-radius:8px;
-padding:14px;
-white-space:pre-wrap;
-line-height:1.6;
-max-height:220px;
-overflow:auto
+background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;
+padding:14px;white-space:pre-wrap;line-height:1.6;max-height:220px;overflow:auto
 }
-
-/* ================= RESPONSIVE ================= */
 
 @media(max-width:1100px){
 .cards{grid-template-columns:repeat(2,1fr)}
@@ -423,12 +264,8 @@ overflow:auto
 .register-summary{grid-template-columns:repeat(3,1fr)}
 .register-meta{grid-template-columns:repeat(2,1fr)}
 }
-
 @media(max-width:800px){
-.sidebar{
-transform:translateX(-100%);
-transition:.25s
-}
+.sidebar{transform:translateX(-100%);transition:.25s}
 .sidebar.open{transform:translateX(0)}
 .main{margin-left:0}
 .mobile-menu{display:block}
@@ -437,12 +274,8 @@ transition:.25s
 .topbar{padding:11px 12px}
 .topbar h1{font-size:17px}
 .register-summary{grid-template-columns:repeat(2,1fr)}
-
-.register-table{
-min-width:1450px
+.register-table{min-width:1450px}
 }
-}
-
 @media(max-width:550px){
 .cards,.grid4{grid-template-columns:1fr}
 .register-meta,.register-summary{grid-template-columns:1fr}
@@ -450,84 +283,25 @@ min-width:1450px
 .register-footer{grid-template-columns:1fr}
 }
 
-/* ================= PRINT ================= */
-
 @media print{
-body{
-background:#fff!important;
-color:#000
-}
-
-.sidebar,
-.topbar,
-.no-print,
-#loginScreen,
-.signature-actions,
-.verify-actions{
-display:none!important
-}
-
-.main{
-margin:0!important
-}
-
-.content{
-padding:0!important;
-max-width:none
-}
-
-.panel{
-box-shadow:none!important;
-border:0!important;
-margin:0!important
-}
-
-.panel-body{
-padding:0!important
-}
-
-.register-table{
-min-width:0!important;
-width:100%!important
-}
-
-.register-table th,
-.register-table td{
-font-size:7px!important;
-padding:3px!important
-}
-
-.mark{
-width:20px!important;
-height:20px!important;
-font-size:7px!important
-}
-
-.weekend-cell{
-background:#f8fafc!important
-}
-
+body{background:#fff!important;color:#000}
+.sidebar,.topbar,.no-print,#loginScreen,
+.signature-actions,.verify-actions{display:none!important}
+.main{margin:0!important}
+.content{padding:0!important;max-width:none}
+.panel{box-shadow:none!important;border:0!important;margin:0!important}
+.panel-body{padding:0!important}
+.register-table{min-width:0!important;width:100%!important}
+.register-table th,.register-table td{font-size:7px!important;padding:3px!important}
+.mark{width:20px!important;height:20px!important;font-size:7px!important}
 .signature-card{
-background:#fff!important;
-border:0!important;
-break-inside:avoid
+background:#fff!important;border:0!important;break-inside:avoid
 }
-
-.signature-image{
-height:70px;
-max-width:180px
-}
-
+.signature-image{height:70px;max-width:180px}
 .register-footer{
-display:grid!important;
-grid-template-columns:repeat(3,1fr)!important;
-gap:20px!important
+display:grid!important;grid-template-columns:repeat(3,1fr)!important;gap:20px!important
 }
-
-@page{
-size:A4 landscape;
-margin:8mm
-}
+@page{size:A4 landscape;margin:8mm}
 }
 </style>
 </head>
@@ -536,8 +310,11 @@ margin:8mm
 
 <section id="loginScreen">
 <div class="login-card">
-<div class="logo">CTA</div>
-<h1>Caliphate Tarbiya Academy</h1>
+
+<div class="logo">GKA</div>
+
+<h1>Global Kids Academy Sokoto</h1>
+
 <p>Sokoto • Academic Management System</p>
 
 <div class="form-group">
@@ -566,38 +343,58 @@ margin:8mm
 <b>Administrator:</b> Admin<br>
 <b>Password:</b> Admin@2026!
 </div>
+
 </div>
 </section>
 
 <div id="app">
+
 <aside class="sidebar" id="sidebar">
+
 <div class="brand">
-<h2>Caliphate Tarbiya Academy</h2>
+<h2>Global Kids Academy Sokoto</h2>
 <small>Academic Management System</small>
 </div>
+
 <nav class="nav" id="nav"></nav>
+
 </aside>
 
 <main class="main">
+
 <header class="topbar">
+
 <div style="display:flex;align-items:center;gap:10px">
+
 <button class="mobile-menu" onclick="toggleSidebar()">☰</button>
+
 <h1 id="pageTitle">Dashboard</h1>
+
 </div>
+
 <div class="user-info" id="userInfo"></div>
+
 </header>
 
 <section class="content" id="content"></section>
+
 </main>
 </div>
 
 <div class="modal" id="modal">
+
 <div class="modal-box">
+
 <div class="modal-head">
+
 <b id="modalTitle">Form</b>
+
 <button class="close" onclick="closeModal()">×</button>
+
 </div>
+
 <div class="modal-body" id="modalBody"></div>
+
 </div>
 </div>
 
@@ -639,7 +436,7 @@ attendance:{},
 holidays:{},
 registerSignatures:{},
 settings:{
-schoolName:"Caliphate Tarbiya Academy",
+schoolName:"Global Kids Academy Sokoto",
 location:"Sokoto State",
 phone:"",
 email:"",
@@ -650,12 +447,13 @@ currentTerm:"First Term"
 }
 
 function loadDB(){
+
 let d=null;
 
 try{
-d=JSON.parse(localStorage.getItem(DB_KEY)||"null")
+d=JSON.parse(localStorage.getItem(DB_KEY)||"null");
 }catch(e){
-d=null
+d=null;
 }
 
 if(!d)d=emptyDB();
@@ -663,7 +461,7 @@ if(!d)d=emptyDB();
 const base=emptyDB();
 
 Object.keys(base).forEach(k=>{
-if(d[k]===undefined)d[k]=base[k]
+if(d[k]===undefined)d[k]=base[k];
 });
 
 d.archive=Array.isArray(d.archive)?d.archive:[];
@@ -687,16 +485,26 @@ return d;
 
 let db=loadDB();
 
+/* Upgrade old school name automatically */
+if(
+db.settings.schoolName==="Caliphate Tarbiya Academy"||
+db.settings.schoolName==="Caliphate Tarbiya Academy Sokoto"||
+!db.settings.schoolName
+){
+db.settings.schoolName="Global Kids Academy Sokoto";
+localStorage.setItem(DB_KEY,JSON.stringify(db));
+}
+
 function uid(p){
 return p+"-"+Date.now()+"-"+Math.random().toString(36).slice(2,8);
 }
 
 function saveDB(){
-localStorage.setItem(DB_KEY,JSON.stringify(db))
+localStorage.setItem(DB_KEY,JSON.stringify(db));
 }
 
 function v(id){
-return document.getElementById(id)?.value?.trim()||""
+return document.getElementById(id)?.value?.trim()||"";
 }
 
 function esc(x){
@@ -709,12 +517,13 @@ return String(x??"")
 }
 
 function escAttr(x){
-return esc(x)
+return esc(x);
 }
 
 function ensureSetup(){
 
 if(!db.accounts.some(x=>x.role==="admin")){
+
 db.accounts.push({
 id:"admin-001",
 role:"admin",
@@ -723,25 +532,34 @@ password:"Admin@2026!",
 name:"System Administrator",
 active:true
 });
+
 }
 
 DEFAULT_CLASSES.forEach(name=>{
+
 if(!db.classes.some(x=>x.name===name)){
+
 db.classes.push({
 id:uid("class"),
 name,
 sections:["A","B"]
 });
+
 }
+
 });
 
 DEFAULT_SUBJECTS.forEach(name=>{
+
 if(!db.subjects.some(x=>x.name===name)){
+
 db.subjects.push({
 id:uid("subject"),
 name
 });
+
 }
+
 });
 
 saveDB();
@@ -752,9 +570,9 @@ ensureSetup();
 let session=null;
 
 try{
-session=JSON.parse(localStorage.getItem(SESSION_KEY)||"null")
+session=JSON.parse(localStorage.getItem(SESSION_KEY)||"null");
 }catch(e){
-session=null
+session=null;
 }
 
 function currentUser(){
@@ -790,36 +608,44 @@ const password=document.getElementById("loginPassword").value;
 let found=null;
 
 if(role==="admin"){
+
 found=db.accounts.find(x=>
 x.role==="admin"&&
 String(x.username).toLowerCase()===username.toLowerCase()&&
 x.password===password&&
 x.active!==false
 );
+
 }
 
 if(role==="teacher"){
+
 found=db.teachers.find(x=>
 String(x.username||"").toLowerCase()===username.toLowerCase()&&
 x.password===password&&
 x.active!==false
 );
+
 }
 
 if(role==="student"){
+
 found=db.students.find(x=>
 String(x.admissionNo||"").toLowerCase()===username.toLowerCase()&&
 x.password===password&&
 x.active!==false
 );
+
 }
 
 if(role==="parent"){
+
 found=db.parents.find(x=>
 String(x.username||"").toLowerCase()===username.toLowerCase()&&
 x.password===password&&
 x.active!==false
 );
+
 }
 
 if(!found){
@@ -833,10 +659,12 @@ role
 };
 
 localStorage.setItem(SESSION_KEY,JSON.stringify(session));
+
 showApp();
 }
 
 function logout(){
+
 localStorage.removeItem(SESSION_KEY);
 session=null;
 
@@ -845,7 +673,7 @@ document.getElementById("loginScreen").style.display="flex";
 }
 
 function navItem(page,text){
-return`<button id="nav-${page}" onclick="go('${page}')">${text}</button>`
+return`<button id="nav-${page}" onclick="go('${page}')">${text}</button>`;
 }
 
 function buildNav(){
@@ -853,31 +681,39 @@ function buildNav(){
 let html=navItem("dashboard","🏠 Dashboard");
 
 if(isAdmin()){
+
 html+=navItem("accounts","👤 Administrator Accounts");
 html+=navItem("teachers","👨‍🏫 Teachers");
 html+=navItem("students","🎓 Students");
 html+=navItem("parents","👪 Parents");
 html+=navItem("classes","🏫 Classes & Subjects");
 html+=navItem("hod","📚 HOD Assignments");
+
 }
 
 if(isAdmin()||isTeacher()){
+
 html+=navItem("register","📋 School Register");
 html+=navItem("results","📊 Results");
 html+=navItem("documents","📝 Academic Documents");
 html+=navItem("approvals","✅ Approval Centre");
 html+=navItem("archive","📁 Approved Work Archive");
 html+=navItem("assistant","🤖 Teacher Assistant");
+
 }
 
 if(isStudent()||isParent()){
+
 html+=navItem("results","📊 My Results");
 html+=navItem("register","📋 My Attendance");
+
 }
 
 if(isAdmin()){
+
 html+=navItem("settings","⚙️ School Settings");
 html+=navItem("backup","💾 Backup & Restore");
+
 }
 
 html+=navItem("profile","👤 My Profile");
@@ -902,7 +738,7 @@ go("dashboard");
 }
 
 function toggleSidebar(){
-document.getElementById("sidebar").classList.toggle("open")
+document.getElementById("sidebar").classList.toggle("open");
 }
 
 function go(page){
@@ -959,7 +795,7 @@ default:renderDashboard();
 }
 }
 
-/* ================= DASHBOARD ================= */
+/* DASHBOARD */
 
 function renderDashboard(){
 
@@ -998,6 +834,7 @@ document.getElementById("content").innerHTML=`
 <div class="panel-body">
 
 <div class="notice">
+
 <b>${esc(db.settings.schoolName)}</b><br>
 ${esc(db.settings.location)}<br><br>
 
@@ -1032,7 +869,7 @@ Approved Work Archive
 </div>`;
 }
 
-/* ================= ADMIN ACCOUNT ================= */
+/* ADMIN */
 
 function renderAccounts(){
 
@@ -1072,9 +909,7 @@ ${db.accounts.map(a=>`
 <tr>
 
 <td>${esc(a.name)}</td>
-
 <td>${esc(a.username)}</td>
-
 <td>Administrator</td>
 
 <td>
@@ -1088,8 +923,7 @@ ${a.id!=="admin-001"
 ?`<button class="btn small danger"
 onclick="deleteAccount('${a.id}')">
 Delete
-</button>`
-:""}
+</button>`:""}
 
 </td>
 
@@ -1171,7 +1005,7 @@ saveDB();
 renderAccounts();
 }
 
-/* ================= TEACHERS ================= */
+/* TEACHERS */
 
 function renderTeachers(){
 
@@ -1237,7 +1071,6 @@ Delete
 `).join("")}
 
 </tbody>
-
 </table>
 
 </div>
@@ -1295,17 +1128,9 @@ ${subjectOptions(t.subject)}
 
 <select id="tRole">
 
-<option ${t.roleTitle==="Teacher"?"selected":""}>
-Teacher
-</option>
-
-<option ${t.roleTitle==="HOD"?"selected":""}>
-HOD
-</option>
-
-<option ${t.roleTitle==="Examination Officer"?"selected":""}>
-Examination Officer
-</option>
+<option ${t.roleTitle==="Teacher"?"selected":""}>Teacher</option>
+<option ${t.roleTitle==="HOD"?"selected":""}>HOD</option>
+<option ${t.roleTitle==="Examination Officer"?"selected":""}>Examination Officer</option>
 
 </select>
 </div>
@@ -1356,7 +1181,7 @@ saveDB();
 renderTeachers();
 }
 
-/* ================= STUDENTS ================= */
+/* STUDENTS */
 
 function renderStudents(){
 
@@ -1422,7 +1247,6 @@ Delete
 `).join("")}
 
 </tbody>
-
 </table>
 
 </div>
@@ -1485,11 +1309,9 @@ ${classOptions(s.className)}
 <label>Section</label>
 
 <select id="sSection">
-
 <option ${s.section==="A"?"selected":""}>A</option>
 <option ${s.section==="B"?"selected":""}>B</option>
 <option ${s.section==="C"?"selected":""}>C</option>
-
 </select>
 
 </div>
@@ -1546,7 +1368,7 @@ saveDB();
 renderStudents();
 }
 
-/* ================= PARENTS ================= */
+/* PARENTS */
 
 function renderParents(){
 
@@ -1731,7 +1553,7 @@ saveDB();
 renderParents();
 }
 
-/* ================= CLASSES ================= */
+/* CLASSES */
 
 function renderClasses(){
 
@@ -1826,10 +1648,12 @@ ${db.subjects.map(s=>`
 <td>${esc(s.name)}</td>
 
 <td>
+
 <button class="btn small danger"
 onclick="deleteSubject('${s.id}')">
 Delete
 </button>
+
 </td>
 
 </tr>
@@ -1862,12 +1686,10 @@ id?"Edit Class":"Add Class",
 
 <div class="form-group">
 <label>Sections</label>
-<input id="cSections"
-value="${escAttr((c.sections||[]).join(", "))}">
+<input id="cSections" value="${escAttr((c.sections||[]).join(", "))}">
 </div>
 
-<button class="btn"
-onclick="saveClass('${id}')">
+<button class="btn" onclick="saveClass('${id}')">
 Save Class
 </button>
 `);
@@ -1885,16 +1707,9 @@ const sections=v("cSections")
 if(!name)return alert("Class name is required.");
 
 if(id)
-Object.assign(
-db.classes.find(x=>x.id===id),
-{name,sections}
-);
+Object.assign(db.classes.find(x=>x.id===id),{name,sections});
 else
-db.classes.push({
-id:uid("class"),
-name,
-sections
-});
+db.classes.push({id:uid("class"),name,sections});
 
 saveDB();
 closeModal();
@@ -1922,8 +1737,7 @@ openModal(
 <input id="newSubject">
 </div>
 
-<button class="btn"
-onclick="saveSubject()">
+<button class="btn" onclick="saveSubject()">
 Save Subject
 </button>
 `);
@@ -1935,9 +1749,7 @@ const name=v("newSubject");
 
 if(!name)return;
 
-if(db.subjects.some(
-x=>x.name.toLowerCase()===name.toLowerCase()
-))
+if(db.subjects.some(x=>x.name.toLowerCase()===name.toLowerCase()))
 return alert("Subject already exists.");
 
 db.subjects.push({
@@ -1960,7 +1772,7 @@ saveDB();
 renderClasses();
 }
 
-/* ================= HOD ================= */
+/* HOD */
 
 function renderHOD(){
 
@@ -1990,13 +1802,9 @@ document.getElementById("content").innerHTML=`
 
 ${db.subjects.map(sub=>{
 
-const a=db.hodAssignments.find(
-x=>x.subjectId===sub.id
-);
+const a=db.hodAssignments.find(x=>x.subjectId===sub.id);
 
-const teacher=a
-?db.teachers.find(x=>x.id===a.teacherId)
-:null;
+const teacher=a?db.teachers.find(x=>x.id===a.teacherId):null;
 
 return`
 
@@ -2020,7 +1828,6 @@ Assign
 }).join("")}
 
 </tbody>
-
 </table>
 
 </div>
@@ -2041,9 +1848,7 @@ openModal(
 
 <select id="hodTeacher">
 
-<option value="">
-Select Teacher
-</option>
+<option value="">Select Teacher</option>
 
 ${db.teachers.map(t=>`
 
@@ -2057,8 +1862,7 @@ ${esc(t.name)}
 
 </div>
 
-<button class="btn"
-onclick="saveHOD('${subjectId}')">
+<button class="btn" onclick="saveHOD('${subjectId}')">
 Save Assignment
 </button>
 `);
@@ -2068,29 +1872,19 @@ function saveHOD(subjectId){
 
 const teacherId=v("hodTeacher");
 
-if(!teacherId)
-return alert("Select a teacher.");
+if(!teacherId)return alert("Select a teacher.");
 
-const old=db.hodAssignments.find(
-x=>x.subjectId===subjectId
-);
+const old=db.hodAssignments.find(x=>x.subjectId===subjectId);
 
-if(old)
-old.teacherId=teacherId;
-else
-db.hodAssignments.push({
-subjectId,
-teacherId
-});
+if(old)old.teacherId=teacherId;
+else db.hodAssignments.push({subjectId,teacherId});
 
 saveDB();
 closeModal();
 renderHOD();
 }
 
-/* =========================================================
-LIVE SCHOOL REGISTER + DIGITAL SIGNATURE
-========================================================= */
+/* REGISTER */
 
 let registerState={
 session:"",
@@ -2154,7 +1948,6 @@ return db.registerSignatures[key];
 }
 
 function registerIsLocked(){
-
 return getRegisterSignatureRecord().locked===true;
 }
 
@@ -2166,15 +1959,12 @@ if(!isTeacher())return false;
 
 const u=currentUser();
 
-if(role==="classTeacher")
-return true;
+if(role==="classTeacher")return true;
 
 if(role==="hod"){
 
-return u?.roleTitle==="HOD" ||
-db.hodAssignments.some(
-a=>a.teacherId===u?.id
-);
+return u?.roleTitle==="HOD"||
+db.hodAssignments.some(a=>a.teacherId===u?.id);
 
 }
 
@@ -2183,12 +1973,8 @@ return false;
 
 function signatureLabel(role){
 
-if(role==="classTeacher")
-return"Class Teacher";
-
-if(role==="hod")
-return"Head of Department";
-
+if(role==="classTeacher")return"Class Teacher";
+if(role==="hod")return"Head of Department";
 return"Principal / Head Teacher";
 }
 
@@ -2201,18 +1987,14 @@ function openSignaturePad(role){
 
 if(registerIsLocked()){
 
-alert(
-"This register is verified and locked. An Administrator must unlock it before signing again."
-);
+alert("This register is verified and locked. An Administrator must unlock it before signing again.");
 
 return;
 }
 
 if(!canSignRegisterRole(role)){
 
-alert(
-"You are not authorised to sign this register in this role."
-);
+alert("You are not authorised to sign this register in this role.");
 
 return;
 }
@@ -2243,13 +2025,11 @@ Use your finger or stylus inside the box above.
 
 <div class="toolbar">
 
-<button class="btn secondary"
-onclick="clearSignatureCanvas()">
+<button class="btn secondary" onclick="clearSignatureCanvas()">
 Clear
 </button>
 
-<button class="btn"
-onclick="saveSignaturePad('${role}')">
+<button class="btn" onclick="saveSignaturePad('${role}')">
 Save Signature
 </button>
 
@@ -2261,25 +2041,18 @@ setTimeout(initSignatureCanvas,80);
 
 function initSignatureCanvas(){
 
-signatureCanvas=
-document.getElementById("signatureCanvas");
+signatureCanvas=document.getElementById("signatureCanvas");
 
 if(!signatureCanvas)return;
 
-const rect=
-signatureCanvas.getBoundingClientRect();
+const rect=signatureCanvas.getBoundingClientRect();
 
-const ratio=
-Math.max(window.devicePixelRatio||1,1);
+const ratio=Math.max(window.devicePixelRatio||1,1);
 
-signatureCanvas.width=
-rect.width*ratio;
+signatureCanvas.width=rect.width*ratio;
+signatureCanvas.height=rect.height*ratio;
 
-signatureCanvas.height=
-rect.height*ratio;
-
-signatureCtx=
-signatureCanvas.getContext("2d");
+signatureCtx=signatureCanvas.getContext("2d");
 
 signatureCtx.scale(ratio,ratio);
 
@@ -2288,31 +2061,15 @@ signatureCtx.lineWidth=3;
 signatureCtx.lineCap="round";
 signatureCtx.lineJoin="round";
 
-signatureCanvas.addEventListener(
-"pointerdown",
-startSignature
-);
-
-signatureCanvas.addEventListener(
-"pointermove",
-drawSignature
-);
-
-signatureCanvas.addEventListener(
-"pointerup",
-endSignature
-);
-
-signatureCanvas.addEventListener(
-"pointercancel",
-endSignature
-);
+signatureCanvas.addEventListener("pointerdown",startSignature);
+signatureCanvas.addEventListener("pointermove",drawSignature);
+signatureCanvas.addEventListener("pointerup",endSignature);
+signatureCanvas.addEventListener("pointercancel",endSignature);
 }
 
 function signaturePoint(e){
 
-const r=
-signatureCanvas.getBoundingClientRect();
+const r=signatureCanvas.getBoundingClientRect();
 
 return{
 x:e.clientX-r.left,
@@ -2329,7 +2086,6 @@ signatureDrawing=true;
 const p=signaturePoint(e);
 
 signatureCtx.beginPath();
-
 signatureCtx.moveTo(p.x,p.y);
 }
 
@@ -2342,7 +2098,6 @@ e.preventDefault();
 const p=signaturePoint(e);
 
 signatureCtx.lineTo(p.x,p.y);
-
 signatureCtx.stroke();
 }
 
@@ -2357,34 +2112,23 @@ function clearSignatureCanvas(){
 
 if(!signatureCanvas||!signatureCtx)return;
 
-const r=
-signatureCanvas.getBoundingClientRect();
+const r=signatureCanvas.getBoundingClientRect();
 
-signatureCtx.clearRect(
-0,
-0,
-r.width,
-r.height
-);
+signatureCtx.clearRect(0,0,r.width,r.height);
 }
 
 function saveSignaturePad(role){
 
 if(!signatureCanvas)return;
 
-const dataUrl=
-signatureCanvas.toDataURL("image/png");
+const dataUrl=signatureCanvas.toDataURL("image/png");
 
-const blank=
-document.createElement("canvas");
+const blank=document.createElement("canvas");
 
 blank.width=signatureCanvas.width;
 blank.height=signatureCanvas.height;
 
-if(
-signatureCanvas.toDataURL()===
-blank.toDataURL()
-){
+if(signatureCanvas.toDataURL()===blank.toDataURL()){
 
 alert("Please sign before saving.");
 return;
@@ -2414,16 +2158,12 @@ function clearRegisterSignature(role){
 
 if(!isAdmin()){
 
-alert(
-"Only the Administrator can clear a saved signature."
-);
+alert("Only the Administrator can clear a saved signature.");
 
 return;
 }
 
-if(!confirm(
-"Clear the "+signatureLabel(role)+" signature?"
-))
+if(!confirm("Clear the "+signatureLabel(role)+" signature?"))
 return;
 
 const rec=getRegisterSignatureRecord();
@@ -2443,41 +2183,28 @@ if(!isAdmin())return;
 
 const rec=getRegisterSignatureRecord();
 
-if(
-!rec.classTeacher||
-!rec.hod||
-!rec.principal
-){
+if(!rec.classTeacher||!rec.hod||!rec.principal){
 
-alert(
-"All three signatures are required before the register can be verified and locked."
-);
+alert("All three signatures are required before the register can be verified and locked.");
 
 return;
 }
 
 rec.locked=true;
-rec.verifiedAt=
-new Date().toISOString();
-
-rec.verifiedBy=
-currentUser().id;
+rec.verifiedAt=new Date().toISOString();
+rec.verifiedBy=currentUser().id;
 
 saveDB();
 renderRegister();
 
-alert(
-"Register verified and locked successfully."
-);
+alert("Register verified and locked successfully.");
 }
 
 function unlockRegister(){
 
 if(!isAdmin())return;
 
-if(!confirm(
-"Unlock this verified register so attendance or signatures can be changed?"
-))
+if(!confirm("Unlock this verified register so attendance or signatures can be changed?"))
 return;
 
 const rec=getRegisterSignatureRecord();
@@ -2492,9 +2219,7 @@ renderRegister();
 
 function renderSignatureCard(role,label){
 
-const rec=
-getRegisterSignatureRecord();
-
+const rec=getRegisterSignatureRecord();
 const sig=rec[role];
 
 return`
@@ -2505,29 +2230,23 @@ return`
 
 ${
 sig
-
 ?`
 
-<img
-class="signature-image"
+<img class="signature-image"
 src="${sig.dataUrl}"
 alt="Digital Signature">
 
 <div class="signature-meta">
 
-<b>Signed by:</b>
-${esc(sig.name)}
+<b>Signed by:</b> ${esc(sig.name)}
 <br>
-
-<b>Date:</b>
-${formatDate(sig.signedAt)}
+<b>Date:</b> ${formatDate(sig.signedAt)}
 
 </div>
 
 <div class="signature-actions no-print">
 
-<button
-class="btn small"
+<button class="btn small"
 onclick="openSignaturePad('${role}')">
 Resign
 </button>
@@ -2536,20 +2255,16 @@ ${
 isAdmin()
 ?`
 
-<button
-class="btn small danger"
+<button class="btn small danger"
 onclick="clearRegisterSignature('${role}')">
 Clear
 </button>
 
-`
-:""
-}
+`:""}
 
 </div>
 
 `
-
 :`
 
 <div style="
@@ -2565,8 +2280,7 @@ Awaiting Signature
 
 <div class="signature-actions no-print">
 
-<button
-class="btn small"
+<button class="btn small"
 onclick="openSignaturePad('${role}')">
 ✍️ Sign
 </button>
@@ -2579,8 +2293,6 @@ onclick="openSignaturePad('${role}')">
 </div>`;
 }
 
-/* ================= REGISTER RENDER ================= */
-
 function renderRegister(){
 
 if(isStudent()||isParent())
@@ -2591,17 +2303,14 @@ return denied();
 
 initialiseRegisterState();
 
-const days=
-allCalendarDays(
+const days=allCalendarDays(
 Number(registerState.year),
 Number(registerState.month)
 );
 
-const students=
-getRegisterStudents();
+const students=getRegisterStudents();
 
-const officialSchoolDays=
-days.filter(d=>{
+const officialSchoolDays=days.filter(d=>{
 
 const dow=d.getDay();
 
@@ -2611,8 +2320,7 @@ dow!==6&&
 
 }).length;
 
-const publicHolidayDays=
-days.filter(d=>{
+const publicHolidayDays=days.filter(d=>{
 
 const dow=d.getDay();
 
@@ -2641,22 +2349,17 @@ days.forEach(day=>{
 const date=dateKey(day);
 const dow=day.getDay();
 
-const weekend=
-dow===0||dow===6;
+const weekend=dow===0||dow===6;
+const holiday=isPublicHoliday(date);
 
-const holiday=
-isPublicHoliday(date);
-
-const key=
-attendanceKey(
+const key=attendanceKey(
 registerState.session,
 registerState.term,
 student.id,
 date
 );
 
-let status=
-db.attendance[key]||"";
+let status=db.attendance[key]||"";
 
 if(holiday){
 
@@ -2716,12 +2419,8 @@ grandPresent+=P;
 grandAbsent+=A;
 grandSick+=S;
 
-const percentage=
-officialSchoolDays
-?Math.min(
-100,
-(P/officialSchoolDays)*100
-).toFixed(1)
+const percentage=officialSchoolDays
+?Math.min(100,(P/officialSchoolDays)*100).toFixed(1)
 :"0.0";
 
 rows+=`
@@ -2740,99 +2439,55 @@ ${esc(student.admissionNo)}
 
 ${cells}
 
-<td class="total-col">
-${officialSchoolDays}
-</td>
-
-<td class="total-col">
-${P}
-</td>
-
-<td class="total-col">
-${A}
-</td>
-
-<td class="total-col">
-${S}
-</td>
-
-<td class="total-col">
-${publicHolidayDays}
-</td>
-
-<td class="total-col">
-${percentage}%
-</td>
+<td class="total-col">${officialSchoolDays}</td>
+<td class="total-col">${P}</td>
+<td class="total-col">${A}</td>
+<td class="total-col">${S}</td>
+<td class="total-col">${publicHolidayDays}</td>
+<td class="total-col">${percentage}%</td>
 
 </tr>
 `;
 
 });
 
-const dateHeaders=
-days.map(day=>{
+const dateHeaders=days.map(day=>{
 
 const date=dateKey(day);
 const dow=day.getDay();
 
-const weekend=
-dow===0||dow===6;
-
-const holiday=
-isPublicHoliday(date);
+const weekend=dow===0||dow===6;
+const holiday=isPublicHoliday(date);
 
 return`
 
-<th
-class="date-head ${weekend?"weekend-head":""} ${holiday?"holiday-head":""}">
+<th class="date-head ${weekend?"weekend-head":""} ${holiday?"holiday-head":""}">
 
 <span class="date-number">
 ${day.getDate()}
 </span>
 
 <span class="day-small">
-${day.toLocaleDateString(
-"en-US",
-{weekday:"short"}
-)}
+${day.toLocaleDateString("en-US",{weekday:"short"})}
 </span>
 
-${
-weekend
-?`<span style="color:#64748b">OFF</span>`
-:""
-}
+${weekend?`<span style="color:#64748b">OFF</span>`:""}
 
-${
-holiday
-?`<span style="color:#1d4ed8">PH</span>`
-:""
-}
+${holiday?`<span style="color:#1d4ed8">PH</span>`:""}
 
 </th>`;
 
 }).join("");
 
-const classPercentage=
-students.length&&officialSchoolDays
-?Math.min(
-100,
-grandPresent/
-(students.length*officialSchoolDays)*100
-).toFixed(1)
+const classPercentage=students.length&&officialSchoolDays
+?Math.min(100,grandPresent/(students.length*officialSchoolDays)*100).toFixed(1)
 :"0.0";
 
-const sig=
-getRegisterSignatureRecord();
+const sig=getRegisterSignatureRecord();
 
-const verifiedBy=
-db.accounts.find(
-x=>x.id===sig.verifiedBy
-);
+const verifiedBy=db.accounts.find(x=>x.id===sig.verifiedBy);
 
 document.getElementById("content").innerHTML=`
-
-<!-- REGISTER CONTROLS -->
 
 <div class="panel no-print">
 
@@ -2881,58 +2536,33 @@ Attendance has not yet been recorded.
 
 <div class="form-group">
 <label>Academic Session</label>
-
-<select
-id="regSession"
-onchange="changeRegister()">
-
+<select id="regSession" onchange="changeRegister()">
 ${sessionOptions(registerState.session)}
-
 </select>
 </div>
 
 <div class="form-group">
 <label>Term</label>
-
-<select
-id="regTerm"
-onchange="changeRegister()">
-
+<select id="regTerm" onchange="changeRegister()">
 ${termOptions(registerState.term)}
-
 </select>
 </div>
 
 <div class="form-group">
 <label>Class</label>
-
-<select
-id="regClass"
-onchange="changeRegister()">
-
+<select id="regClass" onchange="changeRegister()">
 ${classOptions(registerState.className)}
-
 </select>
 </div>
 
 <div class="form-group">
 <label>Section</label>
 
-<select
-id="regSection"
-onchange="changeRegister()">
+<select id="regSection" onchange="changeRegister()">
 
-<option ${registerState.section==="A"?"selected":""}>
-A
-</option>
-
-<option ${registerState.section==="B"?"selected":""}>
-B
-</option>
-
-<option ${registerState.section==="C"?"selected":""}>
-C
-</option>
+<option ${registerState.section==="A"?"selected":""}>A</option>
+<option ${registerState.section==="B"?"selected":""}>B</option>
+<option ${registerState.section==="C"?"selected":""}>C</option>
 
 </select>
 
@@ -2946,12 +2576,8 @@ C
 
 <label>Month</label>
 
-<select
-id="regMonth"
-onchange="changeRegister()">
-
+<select id="regMonth" onchange="changeRegister()">
 ${monthOptions(registerState.month)}
-
 </select>
 
 </div>
@@ -2960,8 +2586,7 @@ ${monthOptions(registerState.month)}
 
 <label>Year</label>
 
-<input
-id="regYear"
+<input id="regYear"
 type="number"
 value="${registerState.year}"
 onchange="changeRegister()">
@@ -2972,38 +2597,32 @@ onchange="changeRegister()">
 
 <div class="toolbar">
 
-<button
-class="btn success"
+<button class="btn success"
 onclick="markAllRegister('P')">
 Mark All Present
 </button>
 
-<button
-class="btn danger"
+<button class="btn danger"
 onclick="markAllRegister('A')">
 Mark All Absent
 </button>
 
-<button
-class="btn warning"
+<button class="btn warning"
 onclick="markAllRegister('S')">
 Mark All Sick
 </button>
 
-<button
-class="btn blue"
+<button class="btn blue"
 onclick="publicHolidayForm()">
 Add Public Holiday
 </button>
 
-<button
-class="btn secondary"
+<button class="btn secondary"
 onclick="clearRegisterMonth()">
 Clear Month
 </button>
 
-<button
-class="btn"
+<button class="btn"
 onclick="window.print()">
 Print Official Register
 </button>
@@ -3013,28 +2632,23 @@ Print Official Register
 <div class="legend">
 
 <div class="legend-item">
-<span class="mark P">P</span>
-Present
+<span class="mark P">P</span> Present
 </div>
 
 <div class="legend-item">
-<span class="mark A">A</span>
-Absent
+<span class="mark A">A</span> Absent
 </div>
 
 <div class="legend-item">
-<span class="mark S">S</span>
-Sick
+<span class="mark S">S</span> Sick
 </div>
 
 <div class="legend-item">
-<span class="mark PH">PH</span>
-Public Holiday
+<span class="mark PH">PH</span> Public Holiday
 </div>
 
 <div class="legend-item">
-<span class="mark NA">—</span>
-Weekend
+<span class="mark NA">—</span> Weekend
 </div>
 
 </div>
@@ -3042,20 +2656,13 @@ Weekend
 <div class="notice">
 
 <b>Attendance rule:</b>
-
-Official School Days =
-Monday–Friday excluding Public Holidays.
-
-Attendance % =
-Present ÷ Official School Days × 100.
+Official School Days = Monday–Friday excluding Public Holidays.
+Attendance % = Present ÷ Official School Days × 100.
 
 </div>
 
 </div>
 </div>
-
-
-<!-- OFFICIAL REGISTER -->
 
 <div class="panel">
 
@@ -3063,13 +2670,9 @@ Present ÷ Official School Days × 100.
 
 <div class="register-title">
 
-<h2>
-${esc(db.settings.schoolName)}
-</h2>
+<h2>${esc(db.settings.schoolName)}</h2>
 
-<h3>
-MONTHLY SCHOOL ATTENDANCE REGISTER
-</h3>
+<h3>MONTHLY SCHOOL ATTENDANCE REGISTER</h3>
 
 <div>
 ${esc(registerState.className)}
@@ -3115,40 +2718,17 @@ ${esc(registerState.term)}
 <tr>
 
 <th>S/N</th>
-
-<th>
-COMPLETE NAME OF STUDENT
-</th>
-
-<th>
-ADMISSION NO.
-</th>
+<th>COMPLETE NAME OF STUDENT</th>
+<th>ADMISSION NO.</th>
 
 ${dateHeaders}
 
-<th>
-SCHOOL DAYS
-</th>
-
-<th>
-PRESENT
-</th>
-
-<th>
-ABSENT
-</th>
-
-<th>
-SICK
-</th>
-
-<th>
-PUBLIC HOLIDAY
-</th>
-
-<th>
-ATTENDANCE %
-</th>
+<th>SCHOOL DAYS</th>
+<th>PRESENT</th>
+<th>ABSENT</th>
+<th>SICK</th>
+<th>PUBLIC HOLIDAY</th>
+<th>ATTENDANCE %</th>
 
 </tr>
 
@@ -3177,29 +2757,12 @@ CLASS TOTAL
 
 ${days.map(()=>"<th></th>").join("")}
 
-<th>
-${officialSchoolDays}
-</th>
-
-<th>
-${grandPresent}
-</th>
-
-<th>
-${grandAbsent}
-</th>
-
-<th>
-${grandSick}
-</th>
-
-<th>
-${publicHolidayDays}
-</th>
-
-<th>
-${classPercentage}%
-</th>
+<th>${officialSchoolDays}</th>
+<th>${grandPresent}</th>
+<th>${grandAbsent}</th>
+<th>${grandSick}</th>
+<th>${publicHolidayDays}</th>
+<th>${classPercentage}%</th>
 
 </tr>
 
@@ -3243,22 +2806,16 @@ Class Attendance
 
 </div>
 
-
-<!-- DIGITAL SIGNATURES -->
-
 <div style="margin-top:25px">
 
 <div class="panel-head"
 style="border:1px solid #d9e4dc;border-radius:8px 8px 0 0">
 
-<h2>
-✍️ Digital Signatures & Verification
-</h2>
+<h2>✍️ Digital Signatures & Verification</h2>
 
 </div>
 
-<div
-style="
+<div style="
 border:1px solid #d9e4dc;
 border-top:0;
 padding:17px;
@@ -3277,7 +2834,6 @@ official printed register.
 
 ${
 sig.locked
-
 ?`
 
 <div class="verify-banner ok">
@@ -3287,85 +2843,54 @@ sig.locked
 <br>
 
 <small>
-
-Verified
-${formatDate(sig.verifiedAt)}
-by
-${esc(verifiedBy?.name||"Administrator")}
-
+Verified ${formatDate(sig.verifiedAt)}
+by ${esc(verifiedBy?.name||"Administrator")}
 </small>
 
 </div>
-
 `
-
 :`
 
 <div class="verify-banner wait">
-
 ⏳ Register is not yet verified.
-
 </div>
-
 `
 }
 
 <div class="register-footer">
 
-${renderSignatureCard(
-"classTeacher",
-"Class Teacher"
-)}
+${renderSignatureCard("classTeacher","Class Teacher")}
 
-${renderSignatureCard(
-"hod",
-"Head of Department"
-)}
+${renderSignatureCard("hod","Head of Department")}
 
-${renderSignatureCard(
-"principal",
-"Principal / Head Teacher"
-)}
+${renderSignatureCard("principal","Principal / Head Teacher")}
 
 </div>
 
-<div
-class="toolbar verify-actions no-print"
+<div class="toolbar verify-actions no-print"
 style="margin-top:15px">
 
 ${
 isAdmin()&&!sig.locked
-
 ?`
 
-<button
-class="btn success"
+<button class="btn success"
 onclick="verifyRegister()">
-
 🔐 Verify & Lock Register
-
 </button>
-
 `
-
 :""
 }
 
 ${
 isAdmin()&&sig.locked
-
 ?`
 
-<button
-class="btn warning"
+<button class="btn warning"
 onclick="unlockRegister()">
-
 🔓 Unlock Register
-
 </button>
-
 `
-
 :""
 }
 
@@ -3393,45 +2918,28 @@ s.className===registerState.className&&
 
 function changeRegister(){
 
-registerState.session=
-document.getElementById("regSession").value;
-
-registerState.term=
-document.getElementById("regTerm").value;
-
-registerState.className=
-document.getElementById("regClass").value;
-
-registerState.section=
-document.getElementById("regSection").value;
-
-registerState.month=
-document.getElementById("regMonth").value;
-
-registerState.year=
-document.getElementById("regYear").value;
+registerState.session=document.getElementById("regSession").value;
+registerState.term=document.getElementById("regTerm").value;
+registerState.className=document.getElementById("regClass").value;
+registerState.section=document.getElementById("regSection").value;
+registerState.month=document.getElementById("regMonth").value;
+registerState.year=document.getElementById("regYear").value;
 
 renderRegister();
 }
-
-/* ================= LIVE ATTENDANCE MARKING ================= */
 
 function cycleRegisterMark(studentId,date){
 
 if(registerIsLocked()){
 
-alert(
-"This register is verified and locked. An Administrator must unlock it before changes can be made."
-);
+alert("This register is verified and locked. An Administrator must unlock it before changes can be made.");
 
 return;
 }
 
 if(isPublicHoliday(date)){
 
-alert(
-"This date is a Public Holiday."
-);
+alert("This date is a Public Holiday.");
 
 return;
 }
@@ -3442,36 +2950,25 @@ const dow=d.getDay();
 
 if(dow===0||dow===6){
 
-alert(
-"This is a weekend. It is not a school day."
-);
+alert("This is a weekend. It is not a school day.");
 
 return;
 }
 
-const key=
-attendanceKey(
+const key=attendanceKey(
 registerState.session,
 registerState.term,
 studentId,
 date
 );
 
-const order=[
-"",
-"P",
-"A",
-"S"
-];
+const order=["","P","A","S"];
 
-const current=
-db.attendance[key]||"";
+const current=db.attendance[key]||"";
 
-const index=
-order.indexOf(current);
+const index=order.indexOf(current);
 
-const next=
-order[(index+1)%order.length];
+const next=order[(index+1)%order.length];
 
 if(next)
 db.attendance[key]=next;
@@ -3482,24 +2979,18 @@ saveDB();
 renderRegister();
 }
 
-/* ================= BULK MARKING ================= */
-
 function markAllRegister(status){
 
 if(registerIsLocked()){
 
-alert(
-"This register is verified and locked. An Administrator must unlock it before changes can be made."
-);
+alert("This register is verified and locked. An Administrator must unlock it before changes can be made.");
 
 return;
 }
 
-const students=
-getRegisterStudents();
+const students=getRegisterStudents();
 
-const days=
-schoolDaysForMonth(
+const days=schoolDaysForMonth(
 Number(registerState.year),
 Number(registerState.month)
 );
@@ -3519,8 +3010,7 @@ days.forEach(day=>{
 
 const date=dateKey(day);
 
-if(isPublicHoliday(date))
-return;
+if(isPublicHoliday(date))return;
 
 db.attendance[
 attendanceKey(
@@ -3539,31 +3029,23 @@ saveDB();
 renderRegister();
 }
 
-/* ================= CLEAR ================= */
-
 function clearRegisterMonth(){
 
 if(registerIsLocked()){
 
-alert(
-"This register is verified and locked. An Administrator must unlock it before changes can be made."
-);
+alert("This register is verified and locked. An Administrator must unlock it before changes can be made.");
 
 return;
 }
 
-const students=
-getRegisterStudents();
+const students=getRegisterStudents();
 
-const days=
-allCalendarDays(
+const days=allCalendarDays(
 Number(registerState.year),
 Number(registerState.month)
 );
 
-if(!confirm(
-"Clear attendance for this class and month?"
-))
+if(!confirm("Clear attendance for this class and month?"))
 return;
 
 students.forEach(student=>{
@@ -3587,15 +3069,11 @@ saveDB();
 renderRegister();
 }
 
-/* ================= PUBLIC HOLIDAY ================= */
-
 function publicHolidayForm(){
 
 if(registerIsLocked()){
 
-alert(
-"This register is locked. An Administrator must unlock it first."
-);
+alert("This register is locked. An Administrator must unlock it first.");
 
 return;
 }
@@ -3608,8 +3086,7 @@ openModal(
 
 <label>Date</label>
 
-<input
-id="holidayDate"
+<input id="holidayDate"
 type="date"
 value="${registerState.year}-${String(registerState.month).padStart(2,"0")}-01">
 
@@ -3619,18 +3096,14 @@ value="${registerState.year}-${String(registerState.month).padStart(2,"0")}-01">
 
 <label>Holiday Name</label>
 
-<input
-id="holidayName"
+<input id="holidayName"
 placeholder="Example: Independence Day">
 
 </div>
 
-<button
-class="btn blue"
+<button class="btn blue"
 onclick="saveHoliday()">
-
 Save Public Holiday
-
 </button>
 `);
 }
@@ -3640,18 +3113,13 @@ function saveHoliday(){
 if(registerIsLocked()){
 
 alert("This register is locked.");
-
 return;
 }
 
 const date=v("holidayDate");
+const name=v("holidayName")||"Public Holiday";
 
-const name=
-v("holidayName")||
-"Public Holiday";
-
-if(!date)
-return alert("Select a date.");
+if(!date)return alert("Select a date.");
 
 db.holidays[date]=name;
 
@@ -3661,13 +3129,10 @@ renderRegister();
 }
 
 function isPublicHoliday(date){
-
-return Boolean(
-db.holidays[date]
-);
+return Boolean(db.holidays[date]);
 }
 
-/* ================= DOCUMENTS ================= */
+/* DOCUMENTS */
 
 function renderDocuments(){
 
@@ -3682,12 +3147,8 @@ document.getElementById("content").innerHTML=`
 
 <h2>Academic Documents</h2>
 
-<button
-class="btn"
-onclick="documentForm()">
-
+<button class="btn" onclick="documentForm()">
 + Create Document
-
 </button>
 
 </div>
@@ -3737,35 +3198,26 @@ ${db.documents.map(d=>`
 
 <td>
 
-<button
-class="btn small"
+<button class="btn small"
 onclick="documentView('${d.id}')">
 View
 </button>
 
-${
-d.status==="draft"
-
+${d.status==="draft"
 ?`
 
-<button
-class="btn small blue"
+<button class="btn small blue"
 onclick="submitDocument('${d.id}')">
 Submit
 </button>
-
-`
-:""
-}
+`:""}
 
 </td>
 
 </tr>
 
 `).join("")||
-`<tr>
-<td colspan="6">No documents.</td>
-</tr>`
+`<tr><td colspan="6">No documents.</td></tr>`
 }
 
 </tbody>
@@ -3803,11 +3255,8 @@ openModal(
 </div>
 
 <div class="form-group">
-
 <label>Title</label>
-
 <input id="dTitle">
-
 </div>
 
 <div class="form-group">
@@ -3844,8 +3293,7 @@ ${termOptions(db.settings.currentTerm)}
 
 <label>Week</label>
 
-<input id="dWeek"
-placeholder="Week 1">
+<input id="dWeek" placeholder="Week 1">
 
 </div>
 
@@ -3855,17 +3303,12 @@ placeholder="Week 1">
 
 <label>Content</label>
 
-<textarea id="dContent"
-rows="12"></textarea>
+<textarea id="dContent" rows="12"></textarea>
 
 </div>
 
-<button
-class="btn"
-onclick="saveDocument()">
-
+<button class="btn" onclick="saveDocument()">
 Save Draft
-
 </button>
 `);
 }
@@ -3886,9 +3329,7 @@ createdAt:new Date().toISOString()
 };
 
 if(!data.title||!data.content)
-return alert(
-"Title and content are required."
-);
+return alert("Title and content are required.");
 
 db.documents.push({
 id:uid("document"),
@@ -3902,9 +3343,7 @@ renderDocuments();
 
 function submitDocument(id){
 
-const d=db.documents.find(
-x=>x.id===id
-);
+const d=db.documents.find(x=>x.id===id);
 
 if(!d)return;
 
@@ -3924,9 +3363,7 @@ renderDocuments();
 
 function documentView(id){
 
-const d=db.documents.find(
-x=>x.id===id
-);
+const d=db.documents.find(x=>x.id===id);
 
 if(!d)return;
 
@@ -3934,25 +3371,10 @@ openModal(
 d.title,
 `
 
-<p>
-<b>Type:</b>
-${esc(d.type)}
-</p>
-
-<p>
-<b>Subject:</b>
-${esc(d.subject||"")}
-</p>
-
-<p>
-<b>Class:</b>
-${esc(d.className||"")}
-</p>
-
-<p>
-<b>Term:</b>
-${esc(d.term||"")}
-</p>
+<p><b>Type:</b> ${esc(d.type)}</p>
+<p><b>Subject:</b> ${esc(d.subject||"")}</p>
+<p><b>Class:</b> ${esc(d.className||"")}</p>
+<p><b>Term:</b> ${esc(d.term||"")}</p>
 
 <hr>
 
@@ -3962,7 +3384,7 @@ ${esc(d.content)}
 `);
 }
 
-/* ================= APPROVALS ================= */
+/* APPROVALS */
 
 function renderApprovals(){
 
@@ -4009,59 +3431,42 @@ to the Approved Work Archive.
 
 ${db.approvals.map(a=>{
 
-const d=
-db.documents.find(
-x=>x.id===a.documentId
-);
+const d=db.documents.find(x=>x.id===a.documentId);
 
 if(!d)return"";
 
-const creator=
-db.teachers.find(
-t=>t.id===d.createdBy
-);
+const creator=db.teachers.find(t=>t.id===d.createdBy);
 
 return`
 
 <tr>
 
 <td>${esc(d.title)}</td>
-
 <td>${esc(d.type)}</td>
-
-<td>${esc(
-creator?.name||"Administrator"
-)}</td>
-
+<td>${esc(creator?.name||"Administrator")}</td>
 <td>${statusBadge(a.status)}</td>
-
 <td>${esc(a.comment||"")}</td>
 
 <td>
 
-<button
-class="btn small"
+<button class="btn small"
 onclick="documentView('${d.id}')">
 View
 </button>
 
 ${
 isAdmin()&&a.status==="pending"
-
 ?`
 
-<button
-class="btn small success"
+<button class="btn small success"
 onclick="approveDocument('${a.id}')">
 Approve
 </button>
 
-<button
-class="btn small danger"
+<button class="btn small danger"
 onclick="rejectDocument('${a.id}')">
 Reject
 </button>
-
 `
 :""
 }
@@ -4071,12 +3476,7 @@ Reject
 </tr>`;
 
 }).join("")||
-
-`<tr>
-<td colspan="6">
-No submissions.
-</td>
-</tr>`
+`<tr><td colspan="6">No submissions.</td></tr>`
 }
 
 </tbody>
@@ -4093,40 +3493,26 @@ function approveDocument(id){
 
 if(!isAdmin())return;
 
-const a=
-db.approvals.find(
-x=>x.id===id
-);
+const a=db.approvals.find(x=>x.id===id);
 
 if(!a)return;
 
-const d=
-db.documents.find(
-x=>x.id===a.documentId
-);
+const d=db.documents.find(x=>x.id===a.documentId);
 
 if(!d)return;
 
-const comment=
-prompt(
-"Approval comment:",
-"Approved"
-);
+const comment=prompt("Approval comment:","Approved");
 
 a.status="approved";
 a.comment=comment||"Approved";
 a.reviewedBy=currentUser().id;
-a.reviewedAt=
-new Date().toISOString();
+a.reviewedAt=new Date().toISOString();
 
 d.status="approved";
 d.approvedAt=a.reviewedAt;
 d.approvedBy=currentUser().id;
 
-let archiveRecord=
-db.archive.find(
-x=>x.documentId===d.id
-);
+let archiveRecord=db.archive.find(x=>x.documentId===d.id);
 
 if(!archiveRecord){
 
@@ -4142,8 +3528,7 @@ term:d.term||"",
 week:d.week||"",
 content:d.content,
 createdBy:d.createdBy||"",
-createdAt:d.createdAt||
-new Date().toISOString(),
+createdAt:d.createdAt||new Date().toISOString(),
 approvedBy:currentUser().id,
 approvedAt:d.approvedAt,
 approvalComment:a.comment
@@ -4152,23 +3537,18 @@ approvalComment:a.comment
 
 }else{
 
-Object.assign(
-archiveRecord,
-{
+Object.assign(archiveRecord,{
 content:d.content,
 approvedBy:currentUser().id,
 approvedAt:d.approvedAt,
 approvalComment:a.comment
-}
-);
+});
 
 }
 
 saveDB();
 
-alert(
-"Document approved and added to the Approved Work Archive."
-);
+alert("Document approved and added to the Approved Work Archive.");
 
 renderApprovals();
 }
@@ -4177,28 +3557,20 @@ function rejectDocument(id){
 
 if(!isAdmin())return;
 
-const a=
-db.approvals.find(
-x=>x.id===id
-);
+const a=db.approvals.find(x=>x.id===id);
 
 if(!a)return;
 
-const comment=
-prompt("Reason for rejection:");
+const comment=prompt("Reason for rejection:");
 
 if(comment===null)return;
 
 a.status="rejected";
 a.comment=comment;
 a.reviewedBy=currentUser().id;
-a.reviewedAt=
-new Date().toISOString();
+a.reviewedAt=new Date().toISOString();
 
-const d=
-db.documents.find(
-x=>x.id===a.documentId
-);
+const d=db.documents.find(x=>x.id===a.documentId);
 
 if(d)d.status="rejected";
 
@@ -4206,7 +3578,7 @@ saveDB();
 renderApprovals();
 }
 
-/* ================= ARCHIVE ================= */
+/* ARCHIVE */
 
 function renderArchive(){
 
@@ -4221,9 +3593,7 @@ document.getElementById("content").innerHTML=`
 
 <div>
 
-<h2>
-📁 Approved Work Archive
-</h2>
+<h2>📁 Approved Work Archive</h2>
 
 <small style="color:#64748b">
 Permanent record of approved academic documents
@@ -4252,8 +3622,7 @@ after Administrator approval.
 
 <label>Search</label>
 
-<input
-id="archiveSearch"
+<input id="archiveSearch"
 placeholder="Search..."
 oninput="filterArchive()">
 
@@ -4263,9 +3632,7 @@ oninput="filterArchive()">
 
 <label>Document Type</label>
 
-<select
-id="archiveType"
-onchange="filterArchive()">
+<select id="archiveType" onchange="filterArchive()">
 
 <option value="">All Types</option>
 <option>Lesson Plan</option>
@@ -4282,9 +3649,7 @@ onchange="filterArchive()">
 
 <label>Subject</label>
 
-<select
-id="archiveSubject"
-onchange="filterArchive()">
+<select id="archiveSubject" onchange="filterArchive()">
 
 <option value="">All Subjects</option>
 
@@ -4304,9 +3669,7 @@ ${esc(s.name)}
 
 <label>Class</label>
 
-<select
-id="archiveClass"
-onchange="filterArchive()">
+<select id="archiveClass" onchange="filterArchive()">
 
 <option value="">All Classes</option>
 
@@ -4334,30 +3697,18 @@ filterArchive();
 
 function filterArchive(){
 
-const search=
-(document.getElementById("archiveSearch")?.value||"")
-.toLowerCase();
+const search=(document.getElementById("archiveSearch")?.value||"").toLowerCase();
 
-const type=
-document.getElementById("archiveType")?.value||"";
+const type=document.getElementById("archiveType")?.value||"";
 
-const subject=
-document.getElementById("archiveSubject")?.value||"";
+const subject=document.getElementById("archiveSubject")?.value||"";
 
-const className=
-document.getElementById("archiveClass")?.value||"";
+const className=document.getElementById("archiveClass")?.value||"";
 
-const records=
-db.archive.filter(a=>{
+const records=db.archive.filter(a=>{
 
 const text=[
-a.title,
-a.type,
-a.subject,
-a.className,
-a.term,
-a.week,
-a.content
+a.title,a.type,a.subject,a.className,a.term,a.week,a.content
 ].join(" ").toLowerCase();
 
 return(
@@ -4369,8 +3720,7 @@ return(
 
 });
 
-const container=
-document.getElementById("archiveList");
+const container=document.getElementById("archiveList");
 
 if(!container)return;
 
@@ -4385,59 +3735,34 @@ No approved work matches your search.
 return;
 }
 
-container.innerHTML=
-records.map(a=>{
+container.innerHTML=records.map(a=>{
 
-const teacher=
-db.teachers.find(
-t=>t.id===a.createdBy
-);
+const teacher=db.teachers.find(t=>t.id===a.createdBy);
 
-const approver=
-db.accounts.find(
-x=>x.id===a.approvedBy
-);
+const approver=db.accounts.find(x=>x.id===a.approvedBy);
 
 return`
 
 <div class="archive-card">
 
-<h3>
-${esc(a.title)}
-</h3>
+<h3>${esc(a.title)}</h3>
 
 <div class="archive-meta">
 
 <span>📄 ${esc(a.type)}</span>
+<span>📚 ${esc(a.subject||"No Subject")}</span>
+<span>🏫 ${esc(a.className||"No Class")}</span>
+<span>📅 ${esc(a.term||"")}</span>
 
 <span>
-📚 ${esc(a.subject||"No Subject")}
+👨‍🏫 ${esc(teacher?.name||"Administrator")}
 </span>
 
 <span>
-🏫 ${esc(a.className||"No Class")}
+✅ Approved by ${esc(approver?.name||"Administrator")}
 </span>
 
-<span>
-📅 ${esc(a.term||"")}
-</span>
-
-<span>
-👨‍🏫 ${esc(
-teacher?.name||"Administrator"
-)}
-</span>
-
-<span>
-✅ Approved by
-${esc(
-approver?.name||"Administrator"
-)}
-</span>
-
-<span>
-🗓️ ${formatDate(a.approvedAt)}
-</span>
+<span>🗓️ ${formatDate(a.approvedAt)}</span>
 
 </div>
 
@@ -4445,18 +3770,15 @@ approver?.name||"Administrator"
 ${esc(a.content)}
 </div>
 
-<div
-class="toolbar"
+<div class="toolbar"
 style="margin-top:12px;margin-bottom:0">
 
-<button
-class="btn small"
+<button class="btn small"
 onclick="viewArchive('${a.id}')">
 View
 </button>
 
-<button
-class="btn small"
+<button class="btn small"
 onclick="printArchive('${a.id}')">
 Print
 </button>
@@ -4465,12 +3787,10 @@ ${
 isAdmin()
 ?`
 
-<button
-class="btn small danger"
+<button class="btn small danger"
 onclick="deleteArchive('${a.id}')">
 Delete
 </button>
-
 `
 :""
 }
@@ -4484,10 +3804,7 @@ Delete
 
 function viewArchive(id){
 
-const a=
-db.archive.find(
-x=>x.id===id
-);
+const a=db.archive.find(x=>x.id===id);
 
 if(!a)return;
 
@@ -4495,35 +3812,12 @@ openModal(
 "Approved Work — "+a.title,
 `
 
-<p>
-<b>Document Type:</b>
-${esc(a.type)}
-</p>
-
-<p>
-<b>Subject:</b>
-${esc(a.subject)}
-</p>
-
-<p>
-<b>Class:</b>
-${esc(a.className)}
-</p>
-
-<p>
-<b>Term:</b>
-${esc(a.term)}
-</p>
-
-<p>
-<b>Week:</b>
-${esc(a.week)}
-</p>
-
-<p>
-<b>Approved:</b>
-${formatDate(a.approvedAt)}
-</p>
+<p><b>Document Type:</b> ${esc(a.type)}</p>
+<p><b>Subject:</b> ${esc(a.subject)}</p>
+<p><b>Class:</b> ${esc(a.className)}</p>
+<p><b>Term:</b> ${esc(a.term)}</p>
+<p><b>Week:</b> ${esc(a.week)}</p>
+<p><b>Approved:</b> ${formatDate(a.approvedAt)}</p>
 
 <hr>
 
@@ -4535,20 +3829,14 @@ ${esc(a.content)}
 
 function printArchive(id){
 
-const a=
-db.archive.find(
-x=>x.id===id
-);
+const a=db.archive.find(x=>x.id===id);
 
 if(!a)return;
 
-const w=
-window.open("","_blank");
+const w=window.open("","_blank");
 
 if(!w)
-return alert(
-"Please allow pop-ups for printing."
-);
+return alert("Please allow pop-ups for printing.");
 
 w.document.write(`
 
@@ -4573,9 +3861,7 @@ text-align:center;
 color:#166534
 }
 
-h2{
-text-align:center
-}
+h2{text-align:center}
 
 .meta{
 border:1px solid #ccc;
@@ -4583,9 +3869,7 @@ padding:12px;
 margin:20px 0
 }
 
-.content{
-white-space:pre-wrap
-}
+.content{white-space:pre-wrap}
 
 @media print{
 @page{
@@ -4600,38 +3884,28 @@ margin:18mm
 
 <body>
 
-<h1>
-${esc(db.settings.schoolName)}
-</h1>
+<h1>${esc(db.settings.schoolName)}</h1>
 
-<h2>
-${esc(a.title)}
-</h2>
+<h2>${esc(a.title)}</h2>
 
 <div class="meta">
 
-<b>Document Type:</b>
-${esc(a.type)}
+<b>Document Type:</b> ${esc(a.type)}
 <br>
 
-<b>Subject:</b>
-${esc(a.subject)}
+<b>Subject:</b> ${esc(a.subject)}
 <br>
 
-<b>Class:</b>
-${esc(a.className)}
+<b>Class:</b> ${esc(a.className)}
 <br>
 
-<b>Term:</b>
-${esc(a.term)}
+<b>Term:</b> ${esc(a.term)}
 <br>
 
-<b>Week:</b>
-${esc(a.week)}
+<b>Week:</b> ${esc(a.week)}
 <br>
 
-<b>Approved Date:</b>
-${formatDate(a.approvedAt)}
+<b>Approved Date:</b> ${formatDate(a.approvedAt)}
 
 </div>
 
@@ -4645,10 +3919,7 @@ ${esc(a.content)}
 
 w.document.close();
 
-setTimeout(
-()=>w.print(),
-400
-);
+setTimeout(()=>w.print(),400);
 }
 
 function deleteArchive(id){
@@ -4660,16 +3931,13 @@ if(!confirm(
 ))
 return;
 
-db.archive=
-db.archive.filter(
-x=>x.id!==id
-);
+db.archive=db.archive.filter(x=>x.id!==id);
 
 saveDB();
 filterArchive();
 }
 
-/* ================= RESULTS ================= */
+/* RESULTS */
 
 function renderResults(){
 
@@ -4690,8 +3958,7 @@ document.getElementById("content").innerHTML=`
 
 <h2>Result Entry</h2>
 
-<button class="btn"
-onclick="resultForm()">
+<button class="btn" onclick="resultForm()">
 + Enter Result
 </button>
 
@@ -4736,24 +4003,15 @@ Examination = 70 =
 
 ${db.results.map(r=>{
 
-const s=
-db.students.find(
-x=>x.id===r.studentId
-);
-
-const sub=
-db.subjects.find(
-x=>x.id===r.subjectId
-);
+const s=db.students.find(x=>x.id===r.studentId);
+const sub=db.subjects.find(x=>x.id===r.subjectId);
 
 return`
 
 <tr>
 
 <td>${esc(s?.name||"Unknown")}</td>
-
 <td>${esc(sub?.name||"Unknown")}</td>
-
 <td>${esc(r.session)}</td>
 <td>${esc(r.term)}</td>
 <td>${r.ca1}</td>
@@ -4765,38 +4023,31 @@ return`
 
 <td>
 
-<button
-class="btn small"
+<button class="btn small"
 onclick="resultForm('${r.id}')">
 Edit
 </button>
 
 ${
 isAdmin()&&r.status!=="published"
-
 ?`
 
-<button
-class="btn small success"
+<button class="btn small success"
 onclick="publishResult('${r.id}')">
 Publish
 </button>
-
 `
 :""
 }
 
 ${
 isAdmin()
-
 ?`
 
-<button
-class="btn small danger"
+<button class="btn small danger"
 onclick="deleteResult('${r.id}')">
 Delete
 </button>
-
 `
 :""
 }
@@ -4808,9 +4059,7 @@ Delete
 }).join("")||
 
 `<tr>
-<td colspan="11">
-No results.
-</td>
+<td colspan="11">No results.</td>
 </tr>`
 }
 
@@ -4857,9 +4106,7 @@ ${db.students.map(s=>`
 value="${s.id}"
 ${s.id===r.studentId?"selected":""}>
 
-${esc(s.name)}
-—
-${esc(s.admissionNo)}
+${esc(s.name)} — ${esc(s.admissionNo)}
 
 </option>
 
@@ -4874,9 +4121,7 @@ ${esc(s.admissionNo)}
 <label>Subject</label>
 
 <select id="rSubject">
-
 ${subjectOptions(r.subjectId,true)}
-
 </select>
 
 </div>
@@ -4885,8 +4130,7 @@ ${subjectOptions(r.subjectId,true)}
 
 <label>Session</label>
 
-<input
-id="rSession"
+<input id="rSession"
 value="${escAttr(r.session)}">
 
 </div>
@@ -4896,9 +4140,7 @@ value="${escAttr(r.session)}">
 <label>Term</label>
 
 <select id="rTerm">
-
 ${termOptions(r.term)}
-
 </select>
 
 </div>
@@ -4907,8 +4149,7 @@ ${termOptions(r.term)}
 
 <label>CA1 / 15</label>
 
-<input
-id="rCA1"
+<input id="rCA1"
 type="number"
 min="0"
 max="15"
@@ -4920,8 +4161,7 @@ value="${r.ca1}">
 
 <label>CA2 / 15</label>
 
-<input
-id="rCA2"
+<input id="rCA2"
 type="number"
 min="0"
 max="15"
@@ -4933,8 +4173,7 @@ value="${r.ca2}">
 
 <label>Examination / 70</label>
 
-<input
-id="rExam"
+<input id="rExam"
 type="number"
 min="0"
 max="70"
@@ -4944,12 +4183,9 @@ value="${r.exam}">
 
 </div>
 
-<button
-class="btn"
+<button class="btn"
 onclick="saveResult('${id}')">
-
 Save Result
-
 </button>
 `);
 }
@@ -4967,13 +4203,9 @@ exam<0||exam>70
 )
 return alert("Invalid marks.");
 
-const total=
-ca1+ca2+exam;
+const total=ca1+ca2+exam;
 
-const old=
-id
-?db.results.find(x=>x.id===id)
-:null;
+const old=id?db.results.find(x=>x.id===id):null;
 
 const data={
 studentId:v("rStudent"),
@@ -5004,21 +4236,15 @@ renderResults();
 
 function publishResult(id){
 
-const r=
-db.results.find(
-x=>x.id===id
-);
+const r=db.results.find(x=>x.id===id);
 
 if(!r)return;
 
-if(!confirm(
-"Publish this result to Student and Parent portals?"
-))
+if(!confirm("Publish this result to Student and Parent portals?"))
 return;
 
 r.status="published";
-r.publishedAt=
-new Date().toISOString();
+r.publishedAt=new Date().toISOString();
 
 saveDB();
 renderResults();
@@ -5026,13 +4252,9 @@ renderResults();
 
 function deleteResult(id){
 
-if(!confirm("Delete result?"))
-return;
+if(!confirm("Delete result?"))return;
 
-db.results=
-db.results.filter(
-x=>x.id!==id
-);
+db.results=db.results.filter(x=>x.id!==id);
 
 saveDB();
 renderResults();
@@ -5042,11 +4264,8 @@ function renderStudentResults(){
 
 const s=currentUser();
 
-const rows=
-db.results.filter(
-r=>
-r.studentId===s.id&&
-r.status==="published"
+const rows=db.results.filter(
+r=>r.studentId===s.id&&r.status==="published"
 );
 
 document.getElementById("content").innerHTML=`
@@ -5080,10 +4299,7 @@ document.getElementById("content").innerHTML=`
 
 ${rows.map(r=>{
 
-const sub=
-db.subjects.find(
-x=>x.id===r.subjectId
-);
+const sub=db.subjects.find(x=>x.id===r.subjectId);
 
 return`
 
@@ -5102,14 +4318,11 @@ return`
 
 }).join("")||
 
-`<tr>
-<td colspan="8">
-No published results.
-</td>
-</tr>`
+`<tr><td colspan="8">No published results.</td></tr>`
 }
 
 </tbody>
+
 </table>
 
 </div>
@@ -5124,18 +4337,12 @@ let html="";
 
 (p.children||[]).forEach(id=>{
 
-const s=
-db.students.find(
-x=>x.id===id
-);
+const s=db.students.find(x=>x.id===id);
 
 if(!s)return;
 
-const rows=
-db.results.filter(
-r=>
-r.studentId===s.id&&
-r.status==="published"
+const rows=db.results.filter(
+r=>r.studentId===s.id&&r.status==="published"
 );
 
 html+=`
@@ -5169,10 +4376,7 @@ html+=`
 
 ${rows.map(r=>{
 
-const sub=
-db.subjects.find(
-x=>x.id===r.subjectId
-);
+const sub=db.subjects.find(x=>x.id===r.subjectId);
 
 return`
 
@@ -5191,11 +4395,7 @@ return`
 
 }).join("")||
 
-`<tr>
-<td colspan="8">
-No published results.
-</td>
-</tr>`
+`<tr><td colspan="8">No published results.</td></tr>`
 }
 
 </tbody>
@@ -5214,7 +4414,7 @@ No children are linked to this account.
 </div>`;
 }
 
-/* ================= ASSISTANT ================= */
+/* ASSISTANT */
 
 function renderAssistant(){
 
@@ -5243,16 +4443,12 @@ placeholder="Example: Prepare a JSS1 Mathematics lesson note on fractions.">
 
 </div>
 
-<button
-class="btn"
+<button class="btn"
 onclick="askAssistant()">
 Generate Help
 </button>
 
-<div
-id="assistantAnswer"
-style="margin-top:18px">
-</div>
+<div id="assistantAnswer" style="margin-top:18px"></div>
 
 </div>
 </div>`;
@@ -5260,9 +4456,7 @@ style="margin-top:18px">
 
 function askAssistant(){
 
-const q=
-v("assistantQuestion")
-.toLowerCase();
+const q=v("assistantQuestion").toLowerCase();
 
 let answer="";
 
@@ -5272,75 +4466,25 @@ answer=`
 
 <h3>Lesson Note Structure</h3>
 
-<p>
-<b>Subject:</b>
-__________________
-</p>
+<p><b>Subject:</b> __________________</p>
+<p><b>Class:</b> __________________</p>
+<p><b>Topic:</b> __________________</p>
+<p><b>Entry Behaviour:</b> __________________</p>
 
-<p>
-<b>Class:</b>
-__________________
-</p>
-
-<p>
-<b>Topic:</b>
-__________________
-</p>
-
-<p>
-<b>Entry Behaviour:</b>
-__________________
-</p>
-
-<p>
-<b>Objectives:</b>
-</p>
+<p><b>Objectives:</b></p>
 
 <ol>
-
-<li>
-Explain the topic.
-</li>
-
-<li>
-Identify important examples.
-</li>
-
-<li>
-Solve related exercises.
-</li>
-
+<li>Explain the topic.</li>
+<li>Identify important examples.</li>
+<li>Solve related exercises.</li>
 </ol>
 
-<p>
-<b>Materials:</b>
-__________________
-</p>
-
-<p>
-<b>Set Induction:</b>
-__________________
-</p>
-
-<p>
-<b>Presentation:</b>
-Teacher Activities / Learners Activities.
-</p>
-
-<p>
-<b>Evaluation:</b>
-__________________
-</p>
-
-<p>
-<b>Conclusion:</b>
-__________________
-</p>
-
-<p>
-<b>Assignment:</b>
-__________________
-</p>
+<p><b>Materials:</b> __________________</p>
+<p><b>Set Induction:</b> __________________</p>
+<p><b>Presentation:</b> Teacher Activities / Learners Activities.</p>
+<p><b>Evaluation:</b> __________________</p>
+<p><b>Conclusion:</b> __________________</p>
+<p><b>Assignment:</b> __________________</p>
 `;
 
 else
@@ -5353,45 +4497,23 @@ answer=`
 
 <ol>
 
-<li>
-Identify class and subject.
-</li>
-
-<li>
-State the topic.
-</li>
-
-<li>
-Write measurable objectives.
-</li>
-
-<li>
-Prepare examples and activities.
-</li>
-
-<li>
-Include evaluation questions.
-</li>
-
-<li>
-Conclude the lesson.
-</li>
-
-<li>
-Give an assignment.
-</li>
+<li>Identify class and subject.</li>
+<li>State the topic.</li>
+<li>Write measurable objectives.</li>
+<li>Prepare examples and activities.</li>
+<li>Include evaluation questions.</li>
+<li>Conclude the lesson.</li>
+<li>Give an assignment.</li>
 
 </ol>
 
 </div>
 `;
 
-document.getElementById(
-"assistantAnswer"
-).innerHTML=answer;
+document.getElementById("assistantAnswer").innerHTML=answer;
 }
 
-/* ================= SETTINGS ================= */
+/* SETTINGS */
 
 function renderSettings(){
 
@@ -5414,8 +4536,7 @@ document.getElementById("content").innerHTML=`
 
 <label>School Name</label>
 
-<input
-id="setName"
+<input id="setName"
 value="${escAttr(db.settings.schoolName)}">
 
 </div>
@@ -5424,8 +4545,7 @@ value="${escAttr(db.settings.schoolName)}">
 
 <label>Location</label>
 
-<input
-id="setLocation"
+<input id="setLocation"
 value="${escAttr(db.settings.location)}">
 
 </div>
@@ -5434,8 +4554,7 @@ value="${escAttr(db.settings.location)}">
 
 <label>Phone</label>
 
-<input
-id="setPhone"
+<input id="setPhone"
 value="${escAttr(db.settings.phone||"")}">
 
 </div>
@@ -5444,8 +4563,7 @@ value="${escAttr(db.settings.phone||"")}">
 
 <label>Email</label>
 
-<input
-id="setEmail"
+<input id="setEmail"
 value="${escAttr(db.settings.email||"")}">
 
 </div>
@@ -5454,8 +4572,7 @@ value="${escAttr(db.settings.email||"")}">
 
 <label>Current Session</label>
 
-<input
-id="setSession"
+<input id="setSession"
 value="${escAttr(db.settings.currentSession)}">
 
 </div>
@@ -5465,21 +4582,16 @@ value="${escAttr(db.settings.currentSession)}">
 <label>Current Term</label>
 
 <select id="setTerm">
-
 ${termOptions(db.settings.currentTerm)}
-
 </select>
 
 </div>
 
 </div>
 
-<button
-class="btn"
+<button class="btn"
 onclick="saveSettings()">
-
 Save Settings
-
 </button>
 
 </div>
@@ -5488,23 +4600,12 @@ Save Settings
 
 function saveSettings(){
 
-db.settings.schoolName=
-v("setName");
-
-db.settings.location=
-v("setLocation");
-
-db.settings.phone=
-v("setPhone");
-
-db.settings.email=
-v("setEmail");
-
-db.settings.currentSession=
-v("setSession");
-
-db.settings.currentTerm=
-v("setTerm");
+db.settings.schoolName=v("setName");
+db.settings.location=v("setLocation");
+db.settings.phone=v("setPhone");
+db.settings.email=v("setEmail");
+db.settings.currentSession=v("setSession");
+db.settings.currentTerm=v("setTerm");
 
 saveDB();
 
@@ -5513,7 +4614,7 @@ alert("Settings saved.");
 renderSettings();
 }
 
-/* ================= BACKUP ================= */
+/* BACKUP */
 
 function renderBackup(){
 
@@ -5537,12 +4638,9 @@ Download the complete school database including
 the Approved Work Archive and digital register signatures.
 </p>
 
-<button
-class="btn"
+<button class="btn"
 onclick="downloadBackup()">
-
 Download Complete Backup
-
 </button>
 
 </div>
@@ -5556,19 +4654,15 @@ Download Complete Backup
 
 <div class="panel-body">
 
-<input
-type="file"
+<input type="file"
 id="restoreFile"
 accept=".json">
 
 <br><br>
 
-<button
-class="btn warning"
+<button class="btn warning"
 onclick="restoreBackup()">
-
 Restore Backup
-
 </button>
 
 </div>
@@ -5579,22 +4673,19 @@ Restore Backup
 
 function downloadBackup(){
 
-const blob=
-new Blob(
+const blob=new Blob(
 [JSON.stringify(db,null,2)],
 {type:"application/json"}
 );
 
-const url=
-URL.createObjectURL(blob);
+const url=URL.createObjectURL(blob);
 
-const a=
-document.createElement("a");
+const a=document.createElement("a");
 
 a.href=url;
 
 a.download=
-"CTA-Academy-Complete-Backup-"+
+"Global-Kids-Academy-Complete-Backup-"+
 new Date().toISOString().slice(0,10)+
 ".json";
 
@@ -5609,25 +4700,18 @@ URL.revokeObjectURL(url);
 
 function restoreBackup(){
 
-const file=
-document.getElementById(
-"restoreFile"
-).files[0];
+const file=document.getElementById("restoreFile").files[0];
 
 if(!file)
-return alert(
-"Select a backup file."
-);
+return alert("Select a backup file.");
 
-const reader=
-new FileReader();
+const reader=new FileReader();
 
 reader.onload=function(){
 
 try{
 
-const restored=
-JSON.parse(reader.result);
+const restored=JSON.parse(reader.result);
 
 if(
 !restored.accounts||
@@ -5649,21 +4733,27 @@ db.archive=[];
 if(!db.registerSignatures)
 db.registerSignatures={};
 
+if(!db.settings)
+db.settings=emptyDB().settings;
+
+if(
+db.settings.schoolName==="Caliphate Tarbiya Academy"||
+db.settings.schoolName==="Caliphate Tarbiya Academy Sokoto"
+){
+db.settings.schoolName="Global Kids Academy Sokoto";
+}
+
 ensureSetup();
 
 saveDB();
 
-alert(
-"Backup restored successfully."
-);
+alert("Backup restored successfully.");
 
 showApp();
 
 }catch(e){
 
-alert(
-"Invalid backup file."
-);
+alert("Invalid backup file.");
 
 }
 
@@ -5672,7 +4762,7 @@ alert(
 reader.readAsText(file);
 }
 
-/* ================= PROFILE ================= */
+/* PROFILE */
 
 function renderProfile(){
 
@@ -5694,8 +4784,7 @@ document.getElementById("content").innerHTML=`
 
 <label>Name</label>
 
-<input
-id="profileName"
+<input id="profileName"
 value="${escAttr(u?.name||"")}">
 
 </div>
@@ -5704,20 +4793,16 @@ value="${escAttr(u?.name||"")}">
 
 <label>New Password</label>
 
-<input
-id="profilePassword"
+<input id="profilePassword"
 type="password">
 
 </div>
 
 </div>
 
-<button
-class="btn"
+<button class="btn"
 onclick="saveProfile()">
-
 Save Profile
-
 </button>
 
 </div>
@@ -5730,67 +4815,43 @@ const u=currentUser();
 
 if(!u)return;
 
-const name=
-v("profileName");
+const name=v("profileName");
+const password=v("profilePassword");
 
-const password=
-v("profilePassword");
-
-if(name)
-u.name=name;
-
-if(password)
-u.password=password;
+if(name)u.name=name;
+if(password)u.password=password;
 
 saveDB();
 
-document.getElementById(
-"userInfo"
-).textContent=
-(u.name||u.username||"User")+
-" • "+session.role;
+document.getElementById("userInfo").textContent=
+(u.name||u.username||"User")+" • "+session.role;
 
-alert(
-"Profile updated."
-);
+alert("Profile updated.");
 }
 
-/* ================= MODAL ================= */
+/* MODAL */
 
 function openModal(title,body){
 
-document.getElementById(
-"modalTitle"
-).textContent=title;
-
-document.getElementById(
-"modalBody"
-).innerHTML=body;
-
-document.getElementById(
-"modal"
-).classList.add("show");
+document.getElementById("modalTitle").textContent=title;
+document.getElementById("modalBody").innerHTML=body;
+document.getElementById("modal").classList.add("show");
 }
 
 function closeModal(){
-
-document.getElementById(
-"modal"
-).classList.remove("show");
+document.getElementById("modal").classList.remove("show");
 }
 
 function denied(){
 
-document.getElementById(
-"content"
-).innerHTML=`
+document.getElementById("content").innerHTML=`
 
 <div class="notice">
 You do not have permission to access this section.
 </div>`;
 }
 
-/* ================= HELPERS ================= */
+/* HELPERS */
 
 function classOptions(selected=""){
 
@@ -5811,8 +4872,7 @@ function subjectOptions(selected="",idMode=false){
 
 return db.subjects.map(s=>{
 
-const value=
-idMode?s.id:s.name;
+const value=idMode?s.id:s.name;
 
 return`
 
@@ -5847,8 +4907,7 @@ ${x}
 
 function sessionOptions(selected){
 
-const year=
-new Date().getFullYear();
+const year=new Date().getFullYear();
 
 const result=[];
 
@@ -5856,15 +4915,11 @@ for(let i=-2;i<=3;i++){
 
 const a=year+i;
 
-result.push(
-`${a}/${a+1}`
-);
+result.push(`${a}/${a+1}`);
 
 }
 
-if(
-selected&&!result.includes(selected)
-)
+if(selected&&!result.includes(selected))
 result.unshift(selected);
 
 return[
@@ -5887,8 +4942,7 @@ return Array.from(
 {length:12},
 (_,i)=>{
 
-const m=
-String(i+1);
+const m=String(i+1);
 
 return`
 
@@ -5963,31 +5017,18 @@ ${esc(status||"draft")}
 </span>`;
 }
 
-/* ================= DATE / ATTENDANCE ================= */
+/* DATE */
 
 function allCalendarDays(year,month){
 
 const result=[];
 
-const total=
-new Date(
-year,
-month,
-0
-).getDate();
+const total=new Date(year,month,0).getDate();
 
-for(
-let day=1;
-day<=total;
-day++
-){
+for(let day=1;day<=total;day++){
 
 result.push(
-new Date(
-year,
-month-1,
-day
-)
+new Date(year,month-1,day)
 );
 
 }
@@ -5997,20 +5038,14 @@ return result;
 
 function schoolDaysForMonth(year,month){
 
-return allCalendarDays(
-year,
-month
-).filter(d=>{
+return allCalendarDays(year,month).filter(d=>{
 
-const day=
-d.getDay();
+const day=d.getDay();
 
 return(
 day!==0&&
 day!==6&&
-!isPublicHoliday(
-dateKey(d)
-)
+!isPublicHoliday(dateKey(d))
 );
 
 });
@@ -6033,23 +5068,20 @@ date
 
 function dateKey(d){
 
-const y=
-d.getFullYear();
+const y=d.getFullYear();
 
-const m=
-String(
+const m=String(
 d.getMonth()+1
 ).padStart(2,"0");
 
-const day=
-String(
+const day=String(
 d.getDate()
 ).padStart(2,"0");
 
 return`${y}-${m}-${day}`;
 }
 
-/* ================= STUDENT/PARENT ATTENDANCE ================= */
+/* STUDENT/PARENT ATTENDANCE */
 
 function renderMyAttendance(){
 
@@ -6059,18 +5091,13 @@ if(isStudent()){
 
 const s=currentUser();
 
-if(s)
-students=[s];
+if(s)students=[s];
 
 }else{
 
 students=
 (currentUser()?.children||[])
-.map(id=>
-db.students.find(
-s=>s.id===id
-)
-)
+.map(id=>db.students.find(s=>s.id===id))
 .filter(Boolean);
 
 }
@@ -6083,17 +5110,13 @@ let P=0;
 let A=0;
 let S=0;
 
-Object.keys(
-db.attendance
-).forEach(key=>{
+Object.keys(db.attendance).forEach(key=>{
 
-const parts=
-key.split("|");
+const parts=key.split("|");
 
 if(parts[2]===s.id){
 
-const status=
-db.attendance[key];
+const status=db.attendance[key];
 
 if(status==="P")P++;
 if(status==="A")A++;
@@ -6103,11 +5126,9 @@ if(status==="S")S++;
 
 });
 
-const total=
-P+A+S;
+const total=P+A+S;
 
-const pct=
-total
+const pct=total
 ?(P/total*100).toFixed(1)
 :"0.0";
 
@@ -6163,9 +5184,7 @@ Attendance
 
 });
 
-document.getElementById(
-"content"
-).innerHTML=
+document.getElementById("content").innerHTML=
 html||
 `<div class="notice">
 No attendance information available.
@@ -6189,36 +5208,24 @@ minute:"2-digit"
 );
 }
 
-/* ================= START ================= */
+/* START */
 
-document.getElementById(
-"loginPassword"
-).addEventListener(
-"keydown",
-function(e){
+document.getElementById("loginPassword")
+.addEventListener("keydown",function(e){
 
 if(e.key==="Enter")
 login();
 
-}
-);
+});
 
-if(
-session&&
-currentUser()
-){
+if(session&&currentUser()){
 
 showApp();
 
 }else{
 
-document.getElementById(
-"loginScreen"
-).style.display="flex";
-
-document.getElementById(
-"app"
-).style.display="none";
+document.getElementById("loginScreen").style.display="flex";
+document.getElementById("app").style.display="none";
 
 }
 </script>
