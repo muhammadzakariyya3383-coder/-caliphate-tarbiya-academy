@@ -1,0 +1,10 @@
+{
+  "name": "Global Kids Academy Sokoto",
+  "short_name": "Global Kids Academy",
+  "description": "Global Kids Academy Sokoto School Academic Management System",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#166534"
+}
