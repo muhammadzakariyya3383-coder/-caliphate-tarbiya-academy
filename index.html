@@ -1,1 +1,2548 @@
-index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#166534">
+<title>Caliphate Tarbiya Academy Sokoto</title>
+
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;font-family:Arial,Helvetica,sans-serif;background:#f3f7f4;color:#172018}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+.hidden{display:none!important}
+
+:root{
+ --green:#166534;
+ --green2:#15803d;
+ --light:#ecfdf5;
+ --border:#d9e4dc;
+ --danger:#b91c1c;
+ --warning:#b45309;
+ --blue:#1d4ed8;
+ --shadow:0 4px 18px rgba(0,0,0,.08);
+}
+
+#loginScreen{
+ min-height:100vh;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ padding:20px;
+ background:linear-gradient(135deg,#064e3b,#166534,#15803d);
+}
+
+.login-card{
+ width:100%;
+ max-width:430px;
+ background:#fff;
+ border-radius:22px;
+ padding:28px;
+ box-shadow:0 15px 50px rgba(0,0,0,.25);
+}
+
+.logo{
+ width:70px;height:70px;border-radius:50%;
+ background:var(--green);
+ color:white;
+ display:flex;align-items:center;justify-content:center;
+ font-size:28px;font-weight:bold;margin:0 auto 15px;
+}
+
+.login-card h1{text-align:center;margin:0;color:var(--green);font-size:25px}
+.login-card p{text-align:center;color:#64748b;margin:8px 0 22px}
+
+.form-group{margin-bottom:14px}
+label{display:block;font-weight:700;font-size:13px;margin-bottom:6px}
+input,select,textarea{
+ width:100%;
+ padding:11px 12px;
+ border:1px solid #cbd5e1;
+ border-radius:9px;
+ background:white;
+ outline:none;
+}
+input:focus,select:focus,textarea:focus{border-color:var(--green);box-shadow:0 0 0 3px #dcfce7}
+
+.btn{
+ border:0;border-radius:9px;padding:10px 14px;
+ font-weight:700;background:var(--green);color:white;
+}
+.btn:hover{opacity:.92}
+.btn.secondary{background:#475569}
+.btn.success{background:#15803d}
+.btn.danger{background:#b91c1c}
+.btn.warning{background:#b45309}
+.btn.blue{background:#1d4ed8}
+.btn.light{background:#dcfce7;color:#166534}
+.btn.small{padding:7px 10px;font-size:12px}
+
+#app{display:none;min-height:100vh}
+
+.sidebar{
+ position:fixed;left:0;top:0;bottom:0;width:260px;
+ background:#064e3b;color:white;overflow-y:auto;z-index:50;
+}
+
+.brand{
+ padding:22px 18px;border-bottom:1px solid rgba(255,255,255,.15);
+}
+.brand h2{margin:0;font-size:18px}
+.brand small{display:block;margin-top:5px;opacity:.75}
+
+.nav{padding:12px}
+.nav button{
+ width:100%;border:0;background:transparent;color:white;
+ text-align:left;padding:11px 13px;margin:2px 0;border-radius:8px;
+}
+.nav button:hover,.nav button.active{background:#166534}
+
+.main{margin-left:260px;min-height:100vh}
+.topbar{
+ position:sticky;top:0;z-index:30;
+ background:white;border-bottom:1px solid var(--border);
+ padding:14px 20px;display:flex;align-items:center;justify-content:space-between;
+}
+.topbar h1{font-size:21px;margin:0;color:#14532d}
+.user-info{font-size:13px;color:#475569}
+
+.content{padding:20px;max-width:1600px;margin:auto}
+
+.cards{
+ display:grid;grid-template-columns:repeat(4,1fr);gap:15px;margin-bottom:20px;
+}
+.card{
+ background:white;border:1px solid var(--border);border-radius:13px;
+ padding:17px;box-shadow:var(--shadow);
+}
+.card h3{margin:0 0 8px;font-size:14px;color:#64748b}
+.card .number{font-size:27px;font-weight:bold;color:var(--green)}
+
+.panel{
+ background:white;border:1px solid var(--border);
+ border-radius:13px;margin-bottom:20px;box-shadow:var(--shadow);
+ overflow:hidden;
+}
+.panel-head{
+ padding:15px 17px;border-bottom:1px solid var(--border);
+ display:flex;justify-content:space-between;align-items:center;gap:10px;
+}
+.panel-head h2{font-size:17px;margin:0;color:#14532d}
+.panel-body{padding:17px}
+
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
+
+.table-wrap{overflow:auto}
+table{width:100%;border-collapse:collapse;min-width:700px}
+th,td{padding:9px;border-bottom:1px solid #e2e8f0;text-align:left;font-size:13px}
+th{background:#f0fdf4;color:#14532d;position:sticky;top:0;z-index:2}
+tr:hover td{background:#f8fafc}
+
+.badge{
+ display:inline-block;padding:4px 8px;border-radius:20px;
+ font-size:11px;font-weight:bold;background:#e2e8f0;color:#334155;
+}
+.badge.green{background:#dcfce7;color:#166534}
+.badge.red{background:#fee2e2;color:#991b1b}
+.badge.yellow{background:#fef3c7;color:#92400e}
+.badge.blue{background:#dbeafe;color:#1e40af}
+
+.toolbar{
+ display:flex;flex-wrap:wrap;gap:8px;margin-bottom:15px;
+}
+.toolbar>*{flex:0 0 auto}
+
+.notice{
+ padding:12px 14px;background:#ecfdf5;border-left:4px solid var(--green);
+ border-radius:7px;margin-bottom:15px;font-size:13px;
+}
+
+.mobile-menu{display:none;border:0;background:var(--green);color:white;border-radius:7px;padding:8px 12px}
+
+.att-cell{
+ min-width:48px;text-align:center;cursor:pointer;font-weight:bold;
+ border-radius:6px;padding:7px;
+}
+.att-P{background:#dcfce7;color:#166534}
+.att-A{background:#fee2e2;color:#991b1b}
+.att-L{background:#fef3c7;color:#92400e}
+.att-E{background:#dbeafe;color:#1e40af}
+.att-empty{background:#f8fafc;color:#94a3b8}
+
+.register-table th.date-head{
+ writing-mode:vertical-rl;
+ transform:rotate(180deg);
+ min-width:36px;
+ height:105px;
+ text-align:center;
+}
+
+.stat-box{
+ background:#f8fafc;border:1px solid var(--border);
+ border-radius:9px;padding:12px;
+}
+.stat-box strong{font-size:20px;color:var(--green);display:block}
+
+.modal{
+ position:fixed;inset:0;background:rgba(0,0,0,.55);
+ display:none;align-items:center;justify-content:center;
+ z-index:100;padding:15px;
+}
+.modal.show{display:flex}
+.modal-box{
+ background:white;border-radius:15px;width:100%;max-width:650px;
+ max-height:92vh;overflow:auto;
+}
+.modal-head{
+ padding:15px 18px;border-bottom:1px solid var(--border);
+ display:flex;justify-content:space-between;align-items:center;
+}
+.modal-body{padding:18px}
+.close{border:0;background:#f1f5f9;border-radius:50%;width:32px;height:32px}
+
+.footer-note{text-align:center;color:#64748b;font-size:12px;margin:25px}
+
+@media(max-width:1100px){
+ .cards{grid-template-columns:repeat(2,1fr)}
+ .grid4{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:800px){
+ .sidebar{transform:translateX(-100%);transition:.25s}
+ .sidebar.open{transform:translateX(0)}
+ .main{margin-left:0}
+ .mobile-menu{display:block}
+ .grid2,.grid3{grid-template-columns:1fr}
+ .content{padding:12px}
+ .topbar{padding:11px 12px}
+ .topbar h1{font-size:17px}
+}
+@media(max-width:550px){
+ .cards{grid-template-columns:1fr}
+ .grid4{grid-template-columns:1fr}
+ .login-card{padding:20px}
+}
+@media print{
+ .sidebar,.topbar,.no-print,.toolbar{display:none!important}
+ .main{margin:0}
+ .content{padding:0}
+ .panel{box-shadow:none;border:0}
+ table{font-size:10px}
+ th,td{padding:4px}
+}
+</style>
+</head>
+
+<body>
+
+<!-- LOGIN -->
+<section id="loginScreen">
+ <div class="login-card">
+  <div class="logo">CTA</div>
+  <h1>Caliphate Tarbiya Academy</h1>
+  <p>Sokoto • Academic Management System</p>
+
+  <div class="form-group">
+   <label>Login Type</label>
+   <select id="loginRole">
+    <option value="admin">Administrator</option>
+    <option value="teacher">Teacher</option>
+    <option value="student">Student</option>
+    <option value="parent">Parent</option>
+   </select>
+  </div>
+
+  <div class="form-group">
+   <label>Username / Admission No.</label>
+   <input id="loginUsername" autocomplete="username">
+  </div>
+
+  <div class="form-group">
+   <label>Password</label>
+   <input id="loginPassword" type="password" autocomplete="current-password">
+  </div>
+
+  <button class="btn" style="width:100%" onclick="login()">Login</button>
+
+  <div class="notice" style="margin-top:15px">
+   <b>Administrator:</b> Admin<br>
+   <b>Password:</b> Admin@2026!
+  </div>
+
+  <div class="footer-note">CTA Academic Management System</div>
+ </div>
+</section>
+
+<!-- APPLICATION -->
+<div id="app">
+
+ <aside class="sidebar" id="sidebar">
+  <div class="brand">
+   <h2>Caliphate Tarbiya Academy</h2>
+   <small>Academic Management System</small>
+  </div>
+  <nav class="nav" id="nav"></nav>
+ </aside>
+
+ <main class="main">
+  <header class="topbar">
+   <div style="display:flex;align-items:center;gap:10px">
+    <button class="mobile-menu" onclick="toggleSidebar()">☰</button>
+    <h1 id="pageTitle">Dashboard</h1>
+   </div>
+   <div class="user-info" id="userInfo"></div>
+  </header>
+
+  <section class="content" id="content"></section>
+ </main>
+</div>
+
+<!-- MODAL -->
+<div class="modal" id="modal">
+ <div class="modal-box">
+  <div class="modal-head">
+   <b id="modalTitle">Form</b>
+   <button class="close" onclick="closeModal()">×</button>
+  </div>
+  <div class="modal-body" id="modalBody"></div>
+ </div>
+</div>
+
+<script>
+"use strict";
+
+/* =========================================================
+   DATABASE
+========================================================= */
+
+const DB_KEY = "CTA_ACADEMY_FINAL_V1";
+const SESSION_KEY = "CTA_ACADEMY_SESSION_FINAL_V1";
+
+const DEFAULT_SUBJECTS = [
+ "Mathematics","English Language","Physics","Chemistry","Biology",
+ "Economics","Hausa","Arabic","French","Computer Studies",
+ "Basic Science","Basic Technology","Social Studies","Civic Education",
+ "Agricultural Science","Geography","Government","Literature in English",
+ "Islamic Religious Studies","Christian Religious Studies",
+ "Home Economics","Commerce","Financial Accounting","Further Mathematics"
+];
+
+const DEFAULT_CLASSES = [
+ "Nursery 1","Nursery 2","Nursery 3",
+ "Basic 1","Basic 2","Basic 3","Basic 4","Basic 5","Basic 6",
+ "JSS 1","JSS 2","JSS 3","SS 1","SS 2","SS 3"
+];
+
+function emptyDB(){
+ return {
+  accounts:[],
+  teachers:[],
+  students:[],
+  parents:[],
+  classes:[],
+  subjects:[],
+  documents:[],
+  approvals:[],
+  results:[],
+  attendance:{},
+  settings:{
+   schoolName:"Caliphate Tarbiya Academy",
+   location:"Sokoto State",
+   phone:"",
+   email:"",
+   currentSession:"2026/2027",
+   currentTerm:"First Term"
+  }
+ };
+}
+
+function loadDB(){
+ let db;
+ try{
+  db=JSON.parse(localStorage.getItem(DB_KEY)||"null");
+ }catch(e){db=null}
+
+ if(!db) db=emptyDB();
+
+ db.accounts=Array.isArray(db.accounts)?db.accounts:[];
+ db.teachers=Array.isArray(db.teachers)?db.teachers:[];
+ db.students=Array.isArray(db.students)?db.students:[];
+ db.parents=Array.isArray(db.parents)?db.parents:[];
+ db.classes=Array.isArray(db.classes)?db.classes:[];
+ db.subjects=Array.isArray(db.subjects)?db.subjects:[];
+ db.documents=Array.isArray(db.documents)?db.documents:[];
+ db.approvals=Array.isArray(db.approvals)?db.approvals:[];
+ db.results=Array.isArray(db.results)?db.results:[];
+ db.attendance=db.attendance||{};
+ db.settings=db.settings||emptyDB().settings;
+
+ return db;
+}
+
+let db=loadDB();
+
+function saveDB(){
+ localStorage.setItem(DB_KEY,JSON.stringify(db));
+}
+
+function uid(prefix){
+ return prefix+"-"+Date.now()+"-"+Math.random().toString(36).slice(2,8);
+}
+
+function ensureSetup(){
+
+ if(!db.accounts.some(x=>x.role==="admin")){
+  db.accounts.push({
+   id:"admin-001",
+   role:"admin",
+   username:"Admin",
+   password:"Admin@2026!",
+   name:"System Administrator",
+   active:true
+  });
+ }
+
+ DEFAULT_CLASSES.forEach(name=>{
+  if(!db.classes.some(c=>c.name===name)){
+   db.classes.push({
+    id:uid("class"),
+    name:name,
+    sections:["A","B"]
+   });
+  }
+ });
+
+ DEFAULT_SUBJECTS.forEach(name=>{
+  if(!db.subjects.some(s=>s.name===name)){
+   db.subjects.push({
+    id:uid("sub"),
+    name:name
+   });
+  }
+ });
+
+ saveDB();
+}
+
+ensureSetup();
+
+/* =========================================================
+   SESSION / AUTH
+========================================================= */
+
+let session=null;
+
+try{
+ session=JSON.parse(localStorage.getItem(SESSION_KEY)||"null");
+}catch(e){session=null}
+
+function currentUser(){
+ if(!session) return null;
+
+ if(session.role==="admin"){
+  return db.accounts.find(x=>x.id===session.id)||null;
+ }
+ if(session.role==="teacher"){
+  return db.teachers.find(x=>x.id===session.id)||null;
+ }
+ if(session.role==="student"){
+  return db.students.find(x=>x.id===session.id)||null;
+ }
+ if(session.role==="parent"){
+  return db.parents.find(x=>x.id===session.id)||null;
+ }
+ return null;
+}
+
+function isAdmin(){return session&&session.role==="admin"}
+function isTeacher(){return session&&session.role==="teacher"}
+function isStudent(){return session&&session.role==="student"}
+function isParent(){return session&&session.role==="parent"}
+
+function login(){
+
+ const role=document.getElementById("loginRole").value;
+ const username=document.getElementById("loginUsername").value.trim();
+ const password=document.getElementById("loginPassword").value;
+
+ let found=null;
+
+ if(role==="admin"){
+  found=db.accounts.find(x=>
+   x.role==="admin" &&
+   x.username.toLowerCase()===username.toLowerCase() &&
+   x.password===password &&
+   x.active!==false
+  );
+ }else if(role==="teacher"){
+  found=db.teachers.find(x=>
+   (x.username||"").toLowerCase()===username.toLowerCase() &&
+   x.password===password &&
+   x.active!==false
+  );
+ }else if(role==="student"){
+  found=db.students.find(x=>
+   (x.admissionNo||"").toLowerCase()===username.toLowerCase() &&
+   x.password===password &&
+   x.active!==false
+  );
+ }else if(role==="parent"){
+  found=db.parents.find(x=>
+   (x.username||"").toLowerCase()===username.toLowerCase() &&
+   x.password===password &&
+   x.active!==false
+  );
+ }
+
+ if(!found){
+  alert("Invalid login details.");
+  return;
+ }
+
+ session={id:found.id,role:role};
+ localStorage.setItem(SESSION_KEY,JSON.stringify(session));
+
+ showApp();
+}
+
+function logout(){
+ localStorage.removeItem(SESSION_KEY);
+ session=null;
+ document.getElementById("app").style.display="none";
+ document.getElementById("loginScreen").style.display="flex";
+}
+
+function showApp(){
+ document.getElementById("loginScreen").style.display="none";
+ document.getElementById("app").style.display="block";
+
+ buildNav();
+ document.getElementById("userInfo").textContent=
+  (currentUser()?.name||currentUser()?.username||"User")+" • "+session.role;
+
+ go("dashboard");
+}
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+function buildNav(){
+
+ const nav=document.getElementById("nav");
+ let html="";
+
+ html+=navItem("dashboard","🏠 Dashboard");
+
+ if(isAdmin()){
+  html+=navItem("accounts","👤 Admin Accounts");
+  html+=navItem("teachers","👨‍🏫 Teachers");
+  html+=navItem("students","🎓 Students");
+  html+=navItem("parents","👪 Parents");
+  html+=navItem("classes","🏫 Classes & Subjects");
+  html+=navItem("hod","📚 HOD Assignments");
+ }
+
+ if(isAdmin()||isTeacher()){
+  html+=navItem("register","📋 School Register");
+  html+=navItem("results","📊 Results");
+  html+=navItem("documents","📝 Academic Documents");
+  html+=navItem("approvals","✅ Approval Centre");
+  html+=navItem("assistant","🤖 Teacher Assistant");
+ }
+
+ if(isStudent()||isParent()){
+  html+=navItem("results","📊 My Results");
+  html+=navItem("register","📋 My Attendance");
+ }
+
+ if(isAdmin()){
+  html+=navItem("settings","⚙️ School Settings");
+  html+=navItem("backup","💾 Backup & Restore");
+ }
+
+ html+=navItem("profile","👤 My Profile");
+ html+=`<button onclick="logout()">🚪 Logout</button>`;
+
+ nav.innerHTML=html;
+}
+
+function navItem(page,text){
+ return `<button id="nav-${page}" onclick="go('${page}')">${text}</button>`;
+}
+
+function go(page){
+
+ document.querySelectorAll(".nav button").forEach(x=>x.classList.remove("active"));
+ const n=document.getElementById("nav-"+page);
+ if(n)n.classList.add("active");
+
+ document.getElementById("sidebar").classList.remove("open");
+
+ const titles={
+  dashboard:"Dashboard",
+  accounts:"Administrator Accounts",
+  teachers:"Teacher Management",
+  students:"Student Management",
+  parents:"Parent Management",
+  classes:"Classes & Subjects",
+  hod:"HOD Assignments",
+  register:"School Register",
+  results:"Results Management",
+  documents:"Academic Documents",
+  approvals:"Approval Centre",
+  assistant:"Teacher Assistant",
+  settings:"School Settings",
+  backup:"Backup & Restore",
+  profile:"My Profile"
+ };
+
+ document.getElementById("pageTitle").textContent=titles[page]||"Dashboard";
+
+ const content=document.getElementById("content");
+
+ switch(page){
+  case"dashboard":renderDashboard();break;
+  case"accounts":renderAccounts();break;
+  case"teachers":renderTeachers();break;
+  case"students":renderStudents();break;
+  case"parents":renderParents();break;
+  case"classes":renderClasses();break;
+  case"hod":renderHOD();break;
+  case"register":renderRegister();break;
+  case"results":renderResults();break;
+  case"documents":renderDocuments();break;
+  case"approvals":renderApprovals();break;
+  case"assistant":renderAssistant();break;
+  case"settings":renderSettings();break;
+  case"backup":renderBackup();break;
+  case"profile":renderProfile();break;
+  default:renderDashboard();
+ }
+}
+
+function toggleSidebar(){
+ document.getElementById("sidebar").classList.toggle("open");
+}
+
+/* =========================================================
+   DASHBOARD
+========================================================= */
+
+function renderDashboard(){
+
+ let html="";
+
+ html+=`
+ <div class="cards">
+  <div class="card"><h3>Teachers</h3><div class="number">${db.teachers.length}</div></div>
+  <div class="card"><h3>Students</h3><div class="number">${db.students.length}</div></div>
+  <div class="card"><h3>Parents</h3><div class="number">${db.parents.length}</div></div>
+  <div class="card"><h3>Classes</h3><div class="number">${db.classes.length}</div></div>
+ </div>`;
+
+ html+=`
+ <div class="panel">
+  <div class="panel-head"><h2>Welcome</h2></div>
+  <div class="panel-body">
+   <div class="notice">
+    <b>${esc(db.settings.schoolName)}</b><br>
+    ${esc(db.settings.location||"Sokoto State")}<br><br>
+    Current Session: <b>${esc(db.settings.currentSession)}</b><br>
+    Current Term: <b>${esc(db.settings.currentTerm)}</b>
+   </div>
+  </div>
+ </div>`;
+
+ if(isAdmin()){
+  html+=`
+  <div class="grid3">
+   <div class="stat-box"><strong>${db.results.length}</strong>Result records</div>
+   <div class="stat-box"><strong>${db.documents.length}</strong>Academic documents</div>
+   <div class="stat-box"><strong>${db.approvals.filter(x=>x.status==="pending").length}</strong>Pending approvals</div>
+  </div>`;
+ }
+
+ document.getElementById("content").innerHTML=html;
+}
+
+/* =========================================================
+   ADMIN ACCOUNTS
+========================================================= */
+
+function renderAccounts(){
+
+ if(!isAdmin())return denied();
+
+ let rows=db.accounts.map(a=>`
+ <tr>
+  <td>${esc(a.name)}</td>
+  <td>${esc(a.username)}</td>
+  <td><span class="badge green">Administrator</span></td>
+  <td>${a.active!==false?"Active":"Inactive"}</td>
+  <td>
+   <button class="btn small" onclick="editAccount('${a.id}')">Edit</button>
+   ${a.id!=="admin-001"?`<button class="btn small danger" onclick="deleteAccount('${a.id}')">Delete</button>`:""}
+  </td>
+ </tr>`).join("");
+
+ document.getElementById("content").innerHTML=`
+ <div class="panel">
+  <div class="panel-head">
+   <h2>Administrator Accounts</h2>
+   <button class="btn" onclick="addAccount()">+ Add Administrator</button>
+  </div>
+  <div class="panel-body table-wrap">
+   <table>
+    <thead><tr><th>Name</th><th>Username</th><th>Role</th><th>Status</th><th>Actions</th></tr></thead>
+    <tbody>${rows}</tbody>
+   </table>
+  </div>
+ </div>`;
+}
+
+function addAccount(id=null){
+
+ const a=id?db.accounts.find(x=>x.id===id):{
+  name:"",username:"",password:"",active:true
+ };
+
+ openModal(
+  id?"Edit Administrator":"Add Administrator",
+  `
+  <div class="form-group"><label>Name</label><input id="fName" value="${escAttr(a.name)}"></div>
+  <div class="form-group"><label>Username</label><input id="fUsername" value="${escAttr(a.username)}"></div>
+  <div class="form-group"><label>Password</label><input id="fPassword" value="${escAttr(a.password)}"></div>
+  <button class="btn" onclick="saveAccount('${id||""}')">Save</button>
+  `
+ );
+}
+
+function editAccount(id){addAccount(id)}
+
+function saveAccount(id){
+
+ const data={
+  name:v("fName"),
+  username:v("fUsername"),
+  password:v("fPassword"),
+  active:true
+ };
+
+ if(!data.name||!data.username||!data.password){
+  alert("Complete all fields.");
+  return;
+ }
+
+ if(id){
+  Object.assign(db.accounts.find(x=>x.id===id),data);
+ }else{
+  db.accounts.push({id:uid("admin"),role:"admin",...data});
+ }
+
+ saveDB();closeModal();renderAccounts();
+}
+
+function deleteAccount(id){
+ if(!confirm("Delete this administrator?"))return;
+ db.accounts=db.accounts.filter(x=>x.id!==id);
+ saveDB();renderAccounts();
+}
+
+/* =========================================================
+   TEACHERS
+========================================================= */
+
+function renderTeachers(){
+
+ if(!isAdmin())return denied();
+
+ const rows=db.teachers.map(t=>`
+ <tr>
+  <td>${esc(t.name)}</td>
+  <td>${esc(t.username)}</td>
+  <td>${esc(t.phone||"")}</td>
+  <td>${esc(t.subject||"")}</td>
+  <td>${esc(t.roleTitle||"Teacher")}</td>
+  <td>
+   <button class="btn small" onclick="teacherForm('${t.id}')">Edit</button>
+   <button class="btn small danger" onclick="deleteTeacher('${t.id}')">Delete</button>
+  </td>
+ </tr>`).join("");
+
+ document.getElementById("content").innerHTML=`
+ <div class="panel">
+  <div class="panel-head">
+   <h2>Teacher Management</h2>
+   <button class="btn" onclick="teacherForm()">+ Add Teacher</button>
+  </div>
+  <div class="panel-body table-wrap">
+   <table>
+    <thead><tr><th>Name</th><th>Username</th><th>Phone</th><th>Subject</th><th>Assignment</th><th>Actions</th></tr></thead>
+    <tbody>${rows}</tbody>
+   </table>
+  </div>
+ </div>`;
+}
+
+function teacherForm(id=null){
+
+ const t=id?db.teachers.find(x=>x.id===id):{
+  name:"",username:"",password:"",phone:"",subject:"",roleTitle:"Teacher"
+ };
+
+ openModal(
+  id?"Edit Teacher":"Add Teacher",
+  `
+  <div class="grid2">
+   <div class="form-group"><label>Full Name</label><input id="tName" value="${escAttr(t.name)}"></div>
+   <div class="form-group"><label>Username</label><input id="tUsername" value="${escAttr(t.username)}"></div>
+   <div class="form-group"><label>Password</label><input id="tPassword" value="${escAttr(t.password)}"></div>
+   <div class="form-group"><label>Phone</label><input id="tPhone" value="${escAttr(t.phone||"")}"></div>
+   <div class="form-group"><label>Main Subject</label>
+    <select id="tSubject">${subjectOptions(t.subject)}</select>
+   </div>
+   <div class="form-group"><label>Academic Assignment</label>
+    <select id="tRole">
+     <option ${t.roleTitle==="Teacher"?"selected":""}>Teacher</option>
+     <option ${t.roleTitle==="HOD"?"selected":""}>HOD</option>
+     <option ${t.roleTitle==="Examination Officer"?"selected":""}>Examination Officer</option>
+    </select>
+   </div>
+  </div>
+  <button class="btn" onclick="saveTeacher('${id||""}')">Save Teacher</button>
+  `
+ );
+}
+
+function saveTeacher(id){
+
+ const data={
+  name:v("tName"),
+  username:v("tUsername"),
+  password:v("tPassword"),
+  phone:v("tPhone"),
+  subject:v("tSubject"),
+  roleTitle:v("tRole"),
+  active:true
+ };
+
+ if(!data.name||!data.username||!data.password){
+  alert("Name, username and password are required.");
+  return;
+ }
+
+ if(id)Object.assign(db.teachers.find(x=>x.id===id),data);
+ else db.teachers.push({id:uid("teacher"),...data});
+
+ saveDB();closeModal();renderTeachers();
+}
+
+function deleteTeacher(id){
+ if(!confirm("Delete this teacher?"))return;
+ db.teachers=db.teachers.filter(x=>x.id!==id);
+ db.hodAssignments=db.hodAssignments||[];
+ saveDB();renderTeachers();
+}
+
+/* =========================================================
+   STUDENTS
+========================================================= */
+
+function renderStudents(){
+
+ if(!isAdmin())return denied();
+
+ const rows=db.students.map(s=>`
+ <tr>
+  <td>${esc(s.name)}</td>
+  <td>${esc(s.admissionNo)}</td>
+  <td>${esc(s.className)}</td>
+  <td>${esc(s.section||"A")}</td>
+  <td>${esc(s.gender||"")}</td>
+  <td>
+   <button class="btn small" onclick="studentForm('${s.id}')">Edit</button>
+   <button class="btn small danger" onclick="deleteStudent('${s.id}')">Delete</button>
+  </td>
+ </tr>`).join("");
+
+ document.getElementById("content").innerHTML=`
+ <div class="panel">
+  <div class="panel-head">
+   <h2>Student Management</h2>
+   <button class="btn" onclick="studentForm()">+ Add Student</button>
+  </div>
+  <div class="panel-body table-wrap">
+   <table>
+    <thead><tr><th>Name</th><th>Admission No.</th><th>Class</th><th>Section</th><th>Gender</th><th>Actions</th></tr></thead>
+    <tbody>${rows}</tbody>
+   </table>
+  </div>
+ </div>`;
+}
+
+function studentForm(id=null){
+
+ const s=id?db.students.find(x=>x.id===id):{
+  name:"",admissionNo:"",password:"",className:db.classes[0]?.name||"",
+  section:"A",gender:"Male",phone:"",active:true
+ };
+
+ openModal(
+  id?"Edit Student":"Add Student",
+  `
+  <div class="grid2">
+   <div class="form-group"><label>Full Name</label><input id="sName" value="${escAttr(s.name)}"></div>
+   <div class="form-group"><label>Admission Number</label><input id="sAdmission" value="${escAttr(s.admissionNo)}"></div>
+   <div class="form-group"><label>Password</label><input id="sPassword" value="${escAttr(s.password)}"></div>
+   <div class="form-group"><label>Gender</label>
+    <select id="sGender">
+     <option ${s.gender==="Male"?"selected":""}>Male</option>
+     <option ${s.gender==="Female"?"selected":""}>Female</option>
+    </select>
+   </div>
+   <div class="form-group"><label>Class</label>
+    <select id="sClass">${classOptions(s.className)}</select>
+   </div>
+   <div class="form-group"><label>Section</label>
+    <select id="sSection">
+     <option ${s.section==="A"?"selected":""}>A</option>
+     <option ${s.section==="B"?"selected":""}>B</option>
+     <option ${s.section==="C"?"selected":""}>C</option>
+    </select>
+   </div>
+   <div class="form-group"><label>Phone</label><input id="sPhone" value="${escAttr(s.phone||"")}"></div>
+  </div>
+  <button class="btn" onclick="saveStudent('${id||""}')">Save Student</button>
+  `
+ );
+}
+
+function saveStudent(id){
+
+ const data={
+  name:v("sName"),
+  admissionNo:v("sAdmission"),
+  password:v("sPassword"),
+  gender:v("sGender"),
+  className:v("sClass"),
+  section:v("sSection"),
+  phone:v("sPhone"),
+  active:true
+ };
+
+ if(!data.name||!data.admissionNo||!data.password){
+  alert("Name, admission number and password are required.");
+  return;
+ }
+
+ if(id)Object.assign(db.students.find(x=>x.id===id),data);
+ else db.students.push({id:uid("student"),...data});
+
+ saveDB();closeModal();renderStudents();
+}
+
+function deleteStudent(id){
+
+ if(!confirm("Delete this student?"))return;
+
+ db.students=db.students.filter(x=>x.id!==id);
+
+ Object.keys(db.attendance).forEach(k=>{
+  if(k.includes(id))delete db.attendance[k];
+ });
+
+ saveDB();renderStudents();
+}
+
+/* =========================================================
+   PARENTS
+========================================================= */
+
+function renderParents(){
+
+ if(!isAdmin())return denied();
+
+ const rows=db.parents.map(p=>{
+  const children=(p.children||[]).map(id=>{
+   const s=db.students.find(x=>x.id===id);
+   return s?s.name:"";
+  }).filter(Boolean).join(", ");
+
+  return `
+  <tr>
+   <td>${esc(p.name)}</td>
+   <td>${esc(p.username)}</td>
+   <td>${esc(p.phone||"")}</td>
+   <td>${esc(children||"None")}</td>
+   <td>
+    <button class="btn small" onclick="parentForm('${p.id}')">Edit</button>
+    <button class="btn small danger" onclick="deleteParent('${p.id}')">Delete</button>
+   </td>
+  </tr>`;
+ }).join("");
+
+ document.getElementById("content").innerHTML=`
+ <div class="panel">
+  <div class="panel-head">
+   <h2>Parent Management</h2>
+   <button class="btn" onclick="parentForm()">+ Add Parent</button>
+  </div>
+  <div class="panel-body table-wrap">
+   <table>
+    <thead><tr><th>Name</th><th>Username</th><th>Phone</th><th>Children</th><th>Actions</th></tr></thead>
+    <tbody>${rows}</tbody>
+   </table>
+  </div>
+ </div>`;
+}
+
+function parentForm(id=null){
+
+ const p=id?db.parents.find(x=>x.id===id):{
+  name:"",username:"",password:"",phone:"",children:[]
+ };
+
+ const checks=db.students.map(s=>`
+  <label style="display:flex;gap:7px;align-items:center;margin:7px 0">
+   <input type="checkbox" class="childCheck" value="${s.id}" ${(p.children||[]).includes(s.id)?"checked":""}>
+   ${esc(s.name)} — ${esc(s.admissionNo)}
+  </label>`).join("");
+
+ openModal(
+  id?"Edit Parent":"Add Parent",
+  `
+  <div class="form-group"><label>Parent Name</label><input id="pName" value="${escAttr(p.name)}"></div>
+  <div class="grid2">
+   <div class="form-group"><label>Username</label><input id="pUsername" value="${escAttr(p.username)}"></div>
+   <div class="form-group"><label>Password</label><input id="pPassword" value="${escAttr(p.password)}"></div>
+   <div class="form-group"><label>Phone</label><input id="pPhone" value="${escAttr(p.phone||"")}"></div>
+  </div>
+  <label>Link Children</label>
+  <div style="max-height:200px;overflow:auto;border:1px solid #ddd;padding:10px;margin:8px 0 15px">
+   ${checks||"No students available."}
+  </div>
+  <button class="btn" onclick="saveParent('${id||""}')">Save Parent</button>
+  `
+ );
+}
+
+function saveParent(id){
+
+ const children=[...document.querySelectorAll(".childCheck:checked")].map(x=>x.value);
+
+ const data={
+  name:v("pName"),
+  username:v("pUsername"),
+  password:v("pPassword"),
+  phone:v("pPhone"),
+  children,
+  active:true
+ };
+
+ if(!data.name||!data.username||!data.password){
+  alert("Complete parent details.");
+  return;
+ }
+
+ if(id)Object.assign(db.parents.find(x=>x.id===id),data);
+ else db.parents.push({id:uid("parent"),...data});
+
+ saveDB();closeModal();renderParents();
+}
+
+function deleteParent(id){
+ if(!confirm("Delete this parent?"))return;
+ db.parents=db.parents.filter(x=>x.id!==id);
+ saveDB();renderParents();
+}
+
+/* =========================================================
+   CLASSES / SUBJECTS
+========================================================= */
+
+function renderClasses(){
+
+ if(!isAdmin())return denied();
+
+ const classRows=db.classes.map(c=>`
+ <tr>
+  <td>${esc(c.name)}</td>
+  <td>${(c.sections||[]).join(", ")}</td>
+  <td>
+   <button class="btn small" onclick="classForm('${c.id}')">Edit</button>
+   <button class="btn small danger" onclick="deleteClass('${c.id}')">Delete</button>
+  </td>
+ </tr>`).join("");
+
+ const subjectRows=db.subjects.map(s=>`
+ <tr>
+  <td>${esc(s.name)}</td>
+  <td><button class="btn small danger" onclick="deleteSubject('${s.id}')">Delete</button></td>
+ </tr>`).join("");
+
+ document.getElementById("content").innerHTML=`
+ <div class="grid2">
+  <div class="panel">
+   <div class="panel-head">
+    <h2>Classes</h2>
+    <button class="btn small" onclick="classForm()">+ Add Class</button>
+   </div>
+   <div class="panel-body table-wrap">
+    <table><thead><tr><th>Class</th><th>Sections</th><th>Actions</th></tr></thead>
+    <tbody>${classRows}</tbody></table>
+   </div>
+  </div>
+
+  <div class="panel">
+   <div class="panel-head">
+    <h2>Subjects</h2>
+    <button class="btn small" onclick="subjectForm()">+ Add Subject</button>
+   </div>
+   <div class="panel-body table-wrap">
+    <table><thead><tr><th>Subject</th><th>Actions</th></tr></thead>
+    <tbody>${subjectRows}</tbody></table>
+   </div>
+  </div>
+ </div>`;
+}
+
+function classForm(id=null){
+
+ const c=id?db.classes.find(x=>x.id===id):{
+  name:"",sections:["A","B"]
+ };
+
+ openModal(
+  id?"Edit Class":"Add Class",
+  `
+  <div class="form-group"><label>Class Name</label><input id="cName" value="${escAttr(c.name)}"></div>
+  <div class="form-group"><label>Sections (comma separated)</label>
+   <input id="cSections" value="${escAttr((c.sections||[]).join(", "))}">
+  </div>
+  <button class="btn" onclick="saveClass('${id||""}')">Save Class</button>
+  `
+ );
+}
+
+function saveClass(id){
+
+ const name=v("cName");
+ const sections=v("cSections").split(",").map(x=>x.trim()).filter(Boolean);
+
+ if(!name){alert("Class name required.");return}
+
+ if(id)Object.assign(db.classes.find(x=>x.id===id),{name,sections});
+ else db.classes.push({id:uid("class"),name,sections});
+
+ saveDB();closeModal();renderClasses();
+}
+
+function deleteClass(id){
+ if(!confirm("Delete this class?"))return;
+ db.classes=db.classes.filter(x=>x.id!==id);
+ saveDB();renderClasses();
+}
+
+function subjectForm(){
+
+ openModal(
+  "Add Subject",
+  `
+  <div class="form-group"><label>Subject Name</label><input id="newSubject"></div>
+  <button class="btn" onclick="saveSubject()">Save Subject</button>
+  `
+ );
+}
+
+function saveSubject(){
+
+ const name=v("newSubject");
+
+ if(!name)return;
+
+ if(db.subjects.some(x=>x.name.toLowerCase()===name.toLowerCase())){
+  alert("Subject already exists.");
+  return;
+ }
+
+ db.subjects.push({id:uid("sub"),name});
+ saveDB();closeModal();renderClasses();
+}
+
+function deleteSubject(id){
+ if(!confirm("Delete this subject?"))return;
+ db.subjects=db.subjects.filter(x=>x.id!==id);
+ saveDB();renderClasses();
+}
+
+/* =========================================================
+   HOD
+========================================================= */
+
+function renderHOD(){
+
+ if(!isAdmin())return denied();
+
+ db.hodAssignments=db.hodAssignments||[];
+
+ const rows=db.subjects.map(sub=>{
+  const a=db.hodAssignments.find(x=>x.subjectId===sub.id);
+  const t=a?db.teachers.find(x=>x.id===a.teacherId):null;
+
+  return `
+  <tr>
+   <td>${esc(sub.name)}</td>
+   <td>${esc(t?.name||"Not assigned")}</td>
+   <td><button class="btn small" onclick="assignHOD('${sub.id}')">Assign</button></td>
+  </tr>`;
+ }).join("");
+
+ document.getElementById("content").innerHTML=`
+ <div class="panel">
+  <div class="panel-head"><h2>HOD by Subject</h2></div>
+  <div class="panel-body">
+   <div class="notice">Assign a teacher as HOD for each subject. HOD selection is managed here by the Administrator.</div>
+   <div class="table-wrap">
+    <table>
+     <thead><tr><th>Subject</th><th>Assigned HOD</th><th>Action</th></tr></thead>
+     <tbody>${rows}</tbody>
+    </table>
+   </div>
+  </div>
+ </div>`;
+}
+
+function assignHOD(subjectId){
+
+ const sub=db.subjects.find(x=>x.id===subjectId);
+
+ openModal(
+  "Assign HOD — "+sub.name,
+  `
+  <div class="form-group">
+   <label>Teacher</label>
+   <select id="hodTeacher">
+    <option value="">Select Teacher</option>
+    ${db.teachers.map(t=>`<option value="${t.id}">${esc(t.name)}</option>`).join("")}
+   </select>
+  </div>
+  <button class="btn" onclick="saveHOD('${subjectId}')">Save Assignment</button>
+  `
+ );
+}
+
+function saveHOD(subjectId){
+
+ const teacherId=v("hodTeacher");
+
+ if(!teacherId){alert("Select a teacher.");return}
+
+ db.hodAssignments=db.hodAssignments||[];
+
+ const old=db.hodAssignments.find(x=>x.subjectId===subjectId);
+
+ if(old)old.teacherId=teacherId;
+ else db.hodAssignments.push({subjectId,teacherId});
+
+ saveDB();closeModal();renderHOD();
+}
+
+/* =========================================================
+   SCHOOL REGISTER
+========================================================= */
+
+let registerState={
+ session:"",
+ term:"",
+ className:"",
+ section:"A",
+ month:"",
+ year:""
+};
+
+function renderRegister(){
+
+ if(isStudent()||isParent()){
+  renderMyAttendance();
+  return;
+ }
+
+ if(!isAdmin()&&!isTeacher())return denied();
+
+ if(!registerState.session)registerState.session=db.settings.currentSession;
+ if(!registerState.term)registerState.term=db.settings.currentTerm;
+ if(!registerState.className)registerState.className=db.classes[0]?.name||"";
+ if(!registerState.month)registerState.month=String(new Date().getMonth()+1);
+ if(!registerState.year)registerState.year=String(new Date().getFullYear());
+
+ const days=schoolDays(registerState.year,registerState.month);
+ const students=getRegisterStudents();
+
+ let headerDates=days.map(d=>`
+  <th class="date-head">${d.getDate()}<br>${dayName(d).slice(0,2)}</th>
+ `).join("");
+
+ let body=students.map(s=>{
+  let P=0,A=0,L=0,E=0,marked=0;
+
+  let cells=days.map(d=>{
+   const key=attendanceKey(
+    registerState.session,
+    registerState.term,
+    s.id,
+    dateKey(d)
+   );
+
+   const status=db.attendance[key]||"";
+
+   if(status==="P")P++;
+   if(status==="A")A++;
+   if(status==="L")L++;
+   if(status==="E")E++;
+   if(status)marked++;
+
+   return `
+    <td>
+     <div class="att-cell ${status?"att-"+status:"att-empty"}"
+       onclick="cycleRegister('${s.id}','${dateKey(d)}')">
+       ${status||"—"}
+     </div>
+    </td>`;
+  }).join("");
+
+  const percent=marked?((P/marked)*100).toFixed(1):"0.0";
+
+  return `
+   <tr>
+    <td><b>${esc(s.name)}</b><br><small>${esc(s.admissionNo)}</small></td>
+    ${cells}
+    <td>${marked}</td>
+    <td>${P}</td>
+    <td>${A}</td>
+    <td>${L}</td>
+    <td>${E}</td>
+    <td><b>${percent}%</b></td>
+   </tr>`;
+ }).join("");
+
+ let totalP=0,totalA=0,totalL=0,totalE=0,totalMarked=0;
+
+ students.forEach(s=>{
+  days.forEach(d=>{
+   const st=db.attendance[attendanceKey(
+    registerState.session,
+    registerState.term,
+    s.id,
+    dateKey(d)
+   )];
+
+   if(st==="P")totalP++;
+   if(st==="A")totalA++;
+   if(st==="L")totalL++;
+   if(st==="E")totalE++;
+   if(st)totalMarked++;
+  });
+ });
+
+ const classPercent=totalMarked?((totalP/totalMarked)*100).toFixed(1):"0.0";
+
+ document.getElementById("content").innerHTML=`
+ <div class="panel no-print">
+  <div class="panel-head"><h2>School Register</h2></div>
+  <div class="panel-body">
+   <div class="grid4">
+    <div class="form-group">
+     <label>Session</label>
+     <select id="regSession" onchange="changeRegister()">
+      ${sessionOptions(registerState.session)}
+     </select>
+    </div>
+    <div class="form-group">
+     <label>Term</label>
+     <select id="regTerm" onchange="changeRegister()">
+      ${termOptions(registerState.term)}
+     </select>
+    </div>
+    <div class="form-group">
+     <label>Class</label>
+     <select id="regClass" onchange="changeRegister()">
+      ${classOptions(registerState.className)}
+     </select>
+    </div>
+    <div class="form-group">
+     <label>Section</label>
+     <select id="regSection" onchange="changeRegister()">
+      <option>A</option><option>B</option><option>C</option>
+     </select>
+    </div>
+   </div>
+
+   <div class="grid2">
+    <div class="form-group">
+     <label>Month</label>
+     <select id="regMonth" onchange="changeRegister()">
+      ${monthOptions(registerState.month)}
+     </select>
+    </div>
+    <div class="form-group">
+     <label>Year</label>
+     <input id="regYear" type="number" value="${registerState.year}" onchange="changeRegister()">
+    </div>
+   </div>
+
+   <div class="notice">
+    Click each student's daily cell to cycle:
+    <b>P</b> Present →
+    <b>A</b> Absent →
+    <b>L</b> Late →
+    <b>E</b> Excused →
+    blank.
+   </div>
+
+   <div class="toolbar">
+    <button class="btn success" onclick="markAllRegister('P')">Mark All Present</button>
+    <button class="btn warning" onclick="markAllRegister('L')">Mark All Late</button>
+    <button class="btn danger" onclick="markAllRegister('A')">Mark All Absent</button>
+    <button class="btn secondary" onclick="clearRegister()">Clear Month</button>
+    <button class="btn blue" onclick="window.print()">Print Register</button>
+   </div>
+  </div>
+ </div>
+
+ <div class="panel">
+  <div class="panel-head">
+   <h2>${esc(registerState.className)} ${esc(registerState.section)} — ${monthName(registerState.month)} ${registerState.year}</h2>
+  </div>
+
+  <div class="panel-body table-wrap">
+   <table class="register-table">
+    <thead>
+     <tr>
+      <th>Student</th>
+      ${headerDates}
+      <th>Total</th>
+      <th>P</th>
+      <th>A</th>
+      <th>L</th>
+      <th>E</th>
+      <th>%</th>
+     </tr>
+    </thead>
+    <tbody>
+     ${body||`<tr><td colspan="${days.length+7}">No students found in this class/section.</td></tr>`}
+    </tbody>
+    <tfoot>
+     <tr>
+      <th>CLASS TOTAL</th>
+      ${days.map(()=>"<th></th>").join("")}
+      <th>${totalMarked}</th>
+      <th>${totalP}</th>
+      <th>${totalA}</th>
+      <th>${totalL}</th>
+      <th>${totalE}</th>
+      <th>${classPercent}%</th>
+     </tr>
+    </tfoot>
+   </table>
+  </div>
+ </div>
+
+ <div class="grid4">
+  <div class="stat-box"><strong>${days.length}</strong>School Days</div>
+  <div class="stat-box"><strong>${totalP}</strong>Present Marks</div>
+  <div class="stat-box"><strong>${totalA}</strong>Absent Marks</div>
+  <div class="stat-box"><strong>${classPercent}%</strong>Class Attendance</div>
+ </div>`;
+}
+
+function getRegisterStudents(){
+ return db.students.filter(s=>
+  s.className===registerState.className &&
+  (s.section||"A")===registerState.section
+ );
+}
+
+function changeRegister(){
+
+ registerState.session=document.getElementById("regSession").value;
+ registerState.term=document.getElementById("regTerm").value;
+ registerState.className=document.getElementById("regClass").value;
+ registerState.section=document.getElementById("regSection").value;
+ registerState.month=document.getElementById("regMonth").value;
+ registerState.year=document.getElementById("regYear").value;
+
+ renderRegister();
+}
+
+function cycleRegister(studentId,date){
+
+ const key=attendanceKey(
+  registerState.session,
+  registerState.term,
+  studentId,
+  date
+ );
+
+ const order=["","P","A","L","E"];
+ let current=db.attendance[key]||"";
+ let next=order[(order.indexOf(current)+1)%order.length];
+
+ if(next)db.attendance[key]=next;
+ else delete db.attendance[key];
+
+ saveDB();
+ renderRegister();
+}
+
+function markAllRegister(status){
+
+ const days=schoolDays(registerState.year,registerState.month);
+ const students=getRegisterStudents();
+
+ if(!students.length)return;
+
+ if(!confirm("Mark all students as "+status+" for every school day in this month?")){
+  return;
+ }
+
+ students.forEach(s=>{
+  days.forEach(d=>{
+   db.attendance[attendanceKey(
+    registerState.session,
+    registerState.term,
+    s.id,
+    dateKey(d)
+   )]=status;
+  });
+ });
+
+ saveDB();
+ renderRegister();
+}
+
+function clearRegister(){
+
+ const days=schoolDays(registerState.year,registerState.month);
+ const students=getRegisterStudents();
+
+ if(!confirm("Clear attendance for this class, month and term?"))return;
+
+ students.forEach(s=>{
+  days.forEach(d=>{
+   delete db.attendance[attendanceKey(
+    registerState.session,
+    registerState.term,
+    s.id,
+    dateKey(d)
+   )];
+  });
+ });
+
+ saveDB();
+ renderRegister();
+}
+
+function attendanceKey(session,term,studentId,date){
+ return [session,term,studentId,date].join("|");
+}
+
+/* =========================================================
+   STUDENT/PARENT ATTENDANCE
+========================================================= */
+
+function renderMyAttendance(){
+
+ let students=[];
+
+ if(isStudent()){
+  const s=currentUser();
+  if(s)students=[s];
+ }else{
+  students=(currentUser()?.children||[])
+   .map(id=>db.students.find(s=>s.id===id))
+   .filter(Boolean);
+ }
+
+ let html="";
+
+ students.forEach(s=>{
+
+  let P=0,A=0,L=0,E=0;
+
+  Object.keys(db.attendance).forEach(k=>{
+   if(k.includes("|"+s.id+"|")){
+    const st=db.attendance[k];
+    if(st==="P")P++;
+    if(st==="A")A++;
+    if(st==="L")L++;
+    if(st==="E")E++;
+   }
+  });
+
+  const total=P+A+L+E;
+  const pct=total?((P/total)*100).toFixed(1):"0.0";
+
+  html+=`
+  <div class="panel">
+   <div class="panel-head">
+    <h2>${esc(s.name)}</h2>
+   </div>
+   <div class="panel-body">
+    <p>
+     ${esc(s.className)} ${esc(s.section||"A")} —
+     Admission No. ${esc(s.admissionNo)}
+    </p>
+
+    <div class="grid4">
+     <div class="stat-box"><strong>${P}</strong>Present</div>
+     <div class="stat-box"><strong>${A}</strong>Absent</div>
+     <div class="stat-box"><strong>${L}</strong>Late</div>
+     <div class="stat-box"><strong>${pct}%</strong>Attendance</div>
+    </div>
+   </div>
+  </div>`;
+ });
+
+ if(!html){
+  html=`<div class="notice">No attendance record is available.</div>`;
+ }
+
+ document.getElementById("content").innerHTML=html;
+}
+
+/* =========================================================
+   RESULTS
+========================================================= */
+
+function renderResults(){
+
+ if(isStudent()){
+  renderStudentResults();
+  return;
+ }
+
+ if(isParent()){
+  renderParentResults();
+  return;
+ }
+
+ if(!isAdmin()&&!isTeacher())return denied();
+
+ const canManage=true;
+
+ document.getElementById("content").innerHTML=`
+ <div class="panel">
+  <div class="panel-head">
+   <h2>Result Entry</h2>
+   <button class="btn" onclick="resultEntry()">+ Enter Results</button>
+  </div>
+  <div class="panel-body">
+   <div class="notice">
+    Result structure: <b>CA1 = 15</b> + <b>CA2 = 15</b> + <b>Examination = 70</b> = <b>100</b>.
+    Results become visible to students and parents only when published.
+   </div>
+
+   <div class="table-wrap">
+    <table>
+     <thead>
+      <tr>
+       <th>Student</th>
+       <th>Subject</th>
+       <th>Session</th>
+       <th>Term</th>
+       <th>CA1</th>
+       <th>CA2</th>
+       <th>Exam</th>
+       <th>Total</th>
+       <th>Grade</th>
+       <th>Status</th>
+       <th>Action</th>
+      </tr>
+     </thead>
+     <tbody>
+      ${db.results.map(r=>resultRow(r)).join("")||
+      `<tr><td colspan="11">No results entered yet.</td></tr>`}
+     </tbody>
+    </table>
+   </div>
+  </div>
+ </div>`;
+}
+
+function resultRow(r){
+
+ const s=db.students.find(x=>x.id===r.studentId);
+ const sub=db.subjects.find(x=>x.id===r.subjectId);
+
+ let action="";
+
+ if(isAdmin()||isTeacher()){
+  action+=`<button class="btn small" onclick="editResult('${r.id}')">Edit</button> `;
+ }
+
+ if(isAdmin()&&r.status!=="published"){
+  action+=`<button class="btn small success" onclick="publishResult('${r.id}')">Publish</button>`;
+ }
+
+ if(isAdmin()){
+  action+=` <button class="btn small danger" onclick="deleteResult('${r.id}')">Delete</button>`;
+ }
+
+ return `
+ <tr>
+  <td>${esc(s?.name||"Unknown")}</td>
+  <td>${esc(sub?.name||"Unknown")}</td>
+  <td>${esc(r.session)}</td>
+  <td>${esc(r.term)}</td>
+  <td>${r.ca1}</td>
+  <td>${r.ca2}</td>
+  <td>${r.exam}</td>
+  <td><b>${r.total}</b></td>
+  <td>${gradeBadge(r.grade)}</td>
+  <td>${statusBadge(r.status)}</td>
+  <td>${action}</td>
+ </tr>`;
+}
+
+function resultEntry(id=null){
+
+ const r=id?db.results.find(x=>x.id===id):{
+  studentId:db.students[0]?.id||"",
+  subjectId:db.subjects[0]?.id||"",
+  session:db.settings.currentSession,
+  term:db.settings.currentTerm,
+  ca1:0,ca2:0,exam:0,
+  status:"draft"
+ };
+
+ openModal(
+  id?"Edit Result":"Enter Result",
+  `
+  <div class="grid2">
+   <div class="form-group"><label>Student</label>
+    <select id="rStudent">${db.students.map(s=>
+     `<option value="${s.id}" ${s.id===r.studentId?"selected":""}>${esc(s.name)} — ${esc(s.admissionNo)}</option>`
+    ).join("")}</select>
+   </div>
+
+   <div class="form-group"><label>Subject</label>
+    <select id="rSubject">${subjectOptions(r.subjectId,true)}</select>
+   </div>
+
+   <div class="form-group"><label>Session</label>
+    <input id="rSession" value="${escAttr(r.session)}">
+   </div>
+
+   <div class="form-group"><label>Term</label>
+    <select id="rTerm">${termOptions(r.term)}</select>
+   </div>
+
+   <div class="form-group"><label>CA1 (0–15)</label>
+    <input id="rCA1" type="number" min="0" max="15" value="${r.ca1}">
+   </div>
+
+   <div class="form-group"><label>CA2 (0–15)</label>
+    <input id="rCA2" type="number" min="0" max="15" value="${r.ca2}">
+   </div>
+
+   <div class="form-group"><label>Examination (0–70)</label>
+    <input id="rExam" type="number" min="0" max="70" value="${r.exam}">
+   </div>
+  </div>
+
+  <div class="notice">
+   Total is calculated automatically from CA1 + CA2 + Examination.
+  </div>
+
+  <button class="btn" onclick="saveResult('${id||""}')">Save Result</button>
+  `
+ );
+}
+
+function saveResult(id){
+
+ const ca1=Number(v("rCA1"));
+ const ca2=Number(v("rCA2"));
+ const exam=Number(v("rExam"));
+
+ if(ca1<0||ca1>15||ca2<0||ca2>15||exam<0||exam>70){
+  alert("Marks must be within the allowed limits.");
+  return;
+ }
+
+ const total=ca1+ca2+exam;
+
+ const data={
+  studentId:v("rStudent"),
+  subjectId:v("rSubject"),
+  session:v("rSession"),
+  term:v("rTerm"),
+  ca1,ca2,exam,total,
+  grade:getGrade(total),
+  status:id?(db.results.find(x=>x.id===id)?.status||"draft"):"draft",
+  updatedAt:new Date().toISOString(),
+  teacherId:isTeacher()?currentUser().id:null
+ };
+
+ if(id)Object.assign(db.results.find(x=>x.id===id),data);
+ else db.results.push({id:uid("result"),...data});
+
+ saveDB();closeModal();renderResults();
+}
+
+function editResult(id){resultEntry(id)}
+
+function publishResult(id){
+
+ if(!isAdmin())return;
+
+ const r=db.results.find(x=>x.id===id);
+
+ if(!r)return;
+
+ if(!confirm("Publish this result to the Student and Parent portals?"))return;
+
+ r.status="published";
+ r.publishedAt=new Date().toISOString();
+
+ saveDB();
+ renderResults();
+}
+
+function deleteResult(id){
+
+ if(!isAdmin())return;
+
+ if(!confirm("Delete this result?"))return;
+
+ db.results=db.results.filter(x=>x.id!==id);
+ saveDB();renderResults();
+}
+
+function renderStudentResults(){
+
+ const s=currentUser();
+
+ const rows=db.results.filter(r=>
+  r.studentId===s.id &&
+  r.status==="published"
+ );
+
+ document.getElementById("content").innerHTML=`
+ <div class="panel">
+  <div class="panel-head"><h2>My Published Results</h2></div>
+  <div class="panel-body table-wrap">
+   <table>
+    <thead><tr><th>Subject</th><th>Session</th><th>Term</th><th>CA1</th><th>CA2</th><th>Exam</th><th>Total</th><th>Grade</th></tr></thead>
+    <tbody>
+     ${rows.map(r=>{
+      const sub=db.subjects.find(x=>x.id===r.subjectId);
+      return `<tr>
+       <td>${esc(sub?.name||"")}</td>
+       <td>${esc(r.session)}</td>
+       <td>${esc(r.term)}</td>
+       <td>${r.ca1}</td><td>${r.ca2}</td><td>${r.exam}</td>
+       <td><b>${r.total}</b></td>
+       <td>${gradeBadge(r.grade)}</td>
+      </tr>`;
+     }).join("")||`<tr><td colspan="8">No published results available.</td></tr>`}
+    </tbody>
+   </table>
+  </div>
+ </div>`;
+}
+
+function renderParentResults(){
+
+ const p=currentUser();
+ let html="";
+
+ (p.children||[]).forEach(childId=>{
+
+  const s=db.students.find(x=>x.id===childId);
+  if(!s)return;
+
+  const rows=db.results.filter(r=>
+   r.studentId===s.id &&
+   r.status==="published"
+  );
+
+  html+=`
+  <div class="panel">
+   <div class="panel-head"><h2>${esc(s.name)}</h2></div>
+   <div class="panel-body table-wrap">
+    <table>
+     <thead><tr><th>Subject</th><th>Session</th><th>Term</th><th>CA1</th><th>CA2</th><th>Exam</th><th>Total</th><th>Grade</th></tr></thead>
+     <tbody>
+      ${rows.map(r=>{
+       const sub=db.subjects.find(x=>x.id===r.subjectId);
+       return `<tr>
+        <td>${esc(sub?.name||"")}</td>
+        <td>${esc(r.session)}</td>
+        <td>${esc(r.term)}</td>
+        <td>${r.ca1}</td><td>${r.ca2}</td><td>${r.exam}</td>
+        <td><b>${r.total}</b></td>
+        <td>${gradeBadge(r.grade)}</td>
+       </tr>`;
+      }).join("")||`<tr><td colspan="8">No published results available.</td></tr>`}
+     </tbody>
+    </table>
+   </div>
+  </div>`;
+ });
+
+ document.getElementById("content").innerHTML=
+  html||`<div class="notice">No children have been linked to this parent account.</div>`;
+}
+
+/* =========================================================
+   DOCUMENTS
+========================================================= */
+
+function renderDocuments(){
+
+ if(!isAdmin()&&!isTeacher())return denied();
+
+ const rows=db.documents.map(d=>`
+ <tr>
+  <td>${esc(d.type)}</td>
+  <td>${esc(d.title)}</td>
+  <td>${esc(d.subject||"")}</td>
+  <td>${esc(d.className||"")}</td>
+  <td>${statusBadge(d.status)}</td>
+  <td>
+   <button class="btn small" onclick="documentView('${d.id}')">View</button>
+   ${d.status==="draft"?
+    `<button class="btn small blue" onclick="submitDocument('${d.id}')">Submit</button>`:""}
+  </td>
+ </tr>`).join("");
+
+ document.getElementById("content").innerHTML=`
+ <div class="panel">
+  <div class="panel-head">
+   <h2>Academic Documents</h2>
+   <button class="btn" onclick="documentForm()">+ Create Document</button>
+  </div>
+  <div class="panel-body">
+   <div class="notice">
+    Create lesson plans, lesson notes, schemes of work and questions.
+    Submitted documents go to the Approval Centre.
+   </div>
+   <div class="table-wrap">
+    <table>
+     <thead><tr><th>Type</th><th>Title</th><th>Subject</th><th>Class</th><th>Status</th><th>Actions</th></tr></thead>
+     <tbody>${rows||`<tr><td colspan="6">No documents.</td></tr>`}</tbody>
+    </table>
+   </div>
+  </div>
+ </div>`;
+}
+
+function documentForm(){
+
+ openModal(
+  "Create Academic Document",
+  `
+  <div class="grid2">
+   <div class="form-group"><label>Document Type</label>
+    <select id="dType">
+     <option>Lesson Plan</option>
+     <option>Lesson Note</option>
+     <option>Scheme of Work</option>
+     <option>CA Questions</option>
+     <option>Examination Questions</option>
+    </select>
+   </div>
+   <div class="form-group"><label>Title</label><input id="dTitle"></div>
+   <div class="form-group"><label>Subject</label><select id="dSubject">${subjectOptions("")}</select></div>
+   <div class="form-group"><label>Class</label><select id="dClass">${classOptions("")}</select></div>
+   <div class="form-group"><label>Term</label><select id="dTerm">${termOptions(db.settings.currentTerm)}</select></div>
+   <div class="form-group"><label>Week</label><input id="dWeek" placeholder="e.g. Week 1"></div>
+  </div>
+
+  <div class="form-group">
+   <label>Content</label>
+   <textarea id="dContent" rows="12" placeholder="Enter the full academic document here..."></textarea>
+  </div>
+
+  <button class="btn" onclick="saveDocument()">Save Draft</button>
+  `
+ );
+}
+
+function saveDocument(){
+
+ const data={
+  type:v("dType"),
+  title:v("dTitle"),
+  subject:v("dSubject"),
+  className:v("dClass"),
+  term:v("dTerm"),
+  week:v("dWeek"),
+  content:v("dContent"),
+  status:"draft",
+  createdBy:currentUser()?.id,
+  createdAt:new Date().toISOString()
+ };
+
+ if(!data.title||!data.content){
+  alert("Title and content are required.");
+  return;
+ }
+
+ db.documents.push({id:uid("doc"),...data});
+ saveDB();closeModal();renderDocuments();
+}
+
+function submitDocument(id){
+
+ const d=db.documents.find(x=>x.id===id);
+ if(!d)return;
+
+ d.status="submitted";
+
+ db.approvals.push({
+  id:uid("approval"),
+  documentId:id,
+  status:"pending",
+  comment:"",
+  createdAt:new Date().toISOString()
+ });
+
+ saveDB();renderDocuments();
+}
+
+function documentView(id){
+
+ const d=db.documents.find(x=>x.id===id);
+
+ openModal(
+  d.title,
+  `
+  <p><b>Type:</b> ${esc(d.type)}</p>
+  <p><b>Subject:</b> ${esc(d.subject||"")}</p>
+  <p><b>Class:</b> ${esc(d.className||"")}</p>
+  <hr>
+  <div style="white-space:pre-wrap;line-height:1.6">${esc(d.content)}</div>
+  `
+ );
+}
+
+/* =========================================================
+   APPROVAL CENTRE
+========================================================= */
+
+function renderApprovals(){
+
+ if(!isAdmin()&&!isTeacher())return denied();
+
+ const items=db.approvals.map(a=>{
+  const d=db.documents.find(x=>x.id===a.documentId);
+  if(!d)return "";
+
+  return `
+  <tr>
+   <td>${esc(d.title)}</td>
+   <td>${esc(d.type)}</td>
+   <td>${statusBadge(a.status)}</td>
+   <td>${esc(a.comment||"")}</td>
+   <td>
+    <button class="btn small" onclick="documentView('${d.id}')">View</button>
+    ${isAdmin()&&a.status==="pending"?
+     `<button class="btn small success" onclick="approveDocument('${a.id}')">Approve</button>
+      <button class="btn small danger" onclick="rejectDocument('${a.id}')">Reject</button>`:""}
+   </td>
+  </tr>`;
+ }).join("");
+
+ document.getElementById("content").innerHTML=`
+ <div class="panel">
+  <div class="panel-head"><h2>Approval Centre</h2></div>
+  <div class="panel-body">
+   <div class="notice">
+    Approved documents remain available in the document list.
+    There is no separate archive page.
+   </div>
+   <div class="table-wrap">
+    <table>
+     <thead><tr><th>Document</th><th>Type</th><th>Status</th><th>Comment</th><th>Actions</th></tr></thead>
+     <tbody>${items||`<tr><td colspan="5">No submissions.</td></tr>`}</tbody>
+    </table>
+   </div>
+  </div>
+ </div>`;
+}
+
+function approveDocument(id){
+
+ if(!isAdmin())return;
+
+ const a=db.approvals.find(x=>x.id===id);
+ if(!a)return;
+
+ const comment=prompt("Approval comment (optional):","Approved");
+
+ a.status="approved";
+ a.comment=comment||"Approved";
+ a.reviewedBy=currentUser().id;
+ a.reviewedAt=new Date().toISOString();
+
+ const d=db.documents.find(x=>x.id===a.documentId);
+ if(d)d.status="approved";
+
+ saveDB();renderApprovals();
+}
+
+function rejectDocument(id){
+
+ if(!isAdmin())return;
+
+ const a=db.approvals.find(x=>x.id===id);
+ if(!a)return;
+
+ const comment=prompt("Reason for rejection:");
+
+ if(comment===null)return;
+
+ a.status="rejected";
+ a.comment=comment;
+ a.reviewedBy=currentUser().id;
+ a.reviewedAt=new Date().toISOString();
+
+ const d=db.documents.find(x=>x.id===a.documentId);
+ if(d)d.status="rejected";
+
+ saveDB();renderApprovals();
+}
+
+/* =========================================================
+   TEACHER ASSISTANT
+========================================================= */
+
+function renderAssistant(){
+
+ if(!isAdmin()&&!isTeacher())return denied();
+
+ document.getElementById("content").innerHTML=`
+ <div class="panel">
+  <div class="panel-head"><h2>Teacher Assistant</h2></div>
+  <div class="panel-body">
+   <div class="notice">
+    This local assistant provides structured academic templates.
+   </div>
+
+   <div class="form-group">
+    <label>What do you need?</label>
+    <textarea id="assistantQuestion" rows="5"
+     placeholder="Example: Prepare a JSS1 Mathematics lesson note on fractions."></textarea>
+   </div>
+
+   <button class="btn" onclick="askAssistant()">Generate Help</button>
+
+   <div id="assistantAnswer" style="margin-top:18px"></div>
+  </div>
+ </div>`;
+}
+
+function askAssistant(){
+
+ const q=v("assistantQuestion").toLowerCase();
+
+ let answer="";
+
+ if(q.includes("lesson note")){
+  answer=`
+  <h3>Lesson Note Template</h3>
+  <p><b>Subject:</b> __________________</p>
+  <p><b>Class:</b> __________________</p>
+  <p><b>Topic:</b> __________________</p>
+  <p><b>Entry Behaviour:</b> __________________</p>
+  <p><b>Objectives:</b> By the end of the lesson, learners should be able to:</p>
+  <ol><li>Explain the topic.</li><li>Identify key examples.</li><li>Solve related exercises.</li></ol>
+  <p><b>Materials:</b> __________________</p>
+  <p><b>Presentation:</b> Teacher Activities / Learners Activities.</p>
+  <p><b>Evaluation:</b> __________________</p>
+  <p><b>Conclusion:</b> __________________</p>
+  <p><b>Assignment:</b> __________________</p>`;
+ }else{
+  answer=`
+  <div class="notice">
+   <b>Suggested academic workflow</b>
+   <ol>
+    <li>Identify the class and subject.</li>
+    <li>State the topic and learning objectives.</li>
+    <li>Prepare examples and learner activities.</li>
+    <li>Include evaluation questions.</li>
+    <li>Finish with conclusion and assignment.</li>
+   </ol>
+  </div>`;
+ }
+
+ document.getElementById("assistantAnswer").innerHTML=answer;
+}
+
+/* =========================================================
+   SETTINGS
+========================================================= */
+
+function renderSettings(){
+
+ if(!isAdmin())return denied();
+
+ document.getElementById("content").innerHTML=`
+ <div class="panel">
+  <div class="panel-head"><h2>School Settings</h2></div>
+  <div class="panel-body">
+   <div class="grid2">
+    <div class="form-group"><label>School Name</label><input id="setName" value="${escAttr(db.settings.schoolName)}"></div>
+    <div class="form-group"><label>Location</label><input id="setLocation" value="${escAttr(db.settings.location)}"></div>
+    <div class="form-group"><label>Phone</label><input id="setPhone" value="${escAttr(db.settings.phone||"")}"></div>
+    <div class="form-group"><label>Email</label><input id="setEmail" value="${escAttr(db.settings.email||"")}"></div>
+    <div class="form-group"><label>Current Session</label><input id="setSession" value="${escAttr(db.settings.currentSession)}"></div>
+    <div class="form-group"><label>Current Term</label><select id="setTerm">${termOptions(db.settings.currentTerm)}</select></div>
+   </div>
+   <button class="btn" onclick="saveSettings()">Save Settings</button>
+  </div>
+ </div>`;
+}
+
+function saveSettings(){
+
+ db.settings.schoolName=v("setName");
+ db.settings.location=v("setLocation");
+ db.settings.phone=v("setPhone");
+ db.settings.email=v("setEmail");
+ db.settings.currentSession=v("setSession");
+ db.settings.currentTerm=v("setTerm");
+
+ saveDB();
+ alert("School settings saved.");
+ renderSettings();
+}
+
+/* =========================================================
+   BACKUP
+========================================================= */
+
+function renderBackup(){
+
+ if(!isAdmin())return denied();
+
+ document.getElementById("content").innerHTML=`
+ <div class="grid2">
+
+  <div class="panel">
+   <div class="panel-head"><h2>Backup</h2></div>
+   <div class="panel-body">
+    <p>Create a complete JSON backup of the school database.</p>
+    <button class="btn" onclick="downloadBackup()">Download Backup</button>
+   </div>
+  </div>
+
+  <div class="panel">
+   <div class="panel-head"><h2>Restore</h2></div>
+   <div class="panel-body">
+    <p>Select a previous CTA backup JSON file.</p>
+    <input type="file" id="restoreFile" accept=".json">
+    <br><br>
+    <button class="btn warning" onclick="restoreBackup()">Restore Backup</button>
+   </div>
+  </div>
+
+ </div>
+
+ <div class="panel">
+  <div class="panel-head"><h2>Database Information</h2></div>
+  <div class="panel-body">
+   <div class="grid4">
+    <div class="stat-box"><strong>${db.accounts.length}</strong>Admin accounts</div>
+    <div class="stat-box"><strong>${db.teachers.length}</strong>Teachers</div>
+    <div class="stat-box"><strong>${db.students.length}</strong>Students</div>
+    <div class="stat-box"><strong>${db.results.length}</strong>Results</div>
+   </div>
+  </div>
+ </div>`;
+}
+
+function downloadBackup(){
+
+ const data=JSON.stringify(db,null,2);
+ const blob=new Blob([data],{type:"application/json"});
+ const url=URL.createObjectURL(blob);
+
+ const a=document.createElement("a");
+ a.href=url;
+ a.download="CTA-Academy-Backup-"+new Date().toISOString().slice(0,10)+".json";
+ document.body.appendChild(a);
+ a.click();
+ a.remove();
+
+ URL.revokeObjectURL(url);
+}
+
+function restoreBackup(){
+
+ const file=document.getElementById("restoreFile").files[0];
+
+ if(!file){
+  alert("Select a backup file first.");
+  return;
+ }
+
+ const reader=new FileReader();
+
+ reader.onload=function(){
+
+  try{
+   const restored=JSON.parse(reader.result);
+
+   if(!restored.accounts||!restored.students||!restored.teachers){
+    throw new Error("Invalid backup");
+   }
+
+   if(!confirm("Restore this backup? Current data will be replaced."))return;
+
+   db=restored;
+   ensureSetup();
+   saveDB();
+
+   alert("Backup restored successfully.");
+   showApp();
+
+  }catch(e){
+   alert("Invalid backup file.");
+  }
+ };
+
+ reader.readAsText(file);
+}
+
+/* =========================================================
+   PROFILE
+========================================================= */
+
+function renderProfile(){
+
+ const u=currentUser();
+
+ document.getElementById("content").innerHTML=`
+ <div class="panel">
+  <div class="panel-head"><h2>My Profile</h2></div>
+  <div class="panel-body">
+   <div class="notice">
+    Role: <b>${esc(session.role)}</b>
+   </div>
+
+   <div class="grid2">
+    <div class="form-group">
+     <label>Name</label>
+     <input id="profileName" value="${escAttr(u?.name||"")}">
+    </div>
+
+    <div class="form-group">
+     <label>New Password</label>
+     <input id="profilePassword" type="password">
+    </div>
+   </div>
+
+   <button class="btn" onclick="saveProfile()">Save Profile</button>
+  </div>
+ </div>`;
+}
+
+function saveProfile(){
+
+ const u=currentUser();
+
+ if(!u)return;
+
+ const name=v("profileName");
+ const password=v("profilePassword");
+
+ if(name)u.name=name;
+ if(password)u.password=password;
+
+ saveDB();
+
+ document.getElementById("userInfo").textContent=
+  (u.name||u.username||"User")+" • "+session.role;
+
+ alert("Profile updated.");
+}
+
+/* =========================================================
+   HELPERS
+========================================================= */
+
+function v(id){
+ return document.getElementById(id)?.value?.trim()||"";
+}
+
+function esc(value){
+ return String(value??"")
+  .replace(/&/g,"&amp;")
+  .replace(/</g,"&lt;")
+  .replace(/>/g,"&gt;")
+  .replace(/"/g,"&quot;")
+  .replace(/'/g,"&#039;");
+}
+
+function escAttr(value){
+ return esc(value);
+}
+
+function openModal(title,body){
+ document.getElementById("modalTitle").textContent=title;
+ document.getElementById("modalBody").innerHTML=body;
+ document.getElementById("modal").classList.add("show");
+}
+
+function closeModal(){
+ document.getElementById("modal").classList.remove("show");
+}
+
+function denied(){
+ document.getElementById("content").innerHTML=
+ `<div class="notice">You do not have permission to access this section.</div>`;
+}
+
+function classOptions(selected=""){
+
+ return db.classes.map(c=>
+  `<option value="${escAttr(c.name)}" ${c.name===selected?"selected":""}>${esc(c.name)}</option>`
+ ).join("");
+}
+
+function subjectOptions(selected="",idMode=false){
+
+ return db.subjects.map(s=>
+  `<option value="${idMode?s.id:escAttr(s.name)}"
+   ${(idMode?s.id:s.name)===selected?"selected":""}>
+   ${esc(s.name)}
+  </option>`
+ ).join("");
+}
+
+function termOptions(selected="First Term"){
+ return ["First Term","Second Term","Third Term"].map(x=>
+  `<option ${x===selected?"selected":""}>${x}</option>`
+ ).join("");
+}
+
+function sessionOptions(selected){
+
+ const arr=[];
+ const y=new Date().getFullYear();
+
+ for(let i=-2;i<=3;i++){
+  const a=y+i;
+  arr.push(`${a}/${a+1}`);
+ }
+
+ if(selected&&!arr.includes(selected))arr.unshift(selected);
+
+ return [...new Set(arr)].map(x=>
+  `<option ${x===selected?"selected":""}>${x}</option>`
+ ).join("");
+}
+
+function monthOptions(selected){
+ return Array.from({length:12},(_,i)=>{
+  const m=String(i+1);
+  return `<option value="${m}" ${m===String(selected)?"selected":""}>${monthName(m)}</option>`;
+ }).join("");
+}
+
+function monthName(m){
+ return new Date(2000,Number(m)-1,1)
+  .toLocaleString("en-US",{month:"long"});
+}
+
+function dayName(d){
+ return d.toLocaleString("en-US",{weekday:"long"});
+}
+
+function dateKey(d){
+ const y=d.getFullYear();
+ const m=String(d.getMonth()+1).padStart(2,"0");
+ const day=String(d.getDate()).padStart(2,"0");
+ return `${y}-${m}-${day}`;
+}
+
+/*
+ School days are Monday-Friday.
+ Saturday and Sunday are automatically excluded.
+*/
+function schoolDays(year,month){
+
+ const days=[];
+ const y=Number(year);
+ const m=Number(month)-1;
+
+ const total=new Date(y,m+1,0).getDate();
+
+ for(let i=1;i<=total;i++){
+  const d=new Date(y,m,i);
+  const day=d.getDay();
+
+  if(day!==0&&day!==6){
+   days.push(d);
+  }
+ }
+
+ return days;
+}
+
+function getGrade(total){
+
+ if(total>=70)return"A";
+ if(total>=60)return"B";
+ if(total>=50)return"C";
+ if(total>=45)return"D";
+ if(total>=40)return"E";
+ return"F";
+}
+
+function gradeBadge(g){
+
+ const cls=g==="A"?"green":
+  g==="B"?"blue":
+  g==="C"?"yellow":
+  g==="F"?"red":"";
+
+ return `<span class="badge ${cls}">${esc(g)}</span>`;
+}
+
+function statusBadge(status){
+
+ const cls=status==="approved"||status==="published"||status==="active"
+  ?"green":
+  status==="rejected"||status==="inactive"
+  ?"red":
+  status==="pending"||status==="submitted"
+  ?"yellow":"blue";
+
+ return `<span class="badge ${cls}">${esc(status||"draft")}</span>`;
+}
+
+/* =========================================================
+   INITIAL START
+========================================================= */
+
+document.getElementById("loginPassword").addEventListener("keydown",e=>{
+ if(e.key==="Enter")login();
+});
+
+if(session&&currentUser()){
+ showApp();
+}else{
+ document.getElementById("loginScreen").style.display="flex";
+ document.getElementById("app").style.display="none";
+}
+
+</script>
+</body>
+</html>
