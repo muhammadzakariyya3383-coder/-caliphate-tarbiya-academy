@@ -5,63 +5,31 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#166534">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
-
 <title>Global Kids Academy Sokoto</title>
 
 <style>
-*{
-  box-sizing:border-box;
-}
-
-html{
-  width:100%;
-  min-width:0;
-  overflow-x:hidden;
-  -webkit-text-size-adjust:100%;
-  text-size-adjust:100%;
-}
-
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;min-width:0;overflow-x:hidden}
 body{
-  margin:0;
-  width:100%;
-  min-width:0;
-  overflow-x:hidden;
   font-family:Arial,Helvetica,sans-serif;
   background:#f1f5f9;
   color:#172033;
+  -webkit-text-size-adjust:100%;
 }
-
-button,
-input,
-select,
-textarea{
-  font:inherit;
-  max-width:100%;
-}
-
-button{
-  cursor:pointer;
-}
-
-.hidden{
-  display:none!important;
-}
+button,input,select,textarea{font:inherit;max-width:100%}
+button{cursor:pointer}
+.hidden{display:none!important}
 
 :root{
   --green:#166534;
-  --green-dark:#14532d;
-  --green-light:#dcfce7;
+  --dark:#14532d;
+  --light:#dcfce7;
   --border:#dbe3ea;
   --muted:#64748b;
-  --danger:#b91c1c;
+  --red:#b91c1c;
   --blue:#1d4ed8;
   --orange:#b45309;
 }
-
-/* =========================================================
-   LOGIN
-========================================================= */
 
 .login-page{
   min-height:100vh;
@@ -70,14 +38,8 @@ button{
   align-items:center;
   justify-content:center;
   padding:20px;
-  background:linear-gradient(
-    135deg,
-    #14532d,
-    #166534,
-    #22c55e
-  );
+  background:linear-gradient(135deg,#14532d,#166534,#22c55e);
 }
-
 .login-card{
   width:100%;
   max-width:430px;
@@ -86,798 +48,261 @@ button{
   border-radius:22px;
   box-shadow:0 20px 60px rgba(0,0,0,.25);
 }
-
 .logo{
-  width:82px;
-  height:82px;
-  border-radius:50%;
+  width:82px;height:82px;border-radius:50%;
   margin:0 auto 15px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:#166534;
-  color:#fff;
-  font-size:30px;
-  font-weight:900;
+  display:flex;align-items:center;justify-content:center;
+  background:#166534;color:#fff;font-size:30px;font-weight:900;
   border:5px solid #dcfce7;
 }
-
-.login-card h1{
-  text-align:center;
-  margin:0;
-  font-size:24px;
-  color:#14532d;
-}
-
-.login-card p{
-  text-align:center;
-  color:#64748b;
-  font-size:13px;
-  margin:8px 0 22px;
-}
-
+.login-card h1{text-align:center;margin:0;font-size:24px;color:#14532d}
+.login-card p{text-align:center;color:#64748b;font-size:13px;margin:8px 0 22px}
 .login-error{
-  display:none;
-  color:#b91c1c;
-  background:#fee2e2;
-  border:1px solid #fecaca;
-  padding:9px;
-  border-radius:8px;
-  font-size:12px;
-  margin-bottom:12px;
+  display:none;color:#b91c1c;background:#fee2e2;
+  border:1px solid #fecaca;padding:9px;border-radius:8px;
+  font-size:12px;margin-bottom:12px
 }
 
-/* =========================================================
-   FORMS
-========================================================= */
-
-.form-group{
-  margin-bottom:14px;
-}
-
+.form-group{margin-bottom:14px}
 .form-group label{
-  display:block;
-  font-weight:700;
-  font-size:12px;
-  margin-bottom:6px;
+  display:block;font-weight:700;font-size:12px;margin-bottom:6px
 }
-
-input,
-select,
-textarea{
-  width:100%;
-  padding:11px 12px;
-  border:1px solid #cbd5e1;
-  border-radius:9px;
-  background:#fff;
-  outline:none;
+input,select,textarea{
+  width:100%;padding:11px 12px;border:1px solid #cbd5e1;
+  border-radius:9px;background:#fff;outline:none
 }
-
-textarea{
-  resize:vertical;
-}
-
-input:focus,
-select:focus,
-textarea:focus{
+textarea{resize:vertical;min-height:100px}
+input:focus,select:focus,textarea:focus{
   border-color:#22c55e;
-  box-shadow:0 0 0 3px rgba(34,197,94,.12);
+  box-shadow:0 0 0 3px rgba(34,197,94,.12)
 }
-
-/* =========================================================
-   BUTTONS
-========================================================= */
 
 .btn{
-  border:0;
-  border-radius:8px;
-  padding:10px 14px;
-  font-weight:700;
-  font-size:12px;
-  background:#166534;
-  color:#fff;
+  border:0;border-radius:8px;padding:10px 14px;
+  font-weight:700;font-size:12px;background:#166534;color:#fff
 }
+.btn:hover{opacity:.92}
+.btn-green{background:#166534}
+.btn-blue{background:#1d4ed8}
+.btn-orange{background:#b45309}
+.btn-red{background:#b91c1c}
+.btn-gray{background:#475569}
+.btn-light{background:#f1f5f9;color:#172033;border:1px solid #cbd5e1}
+.full{width:100%}
 
-.btn:hover{
-  opacity:.92;
-}
-
-.btn-green{
-  background:#166534;
-}
-
-.btn-blue{
-  background:#1d4ed8;
-}
-
-.btn-orange{
-  background:#b45309;
-}
-
-.btn-red{
-  background:#b91c1c;
-}
-
-.btn-gray{
-  background:#475569;
-}
-
-.btn-light{
-  background:#f1f5f9;
-  color:#172033;
-  border:1px solid #cbd5e1;
-}
-
-.full{
-  width:100%;
-}
-
-/* =========================================================
-   APPLICATION
-========================================================= */
-
-.app{
-  min-height:100vh;
-  min-height:100dvh;
-  display:flex;
-}
-
+.app{min-height:100vh;min-height:100dvh;display:flex}
 .sidebar{
-  width:250px;
-  flex:0 0 250px;
-  background:#14532d;
-  color:#fff;
-  min-height:100vh;
-  position:sticky;
-  top:0;
-  height:100vh;
-  overflow-y:auto;
-  z-index:20;
+  width:250px;flex:0 0 250px;background:#14532d;color:#fff;
+  min-height:100vh;position:sticky;top:0;height:100vh;
+  overflow-y:auto;z-index:20
 }
-
-.brand{
-  padding:20px 16px;
-  border-bottom:1px solid rgba(255,255,255,.15);
-}
-
-.brand strong{
-  display:block;
-  font-size:16px;
-}
-
-.brand small{
-  display:block;
-  margin-top:4px;
-  opacity:.75;
-  font-size:10px;
-}
-
-.nav{
-  padding:12px 9px;
-}
-
+.brand{padding:20px 16px;border-bottom:1px solid rgba(255,255,255,.15)}
+.brand strong{display:block;font-size:16px}
+.brand small{display:block;margin-top:4px;opacity:.75;font-size:10px}
+.nav{padding:12px 9px}
 .nav button{
-  display:block;
-  width:100%;
-  text-align:left;
-  color:#fff;
-  background:transparent;
-  border:0;
-  padding:11px 12px;
-  border-radius:8px;
-  margin-bottom:3px;
-  font-size:12px;
+  display:block;width:100%;text-align:left;color:#fff;
+  background:transparent;border:0;padding:11px 12px;
+  border-radius:8px;margin-bottom:3px;font-size:12px
 }
-
-.nav button:hover,
-.nav button.active{
-  background:rgba(255,255,255,.14);
-}
-
-.main{
-  min-width:0;
-  flex:1;
-}
-
+.nav button:hover,.nav button.active{background:rgba(255,255,255,.14)}
+.main{min-width:0;flex:1}
 .topbar{
-  min-height:62px;
-  background:#fff;
-  border-bottom:1px solid #e2e8f0;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:10px;
-  padding:10px 18px;
-  position:sticky;
-  top:0;
-  z-index:15;
+  min-height:62px;background:#fff;border-bottom:1px solid #e2e8f0;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:10px;padding:10px 18px;position:sticky;top:0;z-index:15
 }
-
-.top-title{
-  font-weight:900;
-  color:#14532d;
-}
-
+.top-title{font-weight:900;color:#14532d}
 .user-pill{
-  background:#dcfce7;
-  color:#14532d;
-  padding:8px 10px;
-  border-radius:20px;
-  font-size:11px;
-  font-weight:700;
+  background:#dcfce7;color:#14532d;padding:8px 10px;
+  border-radius:20px;font-size:11px;font-weight:700
 }
+.content{padding:18px;min-width:0}
 
-.content{
-  padding:18px;
-  min-width:0;
-}
-
-/* =========================================================
-   HEADINGS
-========================================================= */
-
-.page-title{
-  margin:0;
-  font-size:24px;
-  color:#14532d;
-}
-
-.page-subtitle{
-  color:#64748b;
-  font-size:12px;
-  margin:5px 0 18px;
-}
-
-/* =========================================================
-   CARDS / GRIDS
-========================================================= */
+.page-title{margin:0;font-size:24px;color:#14532d}
+.page-subtitle{color:#64748b;font-size:12px;margin:5px 0 18px}
 
 .card{
-  background:#fff;
-  border:1px solid #e2e8f0;
-  border-radius:13px;
-  padding:16px;
-  margin-bottom:16px;
-  box-shadow:0 2px 7px rgba(15,23,42,.04);
+  background:#fff;border:1px solid #e2e8f0;border-radius:13px;
+  padding:16px;margin-bottom:16px;
+  box-shadow:0 2px 7px rgba(15,23,42,.04)
 }
+.card h3{margin:0 0 13px;color:#14532d;font-size:15px}
 
-.card h3{
-  margin:0 0 13px;
-  color:#14532d;
-  font-size:15px;
-}
-
-.grid-2,
-.grid-3,
-.grid-4{
-  display:grid;
-  gap:13px;
-}
-
-.grid-2{
-  grid-template-columns:repeat(2,minmax(0,1fr));
-}
-
-.grid-3{
-  grid-template-columns:repeat(3,minmax(0,1fr));
-}
-
-.grid-4{
-  grid-template-columns:repeat(4,minmax(0,1fr));
-}
+.grid-2,.grid-3,.grid-4{display:grid;gap:13px}
+.grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.grid-4{grid-template-columns:repeat(4,minmax(0,1fr))}
 
 .stat{
-  padding:17px;
-  border-radius:12px;
-  background:#fff;
-  border:1px solid #e2e8f0;
+  padding:17px;border-radius:12px;background:#fff;
+  border:1px solid #e2e8f0
 }
+.stat .num{font-size:26px;font-weight:900;color:#166534}
+.stat .label{color:#64748b;font-size:11px;margin-top:4px}
 
-.stat .num{
-  font-size:26px;
-  font-weight:900;
-  color:#166534;
-}
-
-.stat .label{
-  color:#64748b;
-  font-size:11px;
-  margin-top:4px;
-}
-
-.toolbar{
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-  margin-bottom:14px;
-}
-
-.toolbar > *{
-  flex:0 0 auto;
-}
-
-/* =========================================================
-   TABLES
-========================================================= */
+.toolbar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.toolbar>*{flex:0 0 auto}
 
 .table-wrap{
-  width:100%;
-  max-width:100%;
-  overflow-x:auto;
-  overflow-y:hidden;
-  -webkit-overflow-scrolling:touch;
+  width:100%;max-width:100%;overflow-x:auto;overflow-y:hidden;
+  -webkit-overflow-scrolling:touch
 }
-
-table{
-  width:100%;
-  border-collapse:collapse;
+table{width:100%;border-collapse:collapse}
+th,td{
+  border:1px solid #e2e8f0;padding:8px;font-size:11px;
+  text-align:left;vertical-align:middle
 }
-
-th,
-td{
-  border:1px solid #e2e8f0;
-  padding:8px;
-  font-size:11px;
-  text-align:left;
-  vertical-align:middle;
-}
-
-th{
-  background:#f0fdf4;
-  color:#14532d;
-  font-weight:900;
-}
-
-.action-row{
-  display:flex;
-  flex-wrap:wrap;
-  gap:5px;
-}
-
-.empty{
-  text-align:center;
-  color:#64748b;
-  padding:30px 10px;
-  font-size:12px;
-}
-
-/* =========================================================
-   REGISTER
-========================================================= */
-
-.register-meta{
-  display:grid;
-  grid-template-columns:repeat(4,minmax(130px,1fr));
-  background:#14532d;
-  color:#fff;
-  border-radius:9px 9px 0 0;
-  overflow:hidden;
-}
-
-.register-meta div{
-  padding:10px;
-  border-right:1px solid rgba(255,255,255,.25);
-}
-
-.register-meta div:last-child{
-  border-right:0;
-}
-
-.register-meta strong{
-  display:block;
-  font-size:10px;
-  opacity:.75;
-  text-transform:uppercase;
-}
-
-.register-meta span{
-  display:block;
-  font-weight:900;
-  margin-top:3px;
-  font-size:12px;
-}
-
-.register-table{
-  min-width:max-content;
-}
-
-.register-table th,
-.register-table td{
-  text-align:center;
-  padding:5px;
-}
-
-.register-table .student-name{
-  min-width:190px;
-  max-width:230px;
-  text-align:left;
-  position:sticky;
-  left:0;
-  z-index:3;
-  background:#fff;
-}
-
-.register-table th.student-name{
-  background:#14532d;
-  color:#fff;
-  z-index:5;
-}
-
-.day-head{
-  min-width:42px;
-  width:42px;
-}
-
-.weekend-head{
-  background:#f8fafc!important;
-}
-
-.mark{
-  min-width:30px;
-  min-height:30px;
-  width:30px;
-  height:30px;
-  padding:0;
-  border-radius:6px;
-  border:1px solid #cbd5e1;
-  background:#fff;
-  font-size:11px;
-  font-weight:900;
-}
-
-.mark.present{
-  background:#dcfce7;
-  color:#166534;
-  border-color:#86efac;
-}
-
-.mark.absent{
-  background:#fee2e2;
-  color:#b91c1c;
-  border-color:#fca5a5;
-}
-
-.summary-box{
-  display:grid;
-  grid-template-columns:repeat(4,minmax(120px,1fr));
-  gap:10px;
-  margin-top:14px;
-}
-
-.summary-item{
-  padding:12px;
-  border:1px solid #e2e8f0;
-  border-radius:9px;
-  background:#f8fafc;
-}
-
-.summary-item strong{
-  display:block;
-  font-size:19px;
-  color:#166534;
-}
-
-.summary-item span{
-  color:#64748b;
-  font-size:10px;
-}
-
-/* =========================================================
-   DIGITAL SIGNATURES
-========================================================= */
-
-.signature-grid{
-  display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:13px;
-}
-
-.signature-box{
-  border:1px solid #cbd5e1;
-  border-radius:11px;
-  padding:12px;
-  background:#fff;
-}
-
-.signature-box h4{
-  margin:0 0 10px;
-  color:#14532d;
-  font-size:13px;
-}
-
-.signature-pad-wrap{
-  border:1px solid #cbd5e1;
-  border-radius:10px;
-  background:#fff;
-  padding:8px;
-}
-
-.signature-canvas{
-  display:block;
-  width:100%;
-  height:150px;
-  background:#fff;
-  border:1px dashed #94a3b8;
-  border-radius:8px;
-  touch-action:none;
-  cursor:crosshair;
-}
-
-.signature-actions{
-  display:flex;
-  gap:7px;
-  flex-wrap:wrap;
-  margin-top:8px;
-}
-
-.signature-note{
-  font-size:10px;
-  color:#64748b;
-  margin-top:6px;
-}
-
-.signature-print-image{
-  display:none;
-  width:100%;
-  height:100px;
-  object-fit:contain;
-  object-position:left bottom;
-  border-bottom:1px solid #334155;
-}
-
-.check-line{
-  display:flex;
-  gap:6px;
-  align-items:center;
-  font-size:11px;
-  font-weight:700;
-  margin-top:9px;
-}
-
-.check-line input{
-  width:auto;
-}
-
-/* =========================================================
-   BADGES
-========================================================= */
+th{background:#f0fdf4;color:#14532d;font-weight:900}
+.action-row{display:flex;flex-wrap:wrap;gap:5px}
+.empty{text-align:center;color:#64748b;padding:30px 10px;font-size:12px}
 
 .badge{
-  display:inline-block;
-  padding:4px 7px;
-  border-radius:12px;
-  font-size:9px;
-  font-weight:900;
+  display:inline-block;padding:4px 7px;border-radius:12px;
+  font-size:9px;font-weight:900
 }
+.badge-green{background:#dcfce7;color:#166534}
+.badge-orange{background:#fef3c7;color:#92400e}
+.badge-red{background:#fee2e2;color:#b91c1c}
+.badge-blue{background:#dbeafe;color:#1d4ed8}
 
-.badge-green{
-  background:#dcfce7;
-  color:#166534;
+.register-meta{
+  display:grid;grid-template-columns:repeat(4,minmax(130px,1fr));
+  background:#14532d;color:#fff;border-radius:9px 9px 0 0;overflow:hidden
 }
+.register-meta div{padding:10px;border-right:1px solid rgba(255,255,255,.25)}
+.register-meta strong{display:block;font-size:10px;opacity:.75;text-transform:uppercase}
+.register-meta span{display:block;font-weight:900;margin-top:3px;font-size:12px}
 
-.badge-orange{
-  background:#fef3c7;
-  color:#92400e;
+.register-table{min-width:max-content}
+.register-table th,.register-table td{text-align:center;padding:5px}
+.register-table .student-name{
+  min-width:190px;max-width:230px;text-align:left;
+  position:sticky;left:0;z-index:3;background:#fff
 }
-
-.badge-red{
-  background:#fee2e2;
-  color:#b91c1c;
+.register-table th.student-name{background:#14532d;color:#fff;z-index:5}
+.day-head{min-width:48px;width:48px}
+.weekend-head{background:#f8fafc!important}
+.holiday-head{background:#fef3c7!important;color:#92400e!important}
+.mark{
+  min-width:30px;min-height:30px;width:30px;height:30px;
+  padding:0;border-radius:6px;border:1px solid #cbd5e1;
+  background:#fff;font-size:11px;font-weight:900
 }
+.mark.present{background:#dcfce7;color:#166534;border-color:#86efac}
+.mark.absent{background:#fee2e2;color:#b91c1c;border-color:#fca5a5}
 
-.badge-blue{
-  background:#dbeafe;
-  color:#1d4ed8;
+.summary-box{
+  display:grid;grid-template-columns:repeat(4,minmax(120px,1fr));
+  gap:10px;margin-top:14px
 }
+.summary-item{
+  padding:12px;border:1px solid #e2e8f0;
+  border-radius:9px;background:#f8fafc
+}
+.summary-item strong{display:block;font-size:19px;color:#166534}
+.summary-item span{color:#64748b;font-size:10px}
 
-/* =========================================================
-   RESPONSIVE
-========================================================= */
+.signature-grid{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px
+}
+.signature-box{
+  border:1px solid #cbd5e1;border-radius:11px;padding:12px;background:#fff
+}
+.signature-box h4{margin:0 0 10px;color:#14532d;font-size:13px}
+.signature-pad-wrap{
+  border:1px solid #cbd5e1;border-radius:10px;
+  background:#fff;padding:8px
+}
+.signature-canvas{
+  display:block;width:100%;height:150px;background:#fff;
+  border:1px dashed #94a3b8;border-radius:8px;
+  touch-action:none;cursor:crosshair
+}
+.signature-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:8px}
+.signature-note{font-size:10px;color:#64748b;margin-top:6px}
+.signature-print-image{
+  display:none;width:100%;height:100px;
+  object-fit:contain;object-position:left bottom;
+  border-bottom:1px solid #334155
+}
+.check-line{
+  display:flex;gap:6px;align-items:center;font-size:11px;
+  font-weight:700;margin-top:9px
+}
+.check-line input{width:auto}
+
+.assistant-box{
+  background:#f8fafc;border:1px solid #e2e8f0;
+  border-radius:10px;padding:12px;min-height:250px;
+  max-height:450px;overflow-y:auto
+}
+.chat-msg{
+  max-width:85%;padding:10px;border-radius:10px;
+  margin-bottom:8px;font-size:12px;line-height:1.5
+}
+.chat-user{margin-left:auto;background:#dcfce7}
+.chat-ai{background:#fff;border:1px solid #e2e8f0}
 
 @media(max-width:900px){
-
-  .sidebar{
-    width:210px;
-    flex-basis:210px;
-  }
-
-  .grid-4{
-    grid-template-columns:repeat(2,minmax(0,1fr));
-  }
-
-  .signature-grid{
-    grid-template-columns:1fr;
-  }
+  .sidebar{width:210px;flex-basis:210px}
+  .grid-4{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .signature-grid{grid-template-columns:1fr}
 }
-
 @media(max-width:700px){
-
-  .app{
-    display:block;
-  }
-
+  .app{display:block}
   .sidebar{
-    width:100%;
-    height:auto;
-    min-height:auto;
-    position:relative;
+    width:100%;height:auto;min-height:auto;position:relative
   }
-
-  .brand{
-    padding:13px;
-  }
-
+  .brand{padding:13px}
   .nav{
-    display:flex;
-    overflow-x:auto;
-    gap:4px;
-    padding:7px;
-    -webkit-overflow-scrolling:touch;
+    display:flex;overflow-x:auto;gap:4px;padding:7px;
+    -webkit-overflow-scrolling:touch
   }
-
-  .nav button{
-    width:auto;
-    white-space:nowrap;
-    margin:0;
-    padding:9px 10px;
-  }
-
-  .topbar{
-    position:relative;
-  }
-
-  .grid-2,
-  .grid-3,
-  .grid-4{
-    grid-template-columns:1fr;
-  }
-
-  .register-meta{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .summary-box{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .content{
-    padding:10px;
-  }
+  .nav button{width:auto;white-space:nowrap;margin:0;padding:9px 10px}
+  .topbar{position:relative}
+  .grid-2,.grid-3,.grid-4{grid-template-columns:1fr}
+  .register-meta{grid-template-columns:1fr 1fr}
+  .summary-box{grid-template-columns:1fr 1fr}
+  .content{padding:10px}
 }
-
 @media(max-width:360px){
-
-  .login-page{
-    padding:10px;
-  }
-
-  .login-card{
-    padding:18px 13px;
-    border-radius:15px;
-  }
-
-  .login-card h1{
-    font-size:20px;
-  }
-
-  .logo{
-    width:62px;
-    height:62px;
-    font-size:24px;
-  }
-
-  .content{
-    padding:8px;
-  }
-
-  .card{
-    padding:12px;
-    border-radius:10px;
-  }
-
-  .page-title{
-    font-size:19px;
-  }
-
-  .page-subtitle{
-    font-size:11px;
-  }
-
-  .topbar{
-    padding:8px;
-  }
-
-  .top-title{
-    font-size:11px;
-  }
-
-  .btn{
-    padding:9px 10px;
-    font-size:11px;
-  }
-
-  input,
-  select,
-  textarea{
-    font-size:14px;
-    padding:10px;
-  }
-
-  .register-meta{
-    grid-template-columns:1fr;
-  }
-
-  .summary-box{
-    grid-template-columns:1fr;
-  }
+  .login-page{padding:10px}
+  .login-card{padding:18px 13px;border-radius:15px}
+  .login-card h1{font-size:20px}
+  .logo{width:62px;height:62px;font-size:24px}
+  .content{padding:8px}
+  .card{padding:12px;border-radius:10px}
+  .page-title{font-size:19px}
+  .topbar{padding:8px}
+  .top-title{font-size:11px}
+  .btn{padding:9px 10px;font-size:11px}
+  input,select,textarea{font-size:14px;padding:10px}
+  .register-meta{grid-template-columns:1fr}
+  .summary-box{grid-template-columns:1fr}
 }
-
-/* =========================================================
-   PRINT
-========================================================= */
-
 @media print{
-
-  body{
-    background:#fff;
-  }
-
-  .sidebar,
-  .topbar,
-  .toolbar,
-  .no-print,
-  .signature-actions,
-  .signature-note{
-    display:none!important;
-  }
-
-  .main{
-    width:100%;
-  }
-
-  .content{
-    padding:0;
-  }
-
-  .card{
-    border:0;
-    box-shadow:none;
-  }
-
-  .signature-canvas{
-    display:none!important;
-  }
-
-  .signature-print-image{
-    display:block!important;
-  }
-
-  .register-table{
-    min-width:0;
-  }
-
-  @page{
-    size:A4 landscape;
-    margin:8mm;
-  }
+  body{background:#fff}
+  .sidebar,.topbar,.toolbar,.no-print,
+  .signature-actions,.signature-note{display:none!important}
+  .main{width:100%}
+  .content{padding:0}
+  .card{border:0;box-shadow:none}
+  .signature-canvas{display:none!important}
+  .signature-print-image{display:block!important}
+  @page{size:A4 landscape;margin:8mm}
 }
 </style>
 </head>
 
 <body>
 
-<!-- =======================================================
-     LOGIN
-======================================================= -->
-
+<!-- LOGIN -->
 <div id="loginPage" class="login-page">
-
   <div class="login-card">
-
     <div class="logo">GKA</div>
 
     <h1>Global Kids Academy Sokoto</h1>
-
     <p>School Academic Management System</p>
 
     <div id="loginError" class="login-error">
@@ -885,112 +310,61 @@ th{
     </div>
 
     <div class="form-group">
-
       <label>Login Type</label>
-
       <select id="loginRole">
         <option value="Administrator">Administrator</option>
         <option value="Teacher">Teacher</option>
         <option value="Student">Student</option>
         <option value="Parent">Parent</option>
       </select>
-
     </div>
 
     <div class="form-group">
-
       <label>Username</label>
-
-      <input
-        id="loginUsername"
-        autocomplete="username">
-
+      <input id="loginUsername" autocomplete="username">
     </div>
 
     <div class="form-group">
-
       <label>Password</label>
-
-      <input
-        id="loginPassword"
-        type="password"
-        autocomplete="current-password">
-
+      <input id="loginPassword" type="password" autocomplete="current-password">
     </div>
 
-    <button
-      class="btn btn-green full"
-      onclick="login()">
-      Login
-    </button>
+    <button class="btn btn-green full" onclick="login()">Login</button>
 
-    <p style="font-size:10px;margin-top:15px;">
+    <p style="font-size:10px;margin-top:15px">
       Administrator: Admin / Admin@2026!
     </p>
-
   </div>
-
 </div>
 
-
-<!-- =======================================================
-     APPLICATION
-======================================================= -->
-
+<!-- APPLICATION -->
 <div id="app" class="app hidden">
 
   <aside class="sidebar">
-
     <div class="brand">
       <strong>Global Kids Academy</strong>
       <small>Sokoto • Academic Management System</small>
     </div>
-
-    <nav
-      class="nav"
-      id="nav">
-    </nav>
-
+    <nav class="nav" id="nav"></nav>
   </aside>
-
 
   <main class="main">
 
     <header class="topbar">
-
-      <div
-        class="top-title"
-        id="topTitle">
+      <div class="top-title" id="topTitle">
         Global Kids Academy Sokoto
       </div>
 
-      <div
-        style="display:flex;align-items:center;gap:7px;">
-
-        <span
-          class="user-pill"
-          id="userPill">
-        </span>
-
-        <button
-          class="btn btn-red"
-          onclick="logout()">
-          Logout
-        </button>
-
+      <div style="display:flex;align-items:center;gap:7px">
+        <span class="user-pill" id="userPill"></span>
+        <button class="btn btn-red" onclick="logout()">Logout</button>
       </div>
-
     </header>
 
-    <section
-      class="content"
-      id="content">
-    </section>
+    <section class="content" id="content"></section>
 
   </main>
-
 </div>
-
 
 <script>
 "use strict";
@@ -999,81 +373,37 @@ th{
    DATABASE
 ========================================================= */
 
-const DB_KEY =
-  "GLOBAL_KIDS_ACADEMY_SOKOTO_DATABASE_V1";
-
-const SESSION_KEY =
-  "GLOBAL_KIDS_ACADEMY_SOKOTO_SESSION_V1";
+const DB_KEY="GLOBAL_KIDS_ACADEMY_SOKOTO_DATABASE_V1";
+const SESSION_KEY="GLOBAL_KIDS_ACADEMY_SOKOTO_SESSION_V1";
 
 const MONTHS=[
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December"
+ "January","February","March","April","May","June",
+ "July","August","September","October","November","December"
 ];
 
 const CLASSES=[
-  "Nursery 1",
-  "Nursery 2",
-  "Nursery 3",
-  "Basic 1",
-  "Basic 2",
-  "Basic 3",
-  "Basic 4",
-  "Basic 5",
-  "Basic 6",
-  "JSS1",
-  "JSS2",
-  "JSS3",
-  "SS1",
-  "SS2",
-  "SS3"
+ "Nursery 1","Nursery 2","Nursery 3",
+ "Basic 1","Basic 2","Basic 3","Basic 4","Basic 5","Basic 6",
+ "JSS1","JSS2","JSS3","SS1","SS2","SS3"
 ];
 
-const SECTIONS=[
-  "A",
-  "B"
-];
+const SECTIONS=["A","B"];
 
 const SUBJECTS=[
-  "Mathematics",
-  "English Language",
-  "Physics",
-  "Chemistry",
-  "Biology",
-  "Economics",
-  "Hausa",
-  "Arabic",
-  "French",
-  "Computer Studies",
-  "Basic Science",
-  "Basic Technology",
-  "Social Studies",
-  "Civic Education",
-  "Agricultural Science",
-  "Geography",
-  "Government",
-  "Literature in English",
-  "Islamic Religious Studies",
-  "Christian Religious Studies",
-  "Home Economics",
-  "Commerce",
-  "Financial Accounting",
-  "Further Mathematics"
+ "Mathematics","English Language","Physics","Chemistry","Biology",
+ "Economics","Hausa","Arabic","French","Computer Studies",
+ "Basic Science","Basic Technology","Social Studies","Civic Education",
+ "Agricultural Science","Geography","Government","Literature in English",
+ "Islamic Religious Studies","Christian Religious Studies","Home Economics",
+ "Commerce","Financial Accounting","Further Mathematics"
 ];
 
+function uid(prefix="id"){
+  return prefix+"-"+Date.now()+"-"+Math.random().toString(36).slice(2,8);
+}
+
 function defaultDB(){
-
   return {
-
     school:{
       name:"Global Kids Academy Sokoto",
       address:"Sokoto State, Nigeria",
@@ -1082,7 +412,6 @@ function defaultDB(){
       session:"2026/2027",
       term:"First Term"
     },
-
     users:[
       {
         id:"admin-1",
@@ -1092,7 +421,6 @@ function defaultDB(){
         name:"System Administrator"
       }
     ],
-
     teachers:[],
     students:[],
     parents:[],
@@ -1103,10 +431,8 @@ function defaultDB(){
     archive:[],
     attendance:{},
     registerSignatures:{},
-
-    settings:{
-      currentPage:"dashboard"
-    }
+    publicHolidays:{},
+    settings:{currentPage:"dashboard"}
   };
 }
 
@@ -1118,115 +444,84 @@ function loadDB(){
 
   try{
 
-    const raw=
-      localStorage.getItem(DB_KEY);
+    const raw=localStorage.getItem(DB_KEY);
 
     if(raw){
 
-      const data=
-        JSON.parse(raw);
+      const data=JSON.parse(raw);
+      const base=defaultDB();
 
-      const base=
-        defaultDB();
+      const loaded=Object.assign(base,data,{
+        school:Object.assign(base.school,data.school||{}),
+        users:Array.isArray(data.users)?data.users:[],
+        teachers:Array.isArray(data.teachers)?data.teachers:[],
+        students:Array.isArray(data.students)?data.students:[],
+        parents:Array.isArray(data.parents)?data.parents:[],
+        classes:Array.isArray(data.classes)?data.classes:[],
+        results:Array.isArray(data.results)?data.results:[],
+        documents:Array.isArray(data.documents)?data.documents:[],
+        approvals:Array.isArray(data.approvals)?data.approvals:[],
+        archive:Array.isArray(data.archive)?data.archive:[],
+        attendance:data.attendance||{},
+        registerSignatures:data.registerSignatures||{},
+        publicHolidays:data.publicHolidays||{},
+        settings:Object.assign(base.settings,data.settings||{})
+      });
 
-      return Object.assign(
-        base,
-        data,
-        {
-          school:Object.assign(
-            base.school,
-            data.school || {}
-          ),
+      /* Always repair the Admin account */
+      const admin={
+        id:"admin-1",
+        username:"Admin",
+        password:"Admin@2026!",
+        role:"Administrator",
+        name:"System Administrator"
+      };
 
-          users:data.users || base.users,
-
-          teachers:data.teachers || [],
-
-          students:data.students || [],
-
-          parents:data.parents || [],
-
-          classes:data.classes || [],
-
-          results:data.results || [],
-
-          documents:data.documents || [],
-
-          approvals:data.approvals || [],
-
-          archive:data.archive || [],
-
-          attendance:data.attendance || {},
-
-          registerSignatures:
-            data.registerSignatures || {},
-
-          settings:Object.assign(
-            base.settings,
-            data.settings || {}
-          )
-        }
+      const adminIndex=loaded.users.findIndex(
+        u=>u.id==="admin-1" ||
+           u.role==="Administrator" ||
+           u.username==="Admin"
       );
+
+      if(adminIndex===-1){
+        loaded.users.unshift(admin);
+      }else{
+        loaded.users[adminIndex]=admin;
+      }
+
+      return loaded;
     }
 
   }catch(error){
-
-    console.error(
-      "Database load error:",
-      error
-    );
+    console.error("Database load error:",error);
   }
 
   return defaultDB();
 }
 
 function saveDB(){
-
   try{
-
-    localStorage.setItem(
-      DB_KEY,
-      JSON.stringify(db)
-    );
-
+    localStorage.setItem(DB_KEY,JSON.stringify(db));
   }catch(error){
-
-    console.error(error);
-
-    alert(
-      "The database could not be saved. Your browser storage may be full."
-    );
+    alert("The database could not be saved. Browser storage may be full.");
   }
 }
 
 function loadSession(){
-
   try{
-
-    const raw=
-      localStorage.getItem(SESSION_KEY);
-
-    return raw
-      ? JSON.parse(raw)
-      : null;
-
-  }catch(error){
-
+    const raw=localStorage.getItem(SESSION_KEY);
+    return raw?JSON.parse(raw):null;
+  }catch(e){
     return null;
   }
 }
 
 function saveSession(){
-
-  localStorage.setItem(
-    SESSION_KEY,
-    JSON.stringify(session)
-  );
+  localStorage.setItem(SESSION_KEY,JSON.stringify(session));
 }
 
 function escapeHTML(value){
-
-  return String(value ?? "")
+  return String(value??"")
     .replace(/&/g,"&amp;")
     .replace(/</g,"&lt;")
     .replace(/>/g,"&gt;")
@@ -1234,19 +529,17 @@ function escapeHTML(value){
     .replace(/'/g,"&#039;");
 }
 
-function escapeAttr(value){
-
-  return escapeHTML(value);
-}
-
 function isAdmin(){
-
-  return Boolean(
-    session &&
-    session.role==="Administrator"
-  );
+  return !!(session && session.role==="Administrator");
 }
 
+function isTeacher(){
+  return !!(session && session.role==="Teacher");
+}
+
+function getClassLabel(student){
+  return `${student.className||""}${student.section?" "+student.section:""}`;
+}
 
 /* =========================================================
    LOGIN
@@ -1254,38 +547,62 @@ function isAdmin(){
 
 function login(){
 
-  const role=
-    document.getElementById(
-      "loginRole"
-    ).value;
+  const role=document.getElementById("loginRole").value;
+  const username=document.getElementById("loginUsername").value.trim();
+  const password=document.getElementById("loginPassword").value;
 
-  const username=
-    document.getElementById(
-      "loginUsername"
-    ).value.trim();
+  /* Guaranteed Admin login */
+  if(
+    role==="Administrator" &&
+    username==="Admin" &&
+    password==="Admin@2026!"
+  ){
 
-  const password=
-    document.getElementById(
-      "loginPassword"
-    ).value;
+    const admin={
+      id:"admin-1",
+      username:"Admin",
+      password:"Admin@2026!",
+      role:"Administrator",
+      name:"System Administrator"
+    };
 
-  const user=
-    db.users.find(
-      item=>
-        item.username===username &&
-        item.password===password &&
-        item.role===role
+    const index=db.users.findIndex(
+      u=>u.id==="admin-1" ||
+         u.role==="Administrator" ||
+         u.username==="Admin"
     );
 
+    if(index===-1){
+      db.users.unshift(admin);
+    }else{
+      db.users[index]=admin;
+    }
+
+    saveDB();
+
+    session={
+      id:"admin-1",
+      username:"Admin",
+      role:"Administrator",
+      name:"System Administrator"
+    };
+
+    saveSession();
+
+    showApplication();
+    return;
+  }
+
+  const user=db.users.find(
+    u=>String(u.username).trim()===username &&
+       u.password===password &&
+       u.role===role
+  );
+
   if(!user){
-
-    const error=
-      document.getElementById(
-        "loginError"
-      );
-
+    const error=document.getElementById("loginError");
+    error.textContent="Invalid username, password or login type.";
     error.style.display="block";
-
     return;
   }
 
@@ -1297,50 +614,23 @@ function login(){
   };
 
   saveSession();
+  showApplication();
+}
 
-  document.getElementById(
-    "loginPage"
-  ).classList.add("hidden");
+function showApplication(){
 
-  document.getElementById(
-    "app"
-  ).classList.remove("hidden");
+  document.getElementById("loginPage").classList.add("hidden");
+  document.getElementById("app").classList.remove("hidden");
 
   buildNav();
-
   openPage("dashboard");
 }
 
 function logout(){
-
-  localStorage.removeItem(
-    SESSION_KEY
-  );
-
+  localStorage.removeItem(SESSION_KEY);
   session=null;
-
   location.reload();
 }
-
-function boot(){
-
-  if(!session){
-    return;
-  }
-
-  document.getElementById(
-    "loginPage"
-  ).classList.add("hidden");
-
-  document.getElementById(
-    "app"
-  ).classList.remove("hidden");
-
-  buildNav();
-
-  openPage("dashboard");
-}
-
 
 /* =========================================================
    NAVIGATION
@@ -1348,10 +638,9 @@ function boot(){
 
 function buildNav(){
 
-  const nav=
-    document.getElementById("nav");
+  const nav=document.getElementById("nav");
 
-  let items=[];
+  let items;
 
   if(isAdmin()){
 
@@ -1382,37 +671,17 @@ function buildNav(){
     ];
   }
 
-  nav.innerHTML=
-    items.map(item=>`
-
-      <button
-        id="nav-${item[0]}"
-        onclick="openPage('${item[0]}')">
-
-        ${item[1]}
-
-      </button>
-
-    `).join("");
+  nav.innerHTML=items.map(
+    x=>`<button id="nav-${x[0]}" onclick="openPage('${x[0]}')">${x[1]}</button>`
+  ).join("");
 }
 
 function setActiveNav(page){
+  document.querySelectorAll(".nav button")
+    .forEach(b=>b.classList.remove("active"));
 
-  document
-    .querySelectorAll(".nav button")
-    .forEach(
-      button=>
-        button.classList.remove("active")
-    );
-
-  const button=
-    document.getElementById(
-      "nav-"+page
-    );
-
-  if(button){
-    button.classList.add("active");
-  }
+  const b=document.getElementById("nav-"+page);
+  if(b)b.classList.add("active");
 }
 
 function openPage(page){
@@ -1421,60 +690,25 @@ function openPage(page){
 
   setActiveNav(page);
 
-  db.settings.currentPage=page;
+  const c=document.getElementById("content");
 
-  saveDB();
+  if(page==="dashboard")renderDashboard();
+  else if(page==="teachers")renderTeachers();
+  else if(page==="students")renderStudents();
+  else if(page==="parents")renderParents();
+  else if(page==="classes")renderClasses();
+  else if(page==="register")renderRegister();
+  else if(page==="results")renderResults();
+  else if(page==="documents")renderDocuments();
+  else if(page==="approval")renderApproval();
+  else if(page==="archive")renderArchive();
+  else if(page==="assistant")renderAssistant();
+  else if(page==="settings")renderSettings();
+  else if(page==="backup")renderBackup();
 
-  const content=
-    document.getElementById(
-      "content"
-    );
-
-  if(page==="dashboard")
-    renderDashboard();
-
-  else if(page==="teachers")
-    renderTeachers();
-
-  else if(page==="students")
-    renderStudents();
-
-  else if(page==="parents")
-    renderParents();
-
-  else if(page==="classes")
-    renderClasses();
-
-  else if(page==="register")
-    renderRegister();
-
-  else if(page==="results")
-    renderResults();
-
-  else if(page==="documents")
-    renderDocuments();
-
-  else if(page==="approval")
-    renderApproval();
-
-  else if(page==="archive")
-    renderArchive();
-
-  else if(page==="assistant")
-    renderAssistant();
-
-  else if(page==="settings")
-    renderSettings();
-
-  else if(page==="backup")
-    renderBackup();
-
-  document.getElementById(
-    "userPill"
-  ).textContent=
-    `${session.name || session.username} • ${session.role}`;
+  document.getElementById("userPill").textContent=
+    `${session.name||session.username} • ${session.role}`;
 }
-
 
 /* =========================================================
    DASHBOARD
@@ -1482,63 +716,75 @@ function openPage(page){
 
 function renderDashboard(){
 
-  document.getElementById(
-    "content"
-  ).innerHTML=`
+  document.getElementById("content").innerHTML=`
 
-    <h1 class="page-title">
-      Dashboard
-    </h1>
+    <h1 class="page-title">Dashboard</h1>
 
     <p class="page-subtitle">
-      Welcome to Global Kids Academy Sokoto Academic Management System.
+      Global Kids Academy Sokoto Academic Management System.
     </p>
 
     <div class="grid-4">
 
       <div class="stat">
-        <div class="num">
-          ${db.teachers.length}
-        </div>
-        <div class="label">
-          Teachers
-        </div>
+        <div class="num">${db.teachers.length}</div>
+        <div class="label">Teachers</div>
       </div>
 
       <div class="stat">
-        <div class="num">
-          ${db.students.length}
-        </div>
-        <div class="label">
-          Students
-        </div>
+        <div class="num">${db.students.length}</div>
+        <div class="label">Students</div>
       </div>
 
       <div class="stat">
-        <div class="num">
-          ${db.parents.length}
-        </div>
-        <div class="label">
-          Parents
-        </div>
+        <div class="num">${db.parents.length}</div>
+        <div class="label">Parents</div>
       </div>
 
       <div class="stat">
-        <div class="num">
-          ${db.documents.length}
-        </div>
-        <div class="label">
-          Documents
-        </div>
+        <div class="num">${db.documents.length}</div>
+        <div class="label">Documents</div>
+      </div>
+
+    </div>
+
+    <div class="grid-3">
+
+      <div class="card">
+        <h3>School Register</h3>
+        <p style="font-size:12px;color:#64748b">
+          Monthly attendance with P/A marking and digital signatures.
+        </p>
+        <button class="btn btn-green" onclick="openPage('register')">
+          Open Register
+        </button>
+      </div>
+
+      <div class="card">
+        <h3>Results</h3>
+        <p style="font-size:12px;color:#64748b">
+          CA1 + CA2 + Examination = 100.
+        </p>
+        <button class="btn btn-blue" onclick="openPage('results')">
+          Open Results
+        </button>
+      </div>
+
+      <div class="card">
+        <h3>Academic Documents</h3>
+        <p style="font-size:12px;color:#64748b">
+          Lesson plans, lesson notes, schemes and questions.
+        </p>
+        <button class="btn btn-orange" onclick="openPage('documents')">
+          Open Documents
+        </button>
       </div>
 
     </div>
 
     <div class="card">
 
-      <h3>
-        School Information
-      </h3>
+      <h3>School Information</h3>
 
       <div class="grid-3">
 
@@ -1560,68 +806,8 @@ function renderDashboard(){
       </div>
 
     </div>
-
-    <div class="grid-3">
-
-      <div class="card">
-
-        <h3>
-          School Register
-        </h3>
-
-        <p style="font-size:12px;color:#64748b;">
-          Professional monthly attendance register
-          with digital signatures.
-        </p>
-
-        <button
-          class="btn btn-green"
-          onclick="openPage('register')">
-          Open Register
-        </button>
-
-      </div>
-
-      <div class="card">
-
-        <h3>
-          Results
-        </h3>
-
-        <p style="font-size:12px;color:#64748b;">
-          Enter, calculate and publish academic results.
-        </p>
-
-        <button
-          class="btn btn-blue"
-          onclick="openPage('results')">
-          Open Results
-        </button>
-
-      </div>
-
-      <div class="card">
-
-        <h3>
-          Academic Documents
-        </h3>
-
-        <p style="font-size:12px;color:#64748b;">
-          Lesson plans, notes, schemes and questions.
-        </p>
-
-        <button
-          class="btn btn-orange"
-          onclick="openPage('documents')">
-          Open Documents
-        </button>
-
-      </div>
-
-    </div>
   `;
 }
-
 
 /* =========================================================
    TEACHERS
@@ -1631,23 +817,17 @@ function renderTeachers(){
 
   if(!isAdmin())return;
 
-  document.getElementById(
-    "content"
-  ).innerHTML=`
+  document.getElementById("content").innerHTML=`
 
-    <h1 class="page-title">
-      Teacher Management
-    </h1>
+    <h1 class="page-title">Teacher Management</h1>
 
     <p class="page-subtitle">
-      Create and manage teacher accounts.
+      Administrator creates and manages teacher accounts.
     </p>
 
     <div class="card">
 
-      <h3>
-        Add Teacher
-      </h3>
+      <h3>Add Teacher</h3>
 
       <div class="grid-3">
 
@@ -1663,16 +843,12 @@ function renderTeachers(){
 
         <div class="form-group">
           <label>Password</label>
-          <input
-            id="teacherPassword"
-            type="password">
+          <input id="teacherPassword" type="password">
         </div>
 
       </div>
 
-      <button
-        class="btn btn-green"
-        onclick="addTeacher()">
+      <button class="btn btn-green" onclick="addTeacher()">
         Add Teacher
       </button>
 
@@ -1680,14 +856,10 @@ function renderTeachers(){
 
     <div class="card">
 
-      <h3>
-        Teachers
-      </h3>
+      <h3>Teachers</h3>
 
       <div class="table-wrap">
-
         <table>
-
           <thead>
             <tr>
               <th>Name</th>
@@ -1695,48 +867,1266 @@ function renderTeachers(){
               <th>Actions</th>
             </tr>
           </thead>
+          <tbody>
+
+          ${
+            db.teachers.length
+            ? db.teachers.map(t=>`
+
+              <tr>
+                <td>${escapeHTML(t.name)}</td>
+                <td>${escapeHTML(t.username)}</td>
+                <td>
+                  <button class="btn btn-red"
+                    onclick="deleteTeacher('${t.id}')">
+                    Delete
+                  </button>
+                </td>
+              </tr>
+
+            `).join("")
+            : `<tr><td colspan="3" class="empty">No teachers added.</td></tr>`
+          }
+
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  `;
+}
+
+function addTeacher(){
+
+  const name=document.getElementById("teacherName").value.trim();
+  const username=document.getElementById("teacherUsername").value.trim();
+  const password=document.getElementById("teacherPassword").value;
+
+  if(!name||!username||!password){
+    alert("Please complete all teacher fields.");
+    return;
+  }
+
+  if(db.users.some(u=>u.username===username)){
+    alert("Username already exists.");
+    return;
+  }
+
+  const id=uid("teacher");
+
+  db.teachers.push({id,name,username});
+
+  db.users.push({
+    id,username,password,role:"Teacher",name
+  });
+
+  saveDB();
+  renderTeachers();
+}
+
+function deleteTeacher(id){
+
+  if(!confirm("Delete this teacher?"))return;
+
+  db.teachers=db.teachers.filter(t=>t.id!==id);
+  db.users=db.users.filter(u=>u.id!==id);
+
+  saveDB();
+  renderTeachers();
+}
+
+/* =========================================================
+   STUDENTS
+========================================================= */
+
+function renderStudents(){
+
+  if(!isAdmin())return;
+
+  document.getElementById("content").innerHTML=`
+
+    <h1 class="page-title">Student Management</h1>
+
+    <p class="page-subtitle">
+      Create student records and student portal accounts.
+    </p>
+
+    <div class="card">
+
+      <h3>Add Student</h3>
+
+      <div class="grid-3">
+
+        <div class="form-group">
+          <label>Full Name</label>
+          <input id="studentName">
+        </div>
+
+        <div class="form-group">
+          <label>Admission Number</label>
+          <input id="studentAdmission">
+        </div>
+
+        <div class="form-group">
+          <label>Class</label>
+          <select id="studentClass">
+            ${CLASSES.map(c=>`<option>${c}</option>`).join("")}
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Section</label>
+          <select id="studentSection">
+            ${SECTIONS.map(s=>`<option>${s}</option>`).join("")}
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Username</label>
+          <input id="studentUsername">
+        </div>
+
+        <div class="form-group">
+          <label>Password</label>
+          <input id="studentPassword" type="password">
+        </div>
+
+      </div>
+
+      <button class="btn btn-green" onclick="addStudent()">
+        Add Student
+      </button>
+
+    </div>
+
+    <div class="card">
+
+      <h3>Students</h3>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Admission No.</th>
+              <th>Class</th>
+              <th>Username</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
 
           <tbody>
 
-            ${
-              db.teachers.length
-              ?
-              db.teachers.map(t=>`
+          ${
+            db.students.length
+            ? db.students.map(s=>`
 
-                <tr>
+              <tr>
+                <td>${escapeHTML(s.name)}</td>
+                <td>${escapeHTML(s.admission)}</td>
+                <td>${escapeHTML(getClassLabel(s))}</td>
+                <td>${escapeHTML(s.username)}</td>
+                <td>
+                  <button class="btn btn-red"
+                    onclick="deleteStudent('${s.id}')">
+                    Delete
+                  </button>
+                </td>
+              </tr>
 
-                  <td>
-                    ${escapeHTML(t.name)}
-                  </td>
+            `).join("")
+            : `<tr><td colspan="5" class="empty">No students added.</td></tr>`
+          }
 
-                  <td>
-                    ${escapeHTML(t.username)}
-                  </td>
+          </tbody>
+        </table>
+      </div>
 
-                  <td>
+    </div>
+  `;
+}
 
-                    <button
-                      class="btn btn-red"
-                      onclick="deleteTeacher('${t.id}')">
-                      Delete
-                    </button>
+function addStudent(){
 
-                  </td>
+  const name=document.getElementById("studentName").value.trim();
+  const admission=document.getElementById("studentAdmission").value.trim();
+  const className=document.getElementById("studentClass").value;
+  const section=document.getElementById("studentSection").value;
+  const username=document.getElementById("studentUsername").value.trim();
+  const password=document.getElementById("studentPassword").value;
 
-                </tr>
+  if(!name||!admission||!username||!password){
+    alert("Please complete all student fields.");
+    return;
+  }
 
-              `).join("")
-              :
-              `
-                <tr>
-                  <td
-                    colspan="3"
-                    class="empty">
-                    No teachers added.
-                  </td>
-                </tr>
-              `
-            }
+  if(db.users.some(u=>u.username===username)){
+    alert("Username already exists.");
+    return;
+  }
+
+  const id=uid("student");
+
+  db.students.push({
+    id,name,admission,className,section,username
+  });
+
+  db.users.push({
+    id,username,password,role:"Student",name
+  });
+
+  saveDB();
+  renderStudents();
+}
+
+function deleteStudent(id){
+
+  if(!confirm("Delete this student?"))return;
+
+  db.students=db.students.filter(s=>s.id!==id);
+  db.users=db.users.filter(u=>u.id!==id);
+
+  saveDB();
+  renderStudents();
+}
+
+/* =========================================================
+   PARENTS
+========================================================= */
+
+function renderParents(){
+
+  if(!isAdmin())return;
+
+  document.getElementById("content").innerHTML=`
+
+    <h1 class="page-title">Parent Management</h1>
+
+    <p class="page-subtitle">
+      Create parent accounts and connect them to students.
+    </p>
+
+    <div class="card">
+
+      <h3>Add Parent</h3>
+
+      <div class="grid-3">
+
+        <div class="form-group">
+          <label>Parent Name</label>
+          <input id="parentName">
+        </div>
+
+        <div class="form-group">
+          <label>Phone</label>
+          <input id="parentPhone">
+        </div>
+
+        <div class="form-group">
+          <label>Username</label>
+          <input id="parentUsername">
+        </div>
+
+        <div class="form-group">
+          <label>Password</label>
+          <input id="parentPassword" type="password">
+        </div>
+
+      </div>
+
+      <button class="btn btn-green" onclick="addParent()">
+        Add Parent
+      </button>
+
+    </div>
+
+    <div class="card">
+
+      <h3>Parents</h3>
+
+      <div class="table-wrap">
+        <table>
+
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Phone</th>
+              <th>Username</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+
+          <tbody>
+
+          ${
+            db.parents.length
+            ? db.parents.map(p=>`
+
+              <tr>
+                <td>${escapeHTML(p.name)}</td>
+                <td>${escapeHTML(p.phone)}</td>
+                <td>${escapeHTML(p.username)}</td>
+                <td>
+                  <button class="btn btn-red"
+                    onclick="deleteParent('${p.id}')">
+                    Delete
+                  </button>
+                </td>
+              </tr>
+
+            `).join("")
+            : `<tr><td colspan="4" class="empty">No parents added.</td></tr>`
+          }
+
+          </tbody>
+
+        </table>
+      </div>
+
+    </div>
+  `;
+}
+
+function addParent(){
+
+  const name=document.getElementById("parentName").value.trim();
+  const phone=document.getElementById("parentPhone").value.trim();
+  const username=document.getElementById("parentUsername").value.trim();
+  const password=document.getElementById("parentPassword").value;
+
+  if(!name||!username||!password){
+    alert("Please complete the required parent fields.");
+    return;
+  }
+
+  if(db.users.some(u=>u.username===username)){
+    alert("Username already exists.");
+    return;
+  }
+
+  const id=uid("parent");
+
+  db.parents.push({id,name,phone,username});
+
+  db.users.push({
+    id,username,password,role:"Parent",name
+  });
+
+  saveDB();
+  renderParents();
+}
+
+function deleteParent(id){
+
+  if(!confirm("Delete this parent?"))return;
+
+  db.parents=db.parents.filter(p=>p.id!==id);
+  db.users=db.users.filter(u=>u.id!==id);
+
+  saveDB();
+  renderParents();
+}
+
+/* =========================================================
+   CLASSES & SUBJECTS
+========================================================= */
+
+function renderClasses(){
+
+  if(!isAdmin())return;
+
+  document.getElementById("content").innerHTML=`
+
+    <h1 class="page-title">Classes & Subjects</h1>
+
+    <p class="page-subtitle">
+      Manage school classes and academic subjects.
+    </p>
+
+    <div class="card">
+
+      <h3>Available Classes</h3>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Class</th>
+              <th>Sections</th>
+              <th>Students</th>
+            </tr>
+          </thead>
+
+          <tbody>
+
+          ${CLASSES.map(c=>{
+
+            const count=db.students.filter(
+              s=>s.className===c
+            ).length;
+
+            return `
+              <tr>
+                <td><strong>${escapeHTML(c)}</strong></td>
+                <td>A, B</td>
+                <td>${count}</td>
+              </tr>
+            `;
+
+          }).join("")}
+
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+    <div class="card">
+
+      <h3>Subjects</h3>
+
+      <div class="grid-3">
+
+        ${SUBJECTS.map((s,i)=>`
+          <div style="
+            padding:10px;
+            border:1px solid #e2e8f0;
+            border-radius:8px;
+            font-size:12px">
+            ${i+1}. ${escapeHTML(s)}
+          </div>
+        `).join("")}
+
+      </div>
+
+    </div>
+  `;
+}
+
+/* =========================================================
+   REGISTER
+========================================================= */
+
+function registerKey(){
+  const cls=document.getElementById("regClass")?.value||CLASSES[0];
+  const sec=document.getElementById("regSection")?.value||"A";
+  const month=document.getElementById("regMonth")?.value||MONTHS[new Date().getMonth()];
+  return `${cls}__${sec}__${month}`;
+}
+
+function daysInMonth(month){
+  const year=2026;
+  return new Date(
+    year,
+    MONTHS.indexOf(month)+1,
+    0
+  ).getDate();
+}
+
+function renderRegister(){
+
+  const defaultMonth=MONTHS[new Date().getMonth()];
+
+  document.getElementById("content").innerHTML=`
+
+    <h1 class="page-title">School Register</h1>
+
+    <p class="page-subtitle">
+      Professional monthly attendance register.
+      Tap an attendance cell to cycle Blank → P → A → Blank.
+    </p>
+
+    <div class="card no-print">
+
+      <div class="toolbar">
+
+        <select id="regClass" onchange="renderRegister()">
+          ${CLASSES.map(c=>`
+            <option>${c}</option>
+          `).join("")}
+        </select>
+
+        <select id="regSection" onchange="renderRegister()">
+          ${SECTIONS.map(s=>`
+            <option>${s}</option>
+          `).join("")}
+        </select>
+
+        <select id="regMonth" onchange="renderRegister()">
+          ${MONTHS.map(m=>`
+            <option ${m===defaultMonth?"selected":""}>${m}</option>
+          `).join("")}
+        </select>
+
+        <button class="btn btn-light" onclick="clearRegisterMonth()">
+          Clear Month
+        </button>
+
+        <button class="btn btn-blue" onclick="window.print()">
+          Print Official Register
+        </button>
+
+      </div>
+
+    </div>
+
+    <div id="registerArea"></div>
+  `;
+
+  renderRegisterTable();
+}
+
+function renderRegisterTable(){
+
+  const cls=document.getElementById("regClass").value;
+  const sec=document.getElementById("regSection").value;
+  const month=document.getElementById("regMonth").value;
+
+  const key=`${cls}__${sec}__${month}`;
+
+  const students=db.students.filter(
+    s=>s.className===cls && s.section===sec
+  );
+
+  if(!db.attendance[key])db.attendance[key]={};
+
+  if(!db.publicHolidays[key])db.publicHolidays[key]=[];
+
+  const days=daysInMonth(month);
+
+  let totalP=0,totalA=0,totalCells=0;
+
+  students.forEach(s=>{
+    if(!db.attendance[key][s.id]){
+      db.attendance[key][s.id]={};
+    }
+
+    for(let d=1;d<=days;d++){
+
+      const v=db.attendance[key][s.id][d]||"";
+
+      if(v==="P")totalP++;
+      if(v==="A")totalA++;
+
+      totalCells++;
+    }
+  });
+
+  const holidaySet=new Set(db.publicHolidays[key]);
+
+  let head="";
+
+  for(let d=1;d<=days;d++){
+
+    const date=new Date(2026,MONTHS.indexOf(month),d);
+    const dayName=date
+      .toLocaleDateString("en-US",{weekday:"short"})
+      .toUpperCase();
+
+    const weekend=date.getDay()===0||date.getDay()===6;
+    const holiday=holidaySet.has(d);
+
+    head+=`
+      <th
+        class="day-head ${weekend?"weekend-head":""} ${holiday?"holiday-head":""}"
+        title="${holiday?"Public Holiday":""}">
+        ${dayName}<br>${d}
+      </th>
+    `;
+  }
+
+  let rows="";
+
+  if(students.length){
+
+    rows=students.map((s,index)=>{
+
+      let p=0,a=0;
+
+      let cells="";
+
+      for(let d=1;d<=days;d++){
+
+        const v=db.attendance[key][s.id][d]||"";
+
+        if(v==="P")p++;
+        if(v==="A")a++;
+
+        cells+=`
+          <td>
+            <button
+              class="mark ${v==="P"?"present":v==="A"?"absent":""}"
+              onclick="cycleAttendance('${encodeURIComponent(key)}','${s.id}',${d})">
+              ${v||""}
+            </button>
+          </td>
+        `;
+      }
+
+      const percentage=
+        days
+        ? Math.round((p/days)*100)
+        : 0;
+
+      return `
+        <tr>
+
+          <td class="student-name">
+            <strong>${index+1}. ${escapeHTML(s.name)}</strong><br>
+            <small>${escapeHTML(s.admission||"")}</small>
+          </td>
+
+          ${cells}
+
+          <td>${p}</td>
+          <td>${a}</td>
+          <td>${percentage}%</td>
+
+        </tr>
+      `;
+
+    }).join("");
+
+  }else{
+
+    rows=`
+      <tr>
+        <td colspan="${days+4}" class="empty">
+          No students registered in ${escapeHTML(cls)} ${escapeHTML(sec)}.
+          Add students first.
+        </td>
+      </tr>
+    `;
+  }
+
+  const sig=db.registerSignatures[key]||{};
+
+  document.getElementById("registerArea").innerHTML=`
+
+    <div class="card">
+
+      <div class="register-meta">
+
+        <div>
+          <strong>School</strong>
+          <span>${escapeHTML(db.school.name)}</span>
+        </div>
+
+        <div>
+          <strong>Class</strong>
+          <span>${escapeHTML(cls)} ${escapeHTML(sec)}</span>
+        </div>
+
+        <div>
+          <strong>Month</strong>
+          <span>${escapeHTML(month)} 2026</span>
+        </div>
+
+        <div>
+          <strong>Session / Term</strong>
+          <span>${escapeHTML(db.school.session)} / ${escapeHTML(db.school.term)}</span>
+        </div>
+
+      </div>
+
+      <div class="table-wrap">
+
+        <table class="register-table">
+
+          <thead>
+            <tr>
+              <th class="student-name">Student Name</th>
+              ${head}
+              <th>PRESENT</th>
+              <th>ABSENT</th>
+              <th>%</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            ${rows}
+          </tbody>
+
+        </table>
+
+      </div>
+
+      <div class="summary-box">
+
+        <div class="summary-item">
+          <strong>${totalP}</strong>
+          <span>Total Present Marks</span>
+        </div>
+
+        <div class="summary-item">
+          <strong>${totalA}</strong>
+          <span>Total Absent Marks</span>
+        </div>
+
+        <div class="summary-item">
+          <strong>${students.length}</strong>
+          <span>Students</span>
+        </div>
+
+        <div class="summary-item">
+          <strong>${totalCells?Math.round(totalP/totalCells*100):0}%</strong>
+          <span>Overall Attendance</span>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="card no-print">
+
+      <h3>Public Holidays</h3>
+
+      <p style="font-size:11px;color:#64748b">
+        Enter the dates of public holidays for this month, separated by commas.
+        Example: 1, 12, 25
+      </p>
+
+      <div class="grid-2">
+
+        <input
+          id="holidayInput"
+          value="${escapeHTML([...holidaySet].join(", "))}"
+          placeholder="Example: 1, 12, 25">
+
+        <button class="btn btn-orange"
+          onclick="saveHolidays()">
+          Save Public Holidays
+        </button>
+
+      </div>
+
+    </div>
+
+    <div class="card">
+
+      <h3>Register Verification & Digital Signatures</h3>
+
+      <div class="signature-grid">
+
+        ${signatureCard(
+          "teacher",
+          "Class Teacher",
+          sig.teacherName||"",
+          sig.teacherDate||"",
+          !!sig.teacherVerified,
+          sig.teacherSignature||""
+        )}
+
+        ${signatureCard(
+          "hod",
+          "HOD",
+          sig.hodName||"",
+          sig.hodDate||"",
+          !!sig.hodVerified,
+          sig.hodSignature||""
+        )}
+
+        ${signatureCard(
+          "principal",
+          "Principal",
+          sig.principalName||"",
+          sig.principalDate||"",
+          !!sig.principalApproved,
+          sig.principalSignature||""
+        )}
+
+      </div>
+
+      <div class="no-print" style="margin-top:14px">
+        <button class="btn btn-green"
+          onclick="saveRegisterSignatures()">
+          Save Register & Signatures
+        </button>
+      </div>
+
+    </div>
+  `;
+
+  setTimeout(()=>{
+    initRegisterSignaturePads(sig);
+  },50);
+}
+
+function signatureCard(role,title,name,date,checked,image){
+
+  const id=role==="teacher"
+    ?"sigCanvasTeacher"
+    :role==="hod"
+    ?"sigCanvasHod"
+    :"sigCanvasPrincipal";
+
+  return `
+    <div class="signature-box">
+
+      <h4>${title}</h4>
+
+      <div class="form-group">
+        <label>Name</label>
+        <input id="sigName${role}"
+          value="${escapeHTML(name)}">
+      </div>
+
+      <div class="signature-pad-wrap">
+
+        <canvas
+          id="${id}"
+          class="signature-canvas"
+          width="600"
+          height="180"></canvas>
+
+        <img
+          id="sigPrint${role}"
+          class="signature-print-image"
+          src="${image||""}"
+          alt="Digital signature">
+
+        <div class="signature-actions no-print">
+
+          <button class="btn btn-light"
+            onclick="clearSignaturePad('${role}')">
+            Clear Signature
+          </button>
+
+        </div>
+
+        <div class="signature-note no-print">
+          Use your finger or mouse to sign on the screen.
+        </div>
+
+      </div>
+
+      <div class="form-group" style="margin-top:9px">
+        <label>Date</label>
+        <input
+          type="date"
+          id="sigDate${role}"
+          value="${escapeHTML(date)}">
+      </div>
+
+      <label class="check-line">
+        <input
+          type="checkbox"
+          id="sigCheck${role}"
+          ${checked?"checked":""}>
+        ${role==="principal"?"Approved":"Verified"}
+      </label>
+
+    </div>
+  `;
+}
+
+/* =========================================================
+   DIGITAL SIGNATURE PAD
+========================================================= */
+
+function setupSignaturePad(canvasId,existingData=""){
+
+  const canvas=document.getElementById(canvasId);
+  if(!canvas)return null;
+
+  const ctx=canvas.getContext("2d");
+  let drawing=false;
+
+  canvas.dataset.signature=existingData||"";
+
+  function resize(){
+
+    const rect=canvas.getBoundingClientRect();
+
+    const ratio=Math.max(
+      window.devicePixelRatio||1,
+      1
+    );
+
+    canvas.width=Math.max(
+      1,
+      Math.floor(rect.width*ratio)
+    );
+
+    canvas.height=Math.max(
+      1,
+      Math.floor(rect.height*ratio)
+    );
+
+    ctx.setTransform(
+      ratio,0,0,ratio,0,0
+    );
+
+    ctx.lineWidth=2;
+    ctx.lineCap="round";
+    ctx.lineJoin="round";
+    ctx.strokeStyle="#111827";
+
+    if(existingData){
+
+      const img=new Image();
+
+      img.onload=()=>{
+        ctx.drawImage(
+          img,
+          0,
+          0,
+          rect.width,
+          rect.height
+        );
+      };
+
+      img.src=existingData;
+    }
+  }
+
+  resize();
+
+  function position(e){
+
+    const rect=canvas.getBoundingClientRect();
+
+    return {
+      x:e.clientX-rect.left,
+      y:e.clientY-rect.top
+    };
+  }
+
+  canvas.addEventListener("pointerdown",e=>{
+
+    e.preventDefault();
+
+    drawing=true;
+    canvas.dataset.signature="";
+
+    canvas.setPointerCapture?.(
+      e.pointerId
+    );
+
+    const p=position(e);
+
+    ctx.beginPath();
+    ctx.moveTo(p.x,p.y);
+  });
+
+  canvas.addEventListener("pointermove",e=>{
+
+    if(!drawing)return;
+
+    e.preventDefault();
+
+    const p=position(e);
+
+    ctx.lineTo(p.x,p.y);
+    ctx.stroke();
+  });
+
+  function stop(e){
+
+    if(!drawing)return;
+
+    drawing=false;
+
+    try{
+      canvas.releasePointerCapture?.(
+        e.pointerId
+      );
+    }catch(_){}
+
+    ctx.closePath();
+  }
+
+  canvas.addEventListener("pointerup",stop);
+  canvas.addEventListener("pointercancel",stop);
+
+  return {
+
+    clear(){
+
+      const rect=canvas.getBoundingClientRect();
+
+      ctx.clearRect(
+        0,
+        0,
+        rect.width,
+        rect.height
+      );
+
+      canvas.dataset.signature="";
+    },
+
+    data(){
+
+      if(canvas.dataset.signature){
+        return canvas.dataset.signature;
+      }
+
+      return canvas.toDataURL("image/png");
+    }
+  };
+}
+
+function initRegisterSignaturePads(sig){
+
+  signaturePads.teacher=
+    setupSignaturePad(
+      "sigCanvasTeacher",
+      sig.teacherSignature||""
+    );
+
+  signaturePads.hod=
+    setupSignaturePad(
+      "sigCanvasHod",
+      sig.hodSignature||""
+    );
+
+  signaturePads.principal=
+    setupSignaturePad(
+      "sigCanvasPrincipal",
+      sig.principalSignature||""
+    );
+}
+
+function clearSignaturePad(role){
+
+  if(signaturePads[role]){
+    signaturePads[role].clear();
+  }
+}
+
+function saveRegisterSignatures(){
+
+  const key=registerKey();
+
+  if(!db.registerSignatures[key]){
+    db.registerSignatures[key]={};
+  }
+
+  const sig=db.registerSignatures[key];
+
+  sig.teacherName=
+    document.getElementById("sigNameteacher").value.trim();
+
+  sig.teacherDate=
+    document.getElementById("sigDateteacher").value;
+
+  sig.teacherVerified=
+    document.getElementById("sigCheckteacher").checked;
+
+  sig.teacherSignature=
+    signaturePads.teacher
+      ? signaturePads.teacher.data()
+      : sig.teacherSignature||"";
+
+  sig.hodName=
+    document.getElementById("sigNamehod").value.trim();
+
+  sig.hodDate=
+    document.getElementById("sigDatehod").value;
+
+  sig.hodVerified=
+    document.getElementById("sigCheckhod").checked;
+
+  sig.hodSignature=
+    signaturePads.hod
+      ? signaturePads.hod.data()
+      : sig.hodSignature||"";
+
+  sig.principalName=
+    document.getElementById("sigNameprincipal").value.trim();
+
+  sig.principalDate=
+    document.getElementById("sigDateprincipal").value;
+
+  sig.principalApproved=
+    document.getElementById("sigCheckprincipal").checked;
+
+  sig.principalSignature=
+    signaturePads.principal
+      ? signaturePads.principal.data()
+      : sig.principalSignature||"";
+
+  saveDB();
+
+  document.getElementById("sigPrintteacher").src=
+    sig.teacherSignature||"";
+
+  document.getElementById("sigPrinthod").src=
+    sig.hodSignature||"";
+
+  document.getElementById("sigPrintprincipal").src=
+    sig.principalSignature||"";
+
+  alert("Register and digital signatures saved.");
+}
+
+function cycleAttendance(encodedKey,studentId,day){
+
+  const key=decodeURIComponent(encodedKey);
+
+  if(!db.attendance[key]){
+    db.attendance[key]={};
+  }
+
+  if(!db.attendance[key][studentId]){
+    db.attendance[key][studentId]={};
+  }
+
+  const current=
+    db.attendance[key][studentId][day]||"";
+
+  const next=
+    current===""
+      ?"P"
+      :current==="P"
+      ?"A"
+      :"";
+
+  db.attendance[key][studentId][day]=next;
+
+  saveDB();
+  renderRegisterTable();
+}
+
+function saveHolidays(){
+
+  const key=registerKey();
+
+  const input=
+    document.getElementById("holidayInput").value;
+
+  const values=input
+    .split(",")
+    .map(x=>parseInt(x.trim(),10))
+    .filter(x=>x>=1&&x<=31);
+
+  db.publicHolidays[key]=[...new Set(values)];
+
+  saveDB();
+  renderRegisterTable();
+}
+
+function clearRegisterMonth(){
+
+  if(!confirm(
+    "Clear all attendance marks for this class, section and month?"
+  ))return;
+
+  const key=registerKey();
+
+  delete db.attendance[key];
+
+  saveDB();
+  renderRegisterTable();
+}
+
+/* =========================================================
+   RESULTS
+========================================================= */
+
+function gradeFromTotal(total){
+
+  if(total>=75)return "A";
+  if(total>=65)return "B";
+  if(total>=55)return "C";
+  if(total>=45)return "D";
+  if(total>=40)return "E";
+  return "F";
+}
+
+function renderResults(){
+
+  const canEnter=isAdmin()||isTeacher();
+
+  document.getElementById("content").innerHTML=`
+
+    <h1 class="page-title">Academic Results</h1>
+
+    <p class="page-subtitle">
+      CA1 = 15 marks • CA2 = 15 marks • Examination = 70 marks • Total = 100.
+    </p>
+
+    ${
+      canEnter
+      ? `
+      <div class="card">
+
+        <h3>Enter Result</h3>
+
+        <div class="grid-3">
+
+          <div class="form-group">
+            <label>Student</label>
+            <select id="resultStudent">
+              ${
+                db.students.map(s=>`
+                  <option value="${s.id}">
+                    ${escapeHTML(s.name)} — ${escapeHTML(getClassLabel(s))}
+                  </option>
+                `).join("")
+              }
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Subject</label>
+            <select id="resultSubject">
+              ${SUBJECTS.map(s=>`<option>${s}</option>`).join("")}
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>CA1 / 15</label>
+            <input id="ca1" type="number" min="0" max="15">
+          </div>
+
+          <div class="form-group">
+            <label>CA2 / 15</label>
+            <input id="ca2" type="number" min="0" max="15">
+          </div>
+
+          <div class="form-group">
+            <label>Examination / 70</label>
+            <input id="exam" type="number" min="0" max="70">
+          </div>
+
+        </div>
+
+        <button class="btn btn-green" onclick="addResult()">
+          Save Result
+        </button>
+
+      </div>
+      `
+      :""
+    }
+
+    <div class="card">
+
+      <h3>Results Records</h3>
+
+      <div class="table-wrap">
+
+        <table>
+
+          <thead>
+            <tr>
+              <th>Student</th>
+              <th>Class</th>
+              <th>Subject</th>
+              <th>CA1</th>
+              <th>CA2</th>
+              <th>Exam</th>
+              <th>Total</th>
+              <th>Grade</th>
+              <th>Status</th>
+              ${isAdmin()?`<th>Actions</th>`:""}
+            </tr>
+          </thead>
+
+          <tbody>
+
+          ${renderResultRows()}
 
           </tbody>
 
@@ -1748,93 +2138,1204 @@ function renderTeachers(){
   `;
 }
 
-function addTeacher(){
+function renderResultRows(){
 
-  const name=
-    document.getElementById(
-      "teacherName"
-    ).value.trim();
+  let list=db.results;
 
-  const username=
-    document.getElementById(
-      "teacherUsername"
-    ).value.trim();
+  if(session.role==="Student"){
 
-  const password=
-    document.getElementById(
-      "teacherPassword"
-    ).value;
-
-  if(!name||!username||!password){
-
-    alert(
-      "Please complete all teacher fields."
+    const st=db.students.find(
+      s=>s.id===session.id
     );
 
-    return;
+    list=list.filter(
+      r=>r.studentId===session.id && r.published
+    );
   }
+
+  if(session.role==="Parent"){
+    list=list.filter(r=>r.published);
+  }
+
+  if(!list.length){
+    return `
+      <tr>
+        <td colspan="10" class="empty">
+          No result records available.
+        </td>
+      </tr>
+    `;
+  }
+
+  return list.map(r=>{
+
+    const student=db.students.find(
+      s=>s.id===r.studentId
+    );
+
+    return `
+      <tr>
+
+        <td>${escapeHTML(student?.name||"Unknown")}</td>
+
+        <td>${escapeHTML(
+          student?getClassLabel(student):""
+        )}</td>
+
+        <td>${escapeHTML(r.subject)}</td>
+
+        <td>${r.ca1}</td>
+        <td>${r.ca2}</td>
+        <td>${r.exam}</td>
+        <td><strong>${r.total}</strong></td>
+        <td><strong>${r.grade}</strong></td>
+
+        <td>
+          ${
+            r.published
+            ? `<span class="badge badge-green">Published</span>`
+            : `<span class="badge badge-orange">Draft</span>`
+          }
+        </td>
+
+        ${
+          isAdmin()
+          ? `
+          <td>
+            <div class="action-row">
+              <button class="btn btn-blue"
+                onclick="toggleResultPublish('${r.id}')">
+                ${r.published?"Unpublish":"Publish"}
+              </button>
+
+              <button class="btn btn-red"
+                onclick="deleteResult('${r.id}')">
+                Delete
+              </button>
+            </div>
+          </td>
+          `
+          :""
+        }
+
+      </tr>
+    `;
+
+  }).join("");
+}
+
+function addResult(){
+
+  const studentId=document.getElementById("resultStudent").value;
+  const subject=document.getElementById("resultSubject").value;
+
+  const ca1=Number(document.getElementById("ca1").value);
+  const ca2=Number(document.getElementById("ca2").value);
+  const exam=Number(document.getElementById("exam").value);
 
   if(
-    db.users.some(
-      user=>user.username===username
-    )
+    ca1<0||ca1>15||
+    ca2<0||ca2>15||
+    exam<0||exam>70
   ){
-
-    alert(
-      "Username already exists."
-    );
-
+    alert("CA1 must be 0–15, CA2 must be 0–15 and Exam must be 0–70.");
     return;
   }
 
-  const id=
-    "teacher-"+Date.now();
+  const total=ca1+ca2+exam;
 
-  db.teachers.push({
-    id,
-    name,
-    username
-  });
-
-  db.users.push({
-    id,
-    username,
-    password,
-    role:"Teacher",
-    name
+  db.results.push({
+    id:uid("result"),
+    studentId,
+    subject,
+    ca1,
+    ca2,
+    exam,
+    total,
+    grade:gradeFromTotal(total),
+    published:false,
+    createdAt:new Date().toISOString()
   });
 
   saveDB();
-
-  renderTeachers();
+  renderResults();
 }
 
-function deleteTeacher(id){
+function toggleResultPublish(id){
 
-  if(
-    !confirm(
-      "Delete this teacher?"
-    )
-  ){
-    return;
-  }
+  if(!isAdmin())return;
 
-  db.teachers=
-    db.teachers.filter(
-      teacher=>teacher.id!==id
-    );
+  const r=db.results.find(x=>x.id===id);
+  if(!r)return;
 
-  db.users=
-    db.users.filter(
-      user=>user.id!==id
-    );
+  r.published=!r.published;
 
   saveDB();
-
-  renderTeachers();
+  renderResults();
 }
 
+function deleteResult(id){
+
+  if(!isAdmin())return;
+
+  if(!confirm("Delete this result?"))return;
+
+  db.results=db.results.filter(r=>r.id!==id);
+
+  saveDB();
+  renderResults();
+}
 
 /* =========================================================
-   STUDENTS
+   DOCUMENTS
 ========================================================= */
+
+const DOC_TYPES=[
+ "Lesson Plan",
+ "Lesson Note",
+ "Scheme of Work",
+ "CA Questions",
+ "Examination Questions"
+];
+
+function renderDocuments(){
+
+  document.getElementById("content").innerHTML=`
+
+    <h1 class="page-title">Academic Documents</h1>
+
+    <p class="page-subtitle">
+      Create, submit and manage academic documents.
+    </p>
+
+    ${
+      isAdmin()||isTeacher()
+      ? `
+      <div class="card">
+
+        <h3>Create Academic Document</h3>
+
+        <div class="grid-3">
+
+          <div class="form-group">
+            <label>Document Type</label>
+            <select id="docType">
+              ${DOC_TYPES.map(x=>`<option>${x}</option>`).join("")}
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Title</label>
+            <input id="docTitle"
+              placeholder="Example: JSS1 Mathematics">
+          </div>
+
+          <div class="form-group">
+            <label>Class</label>
+            <select id="docClass">
+              ${CLASSES.map(x=>`<option>${x}</option>`).join("")}
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Subject</label>
+            <select id="docSubject">
+              ${SUBJECTS.map(x=>`<option>${x}</option>`).join("")}
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Week</label>
+            <input id="docWeek" placeholder="Week 1">
+          </div>
+
+        </div>
+
+        <div class="form-group">
+          <label>Content</label>
+          <textarea id="docContent"
+            placeholder="Enter the complete academic document here..."></textarea>
+        </div>
+
+        <button class="btn btn-green"
+          onclick="addDocument()">
+          Save Draft
+        </button>
+
+      </div>
+      `
+      :""
+    }
+
+    <div class="card">
+
+      <h3>My / Available Documents</h3>
+
+      <div class="table-wrap">
+
+        <table>
+
+          <thead>
+            <tr>
+              <th>Type</th>
+              <th>Title</th>
+              <th>Class</th>
+              <th>Subject</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+
+          <tbody>
+
+          ${
+            db.documents.length
+            ? db.documents.map(d=>`
+
+              <tr>
+
+                <td>${escapeHTML(d.type)}</td>
+                <td>${escapeHTML(d.title)}</td>
+                <td>${escapeHTML(d.className)}</td>
+                <td>${escapeHTML(d.subject)}</td>
+
+                <td>
+                  ${
+                    d.status==="Approved"
+                    ? `<span class="badge badge-green">Approved</span>`
+                    : d.status==="Rejected"
+                    ? `<span class="badge badge-red">Rejected</span>`
+                    : d.status==="Submitted"
+                    ? `<span class="badge badge-blue">Submitted</span>`
+                    : `<span class="badge badge-orange">Draft</span>`
+                  }
+                </td>
+
+                <td>
+                  <div class="action-row">
+
+                    <button class="btn btn-light"
+                      onclick="viewDocument('${d.id}')">
+                      View
+                    </button>
+
+                    ${
+                      (d.status==="Draft" && d.ownerId===session.id)
+                      ? `
+                      <button class="btn btn-blue"
+                        onclick="submitDocument('${d.id}')">
+                        Submit
+                      </button>
+                      `
+                      :""
+                    }
+
+                    ${
+                      isAdmin()
+                      ? `
+                      <button class="btn btn-red"
+                        onclick="deleteDocument('${d.id}')">
+                        Delete
+                      </button>
+                      `
+                      :""
+                    }
+
+                  </div>
+                </td>
+
+              </tr>
+
+            `).join("")
+            : `<tr><td colspan="6" class="empty">No documents available.</td></tr>`
+          }
+
+          </tbody>
+        </table>
+
+      </div>
+
+    </div>
+  `;
+}
+
+function addDocument(){
+
+  const type=document.getElementById("docType").value;
+  const title=document.getElementById("docTitle").value.trim();
+  const className=document.getElementById("docClass").value;
+  const subject=document.getElementById("docSubject").value;
+  const week=document.getElementById("docWeek").value.trim();
+  const content=document.getElementById("docContent").value.trim();
+
+  if(!title||!content){
+    alert("Please enter the document title and content.");
+    return;
+  }
+
+  db.documents.push({
+    id:uid("doc"),
+    type,title,className,subject,week,content,
+    ownerId:session.id,
+    ownerName:session.name,
+    status:"Draft",
+    createdAt:new Date().toISOString()
+  });
+
+  saveDB();
+  renderDocuments();
+}
+
+function submitDocument(id){
+
+  const d=db.documents.find(x=>x.id===id);
+  if(!d)return;
+
+  d.status="Submitted";
+
+  db.approvals.push({
+    id:uid("approval"),
+    documentId:id,
+    submittedAt:new Date().toISOString(),
+    status:"Pending",
+    comment:""
+  });
+
+  saveDB();
+  renderDocuments();
+
+  alert("Document submitted to Approval Centre.");
+}
+
+function viewDocument(id){
+
+  const d=db.documents.find(x=>x.id===id);
+  if(!d)return;
+
+  const win=window.open("","_blank");
+
+  if(!win){
+    alert("Please allow pop-ups to view this document.");
+    return;
+  }
+
+  win.document.write(`
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <title>${escapeHTML(d.title)}</title>
+      <style>
+        body{font-family:Arial;padding:30px;line-height:1.6}
+        h1{color:#14532d}
+        .meta{color:#64748b;margin-bottom:20px}
+      </style>
+    </head>
+    <body>
+      <h1>${escapeHTML(d.title)}</h1>
+      <div class="meta">
+        ${escapeHTML(d.type)} |
+        ${escapeHTML(d.className)} |
+        ${escapeHTML(d.subject)}
+      </div>
+      <div>${escapeHTML(d.content).replace(/\n/g,"<br>")}</div>
+      <script>window.print()<\/script>
+    </body>
+    </html>
+  `);
+
+  win.document.close();
+}
+
+function deleteDocument(id){
+
+  if(!isAdmin())return;
+
+  if(!confirm("Delete this document?"))return;
+
+  db.documents=db.documents.filter(d=>d.id!==id);
+  db.approvals=db.approvals.filter(a=>a.documentId!==id);
+
+  saveDB();
+  renderDocuments();
+}
+
+/* =========================================================
+   APPROVAL CENTRE
+========================================================= */
+
+function renderApproval(){
+
+  if(!isAdmin())return;
+
+  document.getElementById("content").innerHTML=`
+
+    <h1 class="page-title">Approval Centre</h1>
+
+    <p class="page-subtitle">
+      Review submitted academic documents.
+    </p>
+
+    <div class="card">
+
+      <div class="table-wrap">
+
+        <table>
+
+          <thead>
+            <tr>
+              <th>Document</th>
+              <th>Teacher</th>
+              <th>Type</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+
+          <tbody>
+
+          ${
+            db.documents.filter(
+              d=>d.status==="Submitted"
+            ).length
+            ?
+            db.documents.filter(
+              d=>d.status==="Submitted"
+            ).map(d=>`
+
+              <tr>
+
+                <td>${escapeHTML(d.title)}</td>
+                <td>${escapeHTML(d.ownerName)}</td>
+                <td>${escapeHTML(d.type)}</td>
+
+                <td>
+                  <span class="badge badge-blue">
+                    Submitted
+                  </span>
+                </td>
+
+                <td>
+                  <div class="action-row">
+
+                    <button class="btn btn-light"
+                      onclick="viewDocument('${d.id}')">
+                      View
+                    </button>
+
+                    <button class="btn btn-green"
+                      onclick="approveDocument('${d.id}')">
+                      Approve
+                    </button>
+
+                    <button class="btn btn-red"
+                      onclick="rejectDocument('${d.id}')">
+                      Reject
+                    </button>
+
+                  </div>
+                </td>
+
+              </tr>
+
+            `).join("")
+            :
+            `<tr>
+              <td colspan="5" class="empty">
+                No documents waiting for approval.
+              </td>
+            </tr>`
+          }
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </div>
+  `;
+}
+
+function approveDocument(id){
+
+  const d=db.documents.find(x=>x.id===id);
+  if(!d)return;
+
+  const comment=prompt(
+    "Approval comment (optional):",
+    "Approved by Administrator."
+  );
+
+  d.status="Approved";
+
+  const approval=db.approvals.find(
+    a=>a.documentId===id
+  );
+
+  if(approval){
+    approval.status="Approved";
+    approval.comment=comment||"";
+    approval.approvedAt=new Date().toISOString();
+  }
+
+  db.archive.push({
+    id:uid("archive"),
+    documentId:d.id,
+    type:d.type,
+    title:d.title,
+    className:d.className,
+    subject:d.subject,
+    week:d.week,
+    content:d.content,
+    ownerName:d.ownerName,
+    approvedBy:session.name,
+    approvedAt:new Date().toISOString(),
+    comment:comment||""
+  });
+
+  saveDB();
+
+  renderApproval();
+
+  alert("Document approved and copied to Approved Work Archive.");
+}
+
+function rejectDocument(id){
+
+  const d=db.documents.find(x=>x.id===id);
+  if(!d)return;
+
+  const comment=prompt(
+    "Reason for rejection:"
+  );
+
+  if(comment===null)return;
+
+  d.status="Rejected";
+
+  const approval=db.approvals.find(
+    a=>a.documentId===id
+  );
+
+  if(approval){
+    approval.status="Rejected";
+    approval.comment=comment;
+    approval.rejectedAt=new Date().toISOString();
+  }
+
+  saveDB();
+  renderApproval();
+}
+
+/* =========================================================
+   APPROVED WORK ARCHIVE
+========================================================= */
+
+function renderArchive(){
+
+  if(!isAdmin())return;
+
+  document.getElementById("content").innerHTML=`
+
+    <h1 class="page-title">Approved Work Archive</h1>
+
+    <p class="page-subtitle">
+      Permanent record of approved academic work.
+    </p>
+
+    <div class="card no-print">
+
+      <div class="grid-2">
+
+        <div class="form-group">
+          <label>Search Archive</label>
+          <input
+            id="archiveSearch"
+            placeholder="Search title, teacher, subject..."
+            oninput="filterArchive()">
+        </div>
+
+        <div class="form-group">
+          <label>Filter Type</label>
+          <select id="archiveType"
+            onchange="filterArchive()">
+            <option value="">All Types</option>
+            ${DOC_TYPES.map(x=>`<option>${x}</option>`).join("")}
+          </select>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div id="archiveTable"></div>
+  `;
+
+  filterArchive();
+}
+
+function filterArchive(){
+
+  const search=
+    (document.getElementById("archiveSearch")?.value||"")
+      .toLowerCase();
+
+  const type=
+    document.getElementById("archiveType")?.value||"";
+
+  const list=db.archive.filter(a=>{
+
+    const text=
+      `${a.title} ${a.ownerName} ${a.subject} ${a.className}`
+      .toLowerCase();
+
+    return (!search||text.includes(search)) &&
+           (!type||a.type===type);
+  });
+
+  document.getElementById("archiveTable").innerHTML=`
+
+    <div class="card">
+
+      <div class="table-wrap">
+
+        <table>
+
+          <thead>
+            <tr>
+              <th>Type</th>
+              <th>Title</th>
+              <th>Class</th>
+              <th>Subject</th>
+              <th>Approved By</th>
+              <th>Date</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+
+          <tbody>
+
+          ${
+            list.length
+            ? list.map(a=>`
+
+              <tr>
+
+                <td>${escapeHTML(a.type)}</td>
+                <td>${escapeHTML(a.title)}</td>
+                <td>${escapeHTML(a.className)}</td>
+                <td>${escapeHTML(a.subject)}</td>
+                <td>${escapeHTML(a.approvedBy)}</td>
+                <td>${new Date(a.approvedAt).toLocaleDateString()}</td>
+
+                <td>
+                  <div class="action-row">
+
+                    <button class="btn btn-light"
+                      onclick="viewArchive('${a.id}')">
+                      View / Print
+                    </button>
+
+                    <button class="btn btn-red"
+                      onclick="deleteArchive('${a.id}')">
+                      Delete
+                    </button>
+
+                  </div>
+                </td>
+
+              </tr>
+
+            `).join("")
+            :
+            `<tr>
+              <td colspan="7" class="empty">
+                No approved work found.
+              </td>
+            </tr>`
+          }
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </div>
+  `;
+}
+
+function viewArchive(id){
+
+  const a=db.archive.find(x=>x.id===id);
+  if(!a)return;
+
+  const win=window.open("","_blank");
+
+  if(!win){
+    alert("Please allow pop-ups.");
+    return;
+  }
+
+  win.document.write(`
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <title>${escapeHTML(a.title)}</title>
+      <style>
+        body{font-family:Arial;padding:30px;line-height:1.6}
+        h1{color:#14532d}
+        .meta{color:#64748b;margin-bottom:20px}
+      </style>
+    </head>
+    <body>
+      <h1>${escapeHTML(a.title)}</h1>
+      <div class="meta">
+        ${escapeHTML(a.type)} |
+        ${escapeHTML(a.className)} |
+        ${escapeHTML(a.subject)}<br>
+        Teacher: ${escapeHTML(a.ownerName)}<br>
+        Approved by: ${escapeHTML(a.approvedBy)}
+      </div>
+      <div>${escapeHTML(a.content).replace(/\n/g,"<br>")}</div>
+      <script>window.print()<\/script>
+    </body>
+    </html>
+  `);
+
+  win.document.close();
+}
+
+function deleteArchive(id){
+
+  if(!confirm(
+    "Delete this archived approved work?"
+  ))return;
+
+  db.archive=db.archive.filter(
+    a=>a.id!==id
+  );
+
+  saveDB();
+  filterArchive();
+}
+
+/* =========================================================
+   TEACHER ASSISTANT
+========================================================= */
+
+function renderAssistant(){
+
+  document.getElementById("content").innerHTML=`
+
+    <h1 class="page-title">Teacher Assistant</h1>
+
+    <p class="page-subtitle">
+      Local academic planning assistant.
+    </p>
+
+    <div class="card">
+
+      <div id="assistantChat" class="assistant-box">
+
+        <div class="chat-msg chat-ai">
+          Hello. I can help you structure lesson plans,
+          lesson notes, schemes of work and assessment questions.
+        </div>
+
+      </div>
+
+      <div style="
+        display:flex;
+        gap:8px;
+        margin-top:10px">
+
+        <input
+          id="assistantInput"
+          placeholder="Ask an academic planning question..."
+          onkeydown="if(event.key==='Enter')askAssistant()">
+
+        <button class="btn btn-green"
+          onclick="askAssistant()">
+          Ask
+        </button>
+
+      </div>
+
+    </div>
+  `;
+}
+
+function askAssistant(){
+
+  const input=document.getElementById("assistantInput");
+  const question=input.value.trim();
+
+  if(!question)return;
+
+  const chat=document.getElementById("assistantChat");
+
+  chat.innerHTML+=`
+    <div class="chat-msg chat-user">
+      ${escapeHTML(question)}
+    </div>
+  `;
+
+  let answer=
+    "For this request, structure your academic work with clear objectives, entry behaviour, instructional materials, presentation, teacher activities, learner activities, evaluation, conclusion and assignment.";
+
+  const q=question.toLowerCase();
+
+  if(q.includes("lesson plan")){
+    answer=
+      "A professional lesson plan should contain: subject, class, topic, sub-topic, date, duration, entry behaviour, objectives, materials, references, set induction, presentation, teacher activities, learner activities, evaluation, conclusion and assignment.";
+  }
+  else if(q.includes("lesson note")){
+    answer=
+      "A lesson note should explain the topic clearly, define key terms, give step-by-step explanations, provide worked examples, learner activities, evaluation questions, conclusion and assignment.";
+  }
+  else if(q.includes("scheme")){
+    answer=
+      "A scheme of work can be organised week by week with week number, topic, sub-topic, learning objectives, content and relevant learning activities.";
+  }
+  else if(q.includes("exam")||q.includes("question")){
+    answer=
+      "For examination questions, state the subject, class, term and instructions, then organise questions clearly according to the required number and marks.";
+  }
+
+  setTimeout(()=>{
+
+    chat.innerHTML+=`
+      <div class="chat-msg chat-ai">
+        ${escapeHTML(answer)}
+      </div>
+    `;
+
+    chat.scrollTop=chat.scrollHeight;
+
+  },250);
+
+  input.value="";
+}
+
+/* =========================================================
+   SETTINGS
+========================================================= */
+
+function renderSettings(){
+
+  if(!isAdmin())return;
+
+  document.getElementById("content").innerHTML=`
+
+    <h1 class="page-title">School Settings</h1>
+
+    <p class="page-subtitle">
+      Manage school profile, branding and academic session.
+    </p>
+
+    <div class="card">
+
+      <h3>School Profile</h3>
+
+      <div class="grid-2">
+
+        <div class="form-group">
+          <label>School Name</label>
+          <input id="schoolName"
+            value="${escapeHTML(db.school.name)}">
+        </div>
+
+        <div class="form-group">
+          <label>Address</label>
+          <input id="schoolAddress"
+            value="${escapeHTML(db.school.address)}">
+        </div>
+
+        <div class="form-group">
+          <label>Phone</label>
+          <input id="schoolPhone"
+            value="${escapeHTML(db.school.phone)}">
+        </div>
+
+        <div class="form-group">
+          <label>Email</label>
+          <input id="schoolEmail"
+            value="${escapeHTML(db.school.email)}">
+        </div>
+
+        <div class="form-group">
+          <label>Academic Session</label>
+          <input id="schoolSession"
+            value="${escapeHTML(db.school.session)}">
+        </div>
+
+        <div class="form-group">
+          <label>Current Term</label>
+          <select id="schoolTerm">
+            <option ${db.school.term==="First Term"?"selected":""}>First Term</option>
+            <option ${db.school.term==="Second Term"?"selected":""}>Second Term</option>
+            <option ${db.school.term==="Third Term"?"selected":""}>Third Term</option>
+          </select>
+        </div>
+
+      </div>
+
+      <button class="btn btn-green"
+        onclick="saveSettings()">
+        Save School Settings
+      </button>
+
+    </div>
+
+    <div class="card">
+
+      <h3>Administrator Account</h3>
+
+      <p style="font-size:12px;color:#64748b">
+        Default administrator username:
+        <strong>Admin</strong>
+      </p>
+
+      <p style="font-size:12px;color:#64748b">
+        Default administrator password:
+        <strong>Admin@2026!</strong>
+      </p>
+
+    </div>
+  `;
+}
+
+function saveSettings(){
+
+  db.school.name=
+    document.getElementById("schoolName").value.trim() ||
+    "Global Kids Academy Sokoto";
+
+  db.school.address=
+    document.getElementById("schoolAddress").value.trim();
+
+  db.school.phone=
+    document.getElementById("schoolPhone").value.trim();
+
+  db.school.email=
+    document.getElementById("schoolEmail").value.trim();
+
+  db.school.session=
+    document.getElementById("schoolSession").value.trim();
+
+  db.school.term=
+    document.getElementById("schoolTerm").value;
+
+  saveDB();
+
+  document.getElementById("topTitle").textContent=
+    db.school.name;
+
+  alert("School settings saved.");
+}
+
+/* =========================================================
+   BACKUP & RESTORE
+========================================================= */
+
+function renderBackup(){
+
+  if(!isAdmin())return;
+
+  document.getElementById("content").innerHTML=`
+
+    <h1 class="page-title">Backup & Restore</h1>
+
+    <p class="page-subtitle">
+      Export the school database or restore a previous backup.
+    </p>
+
+    <div class="card">
+
+      <h3>Database Backup</h3>
+
+      <p style="font-size:12px;color:#64748b">
+        Save a complete copy of teachers, students, parents,
+        attendance, results, documents, approvals and archive.
+      </p>
+
+      <button class="btn btn-blue"
+        onclick="downloadBackup()">
+        Download Backup
+      </button>
+
+    </div>
+
+    <div class="card">
+
+      <h3>Restore Database</h3>
+
+      <input
+        type="file"
+        id="restoreFile"
+        accept=".json">
+
+      <br><br>
+
+      <button class="btn btn-green"
+        onclick="restoreBackup()">
+        Restore Backup
+      </button>
+
+    </div>
+
+    <div class="card">
+
+      <h3>Danger Zone</h3>
+
+      <p style="font-size:12px;color:#b91c1c">
+        Resetting the database deletes local school data.
+        Download a backup first.
+      </p>
+
+      <button class="btn btn-red"
+        onclick="resetDatabase()">
+        Reset Database
+      </button>
+
+    </div>
+  `;
+}
+
+function downloadBackup(){
+
+  const blob=new Blob(
+    [JSON.stringify(db,null,2)],
+    {type:"application/json"}
+  );
+
+  const url=URL.createObjectURL(blob);
+
+  const a=document.createElement("a");
+
+  a.href=url;
+  a.download=
+    "Global-Kids-Academy-Backup-"+Date.now()+".json";
+
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+
+  URL.revokeObjectURL(url);
+}
+
+function restoreBackup(){
+
+  const file=
+    document.getElementById("restoreFile").files[0];
+
+  if(!file){
+    alert("Please select a backup file.");
+    return;
+  }
+
+  const reader=new FileReader();
+
+  reader.onload=function(){
+
+    try{
+
+      const restored=
+        JSON.parse(reader.result);
+
+      if(!restored.school||
+         !Array.isArray(restored.users)){
+
+        throw new Error("Invalid backup");
+      }
+
+      db=Object.assign(
+        defaultDB(),
+        restored
+      );
+
+      /* Restore Admin account safely */
+      const admin={
+        id:"admin-1",
+        username:"Admin",
+        password:"Admin@2026!",
+        role:"Administrator",
+        name:"System Administrator"
+      };
+
+      const index=db.users.findIndex(
+        u=>u.id==="admin-1" ||
+           u.role==="Administrator" ||
+           u.username==="Admin"
+      );
+
+      if(index===-1){
+        db.users.unshift(admin);
+      }else{
+        db.users[index]=admin;
+      }
+
+      saveDB();
+
+      alert("Backup restored successfully.");
+
+      location.reload();
+
+    }catch(error){
+
+      alert(
+        "This is not a valid Global Kids Academy backup."
+      );
+    }
+  };
+
+  reader.readAsText(file);
+}
+
+function resetDatabase(){
+
+  const confirmText=prompt(
+    "Type RESET to permanently delete the local database:"
+  );
+
+  if(confirmText!=="RESET")return;
+
+  localStorage.removeItem(DB_KEY);
+  localStorage.removeItem(SESSION_KEY);
+
+  location.reload();
+}
+
+/* =========================================================
+   START APPLICATION
+========================================================= */
+
+function boot(){
+
+  /* Repair Admin before anything else */
+  db=loadDB();
+
+  if(session){
+
+    document.getElementById("loginPage")
+      .classList.add("hidden");
+
+    document.getElementById("app")
+      .classList.remove("hidden");
+
+    document.getElementById("topTitle").textContent=
+      db.school.name;
+
+    buildNav();
+    openPage("dashboard");
+
+  }
+}
+
+boot();
+
+</script>
+
+</body>
+</html>
