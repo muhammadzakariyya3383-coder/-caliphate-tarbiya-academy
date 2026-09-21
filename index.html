@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#166534">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -10,7 +10,9 @@
 <title>Global Kids Academy Sokoto</title>
 
 <style>
-*{box-sizing:border-box}
+*{
+  box-sizing:border-box;
+}
 
 html{
   width:100%;
@@ -30,29 +32,37 @@ body{
   color:#172033;
 }
 
-button,input,select,textarea{
+button,
+input,
+select,
+textarea{
   font:inherit;
   max-width:100%;
 }
 
-button{cursor:pointer}
+button{
+  cursor:pointer;
+}
 
-.hidden{display:none!important}
+.hidden{
+  display:none!important;
+}
 
 :root{
   --green:#166534;
-  --green2:#15803d;
-  --green3:#22c55e;
-  --dark:#14532d;
-  --light:#f0fdf4;
+  --green-dark:#14532d;
+  --green-light:#dcfce7;
   --border:#dbe3ea;
   --muted:#64748b;
   --danger:#b91c1c;
-  --warning:#b45309;
   --blue:#1d4ed8;
+  --orange:#b45309;
 }
 
-/* LOGIN */
+/* =========================================================
+   LOGIN
+========================================================= */
+
 .login-page{
   min-height:100vh;
   min-height:100dvh;
@@ -60,7 +70,12 @@ button{cursor:pointer}
   align-items:center;
   justify-content:center;
   padding:20px;
-  background:linear-gradient(135deg,#14532d,#166534,#22c55e);
+  background:linear-gradient(
+    135deg,
+    #14532d,
+    #166534,
+    #22c55e
+  );
 }
 
 .login-card{
@@ -82,7 +97,7 @@ button{cursor:pointer}
   justify-content:center;
   background:#166534;
   color:#fff;
-  font-size:34px;
+  font-size:30px;
   font-weight:900;
   border:5px solid #dcfce7;
 }
@@ -90,7 +105,7 @@ button{cursor:pointer}
 .login-card h1{
   text-align:center;
   margin:0;
-  font-size:25px;
+  font-size:24px;
   color:#14532d;
 }
 
@@ -100,6 +115,21 @@ button{cursor:pointer}
   font-size:13px;
   margin:8px 0 22px;
 }
+
+.login-error{
+  display:none;
+  color:#b91c1c;
+  background:#fee2e2;
+  border:1px solid #fecaca;
+  padding:9px;
+  border-radius:8px;
+  font-size:12px;
+  margin-bottom:12px;
+}
+
+/* =========================================================
+   FORMS
+========================================================= */
 
 .form-group{
   margin-bottom:14px;
@@ -112,7 +142,9 @@ button{cursor:pointer}
   margin-bottom:6px;
 }
 
-input,select,textarea{
+input,
+select,
+textarea{
   width:100%;
   padding:11px 12px;
   border:1px solid #cbd5e1;
@@ -121,10 +153,20 @@ input,select,textarea{
   outline:none;
 }
 
-input:focus,select:focus,textarea:focus{
+textarea{
+  resize:vertical;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
   border-color:#22c55e;
   box-shadow:0 0 0 3px rgba(34,197,94,.12);
 }
+
+/* =========================================================
+   BUTTONS
+========================================================= */
 
 .btn{
   border:0;
@@ -136,33 +178,44 @@ input:focus,select:focus,textarea:focus{
   color:#fff;
 }
 
-.btn:hover{opacity:.92}
+.btn:hover{
+  opacity:.92;
+}
 
-.btn-green{background:#166534}
-.btn-blue{background:#1d4ed8}
-.btn-orange{background:#b45309}
-.btn-red{background:#b91c1c}
-.btn-gray{background:#475569}
+.btn-green{
+  background:#166534;
+}
+
+.btn-blue{
+  background:#1d4ed8;
+}
+
+.btn-orange{
+  background:#b45309;
+}
+
+.btn-red{
+  background:#b91c1c;
+}
+
+.btn-gray{
+  background:#475569;
+}
+
 .btn-light{
   background:#f1f5f9;
   color:#172033;
   border:1px solid #cbd5e1;
 }
 
-.full{width:100%}
-
-.login-error{
-  color:#b91c1c;
-  background:#fee2e2;
-  border:1px solid #fecaca;
-  padding:9px;
-  border-radius:8px;
-  font-size:12px;
-  margin-bottom:12px;
-  display:none;
+.full{
+  width:100%;
 }
 
-/* APP */
+/* =========================================================
+   APPLICATION
+========================================================= */
+
 .app{
   min-height:100vh;
   min-height:100dvh;
@@ -193,6 +246,8 @@ input:focus,select:focus,textarea:focus{
 }
 
 .brand small{
+  display:block;
+  margin-top:4px;
   opacity:.75;
   font-size:10px;
 }
@@ -257,6 +312,10 @@ input:focus,select:focus,textarea:focus{
   min-width:0;
 }
 
+/* =========================================================
+   HEADINGS
+========================================================= */
+
 .page-title{
   margin:0;
   font-size:24px;
@@ -269,7 +328,10 @@ input:focus,select:focus,textarea:focus{
   margin:5px 0 18px;
 }
 
-/* CARDS */
+/* =========================================================
+   CARDS / GRIDS
+========================================================= */
+
 .card{
   background:#fff;
   border:1px solid #e2e8f0;
@@ -292,9 +354,17 @@ input:focus,select:focus,textarea:focus{
   gap:13px;
 }
 
-.grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
-.grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
-.grid-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.grid-2{
+  grid-template-columns:repeat(2,minmax(0,1fr));
+}
+
+.grid-3{
+  grid-template-columns:repeat(3,minmax(0,1fr));
+}
+
+.grid-4{
+  grid-template-columns:repeat(4,minmax(0,1fr));
+}
 
 .stat{
   padding:17px;
@@ -322,11 +392,14 @@ input:focus,select:focus,textarea:focus{
   margin-bottom:14px;
 }
 
-.toolbar>*{
+.toolbar > *{
   flex:0 0 auto;
 }
 
-/* TABLE */
+/* =========================================================
+   TABLES
+========================================================= */
+
 .table-wrap{
   width:100%;
   max-width:100%;
@@ -340,7 +413,8 @@ table{
   border-collapse:collapse;
 }
 
-th,td{
+th,
+td{
   border:1px solid #e2e8f0;
   padding:8px;
   font-size:11px;
@@ -360,7 +434,17 @@ th{
   gap:5px;
 }
 
-/* REGISTER */
+.empty{
+  text-align:center;
+  color:#64748b;
+  padding:30px 10px;
+  font-size:12px;
+}
+
+/* =========================================================
+   REGISTER
+========================================================= */
+
 .register-meta{
   display:grid;
   grid-template-columns:repeat(4,minmax(130px,1fr));
@@ -404,8 +488,8 @@ th{
 }
 
 .register-table .student-name{
-  min-width:170px;
-  max-width:220px;
+  min-width:190px;
+  max-width:230px;
   text-align:left;
   position:sticky;
   left:0;
@@ -416,27 +500,23 @@ th{
 .register-table th.student-name{
   background:#14532d;
   color:#fff;
+  z-index:5;
 }
 
 .day-head{
-  min-width:39px;
-  width:39px;
+  min-width:42px;
+  width:42px;
 }
 
 .weekend-head{
   background:#f8fafc!important;
 }
 
-.holiday-head{
-  background:#fef3c7!important;
-  color:#92400e!important;
-}
-
 .mark{
-  min-width:29px;
-  min-height:29px;
-  width:29px;
-  height:29px;
+  min-width:30px;
+  min-height:30px;
+  width:30px;
+  height:30px;
   padding:0;
   border-radius:6px;
   border:1px solid #cbd5e1;
@@ -482,7 +562,10 @@ th{
   font-size:10px;
 }
 
-/* SIGNATURES */
+/* =========================================================
+   DIGITAL SIGNATURES
+========================================================= */
+
 .signature-grid{
   display:grid;
   grid-template-columns:repeat(3,minmax(0,1fr));
@@ -555,7 +638,10 @@ th{
   width:auto;
 }
 
-/* BADGES */
+/* =========================================================
+   BADGES
+========================================================= */
+
 .badge{
   display:inline-block;
   padding:4px 7px;
@@ -584,16 +670,12 @@ th{
   color:#1d4ed8;
 }
 
-/* EMPTY */
-.empty{
-  text-align:center;
-  color:#64748b;
-  padding:30px 10px;
-  font-size:12px;
-}
+/* =========================================================
+   RESPONSIVE
+========================================================= */
 
-/* MOBILE */
 @media(max-width:900px){
+
   .sidebar{
     width:210px;
     flex-basis:210px;
@@ -609,6 +691,7 @@ th{
 }
 
 @media(max-width:700px){
+
   .app{
     display:block;
   }
@@ -663,7 +746,10 @@ th{
 }
 
 @media(max-width:360px){
-  .login-page{padding:10px}
+
+  .login-page{
+    padding:10px;
+  }
 
   .login-card{
     padding:18px 13px;
@@ -677,7 +763,7 @@ th{
   .logo{
     width:62px;
     height:62px;
-    font-size:25px;
+    font-size:24px;
   }
 
   .content{
@@ -710,7 +796,9 @@ th{
     font-size:11px;
   }
 
-  input,select,textarea{
+  input,
+  select,
+  textarea{
     font-size:14px;
     padding:10px;
   }
@@ -724,8 +812,12 @@ th{
   }
 }
 
-/* PRINT */
+/* =========================================================
+   PRINT
+========================================================= */
+
 @media print{
+
   body{
     background:#fff;
   }
@@ -774,50 +866,77 @@ th{
 
 <body>
 
-<!-- LOGIN -->
+<!-- =======================================================
+     LOGIN
+======================================================= -->
+
 <div id="loginPage" class="login-page">
+
   <div class="login-card">
+
     <div class="logo">GKA</div>
 
     <h1>Global Kids Academy Sokoto</h1>
+
     <p>School Academic Management System</p>
 
     <div id="loginError" class="login-error">
-      Invalid username or password.
+      Invalid username, password or login type.
     </div>
 
     <div class="form-group">
+
       <label>Login Type</label>
+
       <select id="loginRole">
         <option value="Administrator">Administrator</option>
         <option value="Teacher">Teacher</option>
         <option value="Student">Student</option>
         <option value="Parent">Parent</option>
       </select>
+
     </div>
 
     <div class="form-group">
+
       <label>Username</label>
-      <input id="loginUsername" autocomplete="username">
+
+      <input
+        id="loginUsername"
+        autocomplete="username">
+
     </div>
 
     <div class="form-group">
+
       <label>Password</label>
-      <input id="loginPassword" type="password" autocomplete="current-password">
+
+      <input
+        id="loginPassword"
+        type="password"
+        autocomplete="current-password">
+
     </div>
 
-    <button class="btn btn-green full" onclick="login()">
+    <button
+      class="btn btn-green full"
+      onclick="login()">
       Login
     </button>
 
-    <p style="font-size:10px;margin-top:15px">
-      Administrator default: Admin / Admin@2026!
+    <p style="font-size:10px;margin-top:15px;">
+      Administrator: Admin / Admin@2026!
     </p>
+
   </div>
+
 </div>
 
 
-<!-- APPLICATION -->
+<!-- =======================================================
+     APPLICATION
+======================================================= -->
+
 <div id="app" class="app hidden">
 
   <aside class="sidebar">
@@ -827,26 +946,49 @@ th{
       <small>Sokoto • Academic Management System</small>
     </div>
 
-    <nav class="nav" id="nav"></nav>
+    <nav
+      class="nav"
+      id="nav">
+    </nav>
 
   </aside>
+
 
   <main class="main">
 
     <header class="topbar">
-      <div class="top-title" id="topTitle">
+
+      <div
+        class="top-title"
+        id="topTitle">
         Global Kids Academy Sokoto
       </div>
 
-      <div style="display:flex;align-items:center;gap:7px">
-        <span class="user-pill" id="userPill"></span>
-        <button class="btn btn-red" onclick="logout()">Logout</button>
+      <div
+        style="display:flex;align-items:center;gap:7px;">
+
+        <span
+          class="user-pill"
+          id="userPill">
+        </span>
+
+        <button
+          class="btn btn-red"
+          onclick="logout()">
+          Logout
+        </button>
+
       </div>
+
     </header>
 
-    <section class="content" id="content"></section>
+    <section
+      class="content"
+      id="content">
+    </section>
 
   </main>
+
 </div>
 
 
@@ -863,21 +1005,45 @@ const DB_KEY =
 const SESSION_KEY =
   "GLOBAL_KIDS_ACADEMY_SOKOTO_SESSION_V1";
 
-const MONTHS = [
-  "January","February","March","April","May","June",
-  "July","August","September","October","November","December"
+const MONTHS=[
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December"
 ];
 
-const CLASSES = [
-  "Nursery 1","Nursery 2","Nursery 3",
-  "Basic 1","Basic 2","Basic 3","Basic 4","Basic 5","Basic 6",
-  "JSS1","JSS2","JSS3",
-  "SS1","SS2","SS3"
+const CLASSES=[
+  "Nursery 1",
+  "Nursery 2",
+  "Nursery 3",
+  "Basic 1",
+  "Basic 2",
+  "Basic 3",
+  "Basic 4",
+  "Basic 5",
+  "Basic 6",
+  "JSS1",
+  "JSS2",
+  "JSS3",
+  "SS1",
+  "SS2",
+  "SS3"
 ];
 
-const SECTIONS = ["A","B"];
+const SECTIONS=[
+  "A",
+  "B"
+];
 
-const SUBJECTS = [
+const SUBJECTS=[
   "Mathematics",
   "English Language",
   "Physics",
@@ -907,6 +1073,7 @@ const SUBJECTS = [
 function defaultDB(){
 
   return {
+
     school:{
       name:"Global Kids Academy Sokoto",
       address:"Sokoto State, Nigeria",
@@ -936,66 +1103,125 @@ function defaultDB(){
     archive:[],
     attendance:{},
     registerSignatures:{},
+
     settings:{
       currentPage:"dashboard"
     }
   };
 }
 
-let db = loadDB();
-let session = loadSession();
-let signaturePads = {};
+let db=loadDB();
+let session=loadSession();
+let signaturePads={};
 
 function loadDB(){
 
   try{
-    const raw = localStorage.getItem(DB_KEY);
+
+    const raw=
+      localStorage.getItem(DB_KEY);
 
     if(raw){
-      const data = JSON.parse(raw);
 
-      const base = defaultDB();
+      const data=
+        JSON.parse(raw);
 
-      return Object.assign(base,data,{
-        school:Object.assign(base.school,data.school||{}),
-        users:data.users||base.users,
-        teachers:data.teachers||[],
-        students:data.students||[],
-        parents:data.parents||[],
-        classes:data.classes||[],
-        results:data.results||[],
-        documents:data.documents||[],
-        approvals:data.approvals||[],
-        archive:data.archive||[],
-        attendance:data.attendance||{},
-        registerSignatures:data.registerSignatures||{},
-        settings:Object.assign(base.settings,data.settings||{})
-      });
+      const base=
+        defaultDB();
+
+      return Object.assign(
+        base,
+        data,
+        {
+          school:Object.assign(
+            base.school,
+            data.school || {}
+          ),
+
+          users:data.users || base.users,
+
+          teachers:data.teachers || [],
+
+          students:data.students || [],
+
+          parents:data.parents || [],
+
+          classes:data.classes || [],
+
+          results:data.results || [],
+
+          documents:data.documents || [],
+
+          approvals:data.approvals || [],
+
+          archive:data.archive || [],
+
+          attendance:data.attendance || {},
+
+          registerSignatures:
+            data.registerSignatures || {},
+
+          settings:Object.assign(
+            base.settings,
+            data.settings || {}
+          )
+        }
+      );
     }
 
-  }catch(e){
-    console.error(e);
+  }catch(error){
+
+    console.error(
+      "Database load error:",
+      error
+    );
   }
 
   return defaultDB();
 }
 
 function saveDB(){
-  localStorage.setItem(DB_KEY,JSON.stringify(db));
+
+  try{
+
+    localStorage.setItem(
+      DB_KEY,
+      JSON.stringify(db)
+    );
+
+  }catch(error){
+
+    console.error(error);
+
+    alert(
+      "The database could not be saved. Your browser storage may be full."
+    );
+  }
 }
 
 function loadSession(){
 
   try{
-    const raw=localStorage.getItem(SESSION_KEY);
-    return raw ? JSON.parse(raw) : null;
-  }catch(e){
+
+    const raw=
+      localStorage.getItem(SESSION_KEY);
+
+    return raw
+      ? JSON.parse(raw)
+      : null;
+
+  }catch(error){
+
     return null;
   }
 }
 
 function saveSession(){
-  localStorage.setItem(SESSION_KEY,JSON.stringify(session));
+
+  localStorage.setItem(
+    SESSION_KEY,
+    JSON.stringify(session)
+  );
 }
 
 function escapeHTML(value){
@@ -1009,7 +1235,16 @@ function escapeHTML(value){
 }
 
 function escapeAttr(value){
+
   return escapeHTML(value);
+}
+
+function isAdmin(){
+
+  return Boolean(
+    session &&
+    session.role==="Administrator"
+  );
 }
 
 
@@ -1019,27 +1254,37 @@ function escapeAttr(value){
 
 function login(){
 
-  const role =
-    document.getElementById("loginRole").value;
+  const role=
+    document.getElementById(
+      "loginRole"
+    ).value;
 
-  const username =
-    document.getElementById("loginUsername").value.trim();
+  const username=
+    document.getElementById(
+      "loginUsername"
+    ).value.trim();
 
-  const password =
-    document.getElementById("loginPassword").value;
+  const password=
+    document.getElementById(
+      "loginPassword"
+    ).value;
 
-  const user=db.users.find(u=>
-    u.username===username &&
-    u.password===password &&
-    u.role===role
-  );
+  const user=
+    db.users.find(
+      item=>
+        item.username===username &&
+        item.password===password &&
+        item.role===role
+    );
 
   if(!user){
 
-    const error=document.getElementById("loginError");
+    const error=
+      document.getElementById(
+        "loginError"
+      );
 
     error.style.display="block";
-    error.textContent="Invalid username, password or login type.";
 
     return;
   }
@@ -1053,19 +1298,25 @@ function login(){
 
   saveSession();
 
-  document.getElementById("loginPage")
-    .classList.add("hidden");
+  document.getElementById(
+    "loginPage"
+  ).classList.add("hidden");
 
-  document.getElementById("app")
-    .classList.remove("hidden");
+  document.getElementById(
+    "app"
+  ).classList.remove("hidden");
 
   buildNav();
+
   openPage("dashboard");
 }
 
 function logout(){
 
-  localStorage.removeItem(SESSION_KEY);
+  localStorage.removeItem(
+    SESSION_KEY
+  );
+
   session=null;
 
   location.reload();
@@ -1073,22 +1324,21 @@ function logout(){
 
 function boot(){
 
-  if(session){
-
-    document.getElementById("loginPage")
-      .classList.add("hidden");
-
-    document.getElementById("app")
-      .classList.remove("hidden");
-
-    buildNav();
-    openPage("dashboard");
-
+  if(!session){
+    return;
   }
-}
 
-function isAdmin(){
-  return session && session.role==="Administrator";
+  document.getElementById(
+    "loginPage"
+  ).classList.add("hidden");
+
+  document.getElementById(
+    "app"
+  ).classList.remove("hidden");
+
+  buildNav();
+
+  openPage("dashboard");
 }
 
 
@@ -1098,7 +1348,8 @@ function isAdmin(){
 
 function buildNav(){
 
-  const nav=document.getElementById("nav");
+  const nav=
+    document.getElementById("nav");
 
   let items=[];
 
@@ -1131,49 +1382,96 @@ function buildNav(){
     ];
   }
 
-  nav.innerHTML=items.map(item=>`
-    <button
-      id="nav-${item[0]}"
-      onclick="openPage('${item[0]}')">
-      ${item[1]}
-    </button>
-  `).join("");
+  nav.innerHTML=
+    items.map(item=>`
+
+      <button
+        id="nav-${item[0]}"
+        onclick="openPage('${item[0]}')">
+
+        ${item[1]}
+
+      </button>
+
+    `).join("");
 }
 
 function setActiveNav(page){
 
-  document.querySelectorAll(".nav button")
-    .forEach(b=>b.classList.remove("active"));
+  document
+    .querySelectorAll(".nav button")
+    .forEach(
+      button=>
+        button.classList.remove("active")
+    );
 
-  const el=document.getElementById("nav-"+page);
+  const button=
+    document.getElementById(
+      "nav-"+page
+    );
 
-  if(el) el.classList.add("active");
+  if(button){
+    button.classList.add("active");
+  }
 }
 
 function openPage(page){
 
-  db.settings.currentPage=page;
-  saveDB();
+  if(!session)return;
 
   setActiveNav(page);
 
-  const content=document.getElementById("content");
+  db.settings.currentPage=page;
 
-  if(page==="dashboard") renderDashboard();
-  else if(page==="teachers") renderTeachers();
-  else if(page==="students") renderStudents();
-  else if(page==="parents") renderParents();
-  else if(page==="classes") renderClasses();
-  else if(page==="register") renderRegister();
-  else if(page==="results") renderResults();
-  else if(page==="documents") renderDocuments();
-  else if(page==="approval") renderApproval();
-  else if(page==="archive") renderArchive();
-  else if(page==="assistant") renderAssistant();
-  else if(page==="settings") renderSettings();
-  else if(page==="backup") renderBackup();
+  saveDB();
 
-  document.getElementById("userPill").textContent =
+  const content=
+    document.getElementById(
+      "content"
+    );
+
+  if(page==="dashboard")
+    renderDashboard();
+
+  else if(page==="teachers")
+    renderTeachers();
+
+  else if(page==="students")
+    renderStudents();
+
+  else if(page==="parents")
+    renderParents();
+
+  else if(page==="classes")
+    renderClasses();
+
+  else if(page==="register")
+    renderRegister();
+
+  else if(page==="results")
+    renderResults();
+
+  else if(page==="documents")
+    renderDocuments();
+
+  else if(page==="approval")
+    renderApproval();
+
+  else if(page==="archive")
+    renderArchive();
+
+  else if(page==="assistant")
+    renderAssistant();
+
+  else if(page==="settings")
+    renderSettings();
+
+  else if(page==="backup")
+    renderBackup();
+
+  document.getElementById(
+    "userPill"
+  ).textContent=
     `${session.name || session.username} • ${session.role}`;
 }
 
@@ -1184,11 +1482,13 @@ function openPage(page){
 
 function renderDashboard(){
 
-  const content=document.getElementById("content");
+  document.getElementById(
+    "content"
+  ).innerHTML=`
 
-  content.innerHTML=`
-
-    <h1 class="page-title">Dashboard</h1>
+    <h1 class="page-title">
+      Dashboard
+    </h1>
 
     <p class="page-subtitle">
       Welcome to Global Kids Academy Sokoto Academic Management System.
@@ -1197,29 +1497,48 @@ function renderDashboard(){
     <div class="grid-4">
 
       <div class="stat">
-        <div class="num">${db.teachers.length}</div>
-        <div class="label">Teachers</div>
+        <div class="num">
+          ${db.teachers.length}
+        </div>
+        <div class="label">
+          Teachers
+        </div>
       </div>
 
       <div class="stat">
-        <div class="num">${db.students.length}</div>
-        <div class="label">Students</div>
+        <div class="num">
+          ${db.students.length}
+        </div>
+        <div class="label">
+          Students
+        </div>
       </div>
 
       <div class="stat">
-        <div class="num">${db.parents.length}</div>
-        <div class="label">Parents</div>
+        <div class="num">
+          ${db.parents.length}
+        </div>
+        <div class="label">
+          Parents
+        </div>
       </div>
 
       <div class="stat">
-        <div class="num">${db.documents.length}</div>
-        <div class="label">Documents</div>
+        <div class="num">
+          ${db.documents.length}
+        </div>
+        <div class="label">
+          Documents
+        </div>
       </div>
 
     </div>
 
     <div class="card">
-      <h3>School Information</h3>
+
+      <h3>
+        School Information
+      </h3>
 
       <div class="grid-3">
 
@@ -1239,41 +1558,64 @@ function renderDashboard(){
         </div>
 
       </div>
+
     </div>
 
     <div class="grid-3">
 
       <div class="card">
-        <h3>School Register</h3>
-        <p style="font-size:12px;color:#64748b">
-          Professional monthly attendance register.
+
+        <h3>
+          School Register
+        </h3>
+
+        <p style="font-size:12px;color:#64748b;">
+          Professional monthly attendance register
+          with digital signatures.
         </p>
-        <button class="btn btn-green"
+
+        <button
+          class="btn btn-green"
           onclick="openPage('register')">
           Open Register
         </button>
+
       </div>
 
       <div class="card">
-        <h3>Results</h3>
-        <p style="font-size:12px;color:#64748b">
+
+        <h3>
+          Results
+        </h3>
+
+        <p style="font-size:12px;color:#64748b;">
           Enter, calculate and publish academic results.
         </p>
-        <button class="btn btn-blue"
+
+        <button
+          class="btn btn-blue"
           onclick="openPage('results')">
           Open Results
         </button>
+
       </div>
 
       <div class="card">
-        <h3>Academic Documents</h3>
-        <p style="font-size:12px;color:#64748b">
+
+        <h3>
+          Academic Documents
+        </h3>
+
+        <p style="font-size:12px;color:#64748b;">
           Lesson plans, notes, schemes and questions.
         </p>
-        <button class="btn btn-orange"
+
+        <button
+          class="btn btn-orange"
           onclick="openPage('documents')">
           Open Documents
         </button>
+
       </div>
 
     </div>
@@ -1287,16 +1629,25 @@ function renderDashboard(){
 
 function renderTeachers(){
 
-  if(!isAdmin()) return;
+  if(!isAdmin())return;
 
-  document.getElementById("content").innerHTML=`
+  document.getElementById(
+    "content"
+  ).innerHTML=`
 
-    <h1 class="page-title">Teacher Management</h1>
-    <p class="page-subtitle">Create and manage teacher accounts.</p>
+    <h1 class="page-title">
+      Teacher Management
+    </h1>
+
+    <p class="page-subtitle">
+      Create and manage teacher accounts.
+    </p>
 
     <div class="card">
 
-      <h3>Add Teacher</h3>
+      <h3>
+        Add Teacher
+      </h3>
 
       <div class="grid-3">
 
@@ -1312,12 +1663,15 @@ function renderTeachers(){
 
         <div class="form-group">
           <label>Password</label>
-          <input id="teacherPassword">
+          <input
+            id="teacherPassword"
+            type="password">
         </div>
 
       </div>
 
-      <button class="btn btn-green"
+      <button
+        class="btn btn-green"
         onclick="addTeacher()">
         Add Teacher
       </button>
@@ -1326,13 +1680,14 @@ function renderTeachers(){
 
     <div class="card">
 
-      <h3>Teachers</h3>
+      <h3>
+        Teachers
+      </h3>
 
-      ${
-        db.teachers.length
-        ?
-        `<div class="table-wrap">
+      <div class="table-wrap">
+
         <table>
+
           <thead>
             <tr>
               <th>Name</th>
@@ -1340,25 +1695,54 @@ function renderTeachers(){
               <th>Actions</th>
             </tr>
           </thead>
+
           <tbody>
-            ${db.teachers.map(t=>`
-              <tr>
-                <td>${escapeHTML(t.name)}</td>
-                <td>${escapeHTML(t.username)}</td>
-                <td>
-                  <button class="btn btn-red"
-                    onclick="deleteTeacher('${t.id}')">
-                    Delete
-                  </button>
-                </td>
-              </tr>
-            `).join("")}
+
+            ${
+              db.teachers.length
+              ?
+              db.teachers.map(t=>`
+
+                <tr>
+
+                  <td>
+                    ${escapeHTML(t.name)}
+                  </td>
+
+                  <td>
+                    ${escapeHTML(t.username)}
+                  </td>
+
+                  <td>
+
+                    <button
+                      class="btn btn-red"
+                      onclick="deleteTeacher('${t.id}')">
+                      Delete
+                    </button>
+
+                  </td>
+
+                </tr>
+
+              `).join("")
+              :
+              `
+                <tr>
+                  <td
+                    colspan="3"
+                    class="empty">
+                    No teachers added.
+                  </td>
+                </tr>
+              `
+            }
+
           </tbody>
+
         </table>
-        </div>`
-        :
-        `<div class="empty">No teachers added.</div>`
-      }
+
+      </div>
 
     </div>
   `;
@@ -1366,24 +1750,50 @@ function renderTeachers(){
 
 function addTeacher(){
 
-  const name=document.getElementById("teacherName").value.trim();
-  const username=document.getElementById("teacherUsername").value.trim();
-  const password=document.getElementById("teacherPassword").value;
+  const name=
+    document.getElementById(
+      "teacherName"
+    ).value.trim();
+
+  const username=
+    document.getElementById(
+      "teacherUsername"
+    ).value.trim();
+
+  const password=
+    document.getElementById(
+      "teacherPassword"
+    ).value;
 
   if(!name||!username||!password){
-    alert("Please complete all teacher fields.");
+
+    alert(
+      "Please complete all teacher fields."
+    );
+
     return;
   }
 
-  if(db.users.some(u=>u.username===username)){
-    alert("Username already exists.");
+  if(
+    db.users.some(
+      user=>user.username===username
+    )
+  ){
+
+    alert(
+      "Username already exists."
+    );
+
     return;
   }
 
-  const id="teacher-"+Date.now();
+  const id=
+    "teacher-"+Date.now();
 
   db.teachers.push({
-    id,name,username
+    id,
+    name,
+    username
   });
 
   db.users.push({
@@ -1395,17 +1805,32 @@ function addTeacher(){
   });
 
   saveDB();
+
   renderTeachers();
 }
 
 function deleteTeacher(id){
 
-  if(!confirm("Delete this teacher?")) return;
+  if(
+    !confirm(
+      "Delete this teacher?"
+    )
+  ){
+    return;
+  }
 
-  db.teachers=db.teachers.filter(t=>t.id!==id);
-  db.users=db.users.filter(u=>u.id!==id);
+  db.teachers=
+    db.teachers.filter(
+      teacher=>teacher.id!==id
+    );
+
+  db.users=
+    db.users.filter(
+      user=>user.id!==id
+    );
 
   saveDB();
+
   renderTeachers();
 }
 
@@ -1413,2700 +1838,3 @@ function deleteTeacher(id){
 /* =========================================================
    STUDENTS
 ========================================================= */
-
-function renderStudents(){
-
-  document.getElementById("content").innerHTML=`
-
-    <h1 class="page-title">Student Management</h1>
-    <p class="page-subtitle">Register students and manage student portal accounts.</p>
-
-    <div class="card">
-
-      <h3>Add Student</h3>
-
-      <div class="grid-4">
-
-        <div class="form-group">
-          <label>Full Name</label>
-          <input id="studentName">
-        </div>
-
-        <div class="form-group">
-          <label>Admission Number</label>
-          <input id="studentAdmission">
-        </div>
-
-        <div class="form-group">
-          <label>Class</label>
-          <select id="studentClass">
-            ${CLASSES.map(c=>`<option>${c}</option>`).join("")}
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label>Section</label>
-          <select id="studentSection">
-            ${SECTIONS.map(s=>`<option>${s}</option>`).join("")}
-          </select>
-        </div>
-
-      </div>
-
-      ${
-        isAdmin()
-        ?
-        `<button class="btn btn-green"
-          onclick="addStudent()">
-          Add Student
-        </button>`
-        :""
-      }
-
-    </div>
-
-    <div class="card">
-
-      <h3>Students</h3>
-
-      <div class="table-wrap">
-
-        <table>
-
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Admission No.</th>
-              <th>Class</th>
-              <th>Section</th>
-              ${isAdmin()?`<th>Action</th>`:""}
-            </tr>
-          </thead>
-
-          <tbody>
-
-            ${
-              db.students.length
-              ?
-              db.students.map(s=>`
-                <tr>
-                  <td>${escapeHTML(s.name)}</td>
-                  <td>${escapeHTML(s.admission)}</td>
-                  <td>${escapeHTML(s.className)}</td>
-                  <td>${escapeHTML(s.section)}</td>
-                  ${
-                    isAdmin()
-                    ?
-                    `<td>
-                      <button class="btn btn-red"
-                        onclick="deleteStudent('${s.id}')">
-                        Delete
-                      </button>
-                    </td>`
-                    :""
-                  }
-                </tr>
-              `).join("")
-              :
-              `<tr>
-                <td colspan="5" class="empty">
-                  No students registered.
-                </td>
-              </tr>`
-            }
-
-          </tbody>
-
-        </table>
-
-      </div>
-
-    </div>
-  `;
-}
-
-function addStudent(){
-
-  const name=document.getElementById("studentName").value.trim();
-  const admission=document.getElementById("studentAdmission").value.trim();
-  const className=document.getElementById("studentClass").value;
-  const section=document.getElementById("studentSection").value;
-
-  if(!name||!admission){
-    alert("Please enter student's name and admission number.");
-    return;
-  }
-
-  db.students.push({
-    id:"student-"+Date.now(),
-    name,
-    admission,
-    className,
-    section
-  });
-
-  saveDB();
-  renderStudents();
-}
-
-function deleteStudent(id){
-
-  if(!confirm("Delete this student?"))return;
-
-  db.students=db.students.filter(s=>s.id!==id);
-
-  saveDB();
-  renderStudents();
-}
-
-
-/* =========================================================
-   PARENTS
-========================================================= */
-
-function renderParents(){
-
-  if(!isAdmin())return;
-
-  document.getElementById("content").innerHTML=`
-
-    <h1 class="page-title">Parent Management</h1>
-    <p class="page-subtitle">Create parent portal accounts.</p>
-
-    <div class="card">
-
-      <h3>Add Parent</h3>
-
-      <div class="grid-3">
-
-        <div class="form-group">
-          <label>Parent Name</label>
-          <input id="parentName">
-        </div>
-
-        <div class="form-group">
-          <label>Username</label>
-          <input id="parentUsername">
-        </div>
-
-        <div class="form-group">
-          <label>Password</label>
-          <input id="parentPassword">
-        </div>
-
-      </div>
-
-      <button class="btn btn-green"
-        onclick="addParent()">
-        Add Parent
-      </button>
-
-    </div>
-
-    <div class="card">
-
-      <h3>Parents</h3>
-
-      <div class="table-wrap">
-        <table>
-
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Username</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            ${
-              db.parents.length
-              ?
-              db.parents.map(p=>`
-                <tr>
-                  <td>${escapeHTML(p.name)}</td>
-                  <td>${escapeHTML(p.username)}</td>
-                  <td>
-                    <button class="btn btn-red"
-                      onclick="deleteParent('${p.id}')">
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-              `).join("")
-              :
-              `<tr>
-                <td colspan="3" class="empty">
-                  No parents registered.
-                </td>
-              </tr>`
-            }
-          </tbody>
-
-        </table>
-      </div>
-
-    </div>
-  `;
-}
-
-function addParent(){
-
-  const name=document.getElementById("parentName").value.trim();
-  const username=document.getElementById("parentUsername").value.trim();
-  const password=document.getElementById("parentPassword").value;
-
-  if(!name||!username||!password){
-    alert("Complete all fields.");
-    return;
-  }
-
-  if(db.users.some(u=>u.username===username)){
-    alert("Username already exists.");
-    return;
-  }
-
-  const id="parent-"+Date.now();
-
-  db.parents.push({
-    id,name,username
-  });
-
-  db.users.push({
-    id,
-    username,
-    password,
-    role:"Parent",
-    name
-  });
-
-  saveDB();
-  renderParents();
-}
-
-function deleteParent(id){
-
-  if(!confirm("Delete this parent?"))return;
-
-  db.parents=db.parents.filter(p=>p.id!==id);
-  db.users=db.users.filter(u=>u.id!==id);
-
-  saveDB();
-  renderParents();
-}
-
-
-/* =========================================================
-   CLASSES
-========================================================= */
-
-function renderClasses(){
-
-  if(!isAdmin())return;
-
-  document.getElementById("content").innerHTML=`
-
-    <h1 class="page-title">Classes & Subjects</h1>
-
-    <div class="card">
-
-      <h3>Available Classes</h3>
-
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>Class</th>
-              <th>Section A</th>
-              <th>Section B</th>
-            </tr>
-          </thead>
-
-          <tbody>
-
-            ${CLASSES.map(c=>`
-              <tr>
-                <td>${c}</td>
-                <td>Active</td>
-                <td>Active</td>
-              </tr>
-            `).join("")}
-
-          </tbody>
-        </table>
-      </div>
-
-    </div>
-
-    <div class="card">
-
-      <h3>Subjects</h3>
-
-      <div class="grid-4">
-
-        ${SUBJECTS.map(s=>`
-          <div style="
-            padding:10px;
-            border:1px solid #e2e8f0;
-            border-radius:8px;
-            font-size:11px;
-            background:#f8fafc">
-            ${escapeHTML(s)}
-          </div>
-        `).join("")}
-
-      </div>
-
-    </div>
-  `;
-}
-
-
-/* =========================================================
-   REGISTER
-========================================================= */
-
-function renderRegister(){
-
-  document.getElementById("content").innerHTML=`
-
-    <h1 class="page-title">School Register</h1>
-
-    <p class="page-subtitle">
-      Professional monthly attendance register.
-      Tap each attendance cell to cycle:
-      <strong>Blank → P → A → Blank</strong>.
-    </p>
-
-    <div class="card">
-
-      <div class="toolbar no-print">
-
-        <select id="registerClass">
-          ${CLASSES.map(c=>`
-            <option>${c}</option>
-          `).join("")}
-        </select>
-
-        <select id="registerSection">
-          ${SECTIONS.map(s=>`
-            <option>${s}</option>
-          `).join("")}
-        </select>
-
-        <select id="registerMonth">
-          ${MONTHS.map((m,i)=>`
-            <option value="${i}">
-              ${m}
-            </option>
-          `).join("")}
-        </select>
-
-        <button class="btn btn-green"
-          onclick="openRegisterWorkspace()">
-          Open / Mark Register
-        </button>
-
-      </div>
-
-      <div id="registerWorkspace">
-        <div class="empty">
-          Select class, section and month, then click
-          "Open / Mark Register".
-        </div>
-      </div>
-
-    </div>
-  `;
-}
-
-function registerKey(className,section,month){
-  return `${className}__${section}__${month}`;
-}
-
-function getDaysInMonth(monthIndex){
-
-  return new Date(
-    new Date().getFullYear(),
-    Number(monthIndex)+1,
-    0
-  ).getDate();
-}
-
-function openRegisterWorkspace(){
-
-  const className=document.getElementById("registerClass").value;
-  const section=document.getElementById("registerSection").value;
-  const month=Number(document.getElementById("registerMonth").value);
-
-  renderRegisterWorkspace(
-    className,
-    section,
-    month
-  );
-}
-
-function renderRegisterWorkspace(
-  className,
-  section,
-  month
-){
-
-  const box=document.getElementById("registerWorkspace");
-
-  if(!box)return;
-
-  const key=registerKey(
-    className,
-    section,
-    month
-  );
-
-  if(!db.attendance[key]){
-    db.attendance[key]={};
-  }
-
-  const records=db.attendance[key];
-
-  const students=db.students.filter(s=>
-    s.className===className &&
-    s.section===section
-  );
-
-  const days=getDaysInMonth(month);
-
-  let dayHeaders="";
-
-  for(let day=1;day<=days;day++){
-
-    const date=new Date(
-      new Date().getFullYear(),
-      month,
-      day
-    );
-
-    const dayName=date
-      .toLocaleDateString(
-        "en-US",
-        {weekday:"short"}
-      )
-      .toUpperCase();
-
-    const weekend=
-      date.getDay()===0 ||
-      date.getDay()===6;
-
-    dayHeaders+=`
-
-      <th
-        class="day-head ${
-          weekend ? "weekend-head" : ""
-        }">
-
-        <div style="
-          font-size:9px;
-          font-weight:900;">
-          ${dayName}
-        </div>
-
-        <div style="
-          font-size:11px;
-          margin-top:2px;">
-          ${day}
-        </div>
-
-      </th>
-    `;
-  }
-
-  const rows=students.length
-    ?
-    students.map((student,index)=>{
-
-      const studentId=student.id;
-
-      let cells="";
-
-      for(let day=1;day<=days;day++){
-
-        const status=
-          records[studentId]?.[day] || "";
-
-        cells+=`
-
-          <td>
-
-            <button
-              class="mark ${
-                status==="P"
-                ? "present"
-                : status==="A"
-                ? "absent"
-                : ""
-              }"
-              onclick="cycleAttendance(
-                '${escapeAttr(key)}',
-                '${escapeAttr(studentId)}',
-                ${day},
-                '${escapeAttr(className)}',
-                '${escapeAttr(section)}',
-                ${month}
-              )">
-
-              ${status}
-
-            </button>
-
-          </td>
-        `;
-      }
-
-      return`
-
-        <tr>
-
-          <td class="student-name">
-
-            <strong>
-              ${index+1}.
-              ${escapeHTML(student.name)}
-            </strong>
-
-            <div style="
-              font-size:9px;
-              color:#64748b;">
-              ${escapeHTML(student.admission)}
-            </div>
-
-          </td>
-
-          ${cells}
-
-          <td>
-            <strong id="present-${studentId}">
-              0
-            </strong>
-          </td>
-
-          <td>
-            <strong id="absent-${studentId}">
-              0
-            </strong>
-          </td>
-
-          <td>
-            <strong id="percent-${studentId}">
-              0%
-            </strong>
-          </td>
-
-        </tr>
-      `;
-
-    }).join("")
-    :
-    `<tr>
-      <td colspan="${days+4}" class="empty">
-        No students found in ${escapeHTML(className)}
-        ${escapeHTML(section)}.
-        Add students first.
-      </td>
-    </tr>`;
-
-  const sig=
-    db.registerSignatures[key] || {};
-
-  box.innerHTML=`
-
-    <div class="register-meta">
-
-      <div>
-        <strong>School</strong>
-        <span>${escapeHTML(db.school.name)}</span>
-      </div>
-
-      <div>
-        <strong>Class</strong>
-        <span>${escapeHTML(className)} ${escapeHTML(section)}</span>
-      </div>
-
-      <div>
-        <strong>Month</strong>
-        <span>${MONTHS[month]}</span>
-      </div>
-
-      <div>
-        <strong>Session</strong>
-        <span>${escapeHTML(db.school.session)}</span>
-      </div>
-
-    </div>
-
-    <div class="table-wrap">
-
-      <table class="register-table">
-
-        <thead>
-
-          <tr>
-
-            <th class="student-name">
-              No. / Student Name
-            </th>
-
-            ${dayHeaders}
-
-            <th>Present</th>
-            <th>Absent</th>
-            <th>%</th>
-
-          </tr>
-
-        </thead>
-
-        <tbody>
-          ${rows}
-        </tbody>
-
-      </table>
-
-    </div>
-
-    <div class="summary-box">
-
-      <div class="summary-item">
-        <strong id="totalStudentCount">
-          ${students.length}
-        </strong>
-        <span>Total Students</span>
-      </div>
-
-      <div class="summary-item">
-        <strong id="totalPresentCount">
-          0
-        </strong>
-        <span>Total Present Marks</span>
-      </div>
-
-      <div class="summary-item">
-        <strong id="totalAbsentCount">
-          0
-        </strong>
-        <span>Total Absent Marks</span>
-      </div>
-
-      <div class="summary-item">
-        <strong id="overallPercentage">
-          0%
-        </strong>
-        <span>Overall Attendance</span>
-      </div>
-
-    </div>
-
-
-    <div class="card">
-
-      <h3>
-        Register Verification & Digital Signatures
-      </h3>
-
-      <p style="
-        font-size:11px;
-        color:#64748b;
-        margin-top:-5px;
-        margin-bottom:14px;">
-        Use your finger, stylus or mouse to sign directly
-        on the screen. Your digital signature will be saved
-        with this register and included when printed.
-      </p>
-
-      <div class="signature-grid">
-
-        <!-- CLASS TEACHER -->
-
-        <div class="signature-box">
-
-          <h4>Class Teacher</h4>
-
-          <div class="form-group">
-            <label>Name</label>
-            <input
-              id="sigTeacherName"
-              value="${escapeAttr(sig.teacherName || "")}">
-          </div>
-
-          <div class="signature-pad-wrap">
-
-            <canvas
-              id="sigCanvasTeacher"
-              class="signature-canvas">
-            </canvas>
-
-            <img
-              id="printSigTeacher"
-              class="signature-print-image"
-              alt="Class Teacher Digital Signature">
-
-            <div class="signature-actions">
-
-              <button
-                type="button"
-                class="btn btn-light"
-                onclick="clearSignaturePad('teacher')">
-                Clear Signature
-              </button>
-
-            </div>
-
-            <div class="signature-note">
-              Sign here using your finger or mouse.
-            </div>
-
-          </div>
-
-          <div class="form-group"
-               style="margin-top:10px">
-
-            <label>Date</label>
-
-            <input
-              id="sigTeacherDate"
-              type="date"
-              value="${escapeAttr(sig.teacherDate || "")}">
-
-          </div>
-
-          <label class="check-line">
-
-            <input
-              type="checkbox"
-              id="sigTeacherVerified"
-              ${sig.teacherVerified ? "checked" : ""}>
-
-            Verified
-
-          </label>
-
-        </div>
-
-
-        <!-- HOD -->
-
-        <div class="signature-box">
-
-          <h4>Head of Department / HOD</h4>
-
-          <div class="form-group">
-
-            <label>Name</label>
-
-            <input
-              id="sigHodName"
-              value="${escapeAttr(sig.hodName || "")}">
-
-          </div>
-
-          <div class="signature-pad-wrap">
-
-            <canvas
-              id="sigCanvasHod"
-              class="signature-canvas">
-            </canvas>
-
-            <img
-              id="printSigHod"
-              class="signature-print-image"
-              alt="HOD Digital Signature">
-
-            <div class="signature-actions">
-
-              <button
-                type="button"
-                class="btn btn-light"
-                onclick="clearSignaturePad('hod')">
-                Clear Signature
-              </button>
-
-            </div>
-
-            <div class="signature-note">
-              Sign here using your finger or mouse.
-            </div>
-
-          </div>
-
-          <div class="form-group"
-               style="margin-top:10px">
-
-            <label>Date</label>
-
-            <input
-              id="sigHodDate"
-              type="date"
-              value="${escapeAttr(sig.hodDate || "")}">
-
-          </div>
-
-          <label class="check-line">
-
-            <input
-              type="checkbox"
-              id="sigHodVerified"
-              ${sig.hodVerified ? "checked" : ""}>
-
-            Verified
-
-          </label>
-
-        </div>
-
-
-        <!-- PRINCIPAL -->
-
-        <div class="signature-box">
-
-          <h4>Principal</h4>
-
-          <div class="form-group">
-
-            <label>Name</label>
-
-            <input
-              id="sigPrincipalName"
-              value="${escapeAttr(sig.principalName || "")}">
-
-          </div>
-
-          <div class="signature-pad-wrap">
-
-            <canvas
-              id="sigCanvasPrincipal"
-              class="signature-canvas">
-            </canvas>
-
-            <img
-              id="printSigPrincipal"
-              class="signature-print-image"
-              alt="Principal Digital Signature">
-
-            <div class="signature-actions">
-
-              <button
-                type="button"
-                class="btn btn-light"
-                onclick="clearSignaturePad('principal')">
-                Clear Signature
-              </button>
-
-            </div>
-
-            <div class="signature-note">
-              Sign here using your finger or mouse.
-            </div>
-
-          </div>
-
-          <div class="form-group"
-               style="margin-top:10px">
-
-            <label>Date</label>
-
-            <input
-              id="sigPrincipalDate"
-              type="date"
-              value="${escapeAttr(sig.principalDate || "")}">
-
-          </div>
-
-          <label class="check-line">
-
-            <input
-              type="checkbox"
-              id="sigPrincipalApproved"
-              ${sig.principalApproved ? "checked" : ""}>
-
-            Approved
-
-          </label>
-
-        </div>
-
-      </div>
-
-
-      <div class="toolbar no-print"
-           style="margin-top:15px">
-
-        <button
-          class="btn btn-green"
-          onclick="saveRegisterSignature(
-            '${escapeAttr(className)}',
-            '${escapeAttr(section)}',
-            ${month}
-          )">
-          Save Register & Signatures
-        </button>
-
-        <button
-          class="btn btn-blue"
-          onclick="window.print()">
-          Print Official Register
-        </button>
-
-        <button
-          class="btn btn-light"
-          onclick="clearMonthRegister(
-            '${escapeAttr(className)}',
-            '${escapeAttr(section)}',
-            ${month}
-          )">
-          Clear Month
-        </button>
-
-      </div>
-
-    </div>
-  `;
-
-  initRegisterSignaturePads(sig);
-
-  updateRegisterTotals(
-    className,
-    section,
-    month
-  );
-}
-
-
-/* =========================================================
-   DIGITAL SIGNATURE PAD
-========================================================= */
-
-function setupSignaturePad(
-  canvasId,
-  existingData=""
-){
-
-  const canvas=document.getElementById(canvasId);
-
-  if(!canvas)return null;
-
-  const ctx=canvas.getContext("2d");
-
-  let drawing=false;
-  let hasSignature=false;
-
-  function resizeCanvas(){
-
-    const rect=canvas.getBoundingClientRect();
-
-    const ratio=Math.max(
-      window.devicePixelRatio || 1,
-      1
-    );
-
-    canvas.width=Math.max(
-      1,
-      Math.floor(rect.width*ratio)
-    );
-
-    canvas.height=Math.max(
-      1,
-      Math.floor(rect.height*ratio)
-    );
-
-    ctx.setTransform(
-      ratio,
-      0,
-      0,
-      ratio,
-      0,
-      0
-    );
-
-    ctx.lineWidth=2.2;
-    ctx.lineCap="round";
-    ctx.lineJoin="round";
-    ctx.strokeStyle="#111827";
-
-    if(existingData){
-
-      const img=new Image();
-
-      img.onload=()=>{
-
-        ctx.drawImage(
-          img,
-          0,
-          0,
-          rect.width,
-          rect.height
-        );
-
-        hasSignature=true;
-      };
-
-      img.src=existingData;
-    }
-  }
-
-  resizeCanvas();
-
-  function position(event){
-
-    const rect=
-      canvas.getBoundingClientRect();
-
-    return {
-      x:event.clientX-rect.left,
-      y:event.clientY-rect.top
-    };
-  }
-
-  canvas.addEventListener(
-    "pointerdown",
-    event=>{
-
-      event.preventDefault();
-
-      drawing=true;
-      hasSignature=true;
-
-      try{
-        canvas.setPointerCapture(
-          event.pointerId
-        );
-      }catch(e){}
-
-      const p=position(event);
-
-      ctx.beginPath();
-      ctx.moveTo(p.x,p.y);
-    },
-    {passive:false}
-  );
-
-  canvas.addEventListener(
-    "pointermove",
-    event=>{
-
-      if(!drawing)return;
-
-      event.preventDefault();
-
-      const p=position(event);
-
-      ctx.lineTo(p.x,p.y);
-      ctx.stroke();
-
-    },
-    {passive:false}
-  );
-
-  function stopDrawing(event){
-
-    if(!drawing)return;
-
-    drawing=false;
-
-    try{
-      canvas.releasePointerCapture(
-        event.pointerId
-      );
-    }catch(e){}
-
-    ctx.closePath();
-  }
-
-  canvas.addEventListener(
-    "pointerup",
-    stopDrawing
-  );
-
-  canvas.addEventListener(
-    "pointercancel",
-    stopDrawing
-  );
-
-  return {
-
-    clear(){
-
-      const rect=
-        canvas.getBoundingClientRect();
-
-      ctx.clearRect(
-        0,
-        0,
-        rect.width,
-        rect.height
-      );
-
-      hasSignature=false;
-
-      const imageId=
-        canvasId==="sigCanvasTeacher"
-        ? "printSigTeacher"
-        : canvasId==="sigCanvasHod"
-        ? "printSigHod"
-        : "printSigPrincipal";
-
-      const image=document.getElementById(imageId);
-
-      if(image)image.removeAttribute("src");
-    },
-
-    data(){
-
-      if(!hasSignature)return "";
-
-      return canvas.toDataURL(
-        "image/png"
-      );
-    }
-
-  };
-}
-
-function initRegisterSignaturePads(sig){
-
-  signaturePads={};
-
-  signaturePads.teacher=
-    setupSignaturePad(
-      "sigCanvasTeacher",
-      sig.teacherSignature || ""
-    );
-
-  signaturePads.hod=
-    setupSignaturePad(
-      "sigCanvasHod",
-      sig.hodSignature || ""
-    );
-
-  signaturePads.principal=
-    setupSignaturePad(
-      "sigCanvasPrincipal",
-      sig.principalSignature || ""
-    );
-
-  setTimeout(()=>{
-    updatePrintSignatureImages();
-  },100);
-}
-
-function clearSignaturePad(role){
-
-  if(signaturePads[role]){
-    signaturePads[role].clear();
-  }
-}
-
-function updatePrintSignatureImages(){
-
-  const pairs=[
-    ["teacher","printSigTeacher"],
-    ["hod","printSigHod"],
-    ["principal","printSigPrincipal"]
-  ];
-
-  pairs.forEach(pair=>{
-
-    const role=pair[0];
-    const image=document.getElementById(pair[1]);
-
-    if(!image)return;
-
-    if(signaturePads[role]){
-
-      const data=
-        signaturePads[role].data();
-
-      if(data){
-        image.src=data;
-      }else{
-        image.removeAttribute("src");
-      }
-    }
-  });
-}
-
-
-/* =========================================================
-   ATTENDANCE
-========================================================= */
-
-function cycleAttendance(
-  key,
-  studentId,
-  day,
-  className,
-  section,
-  month
-){
-
-  if(!db.attendance[key]){
-    db.attendance[key]={};
-  }
-
-  if(!db.attendance[key][studentId]){
-    db.attendance[key][studentId]={};
-  }
-
-  const current=
-    db.attendance[key][studentId][day] || "";
-
-  let next="";
-
-  if(current===""){
-    next="P";
-  }else if(current==="P"){
-    next="A";
-  }else{
-    next="";
-  }
-
-  db.attendance[key][studentId][day]=next;
-
-  saveDB();
-
-  renderRegisterWorkspace(
-    className,
-    section,
-    month
-  );
-}
-
-function updateRegisterTotals(
-  className,
-  section,
-  month
-){
-
-  const key=registerKey(
-    className,
-    section,
-    month
-  );
-
-  const records=db.attendance[key]||{};
-
-  let totalP=0;
-  let totalA=0;
-
-  Object.keys(records).forEach(studentId=>{
-
-    let p=0;
-    let a=0;
-
-    Object.values(records[studentId]||{})
-      .forEach(value=>{
-
-        if(value==="P"){
-          p++;
-          totalP++;
-        }
-
-        if(value==="A"){
-          a++;
-          totalA++;
-        }
-
-      });
-
-    const days=p+a;
-    const percentage=
-      days
-      ? Math.round((p/days)*100)
-      : 0;
-
-    const pEl=document.getElementById(
-      "present-"+studentId
-    );
-
-    const aEl=document.getElementById(
-      "absent-"+studentId
-    );
-
-    const percentEl=document.getElementById(
-      "percent-"+studentId
-    );
-
-    if(pEl)pEl.textContent=p;
-    if(aEl)aEl.textContent=a;
-    if(percentEl)percentEl.textContent=
-      percentage+"%";
-  });
-
-  const totalPElement=
-    document.getElementById("totalPresentCount");
-
-  const totalAElement=
-    document.getElementById("totalAbsentCount");
-
-  const overallElement=
-    document.getElementById("overallPercentage");
-
-  if(totalPElement)
-    totalPElement.textContent=totalP;
-
-  if(totalAElement)
-    totalAElement.textContent=totalA;
-
-  const overall=totalP+totalA
-    ? Math.round(
-        (totalP/(totalP+totalA))*100
-      )
-    : 0;
-
-  if(overallElement)
-    overallElement.textContent=
-      overall+"%";
-
-}
-
-function clearMonthRegister(
-  className,
-  section,
-  month
-){
-
-  if(!confirm(
-    "Clear all attendance marks for this class and month?"
-  ))return;
-
-  const key=registerKey(
-    className,
-    section,
-    month
-  );
-
-  db.attendance[key]={};
-
-  saveDB();
-
-  renderRegisterWorkspace(
-    className,
-    section,
-    month
-  );
-}
-
-
-/* =========================================================
-   SAVE REGISTER SIGNATURE
-========================================================= */
-
-function saveRegisterSignature(
-  className,
-  section,
-  month
-){
-
-  const key=registerKey(
-    className,
-    section,
-    month
-  );
-
-  if(!db.registerSignatures[key]){
-    db.registerSignatures[key]={};
-  }
-
-  const old=
-    db.registerSignatures[key];
-
-  const teacherSignature=
-    signaturePads.teacher
-    ? signaturePads.teacher.data()
-    : old.teacherSignature || "";
-
-  const hodSignature=
-    signaturePads.hod
-    ? signaturePads.hod.data()
-    : old.hodSignature || "";
-
-  const principalSignature=
-    signaturePads.principal
-    ? signaturePads.principal.data()
-    : old.principalSignature || "";
-
-  db.registerSignatures[key]={
-
-    teacherName:
-      document.getElementById(
-        "sigTeacherName"
-      ).value,
-
-    teacherSignature,
-
-    teacherDate:
-      document.getElementById(
-        "sigTeacherDate"
-      ).value,
-
-    teacherVerified:
-      document.getElementById(
-        "sigTeacherVerified"
-      ).checked,
-
-
-    hodName:
-      document.getElementById(
-        "sigHodName"
-      ).value,
-
-    hodSignature,
-
-    hodDate:
-      document.getElementById(
-        "sigHodDate"
-      ).value,
-
-    hodVerified:
-      document.getElementById(
-        "sigHodVerified"
-      ).checked,
-
-
-    principalName:
-      document.getElementById(
-        "sigPrincipalName"
-      ).value,
-
-    principalSignature,
-
-    principalDate:
-      document.getElementById(
-        "sigPrincipalDate"
-      ).value,
-
-    principalApproved:
-      document.getElementById(
-        "sigPrincipalApproved"
-      ).checked
-  };
-
-  saveDB();
-
-  updatePrintSignatureImages();
-
-  alert(
-    "Register, verification details and digital signatures saved successfully."
-  );
-}
-
-
-/* =========================================================
-   RESULTS
-========================================================= */
-
-function renderResults(){
-
-  document.getElementById("content").innerHTML=`
-
-    <h1 class="page-title">Results Management</h1>
-
-    <p class="page-subtitle">
-      CA1 = 15 marks, CA2 = 15 marks,
-      Examination = 70 marks. Total = 100.
-    </p>
-
-    ${
-      isAdmin()
-      ?
-      `<div class="card">
-
-        <h3>Enter Result</h3>
-
-        <div class="grid-4">
-
-          <div class="form-group">
-            <label>Student</label>
-            <select id="resultStudent">
-              ${
-                db.students.map(s=>`
-                  <option value="${s.id}">
-                    ${escapeHTML(s.name)}
-                    -
-                    ${escapeHTML(s.className)}
-                    ${escapeHTML(s.section)}
-                  </option>
-                `).join("")
-              }
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label>Subject</label>
-            <select id="resultSubject">
-              ${SUBJECTS.map(s=>`
-                <option>${s}</option>
-              `).join("")}
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label>CA1 / 15</label>
-            <input id="ca1"
-              type="number"
-              min="0"
-              max="15">
-          </div>
-
-          <div class="form-group">
-            <label>CA2 / 15</label>
-            <input id="ca2"
-              type="number"
-              min="0"
-              max="15">
-          </div>
-
-          <div class="form-group">
-            <label>Exam / 70</label>
-            <input id="exam"
-              type="number"
-              min="0"
-              max="70">
-          </div>
-
-        </div>
-
-        <button class="btn btn-green"
-          onclick="saveResult()">
-          Save Result
-        </button>
-
-      </div>`
-      :""
-    }
-
-    <div class="card">
-
-      <h3>Result Records</h3>
-
-      <div class="table-wrap">
-
-        <table>
-
-          <thead>
-            <tr>
-              <th>Student</th>
-              <th>Subject</th>
-              <th>CA1</th>
-              <th>CA2</th>
-              <th>Exam</th>
-              <th>Total</th>
-              <th>Grade</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-
-          <tbody>
-
-            ${
-              db.results.length
-              ?
-              db.results.map(r=>{
-
-                const student=
-                  db.students.find(
-                    s=>s.id===r.studentId
-                  );
-
-                return`
-                  <tr>
-
-                    <td>
-                      ${escapeHTML(
-                        student?.name || "Unknown"
-                      )}
-                    </td>
-
-                    <td>
-                      ${escapeHTML(r.subject)}
-                    </td>
-
-                    <td>${r.ca1}</td>
-                    <td>${r.ca2}</td>
-                    <td>${r.exam}</td>
-                    <td><strong>${r.total}</strong></td>
-                    <td>${r.grade}</td>
-
-                    <td>
-                      <span class="badge ${
-                        r.published
-                        ?"badge-green"
-                        :"badge-orange"
-                      }">
-                        ${
-                          r.published
-                          ?"Published"
-                          :"Draft"
-                        }
-                      </span>
-                    </td>
-
-                  </tr>
-                `;
-
-              }).join("")
-              :
-              `<tr>
-                <td colspan="8" class="empty">
-                  No results recorded.
-                </td>
-              </tr>`
-            }
-
-          </tbody>
-
-        </table>
-
-      </div>
-
-      ${
-        isAdmin() && db.results.length
-        ?
-        `<button
-          class="btn btn-blue"
-          style="margin-top:12px"
-          onclick="publishResults()">
-          Publish All Results
-        </button>`
-        :""
-      }
-
-    </div>
-  `;
-}
-
-function gradeFromTotal(total){
-
-  if(total>=75)return"A";
-  if(total>=65)return"B";
-  if(total>=55)return"C";
-  if(total>=45)return"D";
-  if(total>=40)return"E";
-  return"F";
-}
-
-function saveResult(){
-
-  const studentId=
-    document.getElementById(
-      "resultStudent"
-    ).value;
-
-  const subject=
-    document.getElementById(
-      "resultSubject"
-    ).value;
-
-  const ca1=Number(
-    document.getElementById("ca1").value
-  );
-
-  const ca2=Number(
-    document.getElementById("ca2").value
-  );
-
-  const exam=Number(
-    document.getElementById("exam").value
-  );
-
-  if(
-    ca1<0||ca1>15||
-    ca2<0||ca2>15||
-    exam<0||exam>70
-  ){
-
-    alert(
-      "CA1 must be 0–15, CA2 must be 0–15 and Exam must be 0–70."
-    );
-
-    return;
-  }
-
-  const total=ca1+ca2+exam;
-
-  db.results.push({
-    id:"result-"+Date.now(),
-    studentId,
-    subject,
-    ca1,
-    ca2,
-    exam,
-    total,
-    grade:gradeFromTotal(total),
-    published:false,
-    createdAt:new Date().toISOString()
-  });
-
-  saveDB();
-
-  renderResults();
-}
-
-function publishResults(){
-
-  if(!confirm(
-    "Publish all result records?"
-  ))return;
-
-  db.results.forEach(r=>{
-    r.published=true;
-  });
-
-  saveDB();
-  renderResults();
-
-  alert("Results published successfully.");
-}
-
-
-/* =========================================================
-   DOCUMENTS
-========================================================= */
-
-function renderDocuments(){
-
-  document.getElementById("content").innerHTML=`
-
-    <h1 class="page-title">Academic Documents</h1>
-
-    <p class="page-subtitle">
-      Create lesson plans, lesson notes, schemes and questions.
-    </p>
-
-    <div class="card">
-
-      <h3>Create Academic Document</h3>
-
-      <div class="grid-3">
-
-        <div class="form-group">
-          <label>Document Type</label>
-          <select id="docType">
-            <option>Lesson Plan</option>
-            <option>Lesson Note</option>
-            <option>Scheme of Work</option>
-            <option>CA Questions</option>
-            <option>Examination Questions</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label>Subject</label>
-          <select id="docSubject">
-            ${SUBJECTS.map(s=>`
-              <option>${s}</option>
-            `).join("")}
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label>Class</label>
-          <select id="docClass">
-            ${CLASSES.map(c=>`
-              <option>${c}</option>
-            `).join("")}
-          </select>
-        </div>
-
-      </div>
-
-      <div class="form-group">
-
-        <label>Document Content</label>
-
-        <textarea
-          id="docContent"
-          rows="10"
-          placeholder="Enter or paste the academic document here...">
-        </textarea>
-
-      </div>
-
-      <button
-        class="btn btn-green"
-        onclick="saveDocument()">
-        Save as Draft
-      </button>
-
-    </div>
-
-    <div class="card">
-
-      <h3>My Documents</h3>
-
-      <div class="table-wrap">
-
-        <table>
-
-          <thead>
-            <tr>
-              <th>Type</th>
-              <th>Subject</th>
-              <th>Class</th>
-              <th>Status</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-
-          <tbody>
-
-            ${
-              db.documents.length
-              ?
-              db.documents.map(d=>`
-
-                <tr>
-
-                  <td>${escapeHTML(d.type)}</td>
-                  <td>${escapeHTML(d.subject)}</td>
-                  <td>${escapeHTML(d.className)}</td>
-
-                  <td>
-                    <span class="badge ${
-                      d.status==="Approved"
-                      ?"badge-green"
-                      :d.status==="Rejected"
-                      ?"badge-red"
-                      :"badge-orange"
-                    }">
-                      ${escapeHTML(d.status)}
-                    </span>
-                  </td>
-
-                  <td>
-
-                    ${
-                      d.status==="Draft"
-                      ?
-                      `<button
-                        class="btn btn-blue"
-                        onclick="submitDocument('${d.id}')">
-                        Submit
-                      </button>`
-                      :""
-                    }
-
-                    <button
-                      class="btn btn-light"
-                      onclick="viewDocument('${d.id}')">
-                      View
-                    </button>
-
-                  </td>
-
-                </tr>
-
-              `).join("")
-              :
-              `<tr>
-                <td colspan="5" class="empty">
-                  No documents yet.
-                </td>
-              </tr>`
-            }
-
-          </tbody>
-
-        </table>
-
-      </div>
-
-    </div>
-  `;
-}
-
-function saveDocument(){
-
-  const type=
-    document.getElementById("docType").value;
-
-  const subject=
-    document.getElementById("docSubject").value;
-
-  const className=
-    document.getElementById("docClass").value;
-
-  const content=
-    document.getElementById("docContent").value.trim();
-
-  if(!content){
-    alert("Enter document content.");
-    return;
-  }
-
-  db.documents.push({
-    id:"doc-"+Date.now(),
-    type,
-    subject,
-    className,
-    content,
-    status:"Draft",
-    createdBy:session.username,
-    createdAt:new Date().toISOString()
-  });
-
-  saveDB();
-  renderDocuments();
-}
-
-function submitDocument(id){
-
-  const doc=db.documents.find(
-    d=>d.id===id
-  );
-
-  if(!doc)return;
-
-  doc.status="Submitted";
-
-  db.approvals.push({
-    id:"approval-"+Date.now(),
-    documentId:id,
-    status:"Pending",
-    submittedAt:new Date().toISOString()
-  });
-
-  saveDB();
-
-  renderDocuments();
-
-  alert(
-    "Document submitted to Approval Centre."
-  );
-}
-
-function viewDocument(id){
-
-  const d=db.documents.find(
-    x=>x.id===id
-  );
-
-  if(!d)return;
-
-  alert(
-    d.type+
-    "\n\n"+
-    d.subject+
-    "\n"+
-    d.className+
-    "\n\n"+
-    d.content
-  );
-}
-
-
-/* =========================================================
-   APPROVAL CENTRE
-========================================================= */
-
-function renderApproval(){
-
-  if(!isAdmin())return;
-
-  document.getElementById("content").innerHTML=`
-
-    <h1 class="page-title">Approval Centre</h1>
-
-    <p class="page-subtitle">
-      Review submitted academic documents.
-    </p>
-
-    <div class="card">
-
-      <div class="table-wrap">
-
-        <table>
-
-          <thead>
-            <tr>
-              <th>Type</th>
-              <th>Subject</th>
-              <th>Class</th>
-              <th>Status</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-
-          <tbody>
-
-            ${
-              db.documents.filter(
-                d=>d.status==="Submitted"
-              ).length
-              ?
-              db.documents
-                .filter(d=>d.status==="Submitted")
-                .map(d=>`
-
-                  <tr>
-
-                    <td>${escapeHTML(d.type)}</td>
-                    <td>${escapeHTML(d.subject)}</td>
-                    <td>${escapeHTML(d.className)}</td>
-                    <td>
-                      <span class="badge badge-orange">
-                        Submitted
-                      </span>
-                    </td>
-
-                    <td>
-
-                      <button
-                        class="btn btn-light"
-                        onclick="viewDocument('${d.id}')">
-                        View
-                      </button>
-
-                      <button
-                        class="btn btn-green"
-                        onclick="approveDocument('${d.id}')">
-                        Approve
-                      </button>
-
-                      <button
-                        class="btn btn-red"
-                        onclick="rejectDocument('${d.id}')">
-                        Reject
-                      </button>
-
-                    </td>
-
-                  </tr>
-
-                `).join("")
-              :
-              `<tr>
-                <td colspan="5" class="empty">
-                  No documents waiting for approval.
-                </td>
-              </tr>`
-            }
-
-          </tbody>
-
-        </table>
-
-      </div>
-
-    </div>
-  `;
-}
-
-function approveDocument(id){
-
-  const doc=db.documents.find(
-    d=>d.id===id
-  );
-
-  if(!doc)return;
-
-  doc.status="Approved";
-
-  db.approvals.push({
-    id:"approval-"+Date.now(),
-    documentId:id,
-    status:"Approved",
-    comment:"Approved by Administrator",
-    approvedAt:new Date().toISOString()
-  });
-
-  db.archive.push({
-    id:"archive-"+Date.now(),
-    documentId:id,
-    type:doc.type,
-    subject:doc.subject,
-    className:doc.className,
-    content:doc.content,
-    approvedBy:session.name,
-    approvedAt:new Date().toISOString()
-  });
-
-  saveDB();
-
-  renderApproval();
-
-  alert(
-    "Document approved and copied to Approved Work Archive."
-  );
-}
-
-function rejectDocument(id){
-
-  const comment=
-    prompt(
-      "Enter rejection comment:"
-    );
-
-  if(comment===null)return;
-
-  const doc=db.documents.find(
-    d=>d.id===id
-  );
-
-  if(!doc)return;
-
-  doc.status="Rejected";
-
-  db.approvals.push({
-    id:"approval-"+Date.now(),
-    documentId:id,
-    status:"Rejected",
-    comment,
-    approvedAt:new Date().toISOString()
-  });
-
-  saveDB();
-  renderApproval();
-}
-
-
-/* =========================================================
-   APPROVED WORK ARCHIVE
-========================================================= */
-
-function renderArchive(){
-
-  if(!isAdmin())return;
-
-  document.getElementById("content").innerHTML=`
-
-    <h1 class="page-title">Approved Work Archive</h1>
-
-    <p class="page-subtitle">
-      Permanent record of approved academic documents.
-    </p>
-
-    <div class="card">
-
-      <div class="toolbar">
-
-        <input
-          id="archiveSearch"
-          placeholder="Search archive..."
-          oninput="filterArchive()">
-
-      </div>
-
-      <div id="archiveTable"></div>
-
-    </div>
-  `;
-
-  filterArchive();
-}
-
-function filterArchive(){
-
-  const search=
-    (document.getElementById(
-      "archiveSearch"
-    )?.value || "")
-    .toLowerCase();
-
-  const data=db.archive.filter(a=>
-    `${a.type} ${a.subject} ${a.className} ${a.content}`
-      .toLowerCase()
-      .includes(search)
-  );
-
-  const target=
-    document.getElementById("archiveTable");
-
-  if(!target)return;
-
-  target.innerHTML=`
-
-    <div class="table-wrap">
-
-      <table>
-
-        <thead>
-
-          <tr>
-            <th>Type</th>
-            <th>Subject</th>
-            <th>Class</th>
-            <th>Approved By</th>
-            <th>Date</th>
-            <th>Actions</th>
-          </tr>
-
-        </thead>
-
-        <tbody>
-
-          ${
-            data.length
-            ?
-            data.map(a=>`
-
-              <tr>
-
-                <td>${escapeHTML(a.type)}</td>
-
-                <td>${escapeHTML(a.subject)}</td>
-
-                <td>${escapeHTML(a.className)}</td>
-
-                <td>${escapeHTML(a.approvedBy)}</td>
-
-                <td>
-                  ${new Date(a.approvedAt)
-                    .toLocaleDateString()}
-                </td>
-
-                <td>
-
-                  <button
-                    class="btn btn-light"
-                    onclick="viewArchive('${a.id}')">
-                    View
-                  </button>
-
-                  <button
-                    class="btn btn-red"
-                    onclick="deleteArchive('${a.id}')">
-                    Delete
-                  </button>
-
-                </td>
-
-              </tr>
-
-            `).join("")
-            :
-            `<tr>
-              <td colspan="6" class="empty">
-                No approved works in archive.
-              </td>
-            </tr>`
-          }
-
-        </tbody>
-
-      </table>
-
-    </div>
-  `;
-}
-
-function viewArchive(id){
-
-  const a=db.archive.find(
-    x=>x.id===id
-  );
-
-  if(!a)return;
-
-  alert(
-    a.type+
-    "\n\n"+
-    a.subject+
-    "\n"+
-    a.className+
-    "\n\n"+
-    a.content
-  );
-}
-
-function deleteArchive(id){
-
-  if(!confirm(
-    "Delete this archived approved work?"
-  ))return;
-
-  db.archive=db.archive.filter(
-    a=>a.id!==id
-  );
-
-  saveDB();
-  renderArchive();
-}
-
-
-/* =========================================================
-   TEACHER ASSISTANT
-========================================================= */
-
-function renderAssistant(){
-
-  document.getElementById("content").innerHTML=`
-
-    <h1 class="page-title">Teacher Assistant</h1>
-
-    <p class="page-subtitle">
-      Academic planning and classroom support.
-    </p>
-
-    <div class="card">
-
-      <h3>Academic Help</h3>
-
-      <div class="form-group">
-
-        <label>
-          Ask an academic question
-        </label>
-
-        <textarea
-          id="assistantQuestion"
-          rows="5"
-          placeholder="Example: Prepare a detailed JSS1 lesson note on fractions with examples and exercises.">
-        </textarea>
-
-      </div>
-
-      <button
-        class="btn btn-green"
-        onclick="assistantAnswer()">
-        Generate Guidance
-      </button>
-
-    </div>
-
-    <div
-      id="assistantOutput"
-      class="card hidden">
-    </div>
-  `;
-}
-
-function assistantAnswer(){
-
-  const q=
-    document.getElementById(
-      "assistantQuestion"
-    ).value.trim();
-
-  if(!q){
-    alert("Enter a question first.");
-    return;
-  }
-
-  const output=
-    document.getElementById(
-      "assistantOutput"
-    );
-
-  output.classList.remove("hidden");
-
-  output.innerHTML=`
-
-    <h3>Teacher Assistant Response</h3>
-
-    <p style="
-      white-space:pre-wrap;
-      line-height:1.7;
-      font-size:13px;">
-      Your request has been recorded:
-
-      ${escapeHTML(q)}
-
-      For a complete lesson note, scheme,
-      examination or academic document,
-      use the Academic Documents module.
-    </p>
-  `;
-}
-
-
-/* =========================================================
-   SETTINGS
-========================================================= */
-
-function renderSettings(){
-
-  if(!isAdmin())return;
-
-  document.getElementById("content").innerHTML=`
-
-    <h1 class="page-title">School Settings</h1>
-
-    <div class="card">
-
-      <h3>School Profile</h3>
-
-      <div class="grid-2">
-
-        <div class="form-group">
-          <label>School Name</label>
-          <input
-            id="schoolName"
-            value="${escapeAttr(db.school.name)}">
-        </div>
-
-        <div class="form-group">
-          <label>Phone</label>
-          <input
-            id="schoolPhone"
-            value="${escapeAttr(db.school.phone)}">
-        </div>
-
-        <div class="form-group">
-          <label>Address</label>
-          <input
-            id="schoolAddress"
-            value="${escapeAttr(db.school.address)}">
-        </div>
-
-        <div class="form-group">
-          <label>Email</label>
-          <input
-            id="schoolEmail"
-            value="${escapeAttr(db.school.email)}">
-        </div>
-
-        <div class="form-group">
-          <label>Academic Session</label>
-          <input
-            id="schoolSession"
-            value="${escapeAttr(db.school.session)}">
-        </div>
-
-        <div class="form-group">
-          <label>Current Term</label>
-          <select id="schoolTerm">
-
-            ${[
-              "First Term",
-              "Second Term",
-              "Third Term"
-            ].map(t=>`
-              <option
-                ${db.school.term===t?"selected":""}>
-                ${t}
-              </option>
-            `).join("")}
-
-          </select>
-        </div>
-
-      </div>
-
-      <button
-        class="btn btn-green"
-        onclick="saveSettings()">
-        Save Settings
-      </button>
-
-    </div>
-  `;
-}
-
-function saveSettings(){
-
-  db.school.name=
-    document.getElementById(
-      "schoolName"
-    ).value.trim();
-
-  db.school.phone=
-    document.getElementById(
-      "schoolPhone"
-    ).value.trim();
-
-  db.school.address=
-    document.getElementById(
-      "schoolAddress"
-    ).value.trim();
-
-  db.school.email=
-    document.getElementById(
-      "schoolEmail"
-    ).value.trim();
-
-  db.school.session=
-    document.getElementById(
-      "schoolSession"
-    ).value.trim();
-
-  db.school.term=
-    document.getElementById(
-      "schoolTerm"
-    ).value;
-
-  saveDB();
-
-  alert("School settings saved.");
-}
-
-
-/* =========================================================
-   BACKUP / RESTORE
-========================================================= */
-
-function renderBackup(){
-
-  if(!isAdmin())return;
-
-  document.getElementById("content").innerHTML=`
-
-    <h1 class="page-title">
-      Backup & Restore
-    </h1>
-
-    <div class="card">
-
-      <h3>Backup Database</h3>
-
-      <p style="
-        font-size:12px;
-        color:#64748b;">
-        Download a complete copy of the school database.
-      </p>
-
-      <button
-        class="btn btn-green"
-        onclick="downloadBackup()">
-        Download Backup
-      </button>
-
-    </div>
-
-    <div class="card">
-
-      <h3>Restore Database</h3>
-
-      <input
-        type="file"
-        id="restoreFile"
-        accept=".json">
-
-      <button
-        class="btn btn-blue"
-        style="margin-top:10px"
-        onclick="restoreBackup()">
-        Restore Backup
-      </button>
-
-    </div>
-
-    <div class="card">
-
-      <h3>Database Information</h3>
-
-      <p style="font-size:12px">
-        Teachers: ${db.teachers.length}<br>
-        Students: ${db.students.length}<br>
-        Parents: ${db.parents.length}<br>
-        Results: ${db.results.length}<br>
-        Documents: ${db.documents.length}<br>
-        Approved Archive: ${db.archive.length}
-      </p>
-
-    </div>
-  `;
-}
-
-function downloadBackup(){
-
-  const data=JSON.stringify(
-    db,
-    null,
-    2
-  );
-
-  const blob=new Blob(
-    [data],
-    {type:"application/json"}
-  );
-
-  const url=
-    URL.createObjectURL(blob);
-
-  const a=document.createElement("a");
-
-  a.href=url;
-
-  a.download=
-    "global-kids-academy-backup-"+
-    new Date()
-      .toISOString()
-      .slice(0,10)+
-    ".json";
-
-  document.body.appendChild(a);
-
-  a.click();
-
-  a.remove();
-
-  URL.revokeObjectURL(url);
-}
-
-function restoreBackup(){
-
-  const input=
-    document.getElementById(
-      "restoreFile"
-    );
-
-  if(!input.files.length){
-    alert("Select a backup file first.");
-    return;
-  }
-
-  const file=input.files[0];
-
-  const reader=new FileReader();
-
-  reader.onload=function(){
-
-    try{
-
-      const restored=
-        JSON.parse(reader.result);
-
-      if(
-        !restored.school ||
-        !restored.users
-      ){
-
-        throw new Error(
-          "Invalid database"
-        );
-      }
-
-      if(!confirm(
-        "Restore this database? Current data will be replaced."
-      ))return;
-
-      db=restored;
-
-      saveDB();
-
-      alert(
-        "Database restored successfully."
-      );
-
-      location.reload();
-
-    }catch(e){
-
-      alert(
-        "Unable to restore this backup."
-      );
-    }
-  };
-
-  reader.readAsText(file);
-}
-
-
-/* =========================================================
-   INITIALIZE
-========================================================= */
-
-boot();
-
-</script>
-
-</body>
-</html>
