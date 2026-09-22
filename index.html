@@ -3,234 +3,606 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#087443">
+<meta name="theme-color" content="#166534">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <title>Global Kids Academy Sokoto — Academic Management System</title>
 
 <style>
 :root{
-  --green:#087443;
-  --green2:#0a8f55;
-  --dark:#12352a;
-  --bg:#f4f7f6;
-  --card:#fff;
-  --text:#18322a;
-  --muted:#6d7d76;
-  --border:#dfe8e3;
-  --danger:#c62828;
-  --warning:#b77900;
-  --success:#087443;
-  --shadow:0 8px 25px rgba(20,60,45,.08);
+  --green:#166534;
+  --green2:#15803d;
+  --green3:#22c55e;
+  --dark:#052e16;
+  --light:#f0fdf4;
+  --bg:#f6f8f7;
+  --white:#fff;
+  --line:#e5e7eb;
+  --text:#17202a;
+  --muted:#64748b;
+  --danger:#b91c1c;
+  --warning:#b45309;
+  --blue:#1d4ed8;
 }
+
 *{box-sizing:border-box}
-html,body{margin:0;padding:0;font-family:Inter,Arial,sans-serif;background:var(--bg);color:var(--text)}
+
+html,body{
+  margin:0;
+  min-height:100%;
+  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,
+  "Segoe UI",Arial,sans-serif;
+  color:var(--text);
+  background:var(--bg);
+}
+
 button,input,select,textarea{font:inherit}
 button{cursor:pointer}
+
 .hidden{display:none!important}
 
-.login-wrap{
+/* LOGIN */
+.login{
   min-height:100vh;
+  display:grid;
+  place-items:center;
+  padding:20px;
+  background:linear-gradient(135deg,#052e16,#166534 55%,#22c55e);
+}
+
+.login-card{
+  width:min(460px,100%);
+  background:#fff;
+  border-radius:22px;
+  padding:30px;
+  box-shadow:0 24px 70px #0005;
+}
+
+.logo{
+  width:64px;
+  height:64px;
+  border-radius:18px;
+  background:var(--green);
+  color:#fff;
+  display:grid;
+  place-items:center;
+  font-size:25px;
+  font-weight:900;
+  margin-bottom:15px;
+}
+
+.login h1{
+  margin:0 0 6px;
+  font-size:24px;
+}
+
+.login p{color:var(--muted)}
+
+.login-note{
+  background:var(--light);
+  border:1px solid #bbf7d0;
+  border-radius:12px;
+  padding:11px;
+  font-size:12px;
+  margin-top:15px;
+}
+
+/* FORM */
+label{
+  display:block;
+  font-weight:700;
+  font-size:13px;
+  margin:12px 0 6px;
+}
+
+input,select,textarea{
+  width:100%;
+  border:1px solid #d7dde4;
+  border-radius:10px;
+  padding:11px 12px;
+  background:#fff;
+  outline:none;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+  border-color:var(--green2);
+  box-shadow:0 0 0 3px #22c55e18;
+}
+
+textarea{
+  min-height:120px;
+  resize:vertical;
+}
+
+.btn{
+  border:0;
+  border-radius:10px;
+  padding:10px 14px;
+  background:var(--green);
+  color:#fff;
+  font-weight:800;
+}
+
+.btn:hover{filter:brightness(.95)}
+
+.btn.secondary{
+  background:#e2e8f0;
+  color:#17202a;
+}
+
+.btn.danger{background:var(--danger)}
+.btn.warning{background:var(--warning)}
+.btn.blue{background:var(--blue)}
+
+.btn.small{
+  padding:7px 10px;
+  font-size:12px;
+}
+
+.btn.block{
+  width:100%;
+  margin-top:15px;
+}
+
+/* APP */
+.app{
+  display:none;
+  min-height:100vh;
+}
+
+/* SIDEBAR */
+.sidebar{
+  position:fixed;
+  z-index:30;
+  top:0;
+  bottom:0;
+  left:0;
+  width:270px;
+  background:#062e16;
+  color:#d1fae5;
+  overflow:auto;
+  padding:18px 12px;
+}
+
+.brand{
   display:flex;
   align-items:center;
-  justify-content:center;
-  padding:20px;
-  background:linear-gradient(135deg,#eaf7f0,#f8fbfa);
-}
-.login-card{
-  width:100%;
-  max-width:470px;
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:22px;
-  box-shadow:var(--shadow);
-  padding:30px;
-}
-.logo{
-  width:70px;height:70px;border-radius:18px;
-  background:var(--green);
-  color:#fff;display:flex;align-items:center;justify-content:center;
-  font-weight:900;font-size:24px;margin:0 auto 15px;
-}
-.login-card h1{text-align:center;margin:0;font-size:24px}
-.login-card .sub{text-align:center;color:var(--muted);margin:7px 0 25px}
-.role-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px}
-.role-tabs button{
-  flex:1;min-width:80px;border:1px solid var(--border);
-  background:#f7faf8;padding:10px;border-radius:10px;color:var(--dark)
-}
-.role-tabs button.active{background:var(--green);color:#fff;border-color:var(--green)}
-label{display:block;font-size:13px;font-weight:700;margin:12px 0 6px}
-input,select,textarea{
-  width:100%;padding:11px 12px;border:1px solid var(--border);
-  border-radius:10px;outline:none;background:#fff;color:var(--text)
-}
-textarea{min-height:120px;resize:vertical}
-input:focus,select:focus,textarea:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(8,116,67,.08)}
-.btn{
-  border:0;border-radius:10px;padding:11px 15px;
-  background:var(--green);color:#fff;font-weight:700
-}
-.btn:hover{background:#06643a}
-.btn.secondary{background:#edf5f1;color:var(--green)}
-.btn.danger{background:var(--danger)}
-.btn.warning{background:#d89c13}
-.btn.small{padding:7px 10px;font-size:12px}
-.login-btn{width:100%;margin-top:18px}
-.demo-note{
-  margin-top:15px;padding:12px;border-radius:10px;
-  background:#f4faf7;font-size:12px;color:var(--muted)
+  gap:10px;
+  padding:8px 8px 20px;
+  border-bottom:1px solid #ffffff1a;
 }
 
-.app{display:none;min-height:100vh}
-.sidebar{
-  position:fixed;left:0;top:0;bottom:0;width:270px;
-  background:#102f25;color:#fff;z-index:1000;
-  display:flex;flex-direction:column
+.brand-mark{
+  width:42px;
+  height:42px;
+  border-radius:12px;
+  background:#22c55e;
+  color:#052e16;
+  display:grid;
+  place-items:center;
+  font-weight:900;
 }
-.brand{
-  padding:20px 18px;border-bottom:1px solid rgba(255,255,255,.1);
-  display:flex;gap:12px;align-items:center
+
+.brand strong{
+  display:block;
+  color:#fff;
+  font-size:14px;
 }
-.brand-logo{
-  width:42px;height:42px;border-radius:11px;background:#0b8a51;
-  display:flex;align-items:center;justify-content:center;font-weight:900
+
+.brand span{
+  font-size:11px;
+  color:#86efac;
 }
-.brand strong{display:block;font-size:14px}
-.brand small{color:#b7d2c6}
-.nav{padding:12px 10px;overflow:auto;flex:1}
-.nav-section{
-  color:#7fae9b;font-size:10px;text-transform:uppercase;
-  font-weight:800;padding:13px 10px 6px;letter-spacing:.7px
+
+.nav-title{
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:1.1px;
+  color:#86efac;
+  margin:18px 9px 7px;
 }
+
 .nav button{
-  width:100%;display:flex;align-items:center;gap:11px;
-  padding:10px 12px;margin:2px 0;border:0;border-radius:9px;
-  background:transparent;color:#dcebe4;text-align:left;font-size:13px
+  display:block;
+  width:100%;
+  text-align:left;
+  border:0;
+  background:transparent;
+  color:#d1fae5;
+  padding:10px 11px;
+  border-radius:9px;
+  margin:2px 0;
 }
-.nav button:hover,.nav button.active{background:#1b513d;color:#fff}
-.nav .ico{width:20px;text-align:center}
-.sidebar-bottom{padding:12px;border-top:1px solid rgba(255,255,255,.1)}
-.user-mini{font-size:12px;color:#b7d2c6;margin-bottom:9px}
 
-.main{margin-left:270px;min-height:100vh}
+.nav button:hover,
+.nav button.active{
+  background:#14532d;
+  color:#fff;
+}
+
+/* MAIN */
+.main{
+  margin-left:270px;
+  min-height:100vh;
+}
+
 .topbar{
-  height:66px;background:#fff;border-bottom:1px solid var(--border);
-  display:flex;align-items:center;justify-content:space-between;
-  padding:0 24px;position:sticky;top:0;z-index:500
+  height:66px;
+  background:#fff;
+  border-bottom:1px solid var(--line);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 22px;
+  position:sticky;
+  top:0;
+  z-index:20;
 }
-.menu-toggle{display:none}
-.top-title{font-weight:800}
-.top-right{display:flex;align-items:center;gap:10px}
-.content{padding:24px;max-width:1500px;margin:auto}
 
-.page-head{
-  display:flex;justify-content:space-between;align-items:flex-start;
-  gap:15px;margin-bottom:20px
+.topbar h2{
+  margin:0;
+  font-size:19px;
 }
-.page-head h2{margin:0 0 5px}
-.page-head p{margin:0;color:var(--muted);font-size:13px}
-.actions{display:flex;gap:8px;flex-wrap:wrap}
 
-.stats{
-  display:grid;grid-template-columns:repeat(4,1fr);gap:15px;margin-bottom:20px
+.userbox{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:13px;
 }
-.stat{
-  background:#fff;border:1px solid var(--border);border-radius:15px;
-  padding:18px;box-shadow:var(--shadow)
+
+.avatar{
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  background:#dcfce7;
+  color:#166534;
+  display:grid;
+  place-items:center;
+  font-weight:900;
 }
-.stat .icon{font-size:23px}
-.stat strong{display:block;font-size:27px;margin-top:8px}
-.stat span{color:var(--muted);font-size:12px}
+
+.content{
+  padding:22px;
+  max-width:1500px;
+  margin:auto;
+}
+
+.mobile-menu{
+  display:none;
+}
+
+/* CARDS */
+.grid{
+  display:grid;
+  gap:16px;
+}
+
+.cards{
+  grid-template-columns:repeat(4,minmax(0,1fr));
+}
 
 .card{
-  background:#fff;border:1px solid var(--border);
-  border-radius:15px;box-shadow:var(--shadow);padding:18px;margin-bottom:18px
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:17px;
+  box-shadow:0 2px 8px #00000008;
 }
-.card h3{margin:0 0 13px}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:15px}
-.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
-.form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.full{grid-column:1/-1}
 
-.table-wrap{overflow:auto}
-table{width:100%;border-collapse:collapse;min-width:700px}
-th,td{padding:10px;border-bottom:1px solid var(--border);text-align:left;font-size:13px}
-th{background:#f5f9f7;color:#355449}
-.badge{
-  display:inline-block;padding:5px 8px;border-radius:999px;
-  font-size:11px;font-weight:800;background:#edf5f1;color:var(--green)
+.stat-label{
+  font-size:12px;
+  color:var(--muted);
 }
-.badge.pending{background:#fff4d9;color:#946b00}
-.badge.rejected{background:#fde8e8;color:#a51f1f}
-.badge.published{background:#e0f6e9;color:#087443}
+
+.stat-value{
+  font-size:27px;
+  font-weight:900;
+  margin-top:5px;
+}
+
+/* SECTIONS */
+.section{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:18px;
+  margin-bottom:16px;
+}
+
+.section h3{
+  margin:0 0 13px;
+}
+
+.toolbar{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-bottom:14px;
+}
+
+.toolbar>*{
+  max-width:260px;
+}
+
+.table-wrap{
+  overflow:auto;
+  border:1px solid var(--line);
+  border-radius:10px;
+}
+
+table{
+  border-collapse:collapse;
+  width:100%;
+  min-width:720px;
+}
+
+th,td{
+  padding:10px;
+  border-bottom:1px solid var(--line);
+  text-align:left;
+  font-size:13px;
+  vertical-align:top;
+}
+
+th{
+  background:#f8fafc;
+  font-size:12px;
+  white-space:nowrap;
+}
+
+tr:last-child td{
+  border-bottom:0;
+}
+
+.form-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:10px;
+}
+
+.span2{grid-column:span 2}
+.span3{grid-column:1/-1}
+
+.actions{
+  display:flex;
+  gap:7px;
+  flex-wrap:wrap;
+}
 
 .empty{
-  padding:35px;text-align:center;color:var(--muted);
-  border:1px dashed var(--border);border-radius:12px
+  padding:28px;
+  text-align:center;
+  color:var(--muted);
 }
 
-.modal{
-  position:fixed;inset:0;background:rgba(0,0,0,.45);
-  display:flex;align-items:center;justify-content:center;
-  padding:20px;z-index:2000
+.notice{
+  padding:12px;
+  border-radius:10px;
+  background:#eff6ff;
+  border:1px solid #bfdbfe;
+  color:#1e3a8a;
+  margin-bottom:12px;
+  font-size:13px;
 }
-.modal-box{
-  background:#fff;border-radius:16px;width:100%;max-width:700px;
-  max-height:90vh;overflow:auto;padding:20px
+
+.notice.green{
+  background:#f0fdf4;
+  border-color:#bbf7d0;
+  color:#166534;
 }
-.modal-head{display:flex;justify-content:space-between;gap:10px;align-items:center}
-.close{border:0;background:#edf2ef;border-radius:8px;padding:7px 10px}
+
+.badge{
+  display:inline-block;
+  padding:4px 8px;
+  border-radius:999px;
+  font-size:11px;
+  font-weight:800;
+  background:#e2e8f0;
+}
+
+.badge.green{
+  background:#dcfce7;
+  color:#166534;
+}
+
+.badge.orange{
+  background:#ffedd5;
+  color:#9a3412;
+}
+
+.badge.blue{
+  background:#dbeafe;
+  color:#1d4ed8;
+}
+
+.badge.red{
+  background:#fee2e2;
+  color:#b91c1c;
+}
+
+/* ASSISTANT */
+.assistant{
+  display:flex;
+  flex-direction:column;
+  height:calc(100vh - 125px);
+  min-height:560px;
+}
 
 .chat{
-  display:flex;flex-direction:column;height:600px
+  flex:1;
+  overflow:auto;
+  background:#f8fafc;
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:16px;
 }
-.chat-messages{
-  flex:1;overflow:auto;padding:15px;background:#f5f8f6;
-  border-radius:12px;margin-bottom:12px
-}
+
 .msg{
-  max-width:85%;padding:11px 13px;border-radius:13px;
-  margin:7px 0;line-height:1.5;font-size:13px
-}
-.msg.bot{background:#fff;border:1px solid var(--border)}
-.msg.user{background:var(--green);color:#fff;margin-left:auto}
-.chat-form{display:grid;grid-template-columns:1fr auto;gap:8px}
-.prompt-chips{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:12px}
-.prompt-chip{
-  border:1px solid var(--border);background:#fff;
-  padding:7px 10px;border-radius:999px;font-size:12px
+  max-width:82%;
+  padding:11px 13px;
+  border-radius:13px;
+  margin:7px 0;
+  white-space:pre-wrap;
+  font-size:13px;
 }
 
-.toast{
-  position:fixed;right:20px;bottom:20px;z-index:5000;
-  background:#163a2d;color:#fff;padding:12px 16px;border-radius:10px;
-  box-shadow:var(--shadow);display:none
+.msg.ai{
+  background:#fff;
+  border:1px solid var(--line);
 }
 
-.overlay{
-  display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:900
+.msg.me{
+  margin-left:auto;
+  background:#dcfce7;
+  color:#14532d;
+}
+
+.chatbar{
+  display:flex;
+  gap:8px;
+  margin-top:10px;
+}
+
+.chatbar input{flex:1}
+
+/* MODAL */
+.modal{
+  position:fixed;
+  inset:0;
+  background:#0008;
+  z-index:100;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:15px;
+}
+
+.modal.show{display:flex}
+
+.modal-box{
+  background:#fff;
+  width:min(850px,100%);
+  max-height:90vh;
+  overflow:auto;
+  border-radius:16px;
+  padding:20px;
+}
+
+.modal-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.modal-head h3{margin:0}
+
+.close{
+  border:0;
+  background:#f1f5f9;
+  border-radius:8px;
+  padding:7px 10px;
 }
 
 @media(max-width:1000px){
-  .stats{grid-template-columns:repeat(2,1fr)}
-  .grid3{grid-template-columns:1fr 1fr}
+  .cards{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .form-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
 }
+
 @media(max-width:760px){
-  .sidebar{transform:translateX(-100%);transition:.25s;width:280px}
-  .sidebar.open{transform:translateX(0)}
-  .overlay.show{display:block}
-  .main{margin-left:0}
-  .menu-toggle{display:block;border:0;background:#edf5f1;color:var(--green);padding:8px 10px;border-radius:8px}
-  .topbar{padding:0 14px}
-  .content{padding:15px}
-  .stats,.grid2,.grid3,.form-grid{grid-template-columns:1fr}
-  .page-head{flex-direction:column}
-  .chat{height:520px}
+
+  .sidebar{
+    transform:translateX(-100%);
+    transition:.2s;
+  }
+
+  .sidebar.open{
+    transform:translateX(0);
+  }
+
+  .main{
+    margin-left:0;
+  }
+
+  .mobile-menu{
+    display:block;
+    border:0;
+    background:#f1f5f9;
+    border-radius:8px;
+    padding:8px 10px;
+    margin-right:10px;
+  }
+
+  .topbar{
+    padding:0 12px;
+  }
+
+  .content{
+    padding:13px;
+  }
+
+  .form-grid{
+    grid-template-columns:1fr;
+  }
+
+  .span2,
+  .span3{
+    grid-column:auto;
+  }
+
+  .userbox span{
+    display:none;
+  }
 }
+
+@media(max-width:450px){
+
+  .cards{
+    grid-template-columns:1fr;
+  }
+
+  .topbar h2{
+    font-size:16px;
+  }
+
+  .login-card{
+    padding:22px;
+  }
+}
+
 @media print{
-  .sidebar,.topbar,.actions,.no-print,.overlay{display:none!important}
-  .main{margin:0}
-  .content{padding:0}
-  .card{box-shadow:none}
+
+  .sidebar,
+  .topbar,
+  .toolbar,
+  .no-print{
+    display:none!important;
+  }
+
+  .main{
+    margin:0;
+  }
+
+  .content{
+    padding:0;
+  }
+
+  .section,
+  .card{
+    box-shadow:none;
+    border:0;
+  }
+
+  body{
+    background:#fff;
+  }
 }
 </style>
 </head>
@@ -238,112 +610,216 @@ th{background:#f5f9f7;color:#355449}
 <body>
 
 <!-- LOGIN -->
-<section id="loginScreen" class="login-wrap">
+<div id="login" class="login">
+
   <div class="login-card">
+
     <div class="logo">GKA</div>
+
     <h1>Global Kids Academy Sokoto</h1>
-    <div class="sub">Academic Management System</div>
 
-    <div class="role-tabs" id="roleTabs">
-      <button data-role="Admin" class="active">Admin</button>
-      <button data-role="Teacher">Teacher</button>
-      <button data-role="Student">Student</button>
-      <button data-role="Parent">Parent</button>
+    <p>School Academic Management System</p>
+
+    <form id="loginForm">
+
+      <label>Username / Email</label>
+      <input
+        id="loginUser"
+        autocomplete="username"
+        required
+      >
+
+      <label>Password</label>
+      <input
+        id="loginPass"
+        type="password"
+        autocomplete="current-password"
+        required
+      >
+
+      <button class="btn block">
+        Sign In
+      </button>
+
+    </form>
+
+    <div class="login-note">
+      <b>Local Final Version:</b>
+      Data is stored on this device/browser.
+      Central cloud database, production authentication,
+      multi-device synchronization and true cloud AI are
+      reserved for the later production upgrade.
     </div>
 
-    <label>Username</label>
-    <input id="loginUsername" autocomplete="username" placeholder="Enter username">
-
-    <label>Password</label>
-    <input id="loginPassword" type="password" autocomplete="current-password" placeholder="Enter password">
-
-    <button class="btn login-btn" onclick="login()">Sign In</button>
-
-    <div class="demo-note">
-      <b>Prototype access:</b><br>
-      Admin username: <b>Admin</b><br>
-      Admin password: <b>Admin@2026!</b><br><br>
-      This local version stores data in the browser. Do not use prototype credentials for a production deployment.
+    <div class="login-note">
+      Demo Admin:
+      <b>Admin</b> /
+      <b>Admin@2026!</b>
     </div>
+
   </div>
-</section>
+
+</div>
+
 
 <!-- APPLICATION -->
 <div id="app" class="app">
 
   <aside id="sidebar" class="sidebar">
+
     <div class="brand">
-      <div class="brand-logo">G</div>
+
+      <div class="brand-mark">
+        G
+      </div>
+
       <div>
         <strong>Global Kids Academy</strong>
-        <small>Sokoto</small>
+        <span>Sokoto • Academic System</span>
       </div>
+
     </div>
 
-    <nav id="nav" class="nav"></nav>
+    <div class="nav" id="nav"></div>
 
-    <div class="sidebar-bottom">
-      <div id="miniUser" class="user-mini"></div>
-      <button class="nav" style="padding:0;background:none" onclick="logout()">
-        <span style="display:block;padding:10px 12px;color:#fff">↪ Logout</span>
-      </button>
-    </div>
   </aside>
 
-  <div id="overlay" class="overlay" onclick="closeSidebar()"></div>
 
   <main class="main">
+
     <header class="topbar">
-      <div style="display:flex;align-items:center;gap:10px">
-        <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
-        <div id="topTitle" class="top-title">Dashboard</div>
+
+      <div style="display:flex;align-items:center">
+
+        <button
+          class="mobile-menu"
+          id="mobileMenu"
+        >
+          ☰
+        </button>
+
+        <h2 id="pageTitle">
+          Dashboard
+        </h2>
+
       </div>
-      <div class="top-right">
-        <span id="topRole" class="badge"></span>
+
+      <div class="userbox">
+
+        <div>
+          <b id="userName">Admin</b>
+          <br>
+          <small id="userRole">
+            Administrator
+          </small>
+        </div>
+
+        <div class="avatar" id="avatar">
+          A
+        </div>
+
       </div>
+
     </header>
 
-    <div id="content" class="content"></div>
+    <div class="content" id="content"></div>
+
   </main>
+
 </div>
 
-<div id="modal" class="modal hidden">
+
+<!-- MODAL -->
+<div class="modal" id="modal">
+
   <div class="modal-box">
-    <div id="modalContent"></div>
+
+    <div class="modal-head">
+
+      <h3 id="modalTitle"></h3>
+
+      <button
+        class="close"
+        onclick="closeModal()"
+      >
+        ✕
+      </button>
+
+    </div>
+
+    <div id="modalBody"></div>
+
   </div>
+
 </div>
 
-<div id="toast" class="toast"></div>
 
 <script>
+"use strict";
+
 /* =========================================================
-   GLOBAL KIDS ACADEMY SOKOTO
-   V8 LOCAL / PROTOTYPE
-   ========================================================= */
+   GLOBAL KIDS ACADEMY
+   FINAL LOCAL APPLICATION
+========================================================= */
 
-const APP_NAME = "Global Kids Academy Sokoto";
-const DB_KEY = "GKA_V8_LOCAL_DATABASE";
-const RECOVERY_KEY = "GKA_V8_RECOVERY_SNAPSHOT";
-const SCHEMA_VERSION = 8;
+const APP =
+  "Global Kids Academy Sokoto";
 
-let db;
-let currentUser = null;
-let selectedRole = "Admin";
-let currentPage = "dashboard";
+const KEY =
+  "GKA_FINAL_LOCAL_DATABASE_V1";
 
-/* ---------------- DATABASE ---------------- */
+const SNAP =
+  "GKA_FINAL_RECOVERY_SNAPSHOT";
 
-function uid(prefix="ID"){
-  return prefix + "_" + Date.now().toString(36) + "_" +
-    Math.random().toString(36).slice(2,8);
-}
+const roles = [
+  "Admin",
+  "Teacher",
+  "Student",
+  "Parent"
+];
 
-function defaultDB(){
+const subjects = [
+  "Mathematics",
+  "English Language",
+  "Physics",
+  "Chemistry",
+  "Biology",
+  "Economics",
+  "Hausa",
+  "Arabic",
+  "French",
+  "Basic Science",
+  "Computer Studies"
+];
+
+const classes = [
+  "Basic 1",
+  "Basic 2",
+  "Basic 3",
+  "Basic 4",
+  "Basic 5",
+  "JSS1",
+  "JSS2",
+  "JSS3",
+  "SS1",
+  "SS2",
+  "SS3"
+];
+
+
+/* =========================================================
+   DATABASE
+========================================================= */
+
+function emptyDB(){
+
   return {
-    schemaVersion:SCHEMA_VERSION,
+
+    version:1,
+
     settings:{
-      schoolName:APP_NAME,
-      motto:"Knowledge, Character and Excellence",
+      school:APP,
+      motto:"Knowledge • Character • Excellence",
       address:"Sokoto State, Nigeria",
       phone:"",
       email:"",
@@ -353,1945 +829,6601 @@ function defaultDB(){
     },
 
     users:[
+
       {
-        id:"U_ADMIN",
+        id:"u-admin",
+        name:"Administrator",
         username:"Admin",
-        passwordHash:null,
+        password:"Admin@2026!",
         role:"Admin",
-        name:"System Administrator",
         active:true
       },
+
       {
-        id:"U_TEACHER",
-        username:"teacher",
-        passwordHash:null,
-        role:"Teacher",
+        id:"u-teacher",
         name:"Demo Teacher",
+        username:"teacher",
+        password:"Teacher@2026!",
+        role:"Teacher",
         active:true,
         subject:"Mathematics",
-        isHOD:true,
-        isExamOfficer:true
+        className:"JSS2",
+        hod:false,
+        examOfficer:false
       },
+
       {
-        id:"U_STUDENT",
-        username:"student",
-        passwordHash:null,
-        role:"Student",
+        id:"u-student",
         name:"Demo Student",
+        username:"student",
+        password:"Student@2026!",
+        role:"Student",
         active:true,
-        admissionNo:"GKA/001",
-        className:"JSS 1"
+        className:"JSS2",
+        studentId:"STU001"
       },
+
       {
-        id:"U_PARENT",
-        username:"parent",
-        passwordHash:null,
-        role:"Parent",
+        id:"u-parent",
         name:"Demo Parent",
+        username:"parent",
+        password:"Parent@2026!",
+        role:"Parent",
         active:true,
-        studentAdmissionNo:"GKA/001"
+        studentIds:["STU001"]
       }
+
     ],
 
-    classes:[
-      {id:"C1",name:"JSS 1"},
-      {id:"C2",name:"JSS 2"},
-      {id:"C3",name:"JSS 3"},
-      {id:"C4",name:"SS 1"},
-      {id:"C5",name:"SS 2"},
-      {id:"C6",name:"SS 3"}
-    ],
+    classes:
+      classes.map(
+        (name,i)=>({
+          id:"c"+i,
+          name,
+          arm:"A"
+        })
+      ),
 
-    subjects:[
-      {id:"S1",name:"Mathematics",hod:"U_TEACHER"},
-      {id:"S2",name:"English",hod:""},
-      {id:"S3",name:"Physics",hod:""},
-      {id:"S4",name:"Chemistry",hod:""},
-      {id:"S5",name:"Biology",hod:""},
-      {id:"S6",name:"Economics",hod:""},
-      {id:"S7",name:"Hausa",hod:""},
-      {id:"S8",name:"Arabic",hod:""},
-      {id:"S9",name:"French",hod:""}
-    ],
+    subjects:
+      subjects.map(
+        (name,i)=>({
+          id:"s"+i,
+          name,
+          hodId:""
+        })
+      ),
 
     students:[
+
       {
-        id:"ST001",
-        admissionNo:"GKA/001",
+        id:"STU001",
         name:"Demo Student",
-        className:"JSS 1",
-        parentName:"Demo Parent",
+        admissionNo:"GKA/001",
+        className:"JSS2",
+        gender:"",
+        parentId:"u-parent",
         active:true
       }
+
     ],
 
-    documents:[],
-    results:[],
+    parents:[
+
+      {
+        id:"u-parent",
+        name:"Demo Parent",
+        phone:"",
+        email:"",
+        studentIds:["STU001"]
+      }
+
+    ],
+
     attendance:[],
+    results:[],
+    documents:[],
+    approvals:[],
+    archive:[],
     audit:[],
-    notifications:[],
+
     counters:{
-      document:0,
-      result:0,
-      attendance:0
-    }
-  };
-}
-
-async function hashPassword(password){
-  if(window.crypto && crypto.subtle){
-    const data = new TextEncoder().encode(password);
-    const hash = await crypto.subtle.digest("SHA-256",data);
-    return Array.from(new Uint8Array(hash))
-      .map(b=>b.toString(16).padStart(2,"0")).join("");
-  }
-  return "plain:"+btoa(unescape(encodeURIComponent(password)));
-}
-
-async function initializeDB(){
-  const raw = localStorage.getItem(DB_KEY);
-
-  if(!raw){
-    db = defaultDB();
-    db.users[0].passwordHash = await hashPassword("Admin@2026!");
-    db.users[1].passwordHash = await hashPassword("Teacher@2026!");
-    db.users[2].passwordHash = await hashPassword("Student@2026!");
-    db.users[3].passwordHash = await hashPassword("Parent@2026!");
-    saveDB();
-  }else{
-    try{
-      db = JSON.parse(raw);
-      repairDB();
-    }catch(e){
-      db = defaultDB();
-      saveDB();
-    }
-  }
-}
-
-function repairDB(){
-  if(!db.schemaVersion) db.schemaVersion=SCHEMA_VERSION;
-  if(!db.settings) db.settings=defaultDB().settings;
-  if(!db.users) db.users=[];
-  if(!db.classes) db.classes=[];
-  if(!db.subjects) db.subjects=[];
-  if(!db.students) db.students=[];
-  if(!db.documents) db.documents=[];
-  if(!db.results) db.results=[];
-  if(!db.attendance) db.attendance=[];
-  if(!db.audit) db.audit=[];
-  if(!db.notifications) db.notifications=[];
-  if(!db.counters) db.counters={document:0,result:0,attendance:0};
-
-  const admin = db.users.find(u=>u.username==="Admin");
-  if(!admin){
-    db.users.unshift({
-      id:"U_ADMIN",
-      username:"Admin",
-      passwordHash:null,
-      role:"Admin",
-      name:"System Administrator",
-      active:true
-    });
-  }
-  db.schemaVersion=SCHEMA_VERSION;
-  saveDB();
-}
-
-function saveDB(){
-  localStorage.setItem(DB_KEY,JSON.stringify(db));
-  localStorage.setItem(RECOVERY_KEY,JSON.stringify(db));
-}
-
-function audit(action,details=""){
-  if(!db.audit) db.audit=[];
-  db.audit.unshift({
-    id:uid("AUD"),
-    user:currentUser ? currentUser.username : "SYSTEM",
-    role:currentUser ? currentUser.role : "SYSTEM",
-    action,
-    details,
-    time:new Date().toISOString()
-  });
-  db.audit=db.audit.slice(0,2000);
-  saveDB();
-}
-
-function toast(message){
-  const el=document.getElementById("toast");
-  el.textContent=message;
-  el.style.display="block";
-  clearTimeout(window.__toast);
-  window.__toast=setTimeout(()=>el.style.display="none",2600);
-}
-
-/* ---------------- LOGIN ---------------- */
-
-document.querySelectorAll("#roleTabs button").forEach(btn=>{
-  btn.addEventListener("click",()=>{
-    selectedRole=btn.dataset.role;
-    document.querySelectorAll("#roleTabs button")
-      .forEach(x=>x.classList.remove("active"));
-    btn.classList.add("active");
-  });
-});
-
-async function login(){
-  const username=document.getElementById("loginUsername").value.trim();
-  const password=document.getElementById("loginPassword").value;
-
-  if(!username || !password){
-    toast("Enter username and password.");
-    return;
-  }
-
-  const user=db.users.find(u=>
-    u.username.toLowerCase()===username.toLowerCase() &&
-    u.role===selectedRole &&
-    u.active!==false
-  );
-
-  if(!user){
-    toast("Account not found for the selected role.");
-    return;
-  }
-
-  const hash=await hashPassword(password);
-
-  if(hash!==user.passwordHash){
-    toast("Incorrect password.");
-    return;
-  }
-
-  currentUser=user;
-  localStorage.setItem("GKA_CURRENT_USER",user.id);
-  audit("LOGIN","Successful login");
-  document.getElementById("loginScreen").style.display="none";
-  document.getElementById("app").style.display="block";
-  buildNav();
-  showPage("dashboard");
-}
-
-function restoreSession(){
-  const id=localStorage.getItem("GKA_CURRENT_USER");
-  if(!id)return;
-  const user=db.users.find(u=>u.id===id && u.active!==false);
-  if(user){
-    currentUser=user;
-    document.getElementById("loginScreen").style.display="none";
-    document.getElementById("app").style.display="block";
-    buildNav();
-    showPage("dashboard");
-  }
-}
-
-function logout(){
-  audit("LOGOUT","User logged out");
-  localStorage.removeItem("GKA_CURRENT_USER");
-  currentUser=null;
-  document.getElementById("app").style.display="none";
-  document.getElementById("loginScreen").style.display="flex";
-  document.getElementById("loginPassword").value="";
-}
-
-/* ---------------- NAVIGATION ---------------- */
-
-const NAV=[
-  {section:"Main"},
-  {id:"dashboard",label:"Dashboard",icon:"⌂",roles:["Admin","Teacher","Student","Parent"]},
-
-  {section:"User Management",roles:["Admin"]},
-  {id:"teachers",label:"Teachers",icon:"👨‍🏫",roles:["Admin"]},
-  {id:"students",label:"Students",icon:"🎓",roles:["Admin"]},
-  {id:"parents",label:"Parents",icon:"👪",roles:["Admin"]},
-
-  {section:"Academic Setup",roles:["Admin","Teacher"]},
-  {id:"classes",label:"Sessions / Classes",icon:"🏫",roles:["Admin"]},
-  {id:"subjects",label:"Subjects / HOD",icon:"📚",roles:["Admin"]},
-
-  {section:"Academic Operations",roles:["Admin","Teacher"]},
-  {id:"attendance",label:"Attendance",icon:"✓",roles:["Admin","Teacher"]},
-  {id:"results",label:"Results",icon:"▣",roles:["Admin","Teacher"]},
-
-  {section:"Academic Documents",roles:["Admin","Teacher"]},
-  {id:"lessonplans",label:"Lesson Plans",icon:"🗓",roles:["Admin","Teacher"]},
-  {id:"lessonnotes",label:"Lesson Notes",icon:"📝",roles:["Admin","Teacher"]},
-  {id:"schemes",label:"13-Week Schemes",icon:"📅",roles:["Admin","Teacher"]},
-  {id:"caquestions",label:"CA Questions",icon:"❓",roles:["Admin","Teacher"]},
-  {id:"examquestions",label:"Examination Questions",icon:"📄",roles:["Admin","Teacher"]},
-  {id:"answerkeys",label:"Answer Keys",icon:"✓",roles:["Admin","Teacher"]},
-  {id:"markingguides",label:"Marking Guides",icon:"☑",roles:["Admin","Teacher"]},
-
-  {section:"Quality Control",roles:["Admin","Teacher"]},
-  {id:"approval",label:"Approval Centre",icon:"✓",roles:["Admin","Teacher"]},
-  {id:"archive",label:"Approved Work Archive",icon:"🗄",roles:["Admin","Teacher"]},
-
-  {section:"Portals",roles:["Admin","Teacher","Student","Parent"]},
-  {id:"studentportal",label:"Student Portal",icon:"🎓",roles:["Admin","Student"]},
-  {id:"parentportal",label:"Parent Portal",icon:"👪",roles:["Admin","Parent"]},
-
-  {section:"Tools",roles:["Admin","Teacher"]},
-  {id:"assistant",label:"Teacher Assistant",icon:"💬",roles:["Admin","Teacher"]},
-  {id:"backup",label:"Backup & Recovery",icon:"💾",roles:["Admin"]},
-  {id:"audit",label:"Audit History",icon:"🔎",roles:["Admin"]},
-  {id:"settings",label:"Settings",icon:"⚙",roles:["Admin"]},
-  {id:"password",label:"Change Password",icon:"🔐",roles:["Admin","Teacher","Student","Parent"]}
-];
-
-function buildNav(){
-  const nav=document.getElementById("nav");
-  nav.innerHTML="";
-
-  NAV.forEach(item=>{
-    if(item.section){
-      if(!item.roles || item.roles.includes(currentUser.role)){
-        const d=document.createElement("div");
-        d.className="nav-section";
-        d.textContent=item.section;
-        nav.appendChild(d);
-      }
-      return;
+      doc:1,
+      result:1,
+      attendance:1
     }
 
-    if(!item.roles.includes(currentUser.role))return;
-
-    const b=document.createElement("button");
-    b.dataset.page=item.id;
-    b.innerHTML=`<span class="ico">${item.icon}</span><span>${item.label}</span>`;
-    b.onclick=()=>showPage(item.id);
-    nav.appendChild(b);
-  });
-
-  document.getElementById("miniUser").textContent=
-    `${currentUser.name} • ${currentUser.role}`;
-  document.getElementById("topRole").textContent=currentUser.role;
-}
-
-function showPage(page){
-  currentPage=page;
-  document.querySelectorAll(".nav button").forEach(b=>
-    b.classList.toggle("active",b.dataset.page===page)
-  );
-  closeSidebar();
-
-  const titles={
-    dashboard:"Dashboard",
-    teachers:"Teacher Management",
-    students:"Student Management",
-    parents:"Parent Management",
-    classes:"Sessions / Classes",
-    subjects:"Subjects & HOD Assignment",
-    attendance:"Attendance",
-    results:"Results",
-    lessonplans:"Lesson Plans",
-    lessonnotes:"Lesson Notes",
-    schemes:"13-Week Schemes",
-    caquestions:"CA Questions",
-    examquestions:"Examination Questions",
-    answerkeys:"Answer Keys",
-    markingguides:"Marking Guides",
-    approval:"Approval Centre",
-    archive:"Approved Work Archive",
-    studentportal:"Student Portal",
-    parentportal:"Parent Portal",
-    assistant:"Teacher Assistant",
-    backup:"Backup & Recovery",
-    audit:"Audit History",
-    settings:"School Settings",
-    password:"Change Password"
   };
 
-  document.getElementById("topTitle").textContent=titles[page]||"Dashboard";
-
-  const fn=window["page_"+page];
-  if(fn) fn();
-  else page_dashboard();
 }
 
-/* ---------------- DASHBOARD ---------------- */
 
-function page_dashboard(){
-  const students=db.students.length;
-  const teachers=db.users.filter(u=>u.role==="Teacher").length;
-  const docs=db.documents.length;
-  const published=db.results.filter(r=>r.status==="Published").length;
+let db =
+  loadDB();
 
-  document.getElementById("content").innerHTML=`
-    <div class="page-head">
-      <div>
-        <h2>Welcome to Global Kids Academy Sokoto</h2>
-        <p>Professional academic planning and management workspace.</p>
-      </div>
-      <div class="actions">
-        <button class="btn" onclick="showPage('assistant')">💬 Teacher Assistant</button>
-      </div>
-    </div>
+let current =
+  null;
 
-    <div class="stats">
-      <div class="stat"><div class="icon">🎓</div><strong>${students}</strong><span>Students</span></div>
-      <div class="stat"><div class="icon">👨‍🏫</div><strong>${teachers}</strong><span>Teachers</span></div>
-      <div class="stat"><div class="icon">📄</div><strong>${docs}</strong><span>Academic Documents</span></div>
-      <div class="stat"><div class="icon">✓</div><strong>${published}</strong><span>Published Results</span></div>
-    </div>
+let currentPage =
+  "dashboard";
 
-    <div class="grid2">
-      <div class="card">
-        <h3>Academic Information</h3>
-        <table>
-          <tr><td>Academic Session</td><th>${esc(db.settings.session)}</th></tr>
-          <tr><td>Current Term</td><th>${esc(db.settings.term)}</th></tr>
-          <tr><td>School</td><th>${esc(db.settings.schoolName)}</th></tr>
-          <tr><td>Current User</td><th>${esc(currentUser.name)}</th></tr>
-        </table>
-      </div>
 
-      <div class="card">
-        <h3>Quick Actions</h3>
-        <div class="actions">
-          ${currentUser.role==="Admin"||currentUser.role==="Teacher" ?
-          `<button class="btn secondary" onclick="showPage('lessonplans')">New Lesson Plan</button>
-           <button class="btn secondary" onclick="showPage('attendance')">Mark Attendance</button>
-           <button class="btn secondary" onclick="showPage('results')">Enter Result</button>`:""}
-          <button class="btn secondary" onclick="showPage('password')">Change Password</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <h3>System Notice</h3>
-      <p style="color:var(--muted);font-size:13px">
-        This is the local/GitHub Pages prototype. Information is stored in this browser.
-        For true multi-device shared accounts, central authentication, database synchronization
-        and production security, connect the system to a production backend such as Supabase.
-      </p>
-    </div>
-  `;
-}
-
-/* ---------------- USERS ---------------- */
-
-function page_teachers(){
-  const teachers=db.users.filter(u=>u.role==="Teacher");
-
-  document.getElementById("content").innerHTML=`
-    <div class="page-head">
-      <div><h2>Teachers</h2><p>Admin-only teacher account management.</p></div>
-      <button class="btn" onclick="teacherModal()">+ Add Teacher</button>
-    </div>
-    <div class="card">
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th>Name</th><th>Username</th><th>Subject</th><th>HOD</th><th>Exam Officer</th><th>Status</th><th>Actions</th></tr></thead>
-          <tbody>
-          ${teachers.map(t=>`
-            <tr>
-              <td>${esc(t.name)}</td>
-              <td>${esc(t.username)}</td>
-              <td>${esc(t.subject||"—")}</td>
-              <td>${t.isHOD?"Yes":"No"}</td>
-              <td>${t.isExamOfficer?"Yes":"No"}</td>
-              <td><span class="badge">${t.active!==false?"Active":"Inactive"}</span></td>
-              <td>
-                <button class="btn small secondary" onclick="editTeacher('${t.id}')">Edit</button>
-                <button class="btn small danger" onclick="deleteUser('${t.id}')">Delete</button>
-              </td>
-            </tr>
-          `).join("")||emptyRow(7)}
-          </tbody>
-        </table>
-      </div>
-    </div>
-  `;
-}
-
-function teacherModal(id=null){
-  const t=id?db.users.find(x=>x.id===id):null;
-  openModal(`
-    <div class="modal-head"><h3>${t?"Edit":"Add"} Teacher</h3><button class="close" onclick="closeModal()">×</button></div>
-    <div class="form-grid">
-      <div><label>Full Name</label><input id="f_name" value="${escAttr(t?.name||"")}"></div>
-      <div><label>Username</label><input id="f_username" value="${escAttr(t?.username||"")}"></div>
-      <div><label>Password ${t?"(leave blank to keep current)":""}</label><input id="f_password" type="password"></div>
-      <div><label>Subject</label><input id="f_subject" value="${escAttr(t?.subject||"")}"></div>
-      <div><label>HOD Assignment</label><select id="f_hod">
-        <option value="0">No</option><option value="1" ${t?.isHOD?"selected":""}>Yes</option>
-      </select></div>
-      <div><label>Examination Officer</label><select id="f_exam">
-        <option value="0">No</option><option value="1" ${t?.isExamOfficer?"selected":""}>Yes</option>
-      </select></div>
-    </div>
-    <div style="margin-top:15px;text-align:right"><button class="btn" onclick="saveTeacher('${id||""}')">Save Teacher</button></div>
-  `);
-}
-
-function editTeacher(id){teacherModal(id)}
-
-async function saveTeacher(id){
-  const name=document.getElementById("f_name").value.trim();
-  const username=document.getElementById("f_username").value.trim();
-  const password=document.getElementById("f_password").value;
-  const subject=document.getElementById("f_subject").value.trim();
-
-  if(!name||!username){toast("Name and username are required.");return}
-
-  const duplicate=db.users.find(u=>
-    u.username.toLowerCase()===username.toLowerCase() && u.id!==id
-  );
-  if(duplicate){toast("Username already exists.");return}
-
-  let t=id?db.users.find(x=>x.id===id):null;
-
-  if(!t){
-    t={
-      id:uid("USR"),
-      role:"Teacher",
-      active:true,
-      passwordHash:await hashPassword(password||"Teacher@2026!")
-    };
-    db.users.push(t);
-  }else if(password){
-    t.passwordHash=await hashPassword(password);
-  }
-
-  t.name=name;
-  t.username=username;
-  t.subject=subject;
-  t.isHOD=document.getElementById("f_hod").value==="1";
-  t.isExamOfficer=document.getElementById("f_exam").value==="1";
-
-  audit(id?"EDIT_TEACHER":"CREATE_TEACHER",username);
-  saveDB();closeModal();page_teachers();toast("Teacher saved.");
-}
-
-function deleteUser(id){
-  if(!confirm("Delete this user account?"))return;
-  if(id==="U_ADMIN"){toast("The main Admin account cannot be deleted.");return}
-  db.users=db.users.filter(u=>u.id!==id);
-  audit("DELETE_USER",id);
-  saveDB();
-  showPage(currentPage);
-}
-
-/* ---------------- STUDENTS ---------------- */
-
-function page_students(){
-  document.getElementById("content").innerHTML=`
-    <div class="page-head">
-      <div><h2>Students</h2><p>Register and manage student records.</p></div>
-      <button class="btn" onclick="studentModal()">+ Add Student</button>
-    </div>
-    <div class="card">
-      <div class="table-wrap">
-      <table>
-      <thead><tr><th>Admission No.</th><th>Name</th><th>Class</th><th>Parent</th><th>Actions</th></tr></thead>
-      <tbody>
-      ${db.students.map(s=>`
-        <tr>
-          <td>${esc(s.admissionNo)}</td>
-          <td>${esc(s.name)}</td>
-          <td>${esc(s.className)}</td>
-          <td>${esc(s.parentName||"—")}</td>
-          <td>
-            <button class="btn small secondary" onclick="studentModal('${s.id}')">Edit</button>
-            <button class="btn small danger" onclick="deleteStudent('${s.id}')">Delete</button>
-          </td>
-        </tr>`).join("")||emptyRow(5)}
-      </tbody>
-      </table>
-      </div>
-    </div>
-  `;
-}
-
-function studentModal(id=null){
-  const s=id?db.students.find(x=>x.id===id):null;
-  openModal(`
-    <div class="modal-head"><h3>${s?"Edit":"Add"} Student</h3><button class="close" onclick="closeModal()">×</button></div>
-    <div class="form-grid">
-      <div><label>Admission Number</label><input id="st_adm" value="${escAttr(s?.admissionNo||"")}"></div>
-      <div><label>Full Name</label><input id="st_name" value="${escAttr(s?.name||"")}"></div>
-      <div><label>Class</label><select id="st_class">${db.classes.map(c=>`<option ${s?.className===c.name?"selected":""}>${esc(c.name)}</option>`).join("")}</select></div>
-      <div><label>Parent Name</label><input id="st_parent" value="${escAttr(s?.parentName||"")}"></div>
-    </div>
-    <div style="margin-top:15px;text-align:right"><button class="btn" onclick="saveStudent('${id||""}')">Save Student</button></div>
-  `);
-}
-
-function saveStudent(id){
-  const admissionNo=document.getElementById("st_adm").value.trim();
-  const name=document.getElementById("st_name").value.trim();
-  const className=document.getElementById("st_class").value;
-  const parentName=document.getElementById("st_parent").value.trim();
-
-  if(!admissionNo||!name){toast("Admission number and name are required.");return}
-
-  let s=id?db.students.find(x=>x.id===id):null;
-  if(!s){s={id:uid("ST"),active:true};db.students.push(s)}
-  Object.assign(s,{admissionNo,name,className,parentName});
-
-  audit(id?"EDIT_STUDENT":"CREATE_STUDENT",name);
-  saveDB();closeModal();page_students();toast("Student saved.");
-}
-
-function deleteStudent(id){
-  if(!confirm("Delete student?"))return;
-  db.students=db.students.filter(s=>s.id!==id);
-  audit("DELETE_STUDENT",id);
-  saveDB();page_students();
-}
-
-/* ---------------- PARENTS ---------------- */
-
-function page_parents(){
-  const parents=db.users.filter(u=>u.role==="Parent");
-
-  document.getElementById("content").innerHTML=`
-    <div class="page-head">
-      <div><h2>Parents</h2><p>Parent portal account management.</p></div>
-      <button class="btn" onclick="parentModal()">+ Add Parent</button>
-    </div>
-    <div class="card">
-      <div class="table-wrap">
-      <table>
-      <thead><tr><th>Name</th><th>Username</th><th>Student</th><th>Status</th><th>Actions</th></tr></thead>
-      <tbody>
-      ${parents.map(p=>`
-        <tr>
-          <td>${esc(p.name)}</td><td>${esc(p.username)}</td>
-          <td>${esc(p.studentAdmissionNo||"—")}</td>
-          <td><span class="badge">${p.active!==false?"Active":"Inactive"}</span></td>
-          <td><button class="btn small danger" onclick="deleteUser('${p.id}')">Delete</button></td>
-        </tr>`).join("")||emptyRow(5)}
-      </tbody></table>
-      </div>
-    </div>
-  `;
-}
-
-async function parentModal(){
-  openModal(`
-    <div class="modal-head"><h3>Add Parent</h3><button class="close" onclick="closeModal()">×</button></div>
-    <div class="form-grid">
-      <div><label>Parent Name</label><input id="p_name"></div>
-      <div><label>Username</label><input id="p_user"></div>
-      <div><label>Password</label><input id="p_pass" type="password"></div>
-      <div><label>Student Admission No.</label><select id="p_student">
-        ${db.students.map(s=>`<option>${esc(s.admissionNo)}</option>`).join("")}
-      </select></div>
-    </div>
-    <div style="margin-top:15px;text-align:right"><button class="btn" onclick="saveParent()">Create Parent</button></div>
-  `);
-}
-
-async function saveParent(){
-  const name=document.getElementById("p_name").value.trim();
-  const username=document.getElementById("p_user").value.trim();
-  const password=document.getElementById("p_pass").value;
-  const studentAdmissionNo=document.getElementById("p_student").value;
-
-  if(!name||!username||!password){toast("Complete all required fields.");return}
-  if(db.users.some(u=>u.username.toLowerCase()===username.toLowerCase())){
-    toast("Username already exists.");return;
-  }
-
-  db.users.push({
-    id:uid("USR"),name,username,
-    passwordHash:await hashPassword(password),
-    role:"Parent",active:true,studentAdmissionNo
-  });
-
-  audit("CREATE_PARENT",username);
-  saveDB();closeModal();page_parents();toast("Parent created.");
-}
-
-/* ---------------- CLASSES / SUBJECTS ---------------- */
-
-function page_classes(){
-  document.getElementById("content").innerHTML=`
-    <div class="page-head">
-      <div><h2>Sessions / Classes</h2><p>Academic session and class setup.</p></div>
-      <button class="btn" onclick="classModal()">+ Add Class</button>
-    </div>
-    <div class="card">
-      <div class="grid3">
-        ${db.classes.map(c=>`
-          <div class="card" style="margin:0">
-            <b>${esc(c.name)}</b>
-            <div style="margin-top:10px">
-              <button class="btn small danger" onclick="deleteClass('${c.id}')">Delete</button>
-            </div>
-          </div>`).join("")}
-      </div>
-    </div>
-  `;
-}
-
-function classModal(){
-  openModal(`
-    <div class="modal-head"><h3>Add Class</h3><button class="close" onclick="closeModal()">×</button></div>
-    <label>Class Name</label><input id="className" placeholder="e.g. JSS 1 A">
-    <div style="margin-top:15px;text-align:right"><button class="btn" onclick="saveClass()">Save</button></div>
-  `);
-}
-
-function saveClass(){
-  const name=document.getElementById("className").value.trim();
-  if(!name){toast("Enter class name.");return}
-  db.classes.push({id:uid("CLS"),name});
-  audit("CREATE_CLASS",name);saveDB();closeModal();page_classes();
-}
-
-function deleteClass(id){
-  if(!confirm("Delete this class?"))return;
-  db.classes=db.classes.filter(c=>c.id!==id);
-  saveDB();page_classes();
-}
-
-function page_subjects(){
-  document.getElementById("content").innerHTML=`
-    <div class="page-head">
-      <div><h2>Subjects & HOD Assignment</h2><p>Assign HOD responsibility per subject.</p></div>
-      <button class="btn" onclick="subjectModal()">+ Add Subject</button>
-    </div>
-    <div class="card">
-      <div class="table-wrap">
-      <table>
-      <thead><tr><th>Subject</th><th>HOD</th><th>Actions</th></tr></thead>
-      <tbody>
-      ${db.subjects.map(s=>{
-        const h=db.users.find(u=>u.id===s.hod);
-        return `<tr>
-          <td>${esc(s.name)}</td>
-          <td>${esc(h?.name||"Not Assigned")}</td>
-          <td><button class="btn small secondary" onclick="subjectModal('${s.id}')">Edit</button></td>
-        </tr>`
-      }).join("")}
-      </tbody></table>
-      </div>
-    </div>
-  `;
-}
-
-function subjectModal(id=null){
-  const s=id?db.subjects.find(x=>x.id===id):null;
-  const teachers=db.users.filter(u=>u.role==="Teacher");
-  openModal(`
-    <div class="modal-head"><h3>${s?"Edit":"Add"} Subject</h3><button class="close" onclick="closeModal()">×</button></div>
-    <label>Subject</label><input id="sub_name" value="${escAttr(s?.name||"")}">
-    <label>Subject HOD</label>
-    <select id="sub_hod">
-      <option value="">Not Assigned</option>
-      ${teachers.map(t=>`<option value="${t.id}" ${s?.hod===t.id?"selected":""}>${esc(t.name)}</option>`).join("")}
-    </select>
-    <div style="margin-top:15px;text-align:right"><button class="btn" onclick="saveSubject('${id||""}')">Save</button></div>
-  `);
-}
-
-function saveSubject(id){
-  const name=document.getElementById("sub_name").value.trim();
-  if(!name){toast("Subject name is required.");return}
-  let s=id?db.subjects.find(x=>x.id===id):null;
-  if(!s){s={id:uid("SUB")};db.subjects.push(s)}
-  s.name=name;s.hod=document.getElementById("sub_hod").value;
-  audit(id?"EDIT_SUBJECT":"CREATE_SUBJECT",name);
-  saveDB();closeModal();page_subjects();
-}
-
-/* ---------------- ATTENDANCE ---------------- */
-
-function page_attendance(){
-  document.getElementById("content").innerHTML=`
-    <div class="page-head">
-      <div><h2>Attendance Register</h2><p>Morning and afternoon attendance with automatic totals.</p></div>
-      <button class="btn" onclick="attendanceModal()">+ Mark Attendance</button>
-    </div>
-
-    <div class="card">
-      <div class="table-wrap">
-      <table>
-      <thead><tr><th>Date</th><th>Class</th><th>Session</th><th>Present</th><th>Absent</th><th>Percentage</th></tr></thead>
-      <tbody>
-      ${db.attendance.map(a=>`
-        <tr>
-          <td>${esc(a.date)}</td>
-          <td>${esc(a.className)}</td>
-          <td>${esc(a.session)}</td>
-          <td>${a.present}</td>
-          <td>${a.absent}</td>
-          <td>${a.percentage}%</td>
-        </tr>`).join("")||emptyRow(6)}
-      </tbody></table>
-      </div>
-    </div>
-  `;
-}
-
-function attendanceModal(){
-  openModal(`
-    <div class="modal-head"><h3>Mark Attendance</h3><button class="close" onclick="closeModal()">×</button></div>
-    <div class="form-grid">
-      <div><label>Date</label><input id="att_date" type="date" value="${new Date().toISOString().slice(0,10)}"></div>
-      <div><label>Class</label><select id="att_class">${db.classes.map(c=>`<option>${esc(c.name)}</option>`).join("")}</select></div>
-      <div><label>Session</label><select id="att_session"><option>Morning</option><option>Afternoon</option></select></div>
-      <div><label>Present</label><input id="att_present" type="number" min="0" value="0"></div>
-      <div><label>Absent</label><input id="att_absent" type="number" min="0" value="0"></div>
-    </div>
-    <div style="margin-top:15px;text-align:right"><button class="btn" onclick="saveAttendance()">Save Attendance</button></div>
-  `);
-}
-
-function saveAttendance(){
-  const present=Number(document.getElementById("att_present").value)||0;
-  const absent=Number(document.getElementById("att_absent").value)||0;
-  const total=present+absent;
-  const percentage=total?((present/total)*100).toFixed(2):"0.00";
-
-  db.attendance.unshift({
-    id:uid("ATT"),
-    date:document.getElementById("att_date").value,
-    className:document.getElementById("att_class").value,
-    session:document.getElementById("att_session").value,
-    present,absent,percentage,
-    createdBy:currentUser.id
-  });
-
-  audit("CREATE_ATTENDANCE","Attendance register created");
-  saveDB();closeModal();page_attendance();toast("Attendance saved.");
-}
-
-/* ---------------- RESULTS ---------------- */
-
-function grade(total){
-  if(total>=75)return ["A1","Excellent"];
-  if(total>=70)return ["B2","Very Good"];
-  if(total>=65)return ["B3","Good"];
-  if(total>=60)return ["C4","Credit"];
-  if(total>=55)return ["C5","Credit"];
-  if(total>=50)return ["C6","Credit"];
-  if(total>=45)return ["D7","Pass"];
-  if(total>=40)return ["E8","Pass"];
-  return ["F9","Fail"];
-}
-
-function page_results(){
-  document.getElementById("content").innerHTML=`
-    <div class="page-head">
-      <div><h2>Results Management</h2><p>CA1 15 + CA2 15 + Examination 70 = 100.</p></div>
-      <button class="btn" onclick="resultModal()">+ Enter Result</button>
-    </div>
-    <div class="card">
-      <div class="table-wrap">
-      <table>
-      <thead><tr><th>Student</th><th>Subject</th><th>CA1</th><th>CA2</th><th>Exam</th><th>Total</th><th>Grade</th><th>Status</th><th>Actions</th></tr></thead>
-      <tbody>
-      ${db.results.map(r=>`
-        <tr>
-          <td>${esc(r.studentName)}</td>
-          <td>${esc(r.subject)}</td>
-          <td>${r.ca1}</td><td>${r.ca2}</td><td>${r.exam}</td>
-          <td><b>${r.total}</b></td>
-          <td>${r.grade}</td>
-          <td><span class="badge ${r.status==="Published"?"published":r.status==="Rejected"?"rejected":"pending"}">${r.status}</span></td>
-          <td>
-            ${currentUser.role==="Admin"?
-              `<button class="btn small secondary" onclick="publishResult('${r.id}')">Publish</button>`:""}
-          </td>
-        </tr>`).join("")||emptyRow(9)}
-      </tbody></table>
-      </div>
-    </div>
-  `;
-}
-
-function resultModal(){
-  openModal(`
-    <div class="modal-head"><h3>Enter Result</h3><button class="close" onclick="closeModal()">×</button></div>
-    <div class="form-grid">
-      <div><label>Student</label><select id="res_student">${db.students.map(s=>`<option value="${s.id}">${esc(s.name)} — ${esc(s.admissionNo)}</option>`).join("")}</select></div>
-      <div><label>Subject</label><select id="res_subject">${db.subjects.map(s=>`<option>${esc(s.name)}</option>`).join("")}</select></div>
-      <div><label>CA1 / 15</label><input id="res_ca1" type="number" min="0" max="15" value="0"></div>
-      <div><label>CA2 / 15</label><input id="res_ca2" type="number" min="0" max="15" value="0"></div>
-      <div><label>Examination / 70</label><input id="res_exam" type="number" min="0" max="70" value="0"></div>
-    </div>
-    <div style="margin-top:12px;padding:12px;background:#f5f9f7;border-radius:10px">
-      <b>Total: <span id="res_total">0</span> / 100</b>
-    </div>
-    <div style="margin-top:15px;text-align:right"><button class="btn" onclick="saveResult()">Save Result</button></div>
-  `);
-
-  ["res_ca1","res_ca2","res_exam"].forEach(id=>{
-    document.getElementById(id).addEventListener("input",()=>{
-      const t=(+document.getElementById("res_ca1").value||0)+
-              (+document.getElementById("res_ca2").value||0)+
-              (+document.getElementById("res_exam").value||0);
-      document.getElementById("res_total").textContent=t;
-    });
-  });
-}
-
-function saveResult(){
-  const ca1=Math.min(15,Math.max(0,+document.getElementById("res_ca1").value||0));
-  const ca2=Math.min(15,Math.max(0,+document.getElementById("res_ca2").value||0));
-  const exam=Math.min(70,Math.max(0,+document.getElementById("res_exam").value||0));
-  const total=ca1+ca2+exam;
-  const g=grade(total);
-  const student=db.students.find(s=>s.id===document.getElementById("res_student").value);
-
-  db.results.unshift({
-    id:uid("RES"),
-    studentId:student?.id,
-    studentName:student?.name||"Unknown",
-    admissionNo:student?.admissionNo||"",
-    className:student?.className||"",
-    subject:document.getElementById("res_subject").value,
-    ca1,ca2,exam,total,
-    grade:g[0],
-    remark:g[1],
-    status:"Draft",
-    createdBy:currentUser.id,
-    createdAt:new Date().toISOString()
-  });
-
-  audit("CREATE_RESULT",student?.name||"");
-  saveDB();closeModal();page_results();toast("Result saved as draft.");
-}
-
-function publishResult(id){
-  if(currentUser.role!=="Admin"){
-    toast("Only Admin can publish results.");
-    return;
-  }
-  const r=db.results.find(x=>x.id===id);
-  if(!r)return;
-
-  r.status="Published";
-  r.publishedAt=new Date().toISOString();
-  audit("PUBLISH_RESULT",r.studentName+" / "+r.subject);
-  saveDB();page_results();toast("Result published.");
-}
-
-/* ---------------- DOCUMENTS ---------------- */
-
-const DOC_TYPES={
-  lessonplans:"Lesson Plan",
-  lessonnotes:"Lesson Note",
-  schemes:"13-Week Scheme",
-  caquestions:"CA Questions",
-  examquestions:"Examination Questions",
-  answerkeys:"Answer Key",
-  markingguides:"Marking Guide"
-};
-
-function page_documents(type){
-  const title=DOC_TYPES[type];
-  const docs=db.documents.filter(d=>d.type===title);
-
-  document.getElementById("content").innerHTML=`
-    <div class="page-head">
-      <div><h2>${title}</h2><p>Create, submit, approve, archive and print academic documents.</p></div>
-      <button class="btn" onclick="documentModal('${type}')">+ Create ${title}</button>
-    </div>
-
-    <div class="card">
-      <div class="table-wrap">
-      <table>
-      <thead><tr><th>Title</th><th>Subject</th><th>Class</th><th>Term</th><th>Author</th><th>Status</th><th>Actions</th></tr></thead>
-      <tbody>
-      ${docs.map(d=>`
-        <tr>
-          <td>${esc(d.title)}</td>
-          <td>${esc(d.subject)}</td>
-          <td>${esc(d.className)}</td>
-          <td>${esc(d.term)}</td>
-          <td>${esc(d.authorName)}</td>
-          <td><span class="badge ${d.status==="Approved"||d.status==="Published"?"published":d.status==="Rejected"?"rejected":"pending"}">${esc(d.status)}</span></td>
-          <td>
-            <button class="btn small secondary" onclick="viewDocument('${d.id}')">View</button>
-            <button class="btn small secondary" onclick="printDocument('${d.id}')">Print</button>
-          </td>
-        </tr>
-      `).join("")||emptyRow(7)}
-      </tbody>
-      </table>
-      </div>
-    </div>
-  `;
-}
-
-window.page_lessonplans=()=>page_documents("lessonplans");
-window.page_lessonnotes=()=>page_documents("lessonnotes");
-window.page_schemes=()=>page_documents("schemes");
-window.page_caquestions=()=>page_documents("caquestions");
-window.page_examquestions=()=>page_documents("examquestions");
-window.page_answerkeys=()=>page_documents("answerkeys");
-window.page_markingguides=()=>page_documents("markingguides");
-
-function documentModal(type){
-  const title=DOC_TYPES[type];
-
-  openModal(`
-    <div class="modal-head"><h3>Create ${title}</h3><button class="close" onclick="closeModal()">×</button></div>
-
-    <div class="form-grid">
-      <div><label>Title</label><input id="doc_title" placeholder="${title} title"></div>
-      <div><label>Subject</label><select id="doc_subject">
-        ${db.subjects.map(s=>`<option>${esc(s.name)}</option>`).join("")}
-      </select></div>
-      <div><label>Class</label><select id="doc_class">
-        ${db.classes.map(c=>`<option>${esc(c.name)}</option>`).join("")}
-      </select></div>
-      <div><label>Term</label><select id="doc_term">
-        <option>First Term</option><option>Second Term</option><option>Third Term</option>
-      </select></div>
-      <div><label>Week</label><input id="doc_week" placeholder="e.g. Week 1"></div>
-      <div><label>Language</label>
-        <select id="doc_language">
-          <option>English</option><option>Hausa</option><option>Arabic</option><option>French</option>
-        </select>
-      </div>
-      <div><label>Topic</label><input id="doc_topic"></div>
-      <div><label>Subtopic</label><input id="doc_subtopic"></div>
-    </div>
-
-    <label>Document Content</label>
-    <textarea id="doc_content" style="min-height:300px"
-      placeholder="${documentPlaceholder(type)}"></textarea>
-
-    <div class="actions" style="margin-top:12px">
-      <button class="btn secondary" onclick="assistantFillDocument('${type}')">💬 Ask Teacher Assistant</button>
-      <button class="btn" onclick="saveDocument('${type}','Draft')">Save Draft</button>
-      <button class="btn" onclick="saveDocument('${type}','Submitted')">Submit for Approval</button>
-    </div>
-  `);
-}
-
-function documentPlaceholder(type){
-  if(type==="lessonplans"){
-    return `Entry Behaviour:
-Objectives:
-Materials:
-References:
-Set Induction:
-Presentation:
-Teacher Activities:
-Learners Activities:
-Evaluation:
-Conclusion:
-Assignment:`;
-  }
-  if(type==="lessonnotes"){
-    return `Topic:
-Introduction:
-Explanation:
-Examples:
-Class Activity:
-Evaluation:
-Conclusion:
-Assignment:`;
-  }
-  if(type==="schemes"){
-    return `Week 1:
-Topic:
-Subtopics:
-Learning Objectives:
-Activities:
-Resources:
-
-Week 2:
-...`;
-  }
-  return "Enter the complete academic content here...";
-}
-
-function assistantFillDocument(type){
-  closeModal();
-  showPage("assistant");
-  setTimeout(()=>{
-    const input=document.getElementById("chatInput");
-    if(input){
-      input.value=`Help me prepare a professional ${DOC_TYPES[type]} for Global Kids Academy Sokoto. Include objectives, activities, examples and evaluation where appropriate.`;
-      input.focus();
-    }
-  },100);
-}
-
-function saveDocument(type,status){
-  const content=document.getElementById("doc_content").value.trim();
-  const title=document.getElementById("doc_title").value.trim();
-
-  if(!title||!content){
-    toast("Title and content are required.");
-    return;
-  }
-
-  const d={
-    id:uid("DOC"),
-    type:DOC_TYPES[type],
-    title,
-    subject:document.getElementById("doc_subject").value,
-    className:document.getElementById("doc_class").value,
-    term:document.getElementById("doc_term").value,
-    week:document.getElementById("doc_week").value,
-    language:document.getElementById("doc_language").value,
-    topic:document.getElementById("doc_topic").value,
-    subtopic:document.getElementById("doc_subtopic").value,
-    content,
-    authorId:currentUser.id,
-    authorName:currentUser.name,
-    status,
-    createdAt:new Date().toISOString(),
-    history:[{
-      status,
-      by:currentUser.name,
-      time:new Date().toISOString(),
-      comment:"Document created"
-    }]
-  };
-
-  db.documents.unshift(d);
-  audit(status==="Submitted"?"SUBMIT_DOCUMENT":"CREATE_DOCUMENT",title);
-  saveDB();closeModal();page_documents(type);
-  toast(status==="Submitted"?"Document submitted for approval.":"Draft saved.");
-}
-
-function viewDocument(id){
-  const d=db.documents.find(x=>x.id===id);
-  if(!d)return;
-
-  openModal(`
-    <div class="modal-head">
-      <h3>${esc(d.title)}</h3>
-      <button class="close" onclick="closeModal()">×</button>
-    </div>
-    <p><b>Type:</b> ${esc(d.type)} &nbsp; <b>Subject:</b> ${esc(d.subject)} &nbsp; <b>Class:</b> ${esc(d.className)}</p>
-    <p><b>Status:</b> <span class="badge">${esc(d.status)}</span></p>
-    <div style="white-space:pre-wrap;line-height:1.65;border:1px solid var(--border);padding:15px;border-radius:10px">${esc(d.content)}</div>
-    <div class="actions" style="margin-top:15px">
-      <button class="btn" onclick="printDocument('${d.id}')">Print / Save PDF</button>
-      <button class="btn secondary" onclick="exportWord('${d.id}')">Word-compatible Export</button>
-    </div>
-  `);
-}
-
-function printDocument(id){
-  const d=db.documents.find(x=>x.id===id);
-  if(!d)return;
-
-  const w=window.open("","_blank");
-  w.document.write(`
-    <!doctype html><html><head><title>${esc(d.title)}</title>
-    <style>
-      body{font-family:Arial;padding:35px;line-height:1.6}
-      h1{color:#087443}
-      .meta{border-bottom:1px solid #ddd;padding-bottom:12px;margin-bottom:20px}
-      pre{white-space:pre-wrap;font-family:Arial}
-    </style></head><body>
-    <h1>${esc(APP_NAME)}</h1>
-    <h2>${esc(d.title)}</h2>
-    <div class="meta">
-      <b>Type:</b> ${esc(d.type)}<br>
-      <b>Subject:</b> ${esc(d.subject)}<br>
-      <b>Class:</b> ${esc(d.className)}<br>
-      <b>Term:</b> ${esc(d.term)}<br>
-      <b>Author:</b> ${esc(d.authorName)}
-    </div>
-    <pre>${esc(d.content)}</pre>
-    </body></html>
-  `);
-  w.document.close();
-  setTimeout(()=>w.print(),400);
-}
-
-function exportWord(id){
-  const d=db.documents.find(x=>x.id===id);
-  if(!d)return;
-
-  const html=`
-  <html><head><meta charset="utf-8"><title>${esc(d.title)}</title></head>
-  <body>
-  <h1>${esc(APP_NAME)}</h1>
-  <h2>${esc(d.title)}</h2>
-  <p><b>Subject:</b> ${esc(d.subject)}</p>
-  <p><b>Class:</b> ${esc(d.className)}</p>
-  <pre style="white-space:pre-wrap">${esc(d.content)}</pre>
-  </body></html>`;
-
-  const blob=new Blob([html],{type:"application/msword"});
-  const a=document.createElement("a");
-  a.href=URL.createObjectURL(blob);
-  a.download=(d.title||"academic-document")+".doc";
-  a.click();
-  URL.revokeObjectURL(a.href);
-}
-
-/* ---------------- APPROVAL CENTRE ---------------- */
-
-function page_approval(){
-  const docs=db.documents.filter(d=>
-    d.status==="Submitted"||d.status==="HOD Approved"
-  );
-
-  document.getElementById("content").innerHTML=`
-    <div class="page-head">
-      <div><h2>Approval Centre</h2><p>Review, approve, reject and publish academic work.</p></div>
-    </div>
-
-    <div class="card">
-      ${docs.length?docs.map(d=>`
-        <div style="padding:15px 0;border-bottom:1px solid var(--border)">
-          <div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap">
-            <div>
-              <b>${esc(d.title)}</b>
-              <div style="font-size:12px;color:var(--muted)">
-                ${esc(d.type)} • ${esc(d.subject)} • ${esc(d.className)}
-              </div>
-            </div>
-            <span class="badge">${esc(d.status)}</span>
-          </div>
-          <div class="actions" style="margin-top:10px">
-            <button class="btn small secondary" onclick="viewDocument('${d.id}')">View</button>
-            ${currentUser.role==="Admin"?
-            `<button class="btn small" onclick="approveDocument('${d.id}')">Approve</button>
-             <button class="btn small danger" onclick="rejectDocument('${d.id}')">Reject</button>`:""}
-          </div>
-        </div>
-      `).join(""):`<div class="empty">No documents are currently waiting for approval.</div>`}
-    </div>
-  `;
-}
-
-function approveDocument(id){
-  const d=db.documents.find(x=>x.id===id);
-  if(!d)return;
-
-  d.status="Approved";
-  d.approvedBy=currentUser.name;
-  d.approvedAt=new Date().toISOString();
-  d.history=d.history||[];
-  d.history.push({
-    status:"Approved",
-    by:currentUser.name,
-    time:new Date().toISOString(),
-    comment:"Approved"
-  });
-
-  audit("APPROVE_DOCUMENT",d.title);
-  saveDB();page_approval();toast("Document approved and archived.");
-}
-
-function rejectDocument(id){
-  const d=db.documents.find(x=>x.id===id);
-  if(!d)return;
-
-  const comment=prompt("Enter rejection comment:");
-  if(comment===null)return;
-
-  d.status="Rejected";
-  d.rejectionComment=comment;
-  d.history=d.history||[];
-  d.history.push({
-    status:"Rejected",
-    by:currentUser.name,
-    time:new Date().toISOString(),
-    comment
-  });
-
-  audit("REJECT_DOCUMENT",d.title);
-  saveDB();page_approval();toast("Document rejected.");
-}
-
-/* ---------------- ARCHIVE ---------------- */
-
-function page_archive(){
-  const docs=db.documents.filter(d=>d.status==="Approved"||d.status==="Published");
-
-  document.getElementById("content").innerHTML=`
-    <div class="page-head">
-      <div>
-        <h2>Approved Work Archive</h2>
-        <p>Permanent working archive for approved academic documents.</p>
-      </div>
-      <button class="btn secondary" onclick="printArchive()">Print Archive</button>
-    </div>
-
-    <div class="card">
-      <input placeholder="Search approved work..." oninput="filterArchive(this.value)">
-    </div>
-
-    <div id="archiveList" class="card">
-      ${archiveRows(docs)}
-    </div>
-  `;
-}
-
-function archiveRows(docs){
-  if(!docs.length)return `<div class="empty">No approved work is currently in the archive.</div>`;
-
-  return `<div class="table-wrap"><table>
-    <thead><tr><th>Title</th><th>Type</th><th>Subject</th><th>Class</th><th>Approved By</th><th>Date</th><th>Action</th></tr></thead>
-    <tbody>
-    ${docs.map(d=>`
-      <tr>
-        <td>${esc(d.title)}</td>
-        <td>${esc(d.type)}</td>
-        <td>${esc(d.subject)}</td>
-        <td>${esc(d.className)}</td>
-        <td>${esc(d.approvedBy||"—")}</td>
-        <td>${new Date(d.approvedAt||d.createdAt).toLocaleDateString()}</td>
-        <td><button class="btn small secondary" onclick="viewDocument('${d.id}')">View</button></td>
-      </tr>`).join("")}
-    </tbody></table></div>`;
-}
-
-function filterArchive(q){
-  q=q.toLowerCase();
-  const docs=db.documents.filter(d=>
-    (d.status==="Approved"||d.status==="Published") &&
-    JSON.stringify(d).toLowerCase().includes(q)
-  );
-  document.getElementById("archiveList").innerHTML=archiveRows(docs);
-}
-
-function printArchive(){
-  const docs=db.documents.filter(d=>d.status==="Approved"||d.status==="Published");
-  const w=window.open("","_blank");
-  w.document.write(`
-    <html><head><title>Approved Work Archive</title>
-    <style>body{font-family:Arial;padding:25px}table{width:100%;border-collapse:collapse}th,td{border:1px solid #ddd;padding:8px;text-align:left}</style>
-    </head><body>
-    <h1>${esc(APP_NAME)}</h1><h2>Approved Work Archive</h2>
-    <table><tr><th>Title</th><th>Type</th><th>Subject</th><th>Class</th><th>Approved By</th></tr>
-    ${docs.map(d=>`<tr><td>${esc(d.title)}</td><td>${esc(d.type)}</td><td>${esc(d.subject)}</td><td>${esc(d.className)}</td><td>${esc(d.approvedBy||"")}</td></tr>`).join("")}
-    </table></body></html>
-  `);
-  w.document.close();setTimeout(()=>w.print(),300);
-}
-
-/* ---------------- PORTALS ---------------- */
-
-function page_studentportal(){
-  let student=null;
-
-  if(currentUser.role==="Student"){
-    student=db.students.find(s=>s.admissionNo===currentUser.admissionNo) ||
-            db.students.find(s=>s.name===currentUser.name);
-  }else{
-    student=db.students[0];
-  }
-
-  const results=db.results.filter(r=>
-    r.status==="Published" &&
-    (!student || r.admissionNo===student.admissionNo)
-  );
-
-  document.getElementById("content").innerHTML=`
-    <div class="page-head">
-      <div><h2>Student Portal</h2><p>Published academic information.</p></div>
-    </div>
-    <div class="card">
-      <h3>${esc(student?.name||currentUser.name)}</h3>
-      <p>${esc(student?.className||"")}</p>
-    </div>
-    <div class="card">
-      <h3>Published Results</h3>
-      <div class="table-wrap"><table>
-      <tr><th>Subject</th><th>CA1</th><th>CA2</th><th>Exam</th><th>Total</th><th>Grade</th><th>Remark</th></tr>
-      ${results.map(r=>`<tr><td>${esc(r.subject)}</td><td>${r.ca1}</td><td>${r.ca2}</td><td>${r.exam}</td><td>${r.total}</td><td>${r.grade}</td><td>${esc(r.remark)}</td></tr>`).join("")||emptyRow(7)}
-      </table></div>
-    </div>
-  `;
-}
-
-function page_parentportal(){
-  let admission=currentUser.studentAdmissionNo;
-  let student=db.students.find(s=>s.admissionNo===admission);
-
-  if(currentUser.role==="Admin" && !student)student=db.students[0];
-
-  const results=db.results.filter(r=>
-    r.status==="Published" && (!student || r.admissionNo===student.admissionNo)
-  );
-
-  document.getElementById("content").innerHTML=`
-    <div class="page-head">
-      <div><h2>Parent Portal</h2><p>Access your child's published academic records.</p></div>
-    </div>
-
-    <div class="card">
-      <h3>Child Information</h3>
-      <p><b>Name:</b> ${esc(student?.name||"No linked student")}</p>
-      <p><b>Class:</b> ${esc(student?.className||"—")}</p>
-    </div>
-
-    <div class="card">
-      <h3>Published Results</h3>
-      <div class="table-wrap"><table>
-      <tr><th>Subject</th><th>Total</th><th>Grade</th><th>Remark</th></tr>
-      ${results.map(r=>`<tr><td>${esc(r.subject)}</td><td>${r.total}</td><td>${r.grade}</td><td>${esc(r.remark)}</td></tr>`).join("")||emptyRow(4)}
-      </table></div>
-    </div>
-  `;
-}
-
-/* ---------------- TEACHER ASSISTANT ---------------- */
-
-function page_assistant(){
-  document.getElementById("content").innerHTML=`
-    <div class="page-head">
-      <div>
-        <h2>Teacher Assistant</h2>
-        <p>Academic planning assistant for teachers.</p>
-      </div>
-      <span class="badge">Built-in Academic Assistant</span>
-    </div>
-
-    <div class="card">
-      <div class="prompt-chips">
-        <button class="prompt-chip" onclick="usePrompt('Prepare a detailed lesson plan on')">Lesson Plan</button>
-        <button class="prompt-chip" onclick="usePrompt('Prepare a detailed lesson note on')">Lesson Note</button>
-        <button class="prompt-chip" onclick="usePrompt('Prepare a 13-week scheme of work for')">13-Week Scheme</button>
-        <button class="prompt-chip" onclick="usePrompt('Generate CA questions on')">CA Questions</button>
-        <button class="prompt-chip" onclick="usePrompt('Generate examination questions on')">Exam Questions</button>
-        <button class="prompt-chip" onclick="usePrompt('Create an answer key for')">Answer Key</button>
-        <button class="prompt-chip" onclick="usePrompt('Create a marking guide for')">Marking Guide</button>
-        <button class="prompt-chip" onclick="usePrompt('Give me learning objectives for')">Objectives</button>
-      </div>
-
-      <div class="chat">
-        <div id="chatMessages" class="chat-messages">
-          <div class="msg bot">
-            <b>Teacher Assistant:</b><br>
-            Welcome to the Global Kids Academy Teacher Assistant.
-            I can help structure lesson plans, lesson notes, schemes, questions,
-            answer keys, marking guides, objectives, activities and evaluations.
-            <br><br>
-            Tell me the <b>class, subject and topic</b>.
-          </div>
-        </div>
-
-        <div class="chat-form">
-          <input id="chatInput" placeholder="e.g. Prepare a JSS 1 Mathematics lesson on fractions...">
-          <button class="btn" onclick="sendAssistant()">Send</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <b>Assistant note</b>
-      <p style="font-size:12px;color:var(--muted)">
-        This GitHub/local version uses a built-in academic response engine.
-        It does not send your school data to an external AI service.
-        A true cloud AI assistant can be connected later through a secure backend.
-      </p>
-    </div>
-  `;
-}
-
-function usePrompt(text){
-  const input=document.getElementById("chatInput");
-  if(input){
-    input.value=text+" ";
-    input.focus();
-  }
-}
-
-function sendAssistant(){
-  const input=document.getElementById("chatInput");
-  const text=input.value.trim();
-  if(!text)return;
-
-  addChat("user",text);
-  input.value="";
-
-  setTimeout(()=>{
-    addChat("bot",assistantResponse(text));
-  },250);
-}
-
-function addChat(type,text){
-  const box=document.getElementById("chatMessages");
-  if(!box)return;
-
-  const div=document.createElement("div");
-  div.className="msg "+type;
-  div.innerHTML=esc(text).replace(/\n/g,"<br>");
-  box.appendChild(div);
-  box.scrollTop=box.scrollHeight;
-}
-
-function assistantResponse(q){
-  const x=q.toLowerCase();
-
-  if(x.includes("lesson plan")){
-    return `LESSON PLAN TEMPLATE
-
-Subject: [Subject]
-Class: [Class]
-Topic: [Topic]
-Week: [Week]
-Duration: [Duration]
-
-Entry Behaviour:
-Learners should have prior knowledge related to the topic.
-
-Objectives:
-By the end of the lesson, learners should be able to:
-1. Define/explain the key concept.
-2. Identify the important features.
-3. Apply the concept to examples.
-4. Demonstrate understanding through evaluation.
-
-Materials:
-Board, marker, textbook, charts/real objects where appropriate.
-
-References:
-Approved curriculum and relevant textbook.
-
-Set Induction:
-Begin with a short question or familiar real-life example connected to the topic.
-
-Presentation:
-1. Introduce the topic.
-2. Explain the key concept step-by-step.
-3. Give worked examples.
-4. Allow learners to participate.
-5. Correct misconceptions.
-
-Teacher Activities:
-Explain, demonstrate, question learners, supervise practice and provide feedback.
-
-Learners Activities:
-Listen, answer questions, participate, solve examples and complete class activities.
-
-Evaluation:
-Ask short oral and written questions to check understanding.
-
-Conclusion:
-Summarise the major points and correct errors.
-
-Assignment:
-Give a suitable practice task related to the lesson.`;
-  }
-
-  if(x.includes("lesson note")){
-    return `DETAILED LESSON NOTE
-
-Topic: [Topic]
-
-Introduction:
-Introduce the topic from learners' previous knowledge and everyday experience.
-
-Learning Objectives:
-Learners should be able to explain the topic, identify important concepts, solve/apply relevant examples and demonstrate understanding.
-
-Explanation:
-Present the concept from simple to complex. Define important terms and explain each step clearly.
-
-Examples:
-Example 1: Provide a basic example and solve it step-by-step.
-Example 2: Provide an intermediate example.
-Example 3: Provide a more challenging application.
-
-Class Activity:
-Give learners guided practice followed by independent practice.
-
-Evaluation:
-1. Define the main concept.
-2. State two important features.
-3. Solve/apply a suitable example.
-4. Explain your answer.
-
-Conclusion:
-Review the key points.
-
-Assignment:
-Give additional practice questions.`;
-  }
-
-  if(x.includes("scheme")){
-    return `13-WEEK SCHEME OF WORK TEMPLATE
-
-Week 1 — Introduction and prerequisite knowledge
-Week 2 — Basic concepts
-Week 3 — Key terminology and examples
-Week 4 — Guided practice
-Week 5 — Application
-Week 6 — Problem solving
-Week 7 — Revision
-Week 8 — Intermediate concepts
-Week 9 — Advanced application
-Week 10 — Practical/class activities
-Week 11 — Revision and reinforcement
-Week 12 — Examination preparation
-Week 13 — Final revision/evaluation
-
-For an exact scheme, provide the class, subject and curriculum topic area.`;
-  }
-
-  if(x.includes("question") || x.includes("ca")){
-    return `CA QUESTION SET
-
-Subject: [Subject]
-Class: [Class]
-Topic: [Topic]
-
-SECTION A — OBJECTIVE
-1. __________________________________
-A. ______ B. ______ C. ______ D. ______
-
-2. __________________________________
-A. ______ B. ______ C. ______ D. ______
-
-3. __________________________________
-A. ______ B. ______ C. ______ D. ______
-
-SECTION B — THEORY
-1. Explain __________________________________.
-2. State three __________________________________.
-3. Solve/describe __________________________________.
-
-The questions should be adjusted to the learners' class level and the exact topic.`;
-  }
-
-  if(x.includes("answer key")){
-    return `ANSWER KEY TEMPLATE
-
-1. A
-2. B
-3. C
-4. D
-5. A
-
-THEORY MARKING:
-Question 1:
-- Correct definition — 2 marks
-- Correct explanation — 2 marks
-- Relevant example — 1 mark
-
-Question 2:
-Award marks according to the required points and acceptable equivalent answers.`;
-  }
-
-  if(x.includes("marking guide")){
-    return `MARKING GUIDE TEMPLATE
-
-Use clear allocation of marks.
-
-Example:
-Correct definition: 2 marks
-Correct identification: 2 marks
-Correct method/process: 3 marks
-Correct final answer: 2 marks
-Presentation/units where applicable: 1 mark
-
-TOTAL: 10 marks
-
-Accept scientifically/mathematically equivalent answers where appropriate.`;
-  }
-
-  if(x.includes("objective")){
-    return `LEARNING OBJECTIVES
-
-By the end of the lesson, learners should be able to:
-1. Define the major concept.
-2. Explain the concept in their own words.
-3. Identify important characteristics.
-4. Demonstrate the required procedure.
-5. Solve or apply the concept to examples.
-6. Answer assessment questions correctly.
-
-Send the class, subject and topic for more specific objectives.`;
-  }
-
-  return `I can help you prepare academic materials.
-
-Try:
-• "Prepare a lesson plan for JSS 1 Mathematics on Fractions."
-• "Prepare a detailed lesson note for SS1 on Standard Form."
-• "Prepare a 13-week scheme for JSS3 Mathematics."
-• "Generate CA questions on Indices."
-• "Create an answer key."
-• "Create a marking guide."
-
-For a fully tailored response, include the class, subject, topic and term.`;
-}
-
-/* ---------------- BACKUP ---------------- */
-
-function page_backup(){
-  document.getElementById("content").innerHTML=`
-    <div class="page-head">
-      <div><h2>Backup & Recovery</h2><p>Export, restore and protect the local database.</p></div>
-    </div>
-
-    <div class="grid2">
-      <div class="card">
-        <h3>Export Backup</h3>
-        <p style="font-size:13px;color:var(--muted)">Download the complete local database as JSON.</p>
-        <button class="btn" onclick="backupDatabase()">Download Backup</button>
-      </div>
-
-      <div class="card">
-        <h3>Restore Backup</h3>
-        <p style="font-size:13px;color:var(--muted)">Restore a previously exported GKA database.</p>
-        <input id="restoreFile" type="file" accept=".json">
-        <button class="btn" style="margin-top:10px" onclick="restoreDatabase()">Restore Database</button>
-      </div>
-    </div>
-
-    <div class="card">
-      <h3>Recovery Snapshot</h3>
-      <p style="font-size:13px;color:var(--muted)">
-        The application also maintains a browser recovery snapshot automatically after database changes.
-      </p>
-      <button class="btn secondary" onclick="restoreSnapshot()">Restore Automatic Snapshot</button>
-    </div>
-  `;
-}
-
-function backupDatabase(){
-  const data=JSON.stringify(db,null,2);
-  const blob=new Blob([data],{type:"application/json"});
-  const a=document.createElement("a");
-  a.href=URL.createObjectURL(blob);
-  a.download="Global-Kids-Academy-Backup-"+new Date().toISOString().slice(0,10)+".json";
-  a.click();
-  URL.revokeObjectURL(a.href);
-  audit("BACKUP_EXPORT","Database backup exported");
-  saveDB();
-}
-
-function restoreDatabase(){
-  const file=document.getElementById("restoreFile").files[0];
-  if(!file){toast("Choose a backup file first.");return}
-
-  const reader=new FileReader();
-  reader.onload=()=>{
-    try{
-      const imported=JSON.parse(reader.result);
-      if(!imported || !imported.users || !imported.settings){
-        throw new Error("Invalid database");
-      }
-      if(!confirm("Restore this database? Current local data will be replaced."))return;
-      db=imported;
-      repairDB();
-      audit("BACKUP_RESTORE","Database restored from backup");
-      saveDB();
-      buildNav();showPage("dashboard");
-      toast("Database restored.");
-    }catch(e){
-      toast("Invalid backup file.");
-    }
-  };
-  reader.readAsText(file);
-}
-
-function restoreSnapshot(){
-  const raw=localStorage.getItem(RECOVERY_KEY);
-  if(!raw){toast("No recovery snapshot found.");return}
-  if(!confirm("Restore the automatic recovery snapshot?"))return;
+function loadDB(){
 
   try{
-    db=JSON.parse(raw);
-    repairDB();
-    audit("RECOVERY_RESTORE","Automatic snapshot restored");
-    saveDB();
-    buildNav();showPage("dashboard");
-    toast("Recovery snapshot restored.");
-  }catch(e){
-    toast("Recovery snapshot is invalid.");
-  }
+
+    const data =
+      JSON.parse(
+        localStorage.getItem(KEY)
+      );
+
+    if(
+      data &&
+      data.version &&
+      data.users &&
+      data.students
+    ){
+
+      return data;
+
+    }
+
+  }catch(e){}
+
+  return emptyDB();
+
 }
 
-/* ---------------- AUDIT ---------------- */
 
-function page_audit(){
-  document.getElementById("content").innerHTML=`
-    <div class="page-head">
-      <div><h2>Audit History</h2><p>System activity and accountability log.</p></div>
-    </div>
-    <div class="card">
-      <div class="table-wrap">
-      <table>
-      <thead><tr><th>Date/Time</th><th>User</th><th>Role</th><th>Action</th><th>Details</th></tr></thead>
-      <tbody>
-      ${db.audit.map(a=>`
-        <tr>
-          <td>${new Date(a.time).toLocaleString()}</td>
-          <td>${esc(a.user)}</td>
-          <td>${esc(a.role)}</td>
-          <td>${esc(a.action)}</td>
-          <td>${esc(a.details)}</td>
-        </tr>`).join("")||emptyRow(5)}
-      </tbody></table>
-      </div>
-    </div>
-  `;
+function saveDB(){
+
+  localStorage.setItem(
+    KEY,
+    JSON.stringify(db)
+  );
+
+  localStorage.setItem(
+    SNAP,
+    JSON.stringify({
+      time:new Date().toISOString(),
+      db:db
+    })
+  );
+
 }
 
-/* ---------------- SETTINGS ---------------- */
 
-function page_settings(){
-  document.getElementById("content").innerHTML=`
-    <div class="page-head">
-      <div><h2>School Settings</h2><p>Configure Global Kids Academy information.</p></div>
-    </div>
+function makeID(prefix){
 
-    <div class="card">
-      <div class="form-grid">
-        <div><label>School Name</label><input id="set_name" value="${escAttr(db.settings.schoolName)}"></div>
-        <div><label>Motto</label><input id="set_motto" value="${escAttr(db.settings.motto)}"></div>
-        <div><label>Address</label><input id="set_address" value="${escAttr(db.settings.address)}"></div>
-        <div><label>Phone</label><input id="set_phone" value="${escAttr(db.settings.phone)}"></div>
-        <div><label>Email</label><input id="set_email" value="${escAttr(db.settings.email)}"></div>
-        <div><label>Academic Session</label><input id="set_session" value="${escAttr(db.settings.session)}"></div>
-        <div><label>Current Term</label><select id="set_term">
-          <option ${db.settings.term==="First Term"?"selected":""}>First Term</option>
-          <option ${db.settings.term==="Second Term"?"selected":""}>Second Term</option>
-          <option ${db.settings.term==="Third Term"?"selected":""}>Third Term</option>
-        </select></div>
-        <div><label>Default Language</label><select id="set_language">
-          <option ${db.settings.language==="English"?"selected":""}>English</option>
-          <option ${db.settings.language==="Hausa"?"selected":""}>Hausa</option>
-          <option ${db.settings.language==="Arabic"?"selected":""}>Arabic</option>
-          <option ${db.settings.language==="French"?"selected":""}>French</option>
-        </select></div>
-      </div>
+  return (
+    prefix +
+    "_" +
+    Date.now().toString(36) +
+    Math.random()
+      .toString(36)
+      .slice(2,7)
+  );
 
-      <button class="btn" style="margin-top:15px" onclick="saveSettings()">Save Settings</button>
-    </div>
-  `;
 }
 
-function saveSettings(){
-  db.settings.schoolName=document.getElementById("set_name").value.trim()||APP_NAME;
-  db.settings.motto=document.getElementById("set_motto").value.trim();
-  db.settings.address=document.getElementById("set_address").value.trim();
-  db.settings.phone=document.getElementById("set_phone").value.trim();
-  db.settings.email=document.getElementById("set_email").value.trim();
-  db.settings.session=document.getElementById("set_session").value.trim();
-  db.settings.term=document.getElementById("set_term").value;
-  db.settings.language=document.getElementById("set_language").value;
 
-  audit("UPDATE_SETTINGS","School settings updated");
+function escapeHTML(value){
+
+  return String(
+    value ?? ""
+  ).replace(
+    /[&<>"']/g,
+    function(m){
+
+      return {
+        "&":"&amp;",
+        "<":"&lt;",
+        ">":"&gt;",
+        '"':"&quot;",
+        "'":"&#39;"
+      }[m];
+
+    }
+  );
+
+}
+
+
+function findUser(id){
+
+  return db.users.find(
+    u=>u.id===id
+  );
+
+}
+
+
+function formatDate(date){
+
+  if(!date) return "";
+
+  return new Date(date)
+    .toLocaleDateString();
+
+}
+
+
+function audit(action,details=""){
+
+  db.audit.unshift({
+
+    id:makeID("AUD"),
+
+    time:new Date()
+      .toISOString(),
+
+    user:current?.name || "System",
+
+    role:current?.role || "",
+
+    action,
+
+    details
+
+  });
+
+  db.audit =
+    db.audit.slice(0,1000);
+
   saveDB();
-  toast("Settings saved.");
+
 }
 
-/* ---------------- PASSWORD ---------------- */
 
-function page_password(){
-  document.getElementById("content").innerHTML=`
-    <div class="page-head">
-      <div><h2>Change Password</h2><p>Update your current account password.</p></div>
-    </div>
+function statusBadge(status){
 
-    <div class="card" style="max-width:600px">
-      <label>Current Password</label>
-      <input id="oldpass" type="password">
+  let cls="blue";
 
-      <label>New Password</label>
-      <input id="newpass" type="password">
+  if(
+    status==="Approved" ||
+    status==="Published" ||
+    status==="Active"
+  ){
+    cls="green";
+  }
 
-      <label>Confirm New Password</label>
-      <input id="confpass" type="password">
+  if(
+    status==="Submitted" ||
+    status==="HOD Approved"
+  ){
+    cls="orange";
+  }
 
-      <button class="btn" style="margin-top:15px" onclick="changePassword()">Change Password</button>
-    </div>
+  if(status==="Rejected"){
+    cls="red";
+  }
+
+  return `
+    <span class="badge ${cls}">
+      ${escapeHTML(status)}
+    </span>
   `;
+
 }
 
-async function changePassword(){
-  const oldp=document.getElementById("oldpass").value;
-  const newp=document.getElementById("newpass").value;
-  const conf=document.getElementById("confpass").value;
 
-  if(!oldp||!newp||!conf){toast("Complete all fields.");return}
-  if(newp.length<6){toast("New password must be at least 6 characters.");return}
-  if(newp!==conf){toast("New passwords do not match.");return}
+/* =========================================================
+   GRADING
+========================================================= */
 
-  if(await hashPassword(oldp)!==currentUser.passwordHash){
-    toast("Current password is incorrect.");
+function grade(total){
+
+  if(total>=75)
+    return ["A1","Excellent"];
+
+  if(total>=70)
+    return ["B2","Very Good"];
+
+  if(total>=65)
+    return ["B3","Good"];
+
+  if(total>=60)
+    return ["C4","Credit"];
+
+  if(total>=55)
+    return ["C5","Credit"];
+
+  if(total>=50)
+    return ["C6","Credit"];
+
+  if(total>=45)
+    return ["D7","Pass"];
+
+  if(total>=40)
+    return ["E8","Pass"];
+
+  return ["F9","Fail"];
+
+}
+
+
+/* =========================================================
+   LOGIN
+========================================================= */
+
+document
+  .getElementById("loginForm")
+  .addEventListener(
+    "submit",
+    function(e){
+
+      e.preventDefault();
+
+      login();
+
+    }
+  );
+
+
+function login(){
+
+  const username =
+    document
+      .getElementById("loginUser")
+      .value
+      .trim();
+
+  const password =
+    document
+      .getElementById("loginPass")
+      .value;
+
+  const user =
+    db.users.find(
+      u=>
+        (
+          u.username &&
+          u.username.toLowerCase()
+          ===
+          username.toLowerCase()
+        )
+        ||
+        (
+          u.email &&
+          u.email.toLowerCase()
+          ===
+          username.toLowerCase()
+        )
+      &&
+      u.password===password
+      &&
+      u.active
+    );
+
+  if(!user){
+
+    alert(
+      "Invalid username/email or password."
+    );
+
     return;
+
   }
 
-  currentUser.passwordHash=await hashPassword(newp);
-  const user=db.users.find(u=>u.id===currentUser.id);
-  user.passwordHash=currentUser.passwordHash;
+  current=user;
 
-  audit("PASSWORD_CHANGE","Password changed");
+  audit(
+    "Login",
+    "Logged in as "+user.role
+  );
+
+  document
+    .getElementById("login")
+    .style.display="none";
+
+  document
+    .getElementById("app")
+    .style.display="block";
+
+  document
+    .getElementById("userName")
+    .textContent=user.name;
+
+  document
+    .getElementById("userRole")
+    .textContent=
+      user.role==="Admin"
+      ?"Administrator"
+      :user.role;
+
+  document
+    .getElementById("avatar")
+    .textContent=
+      user.name
+        .charAt(0)
+        .toUpperCase();
+
+  renderNav();
+
+  go("dashboard");
+
+}
+
+
+function logout(){
+
+  audit(
+    "Logout"
+  );
+
+  current=null;
+
+  document
+    .getElementById("app")
+    .style.display="none";
+
+  document
+    .getElementById("login")
+    .style.display="grid";
+
+  document
+    .getElementById("loginForm")
+    .reset();
+
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+function allowed(page){
+
+  if(current.role==="Admin")
+    return true;
+
+  if(current.role==="Teacher"){
+
+    return [
+      "dashboard",
+      "attendance",
+      "results",
+      "documents",
+      "approvals",
+      "archive",
+      "assistant",
+      "password"
+    ].includes(page);
+
+  }
+
+  if(current.role==="Student"){
+
+    return [
+      "dashboard",
+      "portal",
+      "password"
+    ].includes(page);
+
+  }
+
+  if(current.role==="Parent"){
+
+    return [
+      "dashboard",
+      "parentPortal",
+      "password"
+    ].includes(page);
+
+  }
+
+  return false;
+
+}
+
+
+function renderNav(){
+
+  const groups=[
+
+    [
+      "MAIN",
+      [
+        ["dashboard","Dashboard"]
+      ]
+    ],
+
+    [
+      "PEOPLE",
+      current.role==="Admin"
+      ?
+      [
+        ["users","User Management"],
+        ["teachers","Teachers"],
+        ["students","Students"],
+        ["parents","Parents"]
+      ]
+      :
+      []
+    ],
+
+    [
+      "ACADEMIC SETUP",
+      current.role==="Admin"
+      ?
+      [
+        ["setup","Sessions / Terms / Classes"],
+        ["subjects","Subjects / HOD"]
+      ]
+      :
+      []
+    ],
+
+    [
+      "ACADEMIC",
+      [
+        ["attendance","Attendance"],
+        ["results","Results"],
+        ["documents","Academic Documents"],
+        ["approvals","Approval Centre"],
+        ["archive","Approved Work Archive"]
+      ]
+    ],
+
+    [
+      "PORTALS",
+      current.role==="Student"
+      ?
+      [["portal","Student Portal"]]
+      :
+      current.role==="Parent"
+      ?
+      [["parentPortal","Parent Portal"]]
+      :
+      []
+    ],
+
+    [
+      "SYSTEM",
+      current.role==="Admin"
+      ?
+      [
+        ["backup","Backup & Recovery"],
+        ["audit","Audit History"],
+        ["settings","School Settings"]
+      ]
+      :
+      []
+    ],
+
+    [
+      "TOOLS",
+      [
+        ["assistant","Teacher Assistant"],
+        ["password","Change Password"]
+      ]
+    ]
+
+  ];
+
+
+  let html="";
+
+
+  groups.forEach(
+    group=>{
+
+      if(!group[1].length)
+        return;
+
+      html+=`
+        <div class="nav-title">
+          ${group[0]}
+        </div>
+      `;
+
+      group[1].forEach(
+        item=>{
+
+          html+=`
+            <button
+              data-page="${item[0]}"
+              onclick="go('${item[0]}')"
+            >
+              ${item[1]}
+            </button>
+          `;
+
+        }
+      );
+
+    }
+  );
+
+
+  html+=`
+    <div class="nav-title">
+      ACCOUNT
+    </div>
+
+    <button onclick="logout()">
+      ↪ Logout
+    </button>
+  `;
+
+
+  document
+    .getElementById("nav")
+    .innerHTML=html;
+
+}
+
+
+const pageTitles={
+
+  dashboard:"Dashboard",
+  users:"User Management",
+  teachers:"Teachers",
+  students:"Students",
+  parents:"Parents",
+  setup:"Academic Setup",
+  subjects:"Subjects / HOD",
+  attendance:"Attendance",
+  results:"Results",
+  documents:"Academic Documents",
+  approvals:"Approval Centre",
+  archive:"Approved Work Archive",
+  portal:"Student Portal",
+  parentPortal:"Parent Portal",
+  backup:"Backup & Recovery",
+  audit:"Audit History",
+  settings:"School Settings",
+  assistant:"Teacher Assistant",
+  password:"Change Password"
+
+};
+
+
+function go(page){
+
+  if(!allowed(page)){
+
+    alert(
+      "You do not have permission to open this module."
+    );
+
+    return;
+
+  }
+
+  currentPage=page;
+
+  document
+    .getElementById("sidebar")
+    .classList.remove("open");
+
+  document
+    .querySelectorAll(
+      "#nav button[data-page]"
+    )
+    .forEach(
+      button=>{
+        button.classList.toggle(
+          "active",
+          button.dataset.page===page
+        );
+      }
+    );
+
+  document
+    .getElementById("pageTitle")
+    .textContent=
+      pageTitles[page] || APP;
+
+
+  const renderers={
+
+    dashboard,
+    users,
+    teachers,
+    students,
+    parents,
+    setup,
+    subjects:subjectPage,
+    attendance,
+    results,
+    documents,
+    approvals,
+    archive,
+    portal:studentPortal,
+    parentPortal,
+    backup,
+    audit:auditPage,
+    settings,
+    assistant,
+    password:passwordPage
+
+  };
+
+
+  document
+    .getElementById("content")
+    .innerHTML=
+      renderers[page]();
+
+}
+
+
+document
+  .getElementById("mobileMenu")
+  .onclick=function(){
+
+    document
+      .getElementById("sidebar")
+      .classList.toggle("open");
+
+  };
+
+
+/* =========================================================
+   DASHBOARD
+========================================================= */
+
+function dashboard(){
+
+  const published=
+    db.results
+      .filter(
+        r=>r.status==="Published"
+      ).length;
+
+  const pending=
+    db.documents.filter(
+      d=>
+        d.status==="Submitted" ||
+        d.status==="HOD Approved"
+    ).length
+    +
+    db.results.filter(
+      r=>
+        r.status==="Submitted" ||
+        r.status==="HOD Approved"
+    ).length;
+
+  return `
+
+    <div class="grid cards">
+
+      <div class="card">
+        <div class="stat-label">
+          Students
+        </div>
+        <div class="stat-value">
+          ${db.students.length}
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="stat-label">
+          Teachers
+        </div>
+        <div class="stat-value">
+          ${
+            db.users.filter(
+              u=>u.role==="Teacher"
+            ).length
+          }
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="stat-label">
+          Published Results
+        </div>
+        <div class="stat-value">
+          ${published}
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="stat-label">
+          Pending Approvals
+        </div>
+        <div class="stat-value">
+          ${pending}
+        </div>
+      </div>
+
+    </div>
+
+
+    <div class="section">
+
+      <h3>
+        Welcome to ${APP}
+      </h3>
+
+      <div class="notice green">
+
+        Current Session:
+        <b>${escapeHTML(db.settings.session)}</b>
+        •
+        ${escapeHTML(db.settings.term)}
+
+      </div>
+
+      <p>
+        This final local version provides the main
+        academic management functions of the school.
+        Data is stored locally on the current device.
+      </p>
+
+      <div class="actions">
+
+        <button
+          class="btn"
+          onclick="go('documents')"
+        >
+          Academic Documents
+        </button>
+
+        <button
+          class="btn blue"
+          onclick="go('results')"
+        >
+          Manage Results
+        </button>
+
+        <button
+          class="btn secondary"
+          onclick="go('attendance')"
+        >
+          Attendance
+        </button>
+
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+/* =========================================================
+   USER MANAGEMENT
+========================================================= */
+
+function users(){
+
+  const rows=
+    db.users
+      .map(
+        u=>`
+
+        <tr>
+
+          <td>${escapeHTML(u.name)}</td>
+
+          <td>${escapeHTML(u.username)}</td>
+
+          <td>${escapeHTML(u.role)}</td>
+
+          <td>
+            ${
+              u.role==="Teacher"
+              ?
+              escapeHTML(u.subject||"—")
+              :
+              "—"
+            }
+          </td>
+
+          <td>
+            ${
+              u.active
+              ?
+              statusBadge("Active")
+              :
+              statusBadge("Rejected")
+            }
+          </td>
+
+          <td>
+
+            <div class="actions">
+
+              <button
+                class="btn small"
+                onclick="editUser('${u.id}')"
+              >
+                Edit
+              </button>
+
+              ${
+                u.username!=="Admin"
+                ?
+                `
+                <button
+                  class="btn small danger"
+                  onclick="deleteUser('${u.id}')"
+                >
+                  Delete
+                </button>
+                `
+                :
+                ""
+              }
+
+            </div>
+
+          </td>
+
+        </tr>
+
+      `
+      )
+      .join("");
+
+
+  return `
+
+    <div class="section">
+
+      <div class="toolbar">
+
+        <button
+          class="btn"
+          onclick="userModal()"
+        >
+          + Create User
+        </button>
+
+        <input
+          placeholder="Search users..."
+          oninput="filterTable('userTable',this.value)"
+        >
+
+      </div>
+
+
+      <div class="table-wrap">
+
+        <table id="userTable">
+
+          <thead>
+
+            <tr>
+              <th>Name</th>
+              <th>Username</th>
+              <th>Role</th>
+              <th>Subject</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+
+          </thead>
+
+          <tbody>
+
+            ${
+              rows ||
+              `
+              <tr>
+                <td
+                  colspan="6"
+                  class="empty"
+                >
+                  No users.
+                </td>
+              </tr>
+              `
+            }
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+function teachers(){
+  return users();
+}
+
+
+function parents(){
+
+  return `
+
+    <div class="section">
+
+      <h3>
+        Parents
+      </h3>
+
+      <p class="notice">
+        Parent accounts are managed from
+        User Management.
+      </p>
+
+      ${parentTable()}
+
+    </div>
+
+  `;
+
+}
+
+
+function parentTable(){
+
+  const rows=
+    db.parents
+      .map(
+        p=>`
+
+        <tr>
+
+          <td>
+            ${escapeHTML(p.name)}
+          </td>
+
+          <td>
+            ${escapeHTML(p.phone||"")}
+          </td>
+
+          <td>
+            ${escapeHTML(p.email||"")}
+          </td>
+
+          <td>
+            ${
+              (p.studentIds||[])
+                .map(
+                  sid=>
+                    escapeHTML(
+                      db.students
+                        .find(
+                          s=>s.id===sid
+                        )?.name || sid
+                    )
+                )
+                .join(", ")
+              ||
+              "—"
+            }
+          </td>
+
+        </tr>
+
+      `
+      )
+      .join("");
+
+
+  return `
+
+    <div class="table-wrap">
+
+      <table>
+
+        <thead>
+
+          <tr>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Linked Students</th>
+          </tr>
+
+        </thead>
+
+        <tbody>
+
+          ${
+            rows ||
+            `
+            <tr>
+              <td
+                colspan="4"
+                class="empty"
+              >
+                No parents.
+              </td>
+            </tr>
+            `
+          }
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  `;
+
+}
+
+
+/* =========================================================
+   STUDENTS
+========================================================= */
+
+function students(){
+
+  const rows=
+    db.students
+      .map(
+        s=>`
+
+        <tr>
+
+          <td>
+            ${escapeHTML(s.name)}
+          </td>
+
+          <td>
+            ${escapeHTML(s.admissionNo)}
+          </td>
+
+          <td>
+            ${escapeHTML(s.className)}
+          </td>
+
+          <td>
+            ${escapeHTML(s.gender||"")}
+          </td>
+
+          <td>
+            ${
+              s.active
+              ?
+              statusBadge("Active")
+              :
+              statusBadge("Rejected")
+            }
+          </td>
+
+          <td>
+
+            <button
+              class="btn small"
+              onclick="studentModal('${s.id}')"
+            >
+              Edit
+            </button>
+
+          </td>
+
+        </tr>
+
+      `
+      )
+      .join("");
+
+
+  return `
+
+    <div class="section">
+
+      <div class="toolbar">
+
+        <button
+          class="btn"
+          onclick="studentModal()"
+        >
+          + Add Student
+        </button>
+
+        <input
+          placeholder="Search students..."
+          oninput="filterTable('studentTable',this.value)"
+        >
+
+      </div>
+
+
+      <div class="table-wrap">
+
+        <table id="studentTable">
+
+          <thead>
+
+            <tr>
+              <th>Name</th>
+              <th>Admission No.</th>
+              <th>Class</th>
+              <th>Gender</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+
+          </thead>
+
+          <tbody>
+
+            ${
+              rows ||
+              `
+              <tr>
+                <td
+                  colspan="6"
+                  class="empty"
+                >
+                  No students.
+                </td>
+              </tr>
+              `
+            }
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+/* =========================================================
+   ACADEMIC SETUP
+========================================================= */
+
+function setup(){
+
+  return `
+
+    <div class="section">
+
+      <h3>
+        Classes
+      </h3>
+
+      <div class="toolbar">
+
+        <button
+          class="btn"
+          onclick="classModal()"
+        >
+          + Add Class
+        </button>
+
+      </div>
+
+      <div class="table-wrap">
+
+        <table>
+
+          <thead>
+
+            <tr>
+              <th>Class</th>
+              <th>Arm</th>
+              <th>Action</th>
+            </tr>
+
+          </thead>
+
+          <tbody>
+
+            ${
+              db.classes
+                .map(
+                  c=>`
+
+                  <tr>
+
+                    <td>
+                      ${escapeHTML(c.name)}
+                    </td>
+
+                    <td>
+                      ${escapeHTML(c.arm)}
+                    </td>
+
+                    <td>
+
+                      <button
+                        class="btn small danger"
+                        onclick="deleteClass('${c.id}')"
+                      >
+                        Delete
+                      </button>
+
+                    </td>
+
+                  </tr>
+
+                `
+                )
+                .join("")
+            }
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </div>
+
+
+    <div class="section">
+
+      <h3>
+        Academic Session & Term
+      </h3>
+
+      <form
+        onsubmit="saveSettingsInline(event)"
+        class="form-grid"
+      >
+
+        <div>
+
+          <label>
+            Session
+          </label>
+
+          <input
+            id="setSession"
+            value="${escapeHTML(db.settings.session)}"
+          >
+
+        </div>
+
+        <div>
+
+          <label>
+            Current Term
+          </label>
+
+          <select id="setTerm">
+
+            ${
+              [
+                "First Term",
+                "Second Term",
+                "Third Term"
+              ]
+              .map(
+                x=>`
+                  <option
+                    ${x===db.settings.term?"selected":""}
+                  >
+                    ${x}
+                  </option>
+                `
+              )
+              .join("")
+            }
+
+          </select>
+
+        </div>
+
+        <div style="align-self:end">
+
+          <button class="btn">
+            Save
+          </button>
+
+        </div>
+
+      </form>
+
+    </div>
+
+  `;
+
+}
+
+
+function saveSettingsInline(e){
+
+  e.preventDefault();
+
+  db.settings.session =
+    document.getElementById(
+      "setSession"
+    ).value;
+
+  db.settings.term =
+    document.getElementById(
+      "setTerm"
+    ).value;
+
+  audit(
+    "Update session/term"
+  );
+
   saveDB();
 
-  document.getElementById("oldpass").value="";
-  document.getElementById("newpass").value="";
-  document.getElementById("confpass").value="";
-  toast("Password changed successfully.");
+  alert("Saved.");
+
+  go("setup");
+
 }
 
-/* ---------------- UTILITIES ---------------- */
 
-function emptyRow(cols){
-  return `<tr><td colspan="${cols}" class="empty">No records available.</td></tr>`;
+/* =========================================================
+   SUBJECTS / HOD
+========================================================= */
+
+function subjectPage(){
+
+  return `
+
+    <div class="section">
+
+      <h3>
+        Subjects & HOD Assignment
+      </h3>
+
+      <div class="notice">
+
+        HOD is assigned per subject.
+        HOD assignment does not create a
+        separate login role.
+
+      </div>
+
+      <div class="table-wrap">
+
+        <table>
+
+          <thead>
+
+            <tr>
+
+              <th>Subject</th>
+              <th>HOD</th>
+              <th>Exam Officer</th>
+              <th>Action</th>
+
+            </tr>
+
+          </thead>
+
+          <tbody>
+
+            ${
+              db.subjects
+                .map(
+                  s=>{
+
+                    const hod =
+                      findUser(s.hodId);
+
+                    const examOfficer =
+                      db.users.some(
+                        u=>
+                          u.role==="Teacher" &&
+                          u.examOfficer
+                      );
+
+                    return `
+
+                      <tr>
+
+                        <td>
+                          ${escapeHTML(s.name)}
+                        </td>
+
+                        <td>
+                          ${escapeHTML(
+                            hod?.name ||
+                            "Not assigned"
+                          )}
+                        </td>
+
+                        <td>
+                          ${
+                            examOfficer
+                            ?
+                            statusBadge("Assigned")
+                            :
+                            "Not assigned"
+                          }
+                        </td>
+
+                        <td>
+
+                          <button
+                            class="btn small"
+                            onclick="subjectModal('${s.id}')"
+                          >
+                            Assign HOD
+                          </button>
+
+                        </td>
+
+                      </tr>
+
+                    `;
+
+                  }
+                )
+                .join("")
+            }
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </div>
+
+  `;
+
 }
 
-function esc(value){
-  return String(value??"")
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
+
+/* =========================================================
+   ATTENDANCE
+========================================================= */
+
+function attendance(){
+
+  const today =
+    new Date()
+      .toISOString()
+      .slice(0,10);
+
+  return `
+
+    <div class="section">
+
+      <div class="toolbar">
+
+        <input
+          type="date"
+          id="attDate"
+          value="${today}"
+        >
+
+        <select id="attClass">
+
+          <option value="">
+            All classes
+          </option>
+
+          ${
+            classes
+              .map(
+                c=>`
+                  <option
+                    ${current.className===c?"selected":""}
+                  >
+                    ${c}
+                  </option>
+                `
+              )
+              .join("")
+          }
+
+        </select>
+
+        <select id="attSession">
+
+          <option>
+            Morning
+          </option>
+
+          <option>
+            Afternoon
+          </option>
+
+        </select>
+
+        <button
+          class="btn"
+          onclick="loadAttendanceForm()"
+        >
+          Load Register
+        </button>
+
+      </div>
+
+      <div id="attendanceArea">
+
+        ${attendanceRegister(
+          db.students,
+          today,
+          "Morning"
+        )}
+
+      </div>
+
+    </div>
+
+  `;
+
 }
 
-function escAttr(value){
-  return esc(value).replace(/\n/g," ");
+
+function attendanceRegister(
+  students,
+  date,
+  session
+){
+
+  let selectedClass =
+    document.getElementById(
+      "attClass"
+    )?.value ||
+    (
+      current.role==="Teacher"
+      ?
+      current.className
+      :
+      ""
+    );
+
+  if(selectedClass){
+
+    students =
+      students.filter(
+        s=>
+          s.className===selectedClass
+      );
+
+  }
+
+
+  return `
+
+    <div class="table-wrap">
+
+      <table>
+
+        <thead>
+
+          <tr>
+
+            <th>Student</th>
+            <th>Admission</th>
+            <th>Status</th>
+            <th>Present Total</th>
+            <th>Absent Total</th>
+            <th>Percentage</th>
+
+          </tr>
+
+        </thead>
+
+        <tbody>
+
+          ${
+            students
+              .map(
+                s=>{
+
+                  const all =
+                    db.attendance.filter(
+                      a=>
+                        a.studentId===s.id &&
+                        a.session===session
+                    );
+
+                  const present =
+                    all.filter(
+                      a=>
+                        a.status==="Present"
+                    ).length;
+
+                  const absent =
+                    all.filter(
+                      a=>
+                        a.status==="Absent"
+                    ).length;
+
+                  const record =
+                    db.attendance.find(
+                      a=>
+                        a.studentId===s.id &&
+                        a.date===date &&
+                        a.session===session
+                    );
+
+                  return `
+
+                    <tr>
+
+                      <td>
+                        ${escapeHTML(s.name)}
+                      </td>
+
+                      <td>
+                        ${escapeHTML(s.admissionNo)}
+                      </td>
+
+                      <td>
+
+                        <select
+                          data-att-student="${s.id}"
+                        >
+
+                          <option
+                            ${
+                              record?.status==="Present"
+                              ?
+                              "selected"
+                              :
+                              ""
+                            }
+                          >
+                            Present
+                          </option>
+
+                          <option
+                            ${
+                              record?.status==="Absent"
+                              ?
+                              "selected"
+                              :
+                              ""
+                            }
+                          >
+                            Absent
+                          </option>
+
+                        </select>
+
+                      </td>
+
+                      <td>
+                        ${present}
+                      </td>
+
+                      <td>
+                        ${absent}
+                      </td>
+
+                      <td>
+                        ${
+                          all.length
+                          ?
+                          Math.round(
+                            present/all.length*100
+                          )
+                          :
+                          0
+                        }%
+                      </td>
+
+                    </tr>
+
+                  `;
+
+                }
+              )
+              .join("")
+          }
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+
+    <div class="actions" style="margin-top:12px">
+
+      <button
+        class="btn"
+        onclick="saveAttendance()"
+      >
+        Save Register
+      </button>
+
+    </div>
+
+  `;
+
 }
 
-function openModal(html){
-  document.getElementById("modalContent").innerHTML=html;
-  document.getElementById("modal").classList.remove("hidden");
+
+function loadAttendanceForm(){
+
+  const date =
+    document.getElementById(
+      "attDate"
+    ).value;
+
+  const session =
+    document.getElementById(
+      "attSession"
+    ).value;
+
+  document
+    .getElementById(
+      "attendanceArea"
+    )
+    .innerHTML=
+      attendanceRegister(
+        db.students,
+        date,
+        session
+      );
+
 }
+
+
+function saveAttendance(){
+
+  const date =
+    document.getElementById(
+      "attDate"
+    ).value;
+
+  const session =
+    document.getElementById(
+      "attSession"
+    ).value;
+
+
+  document
+    .querySelectorAll(
+      "[data-att-student]"
+    )
+    .forEach(
+      element=>{
+
+        const studentId =
+          element.dataset.attStudent;
+
+        const existing =
+          db.attendance.find(
+            a=>
+              a.studentId===studentId &&
+              a.date===date &&
+              a.session===session
+          );
+
+
+        if(existing){
+
+          existing.status =
+            element.value;
+
+        }else{
+
+          db.attendance.push({
+
+            id:makeID("ATT"),
+
+            studentId,
+
+            date,
+
+            session,
+
+            status:element.value,
+
+            markedBy:current.id
+
+          });
+
+        }
+
+      }
+    );
+
+
+  audit(
+    "Save attendance",
+    date+" "+session
+  );
+
+  saveDB();
+
+  alert(
+    "Attendance saved successfully."
+  );
+
+  loadAttendanceForm();
+
+}
+
+
+/* =========================================================
+   RESULTS
+========================================================= */
+
+function results(){
+
+  return `
+
+    <div class="section">
+
+      <div class="toolbar">
+
+        <button
+          class="btn"
+          onclick="resultModal()"
+        >
+          + Enter Result
+        </button>
+
+        <button
+          class="btn secondary"
+          onclick="broadsheet()"
+        >
+          View Broadsheet
+        </button>
+
+        <input
+          placeholder="Search results..."
+          oninput="filterTable('resultTable',this.value)"
+        >
+
+      </div>
+
+      <div class="notice">
+
+        Assessment structure:
+        <b>CA1 / 15</b> +
+        <b>CA2 / 15</b> +
+        <b>Examination / 70</b> =
+        <b>Total / 100</b>.
+
+      </div>
+
+      <div class="table-wrap">
+
+        <table id="resultTable">
+
+          <thead>
+
+            <tr>
+              <th>Student</th>
+              <th>Class</th>
+              <th>Subject</th>
+              <th>CA1</th>
+              <th>CA2</th>
+              <th>Exam</th>
+              <th>Total</th>
+              <th>Grade</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+
+          </thead>
+
+          <tbody>
+
+            ${
+              db.results
+                .map(
+                  r=>{
+
+                    const student =
+                      db.students.find(
+                        s=>s.id===r.studentId
+                      );
+
+                    const g =
+                      grade(r.total);
+
+                    return `
+
+                      <tr>
+
+                        <td>
+                          ${escapeHTML(
+                            student?.name ||
+                            "Unknown"
+                          )}
+                        </td>
+
+                        <td>
+                          ${escapeHTML(
+                            student?.className ||
+                            ""
+                          )}
+                        </td>
+
+                        <td>
+                          ${escapeHTML(r.subject)}
+                        </td>
+
+                        <td>${r.ca1}</td>
+                        <td>${r.ca2}</td>
+                        <td>${r.exam}</td>
+
+                        <td>
+                          <b>${r.total}</b>
+                        </td>
+
+                        <td>
+                          ${g[0]}
+                        </td>
+
+                        <td>
+                          ${statusBadge(r.status)}
+                        </td>
+
+                        <td>
+
+                          <div class="actions">
+
+                            ${
+                              r.status==="Draft" &&
+                              current.role==="Teacher"
+                              ?
+                              `
+                              <button
+                                class="btn small"
+                                onclick="submitResult('${r.id}')"
+                              >
+                                Submit
+                              </button>
+                              `
+                              :
+                              ""
+                            }
+
+                            ${
+                              current.role==="Admin"
+                              ?
+                              `
+                              <button
+                                class="btn small"
+                                onclick="resultModal('${r.id}')"
+                              >
+                                Edit
+                              </button>
+                              `
+                              :
+                              ""
+                            }
+
+                          </div>
+
+                        </td>
+
+                      </tr>
+
+                    `;
+
+                  }
+                )
+                .join("")
+              ||
+              `
+              <tr>
+                <td
+                  colspan="10"
+                  class="empty"
+                >
+                  No results recorded.
+                </td>
+              </tr>
+              `
+            }
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+function resultModal(resultId=""){
+
+  const existing =
+    db.results.find(
+      r=>r.id===resultId
+    );
+
+
+  const r =
+    existing ||
+    {
+      studentId:"",
+      subject:"Mathematics",
+      ca1:0,
+      ca2:0,
+      exam:0,
+      status:"Draft",
+      session:db.settings.session,
+      term:db.settings.term
+    };
+
+
+  showModal(
+
+    resultId
+    ?
+    "Edit Result"
+    :
+    "Enter Result",
+
+    `
+
+    <form
+      onsubmit="saveResult(event,'${resultId}')"
+    >
+
+      <div class="form-grid">
+
+        <div>
+
+          <label>
+            Student
+          </label>
+
+          <select
+            id="rStudent"
+            required
+          >
+
+            ${
+              db.students
+                .map(
+                  s=>`
+
+                  <option
+                    value="${s.id}"
+                    ${
+                      s.id===r.studentId
+                      ?
+                      "selected"
+                      :
+                      ""
+                    }
+                  >
+                    ${escapeHTML(s.name)}
+                    —
+                    ${escapeHTML(s.className)}
+                  </option>
+
+                  `
+                )
+                .join("")
+            }
+
+          </select>
+
+        </div>
+
+
+        <div>
+
+          <label>
+            Subject
+          </label>
+
+          <select id="rSubject">
+
+            ${
+              subjects
+                .map(
+                  s=>`
+
+                  <option
+                    ${
+                      s===r.subject
+                      ?
+                      "selected"
+                      :
+                      ""
+                    }
+                  >
+                    ${s}
+                  </option>
+
+                  `
+                )
+                .join("")
+            }
+
+          </select>
+
+        </div>
+
+
+        <div>
+
+          <label>
+            CA1 / 15
+          </label>
+
+          <input
+            id="rCA1"
+            type="number"
+            min="0"
+            max="15"
+            value="${r.ca1}"
+            required
+          >
+
+        </div>
+
+
+        <div>
+
+          <label>
+            CA2 / 15
+          </label>
+
+          <input
+            id="rCA2"
+            type="number"
+            min="0"
+            max="15"
+            value="${r.ca2}"
+            required
+          >
+
+        </div>
+
+
+        <div>
+
+          <label>
+            Exam / 70
+          </label>
+
+          <input
+            id="rExam"
+            type="number"
+            min="0"
+            max="70"
+            value="${r.exam}"
+            required
+          >
+
+        </div>
+
+
+        <div>
+
+          <label>
+            Session
+          </label>
+
+          <input
+            id="rSession"
+            value="${escapeHTML(r.session)}"
+          >
+
+        </div>
+
+
+        <div>
+
+          <label>
+            Term
+          </label>
+
+          <select id="rTerm">
+
+            ${
+              [
+                "First Term",
+                "Second Term",
+                "Third Term"
+              ]
+              .map(
+                x=>`
+
+                  <option
+                    ${
+                      x===r.term
+                      ?
+                      "selected"
+                      :
+                      ""
+                    }
+                  >
+                    ${x}
+                  </option>
+
+                `
+              )
+              .join("")
+            }
+
+          </select>
+
+        </div>
+
+      </div>
+
+
+      <div class="actions"
+           style="margin-top:15px">
+
+        <button class="btn">
+          Save Draft
+        </button>
+
+      </div>
+
+    </form>
+
+    `
+
+  );
+
+}
+
+
+function saveResult(e,resultId){
+
+  e.preventDefault();
+
+
+  const ca1 =
+    Number(
+      document.getElementById(
+        "rCA1"
+      ).value
+    );
+
+  const ca2 =
+    Number(
+      document.getElementById(
+        "rCA2"
+      ).value
+    );
+
+  const exam =
+    Number(
+      document.getElementById(
+        "rExam"
+      ).value
+    );
+
+
+  const total =
+    ca1+ca2+exam;
+
+
+  if(
+    ca1<0 ||
+    ca1>15 ||
+    ca2<0 ||
+    ca2>15 ||
+    exam<0 ||
+    exam>70 ||
+    total>100
+  ){
+
+    alert(
+      "Invalid mark limits."
+    );
+
+    return;
+
+  }
+
+
+  let result =
+    db.results.find(
+      r=>r.id===resultId
+    );
+
+
+  if(!result){
+
+    result={
+      id:makeID("RES"),
+      status:"Draft"
+    };
+
+    db.results.push(result);
+
+  }
+
+
+  Object.assign(
+    result,
+    {
+
+      studentId:
+        document.getElementById(
+          "rStudent"
+        ).value,
+
+      subject:
+        document.getElementById(
+          "rSubject"
+        ).value,
+
+      ca1,
+      ca2,
+      exam,
+      total,
+
+      grade:grade(total)[0],
+
+      remark:grade(total)[1],
+
+      session:
+        document.getElementById(
+          "rSession"
+        ).value,
+
+      term:
+        document.getElementById(
+          "rTerm"
+        ).value,
+
+      teacherId:current.id,
+
+      updatedAt:
+        new Date().toISOString()
+
+    }
+  );
+
+
+  audit(
+    "Save result",
+    result.subject+
+    " "+
+    total+
+    "/100"
+  );
+
+  saveDB();
+
+  closeModal();
+
+  go("results");
+
+}
+
+
+function submitResult(resultId){
+
+  const result =
+    db.results.find(
+      r=>r.id===resultId
+    );
+
+  if(!result)
+    return;
+
+
+  result.status="Submitted";
+
+  result.submittedAt=
+    new Date().toISOString();
+
+
+  db.approvals.unshift({
+
+    id:makeID("APV"),
+
+    itemId:resultId,
+
+    type:"Result",
+
+    action:"Submitted",
+
+    by:current.id,
+
+    comment:"Submitted for approval",
+
+    time:new Date().toISOString()
+
+  });
+
+
+  audit(
+    "Submit result",
+    resultId
+  );
+
+  saveDB();
+
+  go("results");
+
+}
+
+
+/* =========================================================
+   BROADSHEET
+========================================================= */
+
+function broadsheet(){
+
+  document
+    .getElementById("content")
+    .innerHTML=`
+
+      <div class="section">
+
+        <h3>
+          Result Broadsheet
+        </h3>
+
+        <div class="toolbar">
+
+          <select
+            id="bClass"
+            onchange="renderBroadsheet(this.value)"
+          >
+
+            <option value="">
+              All Classes
+            </option>
+
+            ${
+              [
+                ...new Set(
+                  db.results
+                    .map(
+                      r=>
+                        db.students.find(
+                          s=>s.id===r.studentId
+                        )?.className
+                    )
+                    .filter(Boolean)
+                )
+              ]
+              .map(
+                c=>`
+                  <option>
+                    ${escapeHTML(c)}
+                  </option>
+                `
+              )
+              .join("")
+            }
+
+          </select>
+
+
+          <button
+            class="btn secondary"
+            onclick="window.print()"
+          >
+            Print / Save PDF
+          </button>
+
+        </div>
+
+
+        <div id="bs">
+
+          ${broadsheetTable("")}
+
+        </div>
+
+      </div>
+
+    `;
+
+}
+
+
+function renderBroadsheet(className){
+
+  document
+    .getElementById("bs")
+    .innerHTML=
+      broadsheetTable(
+        className
+      );
+
+}
+
+
+function broadsheetTable(className){
+
+  const results=
+    db.results.filter(
+      r=>
+        !className ||
+        db.students.find(
+          s=>s.id===r.studentId
+        )?.className===className
+    );
+
+
+  const subjectsList=[
+    ...new Set(
+      results.map(
+        r=>r.subject
+      )
+    )
+  ];
+
+
+  const studentIds=[
+    ...new Set(
+      results.map(
+        r=>r.studentId
+      )
+    )
+  ];
+
+
+  return `
+
+    <div class="table-wrap">
+
+      <table>
+
+        <thead>
+
+          <tr>
+
+            <th>
+              Student
+            </th>
+
+            ${
+              subjectsList
+                .map(
+                  s=>`
+                    <th>
+                      ${escapeHTML(s)}
+                    </th>
+                  `
+                )
+                .join("")
+            }
+
+            <th>
+              Average
+            </th>
+
+          </tr>
+
+        </thead>
+
+        <tbody>
+
+          ${
+            studentIds
+              .map(
+                studentId=>{
+
+                  const student =
+                    db.students.find(
+                      s=>s.id===studentId
+                    );
+
+                  const values =
+                    subjectsList.map(
+                      subject=>
+                        results.find(
+                          r=>
+                            r.studentId===studentId &&
+                            r.subject===subject
+                        )?.total ?? "—"
+                    );
+
+                  const numbers=
+                    values
+                      .filter(
+                        v=>v!=="—"
+                      )
+                      .map(Number);
+
+                  const average=
+                    numbers.length
+                    ?
+                    (
+                      numbers.reduce(
+                        (a,b)=>a+b,
+                        0
+                      ) /
+                      numbers.length
+                    ).toFixed(1)
+                    :
+                    "—";
+
+
+                  return `
+
+                    <tr>
+
+                      <td>
+                        ${escapeHTML(
+                          student?.name
+                        )}
+                      </td>
+
+                      ${
+                        values
+                          .map(
+                            v=>`
+                              <td>
+                                ${v}
+                              </td>
+                            `
+                          )
+                          .join("")
+                      }
+
+                      <td>
+                        <b>
+                          ${average}
+                        </b>
+                      </td>
+
+                    </tr>
+
+                  `;
+
+                }
+              )
+              .join("")
+            ||
+            `
+            <tr>
+              <td
+                colspan="${subjectsList.length+2}"
+                class="empty"
+              >
+                No results available.
+              </td>
+            </tr>
+            `
+          }
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  `;
+
+}
+
+
+/* =========================================================
+   DOCUMENTS
+========================================================= */
+
+function documents(){
+
+  const types=[
+    "Lesson Plan",
+    "Lesson Note",
+    "13-Week Scheme",
+    "CA Questions",
+    "Examination Questions",
+    "Answer Key",
+    "Marking Guide"
+  ];
+
+
+  return `
+
+    <div class="section">
+
+      <div class="toolbar">
+
+        <button
+          class="btn"
+          onclick="documentModal()"
+        >
+          + New Academic Document
+        </button>
+
+        <select
+          id="docFilter"
+          onchange="filterDocs()"
+        >
+
+          <option value="">
+            All Types
+          </option>
+
+          ${
+            types
+              .map(
+                t=>`
+                  <option>
+                    ${t}
+                  </option>
+                `
+              )
+              .join("")
+          }
+
+        </select>
+
+        <input
+          id="docSearch"
+          placeholder="Search documents..."
+          oninput="filterDocs()"
+        >
+
+      </div>
+
+
+      <div class="table-wrap">
+
+        <table id="docTable">
+
+          <thead>
+
+            <tr>
+
+              <th>Type</th>
+              <th>Title</th>
+              <th>Subject</th>
+              <th>Class</th>
+              <th>Week</th>
+              <th>Language</th>
+              <th>Status</th>
+              <th>Actions</th>
+
+            </tr>
+
+          </thead>
+
+          <tbody>
+
+            ${
+              db.documents
+                .map(
+                  d=>`
+
+                  <tr
+                    data-search="${escapeHTML(
+                      (
+                        d.type+
+                        " "+
+                        d.title+
+                        " "+
+                        d.subject+
+                        " "+
+                        d.className
+                      ).toLowerCase()
+                    )}"
+                    data-type="${escapeHTML(d.type)}"
+                  >
+
+                    <td>
+                      ${escapeHTML(d.type)}
+                    </td>
+
+                    <td>
+                      ${escapeHTML(d.title)}
+                    </td>
+
+                    <td>
+                      ${escapeHTML(d.subject)}
+                    </td>
+
+                    <td>
+                      ${escapeHTML(d.className)}
+                    </td>
+
+                    <td>
+                      ${escapeHTML(d.week||"")}
+                    </td>
+
+                    <td>
+                      ${escapeHTML(d.language)}
+                    </td>
+
+                    <td>
+                      ${statusBadge(d.status)}
+                    </td>
+
+                    <td>
+
+                      <div class="actions">
+
+                        <button
+                          class="btn small"
+                          onclick="viewDoc('${d.id}')"
+                        >
+                          View
+                        </button>
+
+                        ${
+                          d.status==="Draft"
+                          ?
+                          `
+                          <button
+                            class="btn small"
+                            onclick="submitDoc('${d.id}')"
+                          >
+                            Submit
+                          </button>
+                          `
+                          :
+                          ""
+                        }
+
+                      </div>
+
+                    </td>
+
+                  </tr>
+
+                  `
+                )
+                .join("")
+              ||
+              `
+              <tr>
+                <td
+                  colspan="8"
+                  class="empty"
+                >
+                  No academic documents.
+                </td>
+              </tr>
+              `
+            }
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+function filterDocs(){
+
+  const search=
+    (
+      document
+        .getElementById(
+          "docSearch"
+        )?.value ||
+      ""
+    ).toLowerCase();
+
+
+  const type=
+    document
+      .getElementById(
+        "docFilter"
+      )?.value ||
+      "";
+
+
+  document
+    .querySelectorAll(
+      "#docTable tbody tr"
+    )
+    .forEach(
+      row=>{
+
+        const matchesSearch=
+          !search ||
+          row.dataset.search
+            .includes(search);
+
+        const matchesType=
+          !type ||
+          row.dataset.type===type;
+
+        row.style.display=
+          matchesSearch &&
+          matchesType
+          ?
+          ""
+          :
+          "none";
+
+      }
+    );
+
+}
+
+
+function documentModal(){
+
+  showModal(
+
+    "New Academic Document",
+
+    `
+
+    <form
+      onsubmit="saveDocument(event)"
+    >
+
+      <div class="form-grid">
+
+        <div>
+
+          <label>
+            Document Type
+          </label>
+
+          <select id="dType">
+
+            ${
+              [
+                "Lesson Plan",
+                "Lesson Note",
+                "13-Week Scheme",
+                "CA Questions",
+                "Examination Questions",
+                "Answer Key",
+                "Marking Guide"
+              ]
+              .map(
+                x=>`
+                  <option>
+                    ${x}
+                  </option>
+                `
+              )
+              .join("")
+            }
+
+          </select>
+
+        </div>
+
+
+        <div>
+
+          <label>
+            Language
+          </label>
+
+          <select id="dLang">
+
+            <option>
+              English
+            </option>
+
+            <option>
+              Hausa
+            </option>
+
+            <option>
+              Arabic
+            </option>
+
+            <option>
+              French
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <div>
+
+          <label>
+            Title
+          </label>
+
+          <input
+            id="dTitle"
+            required
+          >
+
+        </div>
+
+
+        <div>
+
+          <label>
+            Subject
+          </label>
+
+          <select id="dSubject">
+
+            ${
+              subjects
+                .map(
+                  s=>`
+                    <option>
+                      ${s}
+                    </option>
+                  `
+                )
+                .join("")
+            }
+
+          </select>
+
+        </div>
+
+
+        <div>
+
+          <label>
+            Class
+          </label>
+
+          <select id="dClass">
+
+            ${
+              classes
+                .map(
+                  c=>`
+                    <option>
+                      ${c}
+                    </option>
+                  `
+                )
+                .join("")
+            }
+
+          </select>
+
+        </div>
+
+
+        <div>
+
+          <label>
+            Week
+          </label>
+
+          <input
+            id="dWeek"
+            placeholder="e.g. Week 1"
+          >
+
+        </div>
+
+
+        <div>
+
+          <label>
+            Topic
+          </label>
+
+          <input id="dTopic">
+
+        </div>
+
+
+        <div>
+
+          <label>
+            Subtopic
+          </label>
+
+          <input id="dSubtopic">
+
+        </div>
+
+
+        <div class="span3">
+
+          <label>
+            Content
+          </label>
+
+          <textarea
+            id="dContent"
+            required
+            placeholder="Write or paste the academic content here..."
+          ></textarea>
+
+        </div>
+
+      </div>
+
+
+      <div class="actions">
+
+        <button class="btn">
+          Save Draft
+        </button>
+
+      </div>
+
+    </form>
+
+    `
+
+  );
+
+}
+
+
+function saveDocument(e){
+
+  e.preventDefault();
+
+
+  const documentData={
+
+    id:makeID("DOC"),
+
+    type:
+      document.getElementById(
+        "dType"
+      ).value,
+
+    language:
+      document.getElementById(
+        "dLang"
+      ).value,
+
+    title:
+      document.getElementById(
+        "dTitle"
+      ).value,
+
+    subject:
+      document.getElementById(
+        "dSubject"
+      ).value,
+
+    className:
+      document.getElementById(
+        "dClass"
+      ).value,
+
+    week:
+      document.getElementById(
+        "dWeek"
+      ).value,
+
+    topic:
+      document.getElementById(
+        "dTopic"
+      ).value,
+
+    subtopic:
+      document.getElementById(
+        "dSubtopic"
+      ).value,
+
+    content:
+      document.getElementById(
+        "dContent"
+      ).value,
+
+    status:"Draft",
+
+    authorId:current.id,
+
+    createdAt:
+      new Date().toISOString()
+
+  };
+
+
+  db.documents.unshift(
+    documentData
+  );
+
+
+  audit(
+    "Create document",
+    documentData.title
+  );
+
+  saveDB();
+
+  closeModal();
+
+  go("documents");
+
+}
+
+
+function submitDoc(documentId){
+
+  const documentData=
+    db.documents.find(
+      d=>d.id===documentId
+    );
+
+  if(!documentData)
+    return;
+
+
+  documentData.status=
+    "Submitted";
+
+
+  documentData.submittedAt=
+    new Date().toISOString();
+
+
+  db.approvals.unshift({
+
+    id:makeID("APV"),
+
+    itemId:documentId,
+
+    type:"Document",
+
+    action:"Submitted",
+
+    by:current.id,
+
+    comment:"Submitted for approval",
+
+    time:new Date().toISOString()
+
+  });
+
+
+  audit(
+    "Submit document",
+    documentData.title
+  );
+
+  saveDB();
+
+  go("documents");
+
+}
+
+
+function viewDoc(documentId){
+
+  const d=
+    db.documents.find(
+      x=>x.id===documentId
+    ) ||
+    db.archive.find(
+      x=>x.id===documentId
+    );
+
+
+  if(!d)
+    return;
+
+
+  const direction=
+    d.language==="Arabic"
+    ?
+    "rtl"
+    :
+    "ltr";
+
+
+  showModal(
+
+    d.title,
+
+    `
+
+    <div
+      class="notice"
+      dir="${direction}"
+    >
+
+      ${statusBadge(d.status)}
+
+      •
+      ${escapeHTML(d.type)}
+
+      •
+      ${escapeHTML(d.subject)}
+
+      •
+      ${escapeHTML(d.className)}
+
+    </div>
+
+
+    <div
+      dir="${direction}"
+      style="
+        white-space:pre-wrap;
+        line-height:1.8;
+      "
+    >
+      ${escapeHTML(d.content)}
+    </div>
+
+
+    <div
+      class="actions"
+      style="margin-top:15px"
+    >
+
+      <button
+        class="btn"
+        onclick="printText('${d.id}')"
+      >
+        Print / PDF
+      </button>
+
+      <button
+        class="btn secondary"
+        onclick="exportDoc('${d.id}')"
+      >
+        Word-Compatible
+      </button>
+
+    </div>
+
+    `
+
+  );
+
+}
+
+
+function printText(documentId){
+
+  const d=
+    db.documents.find(
+      x=>x.id===documentId
+    ) ||
+    db.archive.find(
+      x=>x.id===documentId
+    );
+
+
+  if(!d)
+    return;
+
+
+  const direction=
+    d.language==="Arabic"
+    ?
+    "rtl"
+    :
+    "ltr";
+
+
+  const win=
+    window.open(
+      "",
+      "_blank"
+    );
+
+
+  win.document.write(`
+
+    <!DOCTYPE html>
+
+    <html>
+
+    <head>
+
+      <title>
+        ${escapeHTML(d.title)}
+      </title>
+
+    </head>
+
+    <body
+      dir="${direction}"
+      style="
+        font-family:Arial;
+        padding:35px;
+        line-height:1.8;
+      "
+    >
+
+      <h1>
+        ${escapeHTML(APP)}
+      </h1>
+
+      <h2>
+        ${escapeHTML(d.title)}
+      </h2>
+
+      <p>
+        ${escapeHTML(d.subject)}
+        •
+        ${escapeHTML(d.className)}
+        •
+        ${escapeHTML(d.language)}
+      </p>
+
+      <hr>
+
+      <div style="white-space:pre-wrap">
+        ${escapeHTML(d.content)}
+      </div>
+
+      <script>
+        window.print();
+      <\/script>
+
+    </body>
+
+    </html>
+
+  `);
+
+  win.document.close();
+
+}
+
+
+function exportDoc(documentId){
+
+  const d=
+    db.documents.find(
+      x=>x.id===documentId
+    ) ||
+    db.archive.find(
+      x=>x.id===documentId
+    );
+
+
+  if(!d)
+    return;
+
+
+  const html=`
+
+    <!DOCTYPE html>
+
+    <html>
+
+    <body>
+
+      <h1>
+        ${escapeHTML(APP)}
+      </h1>
+
+      <h2>
+        ${escapeHTML(d.title)}
+      </h2>
+
+      <p>
+        ${escapeHTML(d.subject)}
+        •
+        ${escapeHTML(d.className)}
+      </p>
+
+      <div style="white-space:pre-wrap">
+        ${escapeHTML(d.content)}
+      </div>
+
+    </body>
+
+    </html>
+
+  `;
+
+
+  const blob=
+    new Blob(
+      [html],
+      {
+        type:
+          "application/msword"
+      }
+    );
+
+
+  downloadBlob(
+    blob,
+    (
+      d.title ||
+      "academic-document"
+    )+
+    ".doc"
+  );
+
+}
+
+
+/* =========================================================
+   APPROVAL CENTRE
+========================================================= */
+
+function approvals(){
+
+  const pending=[
+
+    ...db.documents
+      .filter(
+        d=>
+          d.status==="Submitted" ||
+          d.status==="HOD Approved"
+      )
+      .map(
+        d=>({
+          kind:"Document",
+          item:d
+        })
+      ),
+
+    ...db.results
+      .filter(
+        r=>
+          r.status==="Submitted" ||
+          r.status==="HOD Approved"
+      )
+      .map(
+        r=>({
+          kind:"Result",
+          item:r
+        })
+      )
+
+  ];
+
+
+  return `
+
+    <div class="section">
+
+      <h3>
+        Approval Centre
+      </h3>
+
+      <div class="notice">
+
+        Workflow:
+        <b>Submitted</b>
+        →
+        <b>HOD Approved</b>
+        →
+        <b>Final Approved</b>
+        →
+        <b>Published/Archived</b>.
+
+      </div>
+
+
+      <div class="table-wrap">
+
+        <table>
+
+          <thead>
+
+            <tr>
+              <th>Type</th>
+              <th>Item</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+
+          </thead>
+
+          <tbody>
+
+            ${
+              pending
+                .map(
+                  object=>{
+
+                    const item=
+                      object.item;
+
+                    const name=
+                      object.kind==="Document"
+                      ?
+                      item.title
+                      :
+                      (
+                        db.students.find(
+                          s=>s.id===item.studentId
+                        )?.name ||
+                        "Student"
+                      )
+                      +
+                      " — "+
+                      item.subject;
+
+
+                    return `
+
+                      <tr>
+
+                        <td>
+                          ${object.kind}
+                        </td>
+
+                        <td>
+                          ${escapeHTML(name)}
+                        </td>
+
+                        <td>
+                          ${statusBadge(item.status)}
+                        </td>
+
+                        <td>
+
+                          <div class="actions">
+
+                            ${
+                              item.status==="Submitted"
+                              ?
+                              `
+                              <button
+                                class="btn small"
+                                onclick="
+                                  approveItem(
+                                    '${object.kind}',
+                                    '${item.id}',
+                                    'HOD Approved'
+                                  )
+                                "
+                              >
+                                HOD Approve
+                              </button>
+                              `
+                              :
+                              ""
+                            }
+
+                            ${
+                              item.status==="HOD Approved"
+                              ?
+                              `
+                              <button
+                                class="btn small"
+                                onclick="
+                                  approveItem(
+                                    '${object.kind}',
+                                    '${item.id}',
+                                    'Approved'
+                                  )
+                                "
+                              >
+                                Final Approve
+                              </button>
+                              `
+                              :
+                              ""
+                            }
+
+                            <button
+                              class="btn small danger"
+                              onclick="
+                                rejectItem(
+                                  '${object.kind}',
+                                  '${item.id}'
+                                )
+                              "
+                            >
+                              Reject
+                            </button>
+
+                          </div>
+
+                        </td>
+
+                      </tr>
+
+                    `;
+
+                  }
+                )
+                .join("")
+              ||
+              `
+              <tr>
+                <td
+                  colspan="4"
+                  class="empty"
+                >
+                  Nothing pending.
+                </td>
+              </tr>
+              `
+            }
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+function approveItem(
+  kind,
+  itemId,
+  status
+){
+
+  const array=
+    kind==="Document"
+    ?
+    db.documents
+    :
+    db.results;
+
+
+  const item=
+    array.find(
+      x=>x.id===itemId
+    );
+
+
+  if(!item)
+    return;
+
+
+  item.status=
+    status;
+
+
+  db.approvals.unshift({
+
+    id:makeID("APV"),
+
+    itemId,
+
+    type:kind,
+
+    action:status,
+
+    by:current.id,
+
+    comment:
+      status==="Approved"
+      ?
+      "Final approval"
+      :
+      "HOD approval",
+
+    time:
+      new Date().toISOString()
+
+  });
+
+
+  /*
+    For documents, final approval
+    enters the permanent archive.
+  */
+
+  if(
+    status==="Approved" &&
+    kind==="Document"
+  ){
+
+    const alreadyArchived=
+      db.archive.some(
+        x=>x.id===item.id
+      );
+
+    if(!alreadyArchived){
+
+      db.archive.unshift({
+
+        ...item,
+
+        archivedAt:
+          new Date().toISOString()
+
+      });
+
+    }
+
+  }
+
+
+  /*
+    Results remain Approved until
+    Admin publishes them.
+  */
+
+
+  audit(
+    "Approve",
+    kind+
+    " "+
+    itemId+
+    " "+
+    status
+  );
+
+
+  saveDB();
+
+  go("approvals");
+
+}
+
+
+function rejectItem(
+  kind,
+  itemId
+){
+
+  const array=
+    kind==="Document"
+    ?
+    db.documents
+    :
+    db.results;
+
+
+  const item=
+    array.find(
+      x=>x.id===itemId
+    );
+
+
+  if(!item)
+    return;
+
+
+  const comment=
+    prompt(
+      "Rejection comment:"
+    ) ||
+    "Rejected";
+
+
+  item.status=
+    "Rejected";
+
+
+  db.approvals.unshift({
+
+    id:makeID("APV"),
+
+    itemId,
+
+    type:kind,
+
+    action:"Rejected",
+
+    by:current.id,
+
+    comment,
+
+    time:
+      new Date().toISOString()
+
+  });
+
+
+  audit(
+    "Reject",
+    kind+
+    " "+
+    itemId
+  );
+
+
+  saveDB();
+
+  go("approvals");
+
+}
+
+
+/* =========================================================
+   APPROVED ARCHIVE
+========================================================= */
+
+function archive(){
+
+  return `
+
+    <div class="section">
+
+      <div class="toolbar">
+
+        <input
+          placeholder="Search approved work..."
+          oninput="
+            filterTable(
+              'archiveTable',
+              this.value
+            )
+          "
+        >
+
+        <button
+          class="btn secondary"
+          onclick="window.print()"
+        >
+          Print Archive
+        </button>
+
+      </div>
+
+
+      <div class="table-wrap">
+
+        <table id="archiveTable">
+
+          <thead>
+
+            <tr>
+
+              <th>Type</th>
+              <th>Title</th>
+              <th>Subject</th>
+              <th>Class</th>
+              <th>Approved</th>
+              <th>Action</th>
+
+            </tr>
+
+          </thead>
+
+          <tbody>
+
+            ${
+              db.archive
+                .map(
+                  d=>`
+
+                  <tr>
+
+                    <td>
+                      ${escapeHTML(d.type)}
+                    </td>
+
+                    <td>
+                      ${escapeHTML(d.title)}
+                    </td>
+
+                    <td>
+                      ${escapeHTML(d.subject)}
+                    </td>
+
+                    <td>
+                      ${escapeHTML(d.className)}
+                    </td>
+
+                    <td>
+                      ${formatDate(d.archivedAt)}
+                    </td>
+
+                    <td>
+
+                      <button
+                        class="btn small"
+                        onclick="viewDoc('${d.id}')"
+                      >
+                        View
+                      </button>
+
+                    </td>
+
+                  </tr>
+
+                  `
+                )
+                .join("")
+              ||
+              `
+              <tr>
+                <td
+                  colspan="6"
+                  class="empty"
+                >
+                  Approved Work Archive is empty.
+                </td>
+              </tr>
+              `
+            }
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+/* =========================================================
+   STUDENT PORTAL
+========================================================= */
+
+function currentStudent(){
+
+  return db.students.find(
+    s=>
+      s.id===current?.studentId ||
+      s.id===current?.username
+  );
+
+}
+
+
+function studentPortal(){
+
+  let student=
+    currentStudent();
+
+
+  if(!student){
+
+    student=
+      db.students.find(
+        s=>
+          s.admissionNo===
+          current?.username
+      );
+
+  }
+
+
+  if(!student){
+
+    student=
+      db.students[0];
+
+  }
+
+
+  if(!student){
+
+    return `
+      <div class="section empty">
+        Student profile not found.
+      </div>
+    `;
+
+  }
+
+
+  const results=
+    db.results.filter(
+      r=>
+        r.studentId===student.id &&
+        r.status==="Published"
+    );
+
+
+  const attendance=
+    db.attendance.filter(
+      a=>
+        a.studentId===student.id
+    );
+
+
+  const present=
+    attendance.filter(
+      a=>
+        a.status==="Present"
+    ).length;
+
+
+  return `
+
+    <div class="section">
+
+      <h3>
+        Student Portal
+      </h3>
+
+      <div class="notice green">
+
+        <b>
+          ${escapeHTML(student.name)}
+        </b>
+
+        •
+        ${escapeHTML(student.className)}
+
+        •
+        ${escapeHTML(student.admissionNo)}
+
+      </div>
+
+
+      <h4>
+        Published Results
+      </h4>
+
+      ${resultMini(results)}
+
+
+      <h4>
+        Attendance
+      </h4>
+
+      <p>
+
+        Present:
+        <b>${present}</b>
+
+        •
+        Absent:
+        <b>
+          ${attendance.length-present}
+        </b>
+
+        •
+        Percentage:
+        <b>
+          ${
+            attendance.length
+            ?
+            Math.round(
+              present/
+              attendance.length*
+              100
+            )
+            :
+            0
+          }%
+        </b>
+
+      </p>
+
+    </div>
+
+  `;
+
+}
+
+
+function resultMini(results){
+
+  return `
+
+    <div class="table-wrap">
+
+      <table>
+
+        <thead>
+
+          <tr>
+
+            <th>Subject</th>
+            <th>CA1</th>
+            <th>CA2</th>
+            <th>Exam</th>
+            <th>Total</th>
+            <th>Grade</th>
+
+          </tr>
+
+        </thead>
+
+        <tbody>
+
+          ${
+            results
+              .map(
+                r=>`
+
+                <tr>
+
+                  <td>
+                    ${escapeHTML(r.subject)}
+                  </td>
+
+                  <td>${r.ca1}</td>
+                  <td>${r.ca2}</td>
+                  <td>${r.exam}</td>
+
+                  <td>
+                    <b>${r.total}</b>
+                  </td>
+
+                  <td>
+                    ${r.grade}
+                  </td>
+
+                </tr>
+
+                `
+              )
+              .join("")
+            ||
+            `
+            <tr>
+              <td
+                colspan="6"
+                class="empty"
+              >
+                No published results.
+              </td>
+            </tr>
+            `
+          }
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  `;
+
+}
+
+
+/* =========================================================
+   PARENT PORTAL
+========================================================= */
+
+function parentPortal(){
+
+  let ids=
+    current.studentIds ||
+    [];
+
+
+  if(!ids.length){
+
+    ids=
+      db.parents.find(
+        p=>p.id===current.id
+      )?.studentIds ||
+      [];
+
+  }
+
+
+  const students=
+    db.students.filter(
+      s=>ids.includes(s.id)
+    );
+
+
+  return `
+
+    <div class="section">
+
+      <h3>
+        Parent Portal
+      </h3>
+
+
+      ${
+        students
+          .map(
+            student=>`
+
+              <div
+                class="card"
+                style="margin-bottom:12px"
+              >
+
+                <h4>
+                  ${escapeHTML(student.name)}
+                  —
+                  ${escapeHTML(student.className)}
+                </h4>
+
+                ${resultMini(
+                  db.results.filter(
+                    r=>
+                      r.studentId===
+                      student.id &&
+                      r.status==="Published"
+                  )
+                )}
+
+              </div>
+
+            `
+          )
+          .join("")
+        ||
+        `
+        <div class="empty">
+          No linked student.
+        </div>
+        `
+      }
+
+    </div>
+
+  `;
+
+}
+
+
+/* =========================================================
+   BACKUP
+========================================================= */
+
+function backup(){
+
+  return `
+
+    <div class="section">
+
+      <h3>
+        Backup & Recovery
+      </h3>
+
+      <div class="notice">
+
+        The backup contains the local school
+        database stored by this application.
+
+        Keep backup files in a safe location.
+
+      </div>
+
+
+      <div class="actions">
+
+        <button
+          class="btn"
+          onclick="backupNow()"
+        >
+          Download Backup
+        </button>
+
+
+        <label
+          class="btn secondary"
+          style="display:inline-block"
+        >
+
+          Restore Backup
+
+          <input
+            type="file"
+            accept=".json"
+            onchange="restoreBackup(event)"
+            style="display:none"
+          >
+
+        </label>
+
+
+        <button
+          class="btn warning"
+          onclick="recoverSnapshot()"
+        >
+          Recover Last Snapshot
+        </button>
+
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+function backupNow(){
+
+  const blob=
+    new Blob(
+      [
+        JSON.stringify(
+          db,
+          null,
+          2
+        )
+      ],
+      {
+        type:"application/json"
+      }
+    );
+
+
+  downloadBlob(
+    blob,
+    "GKA-backup-"+
+    new Date()
+      .toISOString()
+      .slice(0,10)+
+    ".json"
+  );
+
+
+  audit(
+    "Backup download"
+  );
+
+}
+
+
+function restoreBackup(event){
+
+  const file=
+    event.target.files[0];
+
+
+  if(!file)
+    return;
+
+
+  const reader=
+    new FileReader();
+
+
+  reader.onload=function(){
+
+    try{
+
+      const restored=
+        JSON.parse(
+          reader.result
+        );
+
+
+      if(
+        !restored.version ||
+        !restored.users ||
+        !restored.students
+      ){
+
+        throw new Error();
+
+      }
+
+
+      if(
+        !confirm(
+          "Restore this database? Current data will be replaced."
+        )
+      ){
+
+        return;
+
+      }
+
+
+      db=
+        restored;
+
+      saveDB();
+
+      alert(
+        "Backup restored successfully."
+      );
+
+      location.reload();
+
+    }catch(error){
+
+      alert(
+        "Invalid Global Kids Academy backup file."
+      );
+
+    }
+
+  };
+
+
+  reader.readAsText(file);
+
+}
+
+
+function recoverSnapshot(){
+
+  try{
+
+    const snapshot=
+      JSON.parse(
+        localStorage.getItem(SNAP)
+      );
+
+
+    if(!snapshot?.db){
+
+      alert(
+        "No recovery snapshot found."
+      );
+
+      return;
+
+    }
+
+
+    if(
+      confirm(
+        "Recover the latest automatic snapshot?"
+      )
+    ){
+
+      db=
+        snapshot.db;
+
+      saveDB();
+
+      location.reload();
+
+    }
+
+  }catch(error){
+
+    alert(
+      "Recovery failed."
+    );
+
+  }
+
+}
+
+
+/* =========================================================
+   AUDIT HISTORY
+========================================================= */
+
+function auditPage(){
+
+  return `
+
+    <div class="section">
+
+      <div class="toolbar">
+
+        <input
+          placeholder="Search audit history..."
+          oninput="
+            filterTable(
+              'auditTable',
+              this.value
+            )
+          "
+        >
+
+      </div>
+
+
+      <div class="table-wrap">
+
+        <table id="auditTable">
+
+          <thead>
+
+            <tr>
+
+              <th>Time</th>
+              <th>User</th>
+              <th>Role</th>
+              <th>Action</th>
+              <th>Details</th>
+
+            </tr>
+
+          </thead>
+
+          <tbody>
+
+            ${
+              db.audit
+                .map(
+                  item=>`
+
+                  <tr>
+
+                    <td>
+                      ${new Date(
+                        item.time
+                      ).toLocaleString()}
+                    </td>
+
+                    <td>
+                      ${escapeHTML(item.user)}
+                    </td>
+
+                    <td>
+                      ${escapeHTML(item.role)}
+                    </td>
+
+                    <td>
+                      ${escapeHTML(item.action)}
+                    </td>
+
+                    <td>
+                      ${escapeHTML(item.details)}
+                    </td>
+
+                  </tr>
+
+                  `
+                )
+                .join("")
+              ||
+              `
+              <tr>
+                <td
+                  colspan="5"
+                  class="empty"
+                >
+                  No audit records.
+                </td>
+              </tr>
+              `
+            }
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+/* =========================================================
+   SETTINGS
+========================================================= */
+
+function settings(){
+
+  return `
+
+    <div class="section">
+
+      <h3>
+        School Settings
+      </h3>
+
+
+      <form
+        onsubmit="saveSchoolSettings(event)"
+        class="form-grid"
+      >
+
+        <div>
+
+          <label>
+            School Name
+          </label>
+
+          <input
+            id="schoolName"
+            value="${escapeHTML(
+              db.settings.school
+            )}"
+          >
+
+        </div>
+
+
+        <div>
+
+          <label>
+            Motto
+          </label>
+
+          <input
+            id="schoolMotto"
+            value="${escapeHTML(
+              db.settings.motto
+            )}"
+          >
+
+        </div>
+
+
+        <div>
+
+          <label>
+            Phone
+          </label>
+
+          <input
+            id="schoolPhone"
+            value="${escapeHTML(
+              db.settings.phone
+            )}"
+          >
+
+        </div>
+
+
+        <div>
+
+          <label>
+            Email
+          </label>
+
+          <input
+            id="schoolEmail"
+            value="${escapeHTML(
+              db.settings.email
+            )}"
+          >
+
+        </div>
+
+
+        <div class="span2">
+
+          <label>
+            Address
+          </label>
+
+          <input
+            id="schoolAddress"
+            value="${escapeHTML(
+              db.settings.address
+            )}"
+          >
+
+        </div>
+
+
+        <div>
+
+          <label>
+            Default Language
+          </label>
+
+          <select id="schoolLang">
+
+            ${
+              [
+                "English",
+                "Hausa",
+                "Arabic",
+                "French"
+              ]
+              .map(
+                x=>`
+
+                  <option
+                    ${
+                      x===db.settings.language
+                      ?
+                      "selected"
+                      :
+                      ""
+                    }
+                  >
+                    ${x}
+                  </option>
+
+                `
+              )
+              .join("")
+            }
+
+          </select>
+
+        </div>
+
+
+        <div>
+
+          <label>
+            Academic Session
+          </label>
+
+          <input
+            id="schoolSession"
+            value="${escapeHTML(
+              db.settings.session
+            )}"
+          >
+
+        </div>
+
+
+        <div>
+
+          <label>
+            Current Term
+          </label>
+
+          <select id="schoolTerm">
+
+            ${
+              [
+                "First Term",
+                "Second Term",
+                "Third Term"
+              ]
+              .map(
+                x=>`
+
+                  <option
+                    ${
+                      x===db.settings.term
+                      ?
+                      "selected"
+                      :
+                      ""
+                    }
+                  >
+                    ${x}
+                  </option>
+
+                `
+              )
+              .join("")
+            }
+
+          </select>
+
+        </div>
+
+
+        <div class="span3">
+
+          <button class="btn">
+            Save Settings
+          </button>
+
+        </div>
+
+      </form>
+
+    </div>
+
+  `;
+
+}
+
+
+function saveSchoolSettings(e){
+
+  e.preventDefault();
+
+
+  Object.assign(
+    db.settings,
+    {
+
+      school:
+        document.getElementById(
+          "schoolName"
+        ).value,
+
+      motto:
+        document.getElementById(
+          "schoolMotto"
+        ).value,
+
+      phone:
+        document.getElementById(
+          "schoolPhone"
+        ).value,
+
+      email:
+        document.getElementById(
+          "schoolEmail"
+        ).value,
+
+      address:
+        document.getElementById(
+          "schoolAddress"
+        ).value,
+
+      language:
+        document.getElementById(
+          "schoolLang"
+        ).value,
+
+      session:
+        document.getElementById(
+          "schoolSession"
+        ).value,
+
+      term:
+        document.getElementById(
+          "schoolTerm"
+        ).value
+
+    }
+  );
+
+
+  audit(
+    "Update school settings"
+  );
+
+  saveDB();
+
+  alert(
+    "Settings saved."
+  );
+
+  go("settings");
+
+}
+
+
+/* =========================================================
+   TEACHER ASSISTANT
+========================================================= */
+
+function assistant(){
+
+  return `
+
+    <div class="section assistant">
+
+      <div class="notice">
+
+        <b>
+          Teacher Assistant — Local Academic Assistant
+        </b>
+
+        <br>
+
+        This local version provides structured
+        academic drafting help.
+
+        It is <b>not yet a true cloud AI model</b>.
+        The secure cloud AI connection will be
+        added during the production upgrade.
+
+      </div>
+
+
+      <div
+        id="chat"
+        class="chat"
+      >
+
+        <div class="msg ai">
+
+          Hello.
+
+          I can help you structure:
+
+          • Lesson Plans
+          • Lesson Notes
+          • 13-Week Schemes
+          • CA Questions
+          • Examination Questions
+          • Answer Keys
+          • Marking Guides
+
+          Tell me the class, subject and topic.
+
+        </div>
+
+      </div>
+
+
+      <div class="chatbar">
+
+        <input
+          id="chatInput"
+          placeholder="e.g. JSS2 Mathematics — Fractions — detailed lesson note"
+        >
+
+        <button
+          class="btn"
+          onclick="askAssistant()"
+        >
+          Send
+        </button>
+
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+function askAssistant(){
+
+  const input=
+    document.getElementById(
+      "chatInput"
+    );
+
+
+  const question=
+    input.value.trim();
+
+
+  if(!question)
+    return;
+
+
+  const chat=
+    document.getElementById(
+      "chat"
+    );
+
+
+  chat.innerHTML+=`
+
+    <div class="msg me">
+      ${escapeHTML(question)}
+    </div>
+
+  `;
+
+
+  chat.innerHTML+=`
+
+    <div class="msg ai">
+      ${escapeHTML(
+        assistantReply(question)
+      )}
+    </div>
+
+  `;
+
+
+  chat.scrollTop=
+    chat.scrollHeight;
+
+
+  input.value="";
+
+}
+
+
+function assistantReply(question){
+
+  const text=
+    question.toLowerCase();
+
+
+  if(
+    text.includes("lesson") ||
+    text.includes("note")
+  ){
+
+    return `ACADEMIC DRAFT STRUCTURE
+
+Topic:
+${question}
+
+Entry Behaviour:
+Learners should demonstrate relevant prior knowledge connected to the topic.
+
+Objectives:
+1. Define and explain the topic.
+2. Identify important concepts.
+3. Solve relevant examples correctly.
+4. Apply the concept to practical classroom exercises.
+
+Materials:
+Board, marker, textbook and relevant teaching aids.
+
+Set Induction:
+Ask learners a simple question connected with the topic or everyday experience.
+
+PRESENTATION
+
+Teacher Activities:
+The teacher introduces the topic, explains key terms, demonstrates worked examples, asks questions and corrects errors.
+
+Learners Activities:
+Learners listen, answer questions, participate in examples, practise independently and ask questions.
+
+Evaluation:
+Give suitable exercises covering the stated objectives.
+
+Conclusion:
+Review the major points and correct common mistakes.
+
+Assignment:
+Give suitable practice questions for independent work.
+
+NOTE:
+This is a local structured draft. Review it against the school's approved curriculum and scheme before submission.`;
+
+  }
+
+
+  if(text.includes("scheme")){
+
+    return `13-WEEK SCHEME FRAMEWORK
+
+Week 1:
+Introduction and prerequisite knowledge.
+
+Week 2:
+Core concept I.
+
+Week 3:
+Core concept II.
+
+Week 4:
+Guided examples.
+
+Week 5:
+Application.
+
+Week 6:
+Practice.
+
+Week 7:
+Revision.
+
+Week 8:
+Core concept III.
+
+Week 9:
+Application and problem solving.
+
+Week 10:
+Assessment preparation.
+
+Week 11:
+Revision.
+
+Week 12:
+Consolidation.
+
+Week 13:
+Examination/review.
+
+Add the exact curriculum topics and subtopics for the selected class and subject before submission.`;
+
+  }
+
+
+  if(
+    text.includes("question") ||
+    text.includes("exam") ||
+    text.includes("ca")
+  ){
+
+    return `ASSESSMENT DRAFT
+
+1. Define the key concept.
+
+2. State two important properties.
+
+3. Solve a basic example.
+
+4. Solve an intermediate application problem.
+
+5. Solve a challenging problem and show all working.
+
+Add the exact mark allocation, answer key and marking guide before publishing.`;
+
+  }
+
+
+  return `I can help with:
+
+• Lesson Plans
+• Lesson Notes
+• 13-Week Schemes
+• CA Questions
+• Examination Questions
+• Answer Keys
+• Marking Guides
+
+For a better academic draft, include:
+Class + Subject + Topic + Week + Language.`;
+
+}
+
+
+/* =========================================================
+   CHANGE PASSWORD
+========================================================= */
+
+function passwordPage(){
+
+  return `
+
+    <div class="section">
+
+      <h3>
+        Change Password
+      </h3>
+
+
+      <form
+        onsubmit="changePassword(event)"
+        style="max-width:500px"
+      >
+
+        <label>
+          Current Password
+        </label>
+
+        <input
+          id="oldPass"
+          type="password"
+          required
+        >
+
+
+        <label>
+          New Password
+        </label>
+
+        <input
+          id="newPass"
+          type="password"
+          minlength="8"
+          required
+        >
+
+
+        <label>
+          Confirm New Password
+        </label>
+
+        <input
+          id="newPass2"
+          type="password"
+          minlength="8"
+          required
+        >
+
+
+        <button
+          class="btn"
+          style="margin-top:15px"
+        >
+          Change Password
+        </button>
+
+      </form>
+
+    </div>
+
+  `;
+
+}
+
+
+function changePassword(e){
+
+  e.preventDefault();
+
+
+  const oldPassword=
+    document.getElementById(
+      "oldPass"
+    ).value;
+
+  const newPassword=
+    document.getElementById(
+      "newPass"
+    ).value;
+
+  const confirmation=
+    document.getElementById(
+      "newPass2"
+    ).value;
+
+
+  if(
+    current.password!==oldPassword
+  ){
+
+    alert(
+      "Current password is incorrect."
+    );
+
+    return;
+
+  }
+
+
+  if(
+    newPassword!==confirmation
+  ){
+
+    alert(
+      "Passwords do not match."
+    );
+
+    return;
+
+  }
+
+
+  current.password=
+    newPassword;
+
+
+  const user=
+    findUser(current.id);
+
+
+  if(user){
+
+    user.password=
+      newPassword;
+
+  }
+
+
+  audit(
+    "Password change"
+  );
+
+
+  saveDB();
+
+
+  alert(
+    "Password changed successfully."
+  );
+
+
+  go("dashboard");
+
+}
+
+
+/* =========================================================
+   USER MODAL
+========================================================= */
+
+function userModal(userId=""){
+
+  const existing=
+    findUser(userId);
+
+
+  const user=
+    existing ||
+    {
+
+      name:"",
+      username:"",
+      password:"",
+      role:"Teacher",
+      active:true,
+      subject:"Mathematics",
+      className:"JSS1",
+      hod:false,
+      examOfficer:false
+
+    };
+
+
+  showModal(
+
+    userId
+    ?
+    "Edit User"
+    :
+    "Create User",
+
+    `
+
+    <form
+      onsubmit="saveUser(event,'${userId}')"
+    >
+
+      <div class="form-grid">
+
+
+        <div>
+
+          <label>
+            Full Name
+          </label>
+
+          <input
+            id="uName"
+            value="${escapeHTML(user.name)}"
+            required
+          >
+
+        </div>
+
+
+        <div>
+
+          <label>
+            Username
+          </label>
+
+          <input
+            id="uUsername"
+            value="${escapeHTML(user.username)}"
+            required
+          >
+
+        </div>
+
+
+        <div>
+
+          <label>
+            Password
+          </label>
+
+          <input
+            id="uPassword"
+            type="text"
+            value="${escapeHTML(user.password||"")}"
+            required
+          >
+
+        </div>
+
+
+        <div>
+
+          <label>
+            Role
+          </label>
+
+          <select id="uRole">
+
+            ${
+              roles
+                .map(
+                  role=>`
+
+                    <option
+                      ${
+                        role===user.role
+                        ?
+                        "selected"
+                        :
+                        ""
+                      }
+                    >
+                      ${role}
+                    </option>
+
+                  `
+                )
+                .join("")
+            }
+
+          </select>
+
+        </div>
+
+
+        <div>
+
+          <label>
+            Subject
+          </label>
+
+          <select id="uSubject">
+
+            <option value="">
+              —
+            </option>
+
+            ${
+              subjects
+                .map(
+                  subject=>`
+
+                    <option
+                      ${
+                        subject===user.subject
+                        ?
+                        "selected"
+                        :
+                        ""
+                      }
+                    >
+                      ${subject}
+                    </option>
+
+                  `
+                )
+                .join("")
+            }
+
+          </select>
+
+        </div>
+
+
+        <div>
+
+          <label>
+            Class
+          </label>
+
+          <select id="uClass">
+
+            <option value="">
+              —
+            </option>
+
+            ${
+              classes
+                .map(
+                  className=>`
+
+                    <option
+                      ${
+                        className===user.className
+                        ?
+                        "selected"
+                        :
+                        ""
+                      }
+                    >
+                      ${className}
+                    </option>
+
+                  `
+                )
+                .join("")
+            }
+
+          </select>
+
+        </div>
+
+
+        <div>
+
+          <label>
+            HOD Assignment
+          </label>
+
+          <select id="uHod">
+
+            <option
+              value="false"
+              ${
+                !user.hod
+                ?
+                "selected"
+                :
+                ""
+              }
+            >
+              No
+            </option>
+
+            <option
+              value="true"
+              ${
+                user.hod
+                ?
+                "selected"
+                :
+                ""
+              }
+            >
+              Yes
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <div>
+
+          <label>
+            Examination Officer
+          </label>
+
+          <select id="uExam">
+
+            <option
+              value="false"
+              ${
+                !user.examOfficer
+                ?
+                "selected"
+                :
+                ""
+              }
+            >
+              No
+            </option>
+
+            <option
+              value="true"
+              ${
+                user.examOfficer
+                ?
+                "selected"
+                :
+                ""
+              }
+            >
+              Yes
+            </option>
+
+          </select>
+
+        </div>
+
+      </div>
+
+
+      <button
+        class="btn"
+        style="margin-top:15px"
+      >
+        Save User
+      </button>
+
+    </form>
+
+    `
+
+  );
+
+}
+
+
+function saveUser(
+  e,
+  userId
+){
+
+  e.preventDefault();
+
+
+  let user=
+    findUser(userId);
+
+
+  if(!user){
+
+    user={
+      id:makeID("USR"),
+      active:true
+    };
+
+    db.users.push(user);
+
+  }
+
+
+  Object.assign(
+    user,
+    {
+
+      name:
+        document.getElementById(
+          "uName"
+        ).value,
+
+      username:
+        document.getElementById(
+          "uUsername"
+        ).value,
+
+      password:
+        document.getElementById(
+          "uPassword"
+        ).value,
+
+      role:
+        document.getElementById(
+          "uRole"
+        ).value,
+
+      subject:
+        document.getElementById(
+          "uSubject"
+        ).value,
+
+      className:
+        document.getElementById(
+          "uClass"
+        ).value,
+
+      hod:
+        document.getElementById(
+          "uHod"
+        ).value==="true",
+
+      examOfficer:
+        document.getElementById(
+          "uExam"
+        ).value==="true"
+
+    }
+  );
+
+
+  if(
+    user.role==="Parent" &&
+    !db.parents.find(
+      p=>p.id===user.id
+    )
+  ){
+
+    db.parents.push({
+
+      id:user.id,
+
+      name:user.name,
+
+      phone:"",
+
+      email:"",
+
+      studentIds:[]
+
+    });
+
+  }
+
+
+  audit(
+    userId
+    ?
+    "Edit user"
+    :
+    "Create user",
+    user.username
+  );
+
+
+  saveDB();
+
+  closeModal();
+
+  renderNav();
+
+  go("users");
+
+}
+
+
+function editUser(userId){
+  userModal(userId);
+}
+
+
+function deleteUser(userId){
+
+  const user=
+    findUser(userId);
+
+
+  if(
+    !user ||
+    user.username==="Admin"
+  ){
+
+    return;
+
+  }
+
+
+  if(
+    !confirm(
+      "Delete "+user.name+"?"
+    )
+  ){
+
+    return;
+
+  }
+
+
+  db.users=
+    db.users.filter(
+      u=>u.id!==userId
+    );
+
+
+  db.parents=
+    db.parents.filter(
+      p=>p.id!==userId
+    );
+
+
+  audit(
+    "Delete user",
+    user.username
+  );
+
+
+  saveDB();
+
+  go("users");
+
+}
+
+
+/* =========================================================
+   STUDENT MODAL
+========================================================= */
+
+function studentModal(studentId=""){
+
+  const existing=
+    db.students.find(
+      s=>s.id===studentId
+    );
+
+
+  const student=
+    existing ||
+    {
+
+      name:"",
+      admissionNo:"",
+      className:"JSS1",
+      gender:"",
+      parentId:"",
+      active:true
+
+    };
+
+
+  showModal(
+
+    studentId
+    ?
+    "Edit Student"
+    :
+    "Add Student",
+
+    `
+
+    <form
+      onsubmit="saveStudent(event,'${studentId}')"
+    >
+
+      <div class="form-grid">
+
+
+        <div>
+
+          <label>
+            Full Name
+          </label>
+
+          <input
+            id="sName"
+            value="${escapeHTML(student.name)}"
+            required
+          >
+
+        </div>
+
+
+        <div>
+
+          <label>
+            Admission Number
+          </label>
+
+          <input
+            id="sAdm"
+            value="${escapeHTML(student.admissionNo)}"
+            required
+          >
+
+        </div>
+
+
+        <div>
+
+          <label>
+            Class
+          </label>
+
+          <select id="sClass">
+
+            ${
+              classes
+                .map(
+                  c=>`
+
+                    <option
+                      ${
+                        c===student.className
+                        ?
+                        "selected"
+                        :
+                        ""
+                      }
+                    >
+                      ${c}
+                    </option>
+
+                  `
+                )
+                .join("")
+            }
+
+          </select>
+
+        </div>
+
+
+        <div>
+
+          <label>
+            Gender
+          </label>
+
+          <select id="sGender">
+
+            <option></option>
+
+            <option
+              ${
+                student.gender==="Male"
+                ?
+                "selected"
+                :
+                ""
+              }
+            >
+              Male
+            </option>
+
+            <option
+              ${
+                student.gender==="Female"
+                ?
+                "selected"
+                :
+                ""
+              }
+            >
+              Female
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <div>
+
+          <label>
+            Parent Account
+          </label>
+
+          <select id="sParent">
+
+            <option value="">
+              —
+            </option>
+
+            ${
+              db.users
+                .filter(
+                  u=>u.role==="Parent"
+                )
+                .map(
+                  u=>`
+
+                    <option
+                      value="${u.id}"
+                      ${
+                        u.id===student.parentId
+                        ?
+                        "selected"
+                        :
+                        ""
+                      }
+                    >
+                      ${escapeHTML(u.name)}
+                      (${escapeHTML(u.username)})
+                    </option>
+
+                  `
+                )
+                .join("")
+            }
+
+          </select>
+
+        </div>
+
+
+      </div>
+
+
+      <button
+        class="btn"
+        style="margin-top:15px"
+      >
+        Save Student
+      </button>
+
+    </form>
+
+    `
+
+  );
+
+}
+
+
+function saveStudent(
+  e,
+  studentId
+){
+
+  e.preventDefault();
+
+
+  let student=
+    db.students.find(
+      s=>s.id===studentId
+    );
+
+
+  if(!student){
+
+    student={
+      id:makeID("STU"),
+      active:true
+    };
+
+    db.students.push(student);
+
+  }
+
+
+  Object.assign(
+    student,
+    {
+
+      name:
+        document.getElementById(
+          "sName"
+        ).value,
+
+      admissionNo:
+        document.getElementById(
+          "sAdm"
+        ).value,
+
+      className:
+        document.getElementById(
+          "sClass"
+        ).value,
+
+      gender:
+        document.getElementById(
+          "sGender"
+        ).value,
+
+      parentId:
+        document.getElementById(
+          "sParent"
+        ).value
+
+    }
+  );
+
+
+  if(student.parentId){
+
+    const parent=
+      db.parents.find(
+        p=>p.id===student.parentId
+      );
+
+
+    if(parent){
+
+      if(
+        !parent.studentIds
+          .includes(student.id)
+      ){
+
+        parent.studentIds.push(
+          student.id
+        );
+
+      }
+
+
+      const user=
+        findUser(
+          student.parentId
+        );
+
+
+      if(user){
+
+        user.studentIds=
+          parent.studentIds;
+
+      }
+
+    }
+
+  }
+
+
+  audit(
+    studentId
+    ?
+    "Edit student"
+    :
+    "Create student",
+    student.name
+  );
+
+
+  saveDB();
+
+  closeModal();
+
+  go("students");
+
+}
+
+
+/* =========================================================
+   CLASS MANAGEMENT
+========================================================= */
+
+function classModal(){
+
+  showModal(
+
+    "Add Class",
+
+    `
+
+    <form
+      onsubmit="saveClass(event)"
+    >
+
+      <label>
+        Class Name
+      </label>
+
+      <input
+        id="cName"
+        required
+      >
+
+      <label>
+        Arm
+      </label>
+
+      <input
+        id="cArm"
+        value="A"
+      >
+
+      <button
+        class="btn"
+        style="margin-top:15px"
+      >
+        Save
+      </button>
+
+    </form>
+
+    `
+
+  );
+
+}
+
+
+function saveClass(e){
+
+  e.preventDefault();
+
+
+  db.classes.push({
+
+    id:makeID("CLS"),
+
+    name:
+      document.getElementById(
+        "cName"
+      ).value,
+
+    arm:
+      document.getElementById(
+        "cArm"
+      ).value
+
+  });
+
+
+  saveDB();
+
+  closeModal();
+
+  go("setup");
+
+}
+
+
+function deleteClass(classId){
+
+  if(
+    !confirm(
+      "Delete this class?"
+    )
+  ){
+
+    return;
+
+  }
+
+
+  db.classes=
+    db.classes.filter(
+      c=>c.id!==classId
+    );
+
+
+  saveDB();
+
+  go("setup");
+
+}
+
+
+/* =========================================================
+   HOD
+========================================================= */
+
+function subjectModal(subjectId){
+
+  const subject=
+    db.subjects.find(
+      s=>s.id===subjectId
+    );
+
+
+  const teachers=
+    db.users.filter(
+      u=>u.role==="Teacher"
+    );
+
+
+  showModal(
+
+    "Assign HOD",
+
+    `
+
+    <form
+      onsubmit="saveHod(event,'${subjectId}')"
+    >
+
+      <label>
+        Subject
+      </label>
+
+      <input
+        value="${escapeHTML(subject.name)}"
+        disabled
+      >
+
+
+      <label>
+        HOD Teacher
+      </label>
+
+      <select id="hodId">
+
+        <option value="">
+          Not assigned
+        </option>
+
+        ${
+          teachers
+            .map(
+              teacher=>`
+
+                <option
+                  value="${teacher.id}"
+                  ${
+                    teacher.id===subject.hodId
+                    ?
+                    "selected"
+                    :
+                    ""
+                  }
+                >
+                  ${escapeHTML(teacher.name)}
+                </option>
+
+              `
+            )
+            .join("")
+        }
+
+      </select>
+
+
+      <button
+        class="btn"
+        style="margin-top:15px"
+      >
+        Save Assignment
+      </button>
+
+    </form>
+
+    `
+
+  );
+
+}
+
+
+function saveHod(
+  e,
+  subjectId
+){
+
+  e.preventDefault();
+
+
+  const subject=
+    db.subjects.find(
+      s=>s.id===subjectId
+    );
+
+
+  if(subject){
+
+    subject.hodId=
+      document.getElementById(
+        "hodId"
+      ).value;
+
+  }
+
+
+  audit(
+    "Assign HOD",
+    subjectId
+  );
+
+
+  saveDB();
+
+  closeModal();
+
+  go("subjects");
+
+}
+
+
+/* =========================================================
+   UTILITIES
+========================================================= */
+
+function filterTable(
+  tableId,
+  query
+){
+
+  const q=
+    String(
+      query||""
+    ).toLowerCase();
+
+
+  document
+    .querySelectorAll(
+      `#${tableId} tbody tr`
+    )
+    .forEach(
+      row=>{
+
+        row.style.display=
+          row.innerText
+            .toLowerCase()
+            .includes(q)
+          ?
+          ""
+          :
+          "none";
+
+      }
+    );
+
+}
+
+
+function showModal(
+  title,
+  body
+){
+
+  document
+    .getElementById(
+      "modalTitle"
+    )
+    .textContent=title;
+
+
+  document
+    .getElementById(
+      "modalBody"
+    )
+    .innerHTML=body;
+
+
+  document
+    .getElementById(
+      "modal"
+    )
+    .classList.add("show");
+
+}
+
 
 function closeModal(){
-  document.getElementById("modal").classList.add("hidden");
+
+  document
+    .getElementById(
+      "modal"
+    )
+    .classList.remove("show");
+
 }
 
-function toggleSidebar(){
-  document.getElementById("sidebar").classList.toggle("open");
-  document.getElementById("overlay").classList.toggle("show");
+
+function downloadBlob(
+  blob,
+  filename
+){
+
+  const url=
+    URL.createObjectURL(
+      blob
+    );
+
+
+  const a=
+    document.createElement(
+      "a"
+    );
+
+
+  a.href=url;
+
+  a.download=filename;
+
+  document
+    .body
+    .appendChild(a);
+
+  a.click();
+
+  a.remove();
+
+
+  setTimeout(
+    ()=>{
+      URL.revokeObjectURL(url);
+    },
+    1000
+  );
+
 }
 
-function closeSidebar(){
-  document.getElementById("sidebar").classList.remove("open");
-  document.getElementById("overlay").classList.remove("show");
-}
 
-/* ---------------- PAGE ALIASES ---------------- */
+/* =========================================================
+   INITIAL SAVE
+========================================================= */
 
-window.page_dashboard=page_dashboard;
-window.page_teachers=page_teachers;
-window.page_students=page_students;
-window.page_parents=page_parents;
-window.page_classes=page_classes;
-window.page_subjects=page_subjects;
-window.page_attendance=page_attendance;
-window.page_results=page_results;
-window.page_approval=page_approval;
-window.page_archive=page_archive;
-window.page_studentportal=page_studentportal;
-window.page_parentportal=page_parentportal;
-window.page_assistant=page_assistant;
-window.page_backup=page_backup;
-window.page_audit=page_audit;
-window.page_settings=page_settings;
-window.page_password=page_password;
+saveDB();
 
-/* ---------------- STARTUP ---------------- */
-
-(async function(){
-  await initializeDB();
-  restoreSession();
-})();
 </script>
 
 </body>
